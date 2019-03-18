@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../../node_modules/video.js/dist/video-js.css';
 import videojs from 'video.js';
+import './player.scss';
+
+window.videojs = videojs;
 
 class Player extends React.Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class Player extends React.Component {
             }
         });
 
-        this.hideBigPlayButton();
+        // this.hideBigPlayButton();
     }
 
     hideBigPlayButton() {
@@ -60,7 +62,7 @@ class Player extends React.Component {
         return (
             <div>
                 <div data-vjs-player>
-                    <video ref={this.videoRef} className="video-js" {...playsInline}></video>
+                    <video ref={this.videoRef} className="vjs-vibuy video-js" {...playsInline}></video>
                 </div>
             </div>
         );

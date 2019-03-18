@@ -1,0 +1,13 @@
+@import '../../../node_modules/video.js/src/css/video-js';
+
+$color-font: rgb(238,238,238);
+$color-primary: rgb(0,172,216);
+
+$size-font: 12px;
+
+@import './BigPlayButton/big-play-button';
+
+.vjs-vibuy.video-js {
+  font-size: $size-font;
+  color: $color-font;
+}
