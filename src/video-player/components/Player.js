@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import videojs from 'video.js';
 import './player.scss';
+import './SettingsButton/vjs-settings-button';
 
 window.videojs = videojs;
 
@@ -29,6 +30,8 @@ class Player extends React.Component {
             }
         });
 
+        this.addChildComponents();
+
         this.player.ready(() => {
             if (volume) {
                 this.volume(volume);
@@ -40,6 +43,11 @@ class Player extends React.Component {
         });
 
         // this.hideBigPlayButton();
+    }
+
+    addChildComponents() {
+        const controlBar = this.player.getChild('controlBar');
+        controlBar.addChild('vjsSettingsButton', {}, controlBar.children().length - 1);
     }
 
     hideBigPlayButton() {

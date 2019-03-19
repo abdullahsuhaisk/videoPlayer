@@ -1,11 +1,12 @@
 @import '../../../node_modules/video.js/src/css/video-js';
 
-$color-font: rgb(238,238,238);
+$color-font: rgb(238, 238, 238);
 $color-primary: rgb(0,172,216);
 
 $size-font: 12px;
 
 @import './BigPlayButton/big-play-button';
+@import './SettingsButton/settings-button';
 
 // Global videojs styles
 .vjs-vibuy.video-js {
@@ -13,6 +14,11 @@ $size-font: 12px;
   color: $color-font;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
+
+  .vjs-control:focus {
+    text-shadow: none;
+    outline: none;
+  }
 }
 
 // Default skin styles
