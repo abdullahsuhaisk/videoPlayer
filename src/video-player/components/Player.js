@@ -20,7 +20,13 @@ class Player extends React.Component {
         this.player = window.player = videojs(this.videoRef.current, {
             width, height, controls, poster, sources, loop, muted,
             autoplay: autoplay ? videojs.browser.IS_IOS || videojs.browser.IS_ANDROID ? 'muted' : true : false,
-            aspectRatio, fluid, liveui: true
+            aspectRatio, fluid, liveui: true, textTrackSettings: false, controlBar: {
+                playbackRateMenuButton: false,
+                subsCapsButton: false,
+                descriptionsButton: false,
+                chaptersButton: false,
+                audioTrackButton: false
+            }
         });
 
         this.player.ready(() => {
