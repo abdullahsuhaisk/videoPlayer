@@ -71,6 +71,9 @@ const Overlay = () => {
 			width={widget.settings.width}
 			height={widget.settings.height}
 			images={widget.settings.images}
+			autoPlay={widget.settings.autoPlay}
+			navigation={widget.settings.navigation}
+			thumbnail={widget.settings.thumbnail}
 		  />
 		);
 	  } else if (widget.type === "text") {

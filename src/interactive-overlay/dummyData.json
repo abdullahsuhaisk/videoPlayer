@@ -17,18 +17,25 @@
 				"left": "160px",
 				"width": "384px",
 				"height": "350px",
+				"autoPlay": false,
+				"navigation": true,
+				"thumbnail": true,
 				"images": [
 					{
-						"original": "http://lorempixel.com/1000/600/nature/1/",
-						"thumbnail": "http://lorempixel.com/250/150/nature/1/"
+						"original": "https://picsum.photos/500/300/?image=816",
+						"thumbnail": "https://picsum.photos/250/150/?image=816"
 					  },
 					  {
-						"original": "http://lorempixel.com/1000/600/nature/2/",
-						"thumbnail": "http://lorempixel.com/250/150/nature/2/"
+						"original": "https://picsum.photos/500/300/?image=528",
+						"thumbnail": "https://picsum.photos/250/150/?image=528"
 					  },
 					  {
-						"original": "http://lorempixel.com/1000/600/nature/3/",
-						"thumbnail": "http://lorempixel.com/250/150/nature/3/"
+						"original": "https://picsum.photos/500/300/?image=238",
+						"thumbnail": "https://picsum.photos/250/150/?image=238"
+					  },
+					  {
+						"original": "https://picsum.photos/500/300/?image=60",
+						"thumbnail": "https://picsum.photos/250/150/?image=60"
 					  }
 				]
 			}
