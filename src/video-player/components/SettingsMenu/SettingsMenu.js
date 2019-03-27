@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
-import MainMenu from '../MainMenu/MainMenu';
-import PlaybackRateMenu from '../PlaybackRateMenu/PlaybackRateMenu';
+import MainMenu from './MainMenu';
+import PlaybackRateMenu from './PlaybackRateMenu';
 import { VjsContext } from '../../context/vjsContext';
 
 const SettingsMenu = (props) => {

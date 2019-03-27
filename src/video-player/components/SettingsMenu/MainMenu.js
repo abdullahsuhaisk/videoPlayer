@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MenuItem from '../MenuItem/MenuItem';
+import MenuItem from './MenuItem';
 
 const MainMenu = (props) => {
     const { playbackRateLabel, onSelectMenu } = props;

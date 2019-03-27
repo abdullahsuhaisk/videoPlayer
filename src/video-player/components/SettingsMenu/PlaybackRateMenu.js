@@ -1,8 +1,8 @@
 import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { VjsContext } from '../../context/vjsContext';
-import MenuItem from '../MenuItem/MenuItem';
-import PanelHeader from '../PanelHeader/PanelHeader';
+import MenuItem from './MenuItem';
+import PanelHeader from './PanelHeader';
 
 const PlaybackRateMenu = (props) => {
     const { title, onBack, onSelectRate } = props;
