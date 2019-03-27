@@ -81,7 +81,7 @@ class Player extends React.Component {
         return (
             <div>
                 <div data-vjs-player>
-                    <video ref={this.videoRef} className="vjs-vibuy video-js" {...playsInline}></video>
+                    <video ref={this.videoRef} className="vjs-vibuy video-js" crossOrigin="anonymous" {...playsInline}></video>
                 </div>
             </div>
         );
