@@ -1,13 +1,13 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import MainMenu from './MainMenu';
 import PlaybackRateMenu from './PlaybackRateMenu';
-import { VjsContext } from '../../context/vjsContext';
+import { PlayerContext } from '../../context/playerContext';
 
 const SettingsMenu = (props) => {
     const [activeMenu, setActiveMenu] = useState('main-menu');
     const [playbackRateLabel, setPlaybackRateLabel] = useState('Normal');
     const [panelStyle, setPanelStyle] = useState({});
-    const context = useContext(VjsContext);
+    const context = useContext(PlayerContext);
 
     const handleSelectedMenu = useCallback((selectedMenu) => {
         setActiveMenu(selectedMenu);

@@ -1,12 +1,12 @@
 import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { VjsContext } from '../../context/vjsContext';
+import { PlayerContext } from '../../context/playerContext';
 import MenuItem from './MenuItem';
 import PanelHeader from './PanelHeader';
 
 const PlaybackRateMenu = (props) => {
     const { title, onBack, onSelectRate } = props;
-    const context = useContext(VjsContext);
+    const context = useContext(PlayerContext);
     const playbackRates = context.player.options_.playbackRates.length > 0 ?
         context.player.options_.playbackRates : [1];
     const currentPlaybackRate = context.player.playbackRate();

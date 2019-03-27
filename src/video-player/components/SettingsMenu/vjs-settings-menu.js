@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import videojs from 'video.js';
 import SettingsMenu from './SettingsMenu';
-import { Provider } from '../../context/vjsContext';
+import { Provider } from '../../context/playerContext';
 
 const vjsComponent = videojs.getComponent('Component');
 
