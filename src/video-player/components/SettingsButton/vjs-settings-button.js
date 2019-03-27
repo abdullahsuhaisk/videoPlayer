@@ -12,6 +12,10 @@ class vjsSettingsButton extends vjsComponent {
         // this.setQualityBadge('HD');
     }
 
+    handleClick() {
+        this.player().setState({settingsMenuOpened: !this.player().state.settingsMenuOpened});
+    }
+
     setQualityBadge(qualityBadge) {
         const qualityBadgeClass = 'quality-badge';
         const hdBadgeClass = 'hd-badge';

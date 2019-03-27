@@ -7,6 +7,7 @@ $size-font: 12px;
 
 @import './BigPlayButton/big-play-button';
 @import './SettingsButton/settings-button';
+@import './SettingsMenu/settings_menu';
 
 // Global videojs styles
 .vjs-vibuy.video-js {
@@ -15,9 +16,43 @@ $size-font: 12px;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
 
+  &.vjs-layout-tiny, &.vjs-layout-x-small, &.vjs-layout-small {
+    font-size: $size-font - 4px;
+  }
+
+  &.vjs-layout-medium, &.vjs-layout-large {
+    font-size: $size-font;
+  }
+
+  &.vjs-layout-x-large {
+    font-size: $size-font + 4px;
+  }
+
+  &.vjs-layout-huge {
+    font-size: $size-font + 8px;
+  }
+
   .vjs-control:focus {
     text-shadow: none;
     outline: none;
+  }
+
+  // Scrollbar
+  ::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(66,66,66);
+  }
+
+  // Scrollbar track
+  ::-webkit-scrollbar-track {
+    background-color: rgb(66,66,66);
+  }
+
+  // Scrollbar handle
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(142,142,142);
+    border: 1px solid rgb(66,66,66);
+    border-radius: 5px;
   }
 }
 
