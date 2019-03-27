@@ -76,12 +76,10 @@ class Player extends React.Component {
     }
 
     render() {
-        const playsInline = videojs.browser.TOUCH_ENABLED ? { playsInline: true } : {};
-
         return (
             <div>
                 <div data-vjs-player>
-                    <video ref={this.videoRef} className="vjs-vibuy video-js" crossOrigin="anonymous" {...playsInline}></video>
+                    <video ref={this.videoRef} className="vjs-vibuy video-js" crossOrigin="anonymous" playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}></video>
                 </div>
             </div>
         );
