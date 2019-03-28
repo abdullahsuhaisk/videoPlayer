@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../../node_modules/video.js/dist/video-js.css';
 import videojs from 'video.js';
+import './player.scss';
+import './SettingsButton/vjs-settings-button';
+import './SettingsMenu/vjs-settings-menu';
+
+window.videojs = videojs;
 
 class Player extends React.Component {
     constructor(props) {
@@ -18,8 +22,16 @@ class Player extends React.Component {
         this.player = window.player = videojs(this.videoRef.current, {
             width, height, controls, poster, sources, loop, muted,
             autoplay: autoplay ? videojs.browser.IS_IOS || videojs.browser.IS_ANDROID ? 'muted' : true : false,
-            aspectRatio, fluid, liveui: true
+            aspectRatio, fluid, responsive: true, liveui: true, textTrackSettings: false, controlBar: {
+                playbackRateMenuButton: false,
+                subsCapsButton: false,
+                descriptionsButton: false,
+                chaptersButton: false,
+                audioTrackButton: false
+            }, playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
         });
+
+        this.addChildComponents();
 
         this.player.ready(() => {
             if (volume) {
@@ -31,7 +43,16 @@ class Player extends React.Component {
             }
         });
 
-        this.hideBigPlayButton();
+        // this.hideBigPlayButton();
+    }
+
+    addChildComponents() {
+        const controlBar = this.player.controlBar;
+
+        if (controlBar) {
+            controlBar.settingsButton = controlBar.addChild('vjsSettingsButton', {}, controlBar.children().length - 1);
+            this.player.settingsMenu = this.player.addChild('vjsSettingsMenu');
+        }
     }
 
     hideBigPlayButton() {
@@ -55,12 +76,10 @@ class Player extends React.Component {
     }
 
     render() {
-        const playsInline = videojs.browser.TOUCH_ENABLED ? { playsInline: true } : {};
-
         return (
             <div>
                 <div data-vjs-player>
-                    <video ref={this.videoRef} className="video-js" {...playsInline}></video>
+                    <video ref={this.videoRef} className="vjs-vibuy video-js" crossOrigin="anonymous" playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}></video>
                 </div>
             </div>
         );

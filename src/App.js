@@ -10,12 +10,12 @@ class App extends Component {
     const playerOptions = {
       autoplay: false,
       controls: true,
-      poster: 'https://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
+      poster: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
       sources: [{
-        src: 'https://d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
+        src: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
         type: 'video/mp4'
       }],
-      volume: 0.2,
+      volume: 0.5,
       fluid: true
     };
 
