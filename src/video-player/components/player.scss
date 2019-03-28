@@ -1,0 +1,152 @@
+@import '../../../node_modules/video.js/src/css/video-js';
+
+$color-font: rgb(238, 238, 238);
+$color-primary: rgb(0,172,216);
+
+$size-font: 12px;
+
+@import './BigPlayButton/big-play-button';
+@import './SettingsButton/settings-button';
+@import './SettingsMenu/settings_menu';
+
+// Global videojs styles
+.vjs-vibuy.video-js {
+  font-size: $size-font;
+  color: $color-font;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+
+  &.vjs-layout-tiny, &.vjs-layout-x-small, &.vjs-layout-small {
+    font-size: $size-font - 4px;
+  }
+
+  &.vjs-layout-medium, &.vjs-layout-large {
+    font-size: $size-font;
+  }
+
+  &.vjs-layout-x-large {
+    font-size: $size-font + 4px;
+  }
+
+  &.vjs-layout-huge {
+    font-size: $size-font + 8px;
+  }
+
+  .vjs-control:focus {
+    text-shadow: none;
+    outline: none;
+  }
+
+  // Scrollbar
+  ::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(66,66,66);
+  }
+
+  // Scrollbar track
+  ::-webkit-scrollbar-track {
+    background-color: rgb(66,66,66);
+  }
+
+  // Scrollbar handle
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(142,142,142);
+    border: 1px solid rgb(66,66,66);
+    border-radius: 5px;
+  }
+}
+
+// Default skin styles
+.vjs-vibuy {
+  .vjs-control-bar {
+    @include linear-gradient(0deg, rgb(0,0,0) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+  }
+
+  // Volume slider panel
+  .vjs-volume-panel {
+    @include transition(width 0.2s);
+
+    .vjs-volume-control.vjs-volume-horizontal {
+      $transition-property: visibility 0.2s, opacity 0.2s, height 0.2s, width 0.2s, left 0.2s, top 0.2s;
+      @include transition($transition-property);
+    }
+  }
+
+  // Time control styles
+  .vjs-remaining-time {
+    display: none;
+  }
+
+  .vjs-current-time,
+  .vjs-time-divider,
+  .vjs-duration {
+    display: block;
+  }
+
+  .vjs-time-control {
+    padding: 0;
+    color: rgb(221,221,221);
+  }
+
+  .vjs-time-divider {
+    min-width: auto;
+    padding: 0 0.3em;
+  }
+
+  // Volumebar and Progressbar background
+  .vjs-slider {
+    @include background-color-with-alpha(rgb(255,255,255), 0.2);
+  }
+
+  // Volumebar and Progressbar filled area
+  .vjs-volume-level,
+  .vjs-play-progress {
+    @include background-color-with-alpha($color-primary, 1);
+  }
+
+  // Progressbar load area
+  .vjs-load-progress {
+    @include background-color-with-alpha(rgb(255,255,255), 0.4);
+
+    // Fragments in the progressbar
+    div {
+      background: none;
+    }
+  }
+
+  .vjs-progress-control {
+    position: absolute;
+    display: block;
+    @include flex(none);
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.666em;
+    bottom: 2.8em;
+
+    &:hover .vjs-play-progress {
+      // Scrubber show on hover
+      &:before {
+        visibility: visible;
+      }
+
+      // Scrubber time, not necessary
+      .vjs-time-tooltip {
+        display: none;
+      }
+    }
+  }
+
+  // Scrubber
+  .vjs-play-progress:before {
+    visibility: hidden;
+    font-size: 0.65em;
+    top: -0.28em;
+  }
+
+  // Spacer in between left and right controls
+  .vjs-custom-control-spacer.vjs-spacer {
+    display: block;
+    @include flex(auto);
+  }
+}

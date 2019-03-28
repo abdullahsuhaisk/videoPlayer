@@ -1,0 +1,38 @@
+.vjs-vibuy {
+  .vjs-settings-control {
+    cursor: pointer;
+
+    .vjs-icon-placeholder {
+      font-family: VideoJS;
+      font-weight: normal;
+      font-style: normal;
+
+      &:before {
+        content: "\F110";
+      }
+    }
+
+    &.quality-badge:after {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      width: auto;
+      height: auto;
+      background-color: $color-primary;
+      font-family: Verdana,sans-serif;
+      font-weight: bold;
+      padding: 2px;
+      border-radius: 1.5px;
+      text-shadow: 0 2px 0 rgba(0,0,0,0.6);
+      font-size: 0.7em;
+    }
+
+    &.hd-badge:after {
+      content: 'HD';
+    }
+
+    &.fk-badge:after {
+      content: '4K';
+    }
+  }
+}
