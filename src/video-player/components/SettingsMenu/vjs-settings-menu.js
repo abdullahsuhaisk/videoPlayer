@@ -32,11 +32,19 @@ class vjsSettingsMenu extends vjsComponent {
         ReactDOM.unmountComponentAtNode(this.el());
     }
 
-    handleMenuShow = (event) => {
-        const targetElement = event.target.parentElement;
+    isMenuRelatedElement(element) {
+        const targetElement = element.tagName.toLowerCase() === 'button' ? element : element.parentElement;
 
         if (targetElement !== null && (videojs.dom.hasClass(targetElement, 'vjs-settings-control')
             || videojs.dom.hasClass(targetElement, 'vjs-menuitem') || videojs.dom.hasClass(targetElement, 'vjs-panel-header'))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    handleMenuShow = (event) => {
+        if (this.isMenuRelatedElement(event.target)) {
             return;
         }
 
