@@ -36,7 +36,7 @@ class vjsSettingsMenu extends vjsComponent {
         const targetElement = element.tagName.toLowerCase() === 'button' ? element : element.parentElement;
 
         if (targetElement !== null && (videojs.dom.hasClass(targetElement, 'vjs-settings-control')
-            || videojs.dom.hasClass(targetElement, 'vjs-menuitem') || videojs.dom.hasClass(targetElement, 'vjs-panel-header'))) {
+            || videojs.dom.hasClass(targetElement, 'vjs-menuitem') || videojs.dom.hasClass(targetElement, 'vjs-panel-title'))) {
             return true;
         }
 
