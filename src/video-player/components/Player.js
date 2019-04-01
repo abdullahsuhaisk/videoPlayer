@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import videojs from 'video.js';
+import 'videojs-dock';
 import './player.scss';
 import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
+import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 
 window.videojs = videojs;
 
@@ -32,6 +34,7 @@ class Player extends React.Component {
         });
 
         this.addChildComponents();
+        this.configurePlugins();
 
         this.player.ready(() => {
             if (volume) {
@@ -44,6 +47,17 @@ class Player extends React.Component {
         });
 
         // this.hideBigPlayButton();
+    }
+
+    configurePlugins() {
+        const { title, description } = this.props;
+
+        if (title || description) {
+            this.player.dock({
+                title: 'Video Title',
+                description: 'Video description'
+            });
+        }
     }
 
     addChildComponents() {
@@ -107,6 +121,8 @@ Player.propTypes = {
     autoplay: PropTypes.bool,
     aspectRatio: PropTypes.oneOf(['16:9', '4:3']),
     fluid: PropTypes.bool,
+    title: PropTypes.string,
+    description: PropTypes.string,
     onReady: PropTypes.func
 };
 

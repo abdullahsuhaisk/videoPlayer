@@ -10,6 +10,7 @@
     "react-image-gallery": "^0.8.14",
     "react-scripts": "^2.1.8",
     "video.js": "^7.4.1",
+    "videojs-dock": "^2.1.4",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
