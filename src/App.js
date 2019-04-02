@@ -16,7 +16,8 @@ class App extends Component {
         type: 'video/mp4'
       }],
       volume: 0.5,
-      fluid: true
+      fluid: true,
+      language: 'tr'
     };
 
     return (

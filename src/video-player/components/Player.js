@@ -13,11 +13,15 @@ class Player extends React.Component {
         this.videoRef = React.createRef();
     }
 
-    componentDidMount() {
+    static defaultLanguage = 'en';
+
+    async componentDidMount() {
         const {
             width, height, controls, poster, sources, loop, muted,
             aspectRatio, autoplay, fluid, volume, onReady
         } = this.props;
+
+        const language = await this.addLanguage();
 
         this.player = window.player = videojs(this.videoRef.current, {
             width, height, controls, poster, sources, loop, muted,
@@ -28,7 +32,8 @@ class Player extends React.Component {
                 descriptionsButton: false,
                 chaptersButton: false,
                 audioTrackButton: false
-            }, playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+            }, playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+            language: language
         });
 
         this.addChildComponents();
@@ -44,6 +49,43 @@ class Player extends React.Component {
         });
 
         // this.hideBigPlayButton();
+    }
+
+    getLanguage() {
+        const userLang = this.props.language || navigator.language || navigator.browserLanguage || navigator.userLanguage;
+        const availableLanguages = ['tr', 'es'];
+
+        return availableLanguages.includes(userLang) ? userLang : Player.defaultLanguage;
+    }
+
+    addLanguage() {
+        return new Promise((resolve) => {
+            const language = this.getLanguage();
+
+            if (language !== Player.defaultLanguage) {
+                videojs.xhr({
+                    method: 'GET',
+                    uri: `${process.env.REACT_APP_BASE_URL}/lang/${language}.json`,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }, (error, result) => {
+                    if (!error) {
+                        try {
+                            const languageData = JSON.parse(result.body);
+                            videojs.addLanguage(language, languageData);
+                            resolve(language);
+                        } catch (err) {
+                            resolve(Player.defaultLanguage);
+                        }
+                    } else {
+                        resolve(Player.defaultLanguage);
+                    }
+                });
+            } else {
+                resolve(Player.defaultLanguage);
+            }
+        });
     }
 
     addChildComponents() {
