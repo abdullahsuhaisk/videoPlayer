@@ -1,10 +1,9 @@
 import React from 'react';
 
 const PlayerContext = React.createContext({
-    player: null
+  player: null
 });
 
-const Provider = PlayerContext.Provider;
-const Consumer = PlayerContext.Consumer;
+const { Provider, Consumer } = PlayerContext;
 
 export { PlayerContext, Provider, Consumer };
