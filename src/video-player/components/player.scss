@@ -1,7 +1,7 @@
 @import '../../../node_modules/video.js/src/css/video-js';
 
 $color-font: rgb(238, 238, 238);
-$color-primary: rgb(0,172,216);
+$color-primary: rgb(0, 172, 216);
 
 $size-font: 12px;
 
@@ -16,11 +16,14 @@ $size-font: 12px;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
 
-  &.vjs-layout-tiny, &.vjs-layout-x-small, &.vjs-layout-small {
+  &.vjs-layout-tiny,
+  &.vjs-layout-x-small,
+  &.vjs-layout-small {
     font-size: $size-font - 4px;
   }
 
-  &.vjs-layout-medium, &.vjs-layout-large {
+  &.vjs-layout-medium,
+  &.vjs-layout-large {
     font-size: $size-font;
   }
 
@@ -40,18 +43,18 @@ $size-font: 12px;
   // Scrollbar
   ::-webkit-scrollbar {
     width: 10px;
-    background-color: rgb(66,66,66);
+    background-color: rgb(66, 66, 66);
   }
 
   // Scrollbar track
   ::-webkit-scrollbar-track {
-    background-color: rgb(66,66,66);
+    background-color: rgb(66, 66, 66);
   }
 
   // Scrollbar handle
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(142,142,142);
-    border: 1px solid rgb(66,66,66);
+    background-color: rgb(142, 142, 142);
+    border: 1px solid rgb(66, 66, 66);
     border-radius: 5px;
   }
 }
@@ -59,7 +62,12 @@ $size-font: 12px;
 // Default skin styles
 .vjs-vibuy {
   .vjs-control-bar {
-    @include linear-gradient(0deg, rgb(0,0,0) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+    @include linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 
   // Volume slider panel
@@ -67,7 +75,8 @@ $size-font: 12px;
     @include transition(width 0.2s);
 
     .vjs-volume-control.vjs-volume-horizontal {
-      $transition-property: visibility 0.2s, opacity 0.2s, height 0.2s, width 0.2s, left 0.2s, top 0.2s;
+      $transition-property: visibility 0.2s, opacity 0.2s, height 0.2s,
+        width 0.2s, left 0.2s, top 0.2s;
       @include transition($transition-property);
     }
   }
@@ -85,7 +94,7 @@ $size-font: 12px;
 
   .vjs-time-control {
     padding: 0;
-    color: rgb(221,221,221);
+    color: rgb(221, 221, 221);
   }
 
   .vjs-time-divider {
@@ -95,7 +104,7 @@ $size-font: 12px;
 
   // Volumebar and Progressbar background
   .vjs-slider {
-    @include background-color-with-alpha(rgb(255,255,255), 0.2);
+    @include background-color-with-alpha(rgb(255, 255, 255), 0.2);
   }
 
   // Volumebar and Progressbar filled area
@@ -106,7 +115,7 @@ $size-font: 12px;
 
   // Progressbar load area
   .vjs-load-progress {
-    @include background-color-with-alpha(rgb(255,255,255), 0.4);
+    @include background-color-with-alpha(rgb(255, 255, 255), 0.4);
 
     // Fragments in the progressbar
     div {

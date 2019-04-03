@@ -33,7 +33,7 @@
     }
   },
   "lint-staged": {
-    "src/video-player/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
       "git add"
     ]

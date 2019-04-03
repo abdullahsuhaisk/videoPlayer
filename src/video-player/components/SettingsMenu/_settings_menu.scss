@@ -3,9 +3,9 @@
     position: absolute;
     overflow: hidden;
     border-radius: 2px;
-    background: rgba(28,28,28,0.9);
-    text-shadow: 0 0 2px rgba(0,0,0,.5);
-    @include transition(opacity .1s cubic-bezier(0.0,0.0,0.2,1));
+    background: rgba(28, 28, 28, 0.9);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    @include transition(opacity 0.1s cubic-bezier(0, 0, 0.2, 1));
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
@@ -17,7 +17,7 @@
       overflow-x: hidden;
 
       .vjs-panel-header {
-        border-bottom: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         font-size: 109%;
         height: 2.7em;
 
@@ -44,15 +44,15 @@
           height: 2.7em;
           outline: none;
 
-          &:not([aria-disabled=true]) {
+          &:not([aria-disabled='true']) {
             cursor: pointer;
           }
 
-          &:not([aria-haspopup=true]) .vjs-menuitem-content {
+          &:not([aria-haspopup='true']) .vjs-menuitem-content {
             text-align: left;
           }
 
-          &[aria-haspopup=true] .vjs-menuitem-content {
+          &[aria-haspopup='true'] .vjs-menuitem-content {
             padding-right: 3.2em;
             background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwJSIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHdpZHRoPSIxMDAlIj48cGF0aCBkPSJtIDEyLjU5LDIwLjM0IDQuNTgsLTQuNTkgLTQuNTgsLTQuNTkgMS40MSwtMS40MSA2LDYgLTYsNiB6IiBmaWxsPSIjZmZmIiAvPjwvc3ZnPg==);
             background-size: 2.67em;
@@ -60,20 +60,21 @@
             background-position: right 0.75em center;
           }
 
-          &[role=menuitemradio][aria-checked=true] .vjs-menuitem-label {
+          &[role='menuitemradio'][aria-checked='true'] .vjs-menuitem-label {
             background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwJSIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIxMDAlIj48cGF0aCBkPSJNOSAxNi4yTDQuOCAxMmwtMS40IDEuNEw5IDE5IDIxIDdsLTEuNC0xLjRMOSAxNi4yeiIgZmlsbD0iI2ZmZiIgLz48L3N2Zz4=);
             background-repeat: no-repeat;
             background-position: left 0.71em center;
-            background-size: 1.28em
+            background-size: 1.28em;
           }
 
-          &[role=menuitemradio] .vjs-menuitem-label {
+          &[role='menuitemradio'] .vjs-menuitem-label {
             padding-left: 2.47em;
             padding-right: 1.42em;
           }
         }
-      
-        .vjs-menuitem-label, .vjs-menuitem-content {
+
+        .vjs-menuitem-label,
+        .vjs-menuitem-content {
           display: table-cell;
           vertical-align: middle;
           padding: 0 1em;
@@ -83,7 +84,7 @@
           font-size: 118%;
           font-weight: 500;
         }
-      
+
         .vjs-menuitem-content {
           text-align: right;
         }
