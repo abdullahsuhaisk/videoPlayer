@@ -29,7 +29,7 @@ const PlaybackRateMenu = (props) => {
             label={playbackRate === 1 ? 'Normal' : playbackRate}
             value={playbackRate}
             key={playbackRate}
-            ariaChecked={playbackRate === currentPlaybackRate ? true : null}
+            ariaChecked={playbackRate === currentPlaybackRate}
             role="menuitemradio"
             onSelect={(selectedRate) => handleSelect(selectedRate)}
           />

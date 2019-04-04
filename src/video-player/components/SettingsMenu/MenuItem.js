@@ -31,8 +31,8 @@ const MenuItem = (props) => {
 
 MenuItem.propTypes = {
   tabIndex: PropTypes.string,
-  ariaHasPopup: PropTypes.string,
-  ariaChecked: PropTypes.string,
+  ariaHasPopup: PropTypes.bool,
+  ariaChecked: PropTypes.bool,
   role: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   value: PropTypes.any,
@@ -42,8 +42,8 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   tabIndex: '0',
-  ariaHasPopup: 'false',
-  ariaChecked: 'false',
+  ariaHasPopup: false,
+  ariaChecked: false,
   role: 'menuitem',
   value: '',
   content: '',
