@@ -9,6 +9,8 @@ import './SettingsMenu/vjs-settings-menu';
 window.videojs = videojs;
 
 class Player extends React.Component {
+  static availableLanguages = ['en', 'tr', 'es'];
+
   static defaultLanguage = 'en';
 
   constructor(props) {
@@ -95,9 +97,8 @@ class Player extends React.Component {
       navigator.language ||
       navigator.browserLanguage ||
       navigator.userLanguage;
-    const availableLanguages = ['tr', 'es'];
 
-    return availableLanguages.includes(userLang)
+    return Player.availableLanguages.includes(userLang)
       ? userLang
       : Player.defaultLanguage;
   }
@@ -203,7 +204,7 @@ Player.propTypes = {
   autoplay: PropTypes.bool,
   aspectRatio: PropTypes.oneOf(['16:9', '4:3']),
   fluid: PropTypes.bool,
-  language: PropTypes.string,
+  language: PropTypes.oneOf(Player.availableLanguages),
   onReady: PropTypes.func
 };
 
