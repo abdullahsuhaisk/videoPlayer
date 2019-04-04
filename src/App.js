@@ -14,7 +14,9 @@ class App extends Component {
           src: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
           type: 'video/mp4'
         }
-      ]
+      ],
+      title: 'Video Title',
+      description: 'Video description'
     };
 
     return (
