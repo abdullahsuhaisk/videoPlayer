@@ -202,22 +202,22 @@ Player.propTypes = {
   muted: PropTypes.bool,
   volume: PropTypes.number,
   autoplay: PropTypes.bool,
-  aspectRatio: PropTypes.oneOf(['16:9', '4:3']),
+  aspectRatio: PropTypes.oneOf([undefined, '16:9', '4:3']),
   fluid: PropTypes.bool,
   language: PropTypes.oneOf(Player.availableLanguages),
   onReady: PropTypes.func
 };
 
 Player.defaultProps = {
-  width: 640,
-  height: 360,
+  width: 800,
+  height: 450,
   controls: true,
   poster: '',
   loop: false,
   muted: false,
   volume: 0.5,
   autoplay: false,
-  aspectRatio: '16:9',
+  aspectRatio: undefined,
   fluid: false,
   language: 'en',
   onReady: () => {}
