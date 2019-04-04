@@ -181,15 +181,13 @@ class Player extends React.Component {
 
   render() {
     return (
-      <div>
-        <div data-vjs-player>
-          <video
-            ref={this.videoRef}
-            className="vjs-vibuy video-js"
-            crossOrigin="anonymous"
-            playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
-          />
-        </div>
+      <div data-vjs-player>
+        <video
+          ref={this.videoRef}
+          className="vjs-vibuy video-js"
+          crossOrigin="anonymous"
+          playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
+        />
       </div>
     );
   }

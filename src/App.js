@@ -15,6 +15,7 @@ class App extends Component {
           type: 'video/mp4'
         }
       ],
+      fluid: true,
       title: 'Video Title',
       description: 'Video description'
     };
