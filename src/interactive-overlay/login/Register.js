@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dialog = (props) => {
+const Register = (props) => {
   const style = {
     width: '100%',
     height: '100%',
@@ -20,12 +20,12 @@ const Dialog = (props) => {
 
   return (
     <div style={style}>
+      {props.children}
       <span style={closeButton} onClick={() => props.onClose()}>
         &times;
       </span>
-      {props.children}
     </div>
   );
 };
 
-export default Dialog;
+export default Register;
