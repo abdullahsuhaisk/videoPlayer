@@ -17,7 +17,8 @@ class App extends Component {
       ],
       fluid: true,
       title: 'Video Title',
-      description: 'Video description'
+      description: 'Video description',
+      language: 'tr'
     };
 
     return (

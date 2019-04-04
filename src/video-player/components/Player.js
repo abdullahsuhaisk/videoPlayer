@@ -100,9 +100,10 @@ class Player extends React.Component {
       navigator.language ||
       navigator.browserLanguage ||
       navigator.userLanguage;
+    const languageWithoutRegionCode = userLang.toLowerCase().split(/[_-]+/)[0];
 
-    return Player.availableLanguages.includes(userLang)
-      ? userLang
+    return Player.availableLanguages.includes(languageWithoutRegionCode)
+      ? languageWithoutRegionCode
       : Player.defaultLanguage;
   }
 
