@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
 import 'videojs-dock';
 import './player.scss';
@@ -13,6 +14,7 @@ window.videojs = videojs;
 const Player = (props) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
+  const { i18n } = useTranslation();
 
   const {
     width,
@@ -28,9 +30,15 @@ const Player = (props) => {
     volume,
     title,
     description,
-    language,
     onReady
   } = props;
+
+  useEffect(() => {
+    videojs.addLanguage(
+      i18n.language,
+      i18n.getResource(i18n.language, i18n.options.defaultNS[0], 'player')
+    );
+  }, []);
 
   useEffect(() => {
     let isAutoplay = false;
@@ -62,7 +70,7 @@ const Player = (props) => {
         audioTrackButton: false
       },
       playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
-      language
+      language: i18n.language
     });
 
     window.player = playerRef.current;
@@ -147,7 +155,6 @@ Player.propTypes = {
   fluid: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  language: PropTypes.string,
   onReady: PropTypes.func
 };
 
@@ -164,7 +171,6 @@ Player.defaultProps = {
   fluid: false,
   title: '',
   description: '',
-  language: 'en',
   onReady: () => {}
 };
 

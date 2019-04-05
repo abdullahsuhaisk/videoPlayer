@@ -9,10 +9,12 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    debug: true,
-
+    debug: false,
     interpolation: {
       escapeValue: false
+    },
+    detection: {
+      caches: []
     }
   });
 

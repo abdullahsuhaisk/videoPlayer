@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Player } from './video-player';
 import './i18n/i18n';
 
@@ -24,7 +24,9 @@ class App extends Component {
 
     return (
       <div>
-        <Player {...playerOptions} onReady={() => this.playerReady()} />
+        <Suspense fallback={<></>}>
+          <Player {...playerOptions} onReady={() => this.playerReady()} />
+        </Suspense>
       </div>
     );
   }
