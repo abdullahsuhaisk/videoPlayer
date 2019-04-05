@@ -171,4 +171,9 @@ $size-font: 12px;
       @include transform(translate(0, -50%));
     }
   }
+
+  // Dock
+  &.vjs-has-started .vjs-dock-text {
+    display: none;
+  }
 }
