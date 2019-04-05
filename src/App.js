@@ -12,8 +12,8 @@ const App = () => {
       }
     ],
     fluid: true,
-    title: 'Video Title',
-    description: 'Video description',
+    title: 'Elephants Dream',
+    description: 'An example movie from The Orange Open Movie Project',
     language: 'tr'
   };
 
