@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Player } from './video-player';
+import './i18n/i18n';
 
 class App extends Component {
   playerReady = () => {
