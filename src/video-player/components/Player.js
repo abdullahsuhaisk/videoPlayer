@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import videojs from 'video.js';
 import 'videojs-dock';
@@ -10,33 +10,29 @@ import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 
 window.videojs = videojs;
 
-class Player extends React.Component {
-  static availableLanguages = ['en', 'tr', 'es'];
+const Player = (props) => {
+  const videoRef = useRef(null);
+  const playerRef = useRef(null);
 
-  static defaultLanguage = 'en';
+  const {
+    width,
+    height,
+    controls,
+    poster,
+    sources,
+    loop,
+    muted,
+    aspectRatio,
+    autoplay,
+    fluid,
+    volume,
+    title,
+    description,
+    language,
+    onReady
+  } = props;
 
-  constructor(props) {
-    super(props);
-    this.videoRef = React.createRef();
-  }
-
-  async componentDidMount() {
-    const {
-      width,
-      height,
-      controls,
-      poster,
-      sources,
-      loop,
-      muted,
-      aspectRatio,
-      autoplay,
-      fluid,
-      volume,
-      onReady
-    } = this.props;
-
-    const language = await this.addLanguage();
+  useEffect(() => {
     let isAutoplay = false;
 
     if (autoplay) {
@@ -44,7 +40,7 @@ class Player extends React.Component {
         videojs.browser.IS_IOS || videojs.browser.IS_ANDROID ? 'muted' : true;
     }
 
-    this.player = videojs(this.videoRef.current, {
+    playerRef.current = videojs(videoRef.current, {
       width,
       height,
       controls,
@@ -69,90 +65,29 @@ class Player extends React.Component {
       language
     });
 
-    window.player = this.player;
+    window.player = playerRef.current;
 
-    this.addChildComponents();
-    this.configurePlugins();
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.dispose();
+      }
+    };
+  }, []);
 
-    this.player.ready(() => {
+  useEffect(() => {
+    playerRef.current.ready(() => {
       if (volume) {
-        this.volume(volume);
+        playerRef.current.volume(volume);
       }
 
       if (onReady) {
         onReady();
       }
     });
+  }, []);
 
-    // this.hideBigPlayButton();
-  }
-
-  componentWillUnmount() {
-    if (this.player) {
-      this.player.dispose();
-    }
-  }
-
-  getLanguage() {
-    const { language } = this.props;
-    const userLang =
-      language ||
-      navigator.language ||
-      navigator.browserLanguage ||
-      navigator.userLanguage;
-    const languageWithoutRegionCode = userLang.toLowerCase().split(/[_-]+/)[0];
-
-    return Player.availableLanguages.includes(languageWithoutRegionCode)
-      ? languageWithoutRegionCode
-      : Player.defaultLanguage;
-  }
-
-  addLanguage() {
-    return new Promise((resolve) => {
-      const language = this.getLanguage();
-
-      if (language !== Player.defaultLanguage) {
-        videojs.xhr(
-          {
-            method: 'GET',
-            uri: `${process.env.REACT_APP_BASE_URL}/lang/${language}.json`,
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          },
-          (error, result) => {
-            if (!error) {
-              try {
-                const languageData = JSON.parse(result.body);
-                videojs.addLanguage(language, languageData);
-                resolve(language);
-              } catch (err) {
-                resolve(Player.defaultLanguage);
-              }
-            } else {
-              resolve(Player.defaultLanguage);
-            }
-          }
-        );
-      } else {
-        resolve(Player.defaultLanguage);
-      }
-    });
-  }
-
-  configurePlugins() {
-    const { title, description } = this.props;
-
-    if (title || description) {
-      this.player.dock({
-        title: 'Video Title',
-        description: 'Video description'
-      });
-    }
-  }
-
-  addChildComponents() {
-    const { controlBar } = this.player;
+  useEffect(() => {
+    const { controlBar } = playerRef.current;
 
     if (controlBar) {
       controlBar.settingsButton = controlBar.addChild(
@@ -160,39 +95,32 @@ class Player extends React.Component {
         {},
         controlBar.children().length - 1
       );
-      this.player.settingsMenu = this.player.addChild('vjsSettingsMenu');
+      playerRef.current.settingsMenu = playerRef.current.addChild(
+        'vjsSettingsMenu'
+      );
     }
-  }
+  }, []);
 
-  hideBigPlayButton() {
-    const bigPlayButton = this.player.getChild('bigPlayButton');
-
-    if (bigPlayButton) {
-      bigPlayButton.hide();
+  useEffect(() => {
+    if (title || description) {
+      playerRef.current.dock({
+        title,
+        description
+      });
     }
-  }
+  }, []);
 
-  volume(value) {
-    if (this.player) {
-      return this.player.volume(value);
-    }
-
-    return value;
-  }
-
-  render() {
-    return (
-      <div data-vjs-player>
-        <video
-          ref={this.videoRef}
-          className="vjs-vibuy video-js"
-          crossOrigin="anonymous"
-          playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div data-vjs-player>
+      <video
+        ref={videoRef}
+        className="vjs-vibuy video-js"
+        crossOrigin="anonymous"
+        playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
+      />
+    </div>
+  );
+};
 
 Player.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -219,7 +147,7 @@ Player.propTypes = {
   fluid: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  language: PropTypes.oneOf(Player.availableLanguages),
+  language: PropTypes.string,
   onReady: PropTypes.func
 };
 
