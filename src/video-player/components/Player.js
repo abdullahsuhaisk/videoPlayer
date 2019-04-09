@@ -119,13 +119,15 @@ const Player = (props) => {
   }, []);
 
   return (
-    <div data-vjs-player>
-      <video
-        ref={videoRef}
-        className="vjs-vibuy video-js"
-        crossOrigin="anonymous"
-        playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
-      />
+    <div>
+      <div data-vjs-player>
+        <video
+          ref={videoRef}
+          className="vjs-vibuy video-js"
+          crossOrigin="anonymous"
+          playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
+        />
+      </div>
     </div>
   );
 };

@@ -2,13 +2,14 @@
 import React from 'react';
 import { cleanup, render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
+import '../../i18n/i18n';
 
 import Player from './Player';
 
 const playerProps = {
   sources: [
     {
-      src: 'https://d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
+      src: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
       type: 'video/mp4'
     }
   ]
@@ -16,51 +17,40 @@ const playerProps = {
 
 afterEach(cleanup);
 
-test('player should have source', () => {
-  const playerRef = React.createRef();
+test('player should have title and description', () => {
+  const props = {
+    ...playerProps,
+    title: 'Elephants Dream',
+    description: 'An example movie from The Orange Open Movie Project'
+  };
 
-  render(<Player {...playerProps} ref={playerRef} />);
+  const { container } = render(<Player {...props} />);
 
-  expect(playerRef.current.player.currentSources()).toEqual(
-    playerProps.sources
+  expect(container.querySelector('.vjs-dock-title')).toHaveTextContent(
+    props.title
+  );
+  expect(container.querySelector('.vjs-dock-description')).toHaveTextContent(
+    props.description
   );
 });
 
-test('player should have correct size', () => {
-  const props = { ...playerProps, width: 320, height: 240 };
-  const playerRef = React.createRef();
-
-  render(<Player {...props} ref={playerRef} />);
-
-  expect(playerRef.current.player.width()).toBe(props.width);
-  expect(playerRef.current.player.height()).toBe(props.height);
-});
-
-test('controls should be set', () => {
-  const props = { ...playerProps, controls: true };
-  const playerRef = React.createRef();
-
-  render(<Player {...props} ref={playerRef} />);
-
-  expect(playerRef.current.player.controls()).toBe(props.controls);
-});
-
-test('poster should be set', () => {
+test('player should have poster', () => {
   const props = {
     ...playerProps,
-    poster: 'https://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png'
+    poster: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png'
   };
-  const playerRef = React.createRef();
 
-  render(<Player {...props} ref={playerRef} />);
+  const { container } = render(<Player {...props} />);
 
-  expect(playerRef.current.player.poster()).toBe(props.poster);
+  expect(container.querySelector('.vjs-poster')).toHaveStyle(
+    `background-image: url("${props.poster}")`
+  );
 });
 
-test('video element should have playsinline attribute', () => {
-  const props = { ...playerProps, playsInline: true };
+test('player should have fluid class', () => {
+  const props = { ...playerProps, fluid: true };
 
-  const utils = render(<Player {...props} />);
+  const { getByLabelText } = render(<Player {...props} />);
 
-  expect(utils.container.querySelector('video').playsInline).toBeTruthy();
+  expect(getByLabelText('Video Player')).toHaveClass('vjs-fluid');
 });

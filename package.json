@@ -24,6 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "version:bump": "npm version patch --no-git-tag-version --silent",
     "version:bump:minor": "npm version minor --no-git-tag-version --silent",
