@@ -1,145 +1,194 @@
 {
-  "overlayWidgets": [
+  "widgets": [
     {
-      "type": "square",
+      "type": "div",
+      "id": "square",
       "settings": {
-        "top": "90px",
-        "left": "130px",
-        "width": "740px",
-        "height": "418px",
-        "backgroundColor": "#FFF"
+        "cssProps": {
+          "top": "90px",
+          "left": "130px",
+          "width": "740px",
+          "height": "418px",
+          "backgroundColor": "#FFF"
+        }
       }
     },
     {
-      "type": "gallery",
+      "type": "ImageGallery",
+      "id": "gallery",
       "settings": {
-        "top": "125px",
-        "left": "160px",
-        "width": "384px",
-        "height": "350px",
-        "autoPlay": false,
-        "navigation": true,
-        "thumbnail": true,
-        "images": [
-          {
-            "original": "https://picsum.photos/500/300/?image=816",
-            "thumbnail": "https://picsum.photos/250/150/?image=816"
-          },
-          {
-            "original": "https://picsum.photos/500/300/?image=528",
-            "thumbnail": "https://picsum.photos/250/150/?image=528"
-          },
-          {
-            "original": "https://picsum.photos/500/300/?image=238",
-            "thumbnail": "https://picsum.photos/250/150/?image=238"
-          },
-          {
-            "original": "https://picsum.photos/500/300/?image=60",
-            "thumbnail": "https://picsum.photos/250/150/?image=60"
-          }
-        ]
+        "cssProps": {},
+        "attributes": {
+          "top": "125px",
+          "left": "160px",
+          "width": "384px",
+          "height": "350px",
+          "autoPlay": false,
+          "navigation": true,
+          "thumbnail": true,
+          "images": [
+            {
+              "original": "https://picsum.photos/500/300/?image=816",
+              "thumbnail": "https://picsum.photos/250/150/?image=816"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=528",
+              "thumbnail": "https://picsum.photos/250/150/?image=528"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=238",
+              "thumbnail": "https://picsum.photos/250/150/?image=238"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=60",
+              "thumbnail": "https://picsum.photos/250/150/?image=60"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=328",
+              "thumbnail": "https://picsum.photos/250/150/?image=328"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=669",
+              "thumbnail": "https://picsum.photos/250/150/?image=669"
+            }
+          ]
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "140px",
-        "left": "600px",
-        "width": "150px",
-        "height": "30px",
         "text": "TOP CLOTH",
-        "font": "Avenir",
-        "fontSize": "15px",
-        "color": "#909090"
+        "cssProps": {
+          "top": "140px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "font": "Avenir",
+          "fontSize": "15px",
+          "color": "#909090"
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "160px",
-        "left": "600px",
-        "width": "150px",
-        "height": "30px",
         "text": "Denim",
-        "font": "Avenir",
-        "fontSize": "45px",
-        "isBold": "true",
-        "color": "#000"
+        "cssProps": {
+          "top": "160px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "font": "Avenir",
+          "fontSize": "45px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "200px",
-        "left": "600px",
-        "width": "150px",
-        "height": "30px",
         "text": "Jacket",
-        "font": "Avenir",
-        "fontSize": "45px",
-        "isBold": "true",
-        "color": "#000"
+        "cssProps": {
+          "top": "200px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "font": "Avenir",
+          "fontSize": "45px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "250px",
-        "left": "600px",
-        "width": "150px",
-        "height": "30px",
         "text": "- doughnut detail",
-        "font": "Avenir",
-        "fontSize": "15px",
-        "color": "#000"
+        "cssProps": {
+          "top": "250px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "font": "Avenir",
+          "fontSize": "15px",
+          "color": "#000"
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "275px",
-        "left": "600px",
-        "width": "220px",
-        "height": "30px",
         "text": "Do denim the modern way with our hacked off detail denim jacket. We're styling it with contrasting camo print trousers for a contemporary look that works for day or night. 100% Cotton. Machine wash.",
-        "font": "Avenir",
-        "fontSize": "12px",
-        "color": "#000",
-        "align": "justify"
+        "cssProps": {
+          "top": "275px",
+          "left": "600px",
+          "width": "220px",
+          "height": "30px",
+          "font": "Avenir",
+          "fontSize": "12px",
+          "color": "#000",
+          "textAlign": "justify"
+        }
       }
     },
     {
-      "type": "text",
+      "type": "span",
+      "id": "text",
       "settings": {
-        "top": "430px",
-        "left": "600px",
-        "width": "195px",
-        "height": "30px",
         "text": "$321",
-        "font": "Source Sans Pro",
-        "fontSize": "20px",
-        "isBold": "true",
-        "color": "#000"
+        "cssProps": {
+          "top": "430px",
+          "left": "600px",
+          "width": "195px",
+          "height": "30px",
+          "font": "Source Sans Pro",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
       }
     },
     {
       "type": "button",
+      "id": "button",
       "settings": {
         "text": "BUY",
         "action": {
-          "type": "openLink",
-          "value": "http://www.google.com"
+          "name": "openLink",
+          "params": ["http://www.vibuytest.com"]
         },
-        "top": "430px",
-        "left": "735px",
-        "width": "100px",
-        "height": "32px",
-        "font": "Source Sans Pro",
-        "fontSize": "14px",
-        "color": "#E5E5E5",
-        "backgroundColor": "#21232F",
-        "align": "center",
-        "radius": "50px"
+        "cssProps": {
+          "top": "425px",
+          "left": "720px",
+          "width": "100px",
+          "height": "32px",
+          "font": "Source Sans Pro",
+          "fontSize": "14px",
+          "color": {
+            "default": "#FFF",
+            "hover": "#0d263b"
+          },
+          "background-color": {
+            "default": "#0d263b",
+            "hover": "#FFF"
+          },
+          "border": {
+            "default": "1px solid #FFF",
+            "hover": "1px solid #0d263b"
+          },
+          "borderRadius": "50px",
+          "textAlign": "center"
+        },
+        "attributes": {
+          "className": ["overlayButton"]
+        }
       }
     }
   ]

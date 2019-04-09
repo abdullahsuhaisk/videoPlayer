@@ -3,9 +3,10 @@ import React from 'react';
 import '../overlay.scss';
 import { parseJson } from '../parseStyles';
 
-const Register = (props) => {
+const ForgotPassword = (props) => {
   const { json } = props;
   const Widgets = parseJson(json);
+
   const style = {
     width: '100%',
     height: '100%',
@@ -54,4 +55,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default ForgotPassword;

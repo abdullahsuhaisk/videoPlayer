@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
-import '../overlay.scss';
-import { parseJson } from '../parseStyles';
+import React, { useEffect } from 'react';
+import '../../overlay.scss';
+import WebFont from 'webfontloader';
+import { parseJson } from '../../parseStyles';
 
-const Register = (props) => {
+const Dialog = (props) => {
   const { json } = props;
   const Widgets = parseJson(json);
+
   const style = {
     width: '100%',
     height: '100%',
@@ -54,4 +56,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default Dialog;
