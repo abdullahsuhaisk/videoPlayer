@@ -3,7 +3,7 @@
     position: absolute;
     overflow: hidden;
     border-radius: 2px;
-    background: rgba(28, 28, 28, 0.9);
+    background: rgba(28, 28, 28, 0.8);
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     @include transition(opacity 0.1s cubic-bezier(0, 0, 0.2, 1));
     -moz-user-select: none;
