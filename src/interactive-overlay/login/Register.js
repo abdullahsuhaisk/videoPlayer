@@ -1,11 +1,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../overlay.scss';
+import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
 const Register = (props) => {
   const { json } = props;
-  const Widgets = parseJson(json);
+  const [data, setData] = useState({ email: '', password: '' });
+  const [Widgets, setWidgets] = useState([]);
+  const { auth } = props;
+
+  useEffect(() => {
+    setWidgets(parseJson(json));
+  }, []);
+
   const style = {
     width: '100%',
     height: '100%',

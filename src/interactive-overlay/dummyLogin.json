@@ -101,7 +101,9 @@
             "hover": "1px solid #0d263b"
           },
           "borderRadius": "5px",
-          "textAlign": "center"
+          "textAlign": "center",
+          "cursor": "pointer",
+          "transition": "all .2s"
         },
         "action": {
           "name": "login",
@@ -219,7 +221,9 @@
             "hover": "1px solid #0d263b"
           },
           "borderRadius": "5px",
-          "textAlign": "center"
+          "textAlign": "center",
+          "cursor": "pointer",
+          "transition": "all .2s"
         },
         "attributes": {
           "className": ["overlayButton"]

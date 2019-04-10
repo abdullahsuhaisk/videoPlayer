@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,7 +15,9 @@ const Circle = (props) => {
     borderRadius: '50%'
   };
 
-  return <div style={style} onClick={() => onClick()} />;
+  return (
+    <div style={style} onClick={() => onClick()} role="button" tabIndex="-1" />
+  );
 };
 
 Circle.propTypes = {

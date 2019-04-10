@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import Circle from './components/Circle/Circle';
 
 const Widgets = {
-  ImageGallery
+  ImageGallery,
+  Circle
 };
 
 const dashed = (camel) => camel.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
