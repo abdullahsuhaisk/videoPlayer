@@ -4,7 +4,7 @@ import '../overlay.scss';
 import { parseJson } from '../parseStyles';
 
 const ForgotPassword = (props) => {
-  const { json } = props;
+  const { json, actions } = props;
   const Widgets = parseJson(json);
 
   const style = {
@@ -46,7 +46,7 @@ const ForgotPassword = (props) => {
       })}
       <span
         style={closeButton}
-        onClick={() => props.onClose()}
+        onClick={actions.toggleForgotPassword}
         role="button"
         tabIndex="-1">
         &times;

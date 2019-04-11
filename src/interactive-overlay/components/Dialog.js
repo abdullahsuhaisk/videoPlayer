@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react';
-import '../../overlay.scss';
+import '../overlay.scss';
 import WebFont from 'webfontloader';
-import { parseJson } from '../../parseStyles';
+import { parseJson } from '../parseStyles';
 
 const Dialog = (props) => {
-  const { json } = props;
+  const { json, actions } = props;
   const Widgets = parseJson(json);
 
   const style = {
@@ -29,7 +29,7 @@ const Dialog = (props) => {
     <div style={style}>
       {Widgets.map(({ type, Component, action, text, attributes }, key) => {
         const handler = action
-          ? () => props.actions[action.name](...action.params)
+          ? () => actions[action.name](...action.params)
           : () => {};
         if (type === 'input')
           return <Component onChange={handler} key={key} {...attributes} />;
@@ -47,7 +47,7 @@ const Dialog = (props) => {
       })}
       <span
         style={closeButton}
-        onClick={() => props.onClose()}
+        onClick={actions.toggleOverlay}
         role="button"
         tabIndex="-1">
         &times;

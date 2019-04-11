@@ -6,10 +6,9 @@ import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
 const Login = (props) => {
-  const { json } = props;
+  const { json, auth, actions } = props;
   const [data, setData] = useState({ email: '', password: '' });
   const [Widgets, setWidgets] = useState([]);
-  const { auth } = props;
 
   useEffect(() => {
     setWidgets(parseJson(json));
@@ -47,7 +46,6 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('call');
     if (validator.allValid()) {
       props.login({ email: data.email, password: data.password });
     } else {
@@ -100,7 +98,7 @@ const Login = (props) => {
       })}
       <span
         style={closeButton}
-        onClick={() => props.onClose()}
+        onClick={actions.toggleLogin}
         role="button"
         tabIndex="-1">
         &times;
@@ -108,7 +106,7 @@ const Login = (props) => {
       <span
         style={{
           position: 'fixed',
-          bottom: 0,
+          bottom: '50px',
           fontSize: '24px',
           color: 'black'
         }}>

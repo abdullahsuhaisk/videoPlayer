@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../overlay.scss';
-import Overlay from '../../InteractiveOverlay';
-import 'video.js/dist/video-js.css';
+import '../overlay.scss';
 import videojs from 'video.js';
+import Overlay from '../InteractiveOverlay';
+import 'video.js/dist/video-js.css';
 
 class Player extends React.Component {
   constructor(props) {

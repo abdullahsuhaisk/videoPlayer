@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import WebFont from 'webfontloader';
-import '../../overlay.scss';
+import '../overlay.scss';
 
 const Input = (props) => {
   const {
@@ -27,14 +27,14 @@ const Input = (props) => {
 
   const style = {
     position: 'absolute',
-    top: top,
-    left: left,
-    width: width,
-    height: height,
-    backgroundColor: backgroundColor,
-    color: color,
+    top,
+    left,
+    width,
+    height,
+    backgroundColor,
+    color,
     fontFamily: font,
-    fontSize: fontSize,
+    fontSize,
     borderStyle: 'solid',
     borderWidth: '0 0 1px 0'
   };

@@ -30,7 +30,7 @@
     },
     {
       "type": "input",
-      "id": "input",
+      "id": "fullName",
       "settings": {
         "cssProps": {
           "top": "200px",
@@ -54,7 +54,7 @@
     },
     {
       "type": "input",
-      "id": "input",
+      "id": "email",
       "settings": {
         "cssProps": {
           "top": "260px",
@@ -78,7 +78,7 @@
     },
     {
       "type": "input",
-      "id": "input",
+      "id": "password",
       "settings": {
         "cssProps": {
           "top": "320px",
@@ -106,7 +106,7 @@
       "settings": {
         "text": "Create Account",
         "action": {
-          "name": "toggleRegister",
+          "name": "register",
           "params": ["test"]
         },
         "attributes": {
