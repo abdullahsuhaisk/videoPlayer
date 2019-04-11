@@ -1,12 +1,33 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../overlay.scss';
 import WebFont from 'webfontloader';
 import { parseJson } from '../parseStyles';
 
 const Dialog = (props) => {
   const { json, actions } = props;
-  const Widgets = parseJson(json);
+  const [Widgets, setWidgets] = useState([]);
+
+  useEffect(() => {
+    setWidgets(parseJson(json));
+  }, []);
+
+  useEffect(() => {
+    Widgets.forEach(({ cssProps }) => {
+      const { fontFamily, bold, italic } = cssProps;
+
+      if (fontFamily) {
+        WebFont.load({
+          google: {
+            families: [
+              `${fontFamily}:400,${bold ? 'b' : ''}${italic ? 'i' : ''}`,
+              'sans-serif'
+            ]
+          }
+        });
+      }
+    });
+  }, [Widgets]);
 
   const style = {
     width: '100%',

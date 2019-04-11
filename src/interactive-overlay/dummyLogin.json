@@ -38,7 +38,7 @@
           "width": "300px",
           "height": "30px",
           "fontSize": "18px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "color": "#fffc",
           "backgroundColor": "#0000",
           "border": "0px solid #fffa",
@@ -62,7 +62,7 @@
           "width": "300px",
           "height": "30px",
           "fontSize": "18px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "color": "#fffc",
           "background-color": "#0000",
           "border": "0px solid #fffa",
@@ -86,7 +86,7 @@
           "left": "370px",
           "width": "300px",
           "height": "40px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "font-size": "16px",
           "color": {
             "default": "#FFF",
@@ -124,7 +124,7 @@
           "left": "480px",
           "width": "195px",
           "height": "30px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "fontSize": "14px",
           "color": "#fffc"
         }
@@ -185,7 +185,7 @@
           "left": "458px",
           "width": "195px",
           "height": "30px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "fontSize": "14px",
           "textDecoration": "underline",
           "color": "#fff"
@@ -206,7 +206,7 @@
           "left": "370px",
           "width": "300px",
           "height": "40px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "fontSize": "16px",
           "color": {
             "default": "#FFF",

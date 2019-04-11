@@ -10,8 +10,11 @@ import dummyOverlay from './dummyOverlay.json';
 import dummyLogin from './dummyLogin.json';
 import dummyRegister from './dummyRegister.json';
 import dummyForgotPassword from './dummyForgotPassword.json';
+import { InjectAuthOperations } from './store/redux/auth/authOperations';
 
-const Overlay = () => {
+const Overlay = (props) => {
+  const { auth } = props;
+
   const [isOverlayOpen, setOverlayOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isRegisterOpen, setRegisterOpen] = useState(false);
@@ -66,6 +69,10 @@ const Overlay = () => {
     tag.classList.remove('hidden');
   };
 
+  const handleSignout = () => {
+    props.signOut();
+  };
+
   return (
     <>
       <div className="overlayContainer">
@@ -87,11 +94,18 @@ const Overlay = () => {
               fontSize: '16px',
               color: '#000c'
             }}>
-            <button onClick={actions.toggleLogin}>Open Login</button>
-            <button onClick={actions.toggleRegister}>Open Register</button>
+            <button onClick={actions.toggleLogin}>Open Login</button> |
+            <button onClick={actions.toggleRegister}>Open Register</button> |
             <button onClick={actions.toggleForgotPassword}>
               Forgot Password
             </button>
+            |
+            {auth.uid && (
+              <>
+                <span> Logged in as: {auth.email} | </span>
+                <button onClick={handleSignout}>Sign out</button>
+              </>
+            )}
           </div>
         )}
         <Hotspot actions={actions} />
@@ -100,4 +114,7 @@ const Overlay = () => {
   );
 };
 
-export default Overlay;
+export default InjectAuthOperations(Overlay, {
+  selectActions: ({ signOut }) => ({ signOut }),
+  selectProps: ({ auth }) => ({ auth })
+});

@@ -65,7 +65,7 @@
           "left": "600px",
           "width": "150px",
           "height": "30px",
-          "font": "Avenir",
+          "fontFamily": "Avenir",
           "fontSize": "15px",
           "color": "#909090"
         }
@@ -81,7 +81,7 @@
           "left": "600px",
           "width": "150px",
           "height": "30px",
-          "font": "Avenir",
+          "fontFamily": "Avenir",
           "fontSize": "45px",
           "fontWeight": "bold",
           "color": "#000"
@@ -98,7 +98,7 @@
           "left": "600px",
           "width": "150px",
           "height": "30px",
-          "font": "Avenir",
+          "fontFamily": "Avenir",
           "fontSize": "45px",
           "fontWeight": "bold",
           "color": "#000"
@@ -115,7 +115,7 @@
           "left": "600px",
           "width": "150px",
           "height": "30px",
-          "font": "Avenir",
+          "fontFamily": "Avenir",
           "fontSize": "15px",
           "color": "#000"
         }
@@ -131,7 +131,7 @@
           "left": "600px",
           "width": "220px",
           "height": "30px",
-          "font": "Avenir",
+          "fontFamily": "Avenir",
           "fontSize": "12px",
           "color": "#000",
           "textAlign": "justify"
@@ -148,7 +148,7 @@
           "left": "600px",
           "width": "195px",
           "height": "30px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "fontSize": "20px",
           "fontWeight": "bold",
           "color": "#000"
@@ -169,7 +169,7 @@
           "left": "720px",
           "width": "100px",
           "height": "32px",
-          "font": "Source Sans Pro",
+          "fontFamily": "Source Sans Pro",
           "fontSize": "14px",
           "color": {
             "default": "#FFF",

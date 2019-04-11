@@ -50,6 +50,7 @@ export function parseJson(json) {
           }
         }
       `,
+      cssProps,
       action,
       text,
       attributes

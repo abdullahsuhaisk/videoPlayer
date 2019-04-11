@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import '../overlay.scss';
+import WebFont from 'webfontloader';
 import SimpleReactValidator from 'simple-react-validator';
 import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
@@ -13,6 +14,23 @@ const Register = (props) => {
   useEffect(() => {
     setWidgets(parseJson(json));
   }, []);
+
+  useEffect(() => {
+    Widgets.forEach(({ cssProps }) => {
+      const { fontFamily, bold, italic } = cssProps;
+
+      if (fontFamily) {
+        WebFont.load({
+          google: {
+            families: [
+              `${fontFamily}:400,${bold ? 'b' : ''}${italic ? 'i' : ''}`,
+              'sans-serif'
+            ]
+          }
+        });
+      }
+    });
+  }, [Widgets]);
 
   const style = {
     width: '100%',
