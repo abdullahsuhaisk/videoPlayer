@@ -86,17 +86,13 @@ const Login = (props) => {
 
   const handlers = {
     input: (action) => handleChange,
-    button: (action) => (e) => {
+    others: (action) => (e) => {
       if (action && action.name === 'login') handleLogin(e);
       else if (action && action.name === 'loginWithGoogle')
         handleLoginWithGoogle(e);
       else if (action && action.name === 'loginWithFacebook')
         handleLoginWithFacebook(e);
       else if (action) actions[action.name](...action.params);
-    },
-
-    noop: (action) => () => {
-      actions[action.name](...action.params);
     }
   };
   return (
@@ -106,7 +102,7 @@ const Login = (props) => {
           return (
             <Component
               id={id}
-              onChange={(handlers[type] || handlers.noop)(action)}
+              onChange={(handlers[type] || handlers.others)(action)}
               key={key}
               value={data[id]}
               {...attributes}
@@ -116,7 +112,7 @@ const Login = (props) => {
           return (
             <Component
               id={id}
-              onClick={(handlers[type] || handlers.noop)(action)}
+              onClick={(handlers[type] || handlers.others)(action)}
               key={key}
               value={data[id]}
               {...attributes}>
@@ -126,7 +122,7 @@ const Login = (props) => {
         return (
           <Component
             id={id}
-            onClick={(handlers[type] || handlers.noop)(action)}
+            onClick={(handlers[type] || handlers.others)(action)}
             key={key}
             {...attributes}>
             {text}

@@ -160,10 +160,15 @@
           "top": "465px",
           "left": "430px",
           "max-width": "20px",
-          "max-height": "20px"
+          "max-height": "20px",
+          "cursor": "pointer"
         },
         "attributes": {
           "src": "/images/google.png"
+        },
+        "action": {
+          "name": "loginWithGoogle",
+          "params": []
         }
       }
     },
@@ -175,10 +180,15 @@
           "top": "465px",
           "left": "510px",
           "max-width": "20px",
-          "max-height": "20px"
+          "max-height": "20px",
+          "cursor": "pointer"
         },
         "attributes": {
           "src": "/images/facebook.png"
+        },
+        "action": {
+          "name": "loginWithFacebook",
+          "params": []
         }
       }
     },

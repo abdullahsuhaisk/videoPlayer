@@ -76,13 +76,26 @@ const Register = (props) => {
     }
   };
 
+  const handleLoginWithGoogle = (e) => {
+    e.preventDefault();
+    props.loginWithGoogle();
+  };
+
+  const handleLoginWithFacebook = (e) => {
+    e.preventDefault();
+    props.loginWithFacebook();
+  };
+
   const handlers = {
     input: (action) => handleChange,
-    button: (action) => (e) =>
-      action && action.name === 'register'
-        ? handleRegister(e)
-        : props.actions[action.name](...action.params),
-    noop: (action) => () => {}
+    others: (action) => (e) => {
+      if (action && action.name === 'register') handleRegister(e);
+      else if (action && action.name === 'loginWithGoogle')
+        handleLoginWithGoogle(e);
+      else if (action && action.name === 'loginWithFacebook')
+        handleLoginWithFacebook(e);
+      else if (action) actions[action.name](...action.params);
+    }
   };
 
   return (
@@ -92,7 +105,7 @@ const Register = (props) => {
           return (
             <Component
               id={id}
-              onChange={(handlers[type] || handlers.noop)(action)}
+              onChange={(handlers[type] || handlers.others)(action)}
               key={key}
               value={data[id]}
               {...attributes}
@@ -102,7 +115,7 @@ const Register = (props) => {
           return (
             <Component
               id={id}
-              onClick={(handlers[type] || handlers.noop)(action)}
+              onClick={(handlers[type] || handlers.others)(action)}
               key={key}
               value={data[id]}
               {...attributes}>
@@ -112,7 +125,7 @@ const Register = (props) => {
         return (
           <Component
             id={id}
-            onClick={(handlers[type] || handlers.noop)(action)}
+            onClick={(handlers[type] || handlers.others)(action)}
             key={key}
             {...attributes}>
             {text}
@@ -140,8 +153,14 @@ const Register = (props) => {
 };
 
 export default InjectAuthOperations(Register, {
-  selectActions: ({ createUserWithEmailAndPassword }) => ({
-    createUserWithEmailAndPassword
+  selectActions: ({
+    createUserWithEmailAndPassword,
+    loginWithGoogle,
+    loginWithFacebook
+  }) => ({
+    createUserWithEmailAndPassword,
+    loginWithGoogle,
+    loginWithFacebook
   }),
   selectProps: ({ auth }) => ({ auth })
 });
