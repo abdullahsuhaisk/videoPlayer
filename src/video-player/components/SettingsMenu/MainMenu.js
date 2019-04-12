@@ -11,7 +11,7 @@ const MainMenu = (props) => {
         label="Speed"
         value="playback-rate-menu"
         content={playbackRateLabel}
-        ariaHaspopup
+        ariaHasPopup
         onSelect={(selectedMenu) => onSelectMenu(selectedMenu)}
       />
     </div>
