@@ -1,0 +1,39 @@
+.vjs-vibuy {
+  .vjs-control {
+    .vjs-tooltip {
+      clip: auto;
+      height: auto;
+      width: auto;
+      padding: 8px;
+      background: rgba(28, 28, 28, 0.8);
+      opacity: 0;
+      bottom: 150%;
+      left: 50%;
+      white-space: nowrap;
+      transition: opacity 0.1s linear;
+      @include transform(translate(-50%, 0));
+      @include border-radius(2px);
+    }
+
+    &.vjs-play-control .vjs-tooltip {
+      left: 0;
+      @include transform(translateX(10px));
+    }
+
+    &.vjs-fullscreen-control .vjs-tooltip {
+      left: auto;
+      right: 0;
+      @include transform(translateX(-10px));
+    }
+
+    &:hover .vjs-tooltip {
+      opacity: 1;
+    }
+  }
+
+  &.vjs-settings-opened {
+    .vjs-control:hover .vjs-tooltip {
+      opacity: 0;
+    }
+  }
+}

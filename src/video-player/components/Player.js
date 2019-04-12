@@ -8,6 +8,7 @@ import './player.scss';
 import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
+import './Tooltip/vjs-tooltip';
 
 window.videojs = videojs;
 
@@ -116,6 +117,33 @@ const Player = (props) => {
         description
       });
     }
+  }, []);
+
+  useEffect(() => {
+    const {
+      playToggle,
+      volumePanel,
+      settingsButton,
+      fullscreenToggle
+    } = playerRef.current.controlBar;
+    playerRef.current.tooltip({
+      controls: [playToggle, volumePanel, settingsButton, fullscreenToggle]
+    });
+  }, []);
+
+  useEffect(() => {
+    playerRef.current.on('statechanged', (event) => {
+      const { settingsMenuOpened } = event.changes;
+
+      if (!settingsMenuOpened) {
+        return;
+      }
+
+      playerRef.current.toggleClass(
+        'vjs-settings-opened',
+        settingsMenuOpened.to
+      );
+    });
   }, []);
 
   return (
