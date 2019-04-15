@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import '../overlay.scss';
 import WebFont from 'webfontloader';
-import SimpleReactValidator from 'simple-react-validator';
 import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
@@ -32,48 +31,18 @@ const Register = (props) => {
     });
   }, [Widgets]);
 
-  const style = {
-    width: '100%',
-    height: '100%',
-    background: '#0006',
-    position: 'relative'
-  };
-
-  const closeButton = {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    padding: '15px 20px',
-    fontSize: '30px',
-    color: '#FFF',
-    cursor: 'pointer'
-  };
-
-  const validator = new SimpleReactValidator({
-    // element: (message, className) => <div className="invalid-feedback d-block">{message}</div>,
-    className: 'auth-errors',
-    messages: {
-      email: 'email',
-      required: 'Email is required.'
-    }
-  });
-
   const handleChange = (e) => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (validator.allValid()) {
-      props.createUserWithEmailAndPassword({
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password
-      });
-    } else {
-      validator.showMessages();
-      // this.forceUpdate();
-    }
+
+    props.createUserWithEmailAndPassword({
+      fullName: data.fullName,
+      email: data.email,
+      password: data.password
+    });
   };
 
   const handleLoginWithGoogle = (e) => {
@@ -99,7 +68,7 @@ const Register = (props) => {
   };
 
   return (
-    <div style={style}>
+    <>
       {Widgets.map(({ type, id, Component, action, text, attributes }, key) => {
         if (type === 'input')
           return (
@@ -132,23 +101,7 @@ const Register = (props) => {
           </Component>
         );
       })}
-      <span
-        style={closeButton}
-        onClick={actions.toggleRegister}
-        role="button"
-        tabIndex="-1">
-        &times;
-      </span>
-      <span
-        style={{
-          position: 'fixed',
-          bottom: '50px',
-          fontSize: '24px',
-          color: 'black'
-        }}>
-        status: {auth.uid ? 'registered' : 'not registered'}
-      </span>
-    </div>
+    </>
   );
 };
 

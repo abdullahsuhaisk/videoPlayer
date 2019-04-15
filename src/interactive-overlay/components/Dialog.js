@@ -29,25 +29,8 @@ const Dialog = (props) => {
     });
   }, [Widgets]);
 
-  const style = {
-    width: '100%',
-    height: '100%',
-    background: '#0006',
-    position: 'relative'
-  };
-
-  const closeButton = {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    padding: '15px 20px',
-    fontSize: '30px',
-    color: '#FFF',
-    cursor: 'pointer'
-  };
-
   return (
-    <div style={style}>
+    <>
       {Widgets.map(({ type, Component, action, text, attributes }, key) => {
         const handler = action
           ? () => actions[action.name](...action.params)
@@ -66,14 +49,7 @@ const Dialog = (props) => {
           </Component>
         );
       })}
-      <span
-        style={closeButton}
-        onClick={actions.toggleOverlay}
-        role="button"
-        tabIndex="-1">
-        &times;
-      </span>
-    </div>
+    </>
   );
 };
 

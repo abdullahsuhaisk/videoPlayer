@@ -83,7 +83,7 @@ class Player extends React.Component {
       : {};
 
     return (
-      <div className="playerContainer">
+      <div>
         <div data-vjs-player>
           <video ref={this.videoRef} className="video-js" {...playsInline} />
           <Overlay />
