@@ -147,8 +147,13 @@ const Player = (props) => {
   }, []);
 
   return (
-    <div>
-      <div data-vjs-player>
+    <div
+      className="vibuy-player-wrapper"
+      style={{
+        width: typeof width === 'string' ? width : `${width}px`,
+        height: typeof height === 'string' ? height : `${height}px`
+      }}>
+      <div data-vjs-player style={{ width: '100%', height: '100%' }}>
         <video
           ref={videoRef}
           className="vjs-vibuy video-js"
@@ -189,8 +194,8 @@ Player.propTypes = {
 };
 
 Player.defaultProps = {
-  width: 800,
-  height: 450,
+  width: '100%',
+  height: '100%',
   controls: true,
   poster: '',
   loop: false,

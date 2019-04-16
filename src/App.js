@@ -11,14 +11,13 @@ const App = () => {
         type: 'video/mp4'
       }
     ],
-    fluid: true,
     title: 'Elephants Dream',
     description: 'An example movie from The Orange Open Movie Project',
     language: 'tr'
   };
 
   return (
-    <div>
+    <div className="vibuy-container" style={{ width: '100%', height: '100%' }}>
       <Suspense fallback={<></>}>
         <Player {...playerOptions} />
       </Suspense>
