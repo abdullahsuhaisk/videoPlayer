@@ -9,6 +9,7 @@ const Login = (props) => {
   const { json, auth, actions, loginStatus } = props;
   const [data, setData] = useState({ email: '', password: '' });
   const [Widgets, setWidgets] = useState([]);
+  const [dummyState, setDummyState] = useState(true);
 
   useEffect(() => {
     setWidgets(parseJson(json));
@@ -31,13 +32,18 @@ const Login = (props) => {
     });
   }, [Widgets]);
 
+  useEffect(() => {
+    popup();
+  }, [dummyState]);
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    props.login({ email: data.email, password: data.password });
+    await props.login({ email: data.email, password: data.password });
+    setDummyState(!dummyState);
   };
 
   const handleLoginWithGoogle = (e) => {
@@ -61,6 +67,20 @@ const Login = (props) => {
       else if (action && action.name === 'loginWithFacebook')
         handleLoginWithFacebook(e);
       else if (action) actions[action.name](...action.params);
+    }
+  };
+
+  const popup = () => {
+    if (loginStatus && loginStatus === 'error') {
+      const notify = document.querySelector('.notify');
+      notify.classList.add('active');
+      const notifyType = document.querySelector('#notifyType');
+      notifyType.classList.add('failure');
+
+      setTimeout(() => {
+        notify.classList.remove('active');
+        notifyType.classList.remove('failure');
+      }, 2000);
     }
   };
   return (
@@ -97,6 +117,10 @@ const Login = (props) => {
           </Component>
         );
       })}
+
+      <div className="notify">
+        <span id="notifyType" className="" />
+      </div>
     </>
   );
 };
