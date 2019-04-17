@@ -1,8 +1,8 @@
-import React from "react";
-import "../../overlay.scss";
-import Overlay from "../../InteractiveOverlay";
-import "video.js/dist/video-js.css";
-import videojs from "video.js";
+import React from 'react';
+import '../overlay.scss';
+import videojs from 'video.js';
+import Overlay from '../InteractiveOverlay';
+import 'video.js/dist/video-js.css';
 
 class Player extends React.Component {
   constructor(props) {
@@ -11,7 +11,20 @@ class Player extends React.Component {
   }
 
   componentDidMount() {
-    const { width, height, controls, poster, sources, loop, muted, aspectRatio, autoplay, fluid, volume, onReady } = this.props;
+    const {
+      width,
+      height,
+      controls,
+      poster,
+      sources,
+      loop,
+      muted,
+      aspectRatio,
+      autoplay,
+      fluid,
+      volume,
+      onReady
+    } = this.props;
 
     this.player = window.player = videojs(this.videoRef.current, {
       width,
@@ -21,7 +34,11 @@ class Player extends React.Component {
       sources,
       loop,
       muted,
-      autoplay: autoplay ? videojs.browser.IS_IOS || videojs.browser.IS_ANDROID ? "muted" : true : false,
+      autoplay: autoplay
+        ? videojs.browser.IS_IOS || videojs.browser.IS_ANDROID
+          ? 'muted'
+          : true
+        : false,
       aspectRatio,
       fluid,
       liveui: true
@@ -41,7 +58,7 @@ class Player extends React.Component {
   }
 
   hideBigPlayButton() {
-    const bigPlayButton = this.player.getChild("bigPlayButton");
+    const bigPlayButton = this.player.getChild('bigPlayButton');
 
     if (bigPlayButton) {
       bigPlayButton.hide();
@@ -61,10 +78,12 @@ class Player extends React.Component {
   }
 
   render() {
-    const playsInline = videojs.browser.TOUCH_ENABLED ? { playsInline: true } : {};
+    const playsInline = videojs.browser.TOUCH_ENABLED
+      ? { playsInline: true }
+      : {};
 
     return (
-      <div className="playerContainer">
+      <div>
         <div data-vjs-player>
           <video ref={this.videoRef} className="video-js" {...playsInline} />
           <Overlay />

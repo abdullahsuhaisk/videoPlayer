@@ -1,217 +1,224 @@
-import React, { useState } from "react";
-import "./overlay.scss";
-import Square from "./common/Square/Square";
-import Circle from "./common/Circle/Circle";
-import Text from "./common/Text/Text";
-import Image from "./common/Image/Image";
-import ImageGallery from "./common/ImageGallery/ImageGallery";
-import Button from "./common/Button/Button";
-import Dialog from "./common/Dialog/Dialog";
-import dummyData from "./dummyData.json";
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState, useEffect, useCallback } from 'react';
+import './overlay.scss';
+import Dialog from './components/Dialog';
+import Hotspot from './components/Hotspot';
+import Login from './authantications/Login';
+import Register from './authantications/Register';
+import ForgotPassword from './authantications/ForgotPassword';
+import dummyOverlay from './dummyOverlay.json';
+import dummyLogin from './dummyLogin.json';
+import dummyRegister from './dummyRegister.json';
+import dummyForgotPassword from './dummyForgotPassword.json';
+import { InjectAuthOperations } from './store/redux/auth/authOperations';
+import { getCssProperties } from './utils/common';
 
-const Overlay = () => {
-  const [tagColor, setTagColor] = useState("#000000");
+const Overlay = (props) => {
+  const { auth } = props;
+
   const [isOverlayOpen, setOverlayOpen] = useState(false);
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isRegisterOpen, setRegisterOpen] = useState(false);
+  const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(true);
 
-  const openOverlay = () => setOverlayOpen(true);
+  const [scale, setScale] = useState(1);
+  const [blackLineLeftRight, setBlackLineLeftRight] = useState(0);
+  const [blackLineTopBottom, setBlackLineTopBottom] = useState(0);
 
-  const action = action => {
-    if (action && action.type === "clickThrough") {
-      window.open(action.value, "_blank");
-    } else if (action && action.type === "closeOverlay") {
-      setOverlayOpen(false);
+  const actions = {
+    openLink: (url) => window.open(url, '_blank'),
+    toggleOverlay: () => {
+      setMenuOpen(isOverlayOpen);
+      if (isOverlayOpen) play();
+      else pause();
+      setOverlayOpen(!isOverlayOpen);
+    },
+    toggleLogin: () => {
+      setMenuOpen(isLoginOpen);
+      if (isLoginOpen) play();
+      else pause();
+      setLoginOpen(!isLoginOpen);
+      setRegisterOpen(false);
+      setForgotPasswordOpen(false);
+    },
+    toggleRegister: () => {
+      setMenuOpen(isRegisterOpen);
+      if (isRegisterOpen) play();
+      else pause();
+      setRegisterOpen(!isRegisterOpen);
+      setLoginOpen(false);
+      setForgotPasswordOpen(false);
+    },
+    toggleForgotPassword: () => {
+      setMenuOpen(isForgotPasswordOpen);
+      if (isForgotPasswordOpen) play();
+      else pause();
+      setForgotPasswordOpen(!isForgotPasswordOpen);
+      setLoginOpen(false);
+      setRegisterOpen(false);
     }
   };
 
-  let children = [];
+  const pause = () => {
+    window.player.pause();
+    window.player.controlBar.hide();
+    const tag = document.querySelector('.tag');
+    tag.classList.add('hidden');
+  };
 
-  for (let i = 0; i < dummyData.overlayWidgets.length; i++) {
-    const widget = dummyData.overlayWidgets[i];
+  const play = () => {
+    window.player.play();
+    window.player.controlBar.show();
+    const tag = document.querySelector('.tag');
+    tag.classList.remove('hidden');
+  };
 
-    if (widget.type === "square") {
-      children.push(
-        <Square
-          key={i}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          backgroundColor={widget.settings.backgroundColor}
-          onClick={() => action(widget.settings.action)}
-        />
-      );
-    } else if (widget.type === "circle") {
-      children.push(
-        <Circle
-          key={i}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          backgroundColor={widget.settings.backgroundColor}
-          onClick={() => action(widget.settings.action)}
-        />
-      );
-    } else if (widget.type === "image") {
-      children.push(
-        <Image
-          key={i}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          path={widget.settings.path}
-          onClick={() => action(widget.settings.action)}
-        />
-      );
-    } else if (widget.type === "gallery") {
-      children.push(
-        <ImageGallery
-          key={i}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          images={widget.settings.images}
-          autoPlay={widget.settings.autoPlay}
-          navigation={widget.settings.navigation}
-          thumbnail={widget.settings.thumbnail}
-        />
-      );
-    } else if (widget.type === "text") {
-      children.push(
-        <Text
-          key={i}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          text={widget.settings.text}
-          font={widget.settings.font}
-          fontSize={widget.settings.fontSize}
-          bold={widget.settings.isBold ? "bold" : ""}
-          italic={widget.settings.isItalic ? "italic" : ""}
-          underline={widget.settings.isUnderlined ? "underline" : ""}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          color={widget.settings.color}
-          backgroundColor={widget.settings.backgroundColor}
-          align={widget.settings.align}
-        />
-      );
-    } else if (widget.type === "button") {
-      children.push(
-        <Button
-          key={i}
-          text={widget.settings.text}
-          top={widget.settings.top}
-          left={widget.settings.left}
-          width={widget.settings.width}
-          height={widget.settings.height}
-          font={widget.settings.font}
-          fontSize={widget.settings.fontSize}
-          bold={widget.settings.isBold ? "bold" : ""}
-          italic={widget.settings.isItalic ? "italic" : ""}
-          underline={widget.settings.isUnderlined ? "underline" : ""}
-          color={widget.settings.color}
-          backgroundColor={widget.settings.backgroundColor}
-          align={widget.settings.align}
-          radius={widget.settings.radius}
-          onClick={() => action(widget.settings.action)}
-        />
-      );
+  const closeAction = () => {
+    if (
+      isOverlayOpen &&
+      !isLoginOpen &&
+      !isRegisterOpen &&
+      !isForgotPasswordOpen
+    )
+      actions.toggleOverlay();
+    if (isLoginOpen) actions.toggleLogin();
+    if (isRegisterOpen) actions.toggleRegister();
+    if (isForgotPasswordOpen) actions.toggleForgotPassword();
+  };
+
+  const handleSignout = () => {
+    props.signOut();
+  };
+
+  const resizeCb = useCallback(() => {
+    const width = parseInt(getCssProperties('inner-overlay').width, 10);
+    const originalWidth = 1000;
+
+    const scaleFactor = width / originalWidth;
+
+    setScale(scaleFactor);
+    resetOverlayPosition();
+  }, []);
+
+  const resetOverlayPosition = useCallback(() => {
+    let playerRatio = 0;
+    const videoRatio = 16 / 9;
+
+    const playerWidth = window.player.currentWidth();
+
+    const playerHeight = window.player.currentHeight();
+
+    playerRatio = playerWidth / playerHeight;
+
+    if (playerRatio >= videoRatio) {
+      // which means black lines at left and right
+      const overlayHeight = playerHeight;
+      const overlayWidth = overlayHeight * videoRatio;
+
+      const blackLine = (playerWidth - overlayWidth) / 2;
+
+      setBlackLineLeftRight(blackLine < 1 ? 0 : blackLine);
+      setBlackLineTopBottom(0);
+    } else {
+      // which means black lines at top and bottom
+      const overlayWidth = playerWidth;
+      const overlayHeight = overlayWidth / videoRatio;
+
+      const blackLine = (playerHeight - overlayHeight) / 2;
+
+      setBlackLineTopBottom(blackLine < 1 ? 0 : blackLine);
+      setBlackLineLeftRight(0);
     }
-  }
+  });
+
+  useEffect(() => {
+    resizeCb();
+    window.addEventListener('resize', resizeCb);
+    window.addEventListener('fullscreenchange', resetOverlayPosition);
+  }, []);
+
+  const shadowBackground = {
+    width: '100%',
+    height: '100%',
+    background:
+      isOverlayOpen || isLoginOpen || isRegisterOpen || isForgotPasswordOpen
+        ? '#0006'
+        : '#0000',
+    position: 'relative'
+  };
+
+  const overlayContainer = {
+    position: 'absolute',
+    top: blackLineTopBottom,
+    right: blackLineLeftRight,
+    bottom: blackLineTopBottom,
+    left: blackLineLeftRight,
+    transition: 'opacity 0.4',
+    overflow: 'hidden'
+  };
 
   return (
-    <>
-      <div className="overlayContainer">
-        {isOverlayOpen && (
-          <Dialog
-            onClose={() => {
-              setOverlayOpen(false);
-              window.player.play();
-              window.player.controlBar.show();
-              const tag = document.querySelector(".tag");
-              tag.classList.remove("hidden");
-            }}
-          >
-            {children}
-          </Dialog>
-        )}
-
-        <button onClick={() => openOverlay()}>Open Overlay</button>
-
+    <div id="overlay" style={overlayContainer}>
+      <div id="inner-overlay" style={shadowBackground}>
         <div
-          onClick={() => {
-            window.player.pause();
-            window.player.controlBar.hide();
-            const tag = document.querySelector(".tag");
-            tag.classList.add("hidden");
-            openOverlay();
-          }}
-          onMouseEnter={() => setTagColor("#00ACD8")}
-          onMouseLeave={() => setTagColor("#000000")}
-          className="tag static-tag static-3 tag-type-0 hotspot-animation"
           style={{
-            width: "16.5256%",
-            height: "21.0145%",
-            position: "absolute",
-            display: "block",
-            visibility: "visible",
-            cursor: "pointer"
-          }}
-        >
-          <div
-            className="tag-inner-box"
-            style={{ width: "100%", height: "100%" }}
-          >
-            <div
-              className="outer-circle"
-              style={{
-                left: "50%",
-                top: "50%",
-                width: "30px",
-                height: "30px",
-                position: "absolute",
-                marginLeft: "-20px",
-                marginTop: "-15px",
-                transition: "all .3s"
-              }}
-            >
-              <svg
-                height="100%"
-                version="1.1"
-                width="100%"
-                viewBox="0 0 30 30"
-                preserveAspectRatio="xMinYMin"
-                style={{ overflow: "hidden", position: "relative" }}
-              >
-                <defs style={{ WebkitTapHighlightColor: "#0000" }} />
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="15"
-                  fill={tagColor}
-                  stroke="none"
-                  style={{ WebkitTapHighlightColor: "#0000" }}
-                />
-                <path
-                  fill="none"
-                  stroke="#ffffff"
-                  d="M15,7.5L15,22.5M7.5,15L22.5,15"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  style={{
-                    WebkitTapHighlightColor: "#0000",
-                    strokeLinecap: "round"
-                  }}
-                />
-              </svg>
-            </div>
-          </div>
+            transformOrigin: 0,
+            transform: `scale(${scale})`
+          }}>
+          {isOverlayOpen && <Dialog json={dummyOverlay} actions={actions} />}
+
+          {isLoginOpen && <Login json={dummyLogin} actions={actions} />}
+
+          {isRegisterOpen && (
+            <Register json={dummyRegister} actions={actions} />
+          )}
+
+          {isForgotPasswordOpen && (
+            <ForgotPassword json={dummyForgotPassword} actions={actions} />
+          )}
         </div>
+        {isMenuOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              bottom: 0,
+              fontSize: '16px',
+              color: '#000c'
+            }}>
+            <button onClick={actions.toggleLogin}>Open Login</button> |
+            <button onClick={actions.toggleRegister}>Open Register</button> |
+            <button onClick={actions.toggleForgotPassword}>
+              Forgot Password
+            </button>
+            |
+            {auth.uid && (
+              <>
+                <span> Logged in as: {auth.email} | </span>
+                <button onClick={handleSignout}>Sign out</button>
+              </>
+            )}
+          </div>
+        )}
+        {(isOverlayOpen ||
+          isLoginOpen ||
+          isRegisterOpen ||
+          isForgotPasswordOpen) && (
+          <span
+            className="close-button"
+            onClick={closeAction}
+            role="button"
+            tabIndex="-1">
+            &times;
+          </span>
+        )}
+        <Hotspot actions={actions} />
       </div>
-    </>
+    </div>
   );
 };
 
-export default Overlay;
+export default InjectAuthOperations(Overlay, {
+  selectActions: ({ signOut }) => ({ signOut }),
+  selectProps: ({ auth }) => ({ auth })
+});

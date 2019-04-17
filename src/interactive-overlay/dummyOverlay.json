@@ -1,0 +1,195 @@
+{
+  "widgets": [
+    {
+      "type": "div",
+      "id": "square",
+      "settings": {
+        "cssProps": {
+          "top": "90px",
+          "left": "130px",
+          "width": "740px",
+          "height": "418px",
+          "backgroundColor": "#FFF"
+        }
+      }
+    },
+    {
+      "type": "ImageGallery",
+      "id": "gallery",
+      "settings": {
+        "cssProps": {},
+        "attributes": {
+          "top": "125px",
+          "left": "160px",
+          "width": "384px",
+          "height": "350px",
+          "autoPlay": false,
+          "navigation": true,
+          "thumbnail": true,
+          "images": [
+            {
+              "original": "https://picsum.photos/500/300/?image=816",
+              "thumbnail": "https://picsum.photos/250/150/?image=816"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=528",
+              "thumbnail": "https://picsum.photos/250/150/?image=528"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=238",
+              "thumbnail": "https://picsum.photos/250/150/?image=238"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=60",
+              "thumbnail": "https://picsum.photos/250/150/?image=60"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=328",
+              "thumbnail": "https://picsum.photos/250/150/?image=328"
+            },
+            {
+              "original": "https://picsum.photos/500/300/?image=669",
+              "thumbnail": "https://picsum.photos/250/150/?image=669"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "TOP CLOTH",
+        "cssProps": {
+          "top": "140px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "fontFamily": "Avenir",
+          "fontSize": "15px",
+          "color": "#909090"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "Denim",
+        "cssProps": {
+          "top": "160px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "fontFamily": "Avenir",
+          "fontSize": "45px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "Jacket",
+        "cssProps": {
+          "top": "200px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "fontFamily": "Avenir",
+          "fontSize": "45px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "- doughnut detail",
+        "cssProps": {
+          "top": "250px",
+          "left": "600px",
+          "width": "150px",
+          "height": "30px",
+          "fontFamily": "Avenir",
+          "fontSize": "15px",
+          "color": "#000"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "Do denim the modern way with our hacked off detail denim jacket. We're styling it with contrasting camo print trousers for a contemporary look that works for day or night. 100% Cotton. Machine wash.",
+        "cssProps": {
+          "top": "275px",
+          "left": "600px",
+          "width": "220px",
+          "height": "30px",
+          "fontFamily": "Avenir",
+          "fontSize": "12px",
+          "color": "#000",
+          "textAlign": "justify"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "$321",
+        "cssProps": {
+          "top": "430px",
+          "left": "600px",
+          "width": "195px",
+          "height": "30px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "color": "#000"
+        }
+      }
+    },
+    {
+      "type": "button",
+      "id": "button",
+      "settings": {
+        "text": "BUY",
+        "action": {
+          "name": "openLink",
+          "params": ["http://www.vibuytest.com"]
+        },
+        "cssProps": {
+          "top": "425px",
+          "left": "720px",
+          "width": "100px",
+          "height": "32px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "14px",
+          "color": {
+            "default": "#FFF",
+            "hover": "#0d263b"
+          },
+          "background-color": {
+            "default": "#0d263b",
+            "hover": "#FFF"
+          },
+          "border": {
+            "default": "1px solid #FFF",
+            "hover": "1px solid #0d263b"
+          },
+          "borderRadius": "50px",
+          "textAlign": "center"
+        },
+        "attributes": {
+          "className": ["overlayButton"]
+        }
+      }
+    }
+  ]
+}
