@@ -62,5 +62,9 @@
     "prettier": "^1.16.4",
     "react-test-renderer": "^16.8.4",
     "react-testing-library": "^6.0.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@gitlab.com:vibuy/videoplayer.git",
+  "author": "Aydin Akan <aakan@smartover.net>",
+  "license": "MIT"
 }
