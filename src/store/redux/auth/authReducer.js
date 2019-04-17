@@ -18,7 +18,6 @@ const userInitialState = {
 };
 
 const userReducer = (state = userInitialState, action) => {
-  console.log(action);
   switch (action.type) {
     case REGISTER_FAIL:
     case SIGNOUT_ERROR: {

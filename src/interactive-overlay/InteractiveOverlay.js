@@ -10,7 +10,7 @@ import dummyOverlay from './dummyOverlay.json';
 import dummyLogin from './dummyLogin.json';
 import dummyRegister from './dummyRegister.json';
 import dummyForgotPassword from './dummyForgotPassword.json';
-import { InjectAuthOperations } from './store/redux/auth/authOperations';
+import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { getCssProperties } from './utils/common';
 
 const Overlay = (props) => {

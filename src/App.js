@@ -16,10 +16,14 @@ const App = () => {
     language: 'tr'
   };
 
+  const onPlayerReady = () => {
+    // console.log('ready');
+  };
+
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
       <Suspense fallback={<></>}>
-        <Player {...playerOptions} />
+        <Player {...playerOptions} onReady={() => onPlayerReady()} />
       </Suspense>
     </div>
   );
