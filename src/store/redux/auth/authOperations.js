@@ -1,5 +1,5 @@
 import { Actions } from './authActions';
-import http, { setHttpHeader } from '../../../utils/http';
+import http, { setHttpHeader } from '../../../interactive-overlay/utils/http';
 import { InjectSelectedOperations } from '../actionUtils';
 
 export const login = (credetentials) => {

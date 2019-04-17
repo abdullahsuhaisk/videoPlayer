@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../overlay.scss';
 import WebFont from 'webfontloader';
-import { InjectAuthOperations } from '../store/redux/auth/authOperations';
+import { InjectAuthOperations } from '../../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
 const Login = (props) => {

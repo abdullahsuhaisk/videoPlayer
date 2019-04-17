@@ -8,7 +8,7 @@ import {
 } from 'react-redux-firebase';
 import user from './auth/authReducer';
 import base from './base';
-import firebaseConfig from '../../common/firebase';
+import firebaseConfig from '../../interactive-overlay/common/firebase';
 
 // DONE: @lamine -> eslint config
 // @ts-ignore

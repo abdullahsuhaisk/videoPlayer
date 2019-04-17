@@ -1,6 +1,6 @@
 import axios from 'axios';
-import store from '../store';
-import { Actions } from '../store/redux/auth/authActions';
+import store from '../../store';
+import { Actions } from '../../store/redux/auth/authActions';
 // import Noty from './notifications/Noty';
 
 // TODO: Axios interceptors need refactors.
