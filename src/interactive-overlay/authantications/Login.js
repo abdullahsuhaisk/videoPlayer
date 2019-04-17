@@ -6,7 +6,7 @@ import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
 const Login = (props) => {
-  const { json, auth, actions } = props;
+  const { json, auth, actions, loginStatus } = props;
   const [data, setData] = useState({ email: '', password: '' });
   const [Widgets, setWidgets] = useState([]);
 
@@ -107,5 +107,5 @@ export default InjectAuthOperations(Login, {
     loginWithGoogle,
     loginWithFacebook
   }),
-  selectProps: ({ auth, loginState }) => ({ auth, loginState })
+  selectProps: ({ auth, user }) => ({ auth, loginStatus: user.loginStatus })
 });

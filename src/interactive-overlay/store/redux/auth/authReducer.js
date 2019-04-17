@@ -20,7 +20,6 @@ const userInitialState = {
 const userReducer = (state = userInitialState, action) => {
   console.log(action);
   switch (action.type) {
-    case LOGIN_ERROR:
     case REGISTER_FAIL:
     case SIGNOUT_ERROR: {
       return { ...state, error: action.payload };
@@ -28,6 +27,13 @@ const userReducer = (state = userInitialState, action) => {
     case RESET_ERRORS:
     case SIGNOUT_SUCCESS: {
       return userInitialState;
+    }
+    case LOGIN_ERROR: {
+      return {
+        ...state,
+        loginStatus: 'error',
+        error: action.payload
+      };
     }
     default: {
       return state;

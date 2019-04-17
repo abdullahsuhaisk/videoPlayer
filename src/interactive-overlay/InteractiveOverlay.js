@@ -114,7 +114,7 @@ const Overlay = (props) => {
     if (playerRatio >= videoRatio) {
       // which means black lines at left and right
       const overlayHeight = playerHeight;
-      const overlayWidth = overlayHeight * videoRatio; // because of 16:9 video ratio
+      const overlayWidth = overlayHeight * videoRatio;
 
       const blackLine = (playerWidth - overlayWidth) / 2;
 
@@ -123,7 +123,7 @@ const Overlay = (props) => {
     } else {
       // which means black lines at top and bottom
       const overlayWidth = playerWidth;
-      const overlayHeight = overlayWidth / videoRatio; // because of 16:9 video ratio
+      const overlayHeight = overlayWidth / videoRatio;
 
       const blackLine = (playerHeight - overlayHeight) / 2;
 
@@ -135,7 +135,6 @@ const Overlay = (props) => {
   useEffect(() => {
     resizeCb();
     window.addEventListener('resize', resizeCb);
-    // resetOverlayPosition();
     window.addEventListener('fullscreenchange', resetOverlayPosition);
   }, []);
 

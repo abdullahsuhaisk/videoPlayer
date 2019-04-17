@@ -48,6 +48,9 @@ export function parseJson(json) {
           &::placeholder {
             color: ${cssProps.placeholderColor};
           }
+          &.error {
+            border-color: red;
+          }
         }
       `,
       cssProps,
