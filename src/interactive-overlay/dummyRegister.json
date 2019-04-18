@@ -132,7 +132,8 @@
             "hover": "1px solid #0d263b"
           },
           "borderRadius": "5px",
-          "textAlign": "center"
+          "textAlign": "center",
+          "cursor": "pointer"
         }
       }
     },
@@ -221,7 +222,8 @@
             "hover": "1px solid #0d263b"
           },
           "borderRadius": "5px",
-          "textAlign": "center"
+          "textAlign": "center",
+          "cursor": "pointer"
         },
         "attributes": {
           "className": ["overlayButton"]
