@@ -37,3 +37,27 @@
   color: #fff;
   cursor: pointer;
 }
+
+.notify {
+  position: absolute;
+  top: 0px;
+  width: 1000px;
+  height: 0;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  background: rgba(200, 0, 40, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: height 0.2s;
+}
+
+#notifyType {
+  display: block;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.active {
+  height: 50px;
+}

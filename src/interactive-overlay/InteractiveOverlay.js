@@ -85,6 +85,7 @@ const Overlay = (props) => {
     if (isLoginOpen) actions.toggleLogin();
     if (isRegisterOpen) actions.toggleRegister();
     if (isForgotPasswordOpen) actions.toggleForgotPassword();
+    props.resetErrors();
   };
 
   const handleSignout = () => {
@@ -219,6 +220,6 @@ const Overlay = (props) => {
 };
 
 export default InjectAuthOperations(Overlay, {
-  selectActions: ({ signOut }) => ({ signOut }),
+  selectActions: ({ signOut, resetErrors }) => ({ signOut, resetErrors }),
   selectProps: ({ auth }) => ({ auth })
 });

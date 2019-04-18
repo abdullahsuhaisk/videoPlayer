@@ -6,7 +6,7 @@ import {
   reactReduxFirebase,
   firebaseReducer
 } from 'react-redux-firebase';
-import user from './auth/authReducer';
+import loginInfo from './auth/authReducer';
 import base from './base';
 import player from './player/playerReducer';
 import firebaseConfig from '../../interactive-overlay/common/firebase';
@@ -16,7 +16,7 @@ import firebaseConfig from '../../interactive-overlay/common/firebase';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
-    user,
+    loginInfo,
     base,
     firebase: firebaseReducer,
     player
