@@ -9,6 +9,7 @@ import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 import './Tooltip/vjs-tooltip';
+import { InjectPlayerOperations } from '../../store/redux/player/playerOperations';
 
 window.videojs = videojs;
 
@@ -31,7 +32,10 @@ const Player = (props) => {
     volume,
     title,
     description,
-    onReady
+    playing,
+    onReady,
+    onPlay,
+    onPause
   } = props;
 
   useEffect(() => {
@@ -144,7 +148,25 @@ const Player = (props) => {
         settingsMenuOpened.to
       );
     });
+
+    playerRef.current.on('play', () => {
+      onPlay();
+    });
+
+    playerRef.current.on('pause', () => {
+      onPause();
+    });
   }, []);
+
+  useEffect(() => {
+    if (playerRef.current) {
+      if (playing) {
+        playerRef.current.play();
+      } else {
+        playerRef.current.pause();
+      }
+    }
+  }, [playing]);
 
   return (
     <div
@@ -193,7 +215,10 @@ Player.propTypes = {
   fluid: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  onReady: PropTypes.func
+  playing: PropTypes.bool,
+  onReady: PropTypes.func,
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func
 };
 
 Player.defaultProps = {
@@ -209,7 +234,13 @@ Player.defaultProps = {
   fluid: false,
   title: '',
   description: '',
-  onReady: () => {}
+  playing: false,
+  onReady: () => {},
+  onPlay: () => {},
+  onPause: () => {}
 };
 
-export default Player;
+export default InjectPlayerOperations(Player, {
+  selectProps: ({ playing }) => ({ playing }),
+  selectActions: ({ onPlay, onPause }) => ({ onPlay, onPause })
+});
