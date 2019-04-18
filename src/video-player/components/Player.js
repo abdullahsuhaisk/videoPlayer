@@ -33,9 +33,9 @@ const Player = (props) => {
     title,
     description,
     playing,
-    onReady,
-    onPlay,
-    onPause
+    ready,
+    play,
+    pause
   } = props;
 
   useEffect(() => {
@@ -93,9 +93,7 @@ const Player = (props) => {
         playerRef.current.volume(volume);
       }
 
-      if (onReady) {
-        onReady();
-      }
+      ready();
     });
   }, []);
 
@@ -150,11 +148,11 @@ const Player = (props) => {
     });
 
     playerRef.current.on('play', () => {
-      onPlay();
+      play();
     });
 
     playerRef.current.on('pause', () => {
-      onPause();
+      pause();
     });
   }, []);
 
@@ -216,9 +214,9 @@ Player.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   playing: PropTypes.bool,
-  onReady: PropTypes.func,
-  onPlay: PropTypes.func,
-  onPause: PropTypes.func
+  ready: PropTypes.func,
+  play: PropTypes.func,
+  pause: PropTypes.func
 };
 
 Player.defaultProps = {
@@ -235,12 +233,12 @@ Player.defaultProps = {
   title: '',
   description: '',
   playing: false,
-  onReady: () => {},
-  onPlay: () => {},
-  onPause: () => {}
+  ready: () => {},
+  play: () => {},
+  pause: () => {}
 };
 
 export default InjectPlayerOperations(Player, {
   selectProps: ({ playing }) => ({ playing }),
-  selectActions: ({ onPlay, onPause }) => ({ onPlay, onPause })
+  selectActions: ({ ready, play, pause }) => ({ ready, play, pause })
 });

@@ -1,6 +1,10 @@
 import { InjectSelectedOperations } from '../actionUtils';
 import { actions } from './playerActions';
 
+export const ready = (dispatch) => {
+  dispatch(actions.ready());
+};
+
 export const play = (dispatch) => {
   dispatch(actions.play());
 };
@@ -17,8 +21,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlay: () => dispatch(play),
-    onPause: () => dispatch(pause)
+    ready: () => dispatch(ready),
+    play: () => dispatch(play),
+    pause: () => dispatch(pause)
   };
 };
 
