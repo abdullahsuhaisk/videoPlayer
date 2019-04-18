@@ -21,7 +21,7 @@ const App = () => {
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
       <Suspense fallback={<></>}>
         <Player {...playerOptions} />
-        {/* <InteractiveOverlay /> */}
+        <InteractiveOverlay />
       </Suspense>
     </div>
   );

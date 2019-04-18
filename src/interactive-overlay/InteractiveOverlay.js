@@ -12,9 +12,10 @@ import dummyRegister from './dummyRegister.json';
 import dummyForgotPassword from './dummyForgotPassword.json';
 import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { getCssProperties } from './utils/common';
+import { InjectPlayerOperations } from '../store/redux/player/playerOperations';
 
 const Overlay = (props) => {
-  const { auth } = props;
+  const { auth, playerPlay, playerPause } = props;
 
   const [isOverlayOpen, setOverlayOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
@@ -61,15 +62,15 @@ const Overlay = (props) => {
   };
 
   const pause = () => {
-    window.player.pause();
-    window.player.controlBar.hide();
+    playerPause();
+    // window.player.controlBar.hide();
     const tag = document.querySelector('.tag');
     tag.classList.add('hidden');
   };
 
   const play = () => {
-    window.player.play();
-    window.player.controlBar.show();
+    playerPlay();
+    // window.player.controlBar.show();
     const tag = document.querySelector('.tag');
     tag.classList.remove('hidden');
   };
@@ -106,9 +107,8 @@ const Overlay = (props) => {
     let playerRatio = 0;
     const videoRatio = 16 / 9;
 
-    const playerWidth = window.player.currentWidth();
-
-    const playerHeight = window.player.currentHeight();
+    const playerWidth = 1000;
+    const playerHeight = 600;
 
     playerRatio = playerWidth / playerHeight;
 
@@ -219,7 +219,15 @@ const Overlay = (props) => {
   );
 };
 
-export default InjectAuthOperations(Overlay, {
-  selectActions: ({ signOut, resetErrors }) => ({ signOut, resetErrors }),
-  selectProps: ({ auth }) => ({ auth })
-});
+export default InjectAuthOperations(
+  InjectPlayerOperations(Overlay, {
+    selectActions: ({ play, pause }) => ({
+      playerPlay: play,
+      playerPause: pause
+    })
+  }),
+  {
+    selectActions: ({ signOut, resetErrors }) => ({ signOut, resetErrors }),
+    selectProps: ({ auth }) => ({ auth })
+  }
+);
