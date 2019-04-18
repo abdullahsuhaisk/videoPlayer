@@ -1,3 +1,4 @@
+// import { connect } from 'react-redux';
 import { Actions } from './authActions';
 import http, { setHttpHeader } from '../../../interactive-overlay/utils/http';
 import { InjectSelectedOperations } from '../actionUtils';
@@ -12,20 +13,18 @@ export const login = (credetentials) => {
           credetentials.email,
           credetentials.password
         );
-      console.log(res);
       // When we logged in, we must send an event to service.
       const AUTH_TOKEN = res.user.ra;
-      dispatch(Actions.loginSuccess(res));
       setHttpHeader('Authorization', `Bearer ${AUTH_TOKEN}`);
-
       try {
         await http.post('events', { event: 'login' });
       } catch (err) {
         console.log(err);
       }
       dispatch(Actions.resetError());
+      dispatch(Actions.loginSuccess());
     } catch (error) {
-      dispatch(Actions.loginError(error.code));
+      dispatch(Actions.loginError(error));
     }
   };
 };
@@ -41,7 +40,7 @@ export const createUserWithEmailAndPasswordFirebase = (credentials) => {
           credentials.password
         );
     } catch (error) {
-      dispatch(Actions.userRegistrationFail(error.code));
+      dispatch(Actions.userRegistrationFail(error));
     }
   };
 };
@@ -54,9 +53,10 @@ export const loginWithGoogle = async (dispatch, getState, { getFirebase }) => {
   try {
     const res = await firebase.auth().signInWithPopup(provider);
     const AUTH_TOKEN = res.user.ra;
+    console.log(res);
     setHttpHeader('Authorization', `Bearer ${AUTH_TOKEN}`);
   } catch (error) {
-    dispatch(Actions.loginError(error.code));
+    dispatch(Actions.loginError(error));
   }
 };
 
@@ -72,22 +72,19 @@ export const facebookLogin = async (dispatch, getState, { getFirebase }) => {
     const AUTH_TOKEN = res.user.ra;
     setHttpHeader('Authorization', `Bearer ${AUTH_TOKEN}`);
   } catch (error) {
-    dispatch(Actions.loginError(error.code));
+    dispatch(Actions.loginError(error));
   }
 };
 
 export const signout = async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   try {
-    console.log('called');
     await firebase.auth().signOut();
     dispatch(Actions.signoutSuccess());
   } catch (error) {
-    dispatch(Actions.signoutError(error.code));
+    dispatch(Actions.signoutError(error));
   }
 };
-
-export const resetErrors = () => (dispatch) => dispatch(Actions.resetError());
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -109,9 +106,14 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    user: state.user
+    loginInfo: state.loginInfo,
+    loginStatus: state.loginInfo.loginStatus
   };
 };
+
+// const NoProps = props => ({});
+
+// const defaultSelectors = Object.create(null);
 
 export const InjectAuthOperations = InjectSelectedOperations({
   mapStateToProps,

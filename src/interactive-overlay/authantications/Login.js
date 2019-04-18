@@ -80,6 +80,7 @@ const Login = (props) => {
       setTimeout(() => {
         notify.classList.remove('active');
         notifyType.classList.remove('failure');
+        props.resetErrors();
       }, 2000);
     }
   };
@@ -119,17 +120,23 @@ const Login = (props) => {
       })}
 
       <div className="notify">
-        <span id="notifyType" className="" />
+        <span id="notifyType">Email or password is incorrect!</span>
       </div>
     </>
   );
 };
 
 export default InjectAuthOperations(Login, {
-  selectActions: ({ login, loginWithGoogle, loginWithFacebook }) => ({
+  selectActions: ({
     login,
     loginWithGoogle,
-    loginWithFacebook
+    loginWithFacebook,
+    resetErrors
+  }) => ({
+    login,
+    loginWithGoogle,
+    loginWithFacebook,
+    resetErrors
   }),
-  selectProps: ({ auth, user }) => ({ auth, loginStatus: user.loginStatus })
+  selectProps: ({ auth, loginStatus }) => ({ auth, loginStatus })
 });

@@ -52,7 +52,7 @@
   transition: height 0.2s;
 }
 
-#notifyType:before {
+#notifyType {
   display: block;
   margin-top: 15px;
   font-size: 18px;
@@ -60,12 +60,4 @@
 
 .active {
   height: 50px;
-}
-
-.success:before {
-  content: 'Login successful!';
-}
-
-.failure:before {
-  content: 'Email or password is incorrect!';
 }
