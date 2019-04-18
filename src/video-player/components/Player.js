@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
+import './OverlayContainer/vjsOverlayContainer';
 import 'videojs-dock';
 import './player.scss';
 import './SettingsButton/vjs-settings-button';
@@ -95,6 +96,13 @@ const Player = (props) => {
 
       ready();
     });
+  }, []);
+
+  useEffect(() => {
+    playerRef.current.overlayContainer = playerRef.current.addChild(
+      'vjsOverlayContainer',
+      {}
+    );
   }, []);
 
   useEffect(() => {
