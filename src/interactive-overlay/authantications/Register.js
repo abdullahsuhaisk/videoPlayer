@@ -6,9 +6,10 @@ import { InjectAuthOperations } from '../../store/redux/auth/authOperations';
 import { parseJson } from '../parseStyles';
 
 const Register = (props) => {
-  const { json, auth, actions } = props;
+  const { json, auth, actions, loginInfo, loginStatus } = props;
   const [data, setData] = useState({ fullName: '', email: '', password: '' });
   const [Widgets, setWidgets] = useState([]);
+  const [dummyState, setDummyState] = useState(true);
 
   useEffect(() => {
     setWidgets(parseJson(json));
@@ -31,18 +32,22 @@ const Register = (props) => {
     });
   }, [Widgets]);
 
+  useEffect(() => {
+    popup();
+  }, [dummyState]);
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-
-    props.createUserWithEmailAndPassword({
+    await props.createUserWithEmailAndPassword({
       fullName: data.fullName,
       email: data.email,
       password: data.password
     });
+    setDummyState(!dummyState);
   };
 
   const handleLoginWithGoogle = (e) => {
@@ -64,6 +69,21 @@ const Register = (props) => {
       else if (action && action.name === 'loginWithFacebook')
         handleLoginWithFacebook(e);
       else if (action) actions[action.name](...action.params);
+    }
+  };
+
+  const popup = () => {
+    if (loginInfo && loginInfo.errorCode) {
+      const notify = document.querySelector('.notify');
+      notify.classList.add('active');
+      // const notifyType = document.querySelector('#notifyType');
+      // notifyType.classList.add('failure');
+
+      setTimeout(() => {
+        notify.classList.remove('active');
+        // notifyType.classList.remove('failure');
+        props.resetErrors();
+      }, 2000);
     }
   };
 
@@ -101,6 +121,10 @@ const Register = (props) => {
           </Component>
         );
       })}
+
+      <div className="notify">
+        <span id="notifyType">{loginInfo.errorMessage}</span>
+      </div>
     </>
   );
 };
@@ -109,11 +133,17 @@ export default InjectAuthOperations(Register, {
   selectActions: ({
     createUserWithEmailAndPassword,
     loginWithGoogle,
-    loginWithFacebook
+    loginWithFacebook,
+    resetErrors
   }) => ({
     createUserWithEmailAndPassword,
     loginWithGoogle,
-    loginWithFacebook
+    loginWithFacebook,
+    resetErrors
   }),
-  selectProps: ({ auth }) => ({ auth })
+  selectProps: ({ auth, loginInfo, loginStatus }) => ({
+    auth,
+    loginInfo,
+    loginStatus
+  })
 });
