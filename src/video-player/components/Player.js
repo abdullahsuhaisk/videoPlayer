@@ -36,7 +36,8 @@ const Player = (props) => {
     playing,
     ready,
     play,
-    pause
+    pause,
+    overlayContainerReady
   } = props;
 
   useEffect(() => {
@@ -103,6 +104,7 @@ const Player = (props) => {
       'vjsOverlayContainer',
       {}
     );
+    overlayContainerReady(playerRef.current.overlayContainer.el().className);
   }, []);
 
   useEffect(() => {
@@ -224,7 +226,8 @@ Player.propTypes = {
   playing: PropTypes.bool,
   ready: PropTypes.func,
   play: PropTypes.func,
-  pause: PropTypes.func
+  pause: PropTypes.func,
+  overlayContainerReady: PropTypes.func
 };
 
 Player.defaultProps = {
@@ -243,10 +246,16 @@ Player.defaultProps = {
   playing: false,
   ready: () => {},
   play: () => {},
-  pause: () => {}
+  pause: () => {},
+  overlayContainerReady: () => {}
 };
 
 export default InjectPlayerOperations(Player, {
   selectProps: ({ playing }) => ({ playing }),
-  selectActions: ({ ready, play, pause }) => ({ ready, play, pause })
+  selectActions: ({ ready, play, pause, overlayContainerReady }) => ({
+    ready,
+    play,
+    pause,
+    overlayContainerReady
+  })
 });

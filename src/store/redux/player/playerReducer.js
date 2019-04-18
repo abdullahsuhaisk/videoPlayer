@@ -1,8 +1,14 @@
-import { PLAYER_PLAY, PLAYER_PAUSE, PLAYER_READY } from './playerActions';
+import {
+  PLAYER_PLAY,
+  PLAYER_PAUSE,
+  PLAYER_READY,
+  PLAYER_OVERLAY_CONTAINER_READY
+} from './playerActions';
 
 const initialState = {
   ready: false,
-  playing: false
+  playing: false,
+  overlayContainerClass: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +19,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, playing: true };
     case PLAYER_PAUSE:
       return { ...state, playing: false };
+    case PLAYER_OVERLAY_CONTAINER_READY:
+      return { ...state, overlayContainerClass: action.payload };
     default:
       return state;
   }
