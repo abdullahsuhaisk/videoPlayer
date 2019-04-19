@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 import './overlay.scss';
 import Dialog from './components/Dialog';
 import Hotspot from './components/Hotspot';
@@ -12,9 +13,10 @@ import dummyRegister from './dummyRegister.json';
 import dummyForgotPassword from './dummyForgotPassword.json';
 import { InjectAuthOperations } from '../store/redux/auth/authOperations';
 import { getCssProperties } from './utils/common';
+import { InjectPlayerOperations } from '../store/redux/player/playerOperations';
 
 const Overlay = (props) => {
-  const { auth } = props;
+  const { auth, playerPlay, playerPause, overlayContainerClass } = props;
 
   const [isOverlayOpen, setOverlayOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
@@ -25,6 +27,7 @@ const Overlay = (props) => {
   const [scale, setScale] = useState(1);
   const [blackLineLeftRight, setBlackLineLeftRight] = useState(0);
   const [blackLineTopBottom, setBlackLineTopBottom] = useState(0);
+  const [container, setContainer] = useState(null);
 
   const actions = {
     openLink: (url) => window.open(url, '_blank'),
@@ -61,15 +64,15 @@ const Overlay = (props) => {
   };
 
   const pause = () => {
-    window.player.pause();
-    window.player.controlBar.hide();
+    playerPause();
+    // window.player.controlBar.hide();
     const tag = document.querySelector('.tag');
     tag.classList.add('hidden');
   };
 
   const play = () => {
-    window.player.play();
-    window.player.controlBar.show();
+    playerPlay();
+    // window.player.controlBar.show();
     const tag = document.querySelector('.tag');
     tag.classList.remove('hidden');
   };
@@ -106,9 +109,8 @@ const Overlay = (props) => {
     let playerRatio = 0;
     const videoRatio = 16 / 9;
 
-    const playerWidth = window.player.currentWidth();
-
-    const playerHeight = window.player.currentHeight();
+    const playerWidth = 1000;
+    const playerHeight = 600;
 
     playerRatio = playerWidth / playerHeight;
 
@@ -133,11 +135,21 @@ const Overlay = (props) => {
     }
   });
 
+  // useEffect(() => {
+  //   resizeCb();
+  //   window.addEventListener('resize', resizeCb);
+  //   window.addEventListener('fullscreenchange', resetOverlayPosition);
+  // }, []);
+
   useEffect(() => {
-    resizeCb();
-    window.addEventListener('resize', resizeCb);
-    window.addEventListener('fullscreenchange', resetOverlayPosition);
-  }, []);
+    const overlayContainer = document.getElementsByClassName(
+      overlayContainerClass
+    );
+
+    if (overlayContainer.length > 0) {
+      setContainer(overlayContainer[0]);
+    }
+  }, [overlayContainerClass]);
 
   const shadowBackground = {
     width: '100%',
@@ -159,7 +171,11 @@ const Overlay = (props) => {
     overflow: 'hidden'
   };
 
-  return (
+  if (container === null) {
+    return null;
+  }
+
+  return ReactDOM.createPortal(
     <div id="overlay" style={overlayContainer}>
       <div id="inner-overlay" style={shadowBackground}>
         <div
@@ -215,11 +231,21 @@ const Overlay = (props) => {
         )}
         <Hotspot actions={actions} />
       </div>
-    </div>
+    </div>,
+    container
   );
 };
 
-export default InjectAuthOperations(Overlay, {
-  selectActions: ({ signOut, resetErrors }) => ({ signOut, resetErrors }),
-  selectProps: ({ auth }) => ({ auth })
-});
+export default InjectAuthOperations(
+  InjectPlayerOperations(Overlay, {
+    selectProps: ({ overlayContainerClass }) => ({ overlayContainerClass }),
+    selectActions: ({ play, pause }) => ({
+      playerPlay: play,
+      playerPause: pause
+    })
+  }),
+  {
+    selectActions: ({ signOut, resetErrors }) => ({ signOut, resetErrors }),
+    selectProps: ({ auth }) => ({ auth })
+  }
+);

@@ -3,12 +3,14 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
+import './OverlayContainer/vjsOverlayContainer';
 import 'videojs-dock';
 import './player.scss';
 import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 import './Tooltip/vjs-tooltip';
+import { InjectPlayerOperations } from '../../store/redux/player/playerOperations';
 
 window.videojs = videojs;
 
@@ -31,7 +33,11 @@ const Player = (props) => {
     volume,
     title,
     description,
-    onReady
+    playing,
+    ready,
+    play,
+    pause,
+    overlayContainerReady
   } = props;
 
   useEffect(() => {
@@ -89,10 +95,16 @@ const Player = (props) => {
         playerRef.current.volume(volume);
       }
 
-      if (onReady) {
-        onReady();
-      }
+      ready();
     });
+  }, []);
+
+  useEffect(() => {
+    playerRef.current.overlayContainer = playerRef.current.addChild(
+      'vjsOverlayContainer',
+      {}
+    );
+    overlayContainerReady(playerRef.current.overlayContainer.el().className);
   }, []);
 
   useEffect(() => {
@@ -144,7 +156,25 @@ const Player = (props) => {
         settingsMenuOpened.to
       );
     });
+
+    playerRef.current.on('play', () => {
+      play();
+    });
+
+    playerRef.current.on('pause', () => {
+      pause();
+    });
   }, []);
+
+  useEffect(() => {
+    if (playerRef.current) {
+      if (playing) {
+        playerRef.current.play();
+      } else {
+        playerRef.current.pause();
+      }
+    }
+  }, [playing]);
 
   return (
     <div
@@ -193,7 +223,11 @@ Player.propTypes = {
   fluid: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  onReady: PropTypes.func
+  playing: PropTypes.bool,
+  ready: PropTypes.func,
+  play: PropTypes.func,
+  pause: PropTypes.func,
+  overlayContainerReady: PropTypes.func
 };
 
 Player.defaultProps = {
@@ -209,7 +243,19 @@ Player.defaultProps = {
   fluid: false,
   title: '',
   description: '',
-  onReady: () => {}
+  playing: false,
+  ready: () => {},
+  play: () => {},
+  pause: () => {},
+  overlayContainerReady: () => {}
 };
 
-export default Player;
+export default InjectPlayerOperations(Player, {
+  selectProps: ({ playing }) => ({ playing }),
+  selectActions: ({ ready, play, pause, overlayContainerReady }) => ({
+    ready,
+    play,
+    pause,
+    overlayContainerReady
+  })
+});

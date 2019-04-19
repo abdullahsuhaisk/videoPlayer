@@ -8,6 +8,7 @@ import {
 } from 'react-redux-firebase';
 import loginInfo from './auth/authReducer';
 import base from './base';
+import player from './player/playerReducer';
 import firebaseConfig from '../../interactive-overlay/common/firebase';
 
 // DONE: @lamine -> eslint config
@@ -17,7 +18,8 @@ const store = createStore(
   combineReducers({
     loginInfo,
     base,
-    firebase: firebaseReducer
+    firebase: firebaseReducer,
+    player
   }),
   composeEnhancers(
     applyMiddleware(reduxThunk.withExtraArgument({ getFirebase })),
