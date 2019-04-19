@@ -75,12 +75,12 @@ const Register = (props) => {
   const popup = () => {
     if (loginInfo && loginInfo.errorCode) {
       const notify = document.querySelector('.notify');
-      notify.classList.add('active');
+      notify.classList.add('notify-active');
       // const notifyType = document.querySelector('#notifyType');
       // notifyType.classList.add('failure');
 
       setTimeout(() => {
-        notify.classList.remove('active');
+        notify.classList.remove('notify-active');
         // notifyType.classList.remove('failure');
         props.resetErrors();
       }, 2000);
