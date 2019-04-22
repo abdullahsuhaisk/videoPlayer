@@ -7,6 +7,9 @@ class vjsOverlayContainer extends vjsComponent {
     super(player, options);
 
     this.addClass('vjs-overlay-container');
+    this.el().style.position = 'relative';
+    this.el().style.width = '100%';
+    this.el().style.height = '100%';
   }
 }
 

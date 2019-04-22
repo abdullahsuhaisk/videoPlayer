@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
+import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import './overlay.scss';
 import Dialog from './components/Dialog';
 import Hotspot from './components/Hotspot';
@@ -95,45 +96,41 @@ const Overlay = (props) => {
     props.signOut();
   };
 
-  const resizeCb = useCallback(() => {
-    const width = parseInt(getCssProperties('inner-overlay').width, 10);
-    const originalWidth = 1000;
+  const updateLayout = (overlayContainer) => {
+    if (!overlayContainer) {
+      return;
+    }
 
+    const width = overlayContainer.clientWidth;
+    const height = overlayContainer.clientHeight;
+    const originalWidth = 1000;
     const scaleFactor = width / originalWidth;
 
     setScale(scaleFactor);
-    resetOverlayPosition();
-  }, []);
 
-  const resetOverlayPosition = useCallback(() => {
-    let playerRatio = 0;
-    const videoRatio = 16 / 9;
+    const videoAspectRatio = 16 / 9;
+    const containerAspectRatio = width / height;
 
-    const playerWidth = 1000;
-    const playerHeight = 600;
-
-    playerRatio = playerWidth / playerHeight;
-
-    if (playerRatio >= videoRatio) {
+    if (containerAspectRatio >= videoAspectRatio) {
       // which means black lines at left and right
-      const overlayHeight = playerHeight;
-      const overlayWidth = overlayHeight * videoRatio;
+      const overlayHeight = height;
+      const overlayWidth = overlayHeight * videoAspectRatio;
 
-      const blackLine = (playerWidth - overlayWidth) / 2;
+      const blackLine = (width - overlayWidth) / 2;
 
       setBlackLineLeftRight(blackLine < 1 ? 0 : blackLine);
       setBlackLineTopBottom(0);
     } else {
       // which means black lines at top and bottom
-      const overlayWidth = playerWidth;
-      const overlayHeight = overlayWidth / videoRatio;
+      const overlayWidth = width;
+      const overlayHeight = overlayWidth / videoAspectRatio;
 
-      const blackLine = (playerHeight - overlayHeight) / 2;
+      const blackLine = (height - overlayHeight) / 2;
 
       setBlackLineTopBottom(blackLine < 1 ? 0 : blackLine);
       setBlackLineLeftRight(0);
     }
-  });
+  };
 
   // useEffect(() => {
   //   resizeCb();
@@ -142,14 +139,23 @@ const Overlay = (props) => {
   // }, []);
 
   useEffect(() => {
-    const overlayContainer = document.getElementsByClassName(
+    const overlayContainers = document.getElementsByClassName(
       overlayContainerClass
     );
 
-    if (overlayContainer.length > 0) {
-      setContainer(overlayContainer[0]);
+    if (overlayContainers.length > 0) {
+      const overlayContainer = overlayContainers[0];
+      setContainer(overlayContainer);
+      // eslint-disable-next-line no-new
+      new ResizeSensor(overlayContainer, () => {
+        updateLayout(overlayContainer);
+      });
     }
   }, [overlayContainerClass]);
+
+  useEffect(() => {
+    updateLayout(container);
+  }, [container]);
 
   const shadowBackground = {
     width: '100%',

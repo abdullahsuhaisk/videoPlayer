@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import { Player } from './video-player';
 import './i18n/i18n';
-import InteractiveOverlay from './interactive-overlay/InteractiveOverlay';
+import OverlayContainer from './interactive-overlay/components/OverlayContainer/OverlayContainer';
+import HotspotOverlay from './interactive-overlay/components/HotspotOverlay/HotspotOverlay';
+import ModalOverlay from './interactive-overlay/components/ModalOverlay/ModalOverlay';
 
 const App = () => {
   const playerOptions = {
@@ -21,8 +23,11 @@ const App = () => {
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
       <Suspense fallback={<></>}>
         <Player {...playerOptions} />
-        <InteractiveOverlay />
       </Suspense>
+      <OverlayContainer>
+        <ModalOverlay />
+        {/* <HotspotOverlay /> */}
+      </OverlayContainer>
     </div>
   );
 };
