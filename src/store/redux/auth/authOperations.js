@@ -86,6 +86,24 @@ export const signout = async (dispatch, getState, { getFirebase }) => {
   }
 };
 
+export const onShowLogin = (show) => {
+  return (dispatch) => {
+    dispatch(Actions.onShowLogin(show));
+  };
+};
+
+export const onShowRegister = (show) => {
+  return (dispatch) => {
+    dispatch(Actions.onShowRegister(show));
+  };
+};
+
+export const onShowForgotPassword = (show) => {
+  return (dispatch) => {
+    dispatch(Actions.onShowForgotPassword(show));
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (credentials) => dispatch(login(credentials)),
@@ -99,7 +117,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(createUserWithEmailAndPasswordFirebase(credentials)),
     resetErrors: () => dispatch(Actions.resetError()),
     google: () => dispatch(loginWithGoogle),
-    facebook: () => dispatch(facebookLogin)
+    facebook: () => dispatch(facebookLogin),
+    onShowLogin: (show) => dispatch(Actions.onShowLogin(show)),
+    onShowRegister: (show) => dispatch(Actions.onShowRegister(show)),
+    onShowForgotPassword: (show) => dispatch(Actions.onShowForgotPassword(show))
   };
 };
 
@@ -107,7 +128,10 @@ const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
     loginInfo: state.loginInfo,
-    loginStatus: state.loginInfo.loginStatus
+    loginStatus: state.loginInfo.loginStatus,
+    showLogin: state.loginInfo.showLogin,
+    showRegister: state.loginInfo.showRegister,
+    showForgotPassword: state.loginInfo.showForgotPassword
   };
 };
 

@@ -2,7 +2,10 @@ import {
   REGISTER_FAIL,
   SIGNOUT_ERROR,
   SIGNOUT_SUCCESS,
-  RESET_ERRORS
+  RESET_ERRORS,
+  SHOW_LOGIN,
+  SHOW_REGISTER,
+  SHOW_FORGOT_PASSWORD
 } from './authActions';
 /* AUTH */
 export const LOGIN_USER = 'LOGIN_USER';
@@ -13,7 +16,10 @@ const loginInitialState = {
   errorCode: null,
   loginStatus: null,
   hasError: null,
-  errorMessage: null
+  errorMessage: null,
+  showLogin: false,
+  showRegister: true,
+  showForgotPassword: false
 };
 
 const loginReducer = (state = loginInitialState, action) => {
@@ -48,6 +54,15 @@ const loginReducer = (state = loginInitialState, action) => {
     case SIGNOUT_SUCCESS: {
       const payload = action.payload || {};
       return { ...loginInitialState, ...payload };
+    }
+    case SHOW_LOGIN: {
+      return { ...state, showLogin: action.payload };
+    }
+    case SHOW_REGISTER: {
+      return { ...state, showRegister: action.payload };
+    }
+    case SHOW_FORGOT_PASSWORD: {
+      return { ...state, showForgotPassword: action.payload };
     }
     default:
       return state;
