@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { Player } from './video-player';
 import './i18n/i18n';
 import OverlayContainer from './interactive-overlay/components/OverlayContainer/OverlayContainer';
-import HotspotOverlay from './interactive-overlay/components/HotspotOverlay/HotspotOverlay';
 import ModalOverlay from './interactive-overlay/components/ModalOverlay/ModalOverlay';
 
 const App = () => {
@@ -26,7 +25,6 @@ const App = () => {
       </Suspense>
       <OverlayContainer>
         <ModalOverlay />
-        {/* <HotspotOverlay /> */}
       </OverlayContainer>
     </div>
   );

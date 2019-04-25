@@ -12,6 +12,7 @@
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
     "lint-staged": "^8.1.5",
+    "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",

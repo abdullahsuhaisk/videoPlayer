@@ -9,6 +9,7 @@ import {
 import loginInfo from './auth/authReducer';
 import base from './base';
 import player from './player/playerReducer';
+import layout from './layout/layoutReducer';
 import firebaseConfig from '../../interactive-overlay/common/firebase';
 
 // DONE: @lamine -> eslint config
@@ -19,6 +20,7 @@ const store = createStore(
     loginInfo,
     base,
     firebase: firebaseReducer,
+    layout,
     player
   }),
   composeEnhancers(

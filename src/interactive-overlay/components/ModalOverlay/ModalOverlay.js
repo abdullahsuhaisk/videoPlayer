@@ -1,43 +1,35 @@
-import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import SafeArea from '../SafeArea/SafeArea';
+import React, { useState } from 'react';
 import ModalDialog from '../ModalDialog/ModalDialog';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyOverlayData from '../../dummyOverlay';
 import Login from '../Login/Login';
+import SafeArea from '../SafeArea/SafeArea';
+import Scaler from '../Scaler/Scaler';
+import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import dummyOverlay from '../../dummyOverlay.json';
 
 const ModalOverlay = (props) => {
-  const { children } = props;
-  const containerRef = useRef(null);
-  const [hotspotModalOpened, setHotspotModalOpened] = useState(true);
-
-  const actions = {
-    openLink: (url) => window.open(url, '_blank')
-  };
+  const [loginModalOpened, setLoginModalOpened] = useState(false);
+  const [hotspotModalOpened, setHotspotModalOpened] = useState(false);
 
   return (
     <div
       className="vibuy--modal-overlay"
-      style={{ position: 'absolute', width: '100%', height: '100%' }}
-      ref={containerRef}>
-      <ModalDialog
-        show={hotspotModalOpened}
-        onClose={() => setHotspotModalOpened(false)}>
-        <SafeArea aspectRatio={16 / 9} containerRef={containerRef}>
-          <WidgetsRenderer data={dummyOverlayData} actions={actions} />
-          {children}
-        </SafeArea>
-      </ModalDialog>
+      style={{ position: 'absolute', width: '100%', height: '100%' }}>
+      {(loginModalOpened && (
+        <ModalDialog onClose={() => setLoginModalOpened(false)}>
+          <Login />
+        </ModalDialog>
+      )) ||
+        (hotspotModalOpened && (
+          <ModalDialog onClose={() => setHotspotModalOpened(false)}>
+            <SafeArea>
+              <Scaler>
+                <WidgetsRenderer data={dummyOverlay} />
+              </Scaler>
+            </SafeArea>
+          </ModalDialog>
+        ))}
     </div>
   );
-};
-
-ModalOverlay.propTypes = {
-  children: PropTypes.node
-};
-
-ModalOverlay.defaultProps = {
-  children: null
 };
 
 export default ModalOverlay;

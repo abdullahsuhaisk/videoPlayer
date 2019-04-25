@@ -3,12 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const ModalDialog = React.forwardRef((props, ref) => {
-  const { children, show, onClose } = props;
-
-  if (!show) {
-    return null;
-  }
+const ModalDialog = (props) => {
+  const { children, onClose } = props;
 
   const Wrapper = styled.div`
     position: relative;
@@ -28,23 +24,21 @@ const ModalDialog = React.forwardRef((props, ref) => {
   `;
 
   return (
-    <Wrapper ref={ref}>
+    <Wrapper>
+      {children}
       <CloseButton onClick={() => onClose()} role="button" tabIndex="-1">
         &times;
       </CloseButton>
-      {children}
     </Wrapper>
   );
-});
+};
 
 ModalDialog.propTypes = {
   children: PropTypes.node.isRequired,
-  show: PropTypes.bool,
   onClose: PropTypes.func
 };
 
 ModalDialog.defaultProps = {
-  show: false,
   onClose: () => {}
 };
 
