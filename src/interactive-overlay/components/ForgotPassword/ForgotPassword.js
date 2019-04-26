@@ -1,10 +1,10 @@
 import React from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyRegisterData from '../../dummyRegister.json';
+import dummyForgotPasswordData from '../../dummyForgotPassword.json';
 import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
 
-const Register = (props) => {
+const ForgotPassword = (props) => {
   const { onSwitchToLogin } = props;
 
   const actions = {
@@ -16,10 +16,10 @@ const Register = (props) => {
   return (
     <SafeArea>
       <Scaler>
-        <WidgetsRenderer data={dummyRegisterData} actions={actions} />
+        <WidgetsRenderer data={dummyForgotPasswordData} actions={actions} />
       </Scaler>
     </SafeArea>
   );
 };
 
-export default Register;
+export default ForgotPassword;

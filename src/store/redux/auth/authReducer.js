@@ -18,7 +18,7 @@ const loginInitialState = {
   hasError: null,
   errorMessage: null,
   showLogin: false,
-  showRegister: true,
+  showRegister: false,
   showForgotPassword: false
 };
 

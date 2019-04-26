@@ -27,22 +27,20 @@ const WidgetsRenderer = (props) => {
   return (
     <>
       {Widgets.map(({ type, Component, action, text, attributes }, key) => {
-        const handler = action
-          ? () => actions[action.name](...action.params)
-          : () => {};
+        let handler;
 
-        if (type === 'input')
+        if (action && typeof actions[action.name] === 'function') {
+          handler = actions[action.name](...action.params);
+        } else {
+          handler = () => {};
+        }
+
+        if (type === 'input') {
           return <Component onChange={handler} key={key} {...attributes} />;
-
-        if (type === 'button')
-          return (
-            <Component onClick={handler} key={key} {...attributes}>
-              {text}
-            </Component>
-          );
+        }
 
         return (
-          <Component key={key} {...attributes}>
+          <Component onClick={handler} key={key} {...attributes}>
             {text}
           </Component>
         );

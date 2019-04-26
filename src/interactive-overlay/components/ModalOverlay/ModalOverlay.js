@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ModalDialog from '../ModalDialog/ModalDialog';
 import Login from '../Login/Login';
-import SafeArea from '../SafeArea/SafeArea';
-import Scaler from '../Scaler/Scaler';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyOverlay from '../../dummyOverlay.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import Register from '../Register/Register';
 
 const ModalOverlay = (props) => {
   const {
+    auth,
     showLogin,
     onShowLogin,
     showRegister,
@@ -17,37 +13,62 @@ const ModalOverlay = (props) => {
     showForgotPassword,
     onShowForgotPassword
   } = props;
-  const [hotspotModalOpened, setHotspotModalOpened] = useState(false);
 
   return (
     <div
       className="vibuy--modal-overlay"
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
-      {(showLogin && (
+      {(!auth.uid || showLogin) && (
         <ModalDialog onClose={() => onShowLogin(false)}>
-          <Login />
+          <Login
+            onSwitchToRegister={() => {
+              onShowRegister(true);
+              onShowLogin(false);
+            }}
+            onSwitchToForgotPassword={() => {
+              onShowForgotPassword(true);
+              onShowLogin(false);
+            }}
+          />
         </ModalDialog>
-      )) ||
-        (hotspotModalOpened && (
-          <ModalDialog onClose={() => setHotspotModalOpened(false)}>
-            <SafeArea>
-              <Scaler>
-                <WidgetsRenderer data={dummyOverlay} />
-              </Scaler>
-            </SafeArea>
-          </ModalDialog>
-        )) ||
-        (showRegister && (
-          <ModalDialog onClose={() => onShowRegister(false)}>
-            <Register />
-          </ModalDialog>
-        ))}
+        // )) ||
+        //   (hotspotModalOpened && (
+        //     <ModalDialog onClose={() => setHotspotModalOpened(false)}>
+        //       <SafeArea>
+        //         <Scaler>
+        //           <WidgetsRenderer data={dummyOverlay} />
+        //         </Scaler>
+        //       </SafeArea>
+        //     </ModalDialog>
+        //   )) ||
+        //   (showRegister && (
+        //     <ModalDialog onClose={() => onShowRegister(false)}>
+        //       <Register
+        //         onSwitchToLogin={() => {
+        //           onShowLogin(true);
+        //           onShowRegister(false);
+        //         }}
+        //       />
+        //     </ModalDialog>
+        //   )) ||
+        //   (showForgotPassword && (
+        //     <ModalDialog onClose={() => onShowForgotPassword(false)}>
+        //       <ForgotPassword
+        //         onSwitchToLogin={() => {
+        //           onShowLogin(true);
+        //           onShowForgotPassword(false);
+        //         }}
+        //       />
+        //     </ModalDialog>
+        //   ))
+      )}
     </div>
   );
 };
 
 export default InjectAuthOperations(ModalOverlay, {
-  selectProps: ({ showLogin, showRegister, showForgotPassword }) => ({
+  selectProps: ({ auth, showLogin, showRegister, showForgotPassword }) => ({
+    auth,
     showLogin,
     showRegister,
     showForgotPassword
