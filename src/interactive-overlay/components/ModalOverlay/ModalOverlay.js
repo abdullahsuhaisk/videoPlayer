@@ -2,6 +2,7 @@ import React from 'react';
 import ModalDialog from '../ModalDialog/ModalDialog';
 import Login from '../Login/Login';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import Register from '../Register/Register';
 
 const ModalOverlay = (props) => {
   const {
@@ -18,7 +19,7 @@ const ModalOverlay = (props) => {
     <div
       className="vibuy--modal-overlay"
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
-      {(!auth.uid || showLogin) && (
+      {(showLogin && (
         <ModalDialog onClose={() => onShowLogin(false)}>
           <Login
             onSwitchToRegister={() => {
@@ -31,7 +32,8 @@ const ModalOverlay = (props) => {
             }}
           />
         </ModalDialog>
-        // )) ||
+      )) ||
+        // ||
         //   (hotspotModalOpened && (
         //     <ModalDialog onClose={() => setHotspotModalOpened(false)}>
         //       <SafeArea>
@@ -40,28 +42,29 @@ const ModalOverlay = (props) => {
         //         </Scaler>
         //       </SafeArea>
         //     </ModalDialog>
-        //   )) ||
-        //   (showRegister && (
-        //     <ModalDialog onClose={() => onShowRegister(false)}>
-        //       <Register
-        //         onSwitchToLogin={() => {
-        //           onShowLogin(true);
-        //           onShowRegister(false);
-        //         }}
-        //       />
-        //     </ModalDialog>
-        //   )) ||
-        //   (showForgotPassword && (
-        //     <ModalDialog onClose={() => onShowForgotPassword(false)}>
-        //       <ForgotPassword
-        //         onSwitchToLogin={() => {
-        //           onShowLogin(true);
-        //           onShowForgotPassword(false);
-        //         }}
-        //       />
-        //     </ModalDialog>
         //   ))
-      )}
+        (showRegister && (
+          <ModalDialog onClose={() => onShowRegister(false)}>
+            <Register
+              onSwitchToLogin={() => {
+                onShowLogin(true);
+                onShowRegister(false);
+              }}
+            />
+          </ModalDialog>
+        ))
+      // ||
+      // (showForgotPassword && (
+      //   <ModalDialog onClose={() => onShowForgotPassword(false)}>
+      //     <ForgotPassword
+      //       onSwitchToLogin={() => {
+      //         onShowLogin(true);
+      //         onShowForgotPassword(false);
+      //       }}
+      //     />
+      //   </ModalDialog>
+      // ))
+      }
     </div>
   );
 };

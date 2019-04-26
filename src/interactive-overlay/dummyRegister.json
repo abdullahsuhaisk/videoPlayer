@@ -49,6 +49,10 @@
           "type": "text",
           "placeholder": "Full name",
           "className": ["input-style"]
+        },
+        "action": {
+          "name": "onFullNameChange",
+          "params": []
         }
       }
     },
@@ -73,6 +77,10 @@
           "type": "text",
           "placeholder": "Email",
           "className": ["input-style"]
+        },
+        "action": {
+          "name": "onEmailChange",
+          "params": []
         }
       }
     },
@@ -97,6 +105,10 @@
           "type": "password",
           "placeholder": "Password",
           "className": ["input-style"]
+        },
+        "action": {
+          "name": "onPasswordChange",
+          "params": []
         }
       }
     },
@@ -107,7 +119,7 @@
         "text": "Create Account",
         "action": {
           "name": "register",
-          "params": ["test"]
+          "params": []
         },
         "attributes": {
           "className": ["overlayButton"]
