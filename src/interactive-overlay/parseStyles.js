@@ -51,6 +51,7 @@ export function parseJson(json) {
           &.error {
             border-color: red;
           }
+          pointer-events: auto;
         }
       `,
       cssProps,
