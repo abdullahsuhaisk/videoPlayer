@@ -7,15 +7,22 @@ export const onFieldUpdate = (newStatus) => {
   };
 };
 
+export const onAdd = (newTags) => {
+  return (dispatch) => {
+    dispatch(actions.onAdd(newTags));
+  };
+};
+
 const mapStateToProps = (state) => {
   return {
-    tags: state.tag.tags
+    tags: state.tags
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFieldUpdate: (newStatus) => dispatch(onFieldUpdate(newStatus))
+    onFieldUpdate: (newStatus) => dispatch(onFieldUpdate(newStatus)),
+    onAdd: (newTags) => dispatch(onAdd(newTags))
   };
 };
 
