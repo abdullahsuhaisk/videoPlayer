@@ -10,6 +10,7 @@ class vjsOverlayContainer extends vjsComponent {
     this.el().style.position = 'relative';
     this.el().style.width = '100%';
     this.el().style.height = '100%';
+    this.el().style.pointerEvents = 'none';
   }
 }
 

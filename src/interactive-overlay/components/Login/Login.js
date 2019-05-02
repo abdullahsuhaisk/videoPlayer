@@ -1,65 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyLoginData from '../../dummyLogin.json';
+import loginTemplate from '../../templates/loginTemplate.json';
 import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import Notification from '../Notification/Notification';
+import ModalDialog from '../ModalDialog/ModalDialog';
+
+const LoginComponent = (props) => {
+  return (
+    <SafeArea>
+      <Scaler>
+        <WidgetsRenderer data={props.widgets} actions={props.actions} />
+      </Scaler>
+    </SafeArea>
+  );
+};
 
 const Login = (props) => {
   const {
-    loginStatus,
     login,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors,
-    onSwitchToRegister,
-    onSwitchToForgotPassword
+    showLogin,
+    onShowLogin,
+    onShowRegister,
+    onShowForgotPassword
   } = props;
+
+  if (!showLogin) {
+    return null;
+  }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const actions = {
-    toggleRegister: () => () => {
-      onSwitchToRegister();
-    },
-    toggleForgotPassword: () => () => {
-      onSwitchToForgotPassword();
-    },
-    onEmailChange: () => (e) => {
-      setEmail(e.target.value);
-    },
-    onPasswordChange: () => (e) => {
-      setPassword(e.target.value);
-    },
-    login: () => async (e) => {
-      e.preventDefault();
-      await login({ email, password });
-    },
-    loginWithGoogle: () => (e) => {
-      e.preventDefault();
-      loginWithGoogle();
-    },
-    loginWithFacebook: () => (e) => {
-      e.preventDefault();
-      loginWithFacebook();
-    }
-  };
+  const actions = useMemo(
+    () => ({
+      toggleRegister: () => () => {
+        onShowLogin(false);
+        onShowRegister(true);
+      },
+      toggleForgotPassword: () => () => {
+        onShowLogin(false);
+        onShowForgotPassword(true);
+      },
+      onEmailChange: () => (e) => {
+        setEmail(e.target.value);
+      },
+      onPasswordChange: () => (e) => {
+        setPassword(e.target.value);
+      },
+      login: () => async (e) => {
+        e.preventDefault();
+        await login({ email, password });
+      },
+      loginWithGoogle: () => (e) => {
+        e.preventDefault();
+        loginWithGoogle();
+      },
+      loginWithFacebook: () => (e) => {
+        e.preventDefault();
+        loginWithFacebook();
+      }
+    }),
+    [email, password]
+  );
 
-  return (
-    <SafeArea>
-      <Scaler>
-        <WidgetsRenderer data={dummyLoginData} actions={actions} />
-      </Scaler>
-      {loginStatus === 'error' && (
-        <Notification
-          onClose={() => {
-            resetErrors();
-          }}
-        />
-      )}
-    </SafeArea>
+  return loginTemplate.showInModal ? (
+    <ModalDialog onClose={() => onShowLogin(false)}>
+      <LoginComponent widgets={loginTemplate.widgets} actions={actions} />
+    </ModalDialog>
+  ) : (
+    <LoginComponent widgets={loginTemplate.widgets} actions={actions} />
   );
 };
 
@@ -68,12 +80,22 @@ export default InjectAuthOperations(Login, {
     login,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors
+    resetErrors,
+    onShowLogin,
+    onShowRegister,
+    onShowForgotPassword
   }) => ({
     login,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors
+    resetErrors,
+    onShowLogin,
+    onShowRegister,
+    onShowForgotPassword
   }),
-  selectProps: ({ auth, loginStatus }) => ({ auth, loginStatus })
+  selectProps: ({ showLogin, auth, loginStatus }) => ({
+    showLogin,
+    auth,
+    loginStatus
+  })
 });

@@ -71,7 +71,8 @@ const OverlayContainer = (props) => {
       style={{
         position: 'relative',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        pointerEvents: 'none'
       }}>
       {children}
     </div>,

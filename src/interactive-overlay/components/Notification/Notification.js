@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Notification = (props) => {
-  const { onClose } = props;
   const [active, setActive] = useState(false);
 
   const Wrapper = styled.div`
