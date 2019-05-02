@@ -19,10 +19,17 @@ export const overlayContainerReady = (containerClass) => {
   };
 };
 
+export const currentTimeUpdate = (currentTime) => {
+  return (dispatch) => {
+    dispatch(actions.currentTimeUpdate(currentTime));
+  };
+};
+
 const mapStateToProps = (state) => {
   return {
     playing: state.player.playing,
-    overlayContainerClass: state.player.overlayContainerClass
+    overlayContainerClass: state.player.overlayContainerClass,
+    currentTime: state.player.currentTime
   };
 };
 
@@ -32,7 +39,8 @@ const mapDispatchToProps = (dispatch) => {
     play: () => dispatch(play),
     pause: () => dispatch(pause),
     overlayContainerReady: (containerClass) =>
-      dispatch(overlayContainerReady(containerClass))
+      dispatch(overlayContainerReady(containerClass)),
+    currentTimeUpdate: (currentTime) => dispatch(currentTimeUpdate(currentTime))
   };
 };
 
