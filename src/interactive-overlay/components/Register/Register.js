@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import registerTemplate from '../../templates/registerTemplate.json';
 import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import ValidationError from '../Validation/ValidationError';
+import ModalDialog from '../ModalDialog/ModalDialog';
+
+const RegisterComponent = (props) => {
+  return (
+    <SafeArea>
+      <Scaler>
+        <WidgetsRenderer data={props.widgets} actions={props.actions} />
+        {props.validationErrorMessage && (
+          <ValidationError text={props.validationErrorMessage} />
+        )}
+      </Scaler>
+    </SafeArea>
+  );
+};
 
 const Register = (props) => {
   const {
+    auth,
+    loginStatus,
+    loginInfo,
     createUserWithEmailAndPassword,
     loginWithGoogle,
     loginWithFacebook,
@@ -15,52 +33,65 @@ const Register = (props) => {
     onShowRegister
   } = props;
 
-  if (!showRegister) {
+  if (!showRegister || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  const registerError = loginInfo.errorMessage;
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const actions = {
-    toggleLogin: () => () => {
-      onShowRegister(false);
-      onShowLogin(true);
-    },
-    onFullNameChange: () => (e) => {
-      setFullName(e.target.value);
-    },
-    onEmailChange: () => (e) => {
-      setEmail(e.target.value);
-    },
-    onPasswordChange: () => (e) => {
-      setPassword(e.target.value);
-    },
-    register: () => async (e) => {
-      e.preventDefault();
-      await createUserWithEmailAndPassword({
-        fullName,
-        email,
-        password
-      });
-    },
-    loginWithGoogle: () => (e) => {
-      e.preventDefault();
-      loginWithGoogle();
-    },
-    loginWithFacebook: () => (e) => {
-      e.preventDefault();
-      loginWithFacebook();
-    }
-  };
+  const actions = useMemo(
+    () => ({
+      toggleLogin: () => () => {
+        onShowRegister(false);
+        onShowLogin(true);
+      },
+      onFullNameChange: () => (e) => {
+        setFullName(e.target.value);
+      },
+      onEmailChange: () => (e) => {
+        setEmail(e.target.value);
+      },
+      onPasswordChange: () => (e) => {
+        setPassword(e.target.value);
+      },
+      register: () => async (e) => {
+        e.preventDefault();
+        await createUserWithEmailAndPassword({
+          fullName,
+          email,
+          password
+        });
+      },
+      loginWithGoogle: () => (e) => {
+        e.preventDefault();
+        loginWithGoogle();
+      },
+      loginWithFacebook: () => (e) => {
+        e.preventDefault();
+        loginWithFacebook();
+      }
+    }),
+    [fullName, email, password]
+  );
 
-  return (
-    <SafeArea>
-      <Scaler>
-        <WidgetsRenderer data={registerTemplate.widgets} actions={actions} />
-      </Scaler>
-    </SafeArea>
+  return registerTemplate.showInModal ? (
+    <ModalDialog onClose={() => onShowRegister(false)}>
+      <RegisterComponent
+        widgets={registerTemplate.widgets}
+        actions={actions}
+        validationErrorMessage={registerError}
+      />
+    </ModalDialog>
+  ) : (
+    <RegisterComponent
+      widgets={registerTemplate.widgets}
+      actions={actions}
+      validationErrorMessage={registerError}
+    />
   );
 };
 

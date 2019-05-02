@@ -5,12 +5,16 @@ import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import ModalDialog from '../ModalDialog/ModalDialog';
+import ValidationError from '../Validation/ValidationError';
 
 const LoginComponent = (props) => {
   return (
     <SafeArea>
       <Scaler>
         <WidgetsRenderer data={props.widgets} actions={props.actions} />
+        {props.validationErrorMessage && (
+          <ValidationError text={props.validationErrorMessage} />
+        )}
       </Scaler>
     </SafeArea>
   );
@@ -18,18 +22,23 @@ const LoginComponent = (props) => {
 
 const Login = (props) => {
   const {
+    auth,
     login,
+    loginStatus,
     loginWithGoogle,
     loginWithFacebook,
+    loginInfo,
     showLogin,
     onShowLogin,
     onShowRegister,
     onShowForgotPassword
   } = props;
 
-  if (!showLogin) {
+  if (!showLogin || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  const loginError = loginInfo.errorMessage;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -68,10 +77,18 @@ const Login = (props) => {
 
   return loginTemplate.showInModal ? (
     <ModalDialog onClose={() => onShowLogin(false)}>
-      <LoginComponent widgets={loginTemplate.widgets} actions={actions} />
+      <LoginComponent
+        widgets={loginTemplate.widgets}
+        actions={actions}
+        validationErrorMessage={loginError}
+      />
     </ModalDialog>
   ) : (
-    <LoginComponent widgets={loginTemplate.widgets} actions={actions} />
+    <LoginComponent
+      widgets={loginTemplate.widgets}
+      actions={actions}
+      validationErrorMessage={loginError}
+    />
   );
 };
 
@@ -93,9 +110,10 @@ export default InjectAuthOperations(Login, {
     onShowRegister,
     onShowForgotPassword
   }),
-  selectProps: ({ showLogin, auth, loginStatus }) => ({
+  selectProps: ({ showLogin, auth, loginStatus, loginInfo }) => ({
     showLogin,
     auth,
-    loginStatus
+    loginStatus,
+    loginInfo
   })
 });
