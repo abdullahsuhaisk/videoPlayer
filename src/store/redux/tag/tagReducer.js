@@ -1,5 +1,4 @@
 import { TAG_FIELD_UPDATE, TAG_ADD } from './tagActions';
-import { combineReducers } from '../../../../../../../AppData/Local/Microsoft/TypeScript/3.4.3/node_modules/redux';
 
 const initialState = [
   {
