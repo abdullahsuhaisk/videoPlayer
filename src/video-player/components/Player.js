@@ -37,7 +37,8 @@ const Player = (props) => {
     ready,
     play,
     pause,
-    overlayContainerReady
+    overlayContainerReady,
+    currentTimeUpdate
   } = props;
 
   useEffect(() => {
@@ -90,13 +91,22 @@ const Player = (props) => {
   }, []);
 
   useEffect(() => {
+    const timeUpdateCb = () => {
+      currentTimeUpdate(playerRef.current.currentTime());
+    };
+
     playerRef.current.ready(() => {
       if (volume) {
         playerRef.current.volume(volume);
       }
 
+      playerRef.current.on('timeupdate', timeUpdateCb);
       ready();
     });
+
+    return () => {
+      playerRef.current.off('timeupdate', timeUpdateCb);
+    };
   }, []);
 
   useEffect(() => {
@@ -252,10 +262,17 @@ Player.defaultProps = {
 
 export default InjectPlayerOperations(Player, {
   selectProps: ({ playing }) => ({ playing }),
-  selectActions: ({ ready, play, pause, overlayContainerReady }) => ({
+  selectActions: ({
     ready,
     play,
     pause,
-    overlayContainerReady
+    overlayContainerReady,
+    currentTimeUpdate
+  }) => ({
+    ready,
+    play,
+    pause,
+    overlayContainerReady,
+    currentTimeUpdate
   })
 });

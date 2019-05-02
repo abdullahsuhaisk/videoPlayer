@@ -2,13 +2,15 @@ import {
   PLAYER_PLAY,
   PLAYER_PAUSE,
   PLAYER_READY,
-  PLAYER_OVERLAY_CONTAINER_READY
+  PLAYER_OVERLAY_CONTAINER_READY,
+  PLAYER_CURRENT_TIME_UPDATE
 } from './playerActions';
 
 const initialState = {
   ready: false,
   playing: false,
-  overlayContainerClass: null
+  overlayContainerClass: null,
+  currentTime: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,6 +23,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, playing: false };
     case PLAYER_OVERLAY_CONTAINER_READY:
       return { ...state, overlayContainerClass: action.payload };
+    case PLAYER_CURRENT_TIME_UPDATE:
+      return { ...state, currentTime: action.payload };
     default:
       return state;
   }
