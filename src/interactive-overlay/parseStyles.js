@@ -26,7 +26,7 @@ function parseRule(ruleName, value) {
 }
 
 export function parseJson(json) {
-  const settingsO = json.widgets;
+  const settingsO = json;
 
   return settingsO.map(({ type, id, settings }) => {
     const { cssProps, action, text, attributes } = settings;

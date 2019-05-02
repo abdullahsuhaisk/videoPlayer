@@ -22,7 +22,8 @@ const WidgetsRenderer = (props) => {
         });
       }
     });
-  }, [Widgets]);
+    return () => console.log('unmounting');
+  }, []);
 
   return (
     <>

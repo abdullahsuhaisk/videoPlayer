@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyRegisterData from '../../dummyRegister.json';
+import registerTemplate from '../../templates/registerTemplate.json';
 import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 
 const Register = (props) => {
   const {
-    onSwitchToLogin,
-    auth,
-    loginInfo,
-    loginStatus,
     createUserWithEmailAndPassword,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors
+    showRegister,
+    onShowLogin,
+    onShowRegister
   } = props;
+
+  if (!showRegister) {
+    return null;
+  }
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,7 +25,8 @@ const Register = (props) => {
 
   const actions = {
     toggleLogin: () => () => {
-      onSwitchToLogin();
+      onShowRegister(false);
+      onShowLogin(true);
     },
     onFullNameChange: () => (e) => {
       setFullName(e.target.value);
@@ -55,7 +58,7 @@ const Register = (props) => {
   return (
     <SafeArea>
       <Scaler>
-        <WidgetsRenderer data={dummyRegisterData} actions={actions} />
+        <WidgetsRenderer data={registerTemplate.widgets} actions={actions} />
       </Scaler>
     </SafeArea>
   );
@@ -66,14 +69,19 @@ export default InjectAuthOperations(Register, {
     createUserWithEmailAndPassword,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors
+    resetErrors,
+    onShowLogin,
+    onShowRegister
   }) => ({
     createUserWithEmailAndPassword,
     loginWithGoogle,
     loginWithFacebook,
-    resetErrors
+    resetErrors,
+    onShowLogin,
+    onShowRegister
   }),
-  selectProps: ({ auth, loginInfo, loginStatus }) => ({
+  selectProps: ({ showRegister, auth, loginInfo, loginStatus }) => ({
+    showRegister,
     auth,
     loginInfo,
     loginStatus

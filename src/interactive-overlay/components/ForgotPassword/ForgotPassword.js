@@ -1,25 +1,40 @@
 import React from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import dummyForgotPasswordData from '../../dummyForgotPassword.json';
+import forgotPasswordTemplate from '../../templates/forgotPasswordTemplate.json';
 import Scaler from '../Scaler/Scaler';
 import SafeArea from '../SafeArea/SafeArea';
+import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 
 const ForgotPassword = (props) => {
-  const { onSwitchToLogin } = props;
+  const { showForgotPassword, onShowLogin, onShowForgotPassword } = props;
+
+  if (!showForgotPassword) {
+    return null;
+  }
 
   const actions = {
-    toggleLogin: () => {
-      onSwitchToLogin();
+    toggleLogin: () => () => {
+      onShowForgotPassword(false);
+      onShowLogin(true);
     }
   };
 
   return (
     <SafeArea>
       <Scaler>
-        <WidgetsRenderer data={dummyForgotPasswordData} actions={actions} />
+        <WidgetsRenderer
+          data={forgotPasswordTemplate.widgets}
+          actions={actions}
+        />
       </Scaler>
     </SafeArea>
   );
 };
 
-export default ForgotPassword;
+export default InjectAuthOperations(ForgotPassword, {
+  selectActions: ({ onShowLogin, onShowForgotPassword }) => ({
+    onShowLogin,
+    onShowForgotPassword
+  }),
+  selectProps: ({ showForgotPassword }) => ({ showForgotPassword })
+});

@@ -1,4 +1,5 @@
 {
+  "showInModal": true,
   "widgets": [
     {
       "type": "div",
