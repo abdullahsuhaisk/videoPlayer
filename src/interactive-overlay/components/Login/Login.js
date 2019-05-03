@@ -8,12 +8,14 @@ import ModalDialog from '../ModalDialog/ModalDialog';
 import ValidationError from '../Validation/ValidationError';
 
 const LoginComponent = (props) => {
+  const { widgets, actions, validationErrorMessage } = props;
+
   return (
     <SafeArea>
       <Scaler>
-        <WidgetsRenderer data={props.widgets} actions={props.actions} />
-        {props.validationErrorMessage && (
-          <ValidationError text={props.validationErrorMessage} />
+        <WidgetsRenderer data={widgets} actions={actions} />
+        {validationErrorMessage && (
+          <ValidationError text={validationErrorMessage} />
         )}
       </Scaler>
     </SafeArea>

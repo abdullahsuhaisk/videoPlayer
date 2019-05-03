@@ -7,10 +7,12 @@ import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import ModalDialog from '../ModalDialog/ModalDialog';
 
 const ForgotPasswordComponent = (props) => {
+  const { widgets, actions } = props;
+
   return (
     <SafeArea>
       <Scaler>
-        <WidgetsRenderer data={props.widgets} actions={props.actions} />
+        <WidgetsRenderer data={widgets} actions={actions} />
       </Scaler>
     </SafeArea>
   );
