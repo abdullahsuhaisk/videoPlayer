@@ -9,6 +9,7 @@ $size-font: 12px;
 @import './SettingsButton/settings-button';
 @import './SettingsMenu/settings_menu';
 @import './Tooltip/tooltip';
+@import '../../../node_modules/videojs-markers/dist/videojs.markers.css';
 
 // Global videojs styles
 .vjs-vibuy.video-js {

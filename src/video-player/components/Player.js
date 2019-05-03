@@ -11,6 +11,7 @@ import './SettingsMenu/vjs-settings-menu';
 import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 import './Tooltip/vjs-tooltip';
 import { InjectPlayerOperations } from '../../store/redux/player/playerOperations';
+import 'videojs-markers';
 
 window.videojs = videojs;
 
@@ -186,6 +187,32 @@ const Player = (props) => {
     }
   }, [playing]);
 
+  // TODO: Setup markers when tags data is ready
+  useEffect(() => {
+    playerRef.current.markers({
+      markerStyle: {
+        width: '.3em',
+        height: '.3em',
+        'background-color': '#fff',
+        'border-radius': '50%'
+      },
+      markerTip: {
+        display: true,
+        text: (marker) => marker.text || ''
+      },
+      markers: [
+        {
+          time: 60,
+          text: 'marker 1'
+        },
+        {
+          time: 120,
+          text: 'marker 2'
+        }
+      ]
+    });
+  }, []);
+
   return (
     <div
       className="vibuy--player-wrapper"
@@ -237,7 +264,8 @@ Player.propTypes = {
   ready: PropTypes.func,
   play: PropTypes.func,
   pause: PropTypes.func,
-  overlayContainerReady: PropTypes.func
+  overlayContainerReady: PropTypes.func,
+  currentTimeUpdate: PropTypes.func
 };
 
 Player.defaultProps = {
@@ -257,7 +285,8 @@ Player.defaultProps = {
   ready: () => {},
   play: () => {},
   pause: () => {},
-  overlayContainerReady: () => {}
+  overlayContainerReady: () => {},
+  currentTimeUpdate: () => {}
 };
 
 export default InjectPlayerOperations(Player, {
