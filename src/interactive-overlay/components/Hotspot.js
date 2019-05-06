@@ -2,25 +2,29 @@
 import React, { useState } from 'react';
 
 const Hotspot = (props) => {
-  const { actions } = props;
+  const { action, top, left } = props;
 
-  const [tagColor, setTagColor] = useState('#000000');
+  const [hotspotColor, setHotspotColor] = useState('#000000');
 
   return (
     <div
-      onClick={actions.toggleOverlay}
+      // onClick={() => action()}
       role="button"
       tabIndex="-1"
-      onMouseEnter={() => setTagColor('#00ACD8')}
-      onMouseLeave={() => setTagColor('#000000')}
-      className="tag"
+      onMouseEnter={() => setHotspotColor('#00ACD8')}
+      onMouseLeave={() => setHotspotColor('#000000')}
+      className="hotspot"
       style={{
         width: '16.5256%',
         height: '21.0145%',
+        top: `${top}%`,
+        left: `${left}%`,
         position: 'absolute',
         display: 'block',
         visibility: 'visible',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        pointerEvents: 'auto',
+        outline: 0
       }}>
       <div className="tag-inner-box" style={{ width: '100%', height: '100%' }}>
         <div
@@ -47,7 +51,7 @@ const Hotspot = (props) => {
               cx="15"
               cy="15"
               r="15"
-              fill={tagColor}
+              fill={hotspotColor}
               stroke="none"
               style={{ WebkitTapHighlightColor: '#0000' }}
             />
