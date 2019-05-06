@@ -1,5 +1,5 @@
 import { InjectSelectedOperations } from '../actionUtils';
-import { actions } from './tagActions';
+import { actions } from './hotspotActions';
 
 export const onFieldUpdate = (newStatus) => {
   return (dispatch) => {
@@ -7,26 +7,26 @@ export const onFieldUpdate = (newStatus) => {
   };
 };
 
-export const onAdd = (newTags) => {
+export const onAdd = (newHotspots) => {
   return (dispatch) => {
-    dispatch(actions.onAdd(newTags));
+    dispatch(actions.onAdd(newHotspots));
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-    tags: state.tags
+    hotspots: state.hotspots
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onFieldUpdate: (newStatus) => dispatch(onFieldUpdate(newStatus)),
-    onAdd: (newTags) => dispatch(onAdd(newTags))
+    onAdd: (newHotspots) => dispatch(onAdd(newHotspots))
   };
 };
 
-export const InjectTagOperations = InjectSelectedOperations({
+export const InjectHotspotOperations = InjectSelectedOperations({
   mapStateToProps,
   mapDispatchToProps
 });

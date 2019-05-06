@@ -3,6 +3,7 @@ import { Player } from './video-player';
 import './i18n/i18n';
 import OverlayContainer from './interactive-overlay/components/OverlayContainer/OverlayContainer';
 import ModalOverlay from './interactive-overlay/components/ModalOverlay/ModalOverlay';
+import HotspotOverlay from './interactive-overlay/components/HotspotOverlay/HotspotOverlay';
 
 const App = () => {
   const playerOptions = {
@@ -25,6 +26,7 @@ const App = () => {
       </Suspense>
       <OverlayContainer>
         <ModalOverlay />
+        <HotspotOverlay />
       </OverlayContainer>
     </div>
   );
