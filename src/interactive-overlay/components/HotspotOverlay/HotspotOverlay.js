@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import SafeArea from '../SafeArea/SafeArea';
 import Hotspot from '../Hotspot';
@@ -6,6 +6,7 @@ import Scaler from '../Scaler/Scaler';
 import { InjectHotspotOperations } from '../../../store/redux/hotspot/hotspotOperations';
 import { InjectPlayerOperations } from '../../../store/redux/player/playerOperations';
 import { findPrev } from '../../utils/common';
+import { InjectOverlayOperations } from '../../../store/redux/overlay/overlayOperations';
 
 const HotspotOverlay = (props) => {
   const { hotspots, currentTime } = props;
@@ -52,6 +53,14 @@ const HotspotOverlay = (props) => {
     setActiveHotspots(nextState);
   }, [currentTime]);
 
+  const handleAction = useCallback((action) => {
+    const { name, params } = action;
+
+    if (name === 'openOverlay') {
+      // addActiveId(params[0]);
+    }
+  }, []);
+
   return (
     <div
       className="vibuy--hotspot-overlay"
@@ -63,6 +72,7 @@ const HotspotOverlay = (props) => {
               key={id}
               top={`${activeHotspots[id].top}`}
               left={`${activeHotspots[id].left}`}
+              action={() => handleAction(activeHotspots[id].action)}
             />
           ))}
         </Scaler>
@@ -72,10 +82,15 @@ const HotspotOverlay = (props) => {
 };
 
 export default InjectPlayerOperations(
-  InjectHotspotOperations(HotspotOverlay, {
-    selectActions: ({ onFieldUpdate, onAdd }) => ({ onFieldUpdate, onAdd }),
-    selectProps: ({ hotspots }) => ({ hotspots })
-  }),
+  InjectHotspotOperations(
+    InjectOverlayOperations(HotspotOverlay, {
+      // selectActions: ({ addActiveId }) => ({ addActiveId })
+    }),
+    {
+      selectActions: ({ onFieldUpdate, onAdd }) => ({ onFieldUpdate, onAdd }),
+      selectProps: ({ hotspots }) => ({ hotspots })
+    }
+  ),
   {
     selectActions: ({ play, pause }) => ({ play, pause }),
     selectProps: ({ playing, currentTime }) => ({ playing, currentTime })

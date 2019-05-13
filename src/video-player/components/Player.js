@@ -35,6 +35,8 @@ const Player = (props) => {
     title,
     description,
     playing,
+    seek,
+    seekTo,
     ready,
     play,
     pause,
@@ -187,6 +189,13 @@ const Player = (props) => {
     }
   }, [playing]);
 
+  useEffect(() => {
+    if (playerRef.current && seekTo !== -1) {
+      playerRef.current.currentTime(seekTo);
+      seek(-1);
+    }
+  }, [seekTo]);
+
   // TODO: Setup markers when tags data is ready
   useEffect(() => {
     playerRef.current.markers({
@@ -202,11 +211,11 @@ const Player = (props) => {
       },
       markers: [
         {
-          time: 60,
+          time: 22.22,
           text: 'marker 1'
         },
         {
-          time: 120,
+          time: 45.55,
           text: 'marker 2'
         }
       ]
@@ -290,17 +299,19 @@ Player.defaultProps = {
 };
 
 export default InjectPlayerOperations(Player, {
-  selectProps: ({ playing }) => ({ playing }),
+  selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
   selectActions: ({
     ready,
     play,
     pause,
+    seek,
     overlayContainerReady,
     currentTimeUpdate
   }) => ({
     ready,
     play,
     pause,
+    seek,
     overlayContainerReady,
     currentTimeUpdate
   })

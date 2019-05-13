@@ -2,8 +2,8 @@ import { HOTSPOT_FIELD_UPDATE, HOTSPOT_ADD } from './hotspotActions';
 
 const initialState = {
   'hotspot-1': {
-    hotspotCursor: 12123,
-    action: { name: 'openOverlay', params: [5432] },
+    assetId: 12123,
+    action: { name: 'openOverlay', params: ['overlay-2'] },
     in: 0,
     out: 15,
     top: 25,
@@ -11,22 +11,15 @@ const initialState = {
   }
 };
 
-const updateHotspot = (hotspots, payload) => {
-  return hotspots.map((item) => {
-    if (item.id !== payload.id) return item;
-
-    return {
-      ...item,
-      [payload.field]: payload.value
-    };
-  });
-};
-
 const hotspotReducer = (state = initialState, action) => {
   switch (action.type) {
     case HOTSPOT_FIELD_UPDATE:
       return {
-        hotspots: updateHotspot(state, action.payload)
+        ...state,
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          [action.payload.field]: action.payload.value
+        }
       };
     case HOTSPOT_ADD:
       return { ...state, [action.payload.id]: action.payload.data };

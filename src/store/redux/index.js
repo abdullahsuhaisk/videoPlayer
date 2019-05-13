@@ -11,6 +11,7 @@ import base from './base';
 import player from './player/playerReducer';
 import layout from './layout/layoutReducer';
 import hotspots from './hotspot/hotspotReducer';
+import overlays from './overlay/overlayReducer';
 import firebaseConfig from '../../interactive-overlay/common/firebase';
 
 // DONE: @lamine -> eslint config
@@ -23,6 +24,7 @@ const store = createStore(
     firebase: firebaseReducer,
     layout,
     hotspots,
+    overlays,
     player
   }),
   composeEnhancers(

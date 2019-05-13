@@ -8,7 +8,7 @@ const Hotspot = (props) => {
 
   return (
     <div
-      // onClick={() => action()}
+      onClick={() => action()}
       role="button"
       tabIndex="-1"
       onMouseEnter={() => setHotspotColor('#00ACD8')}
