@@ -39,7 +39,7 @@
           "left": "670px",
           "width": "280px",
           "height": "25px",
-          "fontSize": "16px",
+          "fontSize": "14px",
           "fontFamily": "Source Sans Pro",
           "color": "#0B2443CC",
           "backgroundColor": "#0000",
@@ -68,7 +68,7 @@
           "left": "670px",
           "width": "280px",
           "height": "25px",
-          "fontSize": "16px",
+          "fontSize": "14px",
           "fontFamily": "Source Sans Pro",
           "color": "#0B2443CC",
           "backgroundColor": "#0000",
@@ -146,12 +146,12 @@
       "settings": {
         "text": "or log in with",
         "cssProps": {
-          "top": "371px",
-          "left": "772px",
+          "top": "374px",
+          "left": "776px",
           "width": "195px",
           "height": "30px",
           "fontFamily": "Source Sans Pro",
-          "fontSize": "14px",
+          "fontSize": "12px",
           "color": "#0B2443"
         }
       }
@@ -175,7 +175,7 @@
       "settings": {
         "cssProps": {
           "top": "395px",
-          "left": "765px",
+          "left": "770px",
           "max-width": "20px",
           "max-height": "20px",
           "cursor": "pointer"
@@ -195,7 +195,7 @@
       "settings": {
         "cssProps": {
           "top": "395px",
-          "left": "835px",
+          "left": "830px",
           "max-width": "20px",
           "max-height": "20px",
           "cursor": "pointer"
