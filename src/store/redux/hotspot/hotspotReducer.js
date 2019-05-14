@@ -16,8 +16,8 @@ const initialState = {
   },
   'hotspot-2': {
     assetId: 12123,
-    in: 40.3,
-    out: 110.6,
+    in: 98.2,
+    out: 186.4,
     top: 5,
     left: 5
   }
