@@ -1,5 +1,5 @@
 {
-  "showInModal": false,
+  "showInModal": true,
   "widgets": [
     {
       "type": "div",
@@ -7,11 +7,10 @@
       "settings": {
         "cssProps": {
           "top": "0px",
-          "left": "625px",
-          "width": "375px",
+          "left": "0px",
+          "width": "1000px",
           "height": "563px",
-          "backgroundColor": "#FFF",
-          "box-shadow": "-24px 0px 42px -12px rgba(0,0,0,0.75)"
+          "backgroundColor": "#00ACD8"
         }
       }
     },
@@ -20,13 +19,13 @@
       "id": "image",
       "settings": {
         "cssProps": {
-          "top": "30px",
-          "left": "710px",
-          "max-width": "200px",
-          "max-height": "140px"
+          "top": "60px",
+          "left": "400px",
+          "max-width": "250px",
+          "max-height": "200px"
         },
         "attributes": {
-          "src": "/images/login_image.svg"
+          "src": "/images/logo.png"
         }
       }
     },
@@ -35,18 +34,17 @@
       "id": "fullName",
       "settings": {
         "cssProps": {
-          "top": "165px",
-          "left": "670px",
-          "width": "280px",
-          "height": "25px",
-          "fontSize": "14px",
+          "top": "200px",
+          "left": "370px",
+          "width": "300px",
+          "height": "30px",
+          "fontSize": "18px",
           "fontFamily": "Source Sans Pro",
-          "color": "#0B2443CC",
+          "color": "#fffc",
           "backgroundColor": "#0000",
-          "border": "0px solid #0B2443AA",
+          "border": "0px solid #fffa",
           "borderWidth": "0 0 1px 0",
-          "placeholderColor": "#0B244388",
-          "outline": 0
+          "placeholderColor": "#fff8"
         },
         "attributes": {
           "type": "text",
@@ -54,7 +52,7 @@
           "className": ["input-style"]
         },
         "action": {
-          "name": "onEmailChange",
+          "name": "onFullNameChange",
           "params": []
         }
       }
@@ -64,18 +62,17 @@
       "id": "email",
       "settings": {
         "cssProps": {
-          "top": "205px",
-          "left": "670px",
-          "width": "280px",
-          "height": "25px",
-          "fontSize": "14px",
+          "top": "260px",
+          "left": "370px",
+          "width": "300px",
+          "height": "30px",
+          "fontSize": "18px",
           "fontFamily": "Source Sans Pro",
-          "color": "#0B2443CC",
+          "color": "#fffc",
           "backgroundColor": "#0000",
-          "border": "0px solid #0B2443AA",
+          "border": "0px solid #fffa",
           "borderWidth": "0 0 1px 0",
-          "placeholderColor": "#0B244388",
-          "outline": 0
+          "placeholderColor": "#fff8"
         },
         "attributes": {
           "type": "text",
@@ -93,18 +90,17 @@
       "id": "password",
       "settings": {
         "cssProps": {
-          "top": "245px",
-          "left": "670px",
-          "width": "280px",
-          "height": "25px",
-          "fontSize": "14px",
+          "top": "320px",
+          "left": "370px",
+          "width": "300px",
+          "height": "30px",
+          "fontSize": "18px",
           "fontFamily": "Source Sans Pro",
-          "color": "#0B2443CC",
+          "color": "#fffc",
           "backgroundColor": "#0000",
-          "border": "0px solid #0B2443AA",
+          "border": "0px solid #fffa",
           "borderWidth": "0 0 1px 0",
-          "placeholderColor": "#0B244388",
-          "outline": 0
+          "placeholderColor": "#fff8"
         },
         "attributes": {
           "type": "password",
@@ -118,70 +114,39 @@
       }
     },
     {
-      "type": "span",
-      "id": "text",
-      "settings": {
-        "text": "*Min 6 characters.",
-        "cssProps": {
-          "top": "275px",
-          "left": "670px",
-          "width": "195px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "10px",
-          "color": "#0B2443AA"
-        }
-      }
-    },
-    {
       "type": "button",
       "id": "button",
       "settings": {
         "text": "Create Account",
-        "cssProps": {
-          "top": "308px",
-          "left": "710px",
-          "width": "200px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "font-size": "14px",
-          "color": {
-            "default": "#FFF",
-            "hover": "#00acd8"
-          },
-          "background-color": {
-            "default": "#00acd8",
-            "hover": "#FFF"
-          },
-          "border": {
-            "default": "1px solid #FFF",
-            "hover": "1px solid #00acd8"
-          },
-          "borderRadius": "25px",
-          "textAlign": "center",
-          "cursor": "pointer",
-          "transition": "all .2s",
-          "outline": 0
-        },
         "action": {
           "name": "register",
           "params": []
         },
         "attributes": {
           "className": ["overlayButton"]
-        }
-      }
-    },
-    {
-      "type": "div",
-      "id": "square",
-      "settings": {
+        },
         "cssProps": {
-          "top": "379px",
-          "left": "670px",
-          "width": "90px",
-          "height": "1px",
-          "backgroundColor": "#0B2443AA"
+          "top": "380px",
+          "left": "370px",
+          "width": "300px",
+          "height": "40px",
+          "fontFamily": "Source Sans Pro",
+          "font-size": "16px",
+          "color": {
+            "default": "#FFF",
+            "hover": "#0d263b"
+          },
+          "background-color": {
+            "default": "#0d263b",
+            "hover": "#FFF"
+          },
+          "border": {
+            "default": "1px solid #0d263b",
+            "hover": "1px solid #0d263b"
+          },
+          "borderRadius": "5px",
+          "textAlign": "center",
+          "cursor": "pointer"
         }
       }
     },
@@ -189,28 +154,15 @@
       "type": "span",
       "id": "text",
       "settings": {
-        "text": "or log in with",
+        "text": "or sign up with",
         "cssProps": {
-          "top": "374px",
-          "left": "776px",
+          "top": "453px",
+          "left": "476px",
           "width": "195px",
           "height": "30px",
           "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "color": "#0B2443"
-        }
-      }
-    },
-    {
-      "type": "div",
-      "id": "square",
-      "settings": {
-        "cssProps": {
-          "top": "379px",
-          "left": "860px",
-          "width": "90px",
-          "height": "1px",
-          "backgroundColor": "#0B2443AA"
+          "fontSize": "14px",
+          "color": "#fffc"
         }
       }
     },
@@ -219,14 +171,14 @@
       "id": "image",
       "settings": {
         "cssProps": {
-          "top": "395px",
-          "left": "770px",
+          "top": "450px",
+          "left": "440px",
           "max-width": "20px",
           "max-height": "20px",
           "cursor": "pointer"
         },
         "attributes": {
-          "src": "/images/google_blue.png"
+          "src": "/images/google.png"
         },
         "action": {
           "name": "loginWithGoogle",
@@ -239,14 +191,14 @@
       "id": "image",
       "settings": {
         "cssProps": {
-          "top": "395px",
-          "left": "830px",
+          "top": "450px",
+          "left": "580px",
           "max-width": "20px",
           "max-height": "20px",
           "cursor": "pointer"
         },
         "attributes": {
-          "src": "/images/facebook_blue.png"
+          "src": "/images/facebook.png"
         },
         "action": {
           "name": "loginWithFacebook",
@@ -265,28 +217,26 @@
         },
         "cssProps": {
           "top": "500px",
-          "left": "710px",
-          "width": "200px",
-          "height": "30px",
+          "left": "370px",
+          "width": "300px",
+          "height": "40px",
           "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
+          "fontSize": "16px",
           "color": {
-            "default": "#0B2443",
-            "hover": "#FFF"
+            "default": "#FFF",
+            "hover": "#0d263b"
           },
           "background-color": {
-            "default": "#FFF0",
-            "hover": "#0B2443"
+            "default": "#0000",
+            "hover": "#FFF"
           },
           "border": {
-            "default": "1px solid #0B2443",
-            "hover": "1px solid #FFF"
+            "default": "1px solid #FFF",
+            "hover": "1px solid #0d263b"
           },
-          "borderRadius": "25px",
+          "borderRadius": "5px",
           "textAlign": "center",
-          "cursor": "pointer",
-          "transition": "all .2s",
-          "outline": 0
+          "cursor": "pointer"
         },
         "attributes": {
           "className": ["overlayButton"]

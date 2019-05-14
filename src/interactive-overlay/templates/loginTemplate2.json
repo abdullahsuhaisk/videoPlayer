@@ -1,0 +1,243 @@
+{
+  "showInModal": true,
+  "widgets": [
+    {
+      "type": "div",
+      "id": "square",
+      "settings": {
+        "cssProps": {
+          "top": "0px",
+          "left": "0px",
+          "width": "1000px",
+          "height": "563px",
+          "backgroundColor": "#00ACD8"
+        }
+      }
+    },
+    {
+      "type": "img",
+      "id": "image",
+      "settings": {
+        "cssProps": {
+          "top": "60px",
+          "left": "400px",
+          "max-width": "250px",
+          "max-height": "200px"
+        },
+        "attributes": {
+          "src": "/images/logo.png"
+        }
+      }
+    },
+    {
+      "type": "input",
+      "id": "email",
+      "settings": {
+        "cssProps": {
+          "top": "200px",
+          "left": "370px",
+          "width": "300px",
+          "height": "30px",
+          "fontSize": "18px",
+          "fontFamily": "Source Sans Pro",
+          "color": "#fffc",
+          "backgroundColor": "#0000",
+          "border": "0px solid #fffa",
+          "borderWidth": "0 0 1px 0",
+          "placeholderColor": "#fff8"
+        },
+        "attributes": {
+          "type": "text",
+          "placeholder": "Email",
+          "className": ["input-style"]
+        },
+        "action": {
+          "name": "onEmailChange",
+          "params": []
+        }
+      }
+    },
+    {
+      "type": "input",
+      "id": "password",
+      "settings": {
+        "cssProps": {
+          "top": "260px",
+          "left": "370px",
+          "width": "300px",
+          "height": "30px",
+          "fontSize": "18px",
+          "fontFamily": "Source Sans Pro",
+          "color": "#fffc",
+          "background-color": "#0000",
+          "border": "0px solid #fffa",
+          "borderWidth": "0 0 1px 0",
+          "placeholderColor": "#fff8"
+        },
+        "attributes": {
+          "type": "password",
+          "placeholder": "Password",
+          "className": ["input-style"]
+        },
+        "action": {
+          "name": "onPasswordChange",
+          "params": []
+        }
+      }
+    },
+    {
+      "type": "button",
+      "id": "button",
+      "settings": {
+        "text": "Login",
+        "cssProps": {
+          "top": "320px",
+          "left": "370px",
+          "width": "300px",
+          "height": "40px",
+          "fontFamily": "Source Sans Pro",
+          "font-size": "16px",
+          "color": {
+            "default": "#FFF",
+            "hover": "#0d263b"
+          },
+          "background-color": {
+            "default": "#0d263b",
+            "hover": "#FFF"
+          },
+          "border": {
+            "default": "1px solid #0d263b",
+            "hover": "1px solid #0d263b"
+          },
+          "borderRadius": "5px",
+          "textAlign": "center",
+          "cursor": "pointer",
+          "transition": "all .2s"
+        },
+        "action": {
+          "name": "login",
+          "params": []
+        },
+        "attributes": {
+          "className": ["overlayButton"]
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "or log in with",
+        "cssProps": {
+          "top": "403px",
+          "left": "480px",
+          "width": "195px",
+          "height": "30px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "14px",
+          "color": "#fffc"
+        }
+      }
+    },
+    {
+      "type": "img",
+      "id": "image",
+      "settings": {
+        "cssProps": {
+          "top": "400px",
+          "left": "444px",
+          "max-width": "20px",
+          "max-height": "20px",
+          "cursor": "pointer"
+        },
+        "attributes": {
+          "src": "/images/google.png"
+        },
+        "action": {
+          "name": "loginWithGoogle",
+          "params": []
+        }
+      }
+    },
+    {
+      "type": "img",
+      "id": "image",
+      "settings": {
+        "cssProps": {
+          "top": "400px",
+          "left": "574px",
+          "max-width": "20px",
+          "max-height": "20px",
+          "cursor": "pointer"
+        },
+        "attributes": {
+          "src": "/images/facebook.png"
+        },
+        "action": {
+          "name": "loginWithFacebook",
+          "params": []
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "span",
+      "settings": {
+        "text": "I forgot my password!",
+        "action": {
+          "name": "toggleForgotPassword",
+          "params": []
+        },
+        "cssProps": {
+          "top": "450px",
+          "left": "458px",
+          "width": "195px",
+          "height": "30px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "14px",
+          "textDecoration": "underline",
+          "color": "#fff",
+          "cursor": "pointer"
+        }
+      }
+    },
+    {
+      "type": "button",
+      "id": "button",
+      "settings": {
+        "text": "Create Account",
+        "action": {
+          "name": "toggleRegister",
+          "params": []
+        },
+        "cssProps": {
+          "top": "500px",
+          "left": "370px",
+          "width": "300px",
+          "height": "40px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "16px",
+          "color": {
+            "default": "#FFF",
+            "hover": "#0d263b"
+          },
+          "background-color": {
+            "default": "#0000",
+            "hover": "#FFF"
+          },
+          "border": {
+            "default": "1px solid #FFF",
+            "hover": "1px solid #0d263b"
+          },
+          "borderRadius": "5px",
+          "textAlign": "center",
+          "cursor": "pointer",
+          "transition": "all .2s"
+        },
+        "attributes": {
+          "className": ["overlayButton"]
+        }
+      }
+    }
+  ]
+}
