@@ -211,11 +211,11 @@ const Player = (props) => {
       },
       markers: [
         {
-          time: 22.22,
+          time: 32.5,
           text: 'marker 1'
         },
         {
-          time: 45.55,
+          time: 98.2,
           text: 'marker 2'
         }
       ]

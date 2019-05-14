@@ -1,17 +1,29 @@
-import { HOTSPOT_FIELD_UPDATE, HOTSPOT_ADD } from './hotspotActions';
+import { combineReducers } from 'redux';
+import {
+  HOTSPOT_FIELD_UPDATE,
+  HOTSPOT_ADD,
+  SET_ACTIVE_HOTSPOT_IDS
+} from './hotspotActions';
 
 const initialState = {
   'hotspot-1': {
     assetId: 12123,
     action: { name: 'openOverlay', params: ['overlay-2'] },
-    in: 0,
-    out: 15,
+    in: 32.5,
+    out: 65.3,
     top: 25,
     left: 25
+  },
+  'hotspot-2': {
+    assetId: 12123,
+    in: 98.2,
+    out: 186.4,
+    top: 5,
+    left: 5
   }
 };
 
-const hotspotReducer = (state = initialState, action) => {
+const hotspots = (state = initialState, action) => {
   switch (action.type) {
     case HOTSPOT_FIELD_UPDATE:
       return {
@@ -29,4 +41,15 @@ const hotspotReducer = (state = initialState, action) => {
   }
 };
 
-export default hotspotReducer;
+const activeHotspotIds = (state = [], action) => {
+  if (action.type === SET_ACTIVE_HOTSPOT_IDS) {
+    return action.payload;
+  }
+
+  return state;
+};
+
+export default combineReducers({
+  hotspots,
+  activeHotspotIds
+});
