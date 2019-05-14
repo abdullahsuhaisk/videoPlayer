@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { InjectPlayerOperations } from '../../../store/redux/player/playerOperations';
-import { InjectOverlayOperations } from '../../../store/redux/overlay/overlayOperations';
+import {
+  InjectOverlayProps,
+  InjectPlayerProps
+} from '../../../store/redux/providers';
 import useTimeRange from '../../hooks/useTimeRange';
 import SafeArea from '../SafeArea/SafeArea';
 import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
@@ -46,8 +48,8 @@ const InteractiveOverlay = (props) => {
   );
 };
 
-export default InjectPlayerOperations(
-  InjectOverlayOperations(InteractiveOverlay, {
+export default InjectPlayerProps(
+  InjectOverlayProps(InteractiveOverlay, {
     selectActions: ({ setActivePlayingOverlayIds }) => ({
       setActivePlayingOverlayIds
     }),

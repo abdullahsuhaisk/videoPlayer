@@ -26,11 +26,7 @@ const loginReducer = (state = loginInitialState, action) => {
   switch (action.type) {
     case REGISTER_FAIL:
     case SIGNOUT_ERROR: {
-      return {
-        ...state,
-        errorCode: action.payload.code,
-        errorMessage: action.payload.message
-      };
+      return { ...state, error: action.payload };
     }
 
     case LOGIN_ERROR: {
@@ -38,8 +34,8 @@ const loginReducer = (state = loginInitialState, action) => {
         ...state,
         loginStatus: 'error',
         hasError: true,
-        errorMessage: action.payload.message,
-        errorCode: action.payload.code
+        errorMessage: action.payload,
+        error: action.payload
       };
     }
     case LOGIN_SUCCESS: {
@@ -47,7 +43,7 @@ const loginReducer = (state = loginInitialState, action) => {
         loginStatus: 'loggedIn',
         hasError: false,
         errorMessage: null,
-        errorCode: null
+        error: null
       };
     }
     case RESET_ERRORS:

@@ -1,4 +1,4 @@
-import { buildActionCreator } from '../actionUtils';
+import { buildActionCreator } from '../propsUtils';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCES';
@@ -47,4 +47,24 @@ export const Actions = {
   onShowLogin,
   onShowRegister,
   onShowForgotPassword
+};
+
+export const ActionTypes = {
+  LOGIN_USER,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+
+  REGISTER_USER,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+
+  SIGNOUT,
+  SIGNOUT_ERROR,
+  SIGNOUT_SUCCESS,
+
+  RESET_ERRORS,
+
+  SHOW_LOGIN,
+  SHOW_REGISTER,
+  SHOW_FORGOT_PASSWORD
 };

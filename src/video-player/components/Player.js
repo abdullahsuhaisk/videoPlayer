@@ -10,7 +10,7 @@ import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import '../../../node_modules/videojs-dock/dist/videojs-dock.css';
 import './Tooltip/vjs-tooltip';
-import { InjectPlayerOperations } from '../../store/redux/player/playerOperations';
+import { InjectPlayerProps } from '../../store/redux/providers';
 import 'videojs-markers';
 
 window.videojs = videojs;
@@ -298,7 +298,7 @@ Player.defaultProps = {
   currentTimeUpdate: () => {}
 };
 
-export default InjectPlayerOperations(Player, {
+export default InjectPlayerProps(Player, {
   selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
   selectActions: ({
     ready,

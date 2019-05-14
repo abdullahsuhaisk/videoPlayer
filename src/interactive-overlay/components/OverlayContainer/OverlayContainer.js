@@ -2,8 +2,10 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import { throttle } from 'lodash';
-import { InjectPlayerOperations } from '../../../store/redux/player/playerOperations';
-import { InjectLayoutOperations } from '../../../store/redux/layout/layoutOperations';
+import {
+  InjectLayoutProps,
+  InjectPlayerProps
+} from '../../../store/redux/providers';
 
 const OverlayContainer = (props) => {
   const {
@@ -80,8 +82,8 @@ const OverlayContainer = (props) => {
   );
 };
 
-export default InjectPlayerOperations(
-  InjectLayoutOperations(OverlayContainer, {
+export default InjectPlayerProps(
+  InjectLayoutProps(OverlayContainer, {
     selectProps: ({ aspectRatio }) => ({
       aspectRatio
     }),

@@ -25,7 +25,7 @@ const App = () => {
         <Player {...playerOptions} />
       </Suspense>
       <OverlayContainer>
-        {/* <InteractiveOverlay /> */}
+        <InteractiveOverlay />
         <HotspotOverlay />
       </OverlayContainer>
     </div>

@@ -1,9 +1,5 @@
 import { combineReducers } from 'redux';
-import {
-  HOTSPOT_FIELD_UPDATE,
-  HOTSPOT_ADD,
-  SET_ACTIVE_HOTSPOT_IDS
-} from './hotspotActions';
+import { actionTypes } from './hotspotActions';
 
 const initialState = {
   'hotspot-1': {
@@ -25,7 +21,7 @@ const initialState = {
 
 const hotspots = (state = initialState, action) => {
   switch (action.type) {
-    case HOTSPOT_FIELD_UPDATE:
+    case actionTypes.HOTSPOT_FIELD_UPDATE:
       return {
         ...state,
         [action.payload.id]: {
@@ -33,7 +29,7 @@ const hotspots = (state = initialState, action) => {
           [action.payload.field]: action.payload.value
         }
       };
-    case HOTSPOT_ADD:
+    case actionTypes.HOTSPOT_ADD:
       return { ...state, [action.payload.id]: action.payload.data };
     default: {
       return state;
@@ -42,7 +38,7 @@ const hotspots = (state = initialState, action) => {
 };
 
 const activeHotspotIds = (state = [], action) => {
-  if (action.type === SET_ACTIVE_HOTSPOT_IDS) {
+  if (action.type === actionTypes.SET_ACTIVE_HOTSPOT_IDS) {
     return action.payload;
   }
 

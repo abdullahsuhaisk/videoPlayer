@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 const NoProps = (props) => ({});
 const defaultSelectors = Object.create(null);
 
@@ -7,7 +6,7 @@ export function buildActionCreator(type) {
   return (payload = undefined) => ({ type, payload });
 }
 
-export const InjectSelectedOperations = ({
+export const InjectProps = ({
   mapStateToProps = NoProps,
   mapDispatchToProps = NoProps
 }) => (Component, selectors = defaultSelectors) => {

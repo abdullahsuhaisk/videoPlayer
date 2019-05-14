@@ -1,5 +1,5 @@
 import React from 'react';
-import { InjectLayoutOperations } from '../../../store/redux/layout/layoutOperations';
+import { InjectLayoutProps } from '../../../store/redux/providers';
 
 const Scaler = (props) => {
   const { safeArea, width, height, baseWidth, baseHeight, children } = props;
@@ -23,7 +23,7 @@ const Scaler = (props) => {
   );
 };
 
-export default InjectLayoutOperations(Scaler, {
+export default InjectLayoutProps(Scaler, {
   selectProps: ({ safeArea, width, height, baseWidth, baseHeight }) => ({
     safeArea,
     width,

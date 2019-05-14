@@ -1,9 +1,5 @@
 import { combineReducers } from 'redux';
-import {
-  OVERLAY_FIELD_UPDATE,
-  OVERLAY_ADD,
-  SET_PLAYING_OVERLAY_IDS
-} from './overlayActions';
+import { actionTypes } from './overlayActions';
 
 const initialState = {
   'overlay-1': {
@@ -36,7 +32,7 @@ const initialState = {
 
 const overlays = (state = initialState, action) => {
   switch (action.type) {
-    case OVERLAY_FIELD_UPDATE:
+    case actionTypes.OVERLAY_FIELD_UPDATE:
       return {
         ...state,
         [action.payload.id]: {
@@ -44,7 +40,7 @@ const overlays = (state = initialState, action) => {
           [action.payload.field]: action.payload.value
         }
       };
-    case OVERLAY_ADD:
+    case actionTypes.OVERLAY_ADD:
       return {
         ...state,
         [action.payload.id]: action.payload.data
@@ -55,7 +51,7 @@ const overlays = (state = initialState, action) => {
 };
 
 const activePlayingOverlayIds = (state = [], action) => {
-  if (action.type === SET_PLAYING_OVERLAY_IDS) {
+  if (action.type === actionTypes.SET_PLAYING_OVERLAY_IDS) {
     return action.payload;
   }
 

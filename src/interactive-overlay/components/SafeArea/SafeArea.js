@@ -1,5 +1,5 @@
 import React from 'react';
-import { InjectLayoutOperations } from '../../../store/redux/layout/layoutOperations';
+import { InjectLayoutProps } from '../../../store/redux/providers';
 
 const SafeArea = (props) => {
   const { safeArea, children } = props;
@@ -22,6 +22,6 @@ const SafeArea = (props) => {
   );
 };
 
-export default InjectLayoutOperations(SafeArea, {
+export default InjectLayoutProps(SafeArea, {
   selectProps: ({ safeArea }) => ({ safeArea })
 });

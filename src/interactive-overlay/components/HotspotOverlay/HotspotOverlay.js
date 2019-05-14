@@ -2,8 +2,10 @@ import React, { useEffect, useCallback } from 'react';
 import SafeArea from '../SafeArea/SafeArea';
 import Hotspot from '../Hotspot';
 import Scaler from '../Scaler/Scaler';
-import { InjectHotspotOperations } from '../../../store/redux/hotspot/hotspotOperations';
-import { InjectPlayerOperations } from '../../../store/redux/player/playerOperations';
+import {
+  InjectHotspotProps,
+  InjectPlayerProps
+} from '../../../store/redux/providers';
 import useTimeRange from '../../hooks/useTimeRange';
 
 const HotspotOverlay = (props) => {
@@ -49,8 +51,8 @@ const HotspotOverlay = (props) => {
   );
 };
 
-export default InjectPlayerOperations(
-  InjectHotspotOperations(HotspotOverlay, {
+export default InjectPlayerProps(
+  InjectHotspotProps(HotspotOverlay, {
     selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),
     selectProps: ({ hotspots, activeHotspotIds }) => ({
       hotspots,

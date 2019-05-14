@@ -6,20 +6,24 @@ import {
   reactReduxFirebase,
   firebaseReducer
 } from 'react-redux-firebase';
-import loginInfo from './auth/authReducer';
-import base from './base';
+
+// App reducers
+
+import loginInfoReducer from './auth/authReducer';
+import base from './base/baseReducer';
+import firebaseConfig from '../../interactive-overlay/common/firebase';
 import player from './player/playerReducer';
 import layout from './layout/layoutReducer';
 import hotspots from './hotspot/hotspotReducer';
 import overlays from './overlay/overlayReducer';
-import firebaseConfig from '../../interactive-overlay/common/firebase';
 
-// DONE: @lamine -> eslint config
-// @ts-ignore
+// App middleware
+import appMiddleware from './middlewares/appMiddleware';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
-    loginInfo,
+    loginInfo: loginInfoReducer,
     base,
     firebase: firebaseReducer,
     layout,
@@ -28,8 +32,13 @@ const store = createStore(
     player
   }),
   composeEnhancers(
-    applyMiddleware(reduxThunk.withExtraArgument({ getFirebase })),
-    reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }) // redux binding for firebase
+    reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }),
+    applyMiddleware(
+      reduxThunk.withExtraArgument({ getFirebase }),
+      appMiddleware
+    )
+    // redux binding for firebase
   )
 );
+// configureAxios(axios, store);
 export default store;

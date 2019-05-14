@@ -1,7 +1,7 @@
 // import { connect } from 'react-redux';
 import { Actions } from './authActions';
 import http, { setHttpHeader } from '../../../interactive-overlay/utils/http';
-import { InjectSelectedOperations } from '../actionUtils';
+import { InjectProps } from '../propsUtils';
 
 export const login = (credetentials) => {
   return async (dispatch, getState, { getFirebase }) => {
@@ -24,7 +24,7 @@ export const login = (credetentials) => {
       dispatch(Actions.resetError());
       dispatch(Actions.loginSuccess());
     } catch (error) {
-      dispatch(Actions.loginError(error));
+      dispatch(Actions.loginError(error.code));
     }
   };
 };
@@ -40,7 +40,7 @@ export const createUserWithEmailAndPasswordFirebase = (credentials) => {
           credentials.password
         );
     } catch (error) {
-      dispatch(Actions.userRegistrationFail(error));
+      dispatch(Actions.userRegistrationFail(error.code));
     }
   };
 };
@@ -56,7 +56,7 @@ export const loginWithGoogle = async (dispatch, getState, { getFirebase }) => {
     console.log(res);
     setHttpHeader('Authorization', `Bearer ${AUTH_TOKEN}`);
   } catch (error) {
-    dispatch(Actions.loginError(error));
+    dispatch(Actions.loginError(error.code));
   }
 };
 
@@ -72,7 +72,7 @@ export const facebookLogin = async (dispatch, getState, { getFirebase }) => {
     const AUTH_TOKEN = res.user.ra;
     setHttpHeader('Authorization', `Bearer ${AUTH_TOKEN}`);
   } catch (error) {
-    dispatch(Actions.loginError(error));
+    dispatch(Actions.loginError(error.code));
   }
 };
 
@@ -82,7 +82,7 @@ export const signout = async (dispatch, getState, { getFirebase }) => {
     await firebase.auth().signOut();
     dispatch(Actions.signoutSuccess());
   } catch (error) {
-    dispatch(Actions.signoutError(error));
+    dispatch(Actions.signoutError(error.code));
   }
 };
 
@@ -139,7 +139,7 @@ const mapStateToProps = (state) => {
 
 // const defaultSelectors = Object.create(null);
 
-export const InjectAuthOperations = InjectSelectedOperations({
+export const InjectAuthOperations = InjectProps({
   mapStateToProps,
   mapDispatchToProps
 });

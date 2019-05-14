@@ -1,4 +1,3 @@
-import { InjectSelectedOperations } from '../actionUtils';
 import { actions } from './hotspotActions';
 
 export const onFieldUpdate = (newStatus) => {
@@ -18,23 +17,3 @@ export const setActiveHotspotIds = (ids) => {
     dispatch(actions.setActiveHotspotIds(ids));
   };
 };
-
-const mapStateToProps = (state) => {
-  return {
-    hotspots: state.hotspots.hotspots,
-    activeHotspotIds: state.hotspots.activeHotspotIds
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFieldUpdate: (newStatus) => dispatch(onFieldUpdate(newStatus)),
-    onAdd: (newHotspots) => dispatch(onAdd(newHotspots)),
-    setActiveHotspotIds: (ids) => dispatch(setActiveHotspotIds(ids))
-  };
-};
-
-export const InjectHotspotOperations = InjectSelectedOperations({
-  mapStateToProps,
-  mapDispatchToProps
-});

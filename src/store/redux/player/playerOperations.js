@@ -1,4 +1,3 @@
-import { InjectSelectedOperations } from '../actionUtils';
 import { actions } from './playerActions';
 
 export const ready = (dispatch) => {
@@ -30,29 +29,3 @@ export const currentTimeUpdate = (currentTime) => {
     dispatch(actions.currentTimeUpdate(currentTime));
   };
 };
-
-const mapStateToProps = (state) => {
-  return {
-    playing: state.player.playing,
-    seekTo: state.player.seekTo,
-    overlayContainerClass: state.player.overlayContainerClass,
-    currentTime: state.player.currentTime
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    ready: () => dispatch(ready),
-    play: () => dispatch(play),
-    pause: () => dispatch(pause),
-    seek: (timeToSeek) => dispatch(seek(timeToSeek)),
-    overlayContainerReady: (containerClass) =>
-      dispatch(overlayContainerReady(containerClass)),
-    currentTimeUpdate: (currentTime) => dispatch(currentTimeUpdate(currentTime))
-  };
-};
-
-export const InjectPlayerOperations = InjectSelectedOperations({
-  mapStateToProps,
-  mapDispatchToProps
-});
