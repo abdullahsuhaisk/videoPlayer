@@ -47,6 +47,9 @@ const Login = (props) => {
 
   const actions = useMemo(
     () => ({
+      toggleLogin: () => () => {
+        onShowLogin(!showLogin);
+      },
       toggleRegister: () => () => {
         onShowLogin(false);
         onShowRegister(true);
