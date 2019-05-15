@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useMemo, useEffect, useState } from 'react';
-import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import likeTemplate from '../../templates/likeTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
 const Like = (props) => {
-  const { auth, onShowLogin } = props;
   const [widgets, setWidgets] = useState(null);
   const [likeCount, setLikeCount] = useState(-1);
 
