@@ -12,6 +12,7 @@ import Scaler from '../Scaler/Scaler';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import Favorite from '../Favorite/Favorite';
 
 const playingOverlayFilter = {
   key: 'type',
@@ -44,6 +45,7 @@ const InteractiveOverlay = (props) => {
       <SafeArea>
         <Scaler>
           <Like />
+          <Favorite />
           <ProfileButton />
           <Login />
           <Register />
