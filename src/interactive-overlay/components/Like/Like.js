@@ -1,26 +1,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useMemo, useEffect, useState } from 'react';
-import Scaler from './Scaler/Scaler';
-import SafeArea from './SafeArea/SafeArea';
-import WidgetsRenderer from './WidgetsRenderer/WidgetsRenderer';
-import profileButtonTemplate from '../templates/profileButtonTemplate.json';
-import { InjectAuthOperations } from '../../store/redux/auth/authOperations';
+import Scaler from '../Scaler/Scaler';
+import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import likeTemplate from '../../templates/likeTemplate.json';
+import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 
-const ProfileButton = (props) => {
+const Like = (props) => {
   const { auth, onShowLogin } = props;
   const [widgets, setWidgets] = useState(null);
+  const [likeCount, setLikeCount] = useState(-1);
 
   const actions = useMemo(
     () => ({
       click: () => () => {
-        if (auth.uid) {
-          // onShowProfile();
-        } else {
-          onShowLogin(true);
-        }
+        setLikeCount(likeCount + 1);
+        // call service method
       }
     }),
-    [auth]
+    [likeCount]
   );
 
   const escapeRegExp = (str) => {
@@ -31,34 +28,28 @@ const ProfileButton = (props) => {
   };
 
   useEffect(() => {
-    let username = 'Login';
-    if (auth.uid) {
-      username = auth.email;
-    }
+    // likeCount = 221; // assign like count
 
     let editedWidgets = replaceAll(
-      JSON.stringify(profileButtonTemplate.widgets),
-      '{profileButton_user_name}',
-      username
+      JSON.stringify(likeTemplate.widgets),
+      '{like_count}',
+      likeCount
     );
 
     editedWidgets = JSON.parse(editedWidgets);
-
     setWidgets(editedWidgets);
-  }, [auth]);
+  }, [likeCount]);
 
   return (
     widgets && (
-      <SafeArea>
-        <Scaler>
-          <WidgetsRenderer data={widgets} actions={actions} />
-        </Scaler>
-      </SafeArea>
+      <Scaler>
+        <WidgetsRenderer data={widgets} actions={actions} />
+      </Scaler>
     )
   );
 };
 
-export default InjectAuthOperations(ProfileButton, {
+export default InjectAuthOperations(Like, {
   selectActions: ({ onShowLogin }) => ({
     onShowLogin
   }),
