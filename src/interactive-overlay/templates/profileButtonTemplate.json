@@ -34,11 +34,13 @@
           "params": []
         },
         "cssProps": {
-          "top": "23px",
+          "top": "24px",
           "left": "920px",
           "max-width": "24px",
           "max-height": "24px",
-          "cursor": "pointer"
+          "cursor": "pointer",
+          "border-radius": "50%",
+          "border": "1px solid #494949"
         },
         "attributes": {
           "src": "/images/user_avatar.svg"
