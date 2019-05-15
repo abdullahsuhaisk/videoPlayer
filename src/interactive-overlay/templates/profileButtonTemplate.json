@@ -1,5 +1,4 @@
 {
-  "showInModal": false,
   "widgets": [
     {
       "type": "span",
@@ -19,7 +18,10 @@
           "fontSize": "12px",
           "textAlign": "right",
           "color": "#FFF",
-          "cursor": "pointer"
+          "cursor": "pointer",
+          "whiteSpace": "nowrap",
+          "overflow": "hidden",
+          "textOverflow": "ellipsis"
         }
       }
     },

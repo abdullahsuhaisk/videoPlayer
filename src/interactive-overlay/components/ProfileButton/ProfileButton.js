@@ -1,48 +1,55 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useMemo, useEffect, useState } from 'react';
-import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import likeTemplate from '../../templates/likeTemplate.json';
+import profileButtonTemplate from '../../templates/profileButtonTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
-const Like = (props) => {
+const ProfileButton = (props) => {
   const { auth, onShowLogin } = props;
   const [widgets, setWidgets] = useState(null);
-  const [likeCount, setLikeCount] = useState(-1);
 
   const actions = useMemo(
     () => ({
       click: () => () => {
-        setLikeCount(likeCount + 1);
-        // call service method
+        if (auth.uid) {
+          // onShowProfile();
+        } else {
+          onShowLogin(true);
+        }
       }
     }),
-    [likeCount]
+    [auth]
   );
 
   useEffect(() => {
-    // likeCount = 221; // assign like count
+    let username = 'Login';
+    if (auth.uid) {
+      username = auth.email;
+    }
 
     let editedWidgets = replaceAll(
-      JSON.stringify(likeTemplate.widgets),
-      '{like_count}',
-      likeCount
+      JSON.stringify(profileButtonTemplate.widgets),
+      '{profileButton_user_name}',
+      username
     );
 
     editedWidgets = JSON.parse(editedWidgets);
+
     setWidgets(editedWidgets);
-  }, [likeCount]);
+  }, [auth]);
 
   return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
-export default InjectAuthOperations(Like, {
+export default InjectAuthOperations(ProfileButton, {
   selectActions: ({ onShowLogin }) => ({
     onShowLogin
   }),
-  selectProps: ({ showLogin, auth }) => ({
+  selectProps: ({ showLogin, auth, loginStatus, loginInfo }) => ({
     showLogin,
-    auth
+    auth,
+    loginStatus,
+    loginInfo
   })
 });

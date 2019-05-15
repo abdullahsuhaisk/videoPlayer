@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import loginTemplate from '../../templates/loginTemplate.json';
-import Scaler from '../Scaler/Scaler';
-import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import ModalDialog from '../ModalDialog/ModalDialog';
 import ValidationError from '../Validation/ValidationError';
@@ -11,14 +9,12 @@ const LoginComponent = (props) => {
   const { widgets, actions, validationErrorMessage } = props;
 
   return (
-    <SafeArea>
-      <Scaler>
-        <WidgetsRenderer data={widgets} actions={actions} />
-        {validationErrorMessage && (
-          <ValidationError text={validationErrorMessage} />
-        )}
-      </Scaler>
-    </SafeArea>
+    <>
+      <WidgetsRenderer data={widgets} actions={actions} />
+      {validationErrorMessage && (
+        <ValidationError text={validationErrorMessage} />
+      )}
+    </>
   );
 };
 

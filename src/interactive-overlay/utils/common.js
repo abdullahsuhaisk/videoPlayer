@@ -28,4 +28,12 @@ const findTimeRange = (arr, target) => {
   return [min, max];
 };
 
-export { getCssProperties, findTimeRange };
+const escapeRegExp = (str) => {
+  // eslint-disable-next-line no-useless-escape
+  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+};
+const replaceAll = (str, find, replace) => {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+};
+
+export { getCssProperties, findTimeRange, escapeRegExp, replaceAll };

@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import registerTemplate from '../../templates/registerTemplate.json';
-import Scaler from '../Scaler/Scaler';
-import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import ValidationError from '../Validation/ValidationError';
 import ModalDialog from '../ModalDialog/ModalDialog';
@@ -11,14 +9,12 @@ const RegisterComponent = (props) => {
   const { widgets, actions, validationErrorMessage } = props;
 
   return (
-    <SafeArea>
-      <Scaler>
-        <WidgetsRenderer data={widgets} actions={actions} />
-        {validationErrorMessage && (
-          <ValidationError text={validationErrorMessage} />
-        )}
-      </Scaler>
-    </SafeArea>
+    <>
+      <WidgetsRenderer data={widgets} actions={actions} />
+      {validationErrorMessage && (
+        <ValidationError text={validationErrorMessage} />
+      )}
+    </>
   );
 };
 
