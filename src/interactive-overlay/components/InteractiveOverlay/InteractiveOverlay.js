@@ -14,6 +14,7 @@ import Register from '../Register/Register';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
+import Title from '../Title/Title';
 
 const playingOverlayFilter = {
   key: 'type',
@@ -49,6 +50,7 @@ const InteractiveOverlay = (props) => {
           <Favorite />
           <Share />
           <ProfileButton />
+          <Title />
           <Login />
           <Register />
           <ForgotPassword />

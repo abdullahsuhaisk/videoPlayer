@@ -1,0 +1,44 @@
+{
+  "showInModal": false,
+  "widgets": [
+    {
+      "type": "span",
+      "id": "title",
+      "settings": {
+        "text": "Zara",
+        "cssProps": {
+          "top": "15px",
+          "left": "50px",
+          "width": "400px",
+          "height": "100px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "56px",
+          "fontWeight": "bold",
+          "textAlign": "left",
+          "color": "#FFFC",
+          "overflow": "hidden",
+          "text-overflow": "ellipsis",
+          "white-space": "nowrap"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "description",
+      "settings": {
+        "text": "Spring - Summer 2019 Best Creation",
+        "cssProps": {
+          "top": "85px",
+          "left": "50px",
+          "width": "400px",
+          "height": "50px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "12px",
+          "textAlign": "left",
+          "color": "#FFFC",
+          "overflow": "hidden"
+        }
+      }
+    }
+  ]
+}
