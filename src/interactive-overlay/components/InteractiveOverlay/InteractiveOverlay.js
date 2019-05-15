@@ -8,6 +8,7 @@ import SafeArea from '../SafeArea/SafeArea';
 import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
+import Share from '../Share/Share';
 
 const playingOverlayFilter = {
   key: 'type',
@@ -40,6 +41,7 @@ const InteractiveOverlay = (props) => {
       <SafeArea>
         <Like />
         <Favorite />
+        <Share />
         {activePlayingOverlayIds.map((id) => {
           if (playing) {
             return <div key={id}>{id}</div>;

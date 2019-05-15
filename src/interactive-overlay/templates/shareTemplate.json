@@ -1,0 +1,47 @@
+{
+  "showInModal": false,
+  "widgets": [
+    {
+      "type": "img",
+      "id": "image",
+      "settings": {
+        "action": {
+          "name": "click",
+          "params": []
+        },
+        "cssProps": {
+          "top": "22px",
+          "left": "900px",
+          "max-width": "24px",
+          "max-height": "24px",
+          "cursor": "pointer"
+        },
+        "attributes": {
+          "src": "/images/share.svg"
+        }
+      }
+    },
+    {
+      "type": "span",
+      "id": "text",
+      "settings": {
+        "text": "{share_count}",
+        "action": {
+          "name": "click",
+          "params": []
+        },
+        "cssProps": {
+          "top": "30px",
+          "left": "925px",
+          "width": "20px",
+          "height": "10px",
+          "fontFamily": "Source Sans Pro",
+          "fontSize": "12px",
+          "textAlign": "left",
+          "color": "#FFF",
+          "cursor": "pointer"
+        }
+      }
+    }
+  ]
+}
