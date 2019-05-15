@@ -1,48 +1,55 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useMemo, useEffect, useState } from 'react';
-import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import favoriteTemplate from '../../templates/favoriteTemplate.json';
+import profileButtonTemplate from '../../templates/profileButtonTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
-const Favorite = (props) => {
+const ProfileButton = (props) => {
   const { auth, onShowLogin } = props;
   const [widgets, setWidgets] = useState(null);
-  const [favoriteCount, setFavoriteCount] = useState(-1);
 
   const actions = useMemo(
     () => ({
       click: () => () => {
-        setFavoriteCount(favoriteCount + 1);
-        // call service method
+        if (auth.uid) {
+          // onShowProfile();
+        } else {
+          onShowLogin(true);
+        }
       }
     }),
-    [favoriteCount]
+    [auth]
   );
 
   useEffect(() => {
-    // favoriteCount = 221; // assign favorite count
+    let username = 'Login';
+    if (auth.uid) {
+      username = auth.email;
+    }
 
     let editedWidgets = replaceAll(
-      JSON.stringify(favoriteTemplate.widgets),
-      '{favorite_count}',
-      favoriteCount
+      JSON.stringify(profileButtonTemplate.widgets),
+      '{profileButton_user_name}',
+      username
     );
 
     editedWidgets = JSON.parse(editedWidgets);
+
     setWidgets(editedWidgets);
-  }, [favoriteCount]);
+  }, [auth]);
 
   return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
-export default InjectAuthOperations(Favorite, {
+export default InjectAuthOperations(ProfileButton, {
   selectActions: ({ onShowLogin }) => ({
     onShowLogin
   }),
-  selectProps: ({ showLogin, auth }) => ({
+  selectProps: ({ showLogin, auth, loginStatus, loginInfo }) => ({
     showLogin,
-    auth
+    auth,
+    loginStatus,
+    loginInfo
   })
 });

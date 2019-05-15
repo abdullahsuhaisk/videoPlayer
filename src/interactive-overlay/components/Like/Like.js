@@ -4,6 +4,7 @@ import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import likeTemplate from '../../templates/likeTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import { replaceAll } from '../../utils/common';
 
 const Like = (props) => {
   const { auth, onShowLogin } = props;
@@ -20,13 +21,6 @@ const Like = (props) => {
     [likeCount]
   );
 
-  const escapeRegExp = (str) => {
-    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
-  };
-  const replaceAll = (str, find, replace) => {
-    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  };
-
   useEffect(() => {
     // likeCount = 221; // assign like count
 
@@ -40,13 +34,7 @@ const Like = (props) => {
     setWidgets(editedWidgets);
   }, [likeCount]);
 
-  return (
-    widgets && (
-      <Scaler>
-        <WidgetsRenderer data={widgets} actions={actions} />
-      </Scaler>
-    )
-  );
+  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
 export default InjectAuthOperations(Like, {

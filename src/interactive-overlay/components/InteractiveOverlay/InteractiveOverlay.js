@@ -7,6 +7,11 @@ import useTimeRange from '../../hooks/useTimeRange';
 import SafeArea from '../SafeArea/SafeArea';
 import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Like from '../Like/Like';
+import ProfileButton from '../ProfileButton/ProfileButton';
+import Scaler from '../Scaler/Scaler';
+import Login from '../Login/Login';
+import Register from '../Register/Register';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 
@@ -39,16 +44,22 @@ const InteractiveOverlay = (props) => {
       className="vibuy--interactive-overlay"
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
-        <Like />
-        <Favorite />
-        <Share />
-        {activePlayingOverlayIds.map((id) => {
-          if (playing) {
-            return <div key={id}>{id}</div>;
-          }
+        <Scaler>
+          <Like />
+          <Favorite />
+          <Share />
+          <ProfileButton />
+          <Login />
+          <Register />
+          <ForgotPassword />
+          {activePlayingOverlayIds.map((id) => {
+            if (playing) {
+              return <div key={id}>{id}</div>;
+            }
 
-          return null;
-        })}
+            return null;
+          })}
+        </Scaler>
       </SafeArea>
     </div>
   );

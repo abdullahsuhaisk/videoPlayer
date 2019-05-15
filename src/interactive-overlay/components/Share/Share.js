@@ -4,6 +4,7 @@ import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import shareTemplate from '../../templates/shareTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import { replaceAll } from '../../utils/common';
 
 const Share = (props) => {
   const { auth, onShowLogin } = props;
@@ -20,13 +21,6 @@ const Share = (props) => {
     [shareCount]
   );
 
-  const escapeRegExp = (str) => {
-    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
-  };
-  const replaceAll = (str, find, replace) => {
-    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  };
-
   useEffect(() => {
     // shareCount = 221; // assign share count
 
@@ -40,13 +34,7 @@ const Share = (props) => {
     setWidgets(editedWidgets);
   }, [shareCount]);
 
-  return (
-    widgets && (
-      <Scaler>
-        <WidgetsRenderer data={widgets} actions={actions} />
-      </Scaler>
-    )
-  );
+  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
 export default InjectAuthOperations(Share, {

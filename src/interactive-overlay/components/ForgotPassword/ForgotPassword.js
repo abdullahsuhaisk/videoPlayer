@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import forgotPasswordTemplate from '../../templates/forgotPasswordTemplate.json';
-import Scaler from '../Scaler/Scaler';
-import SafeArea from '../SafeArea/SafeArea';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import ModalDialog from '../ModalDialog/ModalDialog';
 
@@ -10,11 +8,9 @@ const ForgotPasswordComponent = (props) => {
   const { widgets, actions } = props;
 
   return (
-    <SafeArea>
-      <Scaler>
-        <WidgetsRenderer data={widgets} actions={actions} />
-      </Scaler>
-    </SafeArea>
+    <>
+      <WidgetsRenderer data={widgets} actions={actions} />
+    </>
   );
 };
 
