@@ -32,6 +32,9 @@ const ForgotPassword = (props) => {
       toggleLogin: () => () => {
         onShowForgotPassword(false);
         onShowLogin(true);
+      },
+      toggleForgotPassword: () => () => {
+        onShowForgotPassword(false);
       }
     }),
     []

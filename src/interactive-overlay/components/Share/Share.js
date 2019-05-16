@@ -2,7 +2,6 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import shareTemplate from '../../templates/shareTemplate.json';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
 const Share = (props) => {
@@ -35,12 +34,4 @@ const Share = (props) => {
   return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
-export default InjectAuthOperations(Share, {
-  selectActions: ({ onShowLogin }) => ({
-    onShowLogin
-  }),
-  selectProps: ({ showLogin, auth }) => ({
-    showLogin,
-    auth
-  })
-});
+export default Share;

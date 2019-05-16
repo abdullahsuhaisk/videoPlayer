@@ -2,7 +2,6 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import favoriteTemplate from '../../templates/favoriteTemplate.json';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
 const Favorite = (props) => {
@@ -35,12 +34,4 @@ const Favorite = (props) => {
   return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
-export default InjectAuthOperations(Favorite, {
-  selectActions: ({ onShowLogin }) => ({
-    onShowLogin
-  }),
-  selectProps: ({ showLogin, auth }) => ({
-    showLogin,
-    auth
-  })
-});
+export default Favorite;
