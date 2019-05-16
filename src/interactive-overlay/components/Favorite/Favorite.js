@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useMemo, useEffect, useState } from 'react';
-import Scaler from '../Scaler/Scaler';
 import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import favoriteTemplate from '../../templates/favoriteTemplate.json';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
 import { replaceAll } from '../../utils/common';
 
 const Favorite = (props) => {
-  const { auth, onShowLogin } = props;
   const [widgets, setWidgets] = useState(null);
   const [favoriteCount, setFavoriteCount] = useState(-1);
 
@@ -37,12 +34,4 @@ const Favorite = (props) => {
   return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
 };
 
-export default InjectAuthOperations(Favorite, {
-  selectActions: ({ onShowLogin }) => ({
-    onShowLogin
-  }),
-  selectProps: ({ showLogin, auth }) => ({
-    showLogin,
-    auth
-  })
-});
+export default Favorite;

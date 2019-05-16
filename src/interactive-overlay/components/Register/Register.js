@@ -47,6 +47,9 @@ const Register = (props) => {
         onShowRegister(false);
         onShowLogin(true);
       },
+      toggleRegister: () => () => {
+        onShowRegister(false);
+      },
       onFullNameChange: () => (e) => {
         setFullName(e.target.value);
       },
