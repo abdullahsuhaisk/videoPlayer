@@ -16,6 +16,7 @@ import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import Title from '../Title/Title';
 import Tabs from '../Tabs/Tabs';
+import ProductCart from '../ProductCart/ProductCart';
 
 const playingOverlayFilter = {
   key: 'type',
@@ -53,6 +54,7 @@ const InteractiveOverlay = (props) => {
           <Share />
           <ProfileButton />
           <Title />
+          <ProductCart />
           <Login />
           <Register />
           <ForgotPassword />
