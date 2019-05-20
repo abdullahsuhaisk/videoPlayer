@@ -16,7 +16,7 @@ import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import Title from '../Title/Title';
 import Tabs from '../Tabs/Tabs';
-import ProductCart from '../ProductCart/ProductCart';
+import ProductCard from '../ProductCard/ProductCard';
 
 const playingOverlayFilter = {
   key: 'type',
@@ -48,13 +48,13 @@ const InteractiveOverlay = (props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
+          <Title />
           <Tabs />
           <Like />
           <Favorite />
           <Share />
           <ProfileButton />
-          <Title />
-          <ProductCart />
+          <ProductCard />
           <Login />
           <Register />
           <ForgotPassword />
