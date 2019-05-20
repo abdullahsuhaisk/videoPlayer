@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import tabTemplate from '../../templates/productsTabTemplate.json';
 import 'react-tabs/style/react-tabs.css';
 import './tabs.scss';
+import SliderComponent from '../Slider/Slider';
 
 const TabSection = (props) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
@@ -57,7 +57,8 @@ const TabSection = (props) => {
         {tabTemplate.tabs.map((item) => {
           return (
             <TabPanel key={`panel-${item.id}`}>
-              <WidgetsRenderer data={item.tabPanel} />
+              <SliderComponent />
+              {/* <WidgetsRenderer data={item.tabPanel} /> */}
             </TabPanel>
           );
         })}
