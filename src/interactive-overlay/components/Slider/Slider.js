@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
-import tabTemplate from '../../templates/productsTabTemplate.json';
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
 import './slider.scss';
 
-const SampleNextArrow = (props) => {
+const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -17,7 +15,7 @@ const SampleNextArrow = (props) => {
       style={{
         ...style,
         display: 'block',
-        background: 'red',
+        background: 'url("/images/sign-right.svg") no-repeat center /contain',
         right: '-100px',
         top: '30px',
         zIndex: 1,
@@ -29,7 +27,7 @@ const SampleNextArrow = (props) => {
   );
 };
 
-const SamplePrevArrow = (props) => {
+const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
@@ -39,7 +37,8 @@ const SamplePrevArrow = (props) => {
       style={{
         ...style,
         display: 'block',
-        background: 'green',
+        background: 'url("/images/sign-right.svg") no-repeat center /contain',
+        transform: 'scaleX(-1)',
         right: '-100px',
         top: '130px',
         zIndex: 1,
@@ -59,8 +58,8 @@ const SliderComponent = (props) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     adaptiveHeight: false,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
 
   return (

@@ -102,10 +102,14 @@ h3 {
   left: unset;
 }
 .slick-prev::before {
-  // content: none
+  content: none;
 }
 
 .slick-next {
   z-index: 1;
   right: unset;
+}
+
+.slick-next::before {
+  content: none;
 }

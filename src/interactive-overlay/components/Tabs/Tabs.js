@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
 import tabTemplate from '../../templates/productsTabTemplate.json';
 import 'react-tabs/style/react-tabs.css';
 import './tabs.scss';
