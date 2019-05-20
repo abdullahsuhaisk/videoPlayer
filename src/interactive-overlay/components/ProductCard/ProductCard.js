@@ -50,9 +50,10 @@ const Price = (props) => {
   const {
     priceSectionContainer,
     discountRateSpan,
-    discountRateDiv,
-    priceContainer,
+    discountRateContainer,
+    basePriceContainer,
     basePriceSpan,
+    currentPriceContainer,
     currentPriceSpan,
     onlyCurrentPriceSpan
   } = template.styles;
@@ -62,15 +63,15 @@ const Price = (props) => {
       basePrice &&
       discountRate && (
         <div style={priceSectionContainer}>
-          <div style={discountRateDiv}>
+          <div style={discountRateContainer}>
             <span style={discountRateSpan}>{discountRate}</span>
           </div>
 
-          <div style={priceContainer}>
-            <span style={basePriceSpan}>
-              <s>{basePrice}</s>
-            </span>
+          <div style={basePriceContainer}>
+            <span style={basePriceSpan}>{basePrice}</span>
+          </div>
 
+          <div style={currentPriceContainer}>
             <span style={currentPriceSpan}>{currentPrice}</span>
           </div>
         </div>
