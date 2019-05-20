@@ -54,7 +54,6 @@ const InteractiveOverlay = (props) => {
           <Favorite />
           <Share />
           <ProfileButton />
-          <ProductCard />
           <Login />
           <Register />
           <ForgotPassword />

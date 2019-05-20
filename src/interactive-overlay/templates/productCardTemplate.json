@@ -1,24 +1,11 @@
 {
   "styles": {
     "productContainer": {
-      "position": "absolute",
-      "top": "220px",
-      "left": "60px",
       "width": "150px",
       "height": "315px",
       "borderRadius": "5px",
       "backgroundColor": "#F4F4F8",
-      "pointerEvents": "auto"
-    },
-
-    "productContainer2": {
-      "position": "absolute",
-      "top": "220px",
-      "left": "240px",
-      "width": "150px",
-      "height": "315px",
-      "borderRadius": "5px",
-      "backgroundColor": "#F4F4F8",
+      "margin": "auto",
       "pointerEvents": "auto"
     },
 
@@ -42,8 +29,7 @@
       "justifyContent": "center",
       "borderRadius": "5px",
       "background": "white",
-      "cursor": "default",
-      "padding": "10px"
+      "cursor": "default"
     },
 
     "productImage": {

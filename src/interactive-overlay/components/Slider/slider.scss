@@ -90,12 +90,9 @@ h3 {
 .slick-vertical .slick-slide {
   height: 180px;
 }
-.slick-arrow {
-  background-color: gray;
-  /* color: black; */
-}
+
 .slick-arrow:hover {
-  background-color: grey;
+  opacity: 1;
 }
 .slick-prev {
   z-index: 1;
@@ -112,4 +109,8 @@ h3 {
 
 .slick-next::before {
   content: none;
+}
+
+.slick-disabled {
+  opacity: 0.4;
 }

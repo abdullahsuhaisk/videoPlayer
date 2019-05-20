@@ -3,9 +3,10 @@ import React from 'react';
 import template from '../../templates/productCardTemplate.json';
 
 const ProductCard = (props) => {
+  const { basePrice, discountRate, currentPrice } = props;
+
   const {
     productContainer,
-    productContainer2,
     topContainer,
     productImageContainer,
     productImage,
@@ -30,27 +31,10 @@ const ProductCard = (props) => {
         <div style={bottomContainer}>
           <span style={brand}>Valentino</span>
           <span style={model}>Turtleneck Sweater</span>
-          <Price currentPrice="74.98$" />
-          <span style={inStock}>In Stock</span>
-          <hr style={hrLine} />
-          <span style={details}>Details</span>
-        </div>
-      </div>
-
-      <div style={productContainer2}>
-        <div style={topContainer}>
-          <div style={productImageContainer}>
-            <img src="/images/3.jpg" alt="" style={productImage} />
-          </div>
-          <span style={addToWishList}>Add to Wish List</span>
-        </div>
-        <div style={bottomContainer}>
-          <span style={brand}>Valentino</span>
-          <span style={model}>Turtleneck Sweater</span>
           <Price
-            basePrice="1149.95$"
-            discountRate="%20"
-            currentPrice="774.98$"
+            basePrice={basePrice}
+            discountRate={discountRate}
+            currentPrice={currentPrice}
           />
           <span style={inStock}>In Stock</span>
           <hr style={hrLine} />
