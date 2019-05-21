@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import loginTemplate from '../../templates/loginTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import useWebFont from '../../hooks/useWebFont';
 
 const StyledLoginComponent = styled.div`
   ${loginTemplate['vibuy--login-component'].styles}
@@ -67,6 +68,8 @@ const Login = (props) => {
   if (!showLogin || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  useWebFont(loginTemplate);
 
   const loginError = loginInfo.errorMessage;
 
