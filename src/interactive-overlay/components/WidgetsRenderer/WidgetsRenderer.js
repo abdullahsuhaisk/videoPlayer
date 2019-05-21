@@ -1,60 +1,52 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import WebFont from 'webfontloader';
-import { parseJson } from '../../parseStyles';
+import { parseJson } from '../../utils/parseStyles';
 
 const WidgetsRenderer = (props) => {
   const { data, actions } = props;
-  const [widgets, setWidgets] = useState(null);
+  const widgets = useMemo(() => parseJson(data), []);
+  // const [widgets, setWidgets] = useState(parseJson(data));
 
   useEffect(() => {
-    const widgetsData = parseJson(data);
-    setWidgets(widgetsData);
-  }, [data]);
+    widgets.forEach(({ cssProps }) => {
+      const { fontFamily, bold, italic } = cssProps;
 
-  useEffect(() => {
-    if (widgets) {
-      widgets.forEach(({ cssProps }) => {
-        const { fontFamily, bold, italic } = cssProps;
-
-        if (fontFamily) {
-          WebFont.load({
-            google: {
-              families: [
-                `${fontFamily}:400,${bold ? 'b' : ''}${italic ? 'i' : ''}`,
-                'sans-serif'
-              ]
-            }
-          });
-        }
-      });
-    }
-  }, [widgets]);
+      if (fontFamily) {
+        WebFont.load({
+          google: {
+            families: [
+              `${fontFamily}:400,${bold ? 'b' : ''}${italic ? 'i' : ''}`,
+              'sans-serif'
+            ]
+          }
+        });
+      }
+    });
+  }, []);
 
   return (
-    widgets && (
-      <>
-        {widgets.map(({ type, Component, action, text, attributes }, key) => {
-          let handler;
+    <>
+      {widgets.map(({ type, Component, action, text, attributes }, key) => {
+        let handler;
 
-          if (action && typeof actions[action.name] === 'function') {
-            handler = actions[action.name](...action.params);
-          } else {
-            handler = () => {};
-          }
+        if (action && typeof actions[action.name] === 'function') {
+          handler = actions[action.name](...action.params);
+        } else {
+          handler = () => {};
+        }
 
-          if (type === 'input') {
-            return <Component onChange={handler} key={key} {...attributes} />;
-          }
+        if (type === 'input') {
+          return <Component onChange={handler} key={key} {...attributes} />;
+        }
 
-          return (
-            <Component onClick={handler} key={key} {...attributes}>
-              {text}
-            </Component>
-          );
-        })}
-      </>
-    )
+        return (
+          <Component onClick={handler} key={key} {...attributes}>
+            {text}
+          </Component>
+        );
+      })}
+    </>
   );
 };
 

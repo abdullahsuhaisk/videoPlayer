@@ -1,295 +1,35 @@
 {
-  "showInModal": false,
-  "widgets": [
-    {
-      "type": "div",
-      "id": "square",
-      "settings": {
-        "cssProps": {
-          "top": "0px",
-          "left": "625px",
-          "width": "375px",
-          "height": "563px",
-          "backgroundColor": "#FFF",
-          "box-shadow": "-24px 0px 42px -12px rgba(0,0,0,0.75)"
-        }
-      }
-    },
-    {
-      "type": "span",
-      "id": "text",
-      "settings": {
-        "text": "×",
-        "action": {
-          "name": "toggleLogin",
-          "params": []
-        },
-        "cssProps": {
-          "top": "15px",
-          "left": "645px",
-          "width": "20px",
-          "height": "20px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "24px",
-          "color": "#0008",
-          "cursor": "pointer"
-        }
-      }
-    },
-    {
-      "type": "img",
-      "id": "image",
-      "settings": {
-        "cssProps": {
-          "top": "30px",
-          "left": "710px",
-          "max-width": "200px",
-          "max-height": "140px"
-        },
-        "attributes": {
-          "src": "/images/login_image.svg"
-        }
-      }
-    },
-    {
-      "type": "input",
-      "id": "email",
-      "settings": {
-        "cssProps": {
-          "top": "185px",
-          "left": "670px",
-          "width": "280px",
-          "height": "25px",
-          "fontSize": "14px",
-          "fontFamily": "Source Sans Pro",
-          "color": "#0B2443CC",
-          "backgroundColor": "#0000",
-          "border": "0px solid #0B2443AA",
-          "borderWidth": "0 0 1px 0",
-          "placeholderColor": "#0B244388",
-          "outline": 0
-        },
-        "attributes": {
-          "type": "text",
-          "placeholder": "Email",
-          "className": ["input-style"]
-        },
-        "action": {
-          "name": "onEmailChange",
-          "params": []
-        }
-      }
-    },
-    {
-      "type": "input",
-      "id": "password",
-      "settings": {
-        "cssProps": {
-          "top": "237px",
-          "left": "670px",
-          "width": "280px",
-          "height": "25px",
-          "fontSize": "14px",
-          "fontFamily": "Source Sans Pro",
-          "color": "#0B2443CC",
-          "backgroundColor": "#0000",
-          "border": "0px solid #0B2443AA",
-          "borderWidth": "0 0 1px 0",
-          "placeholderColor": "#0B244388",
-          "outline": 0
-        },
-        "attributes": {
-          "type": "password",
-          "placeholder": "Password",
-          "className": ["input-style"]
-        },
-        "action": {
-          "name": "onPasswordChange",
-          "params": []
-        }
-      }
-    },
-    {
-      "type": "button",
-      "id": "button",
-      "settings": {
-        "text": "Login",
-        "cssProps": {
-          "top": "308px",
-          "left": "710px",
-          "width": "200px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "font-size": "14px",
-          "color": {
-            "default": "#FFF",
-            "hover": "#00acd8"
-          },
-          "background-color": {
-            "default": "#00acd8",
-            "hover": "#FFF"
-          },
-          "border": {
-            "default": "1px solid #FFF",
-            "hover": "1px solid #00acd8"
-          },
-          "borderRadius": "25px",
-          "textAlign": "center",
-          "cursor": "pointer",
-          "transition": "all .2s",
-          "outline": 0
-        },
-        "action": {
-          "name": "login",
-          "params": []
-        },
-        "attributes": {
-          "className": ["overlayButton"]
-        }
-      }
-    },
-    {
-      "type": "div",
-      "id": "square",
-      "settings": {
-        "cssProps": {
-          "top": "379px",
-          "left": "670px",
-          "width": "90px",
-          "height": "1px",
-          "backgroundColor": "#0B2443AA"
-        }
-      }
-    },
-    {
-      "type": "span",
-      "id": "text",
-      "settings": {
-        "text": "or log in with",
-        "cssProps": {
-          "top": "374px",
-          "left": "776px",
-          "width": "195px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "color": "#0B2443"
-        }
-      }
-    },
-    {
-      "type": "div",
-      "id": "square",
-      "settings": {
-        "cssProps": {
-          "top": "379px",
-          "left": "860px",
-          "width": "90px",
-          "height": "1px",
-          "backgroundColor": "#0B2443AA"
-        }
-      }
-    },
-    {
-      "type": "img",
-      "id": "image",
-      "settings": {
-        "cssProps": {
-          "top": "395px",
-          "left": "770px",
-          "max-width": "20px",
-          "max-height": "20px",
-          "cursor": "pointer"
-        },
-        "attributes": {
-          "src": "/images/google_blue.png"
-        },
-        "action": {
-          "name": "loginWithGoogle",
-          "params": []
-        }
-      }
-    },
-    {
-      "type": "img",
-      "id": "image",
-      "settings": {
-        "cssProps": {
-          "top": "395px",
-          "left": "830px",
-          "max-width": "20px",
-          "max-height": "20px",
-          "cursor": "pointer"
-        },
-        "attributes": {
-          "src": "/images/facebook_blue.png"
-        },
-        "action": {
-          "name": "loginWithFacebook",
-          "params": []
-        }
-      }
-    },
-    {
-      "type": "span",
-      "id": "span",
-      "settings": {
-        "text": "I forgot my password!",
-        "action": {
-          "name": "toggleForgotPassword",
-          "params": []
-        },
-        "cssProps": {
-          "top": "465px",
-          "left": "755px",
-          "width": "195px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "textDecoration": "underline",
-          "color": "#0B2443",
-          "cursor": "pointer"
-        }
-      }
-    },
-    {
-      "type": "button",
-      "id": "button",
-      "settings": {
-        "text": "Don't have an account? Create",
-        "action": {
-          "name": "toggleRegister",
-          "params": []
-        },
-        "cssProps": {
-          "top": "500px",
-          "left": "710px",
-          "width": "200px",
-          "height": "30px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "color": {
-            "default": "#0B2443",
-            "hover": "#FFF"
-          },
-          "background-color": {
-            "default": "#FFF0",
-            "hover": "#0B2443"
-          },
-          "border": {
-            "default": "1px solid #0B2443",
-            "hover": "1px solid #FFF"
-          },
-          "borderRadius": "25px",
-          "textAlign": "center",
-          "cursor": "pointer",
-          "transition": "all .2s",
-          "outline": 0
-        },
-        "attributes": {
-          "className": ["overlayButton"]
-        }
-      }
-    }
-  ]
+  "vibuy--login-component": {
+    "styles": "position: absolute; top: 0; left: 625px; width: 375px; height: 563px; background-color: #fff; box-shadow: -24px 0 42px -12px rgba(0, 0, 0, 0.75);"
+  },
+  "vibuy--login-close": {
+    "styles": "position: absolute; top: 15px; left: 20px; width: 20px; height: 20px; font-family: Source Sans Pro; font-size: 24px; color: #0008; cursor: pointer;"
+  },
+  "vibuy--login-image": {
+    "styles": "position: absolute; top: 30px; left: 85px; width: 200px; height: 110px; background: url(/images/login_image.svg) center / contain no-repeat;"
+  },
+  "vibuy--login-email": {
+    "styles": "position: absolute; top: 185px; left: 45px; width: 280px; height: 25px; font-family: Source Sans Pro; font-size: 14px; color: #0B2443CC; background-color: #0000; border: 0px solid #0B2443AA; border-width: 0 0 1px 0; &::placeholder {color: #0B244388}; outline: 0;"
+  },
+  "vibuy--login-password": {
+    "styles": "position: absolute; top: 237px; left: 45px; width: 280px; height: 25px; font-family: Source Sans Pro; font-size: 14px; color: #0B2443CC; background-color: #0000; border: 0px solid #0B2443AA; border-width: 0 0 1px 0; &::placeholder {color: #0B244388}; outline: 0;"
+  },
+  "vibuy--login": {
+    "styles": "&& { position: absolute; top: 308px; left: 85px; width: 200px; height: 30px; font-family: Source Sans Pro; font-size: 14px; color: #fff; background-color: #00acd8; border: 1px solid #fff; border-radius: 25px; text-align: center; cursor: pointer; transition: all .2s; outline: 0; &:hover { color: #00acd8; background-color: #FFF; border: 1px solid #00acd8; } };"
+  },
+  "vibuy--login-with": {
+    "styles": "position: absolute; top: 374px; left: 151px; width: 195px; height: 30px; font-family: Source Sans Pro; font-size: 12px; color: #0B2443;"
+  },
+  "vibuy--login-with-google": {
+    "styles": "position: absolute; top: 395px; left: 145px; width: 20px; height: 20px; background: url(/images/google_blue.png) center / contain no-repeat; cursor: pointer;"
+  },
+  "vibuy--login-with-facebook": {
+    "styles": "position: absolute; top: 395px; left: 205px; width: 20px; height: 20px; background: url(/images/facebook_blue.png) center / contain no-repeat; cursor: pointer;"
+  },
+  "vibuy--forgot-password": {
+    "styles": "position: absolute; top: 465px; left: 130px; width: 195px; height: 30px; font-family: Source Sans Pro; font-size: 12px; text-decoration: underline; color: #0B2443; cursor: pointer;"
+  },
+  "vibuy--create-account": {
+    "styles": "&& { position: absolute; top: 500px; left: 85px; width: 200px; height: 30px; font-family: Source Sans Pro; font-size: 12px; color: #0B2443; background-color: #FFF0; border: 1px solid #0B2443; border-radius: 25px; text-align: center; cursor: pointer; transition: all .2s; outline: 0; &:hover { color: #FFF; background-color: #0B2443; border: 1px solid #FFF; } };"
+  }
 }
