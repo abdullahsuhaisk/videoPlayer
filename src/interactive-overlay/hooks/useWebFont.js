@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { loadWebFont } from '../parseStyles';
+import { loadWebFont } from '../utils/parseStyles';
 
 const useWebFont = (template) => {
   useEffect(() => {

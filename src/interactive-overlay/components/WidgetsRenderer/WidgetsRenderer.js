@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useMemo } from 'react';
 import WebFont from 'webfontloader';
-import { parseJson } from '../../parseStyles';
+import { parseJson } from '../../utils/parseStyles';
 
 const WidgetsRenderer = (props) => {
   const { data, actions } = props;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
-import ImageGallery from './components/ImageGallery';
-import Circle from './components/Circle';
+import ImageGallery from '../components/ImageGallery';
+import Circle from '../components/Circle';
 
 const Widgets = {
   ImageGallery,
