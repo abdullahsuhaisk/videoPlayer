@@ -1,22 +1,54 @@
-import React, { useState, useMemo } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import React, { useState, useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import loginTemplate from '../../templates/loginTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import ModalDialog from '../ModalDialog/ModalDialog';
-import ValidationError from '../Validation/ValidationError';
 
-const LoginComponent = (props) => {
-  const { widgets, actions, validationErrorMessage } = props;
+const StyledLoginComponent = styled.div`
+  ${loginTemplate['vibuy--login-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
 
-  return (
-    <>
-      <WidgetsRenderer data={widgets} actions={actions} />
-      {validationErrorMessage && (
-        <ValidationError text={validationErrorMessage} />
-      )}
-    </>
-  );
-};
+const StyledCloseButton = styled.span`
+  ${loginTemplate['vibuy--login-close'].styles}
+`;
+
+const StyledImage = styled.div`
+  ${loginTemplate['vibuy--login-image'].styles}
+`;
+
+const StyledEmail = styled.input`
+  ${loginTemplate['vibuy--login-email'].styles}
+`;
+
+const StyledPassword = styled.input`
+  ${loginTemplate['vibuy--login-password'].styles}
+`;
+
+const StyledLogin = styled.button`
+  ${loginTemplate['vibuy--login'].styles}
+`;
+
+const StyledLoginWith = styled.span`
+  ${loginTemplate['vibuy--login-with'].styles}
+`;
+
+const StyledLoginWithGoogle = styled.div`
+  ${loginTemplate['vibuy--login-with-google'].styles}
+`;
+
+const StyledLoginWithFacebook = styled.div`
+  ${loginTemplate['vibuy--login-with-facebook'].styles}
+`;
+
+const StyledForgotPassword = styled.span`
+  ${loginTemplate['vibuy--forgot-password'].styles}
+`;
+
+const StyledCreateAccount = styled.button`
+  ${loginTemplate['vibuy--create-account'].styles}
+`;
 
 const Login = (props) => {
   const {
@@ -41,55 +73,68 @@ const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const actions = useMemo(
-    () => ({
-      toggleLogin: () => () => {
-        onShowLogin(!showLogin);
-      },
-      toggleRegister: () => () => {
-        onShowLogin(false);
-        onShowRegister(true);
-      },
-      toggleForgotPassword: () => () => {
-        onShowLogin(false);
-        onShowForgotPassword(true);
-      },
-      onEmailChange: () => (e) => {
-        setEmail(e.target.value);
-      },
-      onPasswordChange: () => (e) => {
-        setPassword(e.target.value);
-      },
-      login: () => async (e) => {
-        e.preventDefault();
-        await login({ email, password });
-      },
-      loginWithGoogle: () => (e) => {
-        e.preventDefault();
-        loginWithGoogle();
-      },
-      loginWithFacebook: () => (e) => {
-        e.preventDefault();
-        loginWithFacebook();
-      }
-    }),
-    [email, password]
+  const toggleLoginCb = useCallback(
+    (event) => {
+      event.preventDefault();
+      onShowLogin(!showLogin);
+    },
+    [showLogin]
   );
 
-  return loginTemplate.showInModal ? (
-    <ModalDialog onClose={() => onShowLogin(false)}>
-      <LoginComponent
-        widgets={loginTemplate.widgets}
-        actions={actions}
-        validationErrorMessage={loginError}
-      />
-    </ModalDialog>
-  ) : (
-    <LoginComponent
-      widgets={loginTemplate.widgets}
-      actions={actions}
-      validationErrorMessage={loginError}
-    />
+  const emailChangeCb = useCallback((event) => {
+    event.preventDefault();
+    setEmail(event.target.value);
+  }, []);
+
+  const passwordChangeCb = useCallback((event) => {
+    event.preventDefault();
+    setPassword(event.target.value);
+  }, []);
+
+  const loginCb = useCallback(async (event) => {
+    event.preventDefault();
+    await login({ email, password });
+  }, []);
+
+  const loginWithGoogleCb = useCallback((event) => {
+    event.preventDefault();
+    loginWithGoogle();
+  }, []);
+
+  const loginWithFacebookCb = useCallback((event) => {
+    event.preventDefault();
+    loginWithFacebook();
+  }, []);
+
+  const toggleForgotPasswordCb = useCallback((event) => {
+    event.preventDefault();
+    onShowLogin(false);
+    onShowForgotPassword(true);
+  }, []);
+
+  const toggleRegisterCb = useCallback((event) => {
+    event.preventDefault();
+    onShowLogin(false);
+    onShowRegister(true);
+  }, []);
+
+  return (
+    <StyledLoginComponent>
+      <StyledCloseButton onClick={toggleLoginCb}>x</StyledCloseButton>
+      <StyledImage />
+      <StyledEmail placeholder="Email" onChange={emailChangeCb} />
+      <StyledPassword placeholder="Password" onChange={passwordChangeCb} />
+      <StyledLogin onClick={loginCb}>Login</StyledLogin>
+      <StyledLoginWith>or log in with</StyledLoginWith>
+      <StyledLoginWithGoogle onClick={loginWithGoogleCb} />
+      <StyledLoginWithFacebook onClick={loginWithFacebookCb} />
+      <StyledForgotPassword onClick={toggleForgotPasswordCb}>
+        I forgot my password!
+      </StyledForgotPassword>
+      <StyledCreateAccount onClick={toggleRegisterCb}>
+        Do not have an account? <b>Create</b>
+      </StyledCreateAccount>
+    </StyledLoginComponent>
   );
 };
 
