@@ -1,47 +1,11 @@
 {
-  "showInModal": false,
-  "widgets": [
-    {
-      "type": "img",
-      "id": "image",
-      "settings": {
-        "action": {
-          "name": "click",
-          "params": []
-        },
-        "cssProps": {
-          "top": "125px",
-          "left": "800px",
-          "max-width": "18px",
-          "max-height": "18px",
-          "cursor": "pointer"
-        },
-        "attributes": {
-          "src": "/images/like.svg"
-        }
-      }
-    },
-    {
-      "type": "span",
-      "id": "text",
-      "settings": {
-        "text": "{like_count}",
-        "action": {
-          "name": "click",
-          "params": []
-        },
-        "cssProps": {
-          "top": "130px",
-          "left": "825px",
-          "width": "20px",
-          "height": "10px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "textAlign": "left",
-          "color": "#FFF",
-          "cursor": "pointer"
-        }
-      }
-    }
-  ]
+  "vibuy--like-component": {
+    "styles": "position: absolute; top: 142px; left: 800px; cursor: pointer;"
+  },
+  "vibuy--like-icon": {
+    "styles": "background: url(/images/like.svg) center / cover no-repeat; display: inline-block; width: 18px; height: 18px;"
+  },
+  "vibuy--like-text": {
+    "styles": "font-family: Source Sans Pro; font-size: 12px; text-align: left; color: #FFF; position: absolute; top: 5px; left: 25px;"
+  }
 }

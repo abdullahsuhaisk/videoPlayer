@@ -1,37 +1,38 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useMemo, useEffect, useState } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import React, { useState, useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import likeTemplate from '../../templates/likeTemplate.json';
-import { replaceAll } from '../../utils/common';
+import useWebFont from '../../hooks/useWebFont';
+
+const StyledContainer = styled.div`
+  ${likeTemplate['vibuy--like-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
+
+const StyledIcon = styled.div`
+  ${likeTemplate['vibuy--like-icon'].styles}
+`;
+
+const StyledText = styled.span`
+  ${likeTemplate['vibuy--like-text'].styles}
+`;
 
 const Like = (props) => {
-  const [widgets, setWidgets] = useState(null);
-  const [likeCount, setLikeCount] = useState(-1);
+  const [likeCount, setLikeCount] = useState(0);
 
-  const actions = useMemo(
-    () => ({
-      click: () => () => {
-        setLikeCount(likeCount + 1);
-        // call service method
-      }
-    }),
-    [likeCount]
-  );
-
-  useEffect(() => {
-    // likeCount = 221; // assign like count
-
-    let editedWidgets = replaceAll(
-      JSON.stringify(likeTemplate.widgets),
-      '{like_count}',
-      likeCount
-    );
-
-    editedWidgets = JSON.parse(editedWidgets);
-    setWidgets(editedWidgets);
+  const handleClick = useCallback(() => {
+    setLikeCount(likeCount + 1);
   }, [likeCount]);
 
-  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
+  useWebFont(likeTemplate);
+
+  return (
+    <StyledContainer className="vibuy--like-component" onClick={handleClick}>
+      <StyledIcon className="vibuy--like-icon" />
+      <StyledText className="vibuy--like-text">{likeCount}</StyledText>
+    </StyledContainer>
+  );
 };
 
 export default Like;
