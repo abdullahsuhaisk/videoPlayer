@@ -1,37 +1,38 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useMemo, useEffect, useState } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import React, { useState, useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import shareTemplate from '../../templates/shareTemplate.json';
-import { replaceAll } from '../../utils/common';
+import useWebFont from '../../hooks/useWebFont';
+
+const StyledContainer = styled.div`
+  ${shareTemplate['vibuy--share-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
+
+const StyledIcon = styled.div`
+  ${shareTemplate['vibuy--share-icon'].styles}
+`;
+
+const StyledText = styled.span`
+  ${shareTemplate['vibuy--share-text'].styles}
+`;
 
 const Share = (props) => {
-  const [widgets, setWidgets] = useState(null);
-  const [shareCount, setShareCount] = useState(-1);
+  const [shareCount, setShareCount] = useState(0);
 
-  const actions = useMemo(
-    () => ({
-      click: () => () => {
-        setShareCount(shareCount + 1);
-        // call service method
-      }
-    }),
-    [shareCount]
-  );
-
-  useEffect(() => {
-    // shareCount = 221; // assign share count
-
-    let editedWidgets = replaceAll(
-      JSON.stringify(shareTemplate.widgets),
-      '{share_count}',
-      shareCount
-    );
-
-    editedWidgets = JSON.parse(editedWidgets);
-    setWidgets(editedWidgets);
+  const handleClick = useCallback(() => {
+    setShareCount(shareCount + 1);
   }, [shareCount]);
 
-  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
+  useWebFont(shareTemplate);
+
+  return (
+    <StyledContainer onClick={handleClick}>
+      <StyledIcon />
+      <StyledText>{shareCount}</StyledText>
+    </StyledContainer>
+  );
 };
 
 export default Share;
