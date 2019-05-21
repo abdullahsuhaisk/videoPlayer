@@ -117,7 +117,7 @@
       "color": "#525153",
       "paddingLeft": "2px",
       "fontSize": "9px",
-      "text-decoration": "line-through"
+      "textDecoration": "line-through"
     },
 
     "currentPriceContainer": {
