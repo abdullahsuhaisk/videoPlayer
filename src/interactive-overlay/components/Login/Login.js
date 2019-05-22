@@ -94,10 +94,13 @@ const Login = (props) => {
     setPassword(event.target.value);
   }, []);
 
-  const loginCb = useCallback(async (event) => {
-    event.preventDefault();
-    await login({ email, password });
-  }, []);
+  const loginCb = useCallback(
+    async (event) => {
+      event.preventDefault();
+      await login({ email, password });
+    },
+    [email, password]
+  );
 
   const loginWithGoogleCb = useCallback((event) => {
     event.preventDefault();
@@ -126,7 +129,11 @@ const Login = (props) => {
       <StyledCloseButton onClick={toggleLoginCb}>x</StyledCloseButton>
       <StyledImage />
       <StyledEmail placeholder="Email" onChange={emailChangeCb} />
-      <StyledPassword placeholder="Password" onChange={passwordChangeCb} />
+      <StyledPassword
+        type="password"
+        placeholder="Password"
+        onChange={passwordChangeCb}
+      />
       <StyledLogin onClick={loginCb}>Login</StyledLogin>
       <StyledLoginWith>or log in with</StyledLoginWith>
       <StyledLoginWithGoogle onClick={loginWithGoogleCb} />

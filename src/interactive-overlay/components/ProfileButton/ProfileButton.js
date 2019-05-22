@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import profileButtonTemplate from '../../templates/profileButtonTemplate.json';
@@ -20,10 +19,9 @@ const StyledImage = styled.div`
   ${profileButtonTemplate['vibuy--profile-button-image'].styles}
 `;
 
-let username = 'Login';
-
 const ProfileButton = (props) => {
   const { auth, onShowLogin } = props;
+  const [username, setUsername] = useState('Login');
 
   const handleClick = useCallback(() => {
     if (auth.uid) {
@@ -35,9 +33,9 @@ const ProfileButton = (props) => {
 
   useEffect(() => {
     if (auth.uid) {
-      username = auth.email;
+      setUsername(auth.email);
     } else {
-      username = 'Login';
+      setUsername('Login');
     }
   }, [auth]);
 
