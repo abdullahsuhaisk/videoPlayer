@@ -14,8 +14,8 @@ const App = () => {
         type: 'video/mp4'
       }
     ],
-    title: 'Elephants Dream',
-    description: 'An example movie from The Orange Open Movie Project',
+    // title: 'Elephants Dream',
+    // description: 'An example movie from The Orange Open Movie Project',
     language: 'tr'
   };
 

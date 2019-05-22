@@ -12,6 +12,7 @@ const useWebFont = (template) => {
         let fontWeight = 'normal';
         let fontStyle = 'normal';
 
+        // TODO: fix font family
         for (let i = 0; i < rules.length; i += 1) {
           const rulePairs = rules[i].split(':');
 

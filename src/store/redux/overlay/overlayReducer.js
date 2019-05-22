@@ -18,15 +18,17 @@ const initialState = {
   },
   'overlay-4': {
     templateId: 12123,
+    widgetType: 'Like',
     type: 'playing',
-    in: 22.22,
-    out: 60
+    in: 0,
+    out: 653
   },
   'overlay-5': {
     templateId: 12123,
+    widgetType: 'Favorite',
     type: 'playing',
-    in: 45.55,
-    out: 95.15
+    in: 0,
+    out: 653
   }
 };
 

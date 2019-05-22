@@ -6,21 +6,24 @@ import {
 import useTimeRange from '../../hooks/useTimeRange';
 import SafeArea from '../SafeArea/SafeArea';
 import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
-import Like from '../Like/Like';
-import ProfileButton from '../ProfileButton/ProfileButton';
+// import ProfileButton from '../ProfileButton/ProfileButton';
 import Scaler from '../Scaler/Scaler';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import ForgotPassword from '../ForgotPassword/ForgotPassword';
-import Favorite from '../Favorite/Favorite';
-import Share from '../Share/Share';
-import Title from '../Title/Title';
-import Tabs from '../Tabs/Tabs';
-import ProductCard from '../ProductCard/ProductCard';
+// import Login from '../Login/Login';
+// import Register from '../Register/Register';
+// import ForgotPassword from '../ForgotPassword/ForgotPassword';
+// import Favorite from '../Favorite/Favorite';
+// import Share from '../Share/Share';
+// import Title from '../Title/Title';
+// import Tabs from '../Tabs/Tabs';
 
 const playingOverlayFilter = {
   key: 'type',
   value: overlayTypes.playing
+};
+
+const widgets = {
+  Like: React.lazy(() => import('../Like/Like')),
+  Favorite: React.lazy(() => import('../Favorite/Favorite'))
 };
 
 const InteractiveOverlay = (props) => {
@@ -48,7 +51,7 @@ const InteractiveOverlay = (props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <Title />
+          {/* <Title />
           <Tabs />
           <Like />
           <Favorite />
@@ -56,14 +59,25 @@ const InteractiveOverlay = (props) => {
           <ProfileButton />
           <Login />
           <Register />
-          <ForgotPassword />
-          {activePlayingOverlayIds.map((id) => {
-            if (playing) {
-              return <div key={id}>{id}</div>;
-            }
+          <ForgotPassword /> */}
+          {playing &&
+            activePlayingOverlayIds.map((id) => {
+              const { widgetType } = overlays[id];
 
-            return null;
-          })}
+              if (widgetType) {
+                const LazyComponent = widgets[widgetType];
+
+                return (
+                  <React.Suspense
+                    fallback={<div className="vibuy--component-loading" />}
+                    key={id}>
+                    <LazyComponent />
+                  </React.Suspense>
+                );
+              }
+
+              return <div key={id}>{id}</div>;
+            })}
         </Scaler>
       </SafeArea>
     </div>
