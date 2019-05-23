@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import loginTemplate from '../../templates/loginTemplate.json';
@@ -15,40 +16,32 @@ const StyledCloseButton = styled.span`
   ${loginTemplate['vibuy--login-close'].styles}
 `;
 
-const StyledImage = styled.div`
+const StyledLoginImage = styled.div`
   ${loginTemplate['vibuy--login-image'].styles}
 `;
 
-const StyledEmail = styled.input`
-  ${loginTemplate['vibuy--login-email'].styles}
+const StyledInputContainer = styled.div`
+  ${loginTemplate['vibuy--login-input-container'].styles}
 `;
 
-const StyledPassword = styled.input`
-  ${loginTemplate['vibuy--login-password'].styles}
+const StyledLoginButton = styled.button`
+  ${loginTemplate['vibuy--login-button'].styles}
 `;
 
-const StyledLogin = styled.button`
-  ${loginTemplate['vibuy--login'].styles}
+const StyledSocialMediaContainer = styled.div`
+  ${loginTemplate['vibuy--login-social-media-login-container'].styles}
 `;
 
-const StyledLoginWith = styled.span`
-  ${loginTemplate['vibuy--login-with'].styles}
-`;
-
-const StyledLoginWithGoogle = styled.div`
-  ${loginTemplate['vibuy--login-with-google'].styles}
-`;
-
-const StyledLoginWithFacebook = styled.div`
-  ${loginTemplate['vibuy--login-with-facebook'].styles}
+const StyledSocialMediaButtons = styled.div`
+  ${loginTemplate['vibuy--login-social-media-login-buttons'].styles}
 `;
 
 const StyledForgotPassword = styled.span`
-  ${loginTemplate['vibuy--forgot-password'].styles}
+  ${loginTemplate['vibuy--login-forgot-password'].styles}
 `;
 
-const StyledCreateAccount = styled.button`
-  ${loginTemplate['vibuy--create-account'].styles}
+const StyledRegisterButton = styled.button`
+  ${loginTemplate['vibuy--login-register-button'].styles}
 `;
 
 const Login = (props) => {
@@ -126,24 +119,40 @@ const Login = (props) => {
 
   return (
     <StyledLoginComponent>
-      <StyledCloseButton onClick={toggleLoginCb}>x</StyledCloseButton>
-      <StyledImage />
-      <StyledEmail placeholder="Email" onChange={emailChangeCb} />
-      <StyledPassword
-        type="password"
-        placeholder="Password"
-        onChange={passwordChangeCb}
-      />
-      <StyledLogin onClick={loginCb}>Login</StyledLogin>
-      <StyledLoginWith>or log in with</StyledLoginWith>
-      <StyledLoginWithGoogle onClick={loginWithGoogleCb} />
-      <StyledLoginWithFacebook onClick={loginWithFacebookCb} />
+      <StyledCloseButton onClick={toggleLoginCb}>&times;</StyledCloseButton>
+      <StyledLoginImage />
+      <StyledInputContainer>
+        <input type="email" placeholder="Email" onChange={emailChangeCb} />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={passwordChangeCb}
+        />
+      </StyledInputContainer>
+      <StyledLoginButton onClick={loginCb}>Login</StyledLoginButton>
+      <StyledSocialMediaContainer>
+        <span>or log in with</span>
+        <StyledSocialMediaButtons>
+          <div
+            className="login-google"
+            role="button"
+            tabIndex="-1"
+            onClick={loginWithGoogleCb}
+          />
+          <div
+            className="login-facebook"
+            role="button"
+            tabIndex="-1"
+            onClick={loginWithFacebookCb}
+          />
+        </StyledSocialMediaButtons>
+      </StyledSocialMediaContainer>
       <StyledForgotPassword onClick={toggleForgotPasswordCb}>
         I forgot my password!
       </StyledForgotPassword>
-      <StyledCreateAccount onClick={toggleRegisterCb}>
+      <StyledRegisterButton onClick={toggleRegisterCb}>
         Do not have an account? <b>Create</b>
-      </StyledCreateAccount>
+      </StyledRegisterButton>
     </StyledLoginComponent>
   );
 };
