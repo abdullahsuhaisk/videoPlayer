@@ -1,18 +1,36 @@
-import React, { useMemo } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import forgotPasswordTemplate from '../../templates/forgotPasswordTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import ModalDialog from '../ModalDialog/ModalDialog';
+import useWebFont from '../../hooks/useWebFont';
 
-const ForgotPasswordComponent = (props) => {
-  const { widgets, actions } = props;
+const StyledForgotPasswordComponent = styled.div`
+  ${forgotPasswordTemplate['vibuy--forgot-password-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
 
-  return (
-    <>
-      <WidgetsRenderer data={widgets} actions={actions} />
-    </>
-  );
-};
+const StyledCloseButton = styled.span`
+  ${forgotPasswordTemplate['vibuy--forgot-password-close'].styles}
+`;
+
+const StyledImage = styled.div`
+  ${forgotPasswordTemplate['vibuy--forgot-password-image'].styles}
+`;
+
+const StyledText = styled.span`
+  ${forgotPasswordTemplate['vibuy--forgot-password-text'].styles}
+`;
+
+const StyledInputContainer = styled.div`
+  ${forgotPasswordTemplate['vibuy--forgot-password-input-container'].styles}
+`;
+
+const StyledSendButton = styled.button`
+  ${forgotPasswordTemplate['vibuy--forgot-password-button'].styles}
+`;
 
 const ForgotPassword = (props) => {
   const {
@@ -27,31 +45,34 @@ const ForgotPassword = (props) => {
     return null;
   }
 
-  const actions = useMemo(
-    () => ({
-      toggleLogin: () => () => {
-        onShowForgotPassword(false);
-        onShowLogin(true);
-      },
-      toggleForgotPassword: () => () => {
-        onShowForgotPassword(false);
-      }
-    }),
-    []
-  );
+  useWebFont(forgotPasswordTemplate);
 
-  return forgotPasswordTemplate.showInModal ? (
-    <ModalDialog onClose={() => onShowForgotPassword(false)}>
-      <ForgotPasswordComponent
-        widgets={forgotPasswordTemplate.widgets}
-        actions={actions}
-      />
-    </ModalDialog>
-  ) : (
-    <ForgotPasswordComponent
-      widgets={forgotPasswordTemplate.widgets}
-      actions={actions}
-    />
+  const toggleLoginCb = useCallback((event) => {
+    event.preventDefault();
+    onShowForgotPassword(false);
+    onShowLogin(true);
+  }, []);
+
+  const toggleForgotPasswordCb = useCallback((event) => {
+    event.preventDefault();
+    onShowForgotPassword(false);
+  }, []);
+
+  return (
+    <StyledForgotPasswordComponent>
+      <StyledCloseButton onClick={toggleForgotPasswordCb}>
+        &times;
+      </StyledCloseButton>
+      <StyledImage />
+      <StyledText>
+        Please enter your email address below to receive an email instraction
+        for resetting your password.
+      </StyledText>
+      <StyledInputContainer>
+        <input type="email" placeholder="Email" />
+      </StyledInputContainer>
+      <StyledSendButton onClick={toggleLoginCb}>Send</StyledSendButton>
+    </StyledForgotPasswordComponent>
   );
 };
 
