@@ -60,6 +60,32 @@
       }
     },
     {
+      "type": "Favorite",
+      "props": {
+        "styles": {
+          "position": "absolute",
+          "top": "125px",
+          "left": "855px",
+          "cursor": "pointer",
+          ".vibuy--favorite-icon": {
+            "background": "url(/images/favorite.svg) center / cover no-repeat",
+            "display": "inline-block",
+            "width": "20px",
+            "height": "18px"
+          },
+          ".vibuy--favorite-text": {
+            "font-family": "Source Sans Pro",
+            "font-size": "12px",
+            "text-align": "left",
+            "color": "#FFF",
+            "position": "absolute",
+            "top": "5px",
+            "left": "25px"
+          }
+        }
+      }
+    },
+    {
       "type": "ProfileButton",
       "props": {
         "styles": {

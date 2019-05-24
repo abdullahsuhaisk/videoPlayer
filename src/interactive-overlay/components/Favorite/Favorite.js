@@ -1,37 +1,27 @@
 import React, { useState, useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import favoriteTemplate from '../../templates/favoriteTemplate.json';
-import useWebFont from '../../hooks/useWebFont';
+import styled from 'styled-components';
 
-const StyledContainer = styled.div`
-  ${favoriteTemplate['vibuy--favorite-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledIcon = styled.div`
-  ${favoriteTemplate['vibuy--favorite-icon'].styles}
-`;
-
-const StyledText = styled.span`
-  ${favoriteTemplate['vibuy--like-text'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const Favorite = (props) => {
+  const { styles } = props;
+  // TODO: Update favorite via service
   const [favoriteCount, setFavoriteCount] = useState(0);
-
   const handleClick = useCallback(() => {
     setFavoriteCount(favoriteCount + 1);
   }, [favoriteCount]);
 
-  useWebFont(favoriteTemplate);
-
   return (
-    <StyledContainer onClick={handleClick}>
-      <StyledIcon />
-      <StyledText>{favoriteCount}</StyledText>
-    </StyledContainer>
+    <StyledWrapper
+      styles={styles}
+      className="vibuy--favorite-widget"
+      onClick={handleClick}>
+      <div className="vibuy--favorite-icon" />
+      <span className="vibuy--favorite-text">{favoriteCount}</span>
+    </StyledWrapper>
   );
 };
 

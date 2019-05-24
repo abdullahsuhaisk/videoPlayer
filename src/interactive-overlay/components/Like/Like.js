@@ -17,7 +17,7 @@ const Like = (props) => {
   return (
     <StyledWrapper
       styles={styles}
-      className="vibuy--like-component"
+      className="vibuy--like-widget"
       onClick={handleClick}>
       <div className="vibuy--like-icon" />
       <span className="vibuy--like-text">{likeCount}</span>

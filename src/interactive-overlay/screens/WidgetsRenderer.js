@@ -3,9 +3,10 @@ import { loadWebFontsFromStyles } from '../utils/parseStyles';
 import Empty from '../components/Empty/Empty';
 import Title from '../components/Title/Title';
 import Like from '../components/Like/Like';
+import Favorite from '../components/Favorite/Favorite';
 import ProfileButton from '../components/ProfileButton/ProfileButton';
 
-const widgetList = { Empty, Title, Like, ProfileButton };
+const widgetList = { Empty, Title, Like, Favorite, ProfileButton };
 
 const WidgetsRenderer = (props) => {
   const { widgets } = props;
