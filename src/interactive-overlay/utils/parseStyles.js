@@ -10,8 +10,32 @@ const Widgets = {
 
 const loadedWebFonts = {};
 
-export const loadWebFont = (fontFamily, bold, italic) => {
-  const webFontKey = `${fontFamily}:400,${bold ? 'b' : ''}${italic ? 'i' : ''}`;
+const normalizeFontWeight = (fontWeight) => {
+  // eslint-disable-next-line no-restricted-globals
+  if (fontWeight && !isNaN(fontWeight)) {
+    return fontWeight;
+  }
+
+  switch (fontWeight) {
+    case 'lighter':
+      return '300';
+    case 'bold':
+      return '700';
+    case 'bolder':
+      return '900';
+    default:
+      return '400';
+  }
+};
+
+const normalizeFontStyle = (fontStyle) => {
+  return fontStyle === 'italic' ? 'i' : '';
+};
+
+const loadWebFont = (fontFamily, fontWeight, fontStyle) => {
+  const webFontKey = `${fontFamily}:${normalizeFontWeight(
+    fontWeight
+  )}${normalizeFontStyle(fontStyle)}`;
 
   if (!loadedWebFonts[webFontKey]) {
     WebFont.load({
@@ -19,6 +43,33 @@ export const loadWebFont = (fontFamily, bold, italic) => {
         families: [webFontKey, 'sans-serif']
       }
     });
+    loadedWebFonts[webFontKey] = true;
+  }
+};
+
+export const loadWebFontsFromStyles = (styles) => {
+  const foundedFont = {};
+
+  Object.keys(styles).forEach((ruleName) => {
+    if (typeof styles[ruleName] === 'object') {
+      loadWebFontsFromStyles(styles[ruleName]);
+    }
+
+    if (ruleName === 'font-family') {
+      foundedFont.fontFamily = styles[ruleName];
+    } else if (ruleName === 'font-weight') {
+      foundedFont.fontWeight = styles[ruleName];
+    } else if (ruleName === 'font-style') {
+      foundedFont.fontStyle = styles[ruleName];
+    }
+  });
+
+  if (foundedFont.fontFamily) {
+    loadWebFont(
+      foundedFont.fontFamily,
+      foundedFont.fontWeight,
+      foundedFont.fontStyle
+    );
   }
 };
 

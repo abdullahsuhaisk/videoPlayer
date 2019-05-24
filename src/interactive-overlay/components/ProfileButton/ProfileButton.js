@@ -1,26 +1,14 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import styled, { css } from 'styled-components';
-import profileButtonTemplate from '../../templates/profileButtonTemplate.json';
+import styled from 'styled-components';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import useWebFont from '../../hooks/useWebFont';
 
-const StyledContainer = styled.div`
-  ${profileButtonTemplate['vibuy--profile-button-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledText = styled.span`
-  ${profileButtonTemplate['vibuy--profile-button-text'].styles}
-`;
-
-const StyledImage = styled.div`
-  ${profileButtonTemplate['vibuy--profile-button-image'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  pointerEvents: 'auto'
+}));
 
 const ProfileButton = (props) => {
-  const { auth, onShowLogin } = props;
+  const { styles, auth, onShowLogin } = props;
   const [username, setUsername] = useState('Login');
 
   const handleClick = useCallback(() => {
@@ -39,13 +27,15 @@ const ProfileButton = (props) => {
     }
   }, [auth]);
 
-  useWebFont(profileButtonTemplate);
-
+  // TODO: Update user avatar when loged-in
   return (
-    <StyledContainer onClick={handleClick}>
-      <StyledText>{username}</StyledText>
-      <StyledImage />
-    </StyledContainer>
+    <StyledWrapper
+      styles={styles}
+      className="vibuy--profile-button-component"
+      onClick={handleClick}>
+      <span className="vibuy--profile-button-text">{username}</span>
+      <div className="vibuy--profile-button-image" />
+    </StyledWrapper>
   );
 };
 

@@ -3,10 +3,9 @@ import {
   InjectOverlayProps,
   InjectPlayerProps
 } from '../../../store/redux/providers';
-import useTimeRange from '../../hooks/useTimeRange';
+// import useTimeRange from '../../hooks/useTimeRange';
 import SafeArea from '../SafeArea/SafeArea';
-import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
-// import ProfileButton from '../ProfileButton/ProfileButton';
+// import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Scaler from '../Scaler/Scaler';
 // import Login from '../Login/Login';
 // import Register from '../Register/Register';
@@ -15,35 +14,50 @@ import Scaler from '../Scaler/Scaler';
 // import Share from '../Share/Share';
 // import Title from '../Title/Title';
 // import Tabs from '../Tabs/Tabs';
+// import ComponentLoading from '../ComponentLoading/ComponentLoading';
+import ProductListScreen from '../../screens/ProductList/ProductListScreen';
 
-const playingOverlayFilter = {
-  key: 'type',
-  value: overlayTypes.playing
-};
+// const playingOverlayFilter = {
+//   key: 'type',
+//   value: overlayTypes.playing
+// };
 
-const widgets = {
-  Like: React.lazy(() => import('../Like/Like')),
-  Favorite: React.lazy(() => import('../Favorite/Favorite'))
-};
+// const widgets = {
+//   Like,
+//   Favorite,
+//   ProfileButton
+// };
 
 const InteractiveOverlay = (props) => {
   const {
     overlays,
     activePlayingOverlayIds,
     setActivePlayingOverlayIds,
+    activePausedOverlayIds,
+    setActivePausedOverlayIds,
     currentTime,
     playing
   } = props;
 
-  const playingOverlayIds = useTimeRange(
-    overlays,
-    currentTime,
-    playingOverlayFilter
-  );
+  // const playingOverlayIds = useTimeRange(
+  //   overlays,
+  //   currentTime,
+  //   playingOverlayFilter
+  // );
 
-  useEffect(() => {
-    setActivePlayingOverlayIds(playingOverlayIds);
-  }, [playingOverlayIds]);
+  // useEffect(() => {
+  //   setActivePlayingOverlayIds(playingOverlayIds);
+  // }, [playingOverlayIds]);
+
+  // useEffect(() => {
+  //   if (!playing) {
+  //     const pausedOverlayIds = Object.keys(overlays).filter((id) => {
+  //       return overlays[id].type === overlayTypes.paused ? id : null;
+  //     });
+
+  //     setActivePausedOverlayIds(pausedOverlayIds);
+  //   }
+  // }, [playing]);
 
   return (
     <div
@@ -51,15 +65,14 @@ const InteractiveOverlay = (props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
+          <ProductListScreen />
           {/* <Title />
-          <Tabs />
-          <Like />
-          <Favorite />
-          <Share />
-          <ProfileButton />
-          <Login />
+          <Tabs /> */}
+          {/* <Favorite /> */}
+          {/* <Share /> */}
+          {/* <Login />
           <Register />
-          <ForgotPassword /> */}
+          <ForgotPassword />
           {playing &&
             activePlayingOverlayIds.map((id) => {
               const { widgetType } = overlays[id];
@@ -68,9 +81,7 @@ const InteractiveOverlay = (props) => {
                 const LazyComponent = widgets[widgetType];
 
                 return (
-                  <React.Suspense
-                    fallback={<div className="vibuy--component-loading" />}
-                    key={id}>
+                  <React.Suspense fallback={<ComponentLoading />} key={id}>
                     <LazyComponent />
                   </React.Suspense>
                 );
@@ -78,6 +89,22 @@ const InteractiveOverlay = (props) => {
 
               return <div key={id}>{id}</div>;
             })}
+          {!playing &&
+            activePausedOverlayIds.map((id) => {
+              const { widgetType } = overlays[id];
+
+              if (widgetType) {
+                const LazyComponent = widgets[widgetType];
+
+                return (
+                  <React.Suspense fallback={<ComponentLoading />} key={id}>
+                    <LazyComponent />
+                  </React.Suspense>
+                );
+              }
+
+              return <div key={id}>{id}</div>;
+            })} */}
         </Scaler>
       </SafeArea>
     </div>
@@ -86,12 +113,21 @@ const InteractiveOverlay = (props) => {
 
 export default InjectPlayerProps(
   InjectOverlayProps(InteractiveOverlay, {
-    selectActions: ({ setActivePlayingOverlayIds }) => ({
-      setActivePlayingOverlayIds
+    selectActions: ({
+      setActivePlayingOverlayIds,
+      setActivePausedOverlayIds
+    }) => ({
+      setActivePlayingOverlayIds,
+      setActivePausedOverlayIds
     }),
-    selectProps: ({ overlays, activePlayingOverlayIds }) => ({
+    selectProps: ({
       overlays,
-      activePlayingOverlayIds
+      activePlayingOverlayIds,
+      activePausedOverlayIds
+    }) => ({
+      overlays,
+      activePlayingOverlayIds,
+      activePausedOverlayIds
     })
   }),
   {

@@ -1,0 +1,62 @@
+{
+  "widgets": [
+    {
+      "type": "Like",
+      "props": {
+        "styles": {
+          "position": "absolute",
+          "top": "125px",
+          "left": "800px",
+          "cursor": "pointer",
+          ".vibuy--like-icon": {
+            "background": "url(/images/like.svg) center / cover no-repeat",
+            "display": "inline-block",
+            "width": "18px",
+            "height": "18px"
+          },
+          ".vibuy--like-text": {
+            "font-family": "Source Sans Pro",
+            "font-size": "12px",
+            "text-align": "left",
+            "color": "#FFF",
+            "position": "absolute",
+            "top": "5px",
+            "left": "25px"
+          }
+        }
+      }
+    },
+    {
+      "type": "ProfileButton",
+      "props": {
+        "styles": {
+          "position": "absolute",
+          "top": "30px",
+          "left": "810px",
+          "cursor": "pointer",
+          ".vibuy--profile-button-text": {
+            "display": "inline-block",
+            "width": "100px",
+            "height": "18px",
+            "margin-right": "5px",
+            "font-family": "Source Sans Pro",
+            "font-size": " 12px",
+            "text-align": "right",
+            "color": "#FFF",
+            "white-space": "nowrap",
+            "overflow": "hidden",
+            "text-overflow": "ellipsis"
+          },
+          ".vibuy--profile-button-image": {
+            "background": "url(/images/user_avatar.svg) center / cover no-repeat",
+            "display": "inline-block",
+            "width": "24px",
+            "height": "24px",
+            "border-radius": "50%",
+            "border": "1px solid #494949"
+          }
+        }
+      }
+    }
+  ]
+}

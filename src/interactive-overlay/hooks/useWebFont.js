@@ -1,47 +1,10 @@
-import { useEffect } from 'react';
-import { loadWebFont } from '../utils/parseStyles';
+// import { useEffect } from 'react';
+// import { loadWebFontsFromStyles } from '../utils/parseStyles';
 
-const useWebFont = (template) => {
-  useEffect(() => {
-    Object.keys(template).forEach((key) => {
-      const { styles } = template[key];
-
-      if (styles) {
-        const rules = styles.split(';');
-        let fontFamily = '';
-        let fontWeight = 'normal';
-        let fontStyle = 'normal';
-
-        // TODO: fix font family
-        for (let i = 0; i < rules.length; i += 1) {
-          const rulePairs = rules[i].split(':');
-
-          switch (rulePairs[0]) {
-            case 'font-family':
-              [, fontFamily] = rulePairs;
-              break;
-            case 'font-weight':
-              [, fontWeight] = rulePairs;
-              break;
-            case 'font-style':
-              [, fontStyle] = rulePairs;
-              break;
-            default:
-              fontFamily = '';
-              break;
-          }
-        }
-
-        if (fontFamily) {
-          loadWebFont(
-            fontFamily,
-            fontWeight === 'bold',
-            fontStyle === 'italic'
-          );
-        }
-      }
-    });
-  }, [template]);
+const useWebFont = (/* styles */) => {
+  // useEffect(() => {
+  //   loadWebFontsFromStyles(styles);
+  // }, [styles]);
 };
 
 export default useWebFont;
