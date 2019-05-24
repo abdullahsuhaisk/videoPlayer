@@ -1,45 +1,52 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useMemo, useEffect, useState } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import React, { useEffect, useCallback, useState } from 'react';
+import styled, { css } from 'styled-components';
 import profileButtonTemplate from '../../templates/profileButtonTemplate.json';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import { replaceAll } from '../../utils/common';
+import useWebFont from '../../hooks/useWebFont';
+
+const StyledContainer = styled.div`
+  ${profileButtonTemplate['vibuy--profile-button-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
+
+const StyledText = styled.span`
+  ${profileButtonTemplate['vibuy--profile-button-text'].styles}
+`;
+
+const StyledImage = styled.div`
+  ${profileButtonTemplate['vibuy--profile-button-image'].styles}
+`;
 
 const ProfileButton = (props) => {
   const { auth, onShowLogin } = props;
-  const [widgets, setWidgets] = useState(null);
+  const [username, setUsername] = useState('Login');
 
-  const actions = useMemo(
-    () => ({
-      click: () => () => {
-        if (auth.uid) {
-          // onShowProfile();
-        } else {
-          onShowLogin(true);
-        }
-      }
-    }),
-    [auth]
-  );
-
-  useEffect(() => {
-    let username = 'Login';
+  const handleClick = useCallback(() => {
     if (auth.uid) {
-      username = auth.email;
+      // onShowProfile();
+    } else {
+      onShowLogin(true);
     }
-
-    let editedWidgets = replaceAll(
-      JSON.stringify(profileButtonTemplate.widgets),
-      '{profileButton_user_name}',
-      username
-    );
-
-    editedWidgets = JSON.parse(editedWidgets);
-
-    setWidgets(editedWidgets);
   }, [auth]);
 
-  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
+  useEffect(() => {
+    if (auth.uid) {
+      setUsername(auth.email);
+    } else {
+      setUsername('Login');
+    }
+  }, [auth]);
+
+  useWebFont(profileButtonTemplate);
+
+  return (
+    <StyledContainer onClick={handleClick}>
+      <StyledText>{username}</StyledText>
+      <StyledImage />
+    </StyledContainer>
+  );
 };
 
 export default InjectAuthOperations(ProfileButton, {

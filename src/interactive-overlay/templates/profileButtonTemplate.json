@@ -1,51 +1,11 @@
 {
-  "widgets": [
-    {
-      "type": "span",
-      "id": "text",
-      "settings": {
-        "text": "{profileButton_user_name}",
-        "action": {
-          "name": "click",
-          "params": []
-        },
-        "cssProps": {
-          "top": "30px",
-          "left": "810px",
-          "width": "100px",
-          "height": "18px",
-          "fontFamily": "Source Sans Pro",
-          "fontSize": "12px",
-          "textAlign": "right",
-          "color": "#FFF",
-          "cursor": "pointer",
-          "whiteSpace": "nowrap",
-          "overflow": "hidden",
-          "textOverflow": "ellipsis"
-        }
-      }
-    },
-    {
-      "type": "img",
-      "id": "image",
-      "settings": {
-        "action": {
-          "name": "click",
-          "params": []
-        },
-        "cssProps": {
-          "top": "24px",
-          "left": "920px",
-          "max-width": "24px",
-          "max-height": "24px",
-          "cursor": "pointer",
-          "border-radius": "50%",
-          "border": "1px solid #494949"
-        },
-        "attributes": {
-          "src": "/images/user_avatar.svg"
-        }
-      }
-    }
-  ]
+  "vibuy--profile-button-component": {
+    "styles": "position: absolute; top: 30px; left: 810px; cursor: pointer;"
+  },
+  "vibuy--profile-button-text": {
+    "styles": "display: inline-block; width: 100px; height:18px; margin-right: 5px; font-family: Source Sans Pro; font-size: 12px; text-align: right; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis"
+  },
+  "vibuy--profile-button-image": {
+    "styles": "background: url(/images/user_avatar.svg) center / cover no-repeat; display: inline-block; width: 24px; height: 24px; border-radius: 50%; border: 1px solid #494949"
+  }
 }

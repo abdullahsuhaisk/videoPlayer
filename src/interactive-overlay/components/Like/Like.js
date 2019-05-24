@@ -28,9 +28,9 @@ const Like = (props) => {
   useWebFont(likeTemplate);
 
   return (
-    <StyledContainer className="vibuy--like-component" onClick={handleClick}>
-      <StyledIcon className="vibuy--like-icon" />
-      <StyledText className="vibuy--like-text">{likeCount}</StyledText>
+    <StyledContainer onClick={handleClick}>
+      <StyledIcon />
+      <StyledText>{likeCount}</StyledText>
     </StyledContainer>
   );
 };

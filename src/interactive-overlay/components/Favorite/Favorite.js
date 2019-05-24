@@ -1,37 +1,38 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useMemo, useEffect, useState } from 'react';
-import WidgetsRenderer from '../WidgetsRenderer/WidgetsRenderer';
+import React, { useState, useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import favoriteTemplate from '../../templates/favoriteTemplate.json';
-import { replaceAll } from '../../utils/common';
+import useWebFont from '../../hooks/useWebFont';
+
+const StyledContainer = styled.div`
+  ${favoriteTemplate['vibuy--favorite-component'].styles}
+  ${css`
+    pointer-events: auto;
+  `}
+`;
+
+const StyledIcon = styled.div`
+  ${favoriteTemplate['vibuy--favorite-icon'].styles}
+`;
+
+const StyledText = styled.span`
+  ${favoriteTemplate['vibuy--like-text'].styles}
+`;
 
 const Favorite = (props) => {
-  const [widgets, setWidgets] = useState(null);
-  const [favoriteCount, setFavoriteCount] = useState(-1);
+  const [favoriteCount, setFavoriteCount] = useState(0);
 
-  const actions = useMemo(
-    () => ({
-      click: () => () => {
-        setFavoriteCount(favoriteCount + 1);
-        // call service method
-      }
-    }),
-    [favoriteCount]
-  );
-
-  useEffect(() => {
-    // favoriteCount = 221; // assign favorite count
-
-    let editedWidgets = replaceAll(
-      JSON.stringify(favoriteTemplate.widgets),
-      '{favorite_count}',
-      favoriteCount
-    );
-
-    editedWidgets = JSON.parse(editedWidgets);
-    setWidgets(editedWidgets);
+  const handleClick = useCallback(() => {
+    setFavoriteCount(favoriteCount + 1);
   }, [favoriteCount]);
 
-  return widgets && <WidgetsRenderer data={widgets} actions={actions} />;
+  useWebFont(favoriteTemplate);
+
+  return (
+    <StyledContainer onClick={handleClick}>
+      <StyledIcon />
+      <StyledText>{favoriteCount}</StyledText>
+    </StyledContainer>
+  );
 };
 
 export default Favorite;

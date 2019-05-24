@@ -20,7 +20,7 @@ const NextArrow = (props) => {
         opacity: '0.4',
         right: '-100px',
         top: '80px',
-        zIndex: 1,
+        zIndex: 0,
         width: '90px',
         height: '90px'
       }}
@@ -45,7 +45,7 @@ const PrevArrow = (props) => {
         transform: 'scaleX(-1)',
         right: '-100px',
         top: '180px',
-        zIndex: 1,
+        zIndex: 0,
         width: '90px',
         height: '90px'
       }}
