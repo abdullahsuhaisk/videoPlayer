@@ -1,31 +1,19 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import titleTemplate from '../../templates/titleTemplate.json';
-import useWebFont from '../../hooks/useWebFont';
+import styled from 'styled-components';
 
-const StyledContainer = styled.div`
-  ${titleTemplate['vibuy--title-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledTitle = styled.span`
-  ${titleTemplate['vibuy--title-text'].styles}
-`;
-
-const StyledDescription = styled.span`
-  ${titleTemplate['vibuy--title-description'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const Title = (props) => {
-  useWebFont(titleTemplate);
+  const { title, description, styles } = props;
 
   return (
-    <StyledContainer>
-      <StyledTitle>Zara</StyledTitle>
-      <StyledDescription>Spring - Summer 2019 Best Creation</StyledDescription>
-    </StyledContainer>
+    <StyledWrapper styles={styles} className="vibuy--title-widget">
+      <span className="vibuy--title-text">{title}</span>
+      <span className="vibuy--title-description">{description}</span>
+    </StyledWrapper>
   );
 };
 

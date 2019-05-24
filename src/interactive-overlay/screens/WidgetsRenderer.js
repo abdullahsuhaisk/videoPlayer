@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { loadWebFontsFromStyles } from '../utils/parseStyles';
 import Empty from '../components/Empty/Empty';
 import Title from '../components/Title/Title';
@@ -10,9 +10,9 @@ const widgetList = { Empty, Title, Like, ProfileButton };
 const WidgetsRenderer = (props) => {
   const { widgets } = props;
 
-  const [renderableWidgets, setRenderableWidgets] = React.useState([]);
+  const [renderableWidgets, setRenderableWidgets] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const widgetsWithComponentAndProps = widgets.map((widget) => {
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;

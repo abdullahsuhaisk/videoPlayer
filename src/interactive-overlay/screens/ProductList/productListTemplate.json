@@ -1,6 +1,39 @@
 {
   "widgets": [
     {
+      "type": "Title",
+      "props": {
+        "title": "Zara",
+        "description": "Spring - Summer 2019 Best Creation",
+        "styles": {
+          "position": "absolute",
+          "top": "25px",
+          "left": "50px",
+          "width": "50%",
+          "height": "100px",
+          ".vibuy--title-text": {
+            "display": "block",
+            "height": "60px",
+            "font-family": "Source Sans Pro",
+            "font-size": "56px",
+            "font-weight": "bold",
+            "color": "#FFFC",
+            "overflow": "hidden",
+            "text-overflow": "ellipsis",
+            "white-space": "nowrap"
+          },
+          ".vibuy--title-description": {
+            "display": "block",
+            "height": "40px",
+            "font-family": "Source Sans Pro",
+            "font-size": "12px",
+            "color": "#FFFC",
+            "overflow": "hidden"
+          }
+        }
+      }
+    },
+    {
       "type": "Like",
       "props": {
         "styles": {
