@@ -21,7 +21,7 @@
     "styles": "&&{display: flex; flex-direction: row; .login-google{background: url(/images/google_blue.png) center / contain no-repeat; width: 20px; height: 20px; margin: 0 10px 0 0; cursor: pointer;}; .login-facebook{background: url(/images/facebook_blue.png) center / contain no-repeat; width: 20px; height: 20px; margin: 0 0 0 10px; cursor: pointer;}}"
   },
   "vibuy--login-forgot-password": {
-    "styles": "width: 100%; margin-top: 80px; font-family: Source Sans Pro; font-size: 12px; text-decoration: underline; color: #0B2443; text-align: center; cursor: pointer;"
+    "styles": "width: 100%; margin-top: 50px; font-family: Source Sans Pro; font-size: 12px; text-decoration: underline; color: #0B2443; text-align: center; cursor: pointer;"
   },
   "vibuy--login-register-button": {
     "styles": "&&{width: 200px; height: 30px; margin: 10px 0 30px 0; font-size: 12px; font-family: Source Sans Pro; color: #0B2443; background-color: transparent; border: 1px solid #0B2443; border-radius: 25px; text-align: center; cursor: pointer; transition: all .2s; outline: 0; &:hover {color: #FFF; background-color: #0B2443; border: 1px solid #FFF;};}"
