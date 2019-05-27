@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledWrapper = styled.div((props) => ({
   ...props.styles,
-  pointerEvents: 'auto'
+  'pointer-events': 'auto'
 }));
 
 const Like = (props) => {
