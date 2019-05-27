@@ -6,8 +6,17 @@ import Like from '../components/Like/Like';
 import Favorite from '../components/Favorite/Favorite';
 import Share from '../components/Share/Share';
 import ProfileButton from '../components/ProfileButton/ProfileButton';
+import Login from '../components/Login/Login';
 
-const widgetList = { Empty, Title, Like, Favorite, Share, ProfileButton };
+const widgetList = {
+  Empty,
+  Title,
+  Like,
+  Favorite,
+  Share,
+  ProfileButton,
+  Login
+};
 
 const WidgetsRenderer = (props) => {
   const { widgets } = props;

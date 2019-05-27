@@ -1,51 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import loginTemplate from '../../templates/loginTemplate.json';
+import styled from 'styled-components';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import useWebFont from '../../hooks/useWebFont';
 
-const StyledLoginComponent = styled.div`
-  ${loginTemplate['vibuy--login-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledCloseButton = styled.span`
-  ${loginTemplate['vibuy--login-close'].styles}
-`;
-
-const StyledLoginImage = styled.div`
-  ${loginTemplate['vibuy--login-image'].styles}
-`;
-
-const StyledInputContainer = styled.div`
-  ${loginTemplate['vibuy--login-input-container'].styles}
-`;
-
-const StyledLoginButton = styled.button`
-  ${loginTemplate['vibuy--login-button'].styles}
-`;
-
-const StyledSocialMediaContainer = styled.div`
-  ${loginTemplate['vibuy--login-social-media-login-container'].styles}
-`;
-
-const StyledSocialMediaButtons = styled.div`
-  ${loginTemplate['vibuy--login-social-media-login-buttons'].styles}
-`;
-
-const StyledForgotPassword = styled.span`
-  ${loginTemplate['vibuy--login-forgot-password'].styles}
-`;
-
-const StyledRegisterButton = styled.button`
-  ${loginTemplate['vibuy--login-register-button'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const Login = (props) => {
   const {
+    styles,
     auth,
     login,
     loginStatus,
@@ -61,8 +26,6 @@ const Login = (props) => {
   if (!showLogin || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
-
-  useWebFont(loginTemplate);
 
   const loginError = loginInfo.errorMessage;
 
@@ -118,21 +81,29 @@ const Login = (props) => {
   }, []);
 
   return (
-    <StyledLoginComponent>
-      <StyledCloseButton onClick={toggleLoginCb}>&times;</StyledCloseButton>
-      <StyledLoginImage />
-      <StyledInputContainer>
+    <StyledWrapper styles={styles} className="vibuy--login-widget">
+      <span
+        className="vibuy--login-close"
+        onClick={toggleLoginCb}
+        role="button"
+        tabIndex="0">
+        &times;
+      </span>
+      <div className="vibuy--login-image" />
+      <div className="vibuy--login-input-container">
         <input type="email" placeholder="Email" onChange={emailChangeCb} />
         <input
           type="password"
           placeholder="Password"
           onChange={passwordChangeCb}
         />
-      </StyledInputContainer>
-      <StyledLoginButton onClick={loginCb}>Login</StyledLoginButton>
-      <StyledSocialMediaContainer>
+      </div>
+      <button className="vibuy--login-button" onClick={loginCb}>
+        Login
+      </button>
+      <div className="vibuy--login-social-media-login-container">
         <span>or log in with</span>
-        <StyledSocialMediaButtons>
+        <div className="vibuy--login-social-media-login-buttons">
           <div
             className="login-google"
             role="button"
@@ -145,15 +116,21 @@ const Login = (props) => {
             tabIndex="-1"
             onClick={loginWithFacebookCb}
           />
-        </StyledSocialMediaButtons>
-      </StyledSocialMediaContainer>
-      <StyledForgotPassword onClick={toggleForgotPasswordCb}>
+        </div>
+      </div>
+      <span
+        className="vibuy--login-forgot-password"
+        role="button"
+        tabIndex="0"
+        onClick={toggleForgotPasswordCb}>
         I forgot my password!
-      </StyledForgotPassword>
-      <StyledRegisterButton onClick={toggleRegisterCb}>
+      </span>
+      <button
+        className="vibuy--login-register-button"
+        onClick={toggleRegisterCb}>
         Do not have an account? <b>Create</b>
-      </StyledRegisterButton>
-    </StyledLoginComponent>
+      </button>
+    </StyledWrapper>
   );
 };
 
