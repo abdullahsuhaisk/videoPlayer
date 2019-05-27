@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { loadWebFontsFromStyles } from '../utils/parseStyles';
 import Empty from '../components/Empty/Empty';
+import Tabs from '../components/Tabs/Tabs';
 import Title from '../components/Title/Title';
 import Like from '../components/Like/Like';
 import Favorite from '../components/Favorite/Favorite';
@@ -12,6 +13,7 @@ import ForgotPassword from '../components/ForgotPassword/ForgotPassword';
 
 const widgetList = {
   Empty,
+  Tabs,
   Title,
   Like,
   Favorite,

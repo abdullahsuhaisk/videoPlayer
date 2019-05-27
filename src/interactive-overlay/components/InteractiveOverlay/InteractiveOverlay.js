@@ -7,9 +7,6 @@ import {
 import SafeArea from '../SafeArea/SafeArea';
 // import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Scaler from '../Scaler/Scaler';
-// import Login from '../Login/Login';
-// import Register from '../Register/Register';
-// import ForgotPassword from '../ForgotPassword/ForgotPassword';
 // import Tabs from '../Tabs/Tabs';
 // import ComponentLoading from '../ComponentLoading/ComponentLoading';
 import AuthScreen from '../../screens/AuthScreen/AuthScreen';
@@ -18,12 +15,6 @@ import ProductListScreen from '../../screens/ProductList/ProductListScreen';
 // const playingOverlayFilter = {
 //   key: 'type',
 //   value: overlayTypes.playing
-// };
-
-// const widgets = {
-//   Like,
-//   Favorite,
-//   ProfileButton
 // };
 
 const InteractiveOverlay = (props) => {

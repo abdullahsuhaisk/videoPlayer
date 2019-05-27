@@ -1,69 +1,49 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useCallback, useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import tabTemplate from '../../templates/productsTabTemplate.json';
 import 'react-tabs/style/react-tabs.css';
 import './tabs.scss';
-import SliderComponent from '../Slider/Slider';
+// eslint-disable-next-line import/no-cycle
+import WidgetsRenderer from '../../screens/WidgetsRenderer';
+// import SliderComponent from '../Slider/Slider';
+
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const TabSection = (props) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-
-  const style = {
-    position: 'absolute',
-    width: `${tabTemplate.settings.width}`,
-    height: `${tabTemplate.settings.height}`,
-    top: `${tabTemplate.settings.top}`,
-    left: `${tabTemplate.settings.left}`,
-    pointerEvents: 'auto'
-  };
-
-  const selected = {
-    backgroundColor: '#0000',
-    borderWidth: '0px 0px 2px 0px',
-    borderColor: '#00acd8',
-    borderStyle: 'solid',
-    color: '#fff'
-  };
-
-  const unselected = {
-    backgroundColor: '#0000',
-    borderWidth: '0px 0px 2px 0px'
-  };
-
-  const handleSelectedTab = useCallback((index) => {
-    setSelectedTabIndex(index);
-  }, []);
+  const { styles, tabs } = props;
 
   return (
-    <div style={style}>
-      <Tabs onSelect={(index) => handleSelectedTab(index)}>
-        <TabList>
-          {tabTemplate.tabs.map((item, index) => {
+    <StyledWrapper styles={styles}>
+      <Tabs className="vibuy--tabs react-tabs">
+        <TabList className="vibuy--tab-list react-tabs__tab-list">
+          {tabs.map((tab) => {
             return (
               <Tab
-                key={item.id}
-                style={
-                  selectedTabIndex === index
-                    ? { ...unselected, ...selected }
-                    : unselected
-                }>
-                {item.name}
+                className="vibuy--tab react-tabs__tab"
+                selectedClassName="vibuy--tab-selected"
+                key={tab.id}>
+                {tab.title}
               </Tab>
             );
           })}
         </TabList>
 
-        {tabTemplate.tabs.map((item) => {
+        {tabs.map((tab) => {
           return (
-            <TabPanel key={`panel-${item.id}`}>
-              <SliderComponent />
+            <TabPanel
+              className="vibuy--tab-panel react-tabs__tab-panel"
+              key={`panel-${tab.id}`}>
+              {/* <SliderComponent /> */}
               {/* <WidgetsRenderer data={item.tabPanel} /> */}
+              {tab.children && <WidgetsRenderer widgets={tab.children} />}
             </TabPanel>
           );
         })}
       </Tabs>
-    </div>
+    </StyledWrapper>
   );
 };
 
