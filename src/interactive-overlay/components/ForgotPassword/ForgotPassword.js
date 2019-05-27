@@ -1,39 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import forgotPasswordTemplate from '../../templates/forgotPasswordTemplate.json';
+import styled from 'styled-components';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import useWebFont from '../../hooks/useWebFont';
 
-const StyledForgotPasswordComponent = styled.div`
-  ${forgotPasswordTemplate['vibuy--forgot-password-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledCloseButton = styled.span`
-  ${forgotPasswordTemplate['vibuy--forgot-password-close'].styles}
-`;
-
-const StyledImage = styled.div`
-  ${forgotPasswordTemplate['vibuy--forgot-password-image'].styles}
-`;
-
-const StyledText = styled.span`
-  ${forgotPasswordTemplate['vibuy--forgot-password-text'].styles}
-`;
-
-const StyledInputContainer = styled.div`
-  ${forgotPasswordTemplate['vibuy--forgot-password-input-container'].styles}
-`;
-
-const StyledSendButton = styled.button`
-  ${forgotPasswordTemplate['vibuy--forgot-password-button'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const ForgotPassword = (props) => {
   const {
+    styles,
     loginStatus,
     auth,
     showForgotPassword,
@@ -44,8 +21,6 @@ const ForgotPassword = (props) => {
   if (!showForgotPassword || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
-
-  useWebFont(forgotPasswordTemplate);
 
   const toggleLoginCb = useCallback((event) => {
     event.preventDefault();
@@ -59,20 +34,26 @@ const ForgotPassword = (props) => {
   }, []);
 
   return (
-    <StyledForgotPasswordComponent>
-      <StyledCloseButton onClick={toggleForgotPasswordCb}>
+    <StyledWrapper styles={styles} className="vibuy--forgot-password-widget">
+      <span
+        className="vibuy--forgot-password-close"
+        role="button"
+        tabIndex="0"
+        onClick={toggleForgotPasswordCb}>
         &times;
-      </StyledCloseButton>
-      <StyledImage />
-      <StyledText>
+      </span>
+      <div className="vibuy--forgot-password-image" />
+      <span className="vibuy--forgot-password-text">
         Please enter your email address below to receive an email instraction
         for resetting your password.
-      </StyledText>
-      <StyledInputContainer>
+      </span>
+      <div className="vibuy--forgot-password-input-container">
         <input type="email" placeholder="Email" />
-      </StyledInputContainer>
-      <StyledSendButton onClick={toggleLoginCb}>Send</StyledSendButton>
-    </StyledForgotPasswordComponent>
+      </div>
+      <button className="vibuy--forgot-password-button" onClick={toggleLoginCb}>
+        Send
+      </button>
+    </StyledWrapper>
   );
 };
 

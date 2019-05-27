@@ -8,6 +8,7 @@ import Share from '../components/Share/Share';
 import ProfileButton from '../components/ProfileButton/ProfileButton';
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
+import ForgotPassword from '../components/ForgotPassword/ForgotPassword';
 
 const widgetList = {
   Empty,
@@ -17,7 +18,8 @@ const widgetList = {
   Share,
   ProfileButton,
   Login,
-  Register
+  Register,
+  ForgotPassword
 };
 
 const WidgetsRenderer = (props) => {
