@@ -31,7 +31,7 @@ const ProfileButton = (props) => {
   return (
     <StyledWrapper
       styles={styles}
-      className="vibuy--profile-button-component"
+      className="vibuy--profile-button-widget"
       onClick={handleClick}>
       <span className="vibuy--profile-button-text">{username}</span>
       <div className="vibuy--profile-button-image" />

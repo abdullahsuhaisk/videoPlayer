@@ -1,47 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import registerTemplate from '../../templates/registerTemplate.json';
+import styled from 'styled-components';
 import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
-import useWebFont from '../../hooks/useWebFont';
 
-const StyledRegisterComponent = styled.div`
-  ${registerTemplate['vibuy--register-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledCloseButton = styled.span`
-  ${registerTemplate['vibuy--register-close'].styles}
-`;
-
-const StyledLoginImage = styled.div`
-  ${registerTemplate['vibuy--register-login-image'].styles}
-`;
-
-const StyledInputContainer = styled.div`
-  ${registerTemplate['vibuy--register-input-container'].styles}
-`;
-
-const StyledRegisterButton = styled.button`
-  ${registerTemplate['vibuy--register-button'].styles}
-`;
-
-const StyledSocialMediaContainer = styled.div`
-  ${registerTemplate['vibuy--register-social-media-login-container'].styles}
-`;
-
-const StyledSocialMediaButtons = styled.div`
-  ${registerTemplate['vibuy--register-social-media-login-buttons'].styles}
-`;
-
-const StyledLoginButton = styled.button`
-  ${registerTemplate['vibuy--register-login-button'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const Register = (props) => {
   const {
+    styles,
     auth,
     loginStatus,
     loginInfo,
@@ -56,8 +25,6 @@ const Register = (props) => {
   if (!showRegister || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
-
-  useWebFont(registerTemplate);
 
   const registerError = loginInfo.errorMessage;
 
@@ -113,10 +80,16 @@ const Register = (props) => {
   }, []);
 
   return (
-    <StyledRegisterComponent>
-      <StyledCloseButton onClick={toggleRegisterCb}>&times;</StyledCloseButton>
-      <StyledLoginImage />
-      <StyledInputContainer>
+    <StyledWrapper styles={styles} className="vibuy--register-widget">
+      <span
+        className="vibuy--register-close"
+        onClick={toggleRegisterCb}
+        role="button"
+        tabIndex="0">
+        &times;
+      </span>
+      <div className="vibuy--register-login-image" />
+      <div className="vibuy--register-input-container">
         <input
           type="text"
           onChange={fullnameChangeCb}
@@ -129,13 +102,13 @@ const Register = (props) => {
           placeholder="Password"
         />
         <span>*Min 6 characters.</span>
-      </StyledInputContainer>
-      <StyledRegisterButton onClick={registerCb}>
+      </div>
+      <button className="vibuy--register-button" onClick={registerCb}>
         Create Account
-      </StyledRegisterButton>
-      <StyledSocialMediaContainer>
+      </button>
+      <div className="vibuy--register-social-media-login-container">
         <span>or log in with</span>
-        <StyledSocialMediaButtons>
+        <div className="vibuy--register-social-media-login-buttons">
           <div
             className="login-google"
             role="button"
@@ -148,12 +121,12 @@ const Register = (props) => {
             tabIndex="-1"
             onClick={loginWithFacebookCb}
           />
-        </StyledSocialMediaButtons>
-      </StyledSocialMediaContainer>
-      <StyledLoginButton role="button" tabIndex="-1" onClick={toggleLoginCb}>
+        </div>
+      </div>
+      <button className="vibuy--register-login-button" onClick={toggleLoginCb}>
         Already have an account? <b>Log in</b>
-      </StyledLoginButton>
-    </StyledRegisterComponent>
+      </button>
+    </StyledWrapper>
   );
 };
 

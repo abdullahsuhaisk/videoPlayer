@@ -63,8 +63,8 @@ const InteractiveOverlay = (props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <AuthScreen />
           <ProductListScreen />
+          <AuthScreen />
           {/* <Login />
           <Register />
           <ForgotPassword />
