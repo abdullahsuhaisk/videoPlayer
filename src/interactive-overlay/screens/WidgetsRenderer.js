@@ -4,9 +4,10 @@ import Empty from '../components/Empty/Empty';
 import Title from '../components/Title/Title';
 import Like from '../components/Like/Like';
 import Favorite from '../components/Favorite/Favorite';
+import Share from '../components/Share/Share';
 import ProfileButton from '../components/ProfileButton/ProfileButton';
 
-const widgetList = { Empty, Title, Like, Favorite, ProfileButton };
+const widgetList = { Empty, Title, Like, Favorite, Share, ProfileButton };
 
 const WidgetsRenderer = (props) => {
   const { widgets } = props;

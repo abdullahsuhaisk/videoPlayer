@@ -1,37 +1,27 @@
 import React, { useState, useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import shareTemplate from '../../templates/shareTemplate.json';
-import useWebFont from '../../hooks/useWebFont';
+import styled from 'styled-components';
 
-const StyledContainer = styled.div`
-  ${shareTemplate['vibuy--share-component'].styles}
-  ${css`
-    pointer-events: auto;
-  `}
-`;
-
-const StyledIcon = styled.div`
-  ${shareTemplate['vibuy--share-icon'].styles}
-`;
-
-const StyledText = styled.span`
-  ${shareTemplate['vibuy--share-text'].styles}
-`;
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const Share = (props) => {
+  const { styles } = props;
+  // TODO: Use a service to update state
   const [shareCount, setShareCount] = useState(0);
-
   const handleClick = useCallback(() => {
     setShareCount(shareCount + 1);
   }, [shareCount]);
 
-  useWebFont(shareTemplate);
-
   return (
-    <StyledContainer onClick={handleClick}>
-      <StyledIcon />
-      <StyledText>{shareCount}</StyledText>
-    </StyledContainer>
+    <StyledWrapper
+      className="vibuy--share-widget"
+      styles={styles}
+      onClick={handleClick}>
+      <div className="vibuy--share-icon" />
+      <span className="vibuy--share-text">{shareCount}</span>
+    </StyledWrapper>
   );
 };
 
