@@ -16,7 +16,7 @@ const TabSection = (props) => {
   const { styles, tabs } = props;
 
   return (
-    <StyledWrapper styles={styles}>
+    <StyledWrapper className="vibuy--tabs-widget" styles={styles}>
       <Tabs className="vibuy--tabs react-tabs">
         <TabList className="vibuy--tab-list react-tabs__tab-list">
           {tabs.map((tab) => {

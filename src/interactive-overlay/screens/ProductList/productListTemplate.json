@@ -34,6 +34,79 @@
       }
     },
     {
+      "type": "ProfileButton",
+      "props": {
+        "styles": {
+          "position": "absolute",
+          "top": "30px",
+          "left": "810px",
+          "cursor": "pointer",
+          ".vibuy--profile-button-text": {
+            "display": "inline-block",
+            "width": "100px",
+            "height": "18px",
+            "margin-right": "5px",
+            "font-family": "Source Sans Pro",
+            "font-size": " 12px",
+            "text-align": "right",
+            "color": "#FFF",
+            "white-space": "nowrap",
+            "overflow": "hidden",
+            "text-overflow": "ellipsis"
+          },
+          ".vibuy--profile-button-image": {
+            "background": "url(/images/user_avatar.svg) center / cover no-repeat",
+            "display": "inline-block",
+            "width": "24px",
+            "height": "24px",
+            "border-radius": "50%",
+            "border": "1px solid #494949"
+          }
+        }
+      }
+    },
+    {
+      "type": "Tabs",
+      "props": {
+        "styles": {
+          "position": "absolute",
+          "top": "126px",
+          "left": "50px",
+          "width": "900px",
+          "height": "300px",
+          ".vibuy--tabs": {},
+          ".vibuy--tab-list": {},
+          ".vibuy--tab": {
+            "background-color": "#0000",
+            "border-width": "0px 0px 2px 0px",
+            "&:focus": {
+              "border-color": "#00acd8"
+            }
+          },
+          ".vibuy--tab-selected": {
+            "background-color": "#0000",
+            "border-width": "0px 0px 2px 0px",
+            "border-color": "#00acd8",
+            "border-style": "solid",
+            "color": "#fff"
+          },
+          ".vibuy--tab-panel": {}
+        },
+        "tabs": [
+          {
+            "id": "tab-1",
+            "title": "Products in this scene",
+            "children": []
+          },
+          {
+            "id": "tab-2",
+            "title": "All products",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
       "type": "Like",
       "props": {
         "styles": {
@@ -109,79 +182,6 @@
             "left": "25px"
           }
         }
-      }
-    },
-    {
-      "type": "ProfileButton",
-      "props": {
-        "styles": {
-          "position": "absolute",
-          "top": "30px",
-          "left": "810px",
-          "cursor": "pointer",
-          ".vibuy--profile-button-text": {
-            "display": "inline-block",
-            "width": "100px",
-            "height": "18px",
-            "margin-right": "5px",
-            "font-family": "Source Sans Pro",
-            "font-size": " 12px",
-            "text-align": "right",
-            "color": "#FFF",
-            "white-space": "nowrap",
-            "overflow": "hidden",
-            "text-overflow": "ellipsis"
-          },
-          ".vibuy--profile-button-image": {
-            "background": "url(/images/user_avatar.svg) center / cover no-repeat",
-            "display": "inline-block",
-            "width": "24px",
-            "height": "24px",
-            "border-radius": "50%",
-            "border": "1px solid #494949"
-          }
-        }
-      }
-    },
-    {
-      "type": "Tabs",
-      "props": {
-        "styles": {
-          "position": "absolute",
-          "top": "126px",
-          "left": "50px",
-          "width": "900px",
-          "height": "300px",
-          ".vibuy--tabs": {},
-          ".vibuy--tab-list": {},
-          ".vibuy--tab": {
-            "background-color": "#0000",
-            "border-width": "0px 0px 2px 0px",
-            "&:focus": {
-              "border-color": "#00acd8"
-            }
-          },
-          ".vibuy--tab-selected": {
-            "background-color": "#0000",
-            "border-width": "0px 0px 2px 0px",
-            "border-color": "#00acd8",
-            "border-style": "solid",
-            "color": "#fff"
-          },
-          ".vibuy--tab-panel": {}
-        },
-        "tabs": [
-          {
-            "id": "tab-1",
-            "title": "Products in this scene",
-            "children": []
-          },
-          {
-            "id": "tab-2",
-            "title": "All products",
-            "children": []
-          }
-        ]
       }
     }
   ]
