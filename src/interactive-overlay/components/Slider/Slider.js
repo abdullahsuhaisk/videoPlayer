@@ -1,28 +1,27 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
 import './slider.scss';
-import ProductCard from '../ProductCard/ProductCard';
+import WidgetsRenderer from '../../screens/WidgetsRenderer';
+
+const StyledWrapper = styled.div((props) => ({
+  ...props.styles,
+  'pointer-events': 'auto'
+}));
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <div
-      className={className}
+      className={`vibuy--slider-next-arrow ${className}`}
       role="button"
       tabIndex="-1"
       style={{
-        ...style,
-        display: 'block',
-        background: 'url("/images/sign-right.svg") no-repeat center /contain',
-        opacity: '0.4',
-        right: '-100px',
-        top: '80px',
-        zIndex: 0,
-        width: '90px',
-        height: '90px'
+        ...style
       }}
       onClick={onClick}
     />
@@ -34,20 +33,11 @@ const PrevArrow = (props) => {
 
   return (
     <div
-      className={className}
+      className={`vibuy--slider-prev-arrow ${className}`}
       role="button"
       tabIndex="-1"
       style={{
-        ...style,
-        display: 'block',
-        background: 'url("/images/sign-right.svg") no-repeat center /contain',
-        opacity: '0.4',
-        transform: 'scaleX(-1)',
-        right: '-100px',
-        top: '180px',
-        zIndex: 0,
-        width: '90px',
-        height: '90px'
+        ...style
       }}
       onClick={onClick}
     />
@@ -55,12 +45,22 @@ const PrevArrow = (props) => {
 };
 
 const SliderComponent = (props) => {
+  const {
+    styles,
+    slides,
+    useDots,
+    isInfinite,
+    speed,
+    slidesToShow,
+    slidesToScroll
+  } = props;
+
   const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    dots: !!useDots,
+    infinite: !!isInfinite,
+    speed: speed || 500,
+    slidesToShow: slidesToShow || 5,
+    slidesToScroll: slidesToScroll || 1,
     adaptiveHeight: false,
     swipeToSlide: true,
     nextArrow: <NextArrow />,
@@ -68,94 +68,17 @@ const SliderComponent = (props) => {
   };
 
   return (
-    <div style={{ pointerEvents: 'auto', width: '800px', height: '400px' }}>
+    <StyledWrapper styles={styles}>
       <Slider {...settings}>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div style={{ margin: 'auto' }}>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
-        <div>
-          <ProductCard
-            basePrice="1149.95$"
-            discountRate="20%"
-            currentPrice="774.98$"
-          />
-        </div>
+        {slides.map((slide, index) => {
+          return (
+            <div key={index}>
+              <WidgetsRenderer widgets={slide.children} />
+            </div>
+          );
+        })}
       </Slider>
-    </div>
+    </StyledWrapper>
   );
 };
 

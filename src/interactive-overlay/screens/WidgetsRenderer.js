@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useState, useEffect } from 'react';
 import { loadWebFontsFromStyles } from '../utils/parseStyles';
 import Empty from '../components/Empty/Empty';
@@ -10,6 +11,7 @@ import ProfileButton from '../components/ProfileButton/ProfileButton';
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword';
+import Slider from '../components/Slider/Slider';
 
 const widgetList = {
   Empty,
@@ -21,7 +23,8 @@ const widgetList = {
   ProfileButton,
   Login,
   Register,
-  ForgotPassword
+  ForgotPassword,
+  Slider
 };
 
 const WidgetsRenderer = (props) => {
@@ -34,7 +37,9 @@ const WidgetsRenderer = (props) => {
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;
 
-      loadWebFontsFromStyles(widgetStyles);
+      if (widgetStyles) {
+        loadWebFontsFromStyles(widgetStyles);
+      }
 
       return {
         Component: widgetList[widgetType],

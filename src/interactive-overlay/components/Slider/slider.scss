@@ -99,7 +99,7 @@ h3 {
   left: unset;
 }
 .slick-prev::before {
-  content: none;
+  content: '';
 }
 
 .slick-next {
@@ -108,7 +108,7 @@ h3 {
 }
 
 .slick-next::before {
-  content: none;
+  content: '';
 }
 
 .slick-disabled {
