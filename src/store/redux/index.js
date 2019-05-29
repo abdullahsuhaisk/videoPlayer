@@ -11,7 +11,7 @@ import {
 
 import loginInfoReducer from './auth/authReducer';
 import base from './base/baseReducer';
-import firebaseConfig from '../../interactive-overlay/common/firebase';
+import firebaseConfig from '../../common/firebase';
 import player from './player/playerReducer';
 import layout from './layout/layoutReducer';
 import hotspots from './hotspot/hotspotReducer';

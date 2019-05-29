@@ -1,6 +1,6 @@
 // import { connect } from 'react-redux';
 import { Actions } from './authActions';
-import http, { setHttpHeader } from '../../../interactive-overlay/utils/http';
+import http, { setHttpHeader } from '../../../utils/http';
 
 export const login = (credetentials) => {
   return async (dispatch, getState, { getFirebase }) => {

@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import { Player } from './video-player';
+import Player from './features/Player/Player';
 import './i18n/i18n';
-import OverlayContainer from './interactive-overlay/components/OverlayContainer/OverlayContainer';
-import InteractiveOverlay from './interactive-overlay/components/InteractiveOverlay/InteractiveOverlay';
-import HotspotOverlay from './interactive-overlay/components/HotspotOverlay/HotspotOverlay';
+import OverlayContainer from './features/Overlay/OverlayContainer';
+import InteractiveOverlay from './features/Overlay/InteractiveOverlay';
+import HotspotOverlay from './features/Hotspot/HotspotOverlay';
 
 const App = () => {
   const playerOptions = {
