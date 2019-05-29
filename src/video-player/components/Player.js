@@ -298,7 +298,7 @@ Player.defaultProps = {
   currentTimeUpdate: () => {}
 };
 
-export default InjectPlayerProps(Player, {
+export default InjectPlayerProps({
   selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
   selectActions: ({
     ready,
@@ -315,4 +315,4 @@ export default InjectPlayerProps(Player, {
     overlayContainerReady,
     currentTimeUpdate
   })
-});
+})(Player);

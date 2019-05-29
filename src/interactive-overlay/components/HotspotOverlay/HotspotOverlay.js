@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import { compose } from 'redux';
 import SafeArea from '../SafeArea/SafeArea';
 import Hotspot from '../Hotspot';
 import Scaler from '../Scaler/Scaler';
@@ -51,16 +52,16 @@ const HotspotOverlay = (props) => {
   );
 };
 
-export default InjectPlayerProps(
-  InjectHotspotProps(HotspotOverlay, {
+export default compose(
+  InjectPlayerProps({
+    selectActions: ({ play, pause }) => ({ play, pause }),
+    selectProps: ({ currentTime }) => ({ currentTime })
+  }),
+  InjectHotspotProps({
     selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),
     selectProps: ({ hotspots, activeHotspotIds }) => ({
       hotspots,
       activeHotspotIds
     })
-  }),
-  {
-    selectActions: ({ play, pause }) => ({ play, pause }),
-    selectProps: ({ currentTime }) => ({ currentTime })
-  }
-);
+  })
+)(HotspotOverlay);

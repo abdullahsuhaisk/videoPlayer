@@ -22,6 +22,6 @@ const SafeArea = (props) => {
   );
 };
 
-export default InjectLayoutProps(SafeArea, {
+export default InjectLayoutProps({
   selectProps: ({ safeArea }) => ({ safeArea })
-});
+})(SafeArea);

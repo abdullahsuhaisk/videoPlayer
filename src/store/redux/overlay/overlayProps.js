@@ -1,5 +1,9 @@
 import { InjectProps } from '../propsUtils';
-import * as operations from './overlayOperations';
+import {
+  fieldUpdate,
+  add,
+  setActivePlayingOverlayIds
+} from './overlayOperations';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,14 +14,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fieldUpdate: (newStatus) => dispatch(operations.fieldUpdate(newStatus)),
-    add: (overlay) => dispatch(operations.add(overlay)),
+    fieldUpdate: (newStatus) => dispatch(fieldUpdate(newStatus)),
+    add: (overlay) => dispatch(add(overlay)),
     setActivePlayingOverlayIds: (ids) =>
-      dispatch(operations.setActivePlayingOverlayIds(ids))
+      dispatch(setActivePlayingOverlayIds(ids))
   };
 };
 
-export const InjectOverlayProps = InjectProps({
-  mapStateToProps,
-  mapDispatchToProps
-});
+export const InjectOverlayProps = InjectProps(
+  {
+    mapStateToProps,
+    mapDispatchToProps
+  },
+  'InjectOverlayProps'
+);

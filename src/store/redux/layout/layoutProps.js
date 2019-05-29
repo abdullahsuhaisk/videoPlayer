@@ -1,5 +1,12 @@
 import { InjectProps } from '../propsUtils';
-import * as operations from './layoutOperations';
+import {
+  onWidth,
+  onHeight,
+  onBaseWidth,
+  onBaseHeight,
+  onSafeArea,
+  onAspectRatio
+} from './layoutOperations';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,17 +21,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onWidth: (width) => dispatch(operations.onWidth(width)),
-    onHeight: (height) => dispatch(operations.onHeight(height)),
-    onBaseWidth: (width) => dispatch(operations.onBaseWidth(width)),
-    onBaseHeight: (height) => dispatch(operations.onBaseHeight(height)),
-    onSafeArea: (safeArea) => dispatch(operations.onSafeArea(safeArea)),
-    onAspectRatio: (aspectRatio) =>
-      dispatch(operations.onAspectRatio(aspectRatio))
+    onWidth: (width) => dispatch(onWidth(width)),
+    onHeight: (height) => dispatch(onHeight(height)),
+    onBaseWidth: (width) => dispatch(onBaseWidth(width)),
+    onBaseHeight: (height) => dispatch(onBaseHeight(height)),
+    onSafeArea: (safeArea) => dispatch(onSafeArea(safeArea)),
+    onAspectRatio: (aspectRatio) => dispatch(onAspectRatio(aspectRatio))
   };
 };
 
-export const InjectLayoutProps = InjectProps({
-  mapStateToProps,
-  mapDispatchToProps
-});
+export const InjectLayoutProps = InjectProps(
+  {
+    mapStateToProps,
+    mapDispatchToProps
+  },
+  'InjectLayoutProps'
+);

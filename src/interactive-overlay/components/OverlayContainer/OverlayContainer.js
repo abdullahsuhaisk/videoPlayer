@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
+import { compose } from 'redux';
 import ReactDOM from 'react-dom';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 import { throttle } from 'lodash';
@@ -82,8 +83,14 @@ const OverlayContainer = (props) => {
   );
 };
 
-export default InjectPlayerProps(
-  InjectLayoutProps(OverlayContainer, {
+export default compose(
+  InjectPlayerProps({
+    selectProps: ({ overlayContainerClass }) => {
+      const container = document.getElementsByClassName(overlayContainerClass);
+      return { container: container.length > 0 ? container[0] : null };
+    }
+  }),
+  InjectLayoutProps({
     selectProps: ({ aspectRatio }) => ({
       aspectRatio
     }),
@@ -92,11 +99,5 @@ export default InjectPlayerProps(
       onHeight,
       onSafeArea
     })
-  }),
-  {
-    selectProps: ({ overlayContainerClass }) => {
-      const container = document.getElementsByClassName(overlayContainerClass);
-      return { container: container.length > 0 ? container[0] : null };
-    }
-  }
-);
+  })
+)(OverlayContainer);

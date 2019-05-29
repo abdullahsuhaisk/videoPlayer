@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { compose } from 'redux';
 import {
   InjectOverlayProps,
   InjectPlayerProps
@@ -97,8 +98,12 @@ const InteractiveOverlay = (props) => {
   );
 };
 
-export default InjectPlayerProps(
-  InjectOverlayProps(InteractiveOverlay, {
+export default compose(
+  InjectPlayerProps({
+    selectActions: ({ play, pause }) => ({ play, pause }),
+    selectProps: ({ playing, currentTime }) => ({ playing, currentTime })
+  }),
+  InjectOverlayProps({
     selectActions: ({
       setActivePlayingOverlayIds,
       setActivePausedOverlayIds
@@ -115,9 +120,5 @@ export default InjectPlayerProps(
       activePlayingOverlayIds,
       activePausedOverlayIds
     })
-  }),
-  {
-    selectActions: ({ play, pause }) => ({ play, pause }),
-    selectProps: ({ playing, currentTime }) => ({ playing, currentTime })
-  }
-);
+  })
+)(InteractiveOverlay);

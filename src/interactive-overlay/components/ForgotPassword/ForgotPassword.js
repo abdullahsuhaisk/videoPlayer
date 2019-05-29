@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import { InjectAuthProps } from '../../../store/redux/providers';
 
 const StyledWrapper = styled.div((props) => ({
   ...props.styles,
@@ -57,7 +57,7 @@ const ForgotPassword = (props) => {
   );
 };
 
-export default InjectAuthOperations(ForgotPassword, {
+export default InjectAuthProps({
   selectActions: ({ onShowLogin, onShowForgotPassword }) => ({
     onShowLogin,
     onShowForgotPassword
@@ -67,4 +67,4 @@ export default InjectAuthOperations(ForgotPassword, {
     auth,
     showForgotPassword
   })
-});
+})(ForgotPassword);

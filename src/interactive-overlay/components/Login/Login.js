@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import { InjectAuthProps } from '../../../store/redux/providers';
 
 const StyledWrapper = styled.div((props) => ({
   ...props.styles,
@@ -134,7 +134,7 @@ const Login = (props) => {
   );
 };
 
-export default InjectAuthOperations(Login, {
+export default InjectAuthProps({
   selectActions: ({
     login,
     loginWithGoogle,
@@ -158,4 +158,4 @@ export default InjectAuthOperations(Login, {
     loginStatus,
     loginInfo
   })
-});
+})(Login);

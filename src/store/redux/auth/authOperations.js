@@ -1,7 +1,6 @@
 // import { connect } from 'react-redux';
 import { Actions } from './authActions';
 import http, { setHttpHeader } from '../../../interactive-overlay/utils/http';
-import { InjectProps } from '../propsUtils';
 
 export const login = (credetentials) => {
   return async (dispatch, getState, { getFirebase }) => {
@@ -103,43 +102,3 @@ export const onShowForgotPassword = (show) => {
     dispatch(Actions.onShowForgotPassword(show));
   };
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (credentials) => dispatch(login(credentials)),
-    createUserWithEmailAndPassword: (credentials) =>
-      dispatch(createUserWithEmailAndPasswordFirebase(credentials)),
-    loginWithGoogle: () => dispatch(loginWithGoogle),
-    loginWithFacebook: () => dispatch(facebookLogin),
-    signOut: () => dispatch(signout),
-    facebookLogin: () => dispatch(facebookLogin),
-    registerWithEmailAndPassword: (credentials) =>
-      dispatch(createUserWithEmailAndPasswordFirebase(credentials)),
-    resetErrors: () => dispatch(Actions.resetError()),
-    google: () => dispatch(loginWithGoogle),
-    facebook: () => dispatch(facebookLogin),
-    onShowLogin: (show) => dispatch(Actions.onShowLogin(show)),
-    onShowRegister: (show) => dispatch(Actions.onShowRegister(show)),
-    onShowForgotPassword: (show) => dispatch(Actions.onShowForgotPassword(show))
-  };
-};
-
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth,
-    loginInfo: state.loginInfo,
-    loginStatus: state.loginInfo.loginStatus,
-    showLogin: state.loginInfo.showLogin,
-    showRegister: state.loginInfo.showRegister,
-    showForgotPassword: state.loginInfo.showForgotPassword
-  };
-};
-
-// const NoProps = props => ({});
-
-// const defaultSelectors = Object.create(null);
-
-export const InjectAuthOperations = InjectProps({
-  mapStateToProps,
-  mapDispatchToProps
-});

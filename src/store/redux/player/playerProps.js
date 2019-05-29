@@ -1,5 +1,12 @@
 import { InjectProps } from '../propsUtils';
-import * as operations from './playerOperations';
+import {
+  ready,
+  play,
+  pause,
+  seek,
+  overlayContainerReady,
+  currentTimeUpdate
+} from './playerOperations';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,18 +19,20 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ready: () => dispatch(operations.ready),
-    play: () => dispatch(operations.play),
-    pause: () => dispatch(operations.pause),
-    seek: (timeToSeek) => dispatch(operations.seek(timeToSeek)),
+    ready: () => dispatch(ready),
+    play: () => dispatch(play),
+    pause: () => dispatch(pause),
+    seek: (timeToSeek) => dispatch(seek(timeToSeek)),
     overlayContainerReady: (containerClass) =>
-      dispatch(operations.overlayContainerReady(containerClass)),
-    currentTimeUpdate: (currentTime) =>
-      dispatch(operations.currentTimeUpdate(currentTime))
+      dispatch(overlayContainerReady(containerClass)),
+    currentTimeUpdate: (currentTime) => dispatch(currentTimeUpdate(currentTime))
   };
 };
 
-export const InjectPlayerProps = InjectProps({
-  mapStateToProps,
-  mapDispatchToProps
-});
+export const InjectPlayerProps = InjectProps(
+  {
+    mapStateToProps,
+    mapDispatchToProps
+  },
+  'InjectPlayerProps'
+);

@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { InjectAuthOperations } from '../../../store/redux/auth/authOperations';
+import { InjectAuthProps } from '../../../store/redux/providers';
 
 const StyledWrapper = styled.div((props) => ({
   ...props.styles,
@@ -39,7 +39,7 @@ const ProfileButton = (props) => {
   );
 };
 
-export default InjectAuthOperations(ProfileButton, {
+export default InjectAuthProps({
   selectActions: ({ onShowLogin }) => ({
     onShowLogin
   }),
@@ -49,4 +49,4 @@ export default InjectAuthOperations(ProfileButton, {
     loginStatus,
     loginInfo
   })
-});
+})(ProfileButton);

@@ -5,9 +5,7 @@ const Scaler = (props) => {
   const { safeArea, width, height, baseWidth, baseHeight, children } = props;
 
   const scaleX = (width - (safeArea.left + safeArea.right)) / baseWidth;
-  // const scaleX = width / baseWidth;
   const scaleY = (height - (safeArea.top + safeArea.bottom)) / baseHeight;
-  // const scaleY = height / baseHeight;
 
   return (
     <div
@@ -23,7 +21,7 @@ const Scaler = (props) => {
   );
 };
 
-export default InjectLayoutProps(Scaler, {
+export default InjectLayoutProps({
   selectProps: ({ safeArea, width, height, baseWidth, baseHeight }) => ({
     safeArea,
     width,
@@ -31,4 +29,4 @@ export default InjectLayoutProps(Scaler, {
     baseWidth,
     baseHeight
   })
-});
+})(Scaler);
