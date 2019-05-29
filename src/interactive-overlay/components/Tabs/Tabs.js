@@ -1,11 +1,10 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import './tabs.scss';
-// eslint-disable-next-line import/no-cycle
 import WidgetsRenderer from '../../screens/WidgetsRenderer';
-// import SliderComponent from '../Slider/Slider';
 
 const StyledWrapper = styled.div((props) => ({
   ...props.styles,
@@ -36,8 +35,6 @@ const TabSection = (props) => {
             <TabPanel
               className="vibuy--tab-panel react-tabs__tab-panel"
               key={`panel-${tab.id}`}>
-              {/* <SliderComponent /> */}
-              {/* <WidgetsRenderer data={item.tabPanel} /> */}
               {tab.children && <WidgetsRenderer widgets={tab.children} />}
             </TabPanel>
           );
