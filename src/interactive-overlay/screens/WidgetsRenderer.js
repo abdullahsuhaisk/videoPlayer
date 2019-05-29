@@ -12,6 +12,7 @@ import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword';
 import Slider from '../components/Slider/Slider';
+import ProductCard from '../components/ProductCard/ProductCard';
 
 const widgetList = {
   Empty,
@@ -24,7 +25,8 @@ const widgetList = {
   Login,
   Register,
   ForgotPassword,
-  Slider
+  Slider,
+  ProductCard
 };
 
 const WidgetsRenderer = (props) => {
