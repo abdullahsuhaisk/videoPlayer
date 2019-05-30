@@ -1,13 +1,13 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import SafeArea from '../../components/SafeArea/SafeArea';
-import Hotspot from './Hotspot';
 import Scaler from '../../components/Scaler/Scaler';
 import {
   InjectHotspotProps,
   InjectPlayerProps
 } from '../../store/redux/providers';
 import useTimeRange from '../../hooks/useTimeRange';
+import HotspotCard from './HotspotCard';
 
 const HotspotOverlay = (props) => {
   const {
@@ -23,13 +23,6 @@ const HotspotOverlay = (props) => {
     setActiveHotspotIds(currentActiveHotspotIds);
   }, [currentActiveHotspotIds]);
 
-  const handleAction = useCallback((action) => {
-    // const { name, params } = action;
-    // if (name === 'openOverlay') {
-    //   addActiveId(params[0]);
-    // }
-  }, []);
-
   return (
     <div
       className="vibuy--hotspot-overlay"
@@ -37,14 +30,7 @@ const HotspotOverlay = (props) => {
       <SafeArea>
         <Scaler>
           {activeHotspotIds.map((id) => {
-            return (
-              <Hotspot
-                key={id}
-                top={`${hotspots[id].top}`}
-                left={`${hotspots[id].left}`}
-                action={() => handleAction(hotspots[id].action)}
-              />
-            );
+            return <HotspotCard key={id} title={id} />;
           })}
         </Scaler>
       </SafeArea>

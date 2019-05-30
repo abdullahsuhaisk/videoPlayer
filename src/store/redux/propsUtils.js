@@ -65,14 +65,14 @@ function isFunctionComponent(Component) {
   );
 }
 
-function isReactComponent(Component) {
-  return (
-    isClassComponent(Component) ||
-    isFunctionComponent(Component) ||
-    isWrappedComponent(Component) ||
-    typeof component === 'function'
-  );
-}
+// function isReactComponent(Component) {
+//   return (
+//     isClassComponent(Component) ||
+//     isFunctionComponent(Component) ||
+//     isWrappedComponent(Component) ||
+//     typeof component === 'function'
+//   );
+// }
 
 function setDisplayName(Component, displayName) {
   // Component.displayName = Component.displayName.replace(/Connect/, displayName);
