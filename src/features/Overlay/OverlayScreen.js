@@ -8,8 +8,6 @@ import {
 import SafeArea from '../../components/SafeArea/SafeArea';
 // import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Scaler from '../../components/Scaler/Scaler';
-// import Tabs from '../Tabs/Tabs';
-// import ComponentLoading from '../ComponentLoading/ComponentLoading';
 import AuthScreen from '../Auth/AuthScreen';
 import ProductListScreen from '../Product/ProductList/ProductListScreen';
 
@@ -18,16 +16,16 @@ import ProductListScreen from '../Product/ProductList/ProductListScreen';
 //   value: overlayTypes.playing
 // };
 
-const InteractiveOverlay = (props) => {
-  const {
-    overlays,
-    activePlayingOverlayIds,
-    setActivePlayingOverlayIds,
-    activePausedOverlayIds,
-    setActivePausedOverlayIds,
-    currentTime,
-    playing
-  } = props;
+const OverlayScreen = (props) => {
+  // const {
+  //   overlays,
+  //   activePlayingOverlayIds,
+  //   setActivePlayingOverlayIds,
+  //   activePausedOverlayIds,
+  //   setActivePausedOverlayIds,
+  //   currentTime,
+  //   playing
+  // } = props;
 
   // const playingOverlayIds = useTimeRange(
   //   overlays,
@@ -57,9 +55,7 @@ const InteractiveOverlay = (props) => {
         <Scaler>
           <ProductListScreen />
           <AuthScreen />
-          {/* <Login />
-          <Register />
-          <ForgotPassword />
+          {/* 
           {playing &&
             activePlayingOverlayIds.map((id) => {
               const { widgetType } = overlays[id];
@@ -121,4 +117,4 @@ export default compose(
       activePausedOverlayIds
     })
   })
-)(InteractiveOverlay);
+)(OverlayScreen);

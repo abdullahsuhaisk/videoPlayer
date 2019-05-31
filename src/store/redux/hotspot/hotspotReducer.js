@@ -5,17 +5,19 @@ const initialState = {
   'hotspot-1': {
     assetId: 12123,
     action: { name: 'openOverlay', params: ['overlay-2'] },
-    in: 0,
+    in: 32.5,
     out: 65.3,
     top: 25,
-    left: 25
+    left: 25,
+    productId: 'product-1'
   },
   'hotspot-2': {
     assetId: 12123,
     in: 98.2,
     out: 186.4,
     top: 5,
-    left: 5
+    left: 5,
+    productId: 'product-2'
   }
 };
 

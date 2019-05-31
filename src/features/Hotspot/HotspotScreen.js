@@ -9,7 +9,7 @@ import {
 import useTimeRange from '../../hooks/useTimeRange';
 import HotspotCard from './HotspotCard';
 
-const HotspotOverlay = (props) => {
+const HotspotScreen = (props) => {
   const {
     hotspots,
     activeHotspotIds,
@@ -50,4 +50,4 @@ export default compose(
       activeHotspotIds
     })
   })
-)(HotspotOverlay);
+)(HotspotScreen);
