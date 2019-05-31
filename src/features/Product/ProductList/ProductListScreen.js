@@ -1,10 +1,11 @@
 import React from 'react';
-import productListTemplate from './productListTemplate.json';
-import WidgetsRenderer from '../../../components/WidgetsRenderer/WidgetsRenderer';
+import ProductList from './ProductList';
+import { InjectProductProps } from '../../../store/redux/providers';
 
-const ProductListScreen = () => {
-  const { widgets } = productListTemplate;
-  return <WidgetsRenderer widgets={widgets} />;
+const ProductListScreen = (props) => {
+  const { products } = props;
+
+  return <ProductList products={products} />;
 };
 
-export default ProductListScreen;
+export default InjectProductProps()(ProductListScreen);

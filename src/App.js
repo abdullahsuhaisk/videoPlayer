@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
-// import InteractiveOverlay from './features/Overlay/InteractiveOverlay';
-import HotspotOverlay from './features/Hotspot/HotspotOverlay';
+import InteractiveOverlay from './features/Overlay/InteractiveOverlay';
+// import HotspotOverlay from './features/Hotspot/HotspotOverlay';
 
 const App = () => {
   const playerOptions = {
@@ -25,8 +25,8 @@ const App = () => {
         <Player {...playerOptions} />
       </Suspense>
       <OverlayContainer>
-        {/* <InteractiveOverlay /> */}
-        <HotspotOverlay />
+        <InteractiveOverlay />
+        {/* <HotspotOverlay /> */}
       </OverlayContainer>
     </div>
   );
