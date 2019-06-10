@@ -16,7 +16,7 @@ import ProductListScreen from '../Product/ProductList/ProductListScreen';
 //   value: overlayTypes.playing
 // };
 
-const OverlayScreen = (props) => {
+const OverlayScreen = ({ playing }) => {
   // const {
   //   overlays,
   //   activePlayingOverlayIds,
@@ -53,7 +53,8 @@ const OverlayScreen = (props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <ProductListScreen />
+          {!playing && <ProductListScreen />}
+
           <AuthScreen />
           {/* 
           {playing &&

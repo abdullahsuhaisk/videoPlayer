@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.div((props) => ({
   'pointer-events': 'auto',
   width: '800px',
-  height: '400px',
-  '.vibuy--slider-next-arrow': {
+  height: '315px',
+  '.next-arrow': {
     right: '-100px',
     top: '80px',
     width: '90px',
@@ -16,7 +16,7 @@ export const Wrapper = styled.div((props) => ({
       height: '100%'
     }
   },
-  '.vibuy--slider-prev-arrow': {
+  '.prev-arrow': {
     transform: 'scaleX(-1)',
     right: '-100px',
     top: '180px',

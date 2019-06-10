@@ -1,63 +1,59 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div((props) => ({
-  'pointer-events': 'auto',
+  pointerEvents: 'auto',
   width: '150px',
   height: '315px',
-  'border-radius': '5px',
-  'background-color': '#F4F4F8',
+  borderRadius: '5px',
+  backgroundColor: '#F4F4F8',
   margin: 'auto',
   '.first-container': {
     width: '100%',
     height: '60%',
     display: 'flex',
-    'flex-direction': 'column',
-    'align-items': 'center',
-    'justify-content': 'space-between',
-    'border-radius': '5px',
-    background: '#00acd8',
-    cursor: 'pointer'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: '5px',
+    background: '#00acd8'
   },
   '.product-image': {
     width: '100%',
     height: '89%',
     display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-    'border-radius': '5px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '5px',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    cursor: 'default',
-    img: {
-      'max-width': '100%',
-      'max-height': '100%',
-      border: 'none'
-    }
+    cursor: 'default'
   },
   '.add-to-wishlist': {
     color: '#FFFC',
-    'margin-bottom': '5px',
-    'font-weight': 'bold',
-    'font-size': '10px'
+    marginBottom: '5px',
+    fontWeight: 'bold',
+    fontSize: '10px',
+    outline: 'none',
+    cursor: 'pointer'
   },
   '.second-container': {
     width: '100%',
     height: '40%',
     display: 'flex',
-    'flex-direction': 'column',
-    'align-items': 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
     '.brand': {
       color: '#0009',
-      'margin-top': '5px',
-      'font-weight': 'bold',
-      'font-size': '12px'
+      marginTop: '5px',
+      fontWeight: 'bold',
+      fontSize: '12px'
     },
     '.title': {
       color: '#0009',
       padding: '2px',
-      'font-weight': 'bold',
-      'font-size': '12px'
+      fontWeight: 'bold',
+      fontSize: '12px'
     },
     '.price-container': {
       margin: '10px',
@@ -66,62 +62,64 @@ export const Wrapper = styled.div((props) => ({
         width: '24px',
         height: '15px',
         display: 'flex',
-        'align-items': 'center',
-        'justify-content': 'center',
-        'background-color': '#D53738',
-        'font-weight': 'bold',
-        'border-radius': '5px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#D53738',
+        fontWeight: 'bold',
+        borderRadius: '5px',
         span: {
-          'font-size': '10px'
+          fontSize: '10px'
         }
       },
       '.base-price': {
         display: 'flex',
         height: '15px',
-        'align-items': 'center',
-        'justify-content': 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: 'black',
         span: {
           color: '#525153',
-          'padding-left': '2px',
-          'font-size': '9px',
-          'text-decoration': 'line-through'
+          paddingLeft: '2px',
+          fontSize: '9px',
+          textDecoration: 'line-through'
         }
       },
       '.current-price': {
         width: '100%',
         display: 'flex',
-        'align-items': 'center',
-        'justify-content': 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: 'black',
         span: {
           color: '#525153',
           padding: '2px',
-          'font-size': '18px',
-          'font-weight': 'bold'
+          fontSize: '18px',
+          fontWeight: 'bold'
         }
       }
     },
     '.price': {
       color: '#525153',
       margin: '15px',
-      'font-size': '18px',
-      'font-weight': 'bold'
+      fontSize: '18px',
+      fontWeight: 'bold'
     },
     '.in-stock': {
       color: '#00acd8',
-      'font-size': '10px',
-      'font-weight': 'bold'
+      fontSize: '10px',
+      fontWeight: 'bold'
     },
     hr: {
       width: '50%',
       margin: '3px',
-      'border-top': '1px solid #00acd8'
+      borderTop: '1px solid #00acd8'
     },
     '.details': {
       color: '#00acd8',
-      'font-size': '12px',
-      'font-weight': 'bold'
+      fontSize: '12px',
+      fontWeight: 'bold',
+      outline: 'none',
+      cursor: 'pointer'
     }
   },
   ...props.styles

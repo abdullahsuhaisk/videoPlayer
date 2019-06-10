@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Carousel from '../../../components/Carousel/Carousel';
 import ProductCard from './ProductCard';
 
-const ProductCarousel = (props) => {
-  const { products } = props;
+const ProductCarousel = ({ products }) => {
   const productIds = React.useMemo(() => Object.keys(products), [products]);
 
   return productIds.length === 0 ? (
@@ -25,6 +25,10 @@ const ProductCarousel = (props) => {
       ))}
     </Carousel>
   );
+};
+
+ProductCarousel.propTypes = {
+  products: PropTypes.object.isRequired
 };
 
 export default ProductCarousel;
