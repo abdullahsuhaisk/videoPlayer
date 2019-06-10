@@ -47,11 +47,11 @@ export const loadWebFontsFromStyles = (styles) => {
       loadWebFontsFromStyles(styles[ruleName]);
     }
 
-    if (ruleName === 'font-family') {
+    if (ruleName === 'font-family' || ruleName === 'fontFamily') {
       foundedFont.fontFamily = styles[ruleName];
-    } else if (ruleName === 'font-weight') {
+    } else if (ruleName === 'font-weight' || ruleName === 'fontWeight') {
       foundedFont.fontWeight = styles[ruleName];
-    } else if (ruleName === 'font-style') {
+    } else if (ruleName === 'font-style' || ruleName === 'fontStyle') {
       foundedFont.fontStyle = styles[ruleName];
     }
   });
