@@ -1,53 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import SafeArea from '../../components/SafeArea/SafeArea';
-import Scaler from '../../components/Scaler/Scaler';
 import {
   InjectHotspotProps,
-  InjectPlayerProps
+  InjectPlayerProps,
+  InjectProductProps
 } from '../../store/redux/providers';
 import useTimeRange from '../../hooks/useTimeRange';
-import HotspotCard from './HotspotCard';
+import HotspotCardList from './HotspotCardList';
 
-const HotspotScreen = (props) => {
-  const {
-    hotspots,
-    activeHotspotIds,
-    setActiveHotspotIds,
-    currentTime
-  } = props;
-
+const HotspotScreen = ({
+  hotspots,
+  setActiveHotspotIds,
+  currentTime,
+  products
+}) => {
+  const [hotspotProducts, setHotspotProducts] = useState({});
   const currentActiveHotspotIds = useTimeRange(hotspots, currentTime);
 
   useEffect(() => {
     setActiveHotspotIds(currentActiveHotspotIds);
+    const currentHotspotProducts = currentActiveHotspotIds.reduce((acc, id) => {
+      const { productId } = hotspots[id];
+      acc[productId] = products[productId];
+      return acc;
+    }, {});
+    setHotspotProducts(currentHotspotProducts);
   }, [currentActiveHotspotIds]);
 
-  return (
-    <div
-      className="vibuy--hotspot-overlay"
-      style={{ position: 'absolute', width: '100%', height: '100%' }}>
-      <SafeArea>
-        <Scaler>
-          {activeHotspotIds.map((id) => {
-            return <HotspotCard key={id} title={id} />;
-          })}
-        </Scaler>
-      </SafeArea>
-    </div>
-  );
+  return <HotspotCardList hotspotProducts={hotspotProducts} />;
+};
+
+HotspotScreen.propTypes = {
+  hotspots: PropTypes.object.isRequired,
+  setActiveHotspotIds: PropTypes.func.isRequired,
+  currentTime: PropTypes.number.isRequired,
+  products: PropTypes.object.isRequired
 };
 
 export default compose(
   InjectPlayerProps({
-    selectActions: ({ play, pause }) => ({ play, pause }),
     selectProps: ({ currentTime }) => ({ currentTime })
   }),
   InjectHotspotProps({
     selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),
-    selectProps: ({ hotspots, activeHotspotIds }) => ({
-      hotspots,
-      activeHotspotIds
+    selectProps: ({ hotspots }) => ({
+      hotspots
     })
-  })
+  }),
+  InjectProductProps()
 )(HotspotScreen);

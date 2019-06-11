@@ -11,7 +11,6 @@ import ProfileButton from '../ProfileButton/ProfileButton';
 import Login from '../../features/Auth/Login';
 import Register from '../../features/Auth/Register';
 import ForgotPassword from '../../features/Auth/ForgotPassword';
-import ProductCard from '../ProductCard/ProductCard';
 
 const widgetList = {
   Empty,
@@ -23,8 +22,7 @@ const widgetList = {
   ProfileButton,
   Login,
   Register,
-  ForgotPassword,
-  ProductCard
+  ForgotPassword
 };
 
 const WidgetsRenderer = (props) => {

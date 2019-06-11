@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef } from 'react';
 import { findTimeRange } from '../utils/common';
 
 const useTimeRange = (inOutObjectsWithId, currentTime, basicFilter) => {
@@ -58,17 +58,17 @@ const useTimeRange = (inOutObjectsWithId, currentTime, basicFilter) => {
     return times.sort((a, b) => a - b);
   }, [groupedObjectIdsByTime]);
 
-  useEffect(() => {
+  if (
+    currentTime <= currentTimeRangeRef.current.start ||
+    currentTime >= currentTimeRangeRef.current.end
+  ) {
     const [start, end] = findTimeRange(timeList, currentTime);
     const currentObjectIds = groupedObjectIdsByTime[start] || [];
 
     currentTimeRangeRef.current.start = start || 0;
     currentTimeRangeRef.current.end = end;
     currentActiveObjectIds.current = currentObjectIds;
-  }, [
-    currentTime <= currentTimeRangeRef.current.start ||
-      currentTime >= currentTimeRangeRef.current.end
-  ]);
+  }
 
   return currentActiveObjectIds.current;
 };

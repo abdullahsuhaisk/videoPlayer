@@ -22,6 +22,18 @@ const initialProductState = {
     currentPrice: 120.0,
     currency: '$',
     inStock: false
+  },
+  'product-3': {
+    name: 'Turtleneck Sweater 2',
+    brand: 'Valentino',
+    assets: {
+      images: ['/images/products/product-3.jpg']
+    },
+    currency: '$',
+    price: 0,
+    discountRate: 0,
+    currentPrice: 78.98,
+    inStock: true
   }
 };
 
