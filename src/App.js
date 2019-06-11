@@ -3,7 +3,6 @@ import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
-import HotspotScreen from './features/Hotspot/HotspotScreen';
 
 const App = () => {
   const playerOptions = {
@@ -26,7 +25,6 @@ const App = () => {
       </Suspense>
       <OverlayContainer>
         <OverlayScreen />
-        <HotspotScreen />
       </OverlayContainer>
     </div>
   );

@@ -3,21 +3,19 @@ import { actionTypes } from './hotspotActions';
 
 const initialState = {
   'hotspot-1': {
-    assetId: 12123,
-    action: { name: 'openOverlay', params: ['overlay-2'] },
     in: 32.5,
-    out: 65.3,
-    top: 25,
-    left: 25,
+    out: 105.3,
     productId: 'product-1'
   },
   'hotspot-2': {
-    assetId: 12123,
-    in: 98.2,
-    out: 186.4,
-    top: 5,
-    left: 5,
+    in: 82.5,
+    out: 125.3,
     productId: 'product-2'
+  },
+  'hotspot-3': {
+    in: 128.2,
+    out: 216.4,
+    productId: 'product-3'
   }
 };
 

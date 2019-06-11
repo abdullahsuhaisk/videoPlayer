@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect } from 'react';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
@@ -10,39 +11,41 @@ import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import 'videojs-dock/dist/videojs-dock.css';
 import './Tooltip/vjs-tooltip';
-import { InjectPlayerProps } from '../../store/redux/providers';
+import {
+  InjectPlayerProps,
+  InjectHotspotProps
+} from '../../store/redux/providers';
 import 'videojs-markers';
 
 window.videojs = videojs;
 
-const Player = (props) => {
+const Player = ({
+  width,
+  height,
+  controls,
+  poster,
+  sources,
+  loop,
+  muted,
+  aspectRatio,
+  autoplay,
+  fluid,
+  volume,
+  title,
+  description,
+  playing,
+  seek,
+  seekTo,
+  ready,
+  play,
+  pause,
+  overlayContainerReady,
+  currentTimeUpdate,
+  hotspots
+}) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const { i18n } = useTranslation();
-
-  const {
-    width,
-    height,
-    controls,
-    poster,
-    sources,
-    loop,
-    muted,
-    aspectRatio,
-    autoplay,
-    fluid,
-    volume,
-    title,
-    description,
-    playing,
-    seek,
-    seekTo,
-    ready,
-    play,
-    pause,
-    overlayContainerReady,
-    currentTimeUpdate
-  } = props;
 
   useEffect(() => {
     videojs.addLanguage(
@@ -196,8 +199,16 @@ const Player = (props) => {
     }
   }, [seekTo]);
 
-  // TODO: Setup markers when tags data is ready
   useEffect(() => {
+    if (playerRef.current.markers && playerRef.current.markers.destroy) {
+      playerRef.current.markers.destroy();
+    }
+
+    const markers = Object.keys(hotspots).reduce((acc, id) => {
+      acc.push({ time: hotspots[id].in, text: id });
+      return acc;
+    }, []);
+
     playerRef.current.markers({
       markerStyle: {
         width: '.3em',
@@ -209,18 +220,9 @@ const Player = (props) => {
         display: true,
         text: (marker) => marker.text || ''
       },
-      markers: [
-        {
-          time: 32.5,
-          text: 'marker 1'
-        },
-        {
-          time: 98.2,
-          text: 'marker 2'
-        }
-      ]
+      markers
     });
-  }, []);
+  }, [hotspots]);
 
   return (
     <div
@@ -298,21 +300,26 @@ Player.defaultProps = {
   currentTimeUpdate: () => {}
 };
 
-export default InjectPlayerProps({
-  selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
-  selectActions: ({
-    ready,
-    play,
-    pause,
-    seek,
-    overlayContainerReady,
-    currentTimeUpdate
-  }) => ({
-    ready,
-    play,
-    pause,
-    seek,
-    overlayContainerReady,
-    currentTimeUpdate
+export default compose(
+  InjectPlayerProps({
+    selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
+    selectActions: ({
+      ready,
+      play,
+      pause,
+      seek,
+      overlayContainerReady,
+      currentTimeUpdate
+    }) => ({
+      ready,
+      play,
+      pause,
+      seek,
+      overlayContainerReady,
+      currentTimeUpdate
+    })
+  }),
+  InjectHotspotProps({
+    selectProps: ({ hotspots }) => ({ hotspots })
   })
-})(Player);
+)(Player);

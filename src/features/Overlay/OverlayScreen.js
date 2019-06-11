@@ -1,52 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import {
   InjectOverlayProps,
   InjectPlayerProps
 } from '../../store/redux/providers';
-// import useTimeRange from '../../hooks/useTimeRange';
 import SafeArea from '../../components/SafeArea/SafeArea';
-// import { overlayTypes } from '../../../store/redux/overlay/overlayActions';
 import Scaler from '../../components/Scaler/Scaler';
 import AuthScreen from '../Auth/AuthScreen';
 import ProductListScreen from '../Product/ProductList/ProductListScreen';
-
-// const playingOverlayFilter = {
-//   key: 'type',
-//   value: overlayTypes.playing
-// };
+import HotspotScreen from '../Hotspot/HotspotScreen';
 
 const OverlayScreen = ({ playing }) => {
-  // const {
-  //   overlays,
-  //   activePlayingOverlayIds,
-  //   setActivePlayingOverlayIds,
-  //   activePausedOverlayIds,
-  //   setActivePausedOverlayIds,
-  //   currentTime,
-  //   playing
-  // } = props;
-
-  // const playingOverlayIds = useTimeRange(
-  //   overlays,
-  //   currentTime,
-  //   playingOverlayFilter
-  // );
-
-  // useEffect(() => {
-  //   setActivePlayingOverlayIds(playingOverlayIds);
-  // }, [playingOverlayIds]);
-
-  // useEffect(() => {
-  //   if (!playing) {
-  //     const pausedOverlayIds = Object.keys(overlays).filter((id) => {
-  //       return overlays[id].type === overlayTypes.paused ? id : null;
-  //     });
-
-  //     setActivePausedOverlayIds(pausedOverlayIds);
-  //   }
-  // }, [playing]);
-
   return (
     <div
       className="vibuy--interactive-overlay"
@@ -54,45 +19,16 @@ const OverlayScreen = ({ playing }) => {
       <SafeArea>
         <Scaler>
           {!playing && <ProductListScreen />}
-
+          {<HotspotScreen />}
           <AuthScreen />
-          {/* 
-          {playing &&
-            activePlayingOverlayIds.map((id) => {
-              const { widgetType } = overlays[id];
-
-              if (widgetType) {
-                const LazyComponent = widgets[widgetType];
-
-                return (
-                  <React.Suspense fallback={<ComponentLoading />} key={id}>
-                    <LazyComponent />
-                  </React.Suspense>
-                );
-              }
-
-              return <div key={id}>{id}</div>;
-            })}
-          {!playing &&
-            activePausedOverlayIds.map((id) => {
-              const { widgetType } = overlays[id];
-
-              if (widgetType) {
-                const LazyComponent = widgets[widgetType];
-
-                return (
-                  <React.Suspense fallback={<ComponentLoading />} key={id}>
-                    <LazyComponent />
-                  </React.Suspense>
-                );
-              }
-
-              return <div key={id}>{id}</div>;
-            })} */}
         </Scaler>
       </SafeArea>
     </div>
   );
+};
+
+OverlayScreen.propTypes = {
+  playing: PropTypes.bool.isRequired
 };
 
 export default compose(
