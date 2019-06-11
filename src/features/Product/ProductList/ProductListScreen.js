@@ -5,14 +5,16 @@ import Tabs from '../../../components/Tabs/Tabs';
 import ProductCarousel from './ProductCarousel';
 import {
   InjectProductProps,
-  InjectHotspotProps
+  InjectHotspotProps,
+  InjectPlayerProps
 } from '../../../store/redux/providers';
 
 const ProductListScreen = ({
   products,
   styles,
   hotspots,
-  activeHotspotIds
+  activeHotspotIds,
+  playing
 }) => {
   const [productsInScene, setProductsInScene] = React.useState({});
 
@@ -27,14 +29,16 @@ const ProductListScreen = ({
   }, [products, activeHotspotIds]);
 
   return (
-    <Tabs
-      styles={styles}
-      tabs={['Products in this scene', 'Products in this video']}
-      tabPanels={[
-        <ProductCarousel products={productsInScene} />,
-        <ProductCarousel products={products} />
-      ]}
-    />
+    !playing && (
+      <Tabs
+        styles={styles}
+        tabs={['Products in this scene', 'Products in this video']}
+        tabPanels={[
+          <ProductCarousel products={productsInScene} />,
+          <ProductCarousel products={products} />
+        ]}
+      />
+    )
   );
 };
 
@@ -42,7 +46,8 @@ ProductListScreen.propTypes = {
   products: PropTypes.object.isRequired,
   styles: PropTypes.object,
   hotspots: PropTypes.object.isRequired,
-  activeHotspotIds: PropTypes.array.isRequired
+  activeHotspotIds: PropTypes.array.isRequired,
+  playing: PropTypes.bool.isRequired
 };
 
 ProductListScreen.defaultProps = {
@@ -56,5 +61,8 @@ export default compose(
       hotspots,
       activeHotspotIds
     })
+  }),
+  InjectPlayerProps({
+    selectProps: ({ playing }) => ({ playing })
   })
 )(ProductListScreen);

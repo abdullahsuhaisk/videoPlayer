@@ -10,6 +10,7 @@ import useTimeRange from '../../hooks/useTimeRange';
 import HotspotCardList from './HotspotCardList';
 
 const HotspotScreen = ({
+  playing,
   hotspots,
   setActiveHotspotIds,
   currentTime,
@@ -28,10 +29,11 @@ const HotspotScreen = ({
     setHotspotProducts(currentHotspotProducts);
   }, [currentActiveHotspotIds]);
 
-  return <HotspotCardList hotspotProducts={hotspotProducts} />;
+  return playing && <HotspotCardList hotspotProducts={hotspotProducts} />;
 };
 
 HotspotScreen.propTypes = {
+  playing: PropTypes.bool.isRequired,
   hotspots: PropTypes.object.isRequired,
   setActiveHotspotIds: PropTypes.func.isRequired,
   currentTime: PropTypes.number.isRequired,
@@ -40,7 +42,7 @@ HotspotScreen.propTypes = {
 
 export default compose(
   InjectPlayerProps({
-    selectProps: ({ currentTime }) => ({ currentTime })
+    selectProps: ({ playing, currentTime }) => ({ playing, currentTime })
   }),
   InjectHotspotProps({
     selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),
