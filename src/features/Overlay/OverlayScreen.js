@@ -19,7 +19,7 @@ const OverlayScreen = ({ playing }) => {
       <SafeArea>
         <Scaler>
           {!playing && <ProductListScreen />}
-          {<HotspotScreen />}
+          {playing && <HotspotScreen />}
           <AuthScreen />
         </Scaler>
       </SafeArea>
