@@ -1,11 +1,17 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { InjectAuthProps } from '../../store/redux/providers';
-import { Wrapper } from './ProfileButton.style';
+import { Wrapper, profileButtonStyles } from './ProfileButton.style';
+import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const ProfileButton = (props) => {
   const { styles, auth, onShowLogin } = props;
   const [username, setUsername] = useState('Login');
+
+  useEffect(() => {
+    loadWebFontsFromStyles(profileButtonStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
 
   const handleClick = useCallback(() => {
     if (auth.uid) {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div((props) => ({
+export const profileButtonStyles = {
   position: 'absolute',
   top: '30px',
   left: '810px',
@@ -11,9 +11,10 @@ export const Wrapper = styled.div((props) => ({
     height: '18px',
     marginRight: '5px',
     fontFamily: 'Source Sans Pro',
+    fontWeight: 600,
     fontSize: ' 12px',
     textAlign: 'right',
-    color: '#FFF',
+    color: '#0b2443',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
@@ -25,6 +26,10 @@ export const Wrapper = styled.div((props) => ({
     height: '24px',
     borderRadius: '50%',
     border: '1px solid #494949'
-  },
+  }
+};
+
+export const Wrapper = styled.div((props) => ({
+  ...profileButtonStyles,
   ...props.styles
 }));
