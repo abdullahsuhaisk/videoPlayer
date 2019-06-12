@@ -5,8 +5,8 @@ export const Wrapper = styled.div((props) => ({
   width: '100px',
   height: '100%',
   right: '10px',
-  pointerEvents: 'auto',
   '.list-header': {
+    pointerEvents: 'auto',
     textAlign: 'center',
     padding: '5px'
   },
