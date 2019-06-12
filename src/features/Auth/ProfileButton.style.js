@@ -6,7 +6,7 @@ export const profileButtonStyles = {
   top: '30px',
   left: '810px',
   cursor: 'pointer',
-  '.username': {
+  '.vb--profile-button-username': {
     display: 'inline-block',
     width: '100px',
     height: '18px',
@@ -20,7 +20,7 @@ export const profileButtonStyles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
-  '.avatar': {
+  '.vb--profile-button-avatar': {
     background: 'url(/images/user_avatar.svg) center / cover no-repeat',
     display: 'inline-block',
     width: '24px',

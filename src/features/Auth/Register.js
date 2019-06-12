@@ -1,30 +1,30 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useCallback } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { Wrapper, registerStyles } from './Register.style';
 import { InjectAuthProps } from '../../store/redux/providers';
+import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const StyledWrapper = styled.div((props) => ({
-  ...props.styles,
-  'pointer-events': 'auto'
-}));
-
-const Register = (props) => {
-  const {
-    styles,
-    auth,
-    loginStatus,
-    loginInfo,
-    createUserWithEmailAndPassword,
-    loginWithGoogle,
-    loginWithFacebook,
-    showRegister,
-    onShowLogin,
-    onShowRegister
-  } = props;
-
+const Register = ({
+  styles,
+  auth,
+  loginStatus,
+  loginInfo,
+  createUserWithEmailAndPassword,
+  loginWithGoogle,
+  loginWithFacebook,
+  showRegister,
+  onShowLogin,
+  onShowRegister
+}) => {
   if (!showRegister || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  useEffect(() => {
+    loadWebFontsFromStyles(registerStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
 
   const registerError = loginInfo.errorMessage;
 
@@ -80,16 +80,16 @@ const Register = (props) => {
   }, []);
 
   return (
-    <StyledWrapper styles={styles} className="vibuy--register-widget">
+    <Wrapper styles={styles} className="vb--register">
       <span
-        className="vibuy--register-close"
+        className="vb--register-close"
         onClick={toggleRegisterCb}
         role="button"
         tabIndex="0">
         &times;
       </span>
-      <div className="vibuy--register-login-image" />
-      <div className="vibuy--register-input-container">
+      <div className="vb--register-banner" />
+      <div className="vb--register-input-container">
         <input
           type="text"
           onChange={fullnameChangeCb}
@@ -103,31 +103,48 @@ const Register = (props) => {
         />
         <span>*Min 6 characters.</span>
       </div>
-      <button className="vibuy--register-button" onClick={registerCb}>
+      <button className="vb--register-button" onClick={registerCb}>
         Create Account
       </button>
-      <div className="vibuy--register-social-media-login-container">
+      <div className="vb--register-with-wrapper">
         <span>or log in with</span>
-        <div className="vibuy--register-social-media-login-buttons">
+        <div className="vb--register-with-buttons-container">
           <div
-            className="login-google"
+            className="vb--register-with-google"
             role="button"
             tabIndex="-1"
             onClick={loginWithGoogleCb}
           />
           <div
-            className="login-facebook"
+            className="vb--register-with-facebook"
             role="button"
             tabIndex="-1"
             onClick={loginWithFacebookCb}
           />
         </div>
       </div>
-      <button className="vibuy--register-login-button" onClick={toggleLoginCb}>
+      <button className="vb--register-login-button" onClick={toggleLoginCb}>
         Already have an account? <b>Log in</b>
       </button>
-    </StyledWrapper>
+    </Wrapper>
   );
+};
+
+Register.propTypes = {
+  styles: PropTypes.object,
+  auth: PropTypes.object.isRequired,
+  loginStatus: PropTypes.object.isRequired,
+  loginInfo: PropTypes.object.isRequired,
+  createUserWithEmailAndPassword: PropTypes.func.isRequired,
+  loginWithGoogle: PropTypes.func.isRequired,
+  loginWithFacebook: PropTypes.func.isRequired,
+  showRegister: PropTypes.bool.isRequired,
+  onShowLogin: PropTypes.func.isRequired,
+  onShowRegister: PropTypes.func.isRequired
+};
+
+Register.defaultProps = {
+  styles: {}
 };
 
 export default InjectAuthProps({

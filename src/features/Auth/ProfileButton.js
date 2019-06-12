@@ -4,8 +4,7 @@ import { InjectAuthProps } from '../../store/redux/providers';
 import { Wrapper, profileButtonStyles } from './ProfileButton.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const ProfileButton = (props) => {
-  const { styles, auth, onShowLogin } = props;
+const ProfileButton = ({ styles, auth, onShowLogin }) => {
   const [username, setUsername] = useState('Login');
 
   useEffect(() => {
