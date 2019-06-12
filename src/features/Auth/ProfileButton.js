@@ -1,11 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { InjectAuthProps } from '../../store/redux/providers';
-
-const StyledWrapper = styled.div((props) => ({
-  ...props.styles,
-  pointerEvents: 'auto'
-}));
+import { Wrapper } from './ProfileButton.style';
 
 const ProfileButton = (props) => {
   const { styles, auth, onShowLogin } = props;
@@ -29,14 +25,24 @@ const ProfileButton = (props) => {
 
   // TODO: Update user avatar when loged-in
   return (
-    <StyledWrapper
+    <Wrapper
       styles={styles}
       className="vibuy--profile-button-widget"
       onClick={handleClick}>
-      <span className="vibuy--profile-button-text">{username}</span>
-      <div className="vibuy--profile-button-image" />
-    </StyledWrapper>
+      <span className="username">{username}</span>
+      <div className="avatar" />
+    </Wrapper>
   );
+};
+
+ProfileButton.propTypes = {
+  styles: PropTypes.object,
+  auth: PropTypes.object.isRequired,
+  onShowLogin: PropTypes.func.isRequired
+};
+
+ProfileButton.defaultProps = {
+  styles: {}
 };
 
 export default InjectAuthProps({

@@ -7,7 +7,7 @@ import Title from '../TitleDescription/TitleDescription';
 import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
-import ProfileButton from '../ProfileButton/ProfileButton';
+import ProfileButton from '../../features/Auth/ProfileButton';
 import Login from '../../features/Auth/Login';
 import Register from '../../features/Auth/Register';
 import ForgotPassword from '../../features/Auth/ForgotPassword';
