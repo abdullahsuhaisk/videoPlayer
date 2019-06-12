@@ -14,7 +14,8 @@ const ProductListScreen = ({
   styles,
   hotspots,
   activeHotspotIds,
-  playing
+  playing,
+  playerStarted
 }) => {
   const [productsInScene, setProductsInScene] = React.useState({});
 
@@ -29,6 +30,7 @@ const ProductListScreen = ({
   }, [products, activeHotspotIds]);
 
   return (
+    playerStarted &&
     !playing && (
       <Tabs
         styles={styles}
@@ -47,7 +49,8 @@ ProductListScreen.propTypes = {
   styles: PropTypes.object,
   hotspots: PropTypes.object.isRequired,
   activeHotspotIds: PropTypes.array.isRequired,
-  playing: PropTypes.bool.isRequired
+  playing: PropTypes.bool.isRequired,
+  playerStarted: PropTypes.bool.isRequired
 };
 
 ProductListScreen.defaultProps = {
@@ -63,6 +66,6 @@ export default compose(
     })
   }),
   InjectPlayerProps({
-    selectProps: ({ playing }) => ({ playing })
+    selectProps: ({ playing, playerStarted }) => ({ playing, playerStarted })
   })
 )(ProductListScreen);

@@ -34,6 +34,7 @@ const Player = ({
   title,
   description,
   playing,
+  started,
   seek,
   seekTo,
   ready,
@@ -177,6 +178,10 @@ const Player = ({
       play();
     });
 
+    playerRef.current.one('play', () => {
+      started(true);
+    });
+
     playerRef.current.on('pause', () => {
       pause();
     });
@@ -307,6 +312,7 @@ export default compose(
       ready,
       play,
       pause,
+      started,
       seek,
       overlayContainerReady,
       currentTimeUpdate
@@ -314,6 +320,7 @@ export default compose(
       ready,
       play,
       pause,
+      started,
       seek,
       overlayContainerReady,
       currentTimeUpdate

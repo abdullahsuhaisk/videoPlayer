@@ -12,6 +12,12 @@ export const pause = (dispatch) => {
   dispatch(actions.pause());
 };
 
+export const started = (hasStarted) => {
+  return (dispatch) => {
+    dispatch(actions.started(hasStarted));
+  };
+};
+
 export const seek = (timeToSeek) => {
   return (dispatch) => {
     dispatch(actions.seek(timeToSeek));

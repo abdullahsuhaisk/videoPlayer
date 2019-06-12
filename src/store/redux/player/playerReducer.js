@@ -3,6 +3,7 @@ import { actionTypes } from './playerActions';
 const initialState = {
   ready: false,
   playing: false,
+  started: false,
   seekTo: -1,
   overlayContainerClass: null,
   currentTime: 0
@@ -16,6 +17,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, playing: true };
     case actionTypes.PLAYER_PAUSE:
       return { ...state, playing: false };
+    case actionTypes.PLAYER_STARTED:
+      return { ...state, started: action.payload };
     case actionTypes.PLAYER_SEEK:
       return { ...state, seekTo: action.payload };
     case actionTypes.PLAYER_OVERLAY_CONTAINER_READY:
