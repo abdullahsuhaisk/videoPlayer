@@ -31,7 +31,8 @@ const HotspotScreen = ({
   }, [currentActiveHotspotIds]);
 
   return (
-    playerPlayingState === playingState.PLAYING && (
+    (playerPlayingState === playingState.PLAYING ||
+      playerPlayingState === playingState.SCRUBBING) && (
       <HotspotCardList hotspotProducts={hotspotProducts} />
     )
   );
