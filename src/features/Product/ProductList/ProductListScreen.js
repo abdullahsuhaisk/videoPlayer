@@ -8,13 +8,14 @@ import {
   InjectHotspotProps,
   InjectPlayerProps
 } from '../../../store/redux/providers';
+import { playingState } from '../../../store/redux/player/playerActions';
 
 const ProductListScreen = ({
   products,
   styles,
   hotspots,
   activeHotspotIds,
-  playing,
+  playerPlayingState,
   playerStarted
 }) => {
   const [productsInScene, setProductsInScene] = React.useState({});
@@ -31,7 +32,7 @@ const ProductListScreen = ({
 
   return (
     playerStarted &&
-    !playing && (
+    playerPlayingState === playingState.PAUSED && (
       <Tabs
         styles={styles}
         tabs={['Products in this scene', 'Products in this video']}
@@ -49,7 +50,7 @@ ProductListScreen.propTypes = {
   styles: PropTypes.object,
   hotspots: PropTypes.object.isRequired,
   activeHotspotIds: PropTypes.array.isRequired,
-  playing: PropTypes.bool.isRequired,
+  playerPlayingState: PropTypes.string.isRequired,
   playerStarted: PropTypes.bool.isRequired
 };
 
@@ -66,6 +67,9 @@ export default compose(
     })
   }),
   InjectPlayerProps({
-    selectProps: ({ playing, playerStarted }) => ({ playing, playerStarted })
+    selectProps: ({ playerPlayingState, playerStarted }) => ({
+      playerPlayingState,
+      playerStarted
+    })
   })
 )(ProductListScreen);

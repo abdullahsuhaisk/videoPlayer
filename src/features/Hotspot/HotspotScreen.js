@@ -8,9 +8,10 @@ import {
 } from '../../store/redux/providers';
 import useTimeRange from '../../hooks/useTimeRange';
 import HotspotCardList from './HotspotCardList';
+import { playingState } from '../../store/redux/player/playerActions';
 
 const HotspotScreen = ({
-  playing,
+  playerPlayingState,
   hotspots,
   setActiveHotspotIds,
   currentTime,
@@ -29,11 +30,15 @@ const HotspotScreen = ({
     setHotspotProducts(currentHotspotProducts);
   }, [currentActiveHotspotIds]);
 
-  return playing && <HotspotCardList hotspotProducts={hotspotProducts} />;
+  return (
+    playerPlayingState === playingState.PLAYING && (
+      <HotspotCardList hotspotProducts={hotspotProducts} />
+    )
+  );
 };
 
 HotspotScreen.propTypes = {
-  playing: PropTypes.bool.isRequired,
+  playerPlayingState: PropTypes.string.isRequired,
   hotspots: PropTypes.object.isRequired,
   setActiveHotspotIds: PropTypes.func.isRequired,
   currentTime: PropTypes.number.isRequired,
@@ -42,7 +47,10 @@ HotspotScreen.propTypes = {
 
 export default compose(
   InjectPlayerProps({
-    selectProps: ({ playing, currentTime }) => ({ playing, currentTime })
+    selectProps: ({ playerPlayingState, currentTime }) => ({
+      playerPlayingState,
+      currentTime
+    })
   }),
   InjectHotspotProps({
     selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),

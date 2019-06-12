@@ -1,22 +1,18 @@
-import { actionTypes } from './playerActions';
+import { actionTypes, playingState } from './playerActions';
 
 const initialState = {
   ready: false,
-  playing: false,
   started: false,
   seekTo: -1,
   overlayContainerClass: null,
-  currentTime: 0
+  currentTime: 0,
+  playingState: playingState.PAUSED
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.PLAYER_READY:
       return { ...state, ready: true };
-    case actionTypes.PLAYER_PLAY:
-      return { ...state, playing: true };
-    case actionTypes.PLAYER_PAUSE:
-      return { ...state, playing: false };
     case actionTypes.PLAYER_STARTED:
       return { ...state, started: action.payload };
     case actionTypes.PLAYER_SEEK:
@@ -25,6 +21,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, overlayContainerClass: action.payload };
     case actionTypes.PLAYER_CURRENT_TIME_UPDATE:
       return { ...state, currentTime: action.payload };
+    case actionTypes.PLAYER_PLAYING_STATE_CHANGE:
+      return { ...state, playingState: action.payload };
     default:
       return state;
   }

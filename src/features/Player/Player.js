@@ -16,6 +16,7 @@ import {
   InjectHotspotProps
 } from '../../store/redux/providers';
 import 'videojs-markers';
+import { playingState } from '../../store/redux/player/playerActions';
 
 window.videojs = videojs;
 
@@ -33,16 +34,15 @@ const Player = ({
   volume,
   title,
   description,
-  playing,
   started,
   seek,
   seekTo,
   ready,
-  play,
-  pause,
   overlayContainerReady,
   currentTimeUpdate,
-  hotspots
+  hotspots,
+  playerPlayingState,
+  changePlayerPlayingState
 }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -175,7 +175,7 @@ const Player = ({
     });
 
     playerRef.current.on('play', () => {
-      play();
+      changePlayerPlayingState(playingState.PLAYING);
     });
 
     playerRef.current.one('play', () => {
@@ -183,19 +183,23 @@ const Player = ({
     });
 
     playerRef.current.on('pause', () => {
-      pause();
+      changePlayerPlayingState(
+        playerRef.current.scrubbing()
+          ? playingState.SCRUBBING
+          : playingState.PAUSED
+      );
     });
   }, []);
 
   useEffect(() => {
     if (playerRef.current) {
-      if (playing) {
+      if (playerPlayingState === playingState.PLAYING) {
         playerRef.current.play();
-      } else {
+      } else if (playerPlayingState === playingState.PAUSED) {
         playerRef.current.pause();
       }
     }
-  }, [playing]);
+  }, [playerPlayingState]);
 
   useEffect(() => {
     if (playerRef.current && seekTo !== -1) {
@@ -276,10 +280,7 @@ Player.propTypes = {
   fluid: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  playing: PropTypes.bool,
   ready: PropTypes.func,
-  play: PropTypes.func,
-  pause: PropTypes.func,
   overlayContainerReady: PropTypes.func,
   currentTimeUpdate: PropTypes.func
 };
@@ -297,33 +298,31 @@ Player.defaultProps = {
   fluid: false,
   title: '',
   description: '',
-  playing: false,
   ready: () => {},
-  play: () => {},
-  pause: () => {},
   overlayContainerReady: () => {},
   currentTimeUpdate: () => {}
 };
 
 export default compose(
   InjectPlayerProps({
-    selectProps: ({ playing, seekTo }) => ({ playing, seekTo }),
+    selectProps: ({ playerPlayingState, seekTo }) => ({
+      playerPlayingState,
+      seekTo
+    }),
     selectActions: ({
       ready,
-      play,
-      pause,
       started,
       seek,
       overlayContainerReady,
-      currentTimeUpdate
+      currentTimeUpdate,
+      changePlayerPlayingState
     }) => ({
       ready,
-      play,
-      pause,
       started,
       seek,
       overlayContainerReady,
-      currentTimeUpdate
+      currentTimeUpdate,
+      changePlayerPlayingState
     })
   }),
   InjectHotspotProps({
