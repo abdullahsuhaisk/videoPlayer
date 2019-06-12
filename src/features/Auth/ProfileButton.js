@@ -33,10 +33,10 @@ const ProfileButton = (props) => {
   return (
     <Wrapper
       styles={styles}
-      className="vibuy--profile-button-widget"
+      className="vb--profile-button"
       onClick={handleClick}>
-      <span className="username">{username}</span>
-      <div className="avatar" />
+      <span className="vb--profile-button-username">{username}</span>
+      <div className="vb--profile-button-avatar" />
     </Wrapper>
   );
 };

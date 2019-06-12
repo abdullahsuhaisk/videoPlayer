@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const profileButtonStyles = {
+  pointerEvents: 'auto',
   position: 'absolute',
   top: '30px',
   left: '810px',

@@ -1,31 +1,31 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useCallback } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { Wrapper, loginStyles } from './Login.style';
 import { InjectAuthProps } from '../../store/redux/providers';
+import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const StyledWrapper = styled.div((props) => ({
-  ...props.styles,
-  'pointer-events': 'auto'
-}));
-
-const Login = (props) => {
-  const {
-    styles,
-    auth,
-    login,
-    loginStatus,
-    loginWithGoogle,
-    loginWithFacebook,
-    loginInfo,
-    showLogin,
-    onShowLogin,
-    onShowRegister,
-    onShowForgotPassword
-  } = props;
-
+const Login = ({
+  styles,
+  auth,
+  login,
+  loginStatus,
+  loginWithGoogle,
+  loginWithFacebook,
+  loginInfo,
+  showLogin,
+  onShowLogin,
+  onShowRegister,
+  onShowForgotPassword
+}) => {
   if (!showLogin || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  useEffect(() => {
+    loadWebFontsFromStyles(loginStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
 
   const loginError = loginInfo.errorMessage;
 
@@ -81,16 +81,16 @@ const Login = (props) => {
   }, []);
 
   return (
-    <StyledWrapper styles={styles} className="vibuy--login-widget">
+    <Wrapper styles={styles} className="vb--login">
       <span
-        className="vibuy--login-close"
+        className="vb--login-close"
         onClick={toggleLoginCb}
         role="button"
         tabIndex="0">
         &times;
       </span>
-      <div className="vibuy--login-image" />
-      <div className="vibuy--login-input-container">
+      <div className="vb--login-banner" />
+      <div className="vb--login-input-container">
         <input type="email" placeholder="Email" onChange={emailChangeCb} />
         <input
           type="password"
@@ -98,20 +98,20 @@ const Login = (props) => {
           onChange={passwordChangeCb}
         />
       </div>
-      <button className="vibuy--login-button" onClick={loginCb}>
+      <button className="vb--login-button" onClick={loginCb}>
         Login
       </button>
-      <div className="vibuy--login-social-media-login-container">
+      <div className="vb--login-with-wrapper">
         <span>or log in with</span>
-        <div className="vibuy--login-social-media-login-buttons">
+        <div className="vb--login-with-buttons-container">
           <div
-            className="login-google"
+            className="vb--login-with-google"
             role="button"
             tabIndex="-1"
             onClick={loginWithGoogleCb}
           />
           <div
-            className="login-facebook"
+            className="vb--login-with-facebook"
             role="button"
             tabIndex="-1"
             onClick={loginWithFacebookCb}
@@ -119,19 +119,35 @@ const Login = (props) => {
         </div>
       </div>
       <span
-        className="vibuy--login-forgot-password"
+        className="vb--login-forgot-password-button"
         role="button"
         tabIndex="0"
         onClick={toggleForgotPasswordCb}>
         I forgot my password!
       </span>
-      <button
-        className="vibuy--login-register-button"
-        onClick={toggleRegisterCb}>
+      <button className="vb--login-register-button" onClick={toggleRegisterCb}>
         Do not have an account? <b>Create</b>
       </button>
-    </StyledWrapper>
+    </Wrapper>
   );
+};
+
+Login.propTypes = {
+  styles: PropTypes.object,
+  auth: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  loginStatus: PropTypes.object.isRequired,
+  loginWithGoogle: PropTypes.func.isRequired,
+  loginWithFacebook: PropTypes.func.isRequired,
+  loginInfo: PropTypes.object.isRequired,
+  showLogin: PropTypes.bool.isRequired,
+  onShowLogin: PropTypes.func.isRequired,
+  onShowRegister: PropTypes.func.isRequired,
+  onShowForgotPassword: PropTypes.func.isRequired
+};
+
+Login.defaultProps = {
+  styles: {}
 };
 
 export default InjectAuthProps({
