@@ -3,19 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  // apiKey: 'AIzaSyAoSjmk9s5WtMb4iZWOLlYBMJSa0EGXnEE',
-  // authDomain: 'optimal-harbor-222608.firebaseapp.com',
-  // databaseURL: 'https://optimal-harbor-222608.firebaseio.com',
-  // projectId: 'optimal-harbor-222608',
-  // storageBucket: 'optimal-harbor-222608.appspot.com',
-  // messagingSenderId: '568608091903',
-  apiKey: 'AIzaSyDGu4qq7yl2RMAOxTTxzYLa8w3tiAasEv8',
-  authDomain: 'vibuy-consumer-staging.firebaseapp.com',
-  databaseURL: 'https://vibuy-consumer-staging.firebaseio.com',
-  projectId: 'vibuy-consumer-staging',
-  storageBucket: 'vibuy-consumer-staging.appspot.com',
-  messagingSenderId: '522097435637',
-  appId: '1:522097435637:web:605e998777898c6c'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 firebase.initializeApp(config);
 
