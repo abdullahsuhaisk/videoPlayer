@@ -136,7 +136,7 @@ Login.propTypes = {
   styles: PropTypes.object,
   auth: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
-  loginStatus: PropTypes.object.isRequired,
+  loginStatus: PropTypes.string,
   loginWithGoogle: PropTypes.func.isRequired,
   loginWithFacebook: PropTypes.func.isRequired,
   loginInfo: PropTypes.object.isRequired,
@@ -147,7 +147,8 @@ Login.propTypes = {
 };
 
 Login.defaultProps = {
-  styles: {}
+  styles: {},
+  loginStatus: ''
 };
 
 export default InjectAuthProps({

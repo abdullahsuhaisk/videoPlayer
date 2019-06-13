@@ -133,7 +133,7 @@ const Register = ({
 Register.propTypes = {
   styles: PropTypes.object,
   auth: PropTypes.object.isRequired,
-  loginStatus: PropTypes.object.isRequired,
+  loginStatus: PropTypes.string,
   loginInfo: PropTypes.object.isRequired,
   createUserWithEmailAndPassword: PropTypes.func.isRequired,
   loginWithGoogle: PropTypes.func.isRequired,
@@ -144,7 +144,8 @@ Register.propTypes = {
 };
 
 Register.defaultProps = {
-  styles: {}
+  styles: {},
+  loginStatus: ''
 };
 
 export default InjectAuthProps({
