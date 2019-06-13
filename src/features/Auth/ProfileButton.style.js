@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const profileButtonStyles = {
   pointerEvents: 'auto',
   position: 'absolute',
-  top: '30px',
-  left: '810px',
+  top: '32px',
+  right: '32px',
   cursor: 'pointer',
   '.vb--profile-button-username': {
     display: 'inline-block',

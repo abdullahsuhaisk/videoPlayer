@@ -1,13 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProfileButton from './ProfileButton';
 import Login from './Login';
 import Register from './Register';
 import ForgotPassword from './ForgotPassword';
+import { InjectPlayerProps } from '../../store/redux/providers';
+import { playingState } from '../../store/redux/player/playerActions';
 
-const AuthScreen = () => {
+const AuthScreen = ({ playerPlayingState, playerStarted }) => {
   return (
     <>
-      <ProfileButton />
+      {playerStarted && playerPlayingState === playingState.PAUSED && (
+        <ProfileButton />
+      )}
       <Login />
       <Register />
       <ForgotPassword />
@@ -15,4 +20,14 @@ const AuthScreen = () => {
   );
 };
 
-export default AuthScreen;
+AuthScreen.propTypes = {
+  playerPlayingState: PropTypes.string.isRequired,
+  playerStarted: PropTypes.bool.isRequired
+};
+
+export default InjectPlayerProps({
+  selectProps: ({ playerPlayingState, playerStarted }) => ({
+    playerPlayingState,
+    playerStarted
+  })
+})(AuthScreen);
