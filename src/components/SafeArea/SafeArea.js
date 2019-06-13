@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { InjectLayoutProps } from '../../store/redux/providers';
 
-const SafeArea = (props) => {
-  const { safeArea, children } = props;
-
-  const { top, right, bottom, left } = safeArea;
+const SafeArea = ({ safeArea, children }) => {
+  const safeAreaStyles = useMemo(
+    () => ({
+      overflow: 'hidden',
+      position: 'absolute',
+      top: `${safeArea.top}px`,
+      right: `${safeArea.right}px`,
+      bottom: `${safeArea.bottom}px`,
+      left: `${safeArea.left}px`
+    }),
+    [safeArea]
+  );
 
   return (
-    <div
-      className="vibuy--safe-area"
-      style={{
-        overflow: 'hidden',
-        position: 'absolute',
-        top: `${top}px`,
-        right: `${right}px`,
-        bottom: `${bottom}px`,
-        left: `${left}px`
-      }}>
+    <div className="vb--safe-area" style={safeAreaStyles}>
       {children}
     </div>
   );
+};
+
+SafeArea.propTypes = {
+  safeArea: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default InjectLayoutProps({

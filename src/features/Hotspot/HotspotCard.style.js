@@ -9,7 +9,7 @@ export const Wrapper = styled.div((props) => ({
   border: '#fff 1px solid',
   boxShadow: '#000 3px 3px 6px 0',
   cursor: 'pointer',
-  '.product-image': {
+  '.vb--hotspot-card-product-image': {
     width: '100%',
     height: '100%',
     borderRadius: '5px',

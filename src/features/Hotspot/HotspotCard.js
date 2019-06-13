@@ -4,9 +4,12 @@ import { Wrapper } from './HotspotCard.style';
 
 const HotspotCard = ({ styles, product, click }) => {
   return (
-    <Wrapper className="hotspot-card" styles={styles} onClick={() => click()}>
+    <Wrapper
+      className="vb--hotspot-card"
+      styles={styles}
+      onClick={() => click()}>
       <div
-        className="product-image"
+        className="vb--hotspot-card-product-image"
         style={{ backgroundImage: `url(${product.assets.images[0]}` }}
       />
     </Wrapper>

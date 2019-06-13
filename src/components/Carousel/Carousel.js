@@ -11,7 +11,7 @@ import { Wrapper } from './Carousel.style';
 const NextArrow = ({ className, style, onClick }) => {
   return (
     <div
-      className={`next-arrow ${className}`}
+      className={`vb--carousel-next-arrow ${className}`}
       role="button"
       tabIndex="-1"
       style={{
@@ -25,7 +25,7 @@ const NextArrow = ({ className, style, onClick }) => {
 const PrevArrow = ({ className, style, onClick }) => {
   return (
     <div
-      className={`prev-arrow ${className}`}
+      className={`vb--carousel-prev-arrow ${className}`}
       role="button"
       tabIndex="-1"
       style={{
@@ -61,7 +61,7 @@ const Carousel = ({
   );
 
   return (
-    <Wrapper styles={styles} className="vibuy--carousel-widget">
+    <Wrapper styles={styles} className="vb--carousel">
       <Slider {...settings}>{children}</Slider>
     </Wrapper>
   );

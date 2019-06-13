@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div((props) => ({
@@ -6,8 +7,7 @@ const StyledWrapper = styled.div((props) => ({
   'pointer-events': 'auto'
 }));
 
-const Like = (props) => {
-  const { styles } = props;
+const Like = ({ styles }) => {
   // TODO: Use a service to update state
   const [likeCount, setLikeCount] = useState(0);
   const handleClick = useCallback(() => {
@@ -15,14 +15,19 @@ const Like = (props) => {
   }, [likeCount]);
 
   return (
-    <StyledWrapper
-      styles={styles}
-      className="vibuy--like-widget"
-      onClick={handleClick}>
-      <div className="vibuy--like-icon" />
-      <span className="vibuy--like-text">{likeCount}</span>
+    <StyledWrapper styles={styles} className="vb--like" onClick={handleClick}>
+      <div className="vb--like-icon" />
+      <span className="vb--like-count">{likeCount}</span>
     </StyledWrapper>
   );
+};
+
+Like.propTypes = {
+  styles: PropTypes.object
+};
+
+Like.defaultProps = {
+  styles: {}
 };
 
 export default Like;

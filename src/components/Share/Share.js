@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div((props) => ({
@@ -6,8 +7,7 @@ const StyledWrapper = styled.div((props) => ({
   'pointer-events': 'auto'
 }));
 
-const Share = (props) => {
-  const { styles } = props;
+const Share = ({ styles }) => {
   // TODO: Use a service to update state
   const [shareCount, setShareCount] = useState(0);
   const handleClick = useCallback(() => {
@@ -15,14 +15,19 @@ const Share = (props) => {
   }, [shareCount]);
 
   return (
-    <StyledWrapper
-      className="vibuy--share-widget"
-      styles={styles}
-      onClick={handleClick}>
-      <div className="vibuy--share-icon" />
-      <span className="vibuy--share-text">{shareCount}</span>
+    <StyledWrapper className="vb--share" styles={styles} onClick={handleClick}>
+      <div className="vb--share-icon" />
+      <span className="vb--share-count">{shareCount}</span>
     </StyledWrapper>
   );
+};
+
+Share.propTypes = {
+  styles: PropTypes.object
+};
+
+Share.defaultProps = {
+  styles: {}
 };
 
 export default Share;

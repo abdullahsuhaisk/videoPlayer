@@ -15,37 +15,40 @@ const ProductCard = ({
   assets
 }) => {
   return (
-    <Wrapper styles={styles} className="vibuy--product-card-widget">
-      <div className="first-container">
+    <Wrapper styles={styles} className="vb--product-card">
+      <div className="vb--product-card-first-container">
         <div
-          className="product-image"
+          className="vb--product-card-product-image"
           style={{ backgroundImage: `url(${assets.images[0]}` }}
         />
-        <button className="add-to-wishlist">Add to Wish List</button>
+        <button className="vb--product-card-add-to-wishlist">
+          Add to Wish List
+        </button>
       </div>
-      <div className="second-container">
-        <span className="brand">{brand}</span>
-        <span className="title">{title}</span>
+      <div className="vb--product-card-second-container">
+        <span className="vb--product-card-brand">{brand}</span>
+        <span className="vb--product-card-title">{title}</span>
         {basePrice && discountRate ? (
-          <div className="price-container">
-            <div className="discount-rate">
+          <div className="vb--product-card-price-container">
+            <div className="vb--product-card-discount-rate">
               <span>{`%${discountRate}`}</span>
             </div>
-            <div className="base-price">
+            <div className="vb--product-card-base-price">
               <span>{`${currency || ''}${basePrice.toFixed(2)}`}</span>
             </div>
-            <div className="current-price">
+            <div className="vb--product-card-current-price">
               <span>{`${currency || ''}${currentPrice.toFixed(2)}`}</span>
             </div>
           </div>
         ) : (
-          <span className="price">{`${currency || ''}${currentPrice.toFixed(
-            2
-          )}`}</span>
+          <span className="vb--product-card-price">{`${currency ||
+            ''}${currentPrice.toFixed(2)}`}</span>
         )}
-        <span className="in-stock">{inStock ? 'In Stock' : 'No Stock'}</span>
+        <span className="vb--product-card-in-stock">
+          {inStock ? 'In Stock' : 'No Stock'}
+        </span>
         <hr />
-        <button className="details">Details</button>
+        <button className="vb--product-card-details">Details</button>
       </div>
     </Wrapper>
   );

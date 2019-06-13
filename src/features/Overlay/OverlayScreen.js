@@ -8,7 +8,7 @@ import HotspotScreen from '../Hotspot/HotspotScreen';
 const OverlayScreen = () => {
   return (
     <div
-      className="vibuy--interactive-overlay"
+      className="vb--overlay-screen"
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>

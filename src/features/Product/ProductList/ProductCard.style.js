@@ -7,7 +7,7 @@ export const Wrapper = styled.div((props) => ({
   borderRadius: '5px',
   backgroundColor: '#F4F4F8',
   margin: 'auto',
-  '.first-container': {
+  '.vb--product-card-first-container': {
     width: '100%',
     height: '60%',
     display: 'flex',
@@ -17,7 +17,7 @@ export const Wrapper = styled.div((props) => ({
     borderRadius: '5px',
     background: '#00acd8'
   },
-  '.product-image': {
+  '.vb--product-card-product-image': {
     width: '100%',
     height: '89%',
     display: 'flex',
@@ -29,7 +29,7 @@ export const Wrapper = styled.div((props) => ({
     backgroundSize: 'cover',
     cursor: 'default'
   },
-  '.add-to-wishlist': {
+  '.vb--product-card-add-to-wishlist': {
     color: '#FFFC',
     marginBottom: '5px',
     fontWeight: 'bold',
@@ -37,27 +37,27 @@ export const Wrapper = styled.div((props) => ({
     outline: 'none',
     cursor: 'pointer'
   },
-  '.second-container': {
+  '.vb--product-card-second-container': {
     width: '100%',
     height: '40%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    '.brand': {
+    '.vb--product-card-brand': {
       color: '#0009',
       marginTop: '5px',
       fontWeight: 'bold',
       fontSize: '12px'
     },
-    '.title': {
+    '.vb--product-card-title': {
       color: '#0009',
       padding: '2px',
       fontWeight: 'bold',
       fontSize: '12px'
     },
-    '.price-container': {
+    '.vb--product-card-price-container': {
       margin: '10px',
-      '.discount-rate': {
+      '.vb--product-card-discount-rate': {
         float: 'left',
         width: '24px',
         height: '15px',
@@ -71,7 +71,7 @@ export const Wrapper = styled.div((props) => ({
           fontSize: '10px'
         }
       },
-      '.base-price': {
+      '.vb--product-card-base-price': {
         display: 'flex',
         height: '15px',
         alignItems: 'center',
@@ -84,7 +84,7 @@ export const Wrapper = styled.div((props) => ({
           textDecoration: 'line-through'
         }
       },
-      '.current-price': {
+      '.vb--product-card-current-price': {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
@@ -98,13 +98,13 @@ export const Wrapper = styled.div((props) => ({
         }
       }
     },
-    '.price': {
+    '.vb--product-card-price': {
       color: '#525153',
       margin: '15px',
       fontSize: '18px',
       fontWeight: 'bold'
     },
-    '.in-stock': {
+    '.vb--product-card-in-stock': {
       color: '#00acd8',
       fontSize: '10px',
       fontWeight: 'bold'
@@ -114,7 +114,7 @@ export const Wrapper = styled.div((props) => ({
       margin: '3px',
       borderTop: '1px solid #00acd8'
     },
-    '.details': {
+    '.vb--product-card-details': {
       color: '#00acd8',
       fontSize: '12px',
       fontWeight: 'bold',

@@ -11,11 +11,11 @@ const HotspotCardList = ({ styles, hotspotProducts }) => {
   const hotspotCardClickCb = useCallback(() => {}, []);
 
   return (
-    <Wrapper className="hotspot-card-list" styles={styles}>
-      <div className="list-header">
+    <Wrapper className="vb--hotspot-card-list" styles={styles}>
+      <div className="vb--hotspot-card-list-header">
         <span>Click & Buy</span>
       </div>
-      <div className="hotspot-list">
+      <div className="vb--hotspot-card-list-cards">
         {hotspotProductIds.map((id) => {
           return (
             <HotspotCard

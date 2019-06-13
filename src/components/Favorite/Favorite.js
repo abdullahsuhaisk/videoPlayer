@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div((props) => ({
@@ -6,8 +7,7 @@ const StyledWrapper = styled.div((props) => ({
   'pointer-events': 'auto'
 }));
 
-const Favorite = (props) => {
-  const { styles } = props;
+const Favorite = ({ styles }) => {
   // TODO: Update favorite via service
   const [favoriteCount, setFavoriteCount] = useState(0);
   const handleClick = useCallback(() => {
@@ -17,12 +17,20 @@ const Favorite = (props) => {
   return (
     <StyledWrapper
       styles={styles}
-      className="vibuy--favorite-widget"
+      className="vb--favorite"
       onClick={handleClick}>
-      <div className="vibuy--favorite-icon" />
-      <span className="vibuy--favorite-text">{favoriteCount}</span>
+      <div className="vb--favorite-icon" />
+      <span className="vb--favorite-count">{favoriteCount}</span>
     </StyledWrapper>
   );
+};
+
+Favorite.propTypes = {
+  styles: PropTypes.object
+};
+
+Favorite.defaultProps = {
+  styles: {}
 };
 
 export default Favorite;

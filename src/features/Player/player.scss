@@ -12,7 +12,7 @@ $size-font: 12px;
 @import '../../../node_modules/videojs-markers/dist/videojs.markers.css';
 
 // Global videojs styles
-.vjs-vibuy.video-js {
+.vjs-vb.video-js {
   font-size: $size-font;
   color: $color-font;
   -webkit-font-smoothing: antialiased;
@@ -62,7 +62,7 @@ $size-font: 12px;
 }
 
 // Default skin styles
-.vjs-vibuy {
+.vjs-vb {
   .vjs-control-bar {
     @include linear-gradient(
       0deg,

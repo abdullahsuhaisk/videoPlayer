@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div((props) => ({
-  'pointer-events': 'auto',
+  pointerEvents: 'auto',
   width: '800px',
   height: '315px',
-  '.next-arrow': {
+  '.vb--carousel-next-arrow': {
     right: '-100px',
     top: '80px',
     width: '90px',
@@ -16,7 +16,7 @@ export const Wrapper = styled.div((props) => ({
       height: '100%'
     }
   },
-  '.prev-arrow': {
+  '.vb--carousel-prev-arrow': {
     transform: 'scaleX(-1)',
     right: '-100px',
     top: '180px',

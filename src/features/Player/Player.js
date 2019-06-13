@@ -235,18 +235,18 @@ const Player = ({
 
   return (
     <div
-      className="vibuy--player-wrapper"
+      className="vb--player-wrapper"
       style={{
         width: typeof width === 'string' ? width : `${width}px`,
         height: typeof height === 'string' ? height : `${height}px`
       }}>
       <div
         data-vjs-player
-        className="vibuy--player"
+        className="vb--player"
         style={{ width: '100%', height: '100%' }}>
         <video
           ref={videoRef}
-          className="vibuy--video vjs-vibuy video-js"
+          className="vb--video vjs-vb video-js"
           crossOrigin="anonymous"
           playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
         />

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import ReactDOM from 'react-dom';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
@@ -8,16 +9,14 @@ import {
   InjectPlayerProps
 } from '../../store/redux/providers';
 
-const OverlayContainer = (props) => {
-  const {
-    container,
-    aspectRatio,
-    onWidth,
-    onHeight,
-    onSafeArea,
-    children
-  } = props;
-
+const OverlayContainer = ({
+  container,
+  aspectRatio,
+  onWidth,
+  onHeight,
+  onSafeArea,
+  children
+}) => {
   if (!container) {
     return null;
   }
@@ -70,7 +69,7 @@ const OverlayContainer = (props) => {
   return ReactDOM.createPortal(
     <div
       ref={containerRef}
-      className="vibuy--overlay-container"
+      className="vb--overlay-container"
       style={{
         position: 'relative',
         width: '100%',
@@ -81,6 +80,19 @@ const OverlayContainer = (props) => {
     </div>,
     container
   );
+};
+
+OverlayContainer.propTypes = {
+  container: PropTypes.object,
+  aspectRatio: PropTypes.number.isRequired,
+  onWidth: PropTypes.func.isRequired,
+  onHeight: PropTypes.func.isRequired,
+  onSafeArea: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
+};
+
+OverlayContainer.defaultProps = {
+  container: null
 };
 
 export default compose(

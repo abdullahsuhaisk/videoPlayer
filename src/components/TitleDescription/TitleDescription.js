@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div((props) => ({
@@ -6,15 +7,24 @@ const StyledWrapper = styled.div((props) => ({
   'pointer-events': 'auto'
 }));
 
-const Title = (props) => {
-  const { title, description, styles } = props;
-
+const Title = ({ title, description, styles }) => {
   return (
-    <StyledWrapper styles={styles} className="vibuy--title-widget">
-      <span className="vibuy--title-text">{title}</span>
-      <span className="vibuy--title-description">{description}</span>
+    <StyledWrapper styles={styles} className="vb--title">
+      <span className="vb--title-title">{title}</span>
+      <span className="vb--title-description">{description}</span>
     </StyledWrapper>
   );
+};
+
+Title.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  styles: PropTypes.object
+};
+
+Title.defaultProps = {
+  description: '',
+  styles: {}
 };
 
 export default Title;

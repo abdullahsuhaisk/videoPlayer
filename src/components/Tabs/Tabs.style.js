@@ -1,29 +1,29 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div((props) => ({
-  'pointer-events': 'auto',
+  pointerEvents: 'auto',
   position: 'absolute',
   top: '126px',
   left: '50px',
   width: '900px',
   height: '300px',
-  '.vibuy--tabs': {},
-  '.vibuy--tab-list': {},
-  '.vibuy--tab': {
-    'background-color': '#0000',
-    'border-width': '0px 0px 2px 0px',
+  '.vb--tabs': {},
+  '.vb--tab-list': {},
+  '.vb--tab': {
+    backgroundColor: '#0000',
+    borderWidth: '0px 0px 2px 0px',
     '&:focus': {
-      'border-color': '#00acd8'
+      borderColor: '#00acd8'
     }
   },
-  '.vibuy--tab-selected': {
-    'background-color': '#0000',
-    'border-width': '0px 0px 2px 0px',
-    'border-color': '#00acd8',
-    'border-style': 'solid',
+  '.vb--tab-selected': {
+    backgroundColor: '#0000',
+    borderWidth: '0px 0px 2px 0px',
+    borderColor: '#00acd8',
+    borderStyle: 'solid',
     color: '#fff'
   },
-  '.vibuy--tab-panel': {},
+  '.vb--tab-panel': {},
   '.no-product': {
     display: 'block',
     padding: '10px'
