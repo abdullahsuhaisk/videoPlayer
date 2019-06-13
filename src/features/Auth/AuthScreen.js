@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileButton from './ProfileButton';
 import Login from './Login';
 import Register from './Register';
+import ForgotPassword from './ForgotPassword';
 
 const AuthScreen = () => {
   return (
@@ -9,6 +10,7 @@ const AuthScreen = () => {
       <ProfileButton />
       <Login />
       <Register />
+      <ForgotPassword />
     </>
   );
 };

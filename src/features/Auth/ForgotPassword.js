@@ -1,26 +1,26 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useCallback } from 'react';
-import styled from 'styled-components';
+import React, { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Wrapper, forgotPasswordStyles } from './ForgotPassword.style';
 import { InjectAuthProps } from '../../store/redux/providers';
+import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const StyledWrapper = styled.div((props) => ({
-  ...props.styles,
-  'pointer-events': 'auto'
-}));
-
-const ForgotPassword = (props) => {
-  const {
-    styles,
-    loginStatus,
-    auth,
-    showForgotPassword,
-    onShowLogin,
-    onShowForgotPassword
-  } = props;
-
+const ForgotPassword = ({
+  styles,
+  loginStatus,
+  auth,
+  showForgotPassword,
+  onShowLogin,
+  onShowForgotPassword
+}) => {
   if (!showForgotPassword || loginStatus === 'loggedIn' || auth.uid) {
     return null;
   }
+
+  useEffect(() => {
+    loadWebFontsFromStyles(forgotPasswordStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
 
   const toggleLoginCb = useCallback((event) => {
     event.preventDefault();
@@ -34,27 +34,41 @@ const ForgotPassword = (props) => {
   }, []);
 
   return (
-    <StyledWrapper styles={styles} className="vibuy--forgot-password-widget">
+    <Wrapper styles={styles} className="vb--forgot-password">
       <span
-        className="vibuy--forgot-password-close"
+        className="vb--forgot-password-close"
         role="button"
         tabIndex="0"
         onClick={toggleForgotPasswordCb}>
         &times;
       </span>
-      <div className="vibuy--forgot-password-image" />
-      <span className="vibuy--forgot-password-text">
+      <div className="vb--forgot-password-banner" />
+      <span className="vb--forgot-password-text">
         Please enter your email address below to receive an email instraction
         for resetting your password.
       </span>
-      <div className="vibuy--forgot-password-input-container">
+      <div className="vb--forgot-password-input-container">
         <input type="email" placeholder="Email" />
       </div>
-      <button className="vibuy--forgot-password-button" onClick={toggleLoginCb}>
+      <button className="vb--forgot-password-button" onClick={toggleLoginCb}>
         Send
       </button>
-    </StyledWrapper>
+    </Wrapper>
   );
+};
+
+ForgotPassword.propTypes = {
+  styles: PropTypes.object,
+  loginStatus: PropTypes.string,
+  auth: PropTypes.object.isRequired,
+  showForgotPassword: PropTypes.bool.isRequired,
+  onShowLogin: PropTypes.func.isRequired,
+  onShowForgotPassword: PropTypes.func.isRequired
+};
+
+ForgotPassword.defaultProps = {
+  styles: {},
+  loginStatus: ''
 };
 
 export default InjectAuthProps({
