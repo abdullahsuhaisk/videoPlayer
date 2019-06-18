@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper } from './ProductCard.style';
+import ProductDetailDialog from './ProductDetailDialog';
 
 const ProductCard = ({
   styles,
@@ -14,43 +15,51 @@ const ProductCard = ({
   inStock,
   assets
 }) => {
+  const [openModal, setOpenModal] = React.useState(false);
   return (
-    <Wrapper styles={styles} className="vb--product-card">
-      <div className="vb--product-card-first-container">
-        <div
-          className="vb--product-card-product-image"
-          style={{ backgroundImage: `url(${assets.images[0]}` }}
-        />
-        <button className="vb--product-card-add-to-wishlist">
-          Add to Wish List
-        </button>
-      </div>
-      <div className="vb--product-card-second-container">
-        <span className="vb--product-card-brand">{brand}</span>
-        <span className="vb--product-card-title">{title}</span>
-        {basePrice && discountRate ? (
-          <div className="vb--product-card-price-container">
-            <div className="vb--product-card-discount-rate">
-              <span>{`%${discountRate}`}</span>
+    <>
+      <ProductDetailDialog isOpen={openModal} closeModal={setOpenModal} />
+      <Wrapper styles={styles} className="vb--product-card">
+        <div className="vb--product-card-first-container">
+          <div
+            className="vb--product-card-product-image"
+            style={{ backgroundImage: `url(${assets.images[0]}` }}
+          />
+          <button className="vb--product-card-add-to-wishlist">
+            Add to Wish List
+          </button>
+        </div>
+        <div className="vb--product-card-second-container">
+          <span className="vb--product-card-brand">{brand}</span>
+          <span className="vb--product-card-title">{title}</span>
+          {basePrice && discountRate ? (
+            <div className="vb--product-card-price-container">
+              <div className="vb--product-card-discount-rate">
+                <span>{`%${discountRate}`}</span>
+              </div>
+              <div className="vb--product-card-base-price">
+                <span>{`${currency || ''}${basePrice.toFixed(2)}`}</span>
+              </div>
+              <div className="vb--product-card-current-price">
+                <span>{`${currency || ''}${currentPrice.toFixed(2)}`}</span>
+              </div>
             </div>
-            <div className="vb--product-card-base-price">
-              <span>{`${currency || ''}${basePrice.toFixed(2)}`}</span>
-            </div>
-            <div className="vb--product-card-current-price">
-              <span>{`${currency || ''}${currentPrice.toFixed(2)}`}</span>
-            </div>
-          </div>
-        ) : (
-          <span className="vb--product-card-price">{`${currency ||
-            ''}${currentPrice.toFixed(2)}`}</span>
-        )}
-        <span className="vb--product-card-in-stock">
-          {inStock ? 'In Stock' : 'No Stock'}
-        </span>
-        <hr />
-        <button className="vb--product-card-details">Details</button>
-      </div>
-    </Wrapper>
+          ) : (
+            <span className="vb--product-card-price">{`${currency ||
+              ''}${currentPrice.toFixed(2)}`}</span>
+          )}
+          <span className="vb--product-card-in-stock">
+            {inStock ? 'In Stock' : 'No Stock'}
+          </span>
+          <hr />
+          <button
+            className="vb--product-card-details"
+            onClick={() => setOpenModal(!openModal)}>
+            Details
+          </button>
+        </div>
+      </Wrapper>
+    </>
   );
 };
 
