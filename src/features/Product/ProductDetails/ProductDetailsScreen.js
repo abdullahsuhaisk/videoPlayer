@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
 import ProductDetailDialog from './ProductDetailDialog';
+
 import {
   InjectProductProps,
   InjectHotspotProps,
