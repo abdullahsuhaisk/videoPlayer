@@ -4,6 +4,7 @@ import Scaler from '../../components/Scaler/Scaler';
 import AuthScreen from '../Auth/AuthScreen';
 import ProductListScreen from '../Product/ProductList/ProductListScreen';
 import HotspotScreen from '../Hotspot/HotspotScreen';
+import ProductDetailsScreen from '../Product/ProductDetails/ProductDetailsScreen';
 
 const OverlayScreen = () => {
   return (
@@ -12,6 +13,7 @@ const OverlayScreen = () => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
+          <ProductDetailsScreen />
           <ProductListScreen />
           <HotspotScreen />
           <AuthScreen />

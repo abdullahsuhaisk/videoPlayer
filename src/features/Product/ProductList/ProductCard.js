@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper } from './ProductCard.style';
-import ProductDetailDialog from './ProductDetailDialog';
 
 const ProductCard = ({
   styles,
@@ -18,7 +17,6 @@ const ProductCard = ({
   const [openModal, setOpenModal] = React.useState(false);
   return (
     <>
-      <ProductDetailDialog isOpen={openModal} closeModal={setOpenModal} />
       <Wrapper styles={styles} className="vb--product-card">
         <div className="vb--product-card-first-container">
           <div

@@ -3,24 +3,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
+import ProductDetailDialog from './ProductDetailDialog';
 import {
   InjectProductProps,
   InjectHotspotProps,
   InjectPlayerProps
 } from '../../../store/redux/providers';
 
-ProductDetailsScreen.propTypes = {
-  playerPlayingState: PropTypes.string.isRequired,
-  playerStarted: PropTypes.bool.isRequired
-};
-
-ProductDetailsScreen.defaultProps = {
-  styles: {}
-};
-
 const ProductDetailsScreen = ({ playerPlayingState, playerStarted }) => {
-  return;
-  <></>;
+  return (
+    <>
+      {/* <ProductDetailDialog isOpen={openModal} closeModal={setOpenModal} product={product} /> */}
+      <div>Abc</div>
+    </>
+  );
 };
 
 export default compose(
@@ -38,3 +34,13 @@ export default compose(
     })
   })
 )(ProductDetailsScreen);
+
+ProductDetailsScreen.propTypes = {
+  playerPlayingState: PropTypes.string.isRequired,
+  playerStarted: PropTypes.bool.isRequired,
+  styles: PropTypes.object
+};
+
+ProductDetailsScreen.defaultProps = {
+  styles: {}
+};
