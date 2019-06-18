@@ -25,7 +25,7 @@ export const actions = {
   dialogOpen,
   dialogClose,
   getProductId,
-  ...baseActionTypes
+  ...baseActions
 };
 
 export const uıState = {};
