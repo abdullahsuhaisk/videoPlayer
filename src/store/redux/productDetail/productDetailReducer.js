@@ -1,16 +1,16 @@
-import { actionTypes } from './uiActions';
+import { actionTypes } from './productDetailActions';
 
 const initalUiState = {
-  isOpen: false,
+  isOpenProductDetailDialog: false,
   productId: null
 };
 
 const reducer = (state = initalUiState, action) => {
   switch (action.type) {
     case actionTypes.PRODUCT_DETAIL_DIALOG_OPEN:
-      return { ...state, isOpen: true };
+      return { ...state, isOpenProductDetailDialog: true };
     case actionTypes.PRODUCT_DETAIL_DIALOG_CLOSE:
-      return { ...state, isOpen: false };
+      return { ...state, isOpenProductDetailDialog: false };
     case actionTypes.PRODUCT_GET_ID:
       return { ...state, productId: action.payload };
     default:

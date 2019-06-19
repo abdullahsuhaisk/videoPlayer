@@ -4,7 +4,7 @@ import {
   actions as baseActions
 } from '../base/baseActions';
 
-const PREFIX = 'UI';
+const PREFIX = 'PRODUCT_DETAILS';
 
 const PRODUCT_DETAIL_DIALOG_OPEN = `${PREFIX}::OPEN`;
 const PRODUCT_DETAIL_DIALOG_CLOSE = `${PREFIX}::CLOSE`;

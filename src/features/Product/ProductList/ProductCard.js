@@ -12,7 +12,8 @@ const ProductCard = ({
   brand,
   title,
   inStock,
-  assets
+  assets,
+  openDialog
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   return (
@@ -52,7 +53,7 @@ const ProductCard = ({
           <hr />
           <button
             className="vb--product-card-details"
-            onClick={() => setOpenModal(!openModal)}>
+            onClick={() => openDialog()}>
             Details
           </button>
         </div>

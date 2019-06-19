@@ -7,7 +7,7 @@ const ProductDetailDialog = (props) => {
     return null;
   }
   return (
-    <ModalDialog onClose={closeModal}>
+    <ModalDialog onClose={() => closeModal()}>
       <div>deneme</div>
     </ModalDialog>
   );

@@ -7,24 +7,25 @@ import ProductDetailDialog from './ProductDetailDialog';
 
 import {
   InjectProductProps,
-  InjectHotspotProps,
   InjectPlayerProps
 } from '../../../store/redux/providers';
-import { InjectUiProps } from '../../../store/redux/ui/uiProps';
+import { InjectProductDetailProps } from '../../../store/redux/productDetail/productDetailProps';
 
 const ProductDetailsScreen = ({
   playerPlayingState,
   playerStarted,
-  isOpen,
-  openDialog,
-  closeDialog,
+  isOpenProductDetailDialog,
+  openProductDetailDialog,
+  closeProductDetailDialog, // Dialog's close method, it's pass to Modal
   productId
 }) => {
-  // console.log( playerPlayingState, playerStarted, isOpen, openDialog, closeDialog, productId );
+  console.log(isOpenProductDetailDialog);
   return (
     <>
-      {/* <ProductDetailDialog isOpen={openModal} closeModal={setOpenModal} product={product} /> */}
-      <div>Abc</div>
+      <ProductDetailDialog
+        isOpen={isOpenProductDetailDialog}
+        closeModal={closeProductDetailDialog}
+      />
     </>
   );
 };
@@ -37,7 +38,7 @@ export default compose(
       playerStarted
     })
   }),
-  InjectUiProps()
+  InjectProductDetailProps()
 )(ProductDetailsScreen);
 
 ProductDetailsScreen.propTypes = {

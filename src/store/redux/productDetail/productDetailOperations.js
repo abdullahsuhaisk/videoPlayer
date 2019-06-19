@@ -1,10 +1,10 @@
-import { actions } from './uiActions';
+import { actions } from './productDetailActions';
 
-export const openDialog = (dispatch) => {
+export const openDialog = () => (dispatch) => {
   dispatch(actions.dialogOpen());
 };
 
-export const closeDialog = (dispatch) => {
+export const closeDialog = () => (dispatch) => {
   dispatch(actions.dialogClose());
 };
 
