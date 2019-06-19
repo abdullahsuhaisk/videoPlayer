@@ -8,6 +8,6 @@ export const closeDialog = () => (dispatch) => {
   dispatch(actions.dialogClose());
 };
 
-export const getProductId = (dispatch) => {
-  dispatch(actions.getProductId());
+export const setProductId = (productId) => (dispatch) => {
+  dispatch(actions.setProductId(productId));
 };

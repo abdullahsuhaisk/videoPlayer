@@ -13,9 +13,10 @@ const ProductCard = ({
   title,
   inStock,
   assets,
+  id,
+  setProductId,
   openDialog
 }) => {
-  const [openModal, setOpenModal] = React.useState(false);
   return (
     <>
       <Wrapper styles={styles} className="vb--product-card">
@@ -53,7 +54,10 @@ const ProductCard = ({
           <hr />
           <button
             className="vb--product-card-details"
-            onClick={() => openDialog()}>
+            onClick={() => {
+              setProductId(id);
+              openDialog();
+            }}>
             Details
           </button>
         </div>
@@ -71,7 +75,10 @@ ProductCard.propTypes = {
   brand: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   inStock: PropTypes.bool.isRequired,
-  assets: PropTypes.object.isRequired
+  assets: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  setProductId: PropTypes.func.isRequired,
+  openDialog: PropTypes.func.isRequired
 };
 
 ProductCard.defaultProps = {

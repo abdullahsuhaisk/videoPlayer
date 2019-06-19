@@ -18,17 +18,16 @@ const ProductListScreen = ({
   activeHotspotIds,
   playerPlayingState,
   playerStarted,
+  setProductId,
   openProductDetailDialog // Dialog's open method, it's wrap up the Ui Redux
 }) => {
   const [productsInScene, setProductsInScene] = React.useState({});
-
   React.useEffect(() => {
     const hotspotProducts = activeHotspotIds.reduce((acc, id) => {
       const { productId } = hotspots[id];
       acc[productId] = products[productId];
       return acc;
     }, {});
-
     setProductsInScene(hotspotProducts);
   }, [products, activeHotspotIds]);
 
@@ -42,10 +41,12 @@ const ProductListScreen = ({
           <ProductCarousel
             products={productsInScene}
             openDialog={openProductDetailDialog}
+            setProductId={setProductId}
           />,
           <ProductCarousel
             products={products}
             openDialog={openProductDetailDialog}
+            setProductId={setProductId}
           />
         ]}
       />
@@ -81,8 +82,9 @@ export default compose(
     })
   }),
   InjectProductDetailProps({
-    selectActions: ({ openProductDetailDialog }) => ({
-      openProductDetailDialog
+    selectActions: ({ openProductDetailDialog, setProductId }) => ({
+      openProductDetailDialog,
+      setProductId
     })
   })
 )(ProductListScreen);

@@ -10,7 +10,7 @@ const reducer = (state = initalUiState, action) => {
     case actionTypes.PRODUCT_DETAIL_DIALOG_OPEN:
       return { ...state, isOpenProductDetailDialog: true };
     case actionTypes.PRODUCT_DETAIL_DIALOG_CLOSE:
-      return { ...state, isOpenProductDetailDialog: false };
+      return { ...state, isOpenProductDetailDialog: false, productId: null };
     case actionTypes.PRODUCT_GET_ID:
       return { ...state, productId: action.payload };
     default:

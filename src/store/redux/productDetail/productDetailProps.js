@@ -2,7 +2,7 @@ import { InjectProps } from '../propsUtils';
 import {
   openDialog,
   closeDialog,
-  getProductId
+  setProductId
 } from './productDetailOperations';
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     openProductDetailDialog: () => dispatch(openDialog()),
     closeProductDetailDialog: () => dispatch(closeDialog()),
-    getProductId: (productId) => dispatch(getProductId(productId))
+    setProductId: (productId) => dispatch(setProductId(productId))
   };
 };
 export const InjectProductDetailProps = InjectProps(

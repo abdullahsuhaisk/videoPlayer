@@ -12,7 +12,7 @@ const PRODUCT_GET_ID = `${PREFIX}::PRODUCT_ID`;
 
 const dialogOpen = buildActionCreator(PRODUCT_DETAIL_DIALOG_OPEN);
 const dialogClose = buildActionCreator(PRODUCT_DETAIL_DIALOG_CLOSE);
-const getProductId = buildActionCreator(PRODUCT_GET_ID);
+const setProductId = buildActionCreator(PRODUCT_GET_ID);
 
 export const actionTypes = {
   PRODUCT_DETAIL_DIALOG_OPEN,
@@ -24,7 +24,7 @@ export const actionTypes = {
 export const actions = {
   dialogOpen,
   dialogClose,
-  getProductId,
+  setProductId,
   ...baseActions
 };
 

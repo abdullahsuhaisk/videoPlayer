@@ -3,50 +3,72 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
-import ProductDetailDialog from './ProductDetailDialog';
+import ProductDetailDialog from './ProductDetailsDialog';
 
 import {
-  InjectProductProps,
-  InjectPlayerProps
+  InjectPlayerProps,
+  InjectProductProps
 } from '../../../store/redux/providers';
 import { InjectProductDetailProps } from '../../../store/redux/productDetail/productDetailProps';
+import { playingState } from '../../../store/redux/player/playerActions';
 
 const ProductDetailsScreen = ({
   playerPlayingState,
   playerStarted,
-  isOpenProductDetailDialog,
-  openProductDetailDialog,
-  closeProductDetailDialog, // Dialog's close method, it's pass to Modal
-  productId
+  isOpenProductDetailDialog, // Modal Toggle
+  closeProductDetailDialog, // Dialog's close method, it pass to Modal
+  productId, // it came ProductDetail reducer
+  products
 }) => {
-  console.log(isOpenProductDetailDialog);
+  const [productInDetail, setProductInDetail] = React.useState(null);
+
+  React.useEffect(() => {
+    const detailProduct = products[productId];
+    setProductInDetail(detailProduct);
+  }, [productId]);
+
   return (
-    <>
-      <ProductDetailDialog
-        isOpen={isOpenProductDetailDialog}
-        closeModal={closeProductDetailDialog}
-      />
-    </>
+    playerStarted &&
+    playerPlayingState === playingState.PAUSED &&
+    (productId && isOpenProductDetailDialog && (
+      <>
+        <ProductDetailDialog
+          closeModal={closeProductDetailDialog}
+          product={productInDetail}
+        />
+      </>
+    ))
   );
 };
 
+ProductDetailsScreen.propTypes = {
+  playerPlayingState: PropTypes.string.isRequired,
+  playerStarted: PropTypes.bool.isRequired,
+  styles: PropTypes.object,
+  productId: PropTypes.string
+};
+
+ProductDetailsScreen.defaultProps = {
+  styles: {}
+};
+
 export default compose(
-  InjectProductProps(),
   InjectPlayerProps({
     selectProps: ({ playerPlayingState, playerStarted }) => ({
       playerPlayingState,
       playerStarted
     })
   }),
-  InjectProductDetailProps()
+  InjectProductDetailProps({
+    selectProps: ({ productId, isOpenProductDetailDialog }) => ({
+      productId,
+      isOpenProductDetailDialog
+    }),
+    selectActions: ({ closeProductDetailDialog }) => ({
+      closeProductDetailDialog
+    })
+  }),
+  InjectProductProps({
+    selectProps: ({ products }) => ({ products })
+  })
 )(ProductDetailsScreen);
-
-ProductDetailsScreen.propTypes = {
-  playerPlayingState: PropTypes.string.isRequired,
-  playerStarted: PropTypes.bool.isRequired,
-  styles: PropTypes.object
-};
-
-ProductDetailsScreen.defaultProps = {
-  styles: {}
-};
