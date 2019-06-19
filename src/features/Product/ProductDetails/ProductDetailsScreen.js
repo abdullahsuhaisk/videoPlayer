@@ -10,8 +10,17 @@ import {
   InjectHotspotProps,
   InjectPlayerProps
 } from '../../../store/redux/providers';
+import { InjectUiProps } from '../../../store/redux/ui/uiProps';
 
-const ProductDetailsScreen = ({ playerPlayingState, playerStarted }) => {
+const ProductDetailsScreen = ({
+  playerPlayingState,
+  playerStarted,
+  isOpen,
+  openDialog,
+  closeDialog,
+  productId
+}) => {
+  // console.log( playerPlayingState, playerStarted, isOpen, openDialog, closeDialog, productId );
   return (
     <>
       {/* <ProductDetailDialog isOpen={openModal} closeModal={setOpenModal} product={product} /> */}
@@ -22,18 +31,13 @@ const ProductDetailsScreen = ({ playerPlayingState, playerStarted }) => {
 
 export default compose(
   InjectProductProps(),
-  InjectHotspotProps({
-    selectProps: ({ hotspots, activeHotspotIds }) => ({
-      hotspots,
-      activeHotspotIds
-    })
-  }),
   InjectPlayerProps({
     selectProps: ({ playerPlayingState, playerStarted }) => ({
       playerPlayingState,
       playerStarted
     })
-  })
+  }),
+  InjectUiProps()
 )(ProductDetailsScreen);
 
 ProductDetailsScreen.propTypes = {

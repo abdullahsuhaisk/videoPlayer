@@ -17,6 +17,7 @@ import layout from './layout/layoutReducer';
 import hotspots from './hotspot/hotspotReducer';
 import overlays from './overlay/overlayReducer';
 import productReducer from './product/productReducer';
+import uiReducer from './ui/uiReducer';
 
 // App middleware
 import appMiddleware from './middlewares/appMiddleware';
@@ -31,7 +32,8 @@ const store = createStore(
     hotspots,
     overlays,
     player,
-    products: productReducer
+    products: productReducer,
+    ui: uiReducer
   }),
   composeEnhancers(
     reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }),
