@@ -2,28 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
 import { ProductDetailModalDialog } from './ProductDetailsDialog.style';
+import Button from '../../../components/Button/Button';
 
 const ProductDetailDialog = (props) => {
   const { closeModal, product } = props;
+  const wrapperStyle = {
+    Wrapper: {
+      zIndex: '1',
+      top: '50px',
+      left: '100px',
+      width: '80%',
+      height: '80%',
+      borderRadius: '8px'
+    },
+    CloseButton: { color: 'black' }
+  };
   return (
-    <ModalDialog onClose={() => closeModal()}>
+    <ModalDialog onClose={() => closeModal()} styles={wrapperStyle}>
       <ProductDetailModalDialog>
         <div className="vb--product-detail-dialog-slider">
-          <img
-            src={product && product.assets.images[0]}
-            alt="images"
-            style={{ width: 100 }}
-          />
+          <div className="vb--product-detail-dialog-slider-image">
+            <img
+              src={product && product.assets.images[0]}
+              alt="images"
+              style={{ width: 300 }}
+            />
+          </div>
         </div>
         <div className="vb--product-detail-dialog-content">
-          <div>{product && product.name}</div>
-          <div>{product && product.brand}</div>
+          <div className="vb--product-detail-dialog-content-header">
+            {product && product.name}
+          </div>
+          <div>Brand: {product && product.brand}</div>
           <div>{product && product.inStock}</div>
-          <div>{product && product.currency}</div>
+          <div>
+            Price: {product && product.currency} {product && product.price}
+          </div>
           <div>{product && product.currentPrice}</div>
           <div>{product && product.discountRate}</div>
-          <div>{product && product.price}</div>
-          <div>{product && product.currency}</div>
+          <Button>Add Card</Button>
         </div>
       </ProductDetailModalDialog>
     </ModalDialog>

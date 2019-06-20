@@ -6,7 +6,7 @@ export const Wrapper = styled.div((props) => ({
   height: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
   pointerEvents: 'auto',
-  ...props.styles
+  ...props.styles.Wrapper
 }));
 
 export const CloseButton = styled.span((props) => ({
@@ -17,5 +17,5 @@ export const CloseButton = styled.span((props) => ({
   fontSize: '30px',
   color: '#fff',
   cursor: 'pointer',
-  ...props.styles
+  ...props.styles.CloseButton
 }));

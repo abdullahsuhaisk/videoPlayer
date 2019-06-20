@@ -3,11 +3,39 @@ import styled from 'styled-components';
 const productDetailsStyle = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'center',
+  justifyContent: 'start',
   alignContent: 'center',
-  height: '500px',
-  '.vb--product-detail-dialog-slider': {},
-  '.vb--product-detail-dialog-content': {}
+  alignItems: 'center',
+  backgroundColor: 'white',
+  color: 'black',
+  '.vb--product-detail-dialog-slider': {
+    width: '300px'
+  },
+  'vb--product-detail-dialog-slider-image': {
+    width: '300px'
+  },
+  '.vb--product-detail-dialog-content': {
+    minHeight: '450px',
+    maxWidth: '600px',
+    marginLeft: '15px',
+    paddingTop: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'start'
+  },
+  '.vb--product-detail-dialog-content-header': {
+    fontFamily: 'SourceSansPro',
+    fontSize: '30px',
+    fontWeight: '600',
+    fontStyle: 'normal',
+    fontStretch: 'normal',
+    lineHeight: '1.26',
+    letterSpacing: 'normal',
+    textAlign: 'left',
+    color: '#0b2443'
+  }
 };
 export const ProductDetailModalDialog = styled.div((props) => ({
   ...productDetailsStyle,
