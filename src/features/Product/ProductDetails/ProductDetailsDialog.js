@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
 import { ProductDetailModalDialog } from './ProductDetailsDialog.style';
 import Button from '../../../components/Button/Button';
+import AddToCardButton from '../../../components/Button/AddToCardButton';
 
 const ProductDetailDialog = (props) => {
   const { closeModal, product } = props;
@@ -16,6 +17,9 @@ const ProductDetailDialog = (props) => {
       borderRadius: '8px'
     },
     CloseButton: { color: 'black' }
+  };
+  const clickAddCardButton = () => {
+    console.log('Clicked');
   };
   return (
     <ModalDialog onClose={() => closeModal()} styles={wrapperStyle}>
@@ -41,6 +45,7 @@ const ProductDetailDialog = (props) => {
           <div>{product && product.currentPrice}</div>
           <div>{product && product.discountRate}</div>
           <Button>Add Card</Button>
+          <AddToCardButton onClick={clickAddCardButton} />
         </div>
       </ProductDetailModalDialog>
     </ModalDialog>
