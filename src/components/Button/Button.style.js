@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
-export const ButtonStyle = styled.button((props) => ({
-  color: '#ffffff !important',
-  width: '150px',
-  height: '40px',
-  fontFamily: 'Source Sans Pro !important',
-  fontSize: '14px !important',
-  borderRadius: '38px',
-  boxShadow: '-10px 0 6px 0 rgba(0, 0, 0, 0.16)',
-  backgroundColor: '#83329c !important',
-  padding: '8px 14px',
-  border: '1px solid #fff !important',
-  textTransform: 'none',
-  textAlign: 'center',
-  verticalAlign: 'middle',
-  lineHeight: '1.5',
-  transition:
-    'color 0.15s ease-in-out background-color 0.15s ease-in-out border-color 0.15s ease-in-out box-shadow 0.15s ease-in-out !important',
-  overflow: 'visible',
-  cursor: 'pointer',
-  '&:hover': {
-    border: '1px solid #82329c !important'
+export const ButtonWrapper = styled.div((props) => ({
+  '.vb--button': {
+    color: '#ffffff ',
+    minWidth: '120px',
+    height: '30px',
+    fontFamily: 'Source Sans Pro ',
+    fontSize: '14px ',
+    borderRadius: '38px',
+    boxShadow: '-10px 0 6px 0 rgba(0, 0, 0, 0.16)',
+    backgroundColor: '#83329c ',
+    border: '1px solid #fff ',
+    transition: 'all .2s',
+    outline: '0',
+    overflow: 'visible',
+    cursor: 'pointer',
+    '&:hover': {
+      border: '1px solid #82329c ',
+      color: '#00acd8 ',
+      backgroundColor: '#FFF '
+    }
   },
   ...props.styles
 }));

@@ -10,8 +10,6 @@ const AddToCardButton = (props) => {
     backgroundColor: '#83329c !important',
     border: 'solid 1px #83329c !important',
     color: '#fff !important',
-    width: '150px',
-    height: '40px',
     borderRadius: '6px',
     '.button--addCard-icon': {
       background: 'url(/images/shoppingCart.svg) center / cover no-repeat ',
@@ -20,7 +18,7 @@ const AddToCardButton = (props) => {
       height: '16px'
     },
     '&:hover': {
-      border: '3px solid #82329c !important'
+      border: '3px solid #82329c'
     }
   };
 

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonStyle } from './Button.style';
+import { ButtonWrapper } from './Button.style';
 
 const Button = (props) => {
   const { onClick, children, styles } = props;
   return (
-    <ButtonStyle onClick={onClick} styles={styles}>
-      {children}
-    </ButtonStyle>
+    <ButtonWrapper styles={styles}>
+      <button onClick={onClick} className="vb--button">
+        {children}
+      </button>
+    </ButtonWrapper>
   );
 };
 
