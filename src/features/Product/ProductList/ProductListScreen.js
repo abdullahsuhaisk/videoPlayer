@@ -9,6 +9,7 @@ import {
   InjectPlayerProps
 } from '../../../store/redux/providers';
 import { playingState } from '../../../store/redux/player/playerActions';
+import { InjectProductDetailProps } from '../../../store/redux/productDetail/productDetailProps';
 
 const ProductListScreen = ({
   products,
@@ -16,17 +17,17 @@ const ProductListScreen = ({
   hotspots,
   activeHotspotIds,
   playerPlayingState,
-  playerStarted
+  playerStarted,
+  setProductId,
+  openProductDetailDialog // Dialog's open method, it's wrap up the Ui Redux
 }) => {
   const [productsInScene, setProductsInScene] = React.useState({});
-
   React.useEffect(() => {
     const hotspotProducts = activeHotspotIds.reduce((acc, id) => {
       const { productId } = hotspots[id];
       acc[productId] = products[productId];
       return acc;
     }, {});
-
     setProductsInScene(hotspotProducts);
   }, [products, activeHotspotIds]);
 
@@ -37,8 +38,16 @@ const ProductListScreen = ({
         styles={styles}
         tabs={['Products in this scene', 'Products in this video']}
         tabPanels={[
-          <ProductCarousel products={productsInScene} />,
-          <ProductCarousel products={products} />
+          <ProductCarousel
+            products={productsInScene}
+            openDialog={openProductDetailDialog}
+            setProductId={setProductId}
+          />,
+          <ProductCarousel
+            products={products}
+            openDialog={openProductDetailDialog}
+            setProductId={setProductId}
+          />
         ]}
       />
     )
@@ -70,6 +79,12 @@ export default compose(
     selectProps: ({ playerPlayingState, playerStarted }) => ({
       playerPlayingState,
       playerStarted
+    })
+  }),
+  InjectProductDetailProps({
+    selectActions: ({ openProductDetailDialog, setProductId }) => ({
+      openProductDetailDialog,
+      setProductId
     })
   })
 )(ProductListScreen);

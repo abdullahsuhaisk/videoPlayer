@@ -12,45 +12,57 @@ const ProductCard = ({
   brand,
   title,
   inStock,
-  assets
+  assets,
+  id,
+  setProductId,
+  openDialog
 }) => {
   return (
-    <Wrapper styles={styles} className="vb--product-card">
-      <div className="vb--product-card-first-container">
-        <div
-          className="vb--product-card-product-image"
-          style={{ backgroundImage: `url(${assets.images[0]}` }}
-        />
-        <button className="vb--product-card-add-to-wishlist">
-          Add to Wish List
-        </button>
-      </div>
-      <div className="vb--product-card-second-container">
-        <span className="vb--product-card-brand">{brand}</span>
-        <span className="vb--product-card-title">{title}</span>
-        {basePrice && discountRate ? (
-          <div className="vb--product-card-price-container">
-            <div className="vb--product-card-discount-rate">
-              <span>{`%${discountRate}`}</span>
+    <>
+      <Wrapper styles={styles} className="vb--product-card">
+        <div className="vb--product-card-first-container">
+          <div
+            className="vb--product-card-product-image"
+            style={{ backgroundImage: `url(${assets.images[0]}` }}
+          />
+          <button className="vb--product-card-add-to-wishlist">
+            Add to Wish List
+          </button>
+        </div>
+        <div className="vb--product-card-second-container">
+          <span className="vb--product-card-brand">{brand}</span>
+          <span className="vb--product-card-title">{title}</span>
+          {basePrice && discountRate ? (
+            <div className="vb--product-card-price-container">
+              <div className="vb--product-card-discount-rate">
+                <span>{`%${discountRate}`}</span>
+              </div>
+              <div className="vb--product-card-base-price">
+                <span>{`${currency || ''}${basePrice.toFixed(2)}`}</span>
+              </div>
+              <div className="vb--product-card-current-price">
+                <span>{`${currency || ''}${currentPrice.toFixed(2)}`}</span>
+              </div>
             </div>
-            <div className="vb--product-card-base-price">
-              <span>{`${currency || ''}${basePrice.toFixed(2)}`}</span>
-            </div>
-            <div className="vb--product-card-current-price">
-              <span>{`${currency || ''}${currentPrice.toFixed(2)}`}</span>
-            </div>
-          </div>
-        ) : (
-          <span className="vb--product-card-price">{`${currency ||
-            ''}${currentPrice.toFixed(2)}`}</span>
-        )}
-        <span className="vb--product-card-in-stock">
-          {inStock ? 'In Stock' : 'No Stock'}
-        </span>
-        <hr />
-        <button className="vb--product-card-details">Details</button>
-      </div>
-    </Wrapper>
+          ) : (
+            <span className="vb--product-card-price">{`${currency ||
+              ''}${currentPrice.toFixed(2)}`}</span>
+          )}
+          <span className="vb--product-card-in-stock">
+            {inStock ? 'In Stock' : 'No Stock'}
+          </span>
+          <hr />
+          <button
+            className="vb--product-card-details"
+            onClick={() => {
+              setProductId(id);
+              openDialog();
+            }}>
+            Details
+          </button>
+        </div>
+      </Wrapper>
+    </>
   );
 };
 
@@ -63,7 +75,10 @@ ProductCard.propTypes = {
   brand: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   inStock: PropTypes.bool.isRequired,
-  assets: PropTypes.object.isRequired
+  assets: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  setProductId: PropTypes.func.isRequired,
+  openDialog: PropTypes.func.isRequired
 };
 
 ProductCard.defaultProps = {

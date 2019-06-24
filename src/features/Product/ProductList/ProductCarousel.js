@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Carousel from '../../../components/Carousel/Carousel';
 import ProductCard from './ProductCard';
 
-const ProductCarousel = ({ products }) => {
+const ProductCarousel = ({ products, openDialog, setProductId }) => {
   const productIds = React.useMemo(() => Object.keys(products), [products]);
 
   return productIds.length === 0 ? (
@@ -13,6 +13,7 @@ const ProductCarousel = ({ products }) => {
       {productIds.map((id) => (
         <ProductCard
           key={id}
+          id={id}
           title={products[id].name}
           brand={products[id].brand}
           currentPrice={products[id].currentPrice}
@@ -21,6 +22,8 @@ const ProductCarousel = ({ products }) => {
           currency={products[id].currency}
           assets={products[id].assets}
           inStock={products[id].inStock}
+          openDialog={openDialog}
+          setProductId={setProductId}
         />
       ))}
     </Carousel>
