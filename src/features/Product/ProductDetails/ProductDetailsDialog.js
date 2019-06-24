@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
-import { ProductDetailModalDialog } from './ProductDetailsDialog.style';
-import Button from '../../../components/Button/Button';
+import { ProductDetailsWrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
+import ProductPrice from '../../../components/Product/ProductPrice/ProductPrice';
 
 const ProductDetailDialog = (props) => {
   const { closeModal, product } = props;
@@ -22,7 +22,7 @@ const ProductDetailDialog = (props) => {
     console.log('Clicked');
   };
   return (
-    <ProductDetailModalDialog>
+    <ProductDetailsWrapper>
       <ModalDialog onClose={() => closeModal()} styles={wrapperStyle}>
         <div className="vb--product-details-container">
           <div className="vb--product-detail-dialog-slider">
@@ -34,7 +34,7 @@ const ProductDetailDialog = (props) => {
               />
             </div>
           </div>
-          <div className="vb--product-detail-dialog-content">
+          <div className="vb--product-detail-dialog-contents">
             <div className="vb--product-detail-dialog-content-header">
               {product && product.name}
             </div>
@@ -42,7 +42,7 @@ const ProductDetailDialog = (props) => {
               Brand: {product && product.brand}
             </div>
             <div className="vb--product-detail-dialog-content-content">
-              {product && product.inStock}
+              {product && product.inStock === true ? 'InStock' : 'OutofStock'}
             </div>
             <div className="vb--product-detail-dialog-content-content">
               Price: {product && product.currency} {product && product.price}
@@ -53,12 +53,49 @@ const ProductDetailDialog = (props) => {
             <div className="vb--product-detail-dialog-content-content">
               {product && product.discountRate}
             </div>
-            <Button>Add Card</Button>
-            <AddToCardButton onClick={clickAddCardButton} />
+            <div className="vb--product-detail-dialog-content-features">
+              <div className="vb--product-detail-dialog-content-features-header">
+                Colors
+              </div>
+              <div className="vb--product-detail-dialog-content-features-content">
+                <button className="active">Blue</button>
+                <button>Purple</button>
+                <button>Black</button>
+                <button>White</button>
+              </div>
+              <div className="vb--product-detail-dialog-content-features-header">
+                Size
+              </div>
+              <div className="vb--product-detail-dialog-content-features-content">
+                <button className="active">64 GB</button>
+                <button>128 GB</button>
+                <button>256 GB</button>
+                <button>512 GB</button>
+              </div>
+            </div>
+            <div className="vb--product-detail-dialog-content-price-and-cartButton">
+              <div className="vb--product-card-price-container">
+                <div className="vb--product-card-base-price">
+                  <span>250.00$</span>
+                </div>
+                <div className="vb--product-card-discount-rate-and-price">
+                  <div className="vb--product-card-discount-rate">
+                    <span>%50</span>
+                  </div>
+                  <div className="vb--product-card-current-price">
+                    <span>120.00$</span>
+                  </div>
+                  <AddToCardButton
+                    onClick={clickAddCardButton}
+                    styles={{ paddingTop: '9px' }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </ModalDialog>
-    </ProductDetailModalDialog>
+    </ProductDetailsWrapper>
   );
 };
 ProductDetailDialog.propTypes = {
