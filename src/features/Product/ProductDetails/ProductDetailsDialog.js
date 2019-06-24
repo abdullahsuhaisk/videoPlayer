@@ -5,6 +5,7 @@ import { ProductDetailsWrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
 const ProductDetailDialog = (props) => {
+  //
   const { closeModal, product } = props;
   const wrapperStyle = {
     Wrapper: {
