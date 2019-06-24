@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
 import { ProductDetailsWrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
-import ProductPrice from '../../../components/Product/ProductPrice/ProductPrice';
 
 const ProductDetailDialog = (props) => {
   const { closeModal, product } = props;
