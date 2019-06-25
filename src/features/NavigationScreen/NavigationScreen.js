@@ -13,7 +13,8 @@ const NavigationScreen = ({
   playerStarted,
   openNavigationDialog,
   isOpenNavigationDialog,
-  closeNavigationDialog
+  closeNavigationDialog,
+  pages
 }) => {
   const wrapperStyle = {
     Wrapper: {
@@ -40,6 +41,7 @@ const NavigationScreen = ({
           <NavigationDialog
             onClose={closeNavigationDialog}
             styles={wrapperStyle}
+            pages={pages}
           />
         )}
     </>
@@ -50,7 +52,9 @@ NavigationScreen.propTypes = {
   playerPlayingState: PropTypes.string.isRequired,
   playerStarted: PropTypes.bool.isRequired,
   openNavigationDialog: PropTypes.func.isRequired,
-  isOpenNavigationDialog: PropTypes.bool.isRequired
+  isOpenNavigationDialog: PropTypes.bool.isRequired,
+  pages: PropTypes.array.isRequired,
+  closeNavigationDialog: PropTypes.func.isRequired
 };
 
 export default compose(

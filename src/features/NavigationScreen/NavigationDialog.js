@@ -2,29 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ModalDialog from '../../components/ModalDialog/ModalDialog';
+import { NavigationDialogWrapper } from './NavigationDialog.style';
+import NavigationTabs from './NavigationTabs';
 
 const NavigationDialog = (props) => {
-  const { onClose } = props;
+  const { onClose, pages } = props;
   const wrapperStyle = {
     Wrapper: {
       zIndex: '1',
-      top: '50px',
-      left: '100px',
-      width: '80%',
-      height: '80%',
       borderRadius: '8px'
     },
-    CloseButton: { color: 'black' }
+    CloseButton: { color: '#0b2443' }
   };
   return (
     <>
-      <ModalDialog onClose={onClose} styles={wrapperStyle}>
-        <div>Abc</div>
-      </ModalDialog>
+      <NavigationDialogWrapper>
+        <ModalDialog onClose={onClose} styles={wrapperStyle}>
+          <div className="vb--navigationModalContainer">
+            <NavigationTabs pages={pages} />
+          </div>
+        </ModalDialog>
+      </NavigationDialogWrapper>
     </>
   );
 };
 
-NavigationDialog.propTypes = {};
+NavigationDialog.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  pages: PropTypes.array.isRequired
+};
 
 export default NavigationDialog;
