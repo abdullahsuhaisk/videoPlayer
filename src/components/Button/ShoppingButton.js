@@ -1,8 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { InjectPlayerProps } from '../../store/redux/providers';
-import { playingState } from '../../store/redux/player/playerActions';
 
 const ShoppingButtonWrapper = styled.div((props) => ({
   display: 'inline-block',
@@ -21,28 +20,20 @@ const ShoppingButtonWrapper = styled.div((props) => ({
   }
 }));
 // TODO: Onclick method must override, it will entegrated redux
-const ShoppingButton = ({ playerPlayingState, playerStarted }) => {
+const ShoppingButton = ({ openNavigationDialog }) => {
   return (
     <>
-      {playerStarted && playerPlayingState === playingState.PAUSED && (
-        <ShoppingButtonWrapper>
-          <div className="vb--icon" onClick={() => alert('clicked')} />
-        </ShoppingButtonWrapper>
-      )}
+      <ShoppingButtonWrapper>
+        <div className="vb--icon" onClick={() => openNavigationDialog()} />
+      </ShoppingButtonWrapper>
     </>
   );
 };
 
 ShoppingButton.propTypes = {
-  playerPlayingState: PropTypes.string.isRequired,
-  playerStarted: PropTypes.bool.isRequired
+  openNavigationDialog: PropTypes.func.isRequired
 };
 
 ShoppingButton.defaultProps = {};
 
-export default InjectPlayerProps({
-  selectProps: ({ playerPlayingState, playerStarted }) => ({
-    playerPlayingState,
-    playerStarted
-  })
-})(ShoppingButton);
+export default ShoppingButton;
