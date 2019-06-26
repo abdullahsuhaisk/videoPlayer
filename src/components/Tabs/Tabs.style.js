@@ -25,13 +25,6 @@ export const Wrapper = styled.div((props) => ({
     borderStyle: 'solid',
     color: '#fff'
   },
-  '.react-tabs__tab-panel--selected': {
-    display: 'flex',
-    height: '498px',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   '.no-product': {
     display: 'block',
     padding: '10px'

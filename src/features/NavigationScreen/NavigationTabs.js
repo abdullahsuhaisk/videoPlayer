@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../../components/Tabs/Tabs';
+import Profile from '../Profile/ProfileScreen';
 
 const NavigationTabs = ({ pages }) => {
   // ['Profile','Favorites','Watch List','Wish List','Shopping Cart']
@@ -49,7 +50,8 @@ const NavigationTabs = ({ pages }) => {
     '.vb--tab': {
       paddingTop: '15px',
       paddingLeft: '20px',
-      paddingRight: '20px'
+      paddingRight: '20px',
+      borderWidth: '0px 0px 2px 0px'
     }
   };
   return (
@@ -58,7 +60,7 @@ const NavigationTabs = ({ pages }) => {
         tabs={pages}
         styles={styles}
         tabPanels={[
-          <div>Panel 1</div>,
+          <Profile />,
           <div>Panel 2</div>,
           <div>Panel 3</div>,
           <div>Panel 4</div>,
