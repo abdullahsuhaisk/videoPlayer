@@ -2,7 +2,7 @@ import { actionTypes } from './navigationActions';
 
 const initialNavigationState = {
   isOpenNavigationDialog: false,
-  pages: ['Profile', 'Favourites', 'Watch List', 'Wish List', 'Shopping Cart'],
+  pages: ['Profile', 'Favourites', 'WatchList', 'WishList', 'Shopping Cart'],
   selectedPages: 'Profile'
 };
 
