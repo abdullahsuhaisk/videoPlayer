@@ -5,8 +5,7 @@ import { ProductDetailsWrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
 const ProductDetailDialog = (props) => {
-  //
-  const { closeModal, product } = props;
+  const { closeModal, product, addCart, productId } = props;
   const wrapperStyle = {
     Wrapper: {
       zIndex: '1',
@@ -19,7 +18,7 @@ const ProductDetailDialog = (props) => {
     CloseButton: { color: 'black' }
   };
   const clickAddCardButton = () => {
-    console.log('Clicked');
+    addCart(productId);
   };
   return (
     <ProductDetailsWrapper>
@@ -106,4 +105,5 @@ ProductDetailDialog.propTypes = {
 ProductDetailDialog.defaultProps = {
   product: null
 };
+
 export default ProductDetailDialog;

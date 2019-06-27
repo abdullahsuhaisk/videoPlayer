@@ -9,7 +9,8 @@ const initialProductState = {
     price: 0,
     discountRate: 0,
     currentPrice: 74.98,
-    inStock: true
+    inStock: true,
+    seller: ' Adidas INC.'
   },
   'product-2': {
     name: 'Women Red Classes',
@@ -21,7 +22,8 @@ const initialProductState = {
     discountRate: 50,
     currentPrice: 120.0,
     currency: '$',
-    inStock: false
+    inStock: false,
+    seller: ' Pierre INC.'
   },
   'product-3': {
     name: 'Turtleneck Sweater 2',
@@ -33,7 +35,8 @@ const initialProductState = {
     price: 0,
     discountRate: 0,
     currentPrice: 78.98,
-    inStock: true
+    inStock: true,
+    seller: 'NİKE INC.'
   }
 };
 

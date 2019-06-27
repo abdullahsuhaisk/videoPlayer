@@ -1,30 +1,32 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ShoppingCardWrapper = styled.div((props) => ({
   ...props.styles,
   marginTop: '20px',
-  width: '635px',
-  height: '70px',
+  width: '685px',
+  height: '85px',
   borderRadius: '8px',
   border: 'solid 1px #ebeae9',
   backgroundColor: '#ffffff',
   fontFamily: 'Sans Serif Pro',
-
   '.vb--shoppingCart-Card-Container': {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
   '.vb--shoppingCart-Card-Image': {
-    width: '70px',
-    height: '70px',
+    width: '84px',
+    height: '84px',
     objectFit: 'contain',
     borderRadius: '8px',
     backgroundImage: 'url(/images/ShoppingCartImage.png)',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    boxShadow: '0 5px 10px 0 rgba(0, 0, 0, 0.16)'
   },
   '.vb--shoppingCart-Card-Content': {
     marginLeft: '-30px',
@@ -32,16 +34,36 @@ const ShoppingCardWrapper = styled.div((props) => ({
     fontWeight: 'bolder',
     fontStyle: 'normal',
     fontStretch: 'normal',
-    color: '#0e273b'
+    color: '#0e273b',
+    fontSize: '14px'
   },
-  '.vb--shoppingCart-Card-Content-Seller': {},
-  '.vb--shoppingCart-Card-Content-Firm': {},
+  '.vb--shoppingCart-Card-Content-Seller-Info-Container': {
+    marginTop: '7px',
+    display: 'flex',
+    alignItems: 'center',
+    '.vb--shoppingCart-Card-Content-Seller': {
+      marginRight: '10px'
+    },
+    '.vb--shoppingCart-Card-Content-Firm': {
+      fontSize: '10px',
+      fontWeight: 'bolder',
+      color: '#00acd8',
+      marginTop: '1px'
+    }
+  },
   '.vb--shoppingCart-Card-buttons-group': {
     display: 'flex',
     width: '65px',
-    height: '32px',
+    height: '28px',
     borderRadius: '4px',
-    backgroundColor: '#f5f9fc'
+    outline: 'none',
+    backgroundColor: '#f5f9fc',
+    '.button': {
+      width: '20px',
+      borderRadius: '4px',
+      backgroundColor: '#f5f9fc',
+      outline: 'none'
+    }
   },
   '.vb--shoppingCart-Card-buttons-group-show': {
     borderRadius: '4px',
@@ -50,35 +72,67 @@ const ShoppingCardWrapper = styled.div((props) => ({
     width: '27px',
     textAlign: 'center',
     verticalAlign: 'middle',
-    paddingTop: '10px'
+    paddingTop: '9px',
+    color: '#ffffff'
   },
-  '.vb--shoppingCart-Card-Price': {},
+  '.vb--shoppingCart-Card-Price': {
+    fontWeight: 'bolder',
+    fontSize: '15px'
+  },
   '.vb--shoppingCart-Card-Piece': {},
   '.vb--shoppingCart-Card-Close': {
     padding: '15px 20px',
     fontSize: '20px',
     color: '#0b2443',
+    fontWeight: 'bolder',
     cursor: 'pointer'
+  },
+  '.btn-nonoutline': {
+    outline: 'none'
   }
 }));
 
-const ShoppingCartCard = ({ props }) => {
+const ShoppingCartCard = ({ product, productId, removeCart }) => {
+  const [piece, setPiece] = useState(1);
   return (
     <ShoppingCardWrapper>
       <div className="vb--shoppingCart-Card-Container">
-        <div className="vb--shoppingCart-Card-Image" />
+        <div
+          className="vb--shoppingCart-Card-Image"
+          style={{ backgroundImage: `url(${product.assets.images[0]}` }}
+        />
         <div className="vb--shoppingCart-Card-Content">
-          Adidas DB1769 Cosmic 2 XS W Lady Shirt
-          <div className="vb--shoppingCart-Card-Content-Seller">Seller</div>
-          <div className="vb--shoppingCart-Card-Content-Firm">Adidas INC.</div>
+          {product && product.name}
+          <div className="vb--shoppingCart-Card-Content-Seller-Info-Container">
+            <div className="vb--shoppingCart-Card-Content-Seller">Seller :</div>
+            <div className="vb--shoppingCart-Card-Content-Firm">
+              {product && product.seller}
+            </div>
+          </div>
         </div>
         <div className="vb--shoppingCart-Card-buttons-group">
-          <button>-</button>
-          <div className="vb--shoppingCart-Card-buttons-group-show">1</div>
-          <button>+</button>
+          <button
+            className="btn-nonoutline"
+            onClick={() => setPiece(piece - 1)}>
+            -
+          </button>
+          <div className="vb--shoppingCart-Card-buttons-group-show">
+            {piece < 1 ? removeCart(productId) : piece}
+          </div>
+          <button
+            className="btn-nonoutline"
+            onClick={() => setPiece(piece + 1)}>
+            +
+          </button>
         </div>
-        <div className="vb--shoppingCart-Card-Price">$ 445,73</div>
-        <div className="vb--shoppingCart-Card-Close">&times;</div>
+        <div className="vb--shoppingCart-Card-Price">
+          $ {product && product.inStock && product.currentPrice}
+        </div>
+        <div
+          className="vb--shoppingCart-Card-Close"
+          onClick={() => removeCart(productId)}>
+          &times;
+        </div>
       </div>
     </ShoppingCardWrapper>
   );

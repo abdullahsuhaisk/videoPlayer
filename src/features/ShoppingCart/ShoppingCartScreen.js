@@ -7,15 +7,20 @@ const ShoppingCartScreen = () => {
   const [whichPageRender, setPageRender] = useState(1);
   // TODO: Set logic method
 
+  const switchPage = (value) => {
+    // For up and Down
+    setPageRender(whichPageRender + value);
+  };
+
   switch (whichPageRender) {
     case 1:
-      return <ShoppingBasket />;
+      return <ShoppingBasket switchPage={switchPage} />;
     case 2:
       return <ShoppingPayment />;
     case 3:
       return <ShoppingCheckout />;
     default:
-      return null;
+      return <ShoppingBasket switchPage={switchPage} />;
   }
 };
 

@@ -19,6 +19,7 @@ import overlays from './overlay/overlayReducer';
 import productReducer from './product/productReducer';
 import productDetailReducer from './productDetail/productDetailReducer';
 import navigationReducer from './navigation/navigationReducer';
+import shoppingCartReducer from './shoppingCart/shoppingCartReducer';
 
 // App middleware
 import appMiddleware from './middlewares/appMiddleware';
@@ -35,7 +36,8 @@ const store = createStore(
     player,
     products: productReducer,
     productDetail: productDetailReducer,
-    navigation: navigationReducer
+    navigation: navigationReducer,
+    shoppingCart: shoppingCartReducer
   }),
   composeEnhancers(
     reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }),
