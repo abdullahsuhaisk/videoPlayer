@@ -9,11 +9,17 @@ const productDetailsStyle = {
     alignItems: 'center',
     backgroundColor: 'white',
     color: 'black',
+    fontFamily: 'Sans Serif Pro',
+    fontSize: '15px',
     '.vb--product-detail-dialog-slider': {
       width: '40%'
     },
-    'vb--product-detail-dialog-slider-image': {
-      width: '40%'
+    '.vb--product-detail-dialog-slider-image': {
+      height: '470px',
+      backgroundImage: 'url(/images/products/product-1.jpg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'
     },
     '.vb--product-detail-dialog-contents': {
       minHeight: '450px',
@@ -30,17 +36,18 @@ const productDetailsStyle = {
     },
     '.vb--product-detail-dialog-content-header': {
       fontFamily: 'Source Sans Pro',
-      fontSize: '20px',
+      fontSize: '16px',
       fontWeight: '600',
       fontStyle: 'normal',
       fontStretch: 'normal',
       lineHeight: '1.26',
       letterSpacing: 'normal',
       textAlign: 'left',
-      color: '#0b2443'
+      color: '#0b2443',
+      marginBottom: '20px'
     },
     '.vb--product-detail-dialog-content-content': {
-      fontSize: '15px',
+      fontSize: '14px',
       display: 'list-item',
       marginLeft: '15px',
       marginBottom: '5px'
@@ -49,8 +56,8 @@ const productDetailsStyle = {
       marginTop: '15px',
       marginBottom: '5px',
       '.vb--product-detail-dialog-content-features-header': {
-        fontSize: '20px',
-        marginBottom: '3px'
+        fontSize: '16px',
+        marginBottom: '6px'
       },
       '.vb--product-detail-dialog-content-features-content': {
         display: 'flex',
@@ -61,11 +68,13 @@ const productDetailsStyle = {
       },
       button: {
         borderRadius: '6px',
-        border: 'solid 1px #b9b9b9;',
+        border: 'solid 2px #b9b9b9;',
         backgroundColor: '#ffffff',
         outline: 'none',
         cursor: 'pointer',
-        padding: '10px'
+        padding: '6px',
+        fontSize: '12px',
+        fontFamily: 'inherit'
       },
       '.active': {
         border: 'solid 2px #83329c'
@@ -73,9 +82,10 @@ const productDetailsStyle = {
     },
     '.vb--product-detail-dialog-content-price-and-cartButton': {
       width: '100%',
-      header: '40%',
+      height: '40%',
       display: 'flex',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
+      marginTop: '20px'
     }
   },
   '.vb--product-card-price-container': {

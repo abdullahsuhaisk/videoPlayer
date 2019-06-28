@@ -73,7 +73,8 @@ const ShoppingCardWrapper = styled.div((props) => ({
     textAlign: 'center',
     verticalAlign: 'middle',
     paddingTop: '9px',
-    color: '#ffffff'
+    color: '#ffffff',
+    fontWeight: 'bolder'
   },
   '.vb--shoppingCart-Card-Price': {
     fontWeight: 'bolder',
