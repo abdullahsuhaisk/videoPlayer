@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../components/Button/Button';
 
-const ProfileInfoComponent = () => {
+const ProfileInfo = ({ setInfoEdit }) => {
   return (
     <div className="vb--tabs-profile-content-info">
       <div className="vb--tabs-profile-content-info-content">
@@ -37,10 +37,10 @@ const ProfileInfoComponent = () => {
         </div>
       </div>
       <div className="vb--tabs-profile-content-info--button">
-        <Button>Edit</Button>
+        <Button onClick={() => setInfoEdit(1)}>Edit</Button>
       </div>
     </div>
   );
 };
 
-export default ProfileInfoComponent;
+export default ProfileInfo;

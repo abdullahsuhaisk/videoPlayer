@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditableAdressComponents = () => {
+const ProfileShowAddress = () => {
   return (
     <>
       <div className="vb--tabs-profile-address">
@@ -15,9 +15,8 @@ const EditableAdressComponents = () => {
           Phone : 0126 441 57 72
         </div>
       </div>
-      <div className="vb--tabs-profile-content-info--line" />
     </>
   );
 };
 
-export default EditableAdressComponents;
+export default ProfileShowAddress;

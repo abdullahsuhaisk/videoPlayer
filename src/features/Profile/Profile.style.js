@@ -18,7 +18,6 @@ const profileStyle = {
       marginLeft: '40px',
       fontFamily: 'Source Sans Pro',
       color: '#0e273b',
-
       '.vb--tabs-profile-content-info': {
         maxWidth: '520px',
         minHeight: '150px',
@@ -29,7 +28,6 @@ const profileStyle = {
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#ffffff',
-
         '.vb--tabs-profile-content-info-content': {
           display: 'flex',
           flexDirection: 'row',

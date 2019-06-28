@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../../components/Tabs/Tabs';
 import Profile from '../Profile/ProfileScreen';
+import Favorites from '../Favourites/FavoritesScreen';
+
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
 
 const NavigationTabs = ({ pages }) => {
@@ -62,7 +64,7 @@ const NavigationTabs = ({ pages }) => {
         styles={styles}
         tabPanels={[
           <Profile />,
-          <div>Panel 2</div>,
+          <Favorites />,
           <div>Panel 3</div>,
           <div>Panel 4</div>,
           <ShoppingCartScreen />
