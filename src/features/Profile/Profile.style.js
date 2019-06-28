@@ -6,7 +6,7 @@ const profileStyle = {
     width: '100%',
     height: '498px',
     fontSize: '14px',
-
+    overflowY: 'scroll',
     '.vb--tabs--profile-picture': {
       height: '498px',
       width: '244px',
@@ -50,13 +50,8 @@ const profileStyle = {
         },
         '.vb--tabs-profile-address': {
           padding: '10px',
-          '.header': {
-            color: '#83329c',
-            marginBottom: '5px'
-          },
           '.vb-tabs-profile-address-header': {
             marginBottom: '5px',
-            marginTop: '5px',
             color: '#0e273b',
             fontWeight: '600'
           },
@@ -72,14 +67,20 @@ const profileStyle = {
   },
   '.vb--tabs-profile-content-info--button': {
     marginLeft: '205px',
-    marginBottom: '15px'
+    marginBottom: '15px',
+    marginTop: '15px'
   },
   '.vb--tabs-profile-content-info--line': {
-    width: '300px',
+    width: '260px',
     borderRadius: '8px',
     border: 'solid 1px #ebeae9',
     backgroundColor: '#ffffff',
-    margin: '20px'
+    margin: '10px',
+    marginLeft: '40px'
+  },
+  '.header': {
+    color: '#83329c',
+    padding: '10px'
   }
 };
 export const ProfileWrapper = styled.div((props) => ({
