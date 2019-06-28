@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../../components/Tabs/Tabs';
 import Profile from '../Profile/ProfileScreen';
-import Favorites from '../Favourites/FavoritesScreen';
+import Favorites from '../Favorites/FavoritesScreen';
 
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
 
