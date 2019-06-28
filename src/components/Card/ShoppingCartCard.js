@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const ShoppingCardWrapper = styled.div((props) => ({
@@ -92,8 +92,24 @@ const ShoppingCardWrapper = styled.div((props) => ({
   }
 }));
 
-const ShoppingCartCard = ({ product, productId, removeCart }) => {
+const ShoppingCartCard = ({
+  product,
+  productId,
+  removeCart,
+  updateTotalPrice,
+  decremeTotalPrice
+}) => {
   const [piece, setPiece] = useState(1);
+  const [price, setPrice] = useState(product.currentPrice);
+
+  useEffect(() => {
+    setPrice(product.currentPrice * piece);
+  }, [piece]);
+
+  useEffect(() => {
+    updateTotalPrice(product.currentPrice);
+  }, []);
+
   return (
     <ShoppingCardWrapper>
       <div className="vb--shoppingCart-Card-Container">
@@ -113,7 +129,10 @@ const ShoppingCartCard = ({ product, productId, removeCart }) => {
         <div className="vb--shoppingCart-Card-buttons-group">
           <button
             className="btn-nonoutline"
-            onClick={() => setPiece(piece - 1)}>
+            onClick={() => {
+              setPiece(piece - 1);
+              decremeTotalPrice(product.currentPrice);
+            }}>
             -
           </button>
           <div className="vb--shoppingCart-Card-buttons-group-show">
@@ -121,16 +140,20 @@ const ShoppingCartCard = ({ product, productId, removeCart }) => {
           </div>
           <button
             className="btn-nonoutline"
-            onClick={() => setPiece(piece + 1)}>
+            onClick={() => {
+              setPiece(piece + 1);
+              updateTotalPrice(product.currentPrice);
+            }}>
             +
           </button>
         </div>
-        <div className="vb--shoppingCart-Card-Price">
-          $ {product && product.inStock && product.currentPrice}
-        </div>
+        <div className="vb--shoppingCart-Card-Price">$ {price.toFixed(2)}</div>
         <div
           className="vb--shoppingCart-Card-Close"
-          onClick={() => removeCart(productId)}>
+          onClick={() => {
+            removeCart(productId);
+            decremeTotalPrice(product.currentPrice);
+          }}>
           &times;
         </div>
       </div>

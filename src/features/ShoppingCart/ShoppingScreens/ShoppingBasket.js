@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 
 import { ShoppingCartBasketWrapper } from '../ShoppingCart.style';
@@ -9,7 +9,15 @@ import { InjectShoppingProps } from '../../../store/redux/shoppingCart/shoppingC
 
 const ShoppingBasket = (props) => {
   const { switchPage, basketProducts, products, removeCart } = props;
-  const [piece, setPiece] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const updateTotalPrice = (value) => {
+    setTotalPrice(totalPrice + value);
+  };
+  const decremeTotalPrice = (value) => {
+    setTotalPrice(totalPrice - value);
+  };
+
   return (
     <ShoppingCartBasketWrapper>
       <div className="vb--tabs--shoppingCart-basket-container">
@@ -21,12 +29,16 @@ const ShoppingBasket = (props) => {
                 removeCart={removeCart}
                 key={productId}
                 productId={productId}
+                updateTotalPrice={updateTotalPrice}
+                decremeTotalPrice={decremeTotalPrice}
               />
             ))}
         </div>
         <div className="vb--tabs--shoppingCart-basket-below">
           <div className="vb--tabs--shoppingCart-basket-below-item">TOTAL</div>
-          <div className="vb--tabs--shoppingCart-basket-below-item">886</div>
+          <div className="vb--tabs--shoppingCart-basket-below-item">
+            $ {totalPrice.toFixed(2)}
+          </div>
           <div className="vb--tabs--shoppingCart-basket-below-item">
             <Button onClick={() => switchPage(1)}>Check</Button>
           </div>
