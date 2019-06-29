@@ -4,10 +4,11 @@ import styled from 'styled-components';
 const PriceWrapper = styled.div((props) => ({
   ...props.styles,
   fontWeight: 'bolder',
-  fontSize: '15px'
+  fontSize: '15px',
+  width: '50px'
 }));
-const CardPrice = ({ styles }) => {
-  return <PriceWrapper styles={styles}>$ 78.88</PriceWrapper>;
+const CardPrice = ({ styles, currentPrice }) => {
+  return <PriceWrapper styles={styles}>$ {currentPrice}</PriceWrapper>;
 };
 
 export default CardPrice;
