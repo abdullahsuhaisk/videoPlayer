@@ -26,7 +26,7 @@ const styles = {
 };
 
 const CardStyles = {
-  '.vb--card-content-seller': { color: 'red' }
+  '.vb--card-content-seller': { color: 'blue' }
 };
 
 const FavoritesCard = ({ product }) => {
@@ -34,10 +34,8 @@ const FavoritesCard = ({ product }) => {
   const imageUrl = assets.images[0];
   console.log(imageUrl);
 
-  const imageStyle = {
-    '.vb--card-content--image': {
-      backgroundImage: `url(${imageUrl})`
-    }
+  const ImageStyle = {
+    backgroundImage: `url(${imageUrl})`
   };
 
   // TODO: SET IMAGE
@@ -45,7 +43,7 @@ const FavoritesCard = ({ product }) => {
 
   return (
     <FavoritesCardWrapper styles={styles}>
-      <CardImage styles={imageStyle} />
+      <CardImage style={ImageStyle} />
       <CardInfo styles={CardStyles} name={name} seller={seller} />
       <CardPrice currentPrice={currentPrice} />
       <CardClose />

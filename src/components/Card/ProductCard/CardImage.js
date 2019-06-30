@@ -16,11 +16,11 @@ const CardImageStyle = styled.div((props) => ({
   }
 }));
 
-const CardImage = ({ styles }) => {
-  console.log(styles);
+const CardImage = ({ style, styles }) => {
+  console.log(style);
   return (
     <CardImageStyle styles={styles}>
-      <div className="vb--card-content--image" />
+      <div className="vb--card-content--image" style={style} />
     </CardImageStyle>
   );
 };

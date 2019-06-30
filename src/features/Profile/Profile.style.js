@@ -33,6 +33,7 @@ const profileStyle = {
           flexDirection: 'row',
           textAligment: 'center',
           '.vb--tabs-profile-content-info-attiributes': {
+            width: '30%',
             fontWeight: 'bolder',
             fontStyle: 'inherit',
             paddingTop: '10px',
@@ -40,6 +41,7 @@ const profileStyle = {
             color: '#0b2443'
           },
           '.vb--tabs-profile-content-info-properties': {
+            width: '60%',
             paddingLeft: '30px',
             paddingTop: '10px',
             color: '#0e273b',
