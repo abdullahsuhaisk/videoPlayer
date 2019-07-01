@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Stepper from '../Stepper/Stepper';
 
 const ShoppingCardWrapper = styled.div((props) => ({
   ...props.styles,
@@ -97,18 +98,18 @@ const ShoppingCartCard = ({
   product,
   productId,
   removeCart,
-  updateTotalPrice,
-  decremeTotalPrice
+  onValueIncrement,
+  onValueDecrement
 }) => {
-  const [piece, setPiece] = useState(1);
+  const [value, setValue] = useState(1);
   const [price, setPrice] = useState(product.currentPrice);
 
   useEffect(() => {
-    setPrice(product.currentPrice * piece);
-  }, [piece]);
+    setPrice(product.currentPrice * value);
+  }, [value]);
 
   useEffect(() => {
-    updateTotalPrice(product.currentPrice);
+    // onValueIncrement(product.currentPrice);
   }, []);
 
   return (
@@ -127,7 +128,16 @@ const ShoppingCartCard = ({
             </div>
           </div>
         </div>
-        <div className="vb--shoppingCart-Card-buttons-group">
+        <Stepper
+          Id={productId}
+          price={price}
+          onValueIncrement={onValueIncrement}
+          onValueDecrement={onValueDecrement}
+          value={value}
+          setValue={setValue}
+          removeCart={removeCart}
+        />
+        {/* <div className="vb--shoppingCart-Card-buttons-group">
           <button
             className="btn-nonoutline"
             onClick={() => {
@@ -147,13 +157,13 @@ const ShoppingCartCard = ({
             }}>
             +
           </button>
-        </div>
+        </div> */}
         <div className="vb--shoppingCart-Card-Price">$ {price.toFixed(2)}</div>
         <div
           className="vb--shoppingCart-Card-Close"
           onClick={() => {
             removeCart(productId);
-            decremeTotalPrice(product.currentPrice);
+            onValueDecrement(product.currentPrice);
           }}>
           &times;
         </div>

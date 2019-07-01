@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 
 import { ShoppingCartBasketWrapper } from '../ShoppingCart.style';
 import Button from '../../../components/Button/Button';
@@ -11,13 +12,13 @@ const ShoppingBasket = (props) => {
   const { switchPage, basketProducts, products, removeCart } = props;
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const updateTotalPrice = (value) => {
+  const onValueIncrement = (value) => {
     setTotalPrice(totalPrice + value);
   };
-  const decremeTotalPrice = (value) => {
+  const onValueDecrement = (value) => {
     setTotalPrice(totalPrice - value);
   };
-
+  // TODO: CHECK TOTAL PRİCE METHOD
   return (
     <ShoppingCartBasketWrapper>
       <div className="vb--tabs--shoppingCart-basket-container">
@@ -29,8 +30,8 @@ const ShoppingBasket = (props) => {
                 removeCart={removeCart}
                 key={productId}
                 productId={productId}
-                updateTotalPrice={updateTotalPrice}
-                decremeTotalPrice={decremeTotalPrice}
+                onValueIncrement={onValueIncrement}
+                onValueDecrement={onValueDecrement}
               />
             ))}
         </div>
@@ -47,6 +48,10 @@ const ShoppingBasket = (props) => {
     </ShoppingCartBasketWrapper>
   );
 };
+
+ShoppingBasket.propTypes = {};
+
+ShoppingBasket.defaultProps = {};
 
 export default compose(
   InjectProductProps({
