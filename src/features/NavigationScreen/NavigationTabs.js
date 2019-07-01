@@ -65,8 +65,24 @@ const NavigationTabs = ({ pages }) => {
         tabPanels={[
           <Profile />,
           <Favorites />,
-          <div>Panel 3</div>,
-          <div>Panel 4</div>,
+          <div
+            style={{
+              padding: '50px',
+              color: 'red',
+              fontSize: '30',
+              fontWeight: 'bold'
+            }}>
+            WatchList is under development
+          </div>,
+          <div
+            style={{
+              padding: '50px',
+              color: 'red',
+              fontSize: '30',
+              fontWeight: 'bold'
+            }}>
+            WishList is under development{' '}
+          </div>,
           <ShoppingCartScreen />
         ]}
       />
