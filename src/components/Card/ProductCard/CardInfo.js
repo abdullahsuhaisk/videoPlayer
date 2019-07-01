@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const CardInfoWrapper = styled.div((props) => ({
   ...props.styles,
@@ -28,7 +29,6 @@ const CardInfoWrapper = styled.div((props) => ({
 }));
 
 const CardInfo = ({ styles, name, seller }) => {
-  console.log(styles);
   return (
     <CardInfoWrapper styles={styles}>
       <div className="vb--card-content-seller-info-container">
@@ -40,6 +40,15 @@ const CardInfo = ({ styles, name, seller }) => {
       </div>
     </CardInfoWrapper>
   );
+};
+
+CardInfo.propTypes = {
+  styles: PropTypes.object,
+  name: PropTypes.string.isRequired,
+  seller: PropTypes.string.isRequired
+};
+CardInfo.defaultProps = {
+  styles: {}
 };
 
 export default CardInfo;

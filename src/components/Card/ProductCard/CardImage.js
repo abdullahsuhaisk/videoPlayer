@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const CardImageStyle = styled.div((props) => ({
   ...props.styles,
@@ -17,12 +18,16 @@ const CardImageStyle = styled.div((props) => ({
 }));
 
 const CardImage = ({ style, styles }) => {
-  console.log(style);
   return (
     <CardImageStyle styles={styles}>
       <div className="vb--card-content--image" style={style} />
     </CardImageStyle>
   );
+};
+
+CardImageStyle.propTypes = {
+  style: PropTypes.string,
+  styles: PropTypes.object
 };
 
 export default CardImage;
