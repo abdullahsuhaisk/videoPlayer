@@ -19,7 +19,7 @@ const StepperWrapper = styled.div((props) => ({
     }
   },
   '.vb--stepper--value': {
-    padding: '6px',
+    padding: '7px',
     borderRadius: '4px',
     boxShadow: '1px 1px 2px 0 rgba(0, 0, 0, 0.16)',
     backgroundColor: '#00acd8',
@@ -65,8 +65,7 @@ Stepper.propTypes = {
   value: PropTypes.number,
   setValue: PropTypes.func.isRequired,
   Id: PropTypes.number.isRequired,
-  removeCart: PropTypes.func.isRequired,
-  onValueDecrement: PropTypes.func.isRequired
+  removeCart: PropTypes.func.isRequired
 };
 
 Stepper.defaultProps = {
