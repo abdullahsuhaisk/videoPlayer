@@ -8,9 +8,8 @@ const shoppingCartBasketStyle = {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
     '.vb--tabs-shoppingCart-content-Section': {
-      marginTop: '20px',
+      padding: '40px',
       '.vb--tabs-profile-content-item': {
         marginTop: '20px',
         width: '600px',

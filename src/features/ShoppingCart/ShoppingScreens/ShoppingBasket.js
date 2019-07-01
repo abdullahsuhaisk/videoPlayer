@@ -12,12 +12,6 @@ const ShoppingBasket = (props) => {
   const { switchPage, basketProducts, products, removeCart } = props;
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const onValueIncrement = (value) => {
-    setTotalPrice(totalPrice + value);
-  };
-  const onValueDecrement = (value) => {
-    setTotalPrice(totalPrice - value);
-  };
   // TODO: CHECK TOTAL PRİCE METHOD
   return (
     <ShoppingCartBasketWrapper>
@@ -30,8 +24,6 @@ const ShoppingBasket = (props) => {
                 removeCart={removeCart}
                 key={productId}
                 productId={productId}
-                onValueIncrement={onValueIncrement}
-                onValueDecrement={onValueDecrement}
               />
             ))}
         </div>
