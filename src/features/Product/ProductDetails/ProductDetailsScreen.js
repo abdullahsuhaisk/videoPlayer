@@ -11,6 +11,7 @@ import {
 } from '../../../store/redux/providers';
 import { InjectProductDetailProps } from '../../../store/redux/productDetail/productDetailProps';
 import { playingState } from '../../../store/redux/player/playerActions';
+import { InjectShoppingProps } from '../../../store/redux/shoppingCart/shoppingCartProps';
 
 const ProductDetailsScreen = ({
   playerPlayingState,
@@ -18,9 +19,11 @@ const ProductDetailsScreen = ({
   isOpenProductDetailDialog, // Modal Toggle
   closeProductDetailDialog, // Dialog's close method, it pass to Modal
   productId, // it came ProductDetail reducer
-  products
+  products,
+  addCart // Add basket methods
 }) => {
   const [productInDetail, setProductInDetail] = React.useState(null);
+  // const productIds = React.useMemo(() => Object.keys(products), [products]);
 
   React.useEffect(() => {
     const detailProduct = products[productId];
@@ -35,6 +38,8 @@ const ProductDetailsScreen = ({
         <ProductDetailDialog
           closeModal={closeProductDetailDialog}
           product={productInDetail}
+          addCart={addCart}
+          productId={productId}
         />
       </>
     ))
@@ -70,5 +75,8 @@ export default compose(
   }),
   InjectProductProps({
     selectProps: ({ products }) => ({ products })
+  }),
+  InjectShoppingProps({
+    selectActions: ({ addCart }) => ({ addCart })
   })
 )(ProductDetailsScreen);

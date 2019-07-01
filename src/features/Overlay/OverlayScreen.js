@@ -5,7 +5,7 @@ import AuthScreen from '../Auth/AuthScreen';
 import ProductListScreen from '../Product/ProductList/ProductListScreen';
 import HotspotScreen from '../Hotspot/HotspotScreen';
 import ProductDetailsScreen from '../Product/ProductDetails/ProductDetailsScreen';
-import ShoppingButton from '../../components/Button/ShoppingButton';
+import NavigationScreen from '../NavigationScreen/NavigationScreen';
 
 const OverlayScreen = () => {
   return (
@@ -18,10 +18,7 @@ const OverlayScreen = () => {
           <ProductListScreen />
           <HotspotScreen />
           <AuthScreen />
-          <ShoppingButton />
-          {
-            // TODO: Shopping button must move to Player
-          }
+          <NavigationScreen />
         </Scaler>
       </SafeArea>
     </div>
