@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 
-import { ShoppingCartBasketWrapper } from '../ShoppingCart.style';
+import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 import Button from '../../../components/Button/Button';
-import ShoppingCartCard from '../../../components/Card/ShoppingCartCard';
+import ShoppingCartItem from './ShoppingCartItem';
 import { InjectProductProps } from '../../../store/redux/providers';
 import { InjectShoppingProps } from '../../../store/redux/shoppingCart/shoppingCartProps';
 
@@ -14,12 +14,12 @@ const ShoppingBasket = (props) => {
 
   // TODO: CHECK TOTAL PRİCE METHOD
   return (
-    <ShoppingCartBasketWrapper>
+    <ShoppingCartItemWrapper>
       <div className="vb--tabs--shoppingCart-basket-container">
         <div className="vb--tabs-shoppingCart-content-Section">
           {basketProducts &&
             basketProducts.map((productId) => (
-              <ShoppingCartCard
+              <ShoppingCartItem
                 product={products[productId]}
                 removeCart={removeCart}
                 key={productId}
@@ -33,11 +33,11 @@ const ShoppingBasket = (props) => {
             $ {totalPrice.toFixed(2)}
           </div>
           <div className="vb--tabs--shoppingCart-basket-below-item">
-            <Button onClick={() => switchPage(1)}>Check</Button>
+            <Button onClick={() => switchPage()}>Check</Button>
           </div>
         </div>
       </div>
-    </ShoppingCartBasketWrapper>
+    </ShoppingCartItemWrapper>
   );
 };
 

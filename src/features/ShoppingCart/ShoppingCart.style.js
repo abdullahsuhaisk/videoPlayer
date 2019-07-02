@@ -37,7 +37,7 @@ const shoppingCartBasketStyle = {
     }
   }
 };
-export const ShoppingCartBasketWrapper = styled.div((props) => ({
+export const ShoppingCartItemWrapper = styled.div((props) => ({
   ...shoppingCartBasketStyle,
   ...props.styles
 }));

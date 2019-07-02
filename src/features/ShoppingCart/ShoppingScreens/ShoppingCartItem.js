@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Stepper from '../Stepper/Stepper';
-import CardImage from './ProductCard/CardImage';
-import CardInfo from './ProductCard/CardInfo';
-import CardPrice from './ProductCard/CardPrice';
-import CardClose from './ProductCard/CardClose';
+import Stepper from '../../../components/Stepper/Stepper';
+import CardImage from '../../../components/Card/ProductCard/CardImage';
+import CardInfo from '../../../components/Card/ProductCard/CardInfo';
+import CardPrice from '../../../components/Card/ProductCard/CardPrice';
+import CardClose from '../../../components/Card/ProductCard/CardClose';
 
 const ShoppingCardWrapper = styled.div((props) => ({
   ...props.styles,
