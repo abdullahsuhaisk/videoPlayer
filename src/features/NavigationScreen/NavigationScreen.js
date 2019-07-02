@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
+import WebFont from 'webfontloader';
 
 import ShoppingButton from '../../components/Button/ShoppingButton';
 import { InjectNavigationProps } from '../../store/redux/navigation/navigationProps';
@@ -14,7 +15,8 @@ const NavigationScreen = ({
   openNavigationDialog,
   isOpenNavigationDialog,
   closeNavigationDialog,
-  pages
+  pages,
+  font
 }) => {
   const wrapperStyle = {
     Wrapper: {
@@ -28,6 +30,13 @@ const NavigationScreen = ({
     CloseButton: { color: 'white' }
   };
 
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: [`${font}:400`, 'sans-serif']
+      }
+    });
+  }, [font]);
   return (
     <>
       {playerStarted && playerPlayingState === playingState.PAUSED && (

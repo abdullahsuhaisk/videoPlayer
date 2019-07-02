@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import WebFont from 'webfontloader';
+
 import Tabs from '../../components/Tabs/Tabs';
 import ProfileScreen from '../Profile/ProfileScreen';
 import FavoritesScreen from '../Favorites/FavoritesScreen';
 
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
 
-const NavigationTabs = ({ pages }) => {
+const NavigationTabs = ({ pages, font }) => {
   // ['Profile','Favorites','Watch List','Wish List','Shopping Cart']
   const styles = {
     width: '100%',
@@ -57,6 +59,15 @@ const NavigationTabs = ({ pages }) => {
       borderWidth: '0px 0px 2px 0px'
     }
   };
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: [`${font}:400`, 'sans-serif']
+      }
+    });
+  }, [font]);
+
   return (
     <>
       <Tabs
