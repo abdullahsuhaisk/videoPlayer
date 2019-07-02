@@ -6,7 +6,7 @@ const PriceWrapper = styled.div((props) => ({
   ...props.styles,
   fontWeight: 'bolder',
   fontSize: '15px',
-  maxWidth: '60px'
+  minWidth: '60px'
 }));
 const CardPrice = ({ styles, currentPrice }) => {
   return <PriceWrapper styles={styles}>$ {currentPrice}</PriceWrapper>;

@@ -66,7 +66,7 @@ const profileStyle = {
     }
   },
   '.vb--tabs-profile-content-info--button': {
-    marginLeft: '205px',
+    marginLeft: '190px',
     marginBottom: '15px',
     marginTop: '15px'
   },
