@@ -1,7 +1,17 @@
 import React from 'react';
 
 const ShoppingCheckout = () => {
-  return <div>Shopping Checkout UnderDevelopment</div>;
+  return (
+    <div
+      style={{
+        padding: '30px',
+        color: 'green',
+        fontSize: '25',
+        fontWeight: 'bolder'
+      }}>
+      Shopping Checkout UnderDevelopment
+    </div>
+  );
 };
 
 export default ShoppingCheckout;

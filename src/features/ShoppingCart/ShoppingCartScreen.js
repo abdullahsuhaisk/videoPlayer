@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import ShoppingCheckout from './ShoppingScreens/ShoppingCheckout';
-import ShoppingPayment from './ShoppingScreens/ShoppingPayment';
-import ShoppingBasket from './ShoppingScreens/ShoppingBasket';
+
+import ShoppingCart from './ShoppingScreens/ShoppingCart';
+import CheckoutScreen from './Checkout/CheckoutScreen';
 
 const ShoppingCartScreen = () => {
-  const [whichPageRender, setPageRender] = useState(1);
+  const [isShoppingCartRender, setShoppingCartRender] = useState(true);
   // TODO: Set logic method
 
-  const switchPage = (value) => {
+  const switchPage = () => {
     // For up and Down
-    setPageRender(whichPageRender + value);
+    setShoppingCartRender(!isShoppingCartRender);
   };
 
-  switch (whichPageRender) {
-    case 1:
-      return <ShoppingBasket switchPage={switchPage} />;
-    case 2:
-      return <ShoppingPayment />;
-    case 3:
-      return <ShoppingCheckout />;
+  switch (isShoppingCartRender) {
+    case true:
+      return <ShoppingCart switchPage={switchPage} />;
+    case false:
+      return <CheckoutScreen switchPage={switchPage} />;
     default:
-      return <ShoppingBasket switchPage={switchPage} />;
+      return <ShoppingCart switchPage={switchPage} />;
   }
 };
 

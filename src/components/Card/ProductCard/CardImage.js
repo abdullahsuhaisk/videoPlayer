@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const CardImageStyle = styled.div((props) => ({
   ...props.styles,
   '.vb--card-content--image': {
-    width: '84px',
-    height: '84px',
+    width: '83px',
+    height: '83px',
     objectFit: 'contain',
     borderRadius: '8px',
     backgroundImage: 'url(/images/ShoppingCartImage.png)',

@@ -28,10 +28,10 @@ const CardInfoWrapper = styled.div((props) => ({
   }
 }));
 
-const CardInfo = ({ styles, name, seller }) => {
+const CardInfo = ({ styles, name, seller, style }) => {
   return (
     <CardInfoWrapper styles={styles}>
-      <div className="vb--card-content-seller-info-container">
+      <div className="vb--card-content-seller-info-container" style={style}>
         {name}
         <div className="vb--card-content-seller-info">
           <div className="vb--card-content-seller">Seller :</div>

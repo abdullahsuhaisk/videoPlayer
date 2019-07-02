@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShoppingPayment = () => {
+const Checkout = () => {
   return (
     <div
       style={{
@@ -9,9 +9,9 @@ const ShoppingPayment = () => {
         fontSize: '25',
         fontWeight: 'bolder'
       }}>
-      Shopping Payment UnderDevelopment
+      Checkout payment UnderDevelopment
     </div>
   );
 };
 
-export default ShoppingPayment;
+export default Checkout;
