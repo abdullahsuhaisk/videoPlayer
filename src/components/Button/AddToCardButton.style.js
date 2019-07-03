@@ -7,7 +7,7 @@ const AddtoCardButtonWrapper = styled.div((props) => ({
     height: '30px',
     fontFamily: 'Source Sans Pro ',
     fontSize: '14px ',
-    boxShadow: '-10px 0 6px 0 rgba(0, 0, 0, 0.16)',
+    boxShadow: '0px 0 6px 0 rgba(0, 0, 0, 0.16)',
     backgroundColor: '#83329c ',
     transition: 'all .2s',
     outline: '0',

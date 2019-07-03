@@ -5,7 +5,7 @@ import AuthScreen from '../Auth/AuthScreen';
 import ProductListScreen from '../Product/ProductList/ProductListScreen';
 import HotspotScreen from '../Hotspot/HotspotScreen';
 import ProductDetailsScreen from '../Product/ProductDetails/ProductDetailsScreen';
-import NavigationScreen from '../NavigationScreen/NavigationScreen';
+// import NavigationScreen from '../NavigationScreen/NavigationScreen';
 
 const OverlayScreen = () => {
   return (
@@ -17,7 +17,7 @@ const OverlayScreen = () => {
           <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />
-          <NavigationScreen />
+          {/* <NavigationScreen /> */}
           <AuthScreen />
         </Scaler>
       </SafeArea>

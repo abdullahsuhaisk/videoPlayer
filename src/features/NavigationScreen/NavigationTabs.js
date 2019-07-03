@@ -54,6 +54,7 @@ const NavigationTabs = () => {
       borderWidth: '0px 0px 2px 0px'
     }
   };
+
   return (
     <Tabs
       styles={styles}

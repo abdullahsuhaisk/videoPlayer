@@ -8,7 +8,7 @@ export const ButtonWrapper = styled.div((props) => ({
     fontFamily: 'Source Sans Pro ',
     fontSize: '14px ',
     borderRadius: '38px',
-    boxShadow: '-10px 0 6px 0 rgba(0, 0, 0, 0.16)',
+    boxShadow: '0px 0px 10px 0 rgba(0, 0, 0, 0.16)',
     backgroundColor: '#83329c ',
     border: '1px solid #fff ',
     transition: 'all .2s',
