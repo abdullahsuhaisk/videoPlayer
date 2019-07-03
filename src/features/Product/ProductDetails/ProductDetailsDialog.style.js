@@ -140,7 +140,7 @@ const productDetailsStyle = {
     }
   }
 };
-export const ProductDetailsWrapper = styled.div((props) => ({
+export const Wrapper = styled.div((props) => ({
   ...productDetailsStyle,
   ...props.styles
 }));

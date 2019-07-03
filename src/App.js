@@ -1,28 +1,47 @@
 import React, { Suspense } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
 
-const App = () => {
-  const playerOptions = {
-    poster: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
-    sources: [
-      {
-        src: '//d2zihajmogu5jn.cloudfront.net/elephantsdream/ed_hd.mp4',
-        type: 'video/mp4'
+const GET_VIDEO = gql`
+  query getVideoForApp($prodLinkId: Int!) {
+    prodLink(prodLinkId: $prodLinkId) {
+      id
+      video {
+        id
+        videoUrl
+        videoType
+        image {
+          id
+          imageUrl
+        }
       }
-    ],
-    // title: 'Elephants Dream',
-    // description: 'An example movie from The Orange Open Movie Project',
-    language: 'tr'
-  };
+    }
+  }
+`;
 
+const App = () => {
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Suspense fallback={<></>}>
-        <Player {...playerOptions} />
-      </Suspense>
+      <Query query={GET_VIDEO} variables={{ prodLinkId: 1 }}>
+        {({ loading, error, data }) => {
+          if (loading || error) return null;
+
+          const { video } = data.prodLink;
+          const poster = video.image.imageUrl;
+          const src = video.videoUrl;
+          const type = video.videoType;
+
+          return (
+            <Suspense fallback={<></>}>
+              <Player poster={poster} sources={[{ src, type }]} />
+            </Suspense>
+          );
+        }}
+      </Query>
       <OverlayContainer>
         <OverlayScreen />
       </OverlayContainer>

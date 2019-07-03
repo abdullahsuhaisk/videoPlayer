@@ -3,12 +3,12 @@ import Checkout from './Checkout';
 import CheckoutResult from './CheckoutResult';
 import Button from '../../../components/Button/Button';
 
-const CheckoutScreen = ({ switchPage }) => {
+const CheckoutScreen = () => {
   return (
     <>
       <Checkout />
       <div className="vb--tabs--shoppingCart-basket-below-item">
-        <Button onClick={() => switchPage()}>Back</Button>
+        <Button>Back</Button>
       </div>
     </>
   );

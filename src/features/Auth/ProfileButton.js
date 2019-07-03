@@ -1,63 +1,76 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { InjectAuthProps } from '../../store/redux/providers';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import { Wrapper, profileButtonStyles } from './ProfileButton.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const ProfileButton = ({ styles, auth, onShowLogin }) => {
-  const [username, setUsername] = useState('Login');
+const GET_USER_INFO = gql`
+  query getUserInfoForProfileButton {
+    userInfo @client {
+      email
+      displayName
+      avatarUrl
+    }
+  }
+`;
 
+const LOGOUT = gql`
+  mutation logout {
+    logout @client {
+      displayName
+    }
+  }
+`;
+
+const handleClick = (client, userInfo) => {
+  if (userInfo) {
+    client.writeData({ data: { isLoginFormShowing: false } });
+    client.mutate({ mutation: LOGOUT });
+  } else {
+    client.writeData({ data: { isLoginFormShowing: true } });
+  }
+};
+
+const ProfileButton = ({ styles }) => {
   useEffect(() => {
     loadWebFontsFromStyles(profileButtonStyles);
     loadWebFontsFromStyles(styles);
   }, []);
 
-  const handleClick = useCallback(() => {
-    if (auth.uid) {
-      // onShowProfile();
-    } else {
-      onShowLogin(true);
-    }
-  }, [auth]);
-
-  useEffect(() => {
-    if (auth.uid) {
-      setUsername(auth.email);
-    } else {
-      setUsername('Login');
-    }
-  }, [auth]);
-
-  // TODO: Update user avatar when loged-in
   return (
-    <Wrapper
-      styles={styles}
-      className="vb--profile-button"
-      onClick={handleClick}>
-      <span className="vb--profile-button-username">{username}</span>
-      <div className="vb--profile-button-avatar" />
-    </Wrapper>
+    <Query query={GET_USER_INFO}>
+      {({ data: { userInfo }, client }) => {
+        return (
+          <Wrapper
+            styles={styles}
+            className="vb--profile-button"
+            onClick={() => handleClick(client, userInfo)}>
+            <span className="vb--profile-button-username">
+              {userInfo ? userInfo.displayName || userInfo.email : 'Login'}
+            </span>
+            <div
+              className="vb--profile-button-avatar"
+              style={
+                userInfo &&
+                userInfo.avatarUrl && {
+                  backgroundImage: `url(${userInfo.avatarUrl})`
+                }
+              }
+            />
+          </Wrapper>
+        );
+      }}
+    </Query>
   );
 };
 
 ProfileButton.propTypes = {
-  styles: PropTypes.object,
-  auth: PropTypes.object.isRequired,
-  onShowLogin: PropTypes.func.isRequired
+  styles: PropTypes.object
 };
 
 ProfileButton.defaultProps = {
   styles: {}
 };
 
-export default InjectAuthProps({
-  selectActions: ({ onShowLogin }) => ({
-    onShowLogin
-  }),
-  selectProps: ({ showLogin, auth, loginStatus, loginInfo }) => ({
-    showLogin,
-    auth,
-    loginStatus,
-    loginInfo
-  })
-})(ProfileButton);
+export default ProfileButton;

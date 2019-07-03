@@ -34,6 +34,4 @@ ShoppingButton.propTypes = {
   openNavigationDialog: PropTypes.func.isRequired
 };
 
-ShoppingButton.defaultProps = {};
-
 export default ShoppingButton;

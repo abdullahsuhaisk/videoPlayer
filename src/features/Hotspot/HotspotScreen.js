@@ -1,63 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import {
-  InjectHotspotProps,
-  InjectPlayerProps,
-  InjectProductProps
-} from '../../store/redux/providers';
-import useTimeRange from '../../hooks/useTimeRange';
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import HotspotCardList from './HotspotCardList';
-import { playingState } from '../../store/redux/player/playerActions';
+import { PLAYER } from '../../common/constants';
 
-const HotspotScreen = ({
-  playerPlayingState,
-  hotspots,
-  setActiveHotspotIds,
-  currentTime,
-  products
-}) => {
-  const [hotspotProducts, setHotspotProducts] = useState({});
-  const currentActiveHotspotIds = useTimeRange(hotspots, currentTime);
+const GET_PLAYER = gql`
+  query getPlayerForHotspotScreen {
+    player @client {
+      playingState
+      currentTime
+    }
+  }
+`;
 
-  useEffect(() => {
-    setActiveHotspotIds(currentActiveHotspotIds);
-    const currentHotspotProducts = currentActiveHotspotIds.reduce((acc, id) => {
-      const { productId } = hotspots[id];
-      acc[productId] = products[productId];
-      return acc;
-    }, {});
-    setHotspotProducts(currentHotspotProducts);
-  }, [currentActiveHotspotIds]);
+const GET_HOTSPOTS = gql`
+  query getHotspotsForHotspotScreen($prodLinkId: Int!) {
+    prodLink(prodLinkId: $prodLinkId) {
+      id
+      hotSpots {
+        id
+        in
+        out
+        product {
+          id
+          name
+          image {
+            id
+            imageUrl
+          }
+        }
+      }
+    }
+  }
+`;
 
+const HotspotScreen = () => {
   return (
-    (playerPlayingState === playingState.PLAYING ||
-      playerPlayingState === playingState.SCRUBBING) && (
-      <HotspotCardList hotspotProducts={hotspotProducts} />
-    )
+    <Query query={GET_HOTSPOTS} variables={{ prodLinkId: 1 }}>
+      {({ loading, error, data }) => {
+        if (loading || error) {
+          return null;
+        }
+
+        const { hotSpots } = data.prodLink;
+
+        return (
+          <Query query={GET_PLAYER}>
+            {({
+              data: {
+                player: { playingState, currentTime }
+              }
+            }) => {
+              if (
+                playingState === PLAYER.PLAYING ||
+                playingState === PLAYER.SCRUBBING
+              ) {
+                const activeHotSpots = hotSpots.filter(
+                  (hotSpot) =>
+                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                );
+
+                return <HotspotCardList hotspots={activeHotSpots} />;
+              }
+
+              return null;
+            }}
+          </Query>
+        );
+      }}
+    </Query>
   );
 };
 
-HotspotScreen.propTypes = {
-  playerPlayingState: PropTypes.string.isRequired,
-  hotspots: PropTypes.object.isRequired,
-  setActiveHotspotIds: PropTypes.func.isRequired,
-  currentTime: PropTypes.number.isRequired,
-  products: PropTypes.object.isRequired
-};
-
-export default compose(
-  InjectPlayerProps({
-    selectProps: ({ playerPlayingState, currentTime }) => ({
-      playerPlayingState,
-      currentTime
-    })
-  }),
-  InjectHotspotProps({
-    selectActions: ({ setActiveHotspotIds }) => ({ setActiveHotspotIds }),
-    selectProps: ({ hotspots }) => ({
-      hotspots
-    })
-  }),
-  InjectProductProps()
-)(HotspotScreen);
+export default HotspotScreen;

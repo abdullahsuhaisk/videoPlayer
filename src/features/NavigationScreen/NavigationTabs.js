@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '../../components/Tabs/Tabs';
 import ProfileScreen from '../Profile/ProfileScreen';
 import FavoritesScreen from '../Favorites/FavoritesScreen';
-
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
 
-const NavigationTabs = ({ pages }) => {
-  // ['Profile','Favorites','Watch List','Wish List','Shopping Cart']
+const NavigationTabs = () => {
   const styles = {
     width: '100%',
     height: '100%',
@@ -58,40 +55,40 @@ const NavigationTabs = ({ pages }) => {
     }
   };
   return (
-    <>
-      <Tabs
-        tabs={pages}
-        styles={styles}
-        tabPanels={[
-          <ProfileScreen />,
-          <FavoritesScreen />,
-          <div
-            style={{
-              padding: '50px',
-              color: 'red',
-              fontSize: '30',
-              fontWeight: 'bold'
-            }}>
-            WatchList is under development
-          </div>,
-          <div
-            style={{
-              padding: '50px',
-              color: 'red',
-              fontSize: '30',
-              fontWeight: 'bold'
-            }}>
-            WishList is under development{' '}
-          </div>,
-          <ShoppingCartScreen />
-        ]}
-      />
-    </>
+    <Tabs
+      styles={styles}
+      tabs={[
+        'Profile',
+        'Favorites',
+        'Watch List',
+        'Wish List',
+        'Shopping Cart'
+      ]}
+      tabPanels={[
+        <ProfileScreen />,
+        <FavoritesScreen />,
+        <div
+          style={{
+            padding: '50px',
+            color: 'red',
+            fontSize: '30',
+            fontWeight: 'bold'
+          }}>
+          WatchList is under development
+        </div>,
+        <div
+          style={{
+            padding: '50px',
+            color: 'red',
+            fontSize: '30',
+            fontWeight: 'bold'
+          }}>
+          WishList is under development{' '}
+        </div>,
+        <ShoppingCartScreen />
+      ]}
+    />
   );
-};
-
-NavigationTabs.propTypes = {
-  pages: PropTypes.array.isRequired
 };
 
 export default NavigationTabs;

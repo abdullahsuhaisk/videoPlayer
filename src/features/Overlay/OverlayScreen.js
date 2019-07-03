@@ -14,11 +14,11 @@ const OverlayScreen = () => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <ProductDetailsScreen />
-          <ProductListScreen />
           <HotspotScreen />
-          <AuthScreen />
+          <ProductListScreen />
+          <ProductDetailsScreen />
           <NavigationScreen />
+          <AuthScreen />
         </Scaler>
       </SafeArea>
     </div>

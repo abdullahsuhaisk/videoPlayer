@@ -24,3 +24,5 @@ yarn-error.log*
 
 .vscode
 ignored-folder
+.env.development
+apollo.config.js

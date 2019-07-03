@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
-export const registerStyles = {
+export const registerFormStyles = {
   pointerEvents: 'auto',
   position: 'absolute',
   top: '0',
   right: '0',
   width: '375px',
   height: '563px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   backgroundColor: 'white',
   boxShadow: '-24px 0 42px -12px rgba(0,0,0,0.75)',
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   '.vb--register-close': {
     position: 'absolute',
     top: '0',
@@ -19,7 +21,8 @@ export const registerStyles = {
     padding: '10px 15px',
     fontSize: '24px',
     color: '#0008',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    outline: 'none'
   },
   '.vb--register-banner': {
     background: 'url(/images/login_image.svg) center / contain no-repeat',
@@ -90,14 +93,16 @@ export const registerStyles = {
       width: '20px',
       height: '20px',
       margin: '0 10px 0 0',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      outline: 'none'
     },
     '.vb--register-with-facebook': {
       background: 'url(/images/facebook_blue.png) center / contain no-repeat',
       width: '20px',
       height: '20px',
       margin: '0 0 0 10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      outline: 'none'
     }
   },
   '.vb--register-login-button': {
@@ -123,6 +128,6 @@ export const registerStyles = {
 };
 
 export const Wrapper = styled.div((props) => ({
-  ...registerStyles,
+  ...registerFormStyles,
   ...props.styles
 }));

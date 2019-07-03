@@ -1,49 +1,56 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { InjectLayoutProps } from '../../store/redux/providers';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import { BASE_WIDTH, BASE_HEIGHT } from '../../common/constants';
 
-const Scaler = ({
-  safeArea,
-  width,
-  height,
-  baseWidth,
-  baseHeight,
-  children
-}) => {
-  const scalerStyles = useMemo(() => {
-    const scaleX = (width - (safeArea.left + safeArea.right)) / baseWidth;
-    const scaleY = (height - (safeArea.top + safeArea.bottom)) / baseHeight;
+const GET_LAYOUT = gql`
+  query getLayoutForScaler {
+    layout @client {
+      width
+      height
+      safeArea {
+        top
+        right
+        bottom
+        left
+      }
+    }
+  }
+`;
 
-    return {
-      width: `${baseWidth}px`,
-      height: `${baseHeight}px`,
-      transformOrigin: 'left top',
-      transform: `scaleX(${scaleX}) scaleY(${scaleY})`
-    };
-  }, [width, height, safeArea, baseWidth, baseHeight]);
+const baseWidth = BASE_WIDTH;
+const baseHeight = BASE_HEIGHT;
 
+const Scaler = ({ children }) => {
   return (
-    <div className="vb--scaler" style={scalerStyles}>
-      {children}
-    </div>
+    <Query query={GET_LAYOUT}>
+      {({ data: { layout } }) => {
+        const { safeArea } = layout;
+        const scaleX =
+          (layout.width - (safeArea.left + safeArea.right)) / baseWidth;
+        const scaleY =
+          (layout.height - (safeArea.top + safeArea.bottom)) / baseHeight;
+
+        return (
+          <div
+            className="vb--scaler"
+            style={{
+              width: `${baseWidth}px`,
+              height: `${baseHeight}px`,
+              transformOrigin: 'left top',
+              transform: `scaleX(${scaleX}) scaleY(${scaleY})`
+            }}>
+            {children}
+          </div>
+        );
+      }}
+    </Query>
   );
 };
 
 Scaler.propTypes = {
-  safeArea: PropTypes.object.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  baseWidth: PropTypes.number.isRequired,
-  baseHeight: PropTypes.number.isRequired,
   children: PropTypes.node.isRequired
 };
 
-export default InjectLayoutProps({
-  selectProps: ({ safeArea, width, height, baseWidth, baseHeight }) => ({
-    safeArea,
-    width,
-    height,
-    baseWidth,
-    baseHeight
-  })
-})(Scaler);
+export default Scaler;

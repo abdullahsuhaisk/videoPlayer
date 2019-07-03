@@ -13,4 +13,7 @@ const config = {
 };
 firebase.initializeApp(config);
 
+// TODO: remove this
+window.firebase = firebase;
+
 export default firebase;

@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
-export const forgotPasswordStyles = {
+export const forgotPasswordFormStyles = {
   pointerEvents: 'auto',
   position: 'absolute',
   top: '0',
   right: '0',
   width: '375px',
   height: '563px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   backgroundColor: 'white',
   boxShadow: '-24px 0 42px -12px rgba(0,0,0,0.75)',
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   '.vb--forgot-password-close': {
     position: 'absolute',
     top: '0',
@@ -19,7 +21,8 @@ export const forgotPasswordStyles = {
     padding: '10px 15px',
     fontSize: '24px',
     color: '#0008',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    outline: 'none'
   },
   '.vb--forgot-password-banner': {
     background: 'url(/images/lock.png) center / contain no-repeat',
@@ -78,6 +81,6 @@ export const forgotPasswordStyles = {
 };
 
 export const Wrapper = styled.div((props) => ({
-  ...forgotPasswordStyles,
+  ...forgotPasswordFormStyles,
   ...props.styles
 }));

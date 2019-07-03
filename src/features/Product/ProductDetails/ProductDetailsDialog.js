@@ -1,11 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
-import { ProductDetailsWrapper } from './ProductDetailsDialog.style';
+import { Wrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
-const ProductDetailDialog = (props) => {
-  const { closeModal, product, addCart, productId } = props;
+const GET_PRODUCT = gql`
+  query getProductForProductDetailsDialog($productId: Int!) {
+    product(productId: $productId) {
+      id
+      name
+      description
+      image {
+        id
+        imageUrl
+      }
+      price
+      discount
+      currentPrice @client
+      currency {
+        id
+        symbol
+      }
+    }
+  }
+`;
+
+const ProductDetailDialog = ({ productId }) => {
   const wrapperStyle = {
     Wrapper: {
       zIndex: '1',
@@ -17,127 +39,89 @@ const ProductDetailDialog = (props) => {
     },
     CloseButton: { color: 'black' }
   };
-  const [color, setColor] = useState(null);
-  const [size, setSize] = useState(null);
-  const clickAddCardButton = () => {
-    addCart(productId);
-  };
 
   return (
-    <ProductDetailsWrapper>
-      <ModalDialog onClose={() => closeModal()} styles={wrapperStyle}>
-        <div className="vb--product-details-container">
-          <div className="vb--product-detail-dialog-slider">
-            <div
-              className="vb--product-detail-dialog-slider-image"
-              style={{
-                backgroundImage: `url(${product && product.assets.images[0]}`
-              }}
-            />
-          </div>
-          <div className="vb--product-detail-dialog-contents">
-            <div className="vb--product-detail-dialog-content-header">
-              {product && product.name}
-            </div>
-            <div className="vb--product-detail-dialog-content-content">
-              Brand: {product && product.brand}
-            </div>
-            <div className="vb--product-detail-dialog-content-content">
-              {product && product.inStock === true ? 'InStock' : 'OutofStock'}
-            </div>
-            <div className="vb--product-detail-dialog-content-content">
-              Price: {product && product.currency} {product && product.price}
-            </div>
-            <div className="vb--product-detail-dialog-content-content">
-              {product && product.currentPrice}
-            </div>
-            <div className="vb--product-detail-dialog-content-content">
-              {product && product.discountRate}
-            </div>
-            <div className="vb--product-detail-dialog-content-features">
-              <div className="vb--product-detail-dialog-content-features-header">
-                Colors
-              </div>
-              <div className="vb--product-detail-dialog-content-features-content">
-                <button
-                  onClick={() => setColor('Blue')}
-                  className={color === 'Blue' ? 'active' : null}>
-                  Blue
-                </button>
-                <button
-                  onClick={() => setColor('Purple')}
-                  className={color === 'Purple' ? 'active' : null}>
-                  Purple
-                </button>
-                <button
-                  onClick={() => setColor('Black')}
-                  className={color === 'Black' ? 'active' : null}>
-                  Black
-                </button>
-                <button
-                  onClick={() => setColor('White')}
-                  className={color === 'White' ? 'active' : null}>
-                  White
-                </button>
-              </div>
-              <div className="vb--product-detail-dialog-content-features-header">
-                Size
-              </div>
-              <div className="vb--product-detail-dialog-content-features-content">
-                <button
-                  onClick={() => setSize('64')}
-                  className={size === '64' ? 'active' : null}>
-                  64 GB
-                </button>
-                <button
-                  onClick={() => setSize('128')}
-                  className={size === '128' ? 'active' : null}>
-                  128 GB
-                </button>
-                <button
-                  onClick={() => setSize('256')}
-                  className={size === '256' ? 'active' : null}>
-                  256 GB
-                </button>
-                <button
-                  onClick={() => setSize('512')}
-                  className={size === '512' ? 'active' : null}>
-                  512 GB
-                </button>
-              </div>
-            </div>
-            <div className="vb--product-detail-dialog-content-price-and-cartButton">
-              <div className="vb--product-card-price-container">
-                <div className="vb--product-card-base-price">
-                  <span>250.00$</span>
-                </div>
-                <div className="vb--product-card-discount-rate-and-price">
-                  <div className="vb--product-card-discount-rate">
-                    <span>%50</span>
-                  </div>
-                  <div className="vb--product-card-current-price">
-                    <span>120.00$</span>
-                  </div>
-                  <AddToCardButton
-                    onClick={clickAddCardButton}
-                    styles={{ paddingTop: '9px' }}
+    <Query query={GET_PRODUCT} variables={{ productId }}>
+      {({ loading, error, data, client }) => {
+        if (loading || error) return null;
+
+        const { product } = data;
+
+        return (
+          <Wrapper>
+            <ModalDialog
+              styles={wrapperStyle}
+              onClose={() =>
+                client.writeData({ data: { productIdInDetails: null } })
+              }>
+              <div className="vb--product-details-container">
+                <div className="vb--product-detail-dialog-slider">
+                  <div
+                    className="vb--product-detail-dialog-slider-image"
+                    style={{
+                      backgroundImage: `url(${product.image.imageUrl}`
+                    }}
                   />
                 </div>
+                <div className="vb--product-detail-dialog-contents">
+                  <div className="vb--product-detail-dialog-content-header">
+                    {product.name}
+                  </div>
+                  <div className="vb--product-detail-dialog-content-content">
+                    {product.description}
+                  </div>
+                  <div className="vb--product-detail-dialog-content-features">
+                    <div className="vb--product-detail-dialog-content-features-header">
+                      Colors
+                    </div>
+                    <div className="vb--product-detail-dialog-content-features-content">
+                      <button>Blue</button>
+                      <button>Purple</button>
+                      <button>Black</button>
+                      <button>White</button>
+                    </div>
+                    <div className="vb--product-detail-dialog-content-features-header">
+                      Size
+                    </div>
+                    <div className="vb--product-detail-dialog-content-features-content">
+                      <button>64 GB</button>
+                      <button>128 GB</button>
+                      <button>256 GB</button>
+                      <button>512 GB</button>
+                    </div>
+                  </div>
+                  <div className="vb--product-detail-dialog-content-price-and-cartButton">
+                    <div className="vb--product-card-price-container">
+                      <div className="vb--product-card-base-price">
+                        <span>{`${
+                          product.currency.symbol
+                        }${product.price.toFixed(2)}`}</span>
+                      </div>
+                      <div className="vb--product-card-discount-rate-and-price">
+                        <div className="vb--product-card-discount-rate">
+                          <span>{`%${product.discount}`}</span>
+                        </div>
+                        <div className="vb--product-card-current-price">
+                          <span>{`${product.currency.symbol}${
+                            product.currentPrice
+                          }`}</span>
+                        </div>
+                        <AddToCardButton styles={{ paddingTop: '9px' }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </ModalDialog>
-    </ProductDetailsWrapper>
+            </ModalDialog>
+          </Wrapper>
+        );
+      }}
+    </Query>
   );
 };
-ProductDetailDialog.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  product: PropTypes.object
-};
 
-ProductDetailDialog.defaultProps = {
-  product: null
+ProductDetailDialog.propTypes = {
+  productId: PropTypes.number.isRequired
 };
 
 export default ProductDetailDialog;

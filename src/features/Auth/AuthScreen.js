@@ -1,33 +1,58 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import ProfileButton from './ProfileButton';
-import Login from './Login';
-import Register from './Register';
-import ForgotPassword from './ForgotPassword';
-import { InjectPlayerProps } from '../../store/redux/providers';
-import { playingState } from '../../store/redux/player/playerActions';
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+import ForgotPasswordForm from './ForgotPasswordForm';
+import { PLAYER } from '../../common/constants';
 
-const AuthScreen = ({ playerPlayingState, playerStarted }) => {
+const GET_PLAYER_AND_AUTH_STATE = gql`
+  query getPlayerAndAuthStateForAuthScreen {
+    player @client {
+      isStarted
+      playingState
+    }
+    isLoggedIn @client
+    isLoginFormShowing @client
+    isRegisterFormShowing @client
+    isForgotPasswordFormShowing @client
+  }
+`;
+
+const AuthScreen = () => {
   return (
     <>
-      {playerStarted && playerPlayingState === playingState.PAUSED && (
-        <ProfileButton />
-      )}
-      <Login />
-      <Register />
-      <ForgotPassword />
+      <Query query={GET_PLAYER_AND_AUTH_STATE}>
+        {({
+          data: {
+            player,
+            isLoggedIn,
+            isLoginFormShowing,
+            isRegisterFormShowing,
+            isForgotPasswordFormShowing
+          }
+        }) => {
+          return (
+            <>
+              {player &&
+                player.isStarted &&
+                player.playingState === PLAYER.PAUSED && <ProfileButton />}
+              {isLoggedIn === false && isLoginFormShowing === true && (
+                <LoginForm />
+              )}
+              {isLoggedIn === false && isRegisterFormShowing === true && (
+                <RegisterForm />
+              )}
+              {isLoggedIn === false && isForgotPasswordFormShowing === true && (
+                <ForgotPasswordForm />
+              )}
+            </>
+          );
+        }}
+      </Query>
     </>
   );
 };
 
-AuthScreen.propTypes = {
-  playerPlayingState: PropTypes.string.isRequired,
-  playerStarted: PropTypes.bool.isRequired
-};
-
-export default InjectPlayerProps({
-  selectProps: ({ playerPlayingState, playerStarted }) => ({
-    playerPlayingState,
-    playerStarted
-  })
-})(AuthScreen);
+export default AuthScreen;

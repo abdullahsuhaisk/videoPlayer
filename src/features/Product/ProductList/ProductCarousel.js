@@ -3,35 +3,20 @@ import PropTypes from 'prop-types';
 import Carousel from '../../../components/Carousel/Carousel';
 import ProductCard from './ProductCard';
 
-const ProductCarousel = ({ products, openDialog, setProductId }) => {
-  const productIds = React.useMemo(() => Object.keys(products), [products]);
-
-  return productIds.length === 0 ? (
+const ProductCarousel = ({ products }) => {
+  return products.length === 0 ? (
     <span className="no-product">There is no product.</span>
   ) : (
     <Carousel>
-      {productIds.map((id) => (
-        <ProductCard
-          key={id}
-          id={id}
-          title={products[id].name}
-          brand={products[id].brand}
-          currentPrice={products[id].currentPrice}
-          basePrice={products[id].price}
-          discountRate={products[id].discountRate}
-          currency={products[id].currency}
-          assets={products[id].assets}
-          inStock={products[id].inStock}
-          openDialog={openDialog}
-          setProductId={setProductId}
-        />
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </Carousel>
   );
 };
 
 ProductCarousel.propTypes = {
-  products: PropTypes.object.isRequired
+  products: PropTypes.array.isRequired
 };
 
 export default ProductCarousel;

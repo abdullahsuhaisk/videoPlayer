@@ -1,51 +1,45 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useRef, useEffect } from 'react';
-import { compose } from 'redux';
+import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
-import './OverlayContainer/vjsOverlayContainer';
-import 'videojs-dock';
+import 'videojs-markers';
 import './player.scss';
 import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
-import 'videojs-dock/dist/videojs-dock.css';
-import './Tooltip/vjs-tooltip';
-import {
-  InjectPlayerProps,
-  InjectHotspotProps
-} from '../../store/redux/providers';
-import 'videojs-markers';
-import { playingState } from '../../store/redux/player/playerActions';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import './OverlayContainer/vjsOverlayContainer';
+import { PLAYER } from '../../common/constants';
 
+// TODO: remove this when browser console debug is not necessary
 window.videojs = videojs;
 
-const Player = ({
-  width,
-  height,
-  controls,
-  poster,
-  sources,
-  loop,
-  muted,
-  aspectRatio,
-  autoplay,
-  fluid,
-  volume,
-  title,
-  description,
-  started,
-  seek,
-  seekTo,
-  ready,
-  overlayContainerReady,
-  currentTimeUpdate,
-  hotspots,
-  playerPlayingState,
-  changePlayerPlayingState
-}) => {
+const GET_PLAYER = gql`
+  query getPlayerForPlayer {
+    player @client {
+      playingState
+      seekTo
+    }
+  }
+`;
+
+const GET_HOTSPOTS = gql`
+  query getHotspotsForPlayer($prodLinkId: Int!) {
+    prodLink(prodLinkId: $prodLinkId) {
+      id
+      hotSpots {
+        id
+        in
+      }
+    }
+  }
+`;
+
+const Player = ({ width, height, poster, sources }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
+  const apolloClientRef = useRef(null);
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -56,24 +50,10 @@ const Player = ({
   }, []);
 
   useEffect(() => {
-    let isAutoplay = false;
-
-    if (autoplay) {
-      isAutoplay =
-        videojs.browser.IS_IOS || videojs.browser.IS_ANDROID ? 'muted' : true;
-    }
-
     playerRef.current = videojs(videoRef.current, {
-      width,
-      height,
-      controls,
       poster,
+      controls: true,
       sources,
-      loop,
-      muted,
-      autoplay: isAutoplay,
-      aspectRatio,
-      fluid,
       responsive: true,
       liveui: true,
       textTrackSettings: false,
@@ -88,31 +68,122 @@ const Player = ({
       language: i18n.language
     });
 
+    // TODO: remove this when browser console debug is not necessary
     window.player = playerRef.current;
 
     return () => {
-      if (playerRef.current) {
-        playerRef.current.dispose();
-      }
+      playerRef.current.dispose();
     };
   }, []);
 
   useEffect(() => {
-    const timeUpdateCb = () => {
-      currentTimeUpdate(playerRef.current.currentTime());
-    };
-
-    playerRef.current.ready(() => {
-      if (volume) {
-        playerRef.current.volume(volume);
-      }
-
-      playerRef.current.on('timeupdate', timeUpdateCb);
-      ready();
+    playerRef.current.markers({
+      markerStyle: {
+        width: '.3em',
+        height: '.3em',
+        'background-color': '#fff',
+        'border-radius': '50%'
+      },
+      markerTip: {
+        display: true,
+        text: (marker) => marker.text || ''
+      },
+      markers: []
     });
 
+    const addMarkers = async () => {
+      // TODO: set prodLinkId
+      const { data } = await apolloClientRef.current.query({
+        query: GET_HOTSPOTS,
+        variables: { prodLinkId: 1 }
+      });
+      const { hotSpots } = data.prodLink;
+      const markers = hotSpots.reduce((acc, hotspot) => {
+        acc.push({ time: hotspot.in, text: `Hotspot: ${hotspot.id}` });
+        return acc;
+      }, []);
+
+      playerRef.current.markers.add(markers);
+    };
+
+    playerRef.current.one('loadedmetadata', () => addMarkers());
+  }, []);
+
+  useEffect(() => {
+    const onReady = () => {
+      apolloClientRef.current.writeData({
+        data: {
+          player: { __typename: 'Player', isReady: true }
+        }
+      });
+    };
+
+    const onPlay = () => {
+      apolloClientRef.current.writeData({
+        data: {
+          player: { __typename: 'Player', playingState: PLAYER.PLAYING }
+        }
+      });
+    };
+
+    const onPause = () => {
+      apolloClientRef.current.writeData({
+        data: {
+          player: {
+            __typename: 'Player',
+            playingState: playerRef.current.scrubbing()
+              ? PLAYER.SCRUBBING
+              : PLAYER.PAUSED
+          }
+        }
+      });
+    };
+
+    const onTimeUpdate = () => {
+      apolloClientRef.current.writeData({
+        data: {
+          player: {
+            __typename: 'Player',
+            currentTime: playerRef.current.currentTime()
+          }
+        }
+      });
+    };
+
+    const onStateChanged = (event) => {
+      const { settingsMenuOpened } = event.changes;
+
+      if (!settingsMenuOpened) {
+        return;
+      }
+
+      playerRef.current.toggleClass(
+        'vjs-settings-opened',
+        settingsMenuOpened.to
+      );
+    };
+
+    playerRef.current.on('ready', onReady);
+    playerRef.current.on('play', onPlay);
+
+    playerRef.current.one('play', () => {
+      apolloClientRef.current.writeData({
+        data: {
+          player: { __typename: 'Player', isStarted: true }
+        }
+      });
+    });
+
+    playerRef.current.on('pause', onPause);
+    playerRef.current.on('timeupdate', onTimeUpdate);
+    playerRef.current.on('statechanged', onStateChanged);
+
     return () => {
-      playerRef.current.off('timeupdate', timeUpdateCb);
+      playerRef.current.off('ready', onReady);
+      playerRef.current.off('play', onPlay);
+      playerRef.current.off('pause', onPause);
+      playerRef.current.off('timeupdate', onTimeUpdate);
+      playerRef.current.off('statechanged', onStateChanged);
     };
   }, []);
 
@@ -121,7 +192,16 @@ const Player = ({
       'vjsOverlayContainer',
       {}
     );
-    overlayContainerReady(playerRef.current.overlayContainer.el().className);
+
+    apolloClientRef.current.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          overlayContainerClassName: playerRef.current.overlayContainer.el()
+            .className
+        }
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -139,127 +219,70 @@ const Player = ({
     }
   }, []);
 
-  useEffect(() => {
-    if (title || description) {
-      playerRef.current.dock({
-        title,
-        description
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const {
-      playToggle,
-      volumePanel,
-      settingsButton,
-      fullscreenToggle
-    } = playerRef.current.controlBar;
-    playerRef.current.tooltip({
-      controls: [playToggle, volumePanel, settingsButton, fullscreenToggle]
-    });
-  }, []);
-
-  useEffect(() => {
-    playerRef.current.on('statechanged', (event) => {
-      const { settingsMenuOpened } = event.changes;
-
-      if (!settingsMenuOpened) {
-        return;
+  const handlePlayingState = useCallback(
+    (newPlayingState) => {
+      if (playerRef.current !== null) {
+        if (newPlayingState === PLAYER.PLAYING) {
+          playerRef.current.play();
+        } else if (newPlayingState === PLAYER.PAUSED) {
+          playerRef.current.pause();
+        }
       }
+    },
+    [playerRef.current]
+  );
 
-      playerRef.current.toggleClass(
-        'vjs-settings-opened',
-        settingsMenuOpened.to
-      );
-    });
-
-    playerRef.current.on('play', () => {
-      changePlayerPlayingState(playingState.PLAYING);
-    });
-
-    playerRef.current.one('play', () => {
-      started(true);
-    });
-
-    playerRef.current.on('pause', () => {
-      changePlayerPlayingState(
-        playerRef.current.scrubbing()
-          ? playingState.SCRUBBING
-          : playingState.PAUSED
-      );
-    });
-  }, []);
-
-  useEffect(() => {
-    if (playerRef.current) {
-      if (playerPlayingState === playingState.PLAYING) {
-        playerRef.current.play();
-      } else if (playerPlayingState === playingState.PAUSED) {
-        playerRef.current.pause();
+  const handleSeek = useCallback(
+    (seekTo) => {
+      if (playerRef.current !== null && seekTo !== -1) {
+        playerRef.current.currentTime(seekTo);
+        apolloClientRef.current.writeData({
+          data: {
+            player: { __typename: 'Player', seekTo: -1 }
+          }
+        });
       }
-    }
-  }, [playerPlayingState]);
-
-  useEffect(() => {
-    if (playerRef.current && seekTo !== -1) {
-      playerRef.current.currentTime(seekTo);
-      seek(-1);
-    }
-  }, [seekTo]);
-
-  useEffect(() => {
-    if (playerRef.current.markers && playerRef.current.markers.destroy) {
-      playerRef.current.markers.destroy();
-    }
-
-    const markers = Object.keys(hotspots).reduce((acc, id) => {
-      acc.push({ time: hotspots[id].in, text: id });
-      return acc;
-    }, []);
-
-    playerRef.current.markers({
-      markerStyle: {
-        width: '.3em',
-        height: '.3em',
-        'background-color': '#fff',
-        'border-radius': '50%'
-      },
-      markerTip: {
-        display: true,
-        text: (marker) => marker.text || ''
-      },
-      markers
-    });
-  }, [hotspots]);
+    },
+    [playerRef.current]
+  );
 
   return (
-    <div
-      className="vb--player-wrapper"
-      style={{
-        width: typeof width === 'string' ? width : `${width}px`,
-        height: typeof height === 'string' ? height : `${height}px`
-      }}>
-      <div
-        data-vjs-player
-        className="vb--player"
-        style={{ width: '100%', height: '100%' }}>
-        <video
-          ref={videoRef}
-          className="vb--video vjs-vb video-js"
-          crossOrigin="anonymous"
-          playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
-        />
-      </div>
-    </div>
+    <Query query={GET_PLAYER}>
+      {({ data: { player }, client }) => {
+        apolloClientRef.current = client;
+        handlePlayingState(player.playingState);
+        handleSeek(player.seekTo);
+
+        return (
+          <div
+            className="vb--player-wrapper"
+            style={{
+              width: typeof width === 'string' ? width : `${width}px`,
+              height: typeof height === 'string' ? height : `${height}px`
+            }}>
+            <div
+              data-vjs-player
+              className="vb--player"
+              style={{ width: '100%', height: '100%' }}>
+              <video
+                ref={videoRef}
+                className="vb--video vjs-vb video-js"
+                crossOrigin="anonymous"
+                preload="none"
+                playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
+              />
+            </div>
+          </div>
+        );
+      }}
+    </Query>
   );
 };
 
 Player.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  controls: PropTypes.bool,
-  poster: PropTypes.string,
+  poster: PropTypes.string.isRequired,
   sources: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
@@ -271,61 +294,12 @@ Player.propTypes = {
         'application/dash+xml'
       ]).isRequired
     })
-  ).isRequired,
-  loop: PropTypes.bool,
-  muted: PropTypes.bool,
-  volume: PropTypes.number,
-  autoplay: PropTypes.bool,
-  aspectRatio: PropTypes.oneOf([undefined, '16:9', '4:3']),
-  fluid: PropTypes.bool,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  ready: PropTypes.func,
-  overlayContainerReady: PropTypes.func,
-  currentTimeUpdate: PropTypes.func
+  ).isRequired
 };
 
 Player.defaultProps = {
   width: '100%',
-  height: '100%',
-  controls: true,
-  poster: '',
-  loop: false,
-  muted: false,
-  volume: 0.5,
-  autoplay: false,
-  aspectRatio: undefined,
-  fluid: false,
-  title: '',
-  description: '',
-  ready: () => {},
-  overlayContainerReady: () => {},
-  currentTimeUpdate: () => {}
+  height: '100%'
 };
 
-export default compose(
-  InjectPlayerProps({
-    selectProps: ({ playerPlayingState, seekTo }) => ({
-      playerPlayingState,
-      seekTo
-    }),
-    selectActions: ({
-      ready,
-      started,
-      seek,
-      overlayContainerReady,
-      currentTimeUpdate,
-      changePlayerPlayingState
-    }) => ({
-      ready,
-      started,
-      seek,
-      overlayContainerReady,
-      currentTimeUpdate,
-      changePlayerPlayingState
-    })
-  }),
-  InjectHotspotProps({
-    selectProps: ({ hotspots }) => ({ hotspots })
-  })
-)(Player);
+export default Player;

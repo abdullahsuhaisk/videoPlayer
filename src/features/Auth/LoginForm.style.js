@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
-export const loginStyles = {
+export const loginFormStyles = {
   pointerEvents: 'auto',
   position: 'absolute',
   top: '0',
   right: '0',
   width: '375px',
   height: '563px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   backgroundColor: 'white',
   boxShadow: '-24px 0 42px -12px rgba(0,0,0,0.75)',
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   '.vb--login-close': {
     position: 'absolute',
     top: '0',
@@ -19,7 +21,8 @@ export const loginStyles = {
     padding: '10px 15px',
     fontSize: '24px',
     color: '#0008',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    outline: 'none'
   },
   '.vb--login-banner': {
     background: 'url(/images/login_image.svg) center / contain no-repeat',
@@ -83,14 +86,16 @@ export const loginStyles = {
       width: '20px',
       height: '20px',
       margin: '0 10px 0 0',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      outline: 'none'
     },
     '.vb--login-with-facebook': {
       background: 'url(/images/facebook_blue.png) center / contain no-repeat',
       width: '20px',
       height: '20px',
       margin: '0 0 0 10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      outline: 'none'
     }
   },
   '.vb--login-forgot-password-button': {
@@ -101,7 +106,8 @@ export const loginStyles = {
     textDecoration: 'underline',
     color: '#0B2443',
     textAlign: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    outline: 'none'
   },
   '.vb--login-register-button': {
     width: '200px',
@@ -126,6 +132,6 @@ export const loginStyles = {
 };
 
 export const Wrapper = styled.div((props) => ({
-  ...loginStyles,
+  ...loginFormStyles,
   ...props.styles
 }));
