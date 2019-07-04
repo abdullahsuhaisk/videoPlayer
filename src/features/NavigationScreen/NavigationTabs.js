@@ -3,6 +3,7 @@ import Tabs from '../../components/Tabs/Tabs';
 import ProfileScreen from '../Profile/ProfileScreen';
 import FavoritesScreen from '../Favorites/FavoritesScreen';
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
+import WishlistScreen from '../Wishlist/WishlistScreen';
 
 const NavigationTabs = () => {
   const styles = {
@@ -75,17 +76,9 @@ const NavigationTabs = () => {
             fontSize: '30',
             fontWeight: 'bold'
           }}>
-          WatchList is under development
+          Watch List is under development
         </div>,
-        <div
-          style={{
-            padding: '50px',
-            color: 'red',
-            fontSize: '30',
-            fontWeight: 'bold'
-          }}>
-          WishList is under development{' '}
-        </div>,
+        <WishlistScreen />,
         <ShoppingCartScreen />
       ]}
     />
