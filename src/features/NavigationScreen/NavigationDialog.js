@@ -1,12 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { ApolloConsumer } from 'react-apollo';
 import ModalDialog from '../../components/ModalDialog/ModalDialog';
 import { NavigationDialogWrapper } from './NavigationDialog.style';
 import NavigationTabs from './NavigationTabs';
 
-const NavigationDialog = (props) => {
-  const { onClose, pages } = props;
+const NavigationDialog = () => {
   const wrapperStyle = {
     Wrapper: {
       zIndex: '1',
@@ -15,21 +13,24 @@ const NavigationDialog = (props) => {
     CloseButton: { color: '#0b2443' }
   };
   return (
-    <>
-      <NavigationDialogWrapper>
-        <ModalDialog onClose={onClose} styles={wrapperStyle}>
-          <div className="vb--navigationModalContainer">
-            <NavigationTabs pages={pages} />
-          </div>
-        </ModalDialog>
-      </NavigationDialogWrapper>
-    </>
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <NavigationDialogWrapper>
+            <ModalDialog
+              onClose={() =>
+                client.writeData({ data: { navigationDialogShowing: false } })
+              }
+              styles={wrapperStyle}>
+              <div className="vb--navigationModalContainer">
+                <NavigationTabs />
+              </div>
+            </ModalDialog>
+          </NavigationDialogWrapper>
+        );
+      }}
+    </ApolloConsumer>
   );
-};
-
-NavigationDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  pages: PropTypes.array.isRequired
 };
 
 export default NavigationDialog;

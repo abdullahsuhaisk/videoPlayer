@@ -42,6 +42,7 @@ const typeDefs = gql`
     isForgotPasswordFormShowing: Boolean!
     userInfo: UserInfo
     productIdInDetails: Int
+    navigationDialogShowing: Boolean!
   }
 
   extend type Mutation {

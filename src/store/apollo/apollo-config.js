@@ -68,7 +68,8 @@ const setInitialCache = () => {
     isLoginFormShowing: false,
     isRegisterFormShowing: false,
     isForgotPasswordFormShowing: false,
-    productIdInDetails: null
+    productIdInDetails: null,
+    navigationDialogShowing: false
   };
 
   cache.writeData({ data });
