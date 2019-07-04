@@ -1,71 +1,47 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { stepperStyles, Wrapper } from './Stepper.style';
+import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const StepperWrapper = styled.div((props) => ({
-  '.vb--stepper--group': {
-    display: 'flex',
-    width: '65px',
-    height: '28px',
-    borderRadius: '4px',
-    outline: 'none',
-    backgroundColor: '#f5f9fc',
-    '.button': {
-      borderRadius: '4px',
-      backgroundColor: '#f5f9fc',
-      outline: 'none',
-      cursor: 'pointer',
-      width: '20px'
+const Stepper = ({ value, onValueChanged, styles }) => {
+  const [_value, setValue] = useState(value);
+
+  useEffect(() => {
+    loadWebFontsFromStyles(stepperStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
+
+  const increment = useCallback(() => {
+    setValue(_value + 1);
+    onValueChanged(_value);
+  }, [_value]);
+
+  const decrement = useCallback(() => {
+    if (_value > 0) {
+      setValue(_value - 1);
+      onValueChanged(_value);
     }
-  },
-  '.vb--stepper--value': {
-    padding: '7px',
-    borderRadius: '4px',
-    boxShadow: '1px 1px 2px 0 rgba(0, 0, 0, 0.16)',
-    backgroundColor: '#00acd8',
-    width: '27px',
-    textAlign: 'center',
-    verticalAlign: 'middle',
-    color: '#ffffff',
-    fontWeight: 'bolder'
-  },
-  '.btn-nonoutline': {
-    outline: 'none'
-  }
-}));
+  }, [_value]);
 
-const Stepper = ({ value, setValue, styles, Id, removeCart }) => {
   return (
-    <StepperWrapper styles={styles}>
+    <Wrapper styles={styles}>
       <div className="vb--stepper--group">
-        <button
-          className="btn-nonoutline"
-          onClick={() => {
-            setValue(value - 1);
-          }}>
+        <button className="btn-nonoutline" onClick={decrement}>
           -
         </button>
-        <div className="vb--stepper--value">
-          {value < 1 ? removeCart(Id) : value}
-        </div>
-        <button
-          className="btn-nonoutline"
-          onClick={() => {
-            setValue(value + 1);
-          }}>
+        <div className="vb--stepper--value">{_value}</div>
+        <button className="btn-nonoutline" onClick={increment}>
           +
         </button>
       </div>
-    </StepperWrapper>
+    </Wrapper>
   );
 };
 
 Stepper.propTypes = {
   styles: PropTypes.object,
   value: PropTypes.number,
-  setValue: PropTypes.func.isRequired,
-  Id: PropTypes.number.isRequired,
-  removeCart: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired
 };
 
 Stepper.defaultProps = {

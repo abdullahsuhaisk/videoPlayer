@@ -106,7 +106,10 @@ const ProductDetailDialog = ({ productId }) => {
                             product.currentPrice
                           }`}</span>
                         </div>
-                        <AddToCardButton styles={{ paddingTop: '9px' }} />
+                        <AddToCardButton
+                          styles={{ paddingTop: '9px' }}
+                          productId={product.id}
+                        />
                       </div>
                     </div>
                   </div>
