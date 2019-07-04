@@ -11,7 +11,7 @@ const EmptyWishList = ({ styles }) => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper styles={styles}>
       <div className="vb--empty-wish-list-content">
         <div className="vb--empty-wish-list-content-image" />
         <div className="vb--empty-wish-list-content-item">

@@ -41,5 +41,5 @@ export const emptyWishListstyle = {
 
 export const Wrapper = styled.div((props) => ({
   ...emptyWishListstyle,
-  ...props.style
+  ...props.styles
 }));
