@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { ApolloConsumer } from 'react-apollo';
 
 const ShoppingButtonWrapper = styled.div((props) => ({
   display: 'inline-block',
@@ -19,19 +20,24 @@ const ShoppingButtonWrapper = styled.div((props) => ({
     height: '24px'
   }
 }));
-// TODO: Onclick method must override, it will entegrated redux
-const ShoppingButton = ({ openNavigationDialog }) => {
-  return (
-    <>
-      <ShoppingButtonWrapper>
-        <div className="vb--icon" onClick={() => openNavigationDialog()} />
-      </ShoppingButtonWrapper>
-    </>
-  );
-};
 
-ShoppingButton.propTypes = {
-  openNavigationDialog: PropTypes.func.isRequired
+const ShoppingButton = () => {
+  return (
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <ShoppingButtonWrapper>
+            <div
+              className="vb--icon"
+              onClick={() =>
+                client.writeData({ data: { navigationDialogShowing: true } })
+              }
+            />
+          </ShoppingButtonWrapper>
+        );
+      }}
+    </ApolloConsumer>
+  );
 };
 
 export default ShoppingButton;

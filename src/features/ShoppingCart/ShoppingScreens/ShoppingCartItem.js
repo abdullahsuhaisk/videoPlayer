@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Stepper from '../../../components/Stepper/Stepper';
 import CardImage from '../../../components/Card/ProductCard/CardImage';
@@ -22,63 +23,28 @@ const ShoppingCardWrapper = styled.div((props) => ({
   margin: '15px 15px 15px 70px '
 }));
 
-const ShoppingCartCard = ({ product, productId, removeCart }) => {
-  const [value, setValue] = useState(1);
-  const [price, setPrice] = useState(product.currentPrice);
-
-  useEffect(() => {
-    setPrice(product.currentPrice * value);
-  }, [value]);
-
-  useEffect(() => {
-    // onValueIncrement(product.currentPrice);
-  }, []);
-
+const ShoppingCartItem = ({ cartItem }) => {
   return (
     <ShoppingCardWrapper>
       <CardImage
-        style={{ backgroundImage: `url(${product.assets.images[0]}` }}
+        style={{
+          backgroundImage: `url(${cartItem.product.image.thumbnailUrl}`
+        }}
       />
       <CardInfo
-        name={product.name}
-        seller={product.seller}
+        name={cartItem.product.name}
+        seller={cartItem.product.brand.name}
         style={{ marginLeft: '30px' }}
       />
-      <Stepper
-        Id={productId}
-        value={value}
-        setValue={setValue}
-        price={price}
-        removeCart={removeCart}
-      />
-      <CardPrice currentPrice={price.toFixed(2)} />
-      <CardClose closeMethod={removeCart} id={productId} />
+      <Stepper value={cartItem.quantity} onValueChanged={() => {}} />
+      <CardPrice currentPrice={cartItem.product.price.toFixed(2)} />
+      <CardClose closeMethod={() => {}} id={cartItem.product.id} />
     </ShoppingCardWrapper>
   );
 };
 
-export default ShoppingCartCard;
+ShoppingCartItem.propTypes = {
+  cartItem: PropTypes.object.isRequired
+};
 
-/* 
-<div className="vb--shoppingCart-Card-buttons-group">
-          <button
-            className="btn-nonoutline"
-            onClick={() => {
-              setPiece(piece - 1);
-              decremeTotalPrice(product.currentPrice);
-            }}>
-            -
-          </button>
-          <div className="vb--shoppingCart-Card-buttons-group-show">
-            {piece < 1 ? removeCart(productId) : piece}
-          </div>
-          <button
-            className="btn-nonoutline"
-            onClick={() => {
-              setPiece(piece + 1);
-              updateTotalPrice(product.currentPrice);
-            }}>
-            +
-          </button>
-        </div> 
-*/
+export default ShoppingCartItem;

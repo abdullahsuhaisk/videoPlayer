@@ -1,22 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
 import AddToCardButtonWrapper from './AddToCardButton.style';
 
-const AddToCardButton = (props) => {
-  const { onClick, styles } = props;
+const ADD_PRODUCT_TO_CART = gql`
+  mutation addProductToCart($productId: Int!) {
+    addProductToCart(productId: $productId) {
+      totalProductCount
+    }
+  }
+`;
+
+const AddToCardButton = ({ styles, productId }) => {
   return (
-    <AddToCardButtonWrapper styles={styles}>
-      <button onClick={onClick} className="vb--addToCardButton">
-        <div className="vb--addToCardButton-icon" />
-        <div className="vb--addToCardButton-text">Add To Card</div>
-      </button>
-    </AddToCardButtonWrapper>
+    <Mutation mutation={ADD_PRODUCT_TO_CART} variables={{ productId }}>
+      {(addToCart) => {
+        return (
+          <AddToCardButtonWrapper styles={styles}>
+            <button onClick={addToCart} className="vb--addToCardButton">
+              <div className="vb--addToCardButton-icon" />
+              <div className="vb--addToCardButton-text">Add To Card</div>
+            </button>
+          </AddToCardButtonWrapper>
+        );
+      }}
+    </Mutation>
   );
 };
 
 AddToCardButton.propTypes = {
-  onClick: PropTypes.func.isRequired
+  styles: PropTypes.object,
+  productId: PropTypes.number.isRequired
+};
+
+AddToCardButton.defaultProps = {
+  styles: {}
 };
 
 export default AddToCardButton;
