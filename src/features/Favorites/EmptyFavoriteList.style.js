@@ -1,32 +1,29 @@
 import styled from 'styled-components';
 
-export const emptyWishListstyle = {
+export const emptyFavoriteListStyle = {
   width: '100%',
-  height: '100%',
-  position: 'relative',
-  '.vb--empty-wish-list-content': {
-    position: 'absolute',
-    top: '15%',
-    left: '37%',
+  height: '350px',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  '.vb--empty-favorite-list-container': {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-60px'
   },
-  '.vb--empty-wish-list-content-image': {
+  '.vb--empty-favorite-list-image': {
     background: 'url(/images/emptyFavorite.svg) center center no-repeat',
     display: 'inline-block',
-    width: '185px',
-    height: '185px',
+    width: '160px',
+    height: '160px',
     objectFit: 'contain',
     padding: '10px',
     backgroundSize: 'contain',
     marginBottom: '6px'
   },
-  '.vb--empty-wish-list-content-item': {
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
+  '.vb--empty-favorite-list-content': {},
   span: {
     color: ' #9da7b4',
     textAlign: 'center',
@@ -38,8 +35,7 @@ export const emptyWishListstyle = {
     fontWeight: '600'
   }
 };
-
 export const Wrapper = styled.div((props) => ({
-  ...emptyWishListstyle,
+  ...emptyFavoriteListStyle,
   ...props.styles
 }));
