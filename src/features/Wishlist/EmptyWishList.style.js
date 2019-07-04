@@ -14,11 +14,12 @@ export const emptyWishListstyle = {
   '.vb--empty-wish-list-content-image': {
     background: 'url(/images/emptyFavorite.svg) center center no-repeat',
     display: 'inline-block',
-    width: '187px',
+    width: '185px',
     height: '185px',
     objectFit: 'contain',
     padding: '10px',
-    backgroundSize: 'contain'
+    backgroundSize: 'contain',
+    marginBottom: '6px'
   },
   '.vb--empty-wish-list-content-item': {
     textAlign: 'center',
@@ -32,6 +33,9 @@ export const emptyWishListstyle = {
     fontFamily: 'Source Sans Pro',
     marginBottom: '-10px',
     fontSize: '12px'
+  },
+  '.bold': {
+    fontWeight: '600'
   }
 };
 

@@ -15,7 +15,7 @@ const EmptyWishList = ({ styles }) => {
       <div className="vb--empty-wish-list-content">
         <div className="vb--empty-wish-list-content-image" />
         <div className="vb--empty-wish-list-content-item">
-          <span> NO ITEMS IN WISH LIST</span>
+          <span className="bold"> NO ITEMS IN WISH LIST</span>
           <br />
           <span>Save your favorite items here</span>
         </div>
