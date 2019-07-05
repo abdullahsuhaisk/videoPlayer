@@ -5,7 +5,7 @@ import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
 
-const GET_CART = gql`
+export const GET_CART = gql`
   query getCart {
     consumer {
       id
