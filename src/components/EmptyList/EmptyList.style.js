@@ -26,7 +26,8 @@ export const emptylistStyle = {
     color: ' #9da7b4',
     textAlign: 'center',
     fontFamily: 'Source Sans Pro',
-    fontSize: '12px'
+    fontSize: '12px',
+    textTransform: 'uppercase'
   },
   '.bold': {
     fontWeight: '600'
