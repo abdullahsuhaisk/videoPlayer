@@ -30,7 +30,8 @@ export const wishlistgroupStyle = {
     textAlign: 'center',
     fontFamily: 'Source Sans Pro',
     marginBottom: '-10px',
-    fontSize: '12px'
+    fontSize: '12px',
+    fontWeight: '700'
   }
 };
 
