@@ -23,7 +23,7 @@ const ShoppingCardWrapper = styled.div((props) => ({
   margin: '15px 15px 15px 70px '
 }));
 
-const ShoppingCartItem = ({ cartItem }) => {
+const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
   return (
     <ShoppingCardWrapper>
       <CardImage
@@ -38,13 +38,14 @@ const ShoppingCartItem = ({ cartItem }) => {
       />
       <Stepper value={cartItem.quantity} onValueChanged={() => {}} />
       <CardPrice currentPrice={cartItem.product.price.toFixed(2)} />
-      <CardClose closeMethod={() => {}} id={cartItem.product.id} />
+      <CardClose onClose={onRemoveItem} />
     </ShoppingCardWrapper>
   );
 };
 
 ShoppingCartItem.propTypes = {
-  cartItem: PropTypes.object.isRequired
+  cartItem: PropTypes.object.isRequired,
+  onRemoveItem: PropTypes.func.isRequired
 };
 
 export default ShoppingCartItem;

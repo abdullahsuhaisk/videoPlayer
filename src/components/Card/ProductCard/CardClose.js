@@ -10,9 +10,9 @@ const CloseWrapper = styled.div((props) => ({
   cursor: 'pointer'
 }));
 
-const CardClose = ({ styles, closeMethod, id }) => {
+const CardClose = ({ styles, onClose }) => {
   return (
-    <CloseWrapper styles={styles} onClick={() => closeMethod(id)}>
+    <CloseWrapper styles={styles} onClick={() => onClose()}>
       &times;
     </CloseWrapper>
   );
