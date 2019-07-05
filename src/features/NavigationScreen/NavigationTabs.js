@@ -4,6 +4,7 @@ import ProfileScreen from '../Profile/ProfileScreen';
 import FavoritesScreen from '../Favorites/FavoritesScreen';
 import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
 import WishlistScreen from '../Wishlist/WishlistScreen';
+import WatchListScreen from '../Watchlist/WatchListScreen';
 
 const NavigationTabs = () => {
   const styles = {
@@ -69,15 +70,7 @@ const NavigationTabs = () => {
       tabPanels={[
         <ProfileScreen />,
         <FavoritesScreen />,
-        <div
-          style={{
-            padding: '50px',
-            color: 'red',
-            fontSize: '30',
-            fontWeight: 'bold'
-          }}>
-          Watch List is under development
-        </div>,
+        <WatchListScreen />,
         <WishlistScreen />,
         <ShoppingCartScreen />
       ]}
