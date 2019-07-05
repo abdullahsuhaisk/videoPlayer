@@ -44,7 +44,7 @@ const data = [
   }
 ];
 
-const WishListGroup = ({ styles = {}, items, wishListName }) => {
+const WishListGroup = ({ styles = {}, items, wishListName, total }) => {
   useEffect(() => {
     loadWebFontsFromStyles(styledWishListGroup);
     loadWebFontsFromStyles(styles);
@@ -61,7 +61,7 @@ const WishListGroup = ({ styles = {}, items, wishListName }) => {
           <div
             className="vb--wishlist-group--header--see-all"
             onClick={() => console.log('Clicked')}>
-            <span className="blue-color">See all ></span>
+            <span className="blue-color">See all > {total} </span>
           </div>
         </div>
         <div className="vb----wishlist--group--content">
@@ -79,13 +79,15 @@ const WishListGroup = ({ styles = {}, items, wishListName }) => {
 WishListGroup.propTypes = {
   styles: PropTypes.object,
   items: PropTypes.array,
-  wishListName: PropTypes.string
+  wishListName: PropTypes.string,
+  total: PropTypes.number
 };
 
 WishListGroup.defaultProps = {
   styles: {},
   items: data,
-  wishListName: 'ZARA | Men Campaign Spring Summer 2019'
+  wishListName: 'ZARA | Men Campaign Spring Summer 2019',
+  total: 6
 };
 
 export default WishListGroup;
