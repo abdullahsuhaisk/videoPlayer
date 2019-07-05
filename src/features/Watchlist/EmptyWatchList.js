@@ -16,7 +16,7 @@ const styles = {
 };
 
 // Empty watchList inheritance EmptyList.
-// Emptylist is a base EmptyContent Component, it gives imageUrl style and content
+// Emptylist is a base EmptyContent Component, it takes imageUrl style and content
 // WatchList wishlist and favoritesList can derived EmptyList component
 
 const EmptyWatchList = () => {
