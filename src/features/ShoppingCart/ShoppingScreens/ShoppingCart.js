@@ -1,53 +1,9 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
-
-const CART = gql`
-  fragment cart on CartType {
-    items {
-      product {
-        id
-        name
-        brand {
-          id
-          name
-        }
-        image {
-          id
-          thumbnailUrl
-        }
-        price
-        discount
-        currentPrice @client
-      }
-      quantity
-    }
-  }
-`;
-
-export const GET_CONSUMER = gql`
-  query getCart {
-    consumer {
-      id
-      cart {
-        ...cart
-      }
-    }
-  }
-  ${CART}
-`;
-
-const REMOVE_ITEM = gql`
-  mutation removeItem($productId: Int!) {
-    deleteProductInCart(productId: $productId) {
-      ...cart
-    }
-  }
-  ${CART}
-`;
+import { GET_CONSUMER, REMOVE_ITEM } from '../shoppingCartQueries';
 
 const updateCache = (cache, { deleteProductInCart }) => {
   const { consumer } = cache.readQuery({

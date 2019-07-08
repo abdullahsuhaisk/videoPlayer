@@ -12,14 +12,16 @@ const Stepper = ({ value, onValueChanged, styles }) => {
   }, []);
 
   const increment = useCallback(() => {
-    setValue(_value + 1);
-    onValueChanged(_value);
+    const newValue = _value + 1;
+    setValue(newValue);
+    onValueChanged(newValue);
   }, [_value]);
 
   const decrement = useCallback(() => {
     if (_value > 0) {
-      setValue(_value - 1);
-      onValueChanged(_value);
+      const newValue = _value - 1;
+      setValue(newValue);
+      onValueChanged(newValue);
     }
   }, [_value]);
 
