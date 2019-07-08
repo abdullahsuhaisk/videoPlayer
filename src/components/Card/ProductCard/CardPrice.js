@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const PriceWrapper = styled.div((props) => ({
-  ...props.styles,
   fontWeight: 'bolder',
-  fontSize: '15px',
-  minWidth: '60px'
+  fontSize: '20px',
+  minWidth: '60px',
+  ...props.styles
 }));
 const CardPrice = ({ styles, currentPrice }) => {
   return <PriceWrapper styles={styles}>$ {currentPrice}</PriceWrapper>;

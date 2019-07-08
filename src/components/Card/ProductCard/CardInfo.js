@@ -45,10 +45,12 @@ const CardInfo = ({ styles, name, seller, style }) => {
 CardInfo.propTypes = {
   styles: PropTypes.object,
   name: PropTypes.string.isRequired,
-  seller: PropTypes.string.isRequired
+  seller: PropTypes.string.isRequired,
+  style: PropTypes.object
 };
 CardInfo.defaultProps = {
-  styles: {}
+  styles: {},
+  style: {}
 };
 
 export default CardInfo;
