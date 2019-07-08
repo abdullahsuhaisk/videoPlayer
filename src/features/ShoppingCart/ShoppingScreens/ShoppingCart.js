@@ -47,6 +47,7 @@ const ShoppingCart = () => {
 
               return cart.items.map((item) => (
                 <Mutation
+                  key={item.product.id}
                   mutation={REMOVE_ITEM}
                   variables={{ productId: item.product.id }}
                   update={(cache, { data: deleteProductInCart }) =>

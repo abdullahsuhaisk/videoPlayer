@@ -53,6 +53,9 @@ const ShoppingCartItem = ({ styles, cartItem, onRemoveItem }) => {
             <Stepper
               value={cartItem.quantity}
               onValueChanged={(value) => {
+                if (value === 0) {
+                  onRemoveItem();
+                }
                 if (value > 0) {
                   updateProductInCart({
                     variables: {
