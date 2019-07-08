@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import AddToCardButtonWrapper from './AddToCardButton.style';
 
-const CART_FRAGMENT = gql`
+const CART = gql`
   fragment cart on CartType {
     items {
       product {
@@ -33,7 +33,7 @@ const ADD_PRODUCT_TO_CART = gql`
       ...cart
     }
   }
-  ${CART_FRAGMENT}
+  ${CART}
 `;
 
 const GET_CONSUMER = gql`
@@ -45,11 +45,10 @@ const GET_CONSUMER = gql`
       }
     }
   }
-  ${CART_FRAGMENT}
+  ${CART}
 `;
 
-const updateCache = (cache, data) => {
-  const { addProductToCart } = data;
+const updateCache = (cache, { addProductToCart }) => {
   const { consumer } = cache.readQuery({
     query: GET_CONSUMER
   });
@@ -64,16 +63,37 @@ const updateCache = (cache, data) => {
   });
 };
 
+const addToCartCb = async (client, addToCart) => {
+  const { isLoggedIn } = client.readQuery({
+    query: gql`
+      query isLoggedIn {
+        isLoggedIn @client
+      }
+    `
+  });
+
+  if (isLoggedIn) {
+    await addToCart();
+    client.writeData({
+      data: { productIdInDetails: null, navigationDialogShowing: true }
+    });
+  } else {
+    client.writeData({ data: { isLoginFormShowing: true } });
+  }
+};
+
 const AddToCardButton = ({ styles, productId }) => {
   return (
     <Mutation
       mutation={ADD_PRODUCT_TO_CART}
       variables={{ productId }}
       update={(cache, { data }) => updateCache(cache, data)}>
-      {(addToCart) => {
+      {(addToCart, { client }) => {
         return (
           <AddToCardButtonWrapper styles={styles}>
-            <button onClick={addToCart} className="vb--addToCardButton">
+            <button
+              onClick={() => addToCartCb(client, addToCart)}
+              className="vb--addToCardButton">
               <div className="vb--addToCardButton-icon" />
               <div className="vb--addToCardButton-text">Add To Card</div>
             </button>

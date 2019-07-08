@@ -30,7 +30,7 @@ const GET_PRODUCT = gql`
 const ProductDetailDialog = ({ productId }) => {
   const wrapperStyle = {
     Wrapper: {
-      zIndex: '1',
+      // zIndex: '1',
       top: '50px',
       left: '100px',
       width: '80%',
