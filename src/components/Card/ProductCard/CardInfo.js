@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const CardInfoWrapper = styled.div((props) => ({
-  ...props.styles,
   marginLeft: '-110px',
   fontFamily: 'Sans Serif Pro',
   fontWeight: 'bolder',
@@ -25,7 +24,8 @@ const CardInfoWrapper = styled.div((props) => ({
       marginTop: '3px',
       marginLeft: '7px'
     }
-  }
+  },
+  ...props.styles
 }));
 
 const CardInfo = ({ styles, name, seller, style }) => {
