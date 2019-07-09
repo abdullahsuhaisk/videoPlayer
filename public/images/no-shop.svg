@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="143.977" height="174.212" viewBox="0 0 143.977 174.212">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_6542" data-name="Path 6542" d="M14702.375-19519.809l16.19,16.688h59.156l15.816-16.687-28.52-24.535-54.922,9.465Z" transform="translate(-14541 20018)" fill="#fff" opacity="0.8"/>
+    </clipPath>
+    <filter id="Path_6902" x="11.767" y="136.72" width="141.312" height="141.312" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_8338" data-name="Group 8338" transform="translate(-124.233 -340.667)">
+    <g id="Group_8337" data-name="Group 8337">
+      <ellipse id="Ellipse_422" data-name="Ellipse 422" cx="12.79" cy="12.79" rx="12.79" ry="12.79" transform="translate(163.993 446.623)" fill="#9da7b4"/>
+      <ellipse id="Ellipse_423" data-name="Ellipse 423" cx="12.79" cy="12.79" rx="12.79" ry="12.79" transform="translate(225.649 446.623)" fill="#9da7b4"/>
+      <g id="online-shopping-cart" transform="translate(124.233 319.436)">
+        <g id="Group_7012" data-name="Group 7012" transform="translate(0 21.231)">
+          <path id="Path_5866" data-name="Path 5866" d="M5.326,31.633H20.6l21.749,76.8a5.309,5.309,0,0,0,5.149,3.814h66.846a5.344,5.344,0,0,0,4.882-3.12l24.324-54.608a5.155,5.155,0,0,0-.444-4.941,5.322,5.322,0,0,0-4.439-2.34H64.8a5.2,5.2,0,1,0,0,10.4H130.5l-19.707,44.207h-59.3l-21.749-76.8a5.309,5.309,0,0,0-5.149-3.814H5.326a5.2,5.2,0,1,0,0,10.4Z" transform="translate(0 -21.231)" fill="#9da7b4"/>
+        </g>
+      </g>
+    </g>
+    <g id="Mask_Group_19" data-name="Mask Group 19" clip-path="url(#clip-path)">
+      <g transform="matrix(1, 0, 0, 1, 124.23, 340.67)" filter="url(#Path_6902)">
+        <g id="Path_6902-2" data-name="Path 6902" transform="translate(20.77 142.72)" fill="none" opacity="0.8">
+          <path d="M61.656,0A61.656,61.656,0,1,1,0,61.656,61.656,61.656,0,0,1,61.656,0Z" stroke="none"/>
+          <path d="M 61.65600204467773 12.99998474121094 C 34.82700347900391 12.99998474121094 13 34.82701873779297 13 61.65607452392578 C 13 88.485107421875 34.82700347900391 110.3121337890625 61.65600204467773 110.3121337890625 C 88.48500061035156 110.3121337890625 110.3120040893555 88.485107421875 110.3120040893555 61.65607452392578 C 110.3120040893555 34.82701873779297 88.48500061035156 12.99998474121094 61.65600204467773 12.99998474121094 M 61.65600204467773 -1.52587890625e-05 C 95.70767974853516 -1.52587890625e-05 123.3120040893555 27.6043701171875 123.3120040893555 61.65607452392578 C 123.3120040893555 95.70777893066406 95.70767974853516 123.3121337890625 61.65600204467773 123.3121337890625 C 27.60432434082031 123.3121337890625 0 95.70777893066406 0 61.65607452392578 C 0 27.6043701171875 27.60432434082031 -1.52587890625e-05 61.65600204467773 -1.52587890625e-05 Z" stroke="none" fill="#83329c"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

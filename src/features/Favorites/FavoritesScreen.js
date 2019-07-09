@@ -1,5 +1,6 @@
 import React from 'react';
 import FavoritesCard from './FavoritesCard';
+import EmptyFavoriteList from './EmptyFavoriteList';
 
 const products = {
   'product-1': {
@@ -49,6 +50,7 @@ const FavoritesScreen = () => {
       <FavoritesCard product={products['product-1']} />
       <FavoritesCard product={products['product-2']} />
       <FavoritesCard product={products['product-3']} />
+      <EmptyFavoriteList />
     </div>
   );
 };

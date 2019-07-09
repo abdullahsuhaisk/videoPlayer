@@ -30,4 +30,9 @@ CardImageStyle.propTypes = {
   styles: PropTypes.object
 };
 
+CardImageStyle.defaultProps = {
+  styles: {},
+  style: {}
+};
+
 export default CardImage;

@@ -4,6 +4,7 @@ import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
 import { GET_CONSUMER_CART, REMOVE_ITEM } from '../shoppingCartQueries';
+import EmptyShoppingCart from '../EmptyShoppingCart';
 
 const updateConsumerCart = (cache, { deleteProductInCart }) => {
   const { consumer } = cache.readQuery({
@@ -42,7 +43,8 @@ const ShoppingCart = () => {
               const { cart } = consumer;
 
               if (cart.items.length === 0) {
-                return <div>There is no product in your shopping cart.</div>;
+                // return <div>There is no product in your shopping cart.</div>;
+                return <EmptyShoppingCart />;
               }
 
               return cart.items.map((item) => (
