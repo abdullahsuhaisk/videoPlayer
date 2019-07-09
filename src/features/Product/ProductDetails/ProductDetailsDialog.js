@@ -115,9 +115,7 @@ const ProductDetailDialog = ({ productId }) => {
                                 value={1}
                                 minValue={1}
                                 onValueChanged={(value) => {
-                                  if (value > 0) {
-                                    setQuantity(value);
-                                  }
+                                  setQuantity(value);
                                 }}
                               />
                               <AddToCardButton
