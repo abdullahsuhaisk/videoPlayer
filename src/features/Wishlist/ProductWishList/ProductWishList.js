@@ -18,7 +18,9 @@ const ProductWishList = ({ setWishlist, styles }) => {
         <div className="vb-product-wish-list-search-container">
           <span className="icon" />
         </div>
+        <ProductWishListItem selected />
         <ProductWishListItem />
+        <ProductWishListItem added />
       </div>
     </Wrapper>
   );
