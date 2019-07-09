@@ -5,6 +5,7 @@ import { Query, ApolloConsumer } from 'react-apollo';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
 import { Wrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
+import ProductWishList from '../../Wishlist/ProductWishList/ProductWishList';
 
 const GET_PRODUCT = gql`
   query getProductForProductDetailsDialog($productId: Int!) {
@@ -67,9 +68,7 @@ const ProductDetailDialog = ({ productId }) => {
                         />
                       </div>
                       {wishListOpen ? (
-                        <button onClick={() => setWishlist(false)}>
-                          Close Wish List
-                        </button>
+                        <ProductWishList setWishlist={setWishlist} />
                       ) : (
                         <div className="vb--product-detail-dialog-contents">
                           <div className="vb--product-detail-dialog-content-header">
