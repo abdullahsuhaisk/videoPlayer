@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query, ApolloConsumer } from 'react-apollo';
@@ -39,6 +39,7 @@ const ProductDetailDialog = ({ productId }) => {
     },
     CloseButton: { color: 'black' }
   };
+  const [wishListOpen, setWishlist] = useState(false);
 
   return (
     <ApolloConsumer>
@@ -65,57 +66,66 @@ const ProductDetailDialog = ({ productId }) => {
                           }}
                         />
                       </div>
-                      <div className="vb--product-detail-dialog-contents">
-                        <div className="vb--product-detail-dialog-content-header">
-                          {product.name}
-                        </div>
-                        <div className="vb--product-detail-dialog-content-content">
-                          {product.description}
-                        </div>
-                        <div className="vb--product-detail-dialog-content-features">
-                          <div className="vb--product-detail-dialog-content-features-header">
-                            Colors
+                      {wishListOpen ? (
+                        <button onClick={() => setWishlist(false)}>
+                          Close Wish List
+                        </button>
+                      ) : (
+                        <div className="vb--product-detail-dialog-contents">
+                          <div className="vb--product-detail-dialog-content-header">
+                            {product.name}
                           </div>
-                          <div className="vb--product-detail-dialog-content-features-content">
-                            <button>Blue</button>
-                            <button>Purple</button>
-                            <button>Black</button>
-                            <button>White</button>
+                          <div className="vb--product-detail-dialog-content-content">
+                            {product.description}
                           </div>
-                          <div className="vb--product-detail-dialog-content-features-header">
-                            Size
-                          </div>
-                          <div className="vb--product-detail-dialog-content-features-content">
-                            <button>64 GB</button>
-                            <button>128 GB</button>
-                            <button>256 GB</button>
-                            <button>512 GB</button>
-                          </div>
-                        </div>
-                        <div className="vb--product-detail-dialog-content-price-and-cartButton">
-                          <div className="vb--product-card-price-container">
-                            <div className="vb--product-card-base-price">
-                              <span>{`${
-                                product.currency.symbol
-                              }${product.price.toFixed(2)}`}</span>
+                          <div className="vb--product-detail-dialog-content-features">
+                            <div className="vb--product-detail-dialog-content-features-header">
+                              Colors
                             </div>
-                            <div className="vb--product-card-discount-rate-and-price">
-                              <div className="vb--product-card-discount-rate">
-                                <span>{`%${product.discount}`}</span>
-                              </div>
-                              <div className="vb--product-card-current-price">
-                                <span>{`${product.currency.symbol}${
-                                  product.currentPrice
-                                }`}</span>
-                              </div>
-                              <AddToCardButton
-                                styles={{ paddingTop: '9px' }}
-                                productId={product.id}
-                              />
+                            <div className="vb--product-detail-dialog-content-features-content">
+                              <button>Blue</button>
+                              <button>Purple</button>
+                              <button>Black</button>
+                              <button>White</button>
+                            </div>
+                            <div className="vb--product-detail-dialog-content-features-header">
+                              Size
+                            </div>
+                            <div className="vb--product-detail-dialog-content-features-content">
+                              <button>64 GB</button>
+                              <button>128 GB</button>
+                              <button>256 GB</button>
+                              <button>512 GB</button>
                             </div>
                           </div>
+                          <div className="vb--product-detail-dialog-content-price-and-cartButton">
+                            <div className="vb--product-card-price-container">
+                              <div className="vb--product-card-base-price">
+                                <span>{`${
+                                  product.currency.symbol
+                                }${product.price.toFixed(2)}`}</span>
+                              </div>
+                              <div className="vb--product-card-discount-rate-and-price">
+                                <div className="vb--product-card-discount-rate">
+                                  <span>{`%${product.discount}`}</span>
+                                </div>
+                                <div className="vb--product-card-current-price">
+                                  <span>{`${product.currency.symbol}${
+                                    product.currentPrice
+                                  }`}</span>
+                                </div>
+                                <AddToCardButton
+                                  styles={{ paddingTop: '9px' }}
+                                  productId={product.id}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <button onClick={() => setWishlist(true)}>
+                            Open Wish List
+                          </button>
                         </div>
-                      </div>
+                      )}
                     </>
                   );
                 }}
