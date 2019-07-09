@@ -1,101 +1,66 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
+import { GET_CONSUMER_CART, REMOVE_ITEM } from '../shoppingCartQueries';
+import EmptyShoppingCart from '../EmptyShoppingCart';
 
-export const GET_CART = gql`
-  query getCart {
-    consumer {
-      id
-      cart {
-        items {
-          product {
-            id
-            name
-            brand {
-              id
-              name
-            }
-            image {
-              id
-              thumbnailUrl
-            }
-            price
-            discount
-            currentPrice @client
-          }
-          quantity
-        }
-      }
-    }
-  }
-`;
+const updateConsumerCart = (cache, { deleteProductInCart }) => {
+  const { consumer } = cache.readQuery({
+    query: GET_CONSUMER_CART
+  });
 
-const REMOVE_ITEM = gql`
-  mutation removeItem($productId: Int!) {
-    deleteProductInCart(productId: $productId) {
-      items {
-        product {
-          id
-          name
-          brand {
-            id
-            name
-          }
-          image {
-            id
-            thumbnailUrl
-          }
-          price
-          discount
-          currentPrice @client
-        }
-        quantity
-      }
+  consumer.cart = deleteProductInCart;
+
+  cache.writeQuery({
+    query: GET_CONSUMER_CART,
+    data: {
+      consumer
     }
-  }
-`;
+  });
+};
 
 const ShoppingCart = () => {
   return (
     <ShoppingCartItemWrapper>
       <div className="vb--tabs--shoppingCart-basket-container">
         <div className="vb--tabs-shoppingCart-content-Section">
-          <Query query={GET_CART}>
+          <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
             {({ loading, error, data }) => {
               if (loading || error) {
-                return null;
+                return !!error ? (
+                  <div>You need to log-in to see your shopping cart.</div>
+                ) : null;
               }
 
               const { consumer } = data;
+
+              if (!consumer) {
+                return <div>You need to log-in to see your shopping cart.</div>;
+              }
+
               const { cart } = consumer;
+
+              if (cart.items.length === 0) {
+                // return <div>There is no product in your shopping cart.</div>;
+                return <EmptyShoppingCart />;
+              }
 
               return cart.items.map((item) => (
                 <Mutation
+                  key={item.product.id}
                   mutation={REMOVE_ITEM}
                   variables={{ productId: item.product.id }}
-                  update={(cache, { data: { deleteProductInCart } }) => {
-                    cache.writeQuery({
-                      query: GET_CART,
-                      data: {
-                        consumer: {
-                          id: consumer.id,
-                          cart: deleteProductInCart,
-                          __typename: 'ConsumerType'
-                        }
-                      }
-                    });
-                  }}>
-                  {(removeItem) => {
-                    return (
-                      <ShoppingCartItem
-                        cartItem={item}
-                        onRemoveItem={removeItem}
-                      />
-                    );
-                  }}
+                  update={(cache, { data: deleteProductInCart }) =>
+                    updateConsumerCart(cache, deleteProductInCart)
+                  }>
+                  {(removeItem) => (
+                    <ShoppingCartItem
+                      cartItem={item}
+                      onRemoveItem={removeItem}
+                    />
+                  )}
                 </Mutation>
               ));
             }}

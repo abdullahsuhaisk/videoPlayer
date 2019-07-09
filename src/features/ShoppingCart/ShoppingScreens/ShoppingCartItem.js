@@ -1,31 +1,43 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { Mutation } from 'react-apollo';
 import Stepper from '../../../components/Stepper/Stepper';
 import CardImage from '../../../components/Card/ProductCard/CardImage';
 import CardInfo from '../../../components/Card/ProductCard/CardInfo';
 import CardPrice from '../../../components/Card/ProductCard/CardPrice';
 import CardClose from '../../../components/Card/ProductCard/CardClose';
+import { Wrapper, ShoppingCartItemStyles } from './ShoppingCartItem.style';
+import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
+import {
+  UPDATE_PRODUCT_IN_CART,
+  GET_CONSUMER_CART
+} from '../shoppingCartQueries';
 
-const ShoppingCardWrapper = styled.div((props) => ({
-  ...props.styles,
-  width: '685px',
-  height: '85px',
-  borderRadius: '8px',
-  border: 'solid 1px #ebeae9',
-  backgroundColor: '#ffffff',
-  fontFamily: 'Sans Serif Pro',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  margin: '15px 15px 15px 70px '
-}));
+const updateCache = (cache, { updateProductInCart }) => {
+  const { consumer } = cache.readQuery({
+    query: GET_CONSUMER_CART
+  });
 
-const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
+  consumer.cart = updateProductInCart;
+
+  cache.writeQuery({
+    query: GET_CONSUMER_CART,
+    data: {
+      consumer
+    }
+  });
+};
+
+const ShoppingCartItem = ({ styles, cartItem, onRemoveItem }) => {
+  useEffect(() => {
+    loadWebFontsFromStyles(ShoppingCartItemStyles);
+    loadWebFontsFromStyles(styles);
+  }, []);
+
   return (
-    <ShoppingCardWrapper>
+    <Wrapper styles={styles}>
       <CardImage
         style={{
           backgroundImage: `url(${cartItem.product.image.thumbnailUrl}`
@@ -36,16 +48,44 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
         seller={cartItem.product.brand.name}
         style={{ marginLeft: '30px' }}
       />
-      <Stepper value={cartItem.quantity} onValueChanged={() => {}} />
-      <CardPrice currentPrice={cartItem.product.price.toFixed(2)} />
+      <Mutation
+        mutation={UPDATE_PRODUCT_IN_CART}
+        update={(cache, { data }) => updateCache(cache, data)}>
+        {(updateProductInCart) => {
+          return (
+            <Stepper
+              value={cartItem.quantity}
+              onValueChanged={(value) => {
+                if (value === 0) {
+                  onRemoveItem();
+                }
+                if (value > 0) {
+                  updateProductInCart({
+                    variables: {
+                      productId: cartItem.product.id,
+                      quantity: value
+                    }
+                  });
+                }
+              }}
+            />
+          );
+        }}
+      </Mutation>
+      <CardPrice currentPrice={cartItem.product.price} />
       <CardClose onClose={onRemoveItem} />
-    </ShoppingCardWrapper>
+    </Wrapper>
   );
 };
 
 ShoppingCartItem.propTypes = {
+  styles: PropTypes.object,
   cartItem: PropTypes.object.isRequired,
   onRemoveItem: PropTypes.func.isRequired
+};
+
+ShoppingCartItem.defaultProps = {
+  styles: {}
 };
 
 export default ShoppingCartItem;

@@ -1,5 +1,6 @@
 import firebase from '../../../common/firebase';
 
+// TODO: adjust user info cache from consumer, not the firebase
 const authResolvers = {
   Query: {
     isLoggedIn: () => {

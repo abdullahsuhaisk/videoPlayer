@@ -5,6 +5,7 @@ import { Query, ApolloConsumer } from 'react-apollo';
 import ModalDialog from '../../../components/ModalDialog/ModalDialog';
 import { Wrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
+import Stepper from '../../../components/Stepper/Stepper';
 
 const GET_PRODUCT = gql`
   query getProductForProductDetailsDialog($productId: Int!) {
@@ -30,7 +31,7 @@ const GET_PRODUCT = gql`
 const ProductDetailDialog = ({ productId }) => {
   const wrapperStyle = {
     Wrapper: {
-      zIndex: '1',
+      // zIndex: '1',
       top: '50px',
       left: '100px',
       width: '80%',
@@ -39,6 +40,8 @@ const ProductDetailDialog = ({ productId }) => {
     },
     CloseButton: { color: 'black' }
   };
+
+  const [quantity, setQuantity] = React.useState(1);
 
   return (
     <ApolloConsumer>
@@ -108,9 +111,17 @@ const ProductDetailDialog = ({ productId }) => {
                                   product.currentPrice
                                 }`}</span>
                               </div>
+                              <Stepper
+                                value={1}
+                                minValue={1}
+                                onValueChanged={(value) => {
+                                  setQuantity(value);
+                                }}
+                              />
                               <AddToCardButton
                                 styles={{ paddingTop: '9px' }}
                                 productId={product.id}
+                                quantity={quantity}
                               />
                             </div>
                           </div>

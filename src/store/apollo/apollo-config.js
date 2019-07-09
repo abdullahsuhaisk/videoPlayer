@@ -70,7 +70,16 @@ const setInitialCache = () => {
     isForgotPasswordFormShowing: false,
     productIdInDetails: null,
     navigationDialogShowing: false,
-    consumer: null
+    consumer: {
+      __typename: 'ConsumerType',
+      id: 0,
+      cart: {
+        __typename: 'CartType',
+        items: [],
+        totalProductCount: 0,
+        totalPrices: []
+      }
+    }
   };
 
   cache.writeData({ data });

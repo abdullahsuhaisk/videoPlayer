@@ -1,79 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import AddToCardButtonWrapper from './AddToCardButton.style';
+import {
+  GET_CONSUMER_CART,
+  ADD_PRODUCT_TO_CART,
+  IS_LOGGED_IN
+} from '../../features/ShoppingCart/shoppingCartQueries';
 
-const CART_FRAGMENT = gql`
-  fragment cart on CartType {
-    items {
-      product {
-        id
-        name
-        brand {
-          id
-          name
-        }
-        image {
-          id
-          thumbnailUrl
-        }
-        price
-        discount
-        currentPrice @client
-      }
-      quantity
-    }
-  }
-`;
-
-const ADD_PRODUCT_TO_CART = gql`
-  mutation addProductToCart($productId: Int!) {
-    addProductToCart(productId: $productId) {
-      ...cart
-    }
-  }
-  ${CART_FRAGMENT}
-`;
-
-const GET_CONSUMER = gql`
-  query getConsumer {
-    consumer {
-      id
-      cart {
-        ...cart
-      }
-    }
-  }
-  ${CART_FRAGMENT}
-`;
-
-const updateCache = (cache, data) => {
-  const { addProductToCart } = data;
+const updateCache = (cache, { addProductToCart }) => {
   const { consumer } = cache.readQuery({
-    query: GET_CONSUMER
+    query: GET_CONSUMER_CART
   });
 
   consumer.cart = addProductToCart;
 
   cache.writeQuery({
-    query: GET_CONSUMER,
+    query: GET_CONSUMER_CART,
     data: {
       consumer
     }
   });
 };
 
-const AddToCardButton = ({ styles, productId }) => {
+const addToCartCb = async (client, addToCart) => {
+  const { isLoggedIn } = client.readQuery({
+    query: IS_LOGGED_IN
+  });
+
+  if (isLoggedIn) {
+    await addToCart();
+    client.writeData({
+      data: { productIdInDetails: null, navigationDialogShowing: true }
+    });
+  } else {
+    client.writeData({ data: { isLoginFormShowing: true } });
+  }
+};
+
+const AddToCardButton = ({ styles, productId, quantity }) => {
   return (
     <Mutation
       mutation={ADD_PRODUCT_TO_CART}
-      variables={{ productId }}
+      variables={{ productId, quantity }}
       update={(cache, { data }) => updateCache(cache, data)}>
-      {(addToCart) => {
+      {(addToCart, { client }) => {
         return (
           <AddToCardButtonWrapper styles={styles}>
-            <button onClick={addToCart} className="vb--addToCardButton">
+            <button
+              onClick={() => addToCartCb(client, addToCart)}
+              className="vb--addToCardButton">
               <div className="vb--addToCardButton-icon" />
               <div className="vb--addToCardButton-text">Add To Card</div>
             </button>
@@ -86,11 +62,13 @@ const AddToCardButton = ({ styles, productId }) => {
 
 AddToCardButton.propTypes = {
   styles: PropTypes.object,
-  productId: PropTypes.number.isRequired
+  productId: PropTypes.number.isRequired,
+  quantity: PropTypes.number
 };
 
 AddToCardButton.defaultProps = {
-  styles: {}
+  styles: {},
+  quantity: 1
 };
 
 export default AddToCardButton;
