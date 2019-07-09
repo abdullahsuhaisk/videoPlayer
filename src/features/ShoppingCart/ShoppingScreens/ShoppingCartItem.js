@@ -10,17 +10,20 @@ import CardPrice from '../../../components/Card/ProductCard/CardPrice';
 import CardClose from '../../../components/Card/ProductCard/CardClose';
 import { Wrapper, ShoppingCartItemStyles } from './ShoppingCartItem.style';
 import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
-import { UPDATE_PRODUCT_IN_CART, GET_CONSUMER } from '../shoppingCartQueries';
+import {
+  UPDATE_PRODUCT_IN_CART,
+  GET_CONSUMER_CART
+} from '../shoppingCartQueries';
 
 const updateCache = (cache, { updateProductInCart }) => {
   const { consumer } = cache.readQuery({
-    query: GET_CONSUMER
+    query: GET_CONSUMER_CART
   });
 
   consumer.cart = updateProductInCart;
 
   cache.writeQuery({
-    query: GET_CONSUMER,
+    query: GET_CONSUMER_CART,
     data: {
       consumer
     }
@@ -69,7 +72,7 @@ const ShoppingCartItem = ({ styles, cartItem, onRemoveItem }) => {
           );
         }}
       </Mutation>
-      <CardPrice currentPrice={cartItem.product.price.toFixed(2)} />
+      <CardPrice currentPrice={cartItem.product.price} />
       <CardClose onClose={onRemoveItem} />
     </Wrapper>
   );

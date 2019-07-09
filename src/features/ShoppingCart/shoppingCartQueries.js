@@ -30,8 +30,8 @@ export const CART_FRAGMENT = gql`
 `;
 
 export const ADD_PRODUCT_TO_CART = gql`
-  mutation addProductToCart($productId: Int!) {
-    addProductToCart(productId: $productId) {
+  mutation addProductToCart($productId: Int!, $quantity: Int) {
+    addProductToCart(productId: $productId, quantity: $quantity) {
       ...cart
     }
   }
@@ -47,7 +47,7 @@ export const REMOVE_ITEM = gql`
   ${CART_FRAGMENT}
 `;
 
-export const GET_CONSUMER = gql`
+export const GET_CONSUMER_CART = gql`
   query getConsumer {
     consumer {
       id

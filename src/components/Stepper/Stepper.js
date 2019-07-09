@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { stepperStyles, Wrapper } from './Stepper.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
-const Stepper = ({ value, onValueChanged, styles }) => {
+const Stepper = ({ value, minValue, onValueChanged, styles }) => {
   const [_value, setValue] = useState(value);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Stepper = ({ value, onValueChanged, styles }) => {
   }, [_value]);
 
   const decrement = useCallback(() => {
-    if (_value > 0) {
+    if (_value > minValue) {
       const newValue = _value - 1;
       setValue(newValue);
       onValueChanged(newValue);
@@ -43,11 +43,13 @@ const Stepper = ({ value, onValueChanged, styles }) => {
 Stepper.propTypes = {
   styles: PropTypes.object,
   value: PropTypes.number,
+  minValue: PropTypes.number,
   onValueChanged: PropTypes.func.isRequired
 };
 
 Stepper.defaultProps = {
   styles: {},
-  value: 1
+  value: 1,
+  minValue: 0
 };
 export default Stepper;

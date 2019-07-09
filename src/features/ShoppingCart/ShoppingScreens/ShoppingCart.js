@@ -3,17 +3,17 @@ import { Query, Mutation } from 'react-apollo';
 import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
-import { GET_CONSUMER, REMOVE_ITEM } from '../shoppingCartQueries';
+import { GET_CONSUMER_CART, REMOVE_ITEM } from '../shoppingCartQueries';
 
-const updateCache = (cache, { deleteProductInCart }) => {
+const updateConsumerCart = (cache, { deleteProductInCart }) => {
   const { consumer } = cache.readQuery({
-    query: GET_CONSUMER
+    query: GET_CONSUMER_CART
   });
 
   consumer.cart = deleteProductInCart;
 
   cache.writeQuery({
-    query: GET_CONSUMER,
+    query: GET_CONSUMER_CART,
     data: {
       consumer
     }
@@ -25,7 +25,7 @@ const ShoppingCart = () => {
     <ShoppingCartItemWrapper>
       <div className="vb--tabs--shoppingCart-basket-container">
         <div className="vb--tabs-shoppingCart-content-Section">
-          <Query query={GET_CONSUMER} fetchPolicy="network-only">
+          <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
             {({ loading, error, data }) => {
               if (loading || error) {
                 return !!error ? (
@@ -51,7 +51,7 @@ const ShoppingCart = () => {
                   mutation={REMOVE_ITEM}
                   variables={{ productId: item.product.id }}
                   update={(cache, { data: deleteProductInCart }) =>
-                    updateCache(cache, deleteProductInCart)
+                    updateConsumerCart(cache, deleteProductInCart)
                   }>
                   {(removeItem) => (
                     <ShoppingCartItem

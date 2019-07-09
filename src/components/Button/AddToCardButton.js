@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import AddToCardButtonWrapper from './AddToCardButton.style';
 import {
-  GET_CONSUMER,
+  GET_CONSUMER_CART,
   ADD_PRODUCT_TO_CART,
   IS_LOGGED_IN
 } from '../../features/ShoppingCart/shoppingCartQueries';
 
 const updateCache = (cache, { addProductToCart }) => {
   const { consumer } = cache.readQuery({
-    query: GET_CONSUMER
+    query: GET_CONSUMER_CART
   });
 
   consumer.cart = addProductToCart;
 
   cache.writeQuery({
-    query: GET_CONSUMER,
+    query: GET_CONSUMER_CART,
     data: {
       consumer
     }
@@ -38,11 +38,11 @@ const addToCartCb = async (client, addToCart) => {
   }
 };
 
-const AddToCardButton = ({ styles, productId }) => {
+const AddToCardButton = ({ styles, productId, quantity }) => {
   return (
     <Mutation
       mutation={ADD_PRODUCT_TO_CART}
-      variables={{ productId }}
+      variables={{ productId, quantity }}
       update={(cache, { data }) => updateCache(cache, data)}>
       {(addToCart, { client }) => {
         return (
@@ -62,11 +62,13 @@ const AddToCardButton = ({ styles, productId }) => {
 
 AddToCardButton.propTypes = {
   styles: PropTypes.object,
-  productId: PropTypes.number.isRequired
+  productId: PropTypes.number.isRequired,
+  quantity: PropTypes.number
 };
 
 AddToCardButton.defaultProps = {
-  styles: {}
+  styles: {},
+  quantity: 1
 };
 
 export default AddToCardButton;
