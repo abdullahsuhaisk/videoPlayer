@@ -32,4 +32,8 @@ const ProductWishListItem = ({ added, selected, deleted }) => {
   );
 };
 
+ProductWishListItem.defaultProps = {};
+
+ProductWishListItem.propTypes = {};
+
 export default ProductWishListItem;

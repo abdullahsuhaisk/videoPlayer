@@ -35,4 +35,9 @@ ProductWishList.defaultProps = {
   styles: {}
 };
 
+ProductWishList.propTypes = {
+  styles: PropTypes.object,
+  setWishlist: PropTypes.func.isRequired
+};
+
 export default ProductWishList;
