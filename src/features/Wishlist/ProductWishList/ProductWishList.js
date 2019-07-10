@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ProductWishListStyle, Wrapper } from './ProductWishList.style';
 import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
 import ProductWishListItem from './ProductWishListItem';
+import Button from '../../../components/Button/Button';
 
 const ProductWishList = ({ setWishlist, styles }) => {
   useEffect(() => {
@@ -12,6 +13,7 @@ const ProductWishList = ({ setWishlist, styles }) => {
   }, []);
 
   return (
+    // TODO: Search Component is only showing but it will be make
     <Wrapper>
       <div className="vb-product-wish-list-container">
         <span>Add this item to wishlist</span>
@@ -21,6 +23,9 @@ const ProductWishList = ({ setWishlist, styles }) => {
         <ProductWishListItem selected />
         <ProductWishListItem />
         <ProductWishListItem added />
+        <ProductWishListItem deleted />
+        <Button>Create new List</Button>
+        <Button>Done</Button>
       </div>
     </Wrapper>
   );
