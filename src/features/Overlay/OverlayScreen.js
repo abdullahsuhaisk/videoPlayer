@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SafeArea from '../../components/SafeArea/SafeArea';
 import Scaler from '../../components/Scaler/Scaler';
+import ReadyScreen from './ReadyScreen/ReadyScreen';
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
 // import HotspotScreen from '../Hotspot/HotspotScreen';
@@ -12,12 +13,20 @@ const LoadJsons = () => {
   console.log('Template added');
 };
 
-const OverlayScreen = () => {
+const PlayerStateChange = (a) => {
+  console.log(a, 'Playin state has changed');
+};
+
+const OverlayScreen = ({ playingState }) => {
   // const [json, setJson] = useState();
   useEffect(() => {
     // setJson(LoadJsons());
     LoadJsons();
   }, []);
+
+  useEffect(() => {
+    PlayerStateChange(playingState);
+  }, [playingState]);
 
   return (
     <div
@@ -25,6 +34,8 @@ const OverlayScreen = () => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
+          <ReadyScreen playingState={playingState} />
+
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />

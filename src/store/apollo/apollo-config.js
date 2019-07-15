@@ -48,7 +48,7 @@ const setInitialCache = () => {
       __typename: 'Player',
       isReady: false,
       isStarted: false,
-      playingState: 'PAUSED',
+      playingState: 'READY',
       currentTime: 0,
       seekTo: -1,
       overlayContainerClassName: ''

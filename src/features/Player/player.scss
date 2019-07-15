@@ -5,7 +5,7 @@ $color-primary: rgb(0, 172, 216);
 
 $size-font: 12px;
 
-@import './BigPlayButton/big-play-button';
+// @import './BigPlayButton/big-play-button';
 @import './SettingsButton/settings-button';
 @import './SettingsMenu/settings_menu';
 @import './Tooltip/tooltip';
@@ -97,6 +97,10 @@ $size-font: 12px;
   .vjs-time-control {
     padding: 0;
     color: rgb(221, 221, 221);
+  }
+  // Added for cancel play button css
+  .vjs-big-play-button {
+    display: none;
   }
 
   .vjs-time-divider {
