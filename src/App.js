@@ -23,6 +23,15 @@ const GET_VIDEO = gql`
   }
 `;
 
+const GET_PLAYER = gql`
+  query getPlayerForOverlayScreen {
+    player @client {
+      playingState
+      currentTime
+    }
+  }
+`;
+
 const App = () => {
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
@@ -43,7 +52,15 @@ const App = () => {
         }}
       </Query>
       <OverlayContainer>
-        <OverlayScreen />
+        <Query query={GET_PLAYER}>
+          {({
+            data: {
+              player: { playingState }
+            }
+          }) => {
+            return <OverlayScreen playingState={playingState} />;
+          }}
+        </Query>
       </OverlayContainer>
     </div>
   );
