@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import videoJs from 'video.js';
+
 import SafeArea from '../../components/SafeArea/SafeArea';
 import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
+
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
 // import HotspotScreen from '../Hotspot/HotspotScreen';
@@ -18,11 +21,19 @@ const PlayerStateChange = (a) => {
 };
 
 const OverlayScreen = ({ playingState }) => {
+  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
   // const [json, setJson] = useState();
   useEffect(() => {
     // setJson(LoadJsons());
     LoadJsons();
   }, []);
+
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    setVideoPlayer(videoPlayerJs);
+    // Set video Player
+  }, [videoPlayer]);
 
   useEffect(() => {
     PlayerStateChange(playingState);
@@ -34,8 +45,7 @@ const OverlayScreen = ({ playingState }) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <ReadyScreen playingState={playingState} />
-
+          <ReadyScreen playingState={playingState} videoPlayer={videoPlayer} />
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />
