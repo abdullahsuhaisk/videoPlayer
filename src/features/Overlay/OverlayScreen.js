@@ -4,6 +4,7 @@ import videoJs from 'video.js';
 import SafeArea from '../../components/SafeArea/SafeArea';
 import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
+import PlayingScreen from './PlayingScreen/PlayingScreen';
 
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
@@ -46,6 +47,10 @@ const OverlayScreen = ({ playingState }) => {
       <SafeArea>
         <Scaler>
           <ReadyScreen playingState={playingState} videoPlayer={videoPlayer} />
+          <PlayingScreen
+            playingState={playingState}
+            videoPlayer={videoPlayer}
+          />
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />
