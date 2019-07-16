@@ -1,14 +1,62 @@
 import React from 'react';
+import { ApolloConsumer } from 'react-apollo';
 
 import { Wrapper } from './ControlBar.style';
 
 const ControlBar = ({ styles, videoPlayer, playingState }) => {
   return (
-    <Wrapper styles={styles}>
-      <button>Stop</button>
-      <button>Countinue</button>
-      <button>vol on</button>
-    </Wrapper>
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <Wrapper styles={styles}>
+            <div className="">
+              <button
+                onClick={() => {
+                  client.writeData({
+                    data: {
+                      player: {
+                        __typename: 'Player',
+                        playingState: 'PAUSE'
+                      }
+                    }
+                  });
+                  videoPlayer.pause();
+                }}>
+                Pause Button
+              </button>
+              <button
+                onClick={() => {
+                  client.writeData({
+                    data: {
+                      player: {
+                        __typename: 'Player',
+                        playingState: 'PAUSE'
+                      }
+                    }
+                  });
+                  videoPlayer.pause();
+                }}>
+                Pause Button
+              </button>
+              <button
+                onClick={() => {
+                  client.writeData({
+                    data: {
+                      player: {
+                        __typename: 'Player',
+                        playingState: 'PAUSE'
+                      }
+                    }
+                  });
+                  videoPlayer.play();
+                }}>
+                Play Button
+              </button>
+            </div>
+          </Wrapper>
+        );
+      }}
+    </ApolloConsumer>
   );
 };
 

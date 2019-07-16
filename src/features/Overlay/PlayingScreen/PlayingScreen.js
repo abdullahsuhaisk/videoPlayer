@@ -3,7 +3,7 @@ import { PLAYER } from '../../../common/constants';
 import ControlBar from '../../../components/ScreenPlaying/ControlBar/ControlBar';
 
 const PlayingScreen = ({ playingState, videoPlayer }) => {
-  if (playingState === PLAYER.PLAYING) {
+  if (playingState !== PLAYER.READY) {
     return <ControlBar videoPlayer={videoPlayer} playingState={playingState} />;
   }
   return null;
