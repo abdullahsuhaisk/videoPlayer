@@ -8,9 +8,9 @@ import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import ProfileButton from '../../features/Auth/ProfileButton';
-import Login from '../../features/Auth/Login';
-import Register from '../../features/Auth/Register';
-import ForgotPassword from '../../features/Auth/ForgotPassword';
+import Login from '../../features/Auth/LoginForm';
+import Register from '../../features/Auth/RegisterForm';
+import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 
 const widgetList = {
   Empty,

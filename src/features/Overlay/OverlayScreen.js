@@ -5,6 +5,7 @@ import SafeArea from '../../components/SafeArea/SafeArea';
 import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
+import PausedScreen from './PausedScreen/PausedScreen';
 
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
@@ -51,6 +52,7 @@ const OverlayScreen = ({ playingState }) => {
             playingState={playingState}
             videoPlayer={videoPlayer}
           />
+          <PausedScreen playingState={playingState} videoPlayer={videoPlayer} />
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />

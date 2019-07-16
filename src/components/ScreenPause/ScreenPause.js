@@ -1,7 +1,8 @@
 import React from 'react';
+import WidgetsRenderer from '../../components/WidgetsRenderer/WidgetsRenderer';
 
-const ScreenPause = () => {
-  return <div>Screen ScreenPause</div>;
+const ScreenPause = ({ playingState }) => {
+  return;
 };
 
 export default ScreenPause;
