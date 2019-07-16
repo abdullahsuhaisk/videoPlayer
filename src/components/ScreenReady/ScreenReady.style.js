@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const ScreenReadyStyle = {
+  position: 'relative',
   pointerEvents: 'auto',
   width: '100%',
   height: '500px',

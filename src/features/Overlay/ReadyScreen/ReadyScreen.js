@@ -3,13 +3,12 @@
 import React from 'react';
 
 import { PLAYER } from '../../../common/constants';
-import ScreenReady from '../../../components/ScreenReady/ScreenReady';
+// import ScreenReady from '../../../components/ScreenReady/ScreenReady';
+import WidgetsRenderer from '../../../components/WidgetsRenderer/WidgetsRenderer';
 
-const ReadyScreen = ({ playingState, videoPlayer }) => {
+const ReadyScreen = ({ playingState, temp }) => {
   if (playingState === PLAYER.READY) {
-    return (
-      <ScreenReady videoPlayer={videoPlayer} playingState={playingState} />
-    );
+    return <WidgetsRenderer widgets={[temp.widgets[1]]} />;
   }
   return null;
 };

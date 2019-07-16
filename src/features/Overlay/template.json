@@ -70,6 +70,44 @@
           "background-color": "red"
         }
       }
+    },
+    {
+      "type": "ScreenReady",
+      "props": {
+        "styles": { "position": "relative" },
+        "children": [
+          {
+            "type": "Empty",
+            "props": {
+              "position": "absolute",
+              "bottom": 0,
+              "left": 0,
+              "width": "20px",
+              "height": "20px",
+              "background-color": "green"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenPlaying",
+      "props": {
+        "styles": { "position": "relative" },
+        "children": [
+          {
+            "type": "Empty",
+            "props": {
+              "position": "absolute",
+              "bottom": 0,
+              "left": 0,
+              "width": "20px",
+              "height": "20px",
+              "background-color": "green"
+            }
+          }
+        ]
+      }
     }
   ]
 }

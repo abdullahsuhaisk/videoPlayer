@@ -65,11 +65,11 @@ const setInitialCache = () => {
         left: 0
       }
     },
-    isLoginFormShowing: false,
-    isRegisterFormShowing: false,
-    isForgotPasswordFormShowing: false,
+    isLoginFormShowing: true,
+    isRegisterFormShowing: true,
+    isForgotPasswordFormShowing: true,
     productIdInDetails: null,
-    navigationDialogShowing: false,
+    navigationDialogShowing: true,
     consumer: {
       __typename: 'ConsumerType',
       id: 0,

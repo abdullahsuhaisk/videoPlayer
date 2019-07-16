@@ -11,6 +11,8 @@ import ProfileButton from '../../features/Auth/ProfileButton';
 import Login from '../../features/Auth/LoginForm';
 import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
+import ScreenReady from '../ScreenReady/ScreenReady';
+import ScreenPlaying from '../ScreenPlaying/ScreenPlaying';
 
 const widgetList = {
   Empty,
@@ -22,7 +24,9 @@ const widgetList = {
   ProfileButton,
   Login,
   Register,
-  ForgotPassword
+  ForgotPassword,
+  ScreenReady,
+  ScreenPlaying
 };
 
 const WidgetsRenderer = (props) => {

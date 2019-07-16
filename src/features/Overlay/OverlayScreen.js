@@ -6,7 +6,9 @@ import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
-
+import { PLAYER } from '../../common/constants';
+import ControlBar from '../../components/ScreenPlaying/ControlBar/ControlBar';
+import temp from './template.json';
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
 // import HotspotScreen from '../Hotspot/HotspotScreen';
@@ -22,13 +24,44 @@ const PlayerStateChange = (a) => {
   console.log(a, 'Playin state has changed');
 };
 
+const Screen = ({ playingState, videoPlayer, temp }) => {
+  // console.log(temp);
+  return (
+    <>
+      {playingState === PLAYER.PLAYING && (
+        <PlayingScreen playingState={playingState} videoPlayer={videoPlayer} />
+      )}
+      {playingState === PLAYER.PAUSED && (
+        <PausedScreen
+          playingState={playingState}
+          videoPlayer={videoPlayer}
+          temp={temp}
+        />
+      )}
+      {playingState === PLAYER.READY && (
+        <ReadyScreen
+          playingState={playingState}
+          videoPlayer={videoPlayer}
+          temp={temp}
+        />
+      )}
+    </>
+  );
+};
+
 const OverlayScreen = ({ playingState }) => {
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
-  // const [json, setJson] = useState();
-  useEffect(() => {
-    // setJson(LoadJsons());
-    LoadJsons();
-  }, []);
+  //  const [jsonTemplate, setJsonTemplate] = useState();
+  // useEffect(() => {
+  //   return () => {
+  //     setJsonTemplate(temp);
+  //     console.log(jsonTemplate);
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   // setJson(LoadJsons());
+  //   LoadJsons();
+  // }, []);
 
   useEffect(() => {
     // Which video player logic
@@ -47,12 +80,15 @@ const OverlayScreen = ({ playingState }) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <ReadyScreen playingState={playingState} videoPlayer={videoPlayer} />
-          <PlayingScreen
+          <Screen
             playingState={playingState}
             videoPlayer={videoPlayer}
+            temp={temp}
           />
-          <PausedScreen playingState={playingState} videoPlayer={videoPlayer} />
+          {playingState !== PLAYER.READY && (
+            <ControlBar videoPlayer={videoPlayer} playingState={playingState} />
+          )}
+
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />
