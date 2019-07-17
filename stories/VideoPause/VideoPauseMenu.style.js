@@ -200,6 +200,13 @@ export const StyledComponent = styled.div`
         text-align: center;
       }
     }
+    .priceWrapper {
+      height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+    }
 
     .imageWrapperW {
       background: #e5e5e5;
@@ -233,7 +240,7 @@ export const StyledComponent = styled.div`
         text-align: center;
         display: inline-block;
         margin: 0.2em;
-        padding: 0.5em;
+        padding: 0.3em;
       }
 
       p.linethrough {
@@ -248,7 +255,7 @@ export const StyledComponent = styled.div`
         letter-spacing: 0.09px;
         text-align: left;
         color: #515252;
-        padding: 0.6em 0.1em 0em 0.1em;
+        padding-top: 0.6em;
       }
       p.linethrough:before {
         position: absolute;
@@ -279,7 +286,7 @@ export const StyledComponent = styled.div`
       letter-spacing: 0.43px;
       text-align: center;
       color: #515252;
-      padding: 0.25em 0.5em;
+      padding: 0.5em 0.5em;
     }
     h2 {
       height: 32px;
@@ -290,10 +297,8 @@ export const StyledComponent = styled.div`
       font-stretch: normal;
       line-height: 1.28;
       letter-spacing: 0.16px;
-      text-align: left;
       color: #515252;
       text-align: center;
-      padding: 0.25em;
     }
     p.instock {
       height: 17px;

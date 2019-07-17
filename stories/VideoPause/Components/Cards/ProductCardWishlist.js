@@ -16,9 +16,9 @@ const ProductCardsWishlist = (props) => {
             </div>
           </div>
           <h3>Pierre Cardin Women Red Glasses</h3>
-
-          <h2>71 $</h2>
-
+          <div className="priceWrapper">
+            <h2>71 $</h2>
+          </div>
           <p className="instock">in stock</p>
           <div className="underline"></div>
           <a className="detail">Detail</a>

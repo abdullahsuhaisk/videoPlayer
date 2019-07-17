@@ -17,12 +17,13 @@ const ProductCards = (props) => {
                   <p className="wishlistable">Add to Wish List</p>
                 </div>
                 <h3>{item.name}</h3>
-                <div className="discount">
-                  <p className="percent">{item.discount}</p>
-                  <p className="linethrough">{item.oldPrice}</p>
+                <div className="priceWrapper">
+                  <div className="discount">
+                    <p className="percent">{item.discount}</p>
+                    <p className="linethrough">{item.oldPrice}</p>
+                  </div>
+                  <h2>{item.price}</h2>
                 </div>
-                <h2>{item.price}</h2>
-
                 <p className="instock">{item.stock}</p>
                 <div className="underline"></div>
                 <a className="detail">Detail</a>
