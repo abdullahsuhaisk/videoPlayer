@@ -24,6 +24,8 @@ export const ButtonWrapper = styled.div((props) => ({
   ...props.styles
 }));
 
+export default ButtonWrapper;
+
 // const textColorActive = '#82329c';
 
 // export const AddNewButton = styled(Button)`

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CardImageStyle = styled.div((props) => ({
+export const CardImageStyle = styled.div((props) => ({
   ...props.styles,
   '.vb--card-content--image': {
     width: '83px',

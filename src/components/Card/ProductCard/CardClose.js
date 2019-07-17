@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CloseWrapper = styled.div((props) => ({
+export const CloseWrapper = styled.div((props) => ({
   ...props.styles,
   padding: '15px 20px',
   fontSize: '20px',
