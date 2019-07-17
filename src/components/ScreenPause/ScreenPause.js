@@ -4,13 +4,13 @@ import { PLAYER } from '../../common/constants';
 import { Wrapper } from './ScreenPause.style';
 import template from './template.json';
 
-const ScreenPause = ({ playingState }) => {
+const ScreenPause = ({ playingState, temp }) => {
   if (playingState === PLAYER.PAUSED) {
     return (
       <Wrapper>
         <div className="vb-paused-screen-container">
           ScreenPaused
-          <WidgetsRenderer widgets={[template.widgets[0]]} />
+          <WidgetsRenderer widgets={[temp.widgets[0]]} />
         </div>
       </Wrapper>
     );

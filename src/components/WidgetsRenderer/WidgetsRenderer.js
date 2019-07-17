@@ -13,6 +13,10 @@ import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 import ScreenReady from '../ScreenReady/ScreenReady';
 import ScreenPlaying from '../ScreenPlaying/ScreenPlaying';
+import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
+import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
+// import HotspotScreen from '../../features/Hotspot/HotspotScreen';
+import AuthScreen from '../../features/Auth/AuthScreen';
 
 const widgetList = {
   Empty,
@@ -26,7 +30,11 @@ const widgetList = {
   Register,
   ForgotPassword,
   ScreenReady,
-  ScreenPlaying
+  ScreenPlaying,
+  ProductListScreen,
+  NavigationScreen,
+  AuthScreen
+  // HotspotScreen
 };
 
 const WidgetsRenderer = (props) => {
@@ -38,7 +46,7 @@ const WidgetsRenderer = (props) => {
     const widgetsWithComponentAndProps = widgets.map((widget) => {
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;
-
+      // Above the section I can write new props thing
       if (widgetStyles) {
         loadWebFontsFromStyles(widgetStyles);
       }

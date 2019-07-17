@@ -7,7 +7,7 @@ import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
-import ControlBar from '../../components/ScreenPlaying/ControlBar/ControlBar';
+import ControlBar from '../../components/ControlBar/ControlBar';
 import temp from './template.json';
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
@@ -15,34 +15,45 @@ import temp from './template.json';
 // import ProductDetailsScreen from '../Product/ProductDetails/ProductDetailsScreen';
 // import NavigationScreen from '../NavigationScreen/NavigationScreen';
 
-const LoadJsons = () => {
+const LoadJsons = async () => {
   // TODO: Set json method will make
-  console.log('Template added');
+  return temp;
 };
 
+function loadjson() {
+  return new Promise((res, rej) => {
+    res(temp);
+  });
+}
 const PlayerStateChange = (a) => {
   console.log(a, 'Playin state has changed');
 };
 
-const Screen = ({ playingState, videoPlayer, temp }) => {
-  // console.log(temp);
+const Screen = ({ playingState, videoPlayer }) => {
+  const [template, setTemplate] = useState(null);
+  useEffect(() => {
+    LoadJsons().then((res) => {
+      setTemplate(res);
+    });
+  }, [template]);
+
   return (
     <>
-      {playingState === PLAYER.PLAYING && (
+      {playingState === PLAYER.PLAYING && template && (
         <PlayingScreen playingState={playingState} videoPlayer={videoPlayer} />
       )}
-      {playingState === PLAYER.PAUSED && (
+      {playingState === PLAYER.PAUSED && template && (
         <PausedScreen
           playingState={playingState}
           videoPlayer={videoPlayer}
-          temp={temp}
+          temp={template}
         />
       )}
-      {playingState === PLAYER.READY && (
+      {playingState === PLAYER.READY && template && (
         <ReadyScreen
           playingState={playingState}
           videoPlayer={videoPlayer}
-          temp={temp}
+          temp={template}
         />
       )}
     </>
@@ -71,6 +82,7 @@ const OverlayScreen = ({ playingState }) => {
   }, [videoPlayer]);
 
   useEffect(() => {
+    // You can turn back initial state
     PlayerStateChange(playingState);
   }, [playingState]);
 
