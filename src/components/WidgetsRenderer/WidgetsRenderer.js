@@ -11,11 +11,13 @@ import ProfileButton from '../../features/Auth/ProfileButton';
 import Login from '../../features/Auth/LoginForm';
 import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
-import ScreenReady from '../ScreenReady/ScreenReady';
-import ScreenPlaying from '../ScreenPlaying/ScreenPlaying';
+import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
+import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
+import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
+// Below components are broking Ready Screen
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
 import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
-// import HotspotScreen from '../../features/Hotspot/HotspotScreen';
+import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 
 const widgetList = {
@@ -29,12 +31,13 @@ const widgetList = {
   Login,
   Register,
   ForgotPassword,
-  ScreenReady,
-  ScreenPlaying,
+  ScreenReadyWrapper,
+  ScreenPlayingWrapper,
   ProductListScreen,
   NavigationScreen,
-  AuthScreen
-  // HotspotScreen
+  AuthScreen,
+  ScreenPauseWrapper,
+  HotspotScreen
 };
 
 const WidgetsRenderer = (props) => {

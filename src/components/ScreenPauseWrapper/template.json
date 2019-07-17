@@ -1,0 +1,75 @@
+{
+  "widgets": [
+    {
+      "type": "Empty",
+      "props": {
+        "children": [
+          {
+            "type": "Login",
+            "props": {
+              "styles": {
+                ".vb--login-close": {
+                  "position": "absolute",
+                  "top": "0",
+                  "left": "0",
+                  "padding": "10px 15px",
+                  "fontSize": "50px",
+                  "color": "#0008",
+                  "cursor": "pointer",
+                  "outline": "none",
+                  " .vb--login-close:hover": {
+                    "color": "#00acd8",
+                    "backgroundColor": "#FFF",
+                    "border": "1px solid #00acd8"
+                  },
+                  ".vb--login-close::after": {
+                    "content": "aaa",
+                    "color": "#00ffd2",
+                    "backgroundColor": "#FFF",
+                    "border": "10px solid #00acd8"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "Empty",
+            "props": {
+              "styles": {
+                "position": "absolute",
+                "top": 0,
+                "left": 0,
+                "width": "100px",
+                "height": "100px",
+                "background-color": "yellow"
+              },
+              "children": [
+                {
+                  "type": "Empty",
+                  "props": {
+                    "styles": {
+                      "position": "absolute",
+                      "bottom": 0,
+                      "left": 0,
+                      "width": "20px",
+                      "height": "20px",
+                      "background-color": "green"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "styles": {
+          "position": "absolute",
+          "top": 0,
+          "left": 0,
+          "width": "700px",
+          "height": "700px",
+          "background-color": "red"
+        }
+      }
+    }
+  ]
+}

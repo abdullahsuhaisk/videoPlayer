@@ -1,16 +1,11 @@
 import React from 'react';
 import { PLAYER } from '../../../common/constants';
-import ScreenPause from '../../../components/ScreenPause/ScreenPause';
+//import ScreenPauseWrapper from '../../../components/ScreenPauseWrapper/ScreenPauseWrapper';
+import WidgetsRenderer from '../../../components/WidgetsRenderer/WidgetsRenderer';
 
 const PausedScreen = ({ playingState, videoPlayer, temp }) => {
   if (playingState === PLAYER.PAUSED) {
-    return (
-      <ScreenPause
-        videoPlayer={videoPlayer}
-        playingState={playingState}
-        temp={temp}
-      />
-    );
+    return <WidgetsRenderer widgets={[temp.widgets[0]]} />;
   }
   return null;
 };

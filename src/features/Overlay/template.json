@@ -1,7 +1,7 @@
 {
   "widgets": [
     {
-      "type": "Empty",
+      "type": "ScreenPauseWrapper",
       "props": {
         "children": [
           {
@@ -16,7 +16,7 @@
       }
     },
     {
-      "type": "ScreenReady",
+      "type": "ScreenReadyWrapper",
       "props": {
         "children": [
           {
@@ -27,7 +27,7 @@
       }
     },
     {
-      "type": "ScreenPlaying",
+      "type": "ScreenPlayingWrapper",
       "props": {
         "children": [
           {

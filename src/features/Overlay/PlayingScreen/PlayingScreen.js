@@ -1,8 +1,8 @@
 import React from 'react';
-import ScreenPlaying from '../../../components/ScreenPlaying/ScreenPlaying';
+import WidgetsRenderer from '../../../components/WidgetsRenderer/WidgetsRenderer';
 
-const PlayingScreen = () => {
-  return <ScreenPlaying />;
+const PlayingScreen = ({ temp, playingState }) => {
+  return <WidgetsRenderer widgets={[temp.widgets[2]]} />;
 };
 
 export default PlayingScreen;

@@ -40,7 +40,11 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <>
       {playingState === PLAYER.PLAYING && template && (
-        <PlayingScreen playingState={playingState} videoPlayer={videoPlayer} />
+        <PlayingScreen
+          playingState={playingState}
+          videoPlayer={videoPlayer}
+          temp={template}
+        />
       )}
       {playingState === PLAYER.PAUSED && template && (
         <PausedScreen
@@ -62,17 +66,6 @@ const Screen = ({ playingState, videoPlayer }) => {
 
 const OverlayScreen = ({ playingState }) => {
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
-  //  const [jsonTemplate, setJsonTemplate] = useState();
-  // useEffect(() => {
-  //   return () => {
-  //     setJsonTemplate(temp);
-  //     console.log(jsonTemplate);
-  //   };
-  // }, []);
-  // useEffect(() => {
-  //   // setJson(LoadJsons());
-  //   LoadJsons();
-  // }, []);
 
   useEffect(() => {
     // Which video player logic
