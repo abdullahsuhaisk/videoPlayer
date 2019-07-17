@@ -11,6 +11,14 @@
           {
             "type": "NavigationScreen",
             "props": {}
+          },
+          {
+            "type": "ProductListScreen",
+            "props": {}
+          },
+          {
+            "type": "ProductDetailScreen",
+            "props": {}
           }
         ]
       }
@@ -31,7 +39,7 @@
       "props": {
         "children": [
           {
-            "type": "Empty",
+            "type": "HotspotScreen",
             "props": {}
           }
         ]

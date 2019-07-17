@@ -9,6 +9,7 @@ import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import temp from './template.json';
+
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
 // import HotspotScreen from '../Hotspot/HotspotScreen';

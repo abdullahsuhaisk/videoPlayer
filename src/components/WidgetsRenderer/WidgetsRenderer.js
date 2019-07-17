@@ -19,6 +19,7 @@ import ProductListScreen from '../../features/Product/ProductList/ProductListScr
 import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
+import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 
 const widgetList = {
   Empty,
@@ -37,7 +38,8 @@ const widgetList = {
   NavigationScreen,
   AuthScreen,
   ScreenPauseWrapper,
-  HotspotScreen
+  HotspotScreen,
+  ProductDetailScreen
 };
 
 const WidgetsRenderer = (props) => {
