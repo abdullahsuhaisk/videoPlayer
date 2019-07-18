@@ -4,7 +4,7 @@ import { StyledComponent } from './VideoPauseMenu.style';
 import Overlay from './Components/Overlay/Overlay';
 import Header from './Components/Header/Header';
 import Submenu from './Components/Submenu/Submenu';
-import ProductCards from './Components/Cards/ProductCard';
+import ProductCards from './Components/Cards/ProductCardSimple/ProductCardSimple';
 import dp from '../VideoPause/assets/dp.png';
 import fav from '../VideoPause/assets/fav.png';
 import like from '../VideoPause/assets/like.png';

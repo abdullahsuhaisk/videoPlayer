@@ -1,14 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StyledComponent } from '../../VideoPauseMenu.style';
+import './overlay.styles.css';
 
-const Overlay = (props) => {
+const Overlay = () => {
   return (
     <React.Fragment>
-      <StyledComponent>
-        <div className="mainMenu--background"></div>
-        <div className="mainMenu--overlay"></div>
-      </StyledComponent>
+      <div className="mainMenu--background"></div>
+      <div className="mainMenu--overlay"></div>
     </React.Fragment>
   );
 };

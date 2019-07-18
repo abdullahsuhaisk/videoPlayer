@@ -1,33 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StyledComponent, Link } from '../../VideoPauseMenu.style';
+import './Submenu.styles.css';
 
-const Submenu = (props) => {
-  const { statsData } = props;
+import fav from '../../assets/fav.png';
+import like from '../../assets/like.png';
+import share from '../../assets/share.png';
+
+const Submenu = () => {
   return (
     <React.Fragment>
-      <StyledComponent>
-        <div className="mainMenu--productsMenu">
-          <div className="products">
-            <Link href="#">Products in this Scene</Link>
-            <Link href="#" active>
-              All Products
-            </Link>
-            <Link href="#">Suggested Products</Link>
+      <div className="mainMenu--subMenu">
+        <div className="subMenu--linksWrapper">
+          <a href="#" className="subMenu--link">
+            Products in this Scene
+          </a>
+          <a href="#" className="subMenu--link subMenu--link--active">
+            All Products
+          </a>
+          <a href="#" className="subMenu--link">
+            Suggested Products
+          </a>
+        </div>
+        <div className="subMenu--statsWrapper">
+          <div className="stats--content">
+            <img src={like} />
+            <p>123</p>
           </div>
-          <div className="stats">
-            {statsData.map((item) => {
-              return (
-                <div>
-                  <img src={item.imgUrl} />
-                  <p>{item.numbers}</p>
-                </div>
-              );
-            })}
+          <div className="stats--content">
+            <img src={fav} />
+            <p>123</p>
+          </div>
+          <div className="stats--content">
+            <img src={share} />
+            <p>123</p>
           </div>
         </div>
-        <div className="mainMenu--borderline"></div>
-      </StyledComponent>
+      </div>
+      <div className="subMenu--underline"></div>
     </React.Fragment>
   );
 };

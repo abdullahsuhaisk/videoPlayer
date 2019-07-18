@@ -1,0 +1,47 @@
+.mainMenu--subMenu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.mainMenu--subMenu .subMenu--linksWrapper {
+  width: 50%;
+}
+
+.mainMenu--subMenu .subMenu--linksWrapper .subMenu--link {
+  height: 23px;
+  color: #0b2443;
+  opacity: 0.4;
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.28;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  padding: 0 1em;
+}
+
+.mainMenu--subMenu .subMenu--linksWrapper .subMenu--link:hover,
+.mainMenu--subMenu .subMenu--linksWrapper .subMenu--link--active {
+  opacity: 1;
+}
+
+.mainMenu--subMenu .subMenu--statsWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mainMenu--subMenu .subMenu--statsWrapper .stats--content {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+}
+.subMenu--underline {
+  width: 100%;
+  opacity: 0.4;
+  height: 1px;
+  background: #0b2443;
+}

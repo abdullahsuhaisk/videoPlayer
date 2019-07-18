@@ -1,23 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StyledComponent } from '../../VideoPauseMenu.style';
+import './Header.styles.css';
 
-const Header = (props) => {
+import dp from '../../assets/dp.png';
+
+const Header = () => {
   return (
     <React.Fragment>
-      <StyledComponent>
-        <div className="mainMenu--header">
-          <div className="BrandInfo">
-            <h1>Zara</h1>
-            <h5>Spring- Summer 2019 Best Creation</h5>
-          </div>
-
-          <div className="profileInfo">
-            <h6>Brandon Lee</h6>
-            <img src={props.profileImage} />
-          </div>
+      <div className="mainMenu--header">
+        <div className="mainMenu--brandInfo">
+          <h1 className="company--name">Zara</h1>
+          <h5 className="campaign--name">Spring- Summer 2019 Best Creation</h5>
         </div>
-      </StyledComponent>
+
+        <div className="mainMenu--profileInfo">
+          <h6 className="profile--name">Brandon Lee</h6>
+          <img className="profile--image" src={dp} />
+        </div>
+      </div>
     </React.Fragment>
   );
 };
