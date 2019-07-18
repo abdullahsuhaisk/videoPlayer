@@ -20,7 +20,7 @@ const ScreenReadyWrapper = ({ children }) => {
       {(client) => {
         return (
           <Wrapper>
-            <div className="container">
+            <div className="container-ready-screen">
               <div
                 role="button"
                 className="container-button"

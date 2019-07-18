@@ -9,7 +9,7 @@ const ScreenReadyStyle = {
   justifyContent: 'center',
   cursor: 'pointer',
   alignItems: 'center',
-  '.container': {
+  '.container-ready-screen': {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -21,6 +21,7 @@ const ScreenReadyStyle = {
     transition: 'all 0.4s'
   },
   '.container-button': {
+    pointerEvents: 'auto',
     width: '100%',
     height: '100%',
     display: 'flex',

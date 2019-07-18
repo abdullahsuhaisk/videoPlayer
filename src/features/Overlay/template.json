@@ -25,14 +25,7 @@
     },
     {
       "type": "ScreenReadyWrapper",
-      "props": {
-        "children": [
-          {
-            "type": "Empty",
-            "props": {}
-          }
-        ]
-      }
+      "props": {}
     },
     {
       "type": "ScreenPlayingWrapper",

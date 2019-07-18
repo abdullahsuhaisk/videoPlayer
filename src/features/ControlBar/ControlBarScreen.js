@@ -9,10 +9,8 @@ const ControlBarScreen = ({ styles }) => {
   // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
   useEffect(() => {
-    // Which video player logic
     const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
     setVideoPlayer(videoPlayerJs);
-    // Set video Player
   }, [videoPlayer]);
 
   return (
