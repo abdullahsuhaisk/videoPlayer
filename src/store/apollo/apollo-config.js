@@ -86,7 +86,6 @@ const setInitialCache = () => {
   };
 
   cache.writeData({ data });
-  console.log(data);
 };
 
 setInitialCache();

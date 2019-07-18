@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CardInfoWrapper = styled.div((props) => ({
+export const CardInfoWrapper = styled.div((props) => ({
   marginLeft: '-110px',
   fontFamily: 'Sans Serif Pro',
   fontWeight: 'bolder',

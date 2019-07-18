@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ApolloConsumer } from 'react-apollo';
 
-const ShoppingButtonWrapper = styled.div((props) => ({
+export const ShoppingButtonWrapper = styled.div((props) => ({
   display: 'inline-block',
   pointerEvents: 'auto',
   top: '32px',
