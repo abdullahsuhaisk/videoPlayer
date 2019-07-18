@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import videoJs from 'video.js';
 
+import './overlay.css';
 import SafeArea from '../../components/SafeArea/SafeArea';
 import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
@@ -9,6 +10,15 @@ import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import temp from './template.json';
+
+function addCustomCss(url) {
+  // it must to move index.js
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('type', 'text/css');
+  link.setAttribute('href', url);
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
 
 // import AuthScreen from '../Auth/AuthScreen';
 // import ProductListScreen from '../Product/ProductList/ProductListScreen';
