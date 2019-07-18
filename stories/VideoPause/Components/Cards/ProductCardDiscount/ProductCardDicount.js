@@ -2,7 +2,6 @@ import React from 'react';
 import '../Cards.styles.css';
 
 import cardimg from '../../../assets/cardimg.png';
-import circleimg from '../../../assets/circle.png';
 
 const ProductCardDiscount = () => {
   return (

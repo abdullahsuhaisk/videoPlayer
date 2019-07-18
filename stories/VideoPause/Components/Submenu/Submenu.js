@@ -10,15 +10,9 @@ const Submenu = () => {
     <React.Fragment>
       <div className="mainMenu--subMenu">
         <div className="subMenu--linksWrapper">
-          <a href="#" className="subMenu--link">
-            Products in this Scene
-          </a>
-          <a href="#" className="subMenu--link subMenu--link--active">
-            All Products
-          </a>
-          <a href="#" className="subMenu--link">
-            Suggested Products
-          </a>
+          <a className="subMenu--link">Products in this Scene</a>
+          <a className="subMenu--link subMenu--link--active">All Products</a>
+          <a className="subMenu--link">Suggested Products</a>
         </div>
         <div className="subMenu--statsWrapper">
           <div className="stats--content">
