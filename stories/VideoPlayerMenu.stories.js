@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import VideoPauseMenu from './VideoPause/VideoPauseMenu';
 import Overlay from './VideoPause/Components/Overlay/Overlay';
 import Header from './VideoPause/Components/Header/Header';
 import Submenu from './VideoPause/Components/Submenu/Submenu';
@@ -9,10 +8,6 @@ import ProductCardDiscount from './VideoPause/Components/Cards/ProductCardDiscou
 import ProductCardWishlisted from './VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
 
 import dp from './VideoPause/assets/dp.png';
-
-storiesOf('Video Paused Menu', module).add('main menu', () => (
-  <VideoPauseMenu />
-));
 
 storiesOf('Video Paused Components', module)
   .add('Overlay', () => <Overlay />)
