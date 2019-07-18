@@ -45,11 +45,7 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <>
       {playingState === PLAYER.PLAYING && template && (
-        <PlayingScreen
-          playingState={playingState}
-          videoPlayer={videoPlayer}
-          temp={template}
-        />
+        <PlayingScreen temp={template} />
       )}
       {playingState === PLAYER.PAUSED && template && (
         <PausedScreen
@@ -86,7 +82,7 @@ const OverlayScreen = ({ playingState }) => {
   }, [videoPlayer]);
 
   useEffect(() => {
-    // You can turn back initial state
+    // TODO:You can turn back initial state
     PlayerStateChange(playingState);
   }, [playingState]);
 
