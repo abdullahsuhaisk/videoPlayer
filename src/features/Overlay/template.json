@@ -44,6 +44,17 @@
           }
         ]
       }
+    },
+    {
+      "type": "ControlBarWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ControlBarScreen",
+            "props": {}
+          }
+        ]
+      }
     }
   ]
 }

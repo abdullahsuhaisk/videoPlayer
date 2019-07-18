@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { ApolloConsumer } from 'react-apollo';
+import videoJs from 'video.js';
 
 import { Wrapper } from './ControlBar.style';
 
-const ControlBar = ({ styles, videoPlayer, playingState }) => {
+const ControlBarScreen = ({ styles }) => {
+  // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
+  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    setVideoPlayer(videoPlayerJs);
+    // Set video Player
+  }, [videoPlayer]);
+
   return (
     <ApolloConsumer>
       {(client) => {
@@ -60,4 +71,4 @@ const ControlBar = ({ styles, videoPlayer, playingState }) => {
   );
 };
 
-export default ControlBar;
+export default ControlBarScreen;

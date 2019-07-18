@@ -13,6 +13,7 @@ import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
+import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 // Below components are broking Ready Screen
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
@@ -20,6 +21,7 @@ import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
+import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
 
 const widgetList = {
   Empty,
@@ -34,12 +36,14 @@ const widgetList = {
   ForgotPassword,
   ScreenReadyWrapper,
   ScreenPlayingWrapper,
+  ControlBarWrapper,
+  ScreenPauseWrapper,
   ProductListScreen,
   NavigationScreen,
   AuthScreen,
-  ScreenPauseWrapper,
   HotspotScreen,
-  ProductDetailScreen
+  ProductDetailScreen,
+  ControlBarScreen
 };
 
 const WidgetsRenderer = (props) => {
