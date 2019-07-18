@@ -5,6 +5,107 @@ export const Link = styled.a`
   opacity: ${(props) => (props.active ? 1 : 0.4)};
 `;
 
+export const CardWrapper = styled.div`
+  .discount {
+    display: ${(props) => (props.discount ? 'flex' : 'none')};
+    justify-content: center;
+    p.percent {
+      font-family: SourceSansPro;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.31;
+      letter-spacing: 0.09px;
+      color: #ffffff;
+      border-radius: 6px;
+      background-color: #d33737;
+      text-align: center;
+      display: inline-block;
+      margin: 0.2em;
+      padding: 0.3em;
+    }
+
+    p.linethrough {
+      position: relative;
+      height: 17px;
+      font-family: SourceSansPro;
+      font-size: 13px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.31;
+      letter-spacing: 0.09px;
+      text-align: left;
+      color: #515252;
+      padding-top: 0.6em;
+    }
+    p.linethrough:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 60%;
+      right: 0;
+      border-top: 1px solid #d33737;
+      border-color: #d33737;
+
+      -webkit-transform: rotate(-5deg);
+      -moz-transform: rotate(-5deg);
+      -ms-transform: rotate(-5deg);
+      -o-transform: rotate(-5deg);
+      transform: rotate(-5deg);
+    }
+  }
+`;
+
+export const WishlistWrapper = styled.div`
+  .imageWrapper {
+    width: 228px;
+    height: 303px;
+    border-radius: 8px;
+    background-color: ${(props) => (props.inWishlist ? '#e5e5e5' : '#00acd8')};
+  }
+  .wishlistable {
+    display: ${(props) => (props.inWishlist ? 'none' : 'block')};
+    height: 23px;
+    font-family: SourceSansPro;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: #ebeae9;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .wishlisted {
+    position: relative;
+    height: 23px;
+    font-family: SourceSansPro;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #00acd8;
+    text-align: center;
+  }
+
+  .wishlistImage {
+    display: ${(props) => (props.inWishlist ? 'flex' : 'none')};
+    justify-content: center;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.35em;
+    }
+  }
+`;
+
 export const StyledComponent = styled.div`
   * {
     margin: 0;
@@ -156,50 +257,17 @@ export const StyledComponent = styled.div`
       margin: 0 1em;
     }
 
-    .imageWrapper,
-    .imageWrapperW {
+    .cardImage {
       width: 228px;
-      height: 303px;
+      height: 269px;
+      object-fit: contain;
       border-radius: 8px;
-      background-color: #00acd8;
-
-      .cardImage {
-        width: 228px;
-        height: 269px;
-        object-fit: contain;
-        border-radius: 8px;
-        border: solid 1px #ffffff;
-      }
-      .checkImage {
-        display: inline;
-      }
-      .wishlistable {
-        height: 23px;
-        font-family: SourceSansPro;
-        font-size: 18px;
-        font-weight: 600;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.28;
-        letter-spacing: normal;
-        text-align: left;
-        color: #ebeae9;
-        text-align: center;
-      }
-      .wishlisted {
-        height: 23px;
-        font-family: SourceSansPro;
-        font-size: 18px;
-        font-weight: 600;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.28;
-        letter-spacing: normal;
-        text-align: left;
-        color: #00acd8;
-        text-align: center;
-      }
+      border: solid 1px #ffffff;
     }
+    .checkImage {
+      display: inline;
+    }
+
     .priceWrapper {
       height: 70px;
       display: flex;
@@ -208,71 +276,6 @@ export const StyledComponent = styled.div`
       justify-content: center;
     }
 
-    .imageWrapperW {
-      background: #e5e5e5;
-
-      div {
-        display: flex;
-        justify-content: center;
-
-        img {
-          width: 20px;
-          height: 20px;
-          margin-right: 0.5em;
-        }
-      }
-    }
-
-    .discount {
-      display: flex;
-      justify-content: center;
-      p.percent {
-        font-family: SourceSansPro;
-        font-size: 13px;
-        font-weight: bold;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.31;
-        letter-spacing: 0.09px;
-        color: #ffffff;
-        border-radius: 6px;
-        background-color: #d33737;
-        text-align: center;
-        display: inline-block;
-        margin: 0.2em;
-        padding: 0.3em;
-      }
-
-      p.linethrough {
-        position: relative;
-        height: 17px;
-        font-family: SourceSansPro;
-        font-size: 13px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.31;
-        letter-spacing: 0.09px;
-        text-align: left;
-        color: #515252;
-        padding-top: 0.6em;
-      }
-      p.linethrough:before {
-        position: absolute;
-        content: '';
-        left: 0;
-        top: 60%;
-        right: 0;
-        border-top: 1px solid #d33737;
-        border-color: #d33737;
-
-        -webkit-transform: rotate(-5deg);
-        -moz-transform: rotate(-5deg);
-        -ms-transform: rotate(-5deg);
-        -o-transform: rotate(-5deg);
-        transform: rotate(-5deg);
-      }
-    }
     h3 {
       display: block;
       position: relative;

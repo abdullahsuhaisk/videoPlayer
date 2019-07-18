@@ -47,6 +47,28 @@ const VideoPauseMenu = (props) => {
                 discount: '50%',
                 oldPrice: '149.50',
                 stock: 'in stock'
+              },
+              {
+                imgUrl: cardimg,
+                name: 'Pierre Cardin Men Red Glasses',
+                price: '52 $',
+                stock: 'in stock',
+                inWishlist: 'yes'
+              },
+              {
+                imgUrl: cardimg,
+                name: 'Pierre Cardin Men Red Glasses',
+                price: '52 $',
+                stock: 'in stock'
+              },
+              {
+                imgUrl: cardimg,
+                name: 'Pierre Cardin Women Red Glasses',
+                price: '71 $',
+                discount: '50%',
+                oldPrice: '149.50',
+                stock: 'in stock',
+                inWishlist: 'yes'
               }
             ]}
           />
