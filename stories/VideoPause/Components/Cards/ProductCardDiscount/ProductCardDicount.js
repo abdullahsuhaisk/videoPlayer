@@ -6,7 +6,7 @@ import cardimg from '../../../assets/cardimg.png';
 const ProductCardDiscount = () => {
   return (
     <React.Fragment>
-      <div className="mainMenu--productCard">
+      <div className="Product-Card">
         <div className="productCard--imageWrapper">
           <img src={cardimg} className="productCard--image" />
           <a className="productCard--wishlist-status">Add to Wish List</a>

@@ -10,7 +10,7 @@
   background-size: cover;
 }
 
-.mainMenu--overlay {
+.Overlay {
   position: absolute;
   top: 0px;
   left: 0px;

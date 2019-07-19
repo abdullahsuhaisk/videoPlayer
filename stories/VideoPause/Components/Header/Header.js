@@ -6,7 +6,7 @@ import dp from '../../assets/dp.png';
 const Header = () => {
   return (
     <React.Fragment>
-      <div className="mainMenu--header">
+      <div className="Header">
         <div className="mainMenu--brandInfo">
           <h1 className="company--name">Zara</h1>
           <h5 className="campaign--name">Spring- Summer 2019 Best Creation</h5>

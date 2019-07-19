@@ -5,7 +5,7 @@ const Overlay = () => {
   return (
     <React.Fragment>
       <div className="mainMenu--background"></div>
-      <div className="mainMenu--overlay"></div>
+      <div className="Overlay"></div>
     </React.Fragment>
   );
 };

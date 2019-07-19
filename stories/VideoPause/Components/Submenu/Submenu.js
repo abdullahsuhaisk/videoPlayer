@@ -8,7 +8,7 @@ import share from '../../assets/share.png';
 const Submenu = () => {
   return (
     <React.Fragment>
-      <div className="mainMenu--subMenu">
+      <div className="sub-Menu">
         <div className="subMenu--linksWrapper">
           <a className="subMenu--link">Products in this Scene</a>
           <a className="subMenu--link subMenu--link--active">All Products</a>

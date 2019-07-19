@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductCardWishlisted.styles.css';
+import '../Cards.styles.css';
 
 import cardimg from '../../../assets/cardimg.png';
 import circleimg from '../../../assets/circle.png';
@@ -7,8 +7,8 @@ import circleimg from '../../../assets/circle.png';
 const ProductCardWishlisted = () => {
   return (
     <React.Fragment>
-      <div className="mainMenu--productCard">
-        <div className="productCard--imageWrapper2">
+      <div className="Product-Card">
+        <div className="productCard--imageWrapper-2">
           <img src={cardimg} className="productCard--image" />
           <div className="productCard--wishlistWrapper">
             <img src={circleimg} className="productCard--wishlist-image" />
