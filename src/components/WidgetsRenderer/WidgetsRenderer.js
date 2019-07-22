@@ -8,9 +8,21 @@ import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import ProfileButton from '../../features/Auth/ProfileButton';
-import Login from '../../features/Auth/Login';
-import Register from '../../features/Auth/Register';
-import ForgotPassword from '../../features/Auth/ForgotPassword';
+import Login from '../../features/Auth/LoginForm';
+import Register from '../../features/Auth/RegisterForm';
+import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
+import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
+import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
+import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
+import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
+// Below components are broking Ready Screen
+import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
+import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
+import HotspotScreen from '../../features/Hotspot/HotspotScreen';
+import AuthScreen from '../../features/Auth/AuthScreen';
+import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
+import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
+import ProductCardWishlisted from '../Usame/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
 
 const widgetList = {
   Empty,
@@ -22,7 +34,18 @@ const widgetList = {
   ProfileButton,
   Login,
   Register,
-  ForgotPassword
+  ForgotPassword,
+  ScreenReadyWrapper,
+  ScreenPlayingWrapper,
+  ControlBarWrapper,
+  ScreenPauseWrapper,
+  ProductListScreen,
+  NavigationScreen,
+  AuthScreen,
+  HotspotScreen,
+  ProductDetailScreen,
+  ControlBarScreen,
+  ProductCardWishlisted
 };
 
 const WidgetsRenderer = (props) => {
@@ -34,7 +57,7 @@ const WidgetsRenderer = (props) => {
     const widgetsWithComponentAndProps = widgets.map((widget) => {
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;
-
+      // Above the section I can write new props thing
       if (widgetStyles) {
         loadWebFontsFromStyles(widgetStyles);
       }

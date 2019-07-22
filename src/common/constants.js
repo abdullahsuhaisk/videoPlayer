@@ -1,7 +1,8 @@
 export const PLAYER = {
   PLAYING: 'PLAYING',
   PAUSED: 'PAUSED',
-  SCRUBBING: 'SCRUBBING'
+  SCRUBBING: 'SCRUBBING',
+  READY: 'READY'
 };
 
 export const WIDTH = 800;

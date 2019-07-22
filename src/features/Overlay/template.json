@@ -1,0 +1,60 @@
+{
+  "widgets": [
+    {
+      "type": "ScreenPauseWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "AuthScreen",
+            "props": {}
+          },
+          {
+            "type": "NavigationScreen",
+            "props": {}
+          },
+          {
+            "type": "ProductListScreen",
+            "props": {}
+          },
+          {
+            "type": "ProductDetailScreen",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenReadyWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ProductCardWishlisted",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenPlayingWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "HotspotScreen",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ControlBarWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ControlBarScreen",
+            "props": {}
+          }
+        ]
+      }
+    }
+  ]
+}

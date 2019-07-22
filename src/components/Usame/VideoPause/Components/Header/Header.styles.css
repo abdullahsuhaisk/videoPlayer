@@ -1,0 +1,67 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  width: 1588px;
+  height: 150px;
+}
+
+.Header .mainMenu--brandInfo {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.Header .mainMenu--brandInfo .company--name {
+  height: 110px;
+  font-family: SourceSansPro;
+  font-size: 87px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.26;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0b2443;
+  margin: 0.5em;
+}
+.Header .mainMenu--brandInfo .campaign--name {
+  height: 23px;
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.28;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0b2443;
+  padding: 0.5em;
+}
+
+.Header .mainMenu--profileInfo {
+  display: flex;
+  height: 150px;
+  width: 200px;
+  padding: 0.2em;
+}
+
+.Header .mainMenu--profileInfo .profile--name {
+  align-self: center;
+  height: 23px;
+  opacity: 0.4;
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.28;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0b2443;
+  padding: 0.5em;
+}
+.Header .mainMenu--profileInfo .profile--image {
+  align-self: center;
+  width: 50px;
+  height: 50px;
+}

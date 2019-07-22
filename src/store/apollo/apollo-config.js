@@ -2,6 +2,8 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import videoJs from 'video.js';
+
 import firebase from '../../common/firebase';
 import { resolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
@@ -45,10 +47,11 @@ const client = new ApolloClient({
 const setInitialCache = () => {
   const data = {
     player: {
+      videoPlayer: null,
       __typename: 'Player',
       isReady: false,
       isStarted: false,
-      playingState: 'PAUSED',
+      playingState: 'READY',
       currentTime: 0,
       seekTo: -1,
       overlayContainerClassName: ''

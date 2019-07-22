@@ -24,12 +24,6 @@ export const loginFormStyles = {
     cursor: 'pointer',
     outline: 'none'
   },
-  '.vb--login-banner': {
-    background: 'url(/images/login_image.svg) center / contain no-repeat',
-    margin: '30px 0 30px 0',
-    width: '100%',
-    height: '140px'
-  },
   '.vb--login-input-container': {
     display: 'flex',
     flexDirection: 'column',

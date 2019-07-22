@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
 import 'videojs-markers';
 import './player.scss';
-import './SettingsButton/vjs-settings-button';
+// import './SettingsButton/vjs-settings-button';
 import './SettingsMenu/vjs-settings-menu';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -204,20 +204,20 @@ const Player = ({ width, height, poster, sources }) => {
     });
   }, []);
 
-  useEffect(() => {
-    const { controlBar } = playerRef.current;
+  // useEffect(() => {
+  //   const { controlBar } = playerRef.current;
 
-    if (controlBar) {
-      controlBar.settingsButton = controlBar.addChild(
-        'vjsSettingsButton',
-        {},
-        controlBar.children().length - 1
-      );
-      playerRef.current.settingsMenu = playerRef.current.addChild(
-        'vjsSettingsMenu'
-      );
-    }
-  }, []);
+  //   if (controlBar) {
+  //     controlBar.settingsButton = controlBar.addChild(
+  //       'vjsSettingsButton',
+  //       {},
+  //       controlBar.children().length - 1
+  //     );
+  //     playerRef.current.settingsMenu = playerRef.current.addChild(
+  //       'vjsSettingsMenu'
+  //     );
+  //   }
+  // }, []);
 
   const handlePlayingState = useCallback(
     (newPlayingState) => {

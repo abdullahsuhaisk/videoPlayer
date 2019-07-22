@@ -12,13 +12,32 @@ const GET_VIDEO = gql`
       id
       video {
         id
-        videoUrl
-        videoType
-        image {
+        qualities {
           id
-          imageUrl
+          url
         }
       }
+      image {
+        id
+        imageUrl
+      }
+      hotSpots {
+        id
+        in
+        out
+        product {
+          id
+        }
+      }
+    }
+  }
+`;
+
+const GET_PLAYER = gql`
+  query getPlayerForOverlayScreen {
+    player @client {
+      playingState
+      currentTime
     }
   }
 `;
@@ -26,14 +45,17 @@ const GET_VIDEO = gql`
 const App = () => {
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Query query={GET_VIDEO} variables={{ prodLinkId: 1 }}>
+      <Query query={GET_VIDEO} variables={{ prodLinkId: 7 }}>
         {({ loading, error, data }) => {
           if (loading || error) return null;
-
+          // console.log(data)
           const { video } = data.prodLink;
-          const poster = video.image.imageUrl;
-          const src = video.videoUrl;
-          const type = video.videoType;
+          const { image } = data.prodLink;
+          // const poster = image.imageUrl;
+          const poster =
+            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
+          const src = video.qualities[2].url;
+          const type = video.qualities[2].type;
 
           return (
             <Suspense fallback={<></>}>
@@ -43,7 +65,15 @@ const App = () => {
         }}
       </Query>
       <OverlayContainer>
-        <OverlayScreen />
+        <Query query={GET_PLAYER}>
+          {({
+            data: {
+              player: { playingState }
+            }
+          }) => {
+            return <OverlayScreen playingState={playingState} />;
+          }}
+        </Query>
       </OverlayContainer>
     </div>
   );
