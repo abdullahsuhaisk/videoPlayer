@@ -9,24 +9,12 @@ import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
 import ControlBarScreen from '../ControlBar/ControlBarScreen';
-import { useTemplate } from './TemplateHook';
+import { useTemplate, useCss } from './TemplateHook';
 import temp from './template.json';
-
-function addCustomCss(url) {
-  // it must to move index.js
-  const link = document.createElement('link');
-  link.setAttribute('rel', 'stylesheet');
-  link.setAttribute('type', 'text/css');
-  link.setAttribute('href', url);
-  document.getElementsByTagName('head')[0].appendChild(link);
-}
 
 const Screen = ({ playingState, videoPlayer }) => {
   const template = useTemplate();
-  useEffect(() => {
-    addCustomCss('/css/overlay.css');
-    return () => {};
-  }, []);
+  useCss();
 
   return (
     <>
