@@ -2,7 +2,6 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import videoJs from 'video.js';
 
 import firebase from '../../common/firebase';
 import { resolvers } from './resolvers';
@@ -46,6 +45,10 @@ const client = new ApolloClient({
 
 const setInitialCache = () => {
   const data = {
+    template: {
+      __typename: 'Template',
+      whichProductListrender: 1
+    },
     player: {
       videoPlayer: null,
       __typename: 'Player',

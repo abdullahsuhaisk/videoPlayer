@@ -13,8 +13,37 @@
             "props": {}
           },
           {
-            "type": "ProductListScreen",
-            "props": {}
+            "type": "ProductPauseWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ProductListHeader",
+                  "props": {
+                    "companyName": "Addidas",
+                    "campaingName": "Kış kampanyası"
+                  }
+                },
+                {
+                  "type": "Tab",
+                  "props": {
+                    "tabs": [
+                      {
+                        "title": " My wish List",
+                        "key": "wishList"
+                      },
+                      {
+                        "title": "login",
+                        "key": "login"
+                      },
+                      {
+                        "title": "auth",
+                        "key": "auth"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
           },
           {
             "type": "ProductDetailScreen",
@@ -26,12 +55,7 @@
     {
       "type": "ScreenReadyWrapper",
       "props": {
-        "children": [
-          {
-            "type": "ProductCardWishlisted",
-            "props": {}
-          }
-        ]
+        "children": []
       }
     },
     {

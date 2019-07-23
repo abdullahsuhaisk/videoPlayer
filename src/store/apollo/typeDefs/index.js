@@ -23,6 +23,10 @@ const typeDefs = gql`
     safeArea: SafeArea!
   }
 
+  type Template {
+    whichProductListrender: Int!
+  }
+
   type UserInfo {
     displayName: String!
     email: String!
@@ -43,6 +47,7 @@ const typeDefs = gql`
     userInfo: UserInfo
     productIdInDetails: Int
     navigationDialogShowing: Boolean!
+    template: Template!
   }
 
   extend type Mutation {

@@ -22,7 +22,18 @@ import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
-import ProductCardWishlisted from '../Usame/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
+// import ProductCardWishlisted from '../Usame/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
+import NavigationWrapper from '../NavigationWrapper/NavigationWrapper';
+import ProductPauseWrapper from '../ProductListWrapper/ProductPauseWrapper';
+import ProductListHeader from '../ProductListWrapper/ProductListHeader';
+import ProductListSubmenu from '../ProductListWrapper/ProductListSubmenu';
+import ProductListCard from '../ProductListWrapper/ProductListCard';
+import ProductListSubMenusItem from '../ProductListWrapper/ProductListSubMenusItem';
+import ProductInThisScene from '../ProductListWrapper/ProductInThisScene';
+import AllProducts from '../ProductListWrapper/AllProducts';
+import AllProductsCard from '../ProductListWrapper/AllProductsCard';
+import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
+import { Tab } from '../Template/Tab/Tab';
 
 const widgetList = {
   Empty,
@@ -45,7 +56,18 @@ const widgetList = {
   HotspotScreen,
   ProductDetailScreen,
   ControlBarScreen,
-  ProductCardWishlisted
+  // ProductCardWishlisted,
+  NavigationWrapper,
+  ProductPauseWrapper,
+  ProductListHeader,
+  ProductListSubmenu,
+  ProductListCard,
+  ProductListSubMenusItem,
+  ProductInThisScene,
+  AllProducts,
+  AllProductsCard,
+  ShoppingCartScreen,
+  Tab
 };
 
 const WidgetsRenderer = (props) => {
