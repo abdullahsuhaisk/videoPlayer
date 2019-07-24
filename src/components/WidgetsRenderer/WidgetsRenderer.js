@@ -11,29 +11,34 @@ import ProfileButton from '../../features/Auth/ProfileButton';
 import Login from '../../features/Auth/LoginForm';
 import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
+// Wrapper Section //
 import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
 import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
-// Below components are broking Ready Screen
+// Wrapper Section //
+
+// Screen Section Screen has all of logic and own State //
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
 import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
+// Screen Section //
+
+// Tab Component //
+import { Tab } from '../Template/Tab/Tab';
+import TabWrapper from '../Template/Tab/TabWrapper';
+import Header from '../Template/Header';
+// Tab Component //
+
 // import ProductCardWishlisted from '../Usame/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
 import NavigationWrapper from '../NavigationWrapper/NavigationWrapper';
-import ProductPauseWrapper from '../ProductListWrapper/ProductPauseWrapper';
-import ProductListHeader from '../ProductListWrapper/ProductListHeader';
-import ProductListSubmenu from '../ProductListWrapper/ProductListSubmenu';
 import ProductListCard from '../ProductListWrapper/ProductListCard';
-import ProductListSubMenusItem from '../ProductListWrapper/ProductListSubMenusItem';
-import ProductInThisScene from '../ProductListWrapper/ProductInThisScene';
-import AllProducts from '../ProductListWrapper/AllProducts';
+
 import AllProductsCard from '../ProductListWrapper/AllProductsCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
-import { Tab } from '../Template/Tab/Tab';
 
 const widgetList = {
   Empty,
@@ -58,16 +63,12 @@ const widgetList = {
   ControlBarScreen,
   // ProductCardWishlisted,
   NavigationWrapper,
-  ProductPauseWrapper,
-  ProductListHeader,
-  ProductListSubmenu,
+  TabWrapper,
+  Tab,
+  Header,
   ProductListCard,
-  ProductListSubMenusItem,
-  ProductInThisScene,
-  AllProducts,
   AllProductsCard,
-  ShoppingCartScreen,
-  Tab
+  ShoppingCartScreen
 };
 
 const WidgetsRenderer = (props) => {

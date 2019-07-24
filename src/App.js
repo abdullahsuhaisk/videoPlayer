@@ -55,7 +55,7 @@ const App = () => {
           const poster =
             'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
           const src = video.qualities[2].url;
-          const type = video.qualities[2].type;
+          const { type } = video.qualities[2];
 
           return (
             <Suspense fallback={<></>}>

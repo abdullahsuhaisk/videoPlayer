@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ProductPauseWrapper = ({ children }) => {
+const TabWrapper = ({ children }) => {
   return <div style={{ pointerEvents: 'auto' }}>{children}</div>;
 };
 
-export default ProductPauseWrapper;
+export default TabWrapper;

@@ -1,39 +1,30 @@
 import React, { useState } from 'react';
 import { ComponentsService } from './ComponentService';
 
-// const jsonTemplate = {
-//   tabs: [
-//     {
-//       title: 'login',
-//       key: 'product'
-//     },
-//     {
-//       title: 'wishList',
-//       key: 'wishList'
-//     }
-//   ]
-// };
-
-function buildMenu(tabs, callback) {
+function buildMenu(tabs, callback, tab) {
   return tabs.map((item) => (
     <button
-      style={{ margin: '20px', border: 'solid 1px red' }}
       key={item.title}
-      onClick={() => callback(item.key)}>
+      onClick={() => callback(item.key)}
+      className={
+        'subMenu--link' + (item.key === tab ? 'subMenu--link--active' : '')
+      }>
       {item.title}
     </button>
   ));
 }
-
+// TODO: SCALABLE FOR TAB CONTENT
 export const Tab = ({ tabs }) => {
   const [tab, setTab] = useState(tabs[0].key);
   const Component = ComponentsService[tab];
   return (
     <>
-      {buildMenu(tabs, setTab)}
-      <hr />
-      <div className="App">
-        <Component content="my products" />
+      <div className="sub-Menu">
+        <div className="subMenu--linksWrapper">
+          {buildMenu(tabs, setTab, tab)}
+          <div className="subMenu--underline"></div>
+          <Component content="my products" />
+        </div>
       </div>
     </>
   );

@@ -13,11 +13,11 @@
             "props": {}
           },
           {
-            "type": "ProductPauseWrapper",
+            "type": "TabWrapper",
             "props": {
               "children": [
                 {
-                  "type": "ProductListHeader",
+                  "type": "Header",
                   "props": {
                     "companyName": "Addidas",
                     "campaingName": "Kış kampanyası"
@@ -36,8 +36,12 @@
                         "key": "login"
                       },
                       {
-                        "title": "auth",
-                        "key": "auth"
+                        "title": "product",
+                        "key": "product"
+                      },
+                      {
+                        "title": "AllProductsCard",
+                        "key": "AllProductsCard"
                       }
                     ]
                   }
