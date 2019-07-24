@@ -4,6 +4,7 @@ import AuthScreen from '../../../features/Auth/AuthScreen';
 import FavoritesScreen from '../../../features/Favorites/FavoritesScreen';
 import LoginForm from '../../../features/Auth/LoginForm';
 import AllProductsCard from '../../ProductListWrapper/AllProductsCard';
+import WatchListScreen from '../../../features/Watchlist/WatchListScreen';
 
 export const ComponentsService = {
   // KEY : COMPONENT
@@ -12,5 +13,6 @@ export const ComponentsService = {
   wishList: WishlistScreen,
   auth: AuthScreen,
   favorites: FavoritesScreen,
-  AllProductsCard
+  AllProductsCard,
+  WatchListScreen
 };

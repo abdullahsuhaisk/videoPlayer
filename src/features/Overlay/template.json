@@ -42,6 +42,10 @@
                       {
                         "title": "AllProductsCard",
                         "key": "AllProductsCard"
+                      },
+                      {
+                        "title": "WatchListScreen",
+                        "key": "WatchListScreen"
                       }
                     ]
                   }
