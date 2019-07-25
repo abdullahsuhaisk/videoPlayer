@@ -1,52 +1,77 @@
 import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
 import EmptyWishList from './EmptyWishList';
 import WishListGroupItem from './WishListGroupItem';
 import WishListGroup from './WishListGroup';
 import WishListCardItem from './WishListCardItem';
 
-const data = [
-  {
-    name: 'Turtleneck Sweater',
-    brand: 'Valentino',
-    assets: {
-      images: ['/images/products/product-1.jpg']
-    },
-    currency: '$',
-    price: 0,
-    discountRate: 0,
-    currentPrice: 74.98,
-    inStock: true,
-    seller: ' Adidas INC.'
-  },
-  {
-    name: 'Women Red Classes',
-    brand: 'Pierre Cardin',
-    assets: {
-      images: ['/images/products/product-2.jpg']
-    },
-    price: 250.0,
-    discountRate: 50,
-    currentPrice: 120.0,
-    currency: '$',
-    inStock: false,
-    seller: ' Pierre INC.'
-  },
-  {
-    name: 'Turtleneck Sweater 2',
-    brand: 'Valentino',
-    assets: {
-      images: ['/images/products/product-3.jpg']
-    },
-    currency: '$',
-    price: 0,
-    discountRate: 0,
-    currentPrice: 78.98,
-    inStock: true,
-    seller: 'NİKE INC.'
+const GET_CONSUMER_WISHLIST = gql`
+  query getConsumerWishList {
+    consumer {
+      id
+      whisLists {
+        id
+        name
+        isPrivate
+        products {
+          id
+          name
+          price
+          stockCount
+          discount
+          rank
+          header
+          description
+          parentId
+          image {
+            id
+            thumbnailUrl
+            imageUrl
+          }
+          images {
+            id
+          }
+        }
+      }
+    }
   }
-];
+`;
 
 const WishlistScreen = () => {
+  return (
+    <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
+      {({ loading, error, data }) => {
+        if (loading || error) {
+          return null;
+        }
+        const { consumer } = data;
+        const { whisLists } = consumer;
+        // console.log(whisLists);
+        if (whisLists.length === 0) {
+          // TODO: TRY EMPTYWİSHLİST Case
+          return <EmptyWishList />;
+        }
+        return (
+          <div style={{ width: '100%', height: '500px', overflow: 'scroll' }}>
+            <div style={{ margin: '10px' }}>
+              {whisLists.map((wishList, index) => (
+                <WishListGroup wishList={wishList} key={index} />
+              ))}
+            </div>
+            <div style={{ margin: '10px' }}></div>
+            <WishListGroupItem />
+          </div>
+        );
+      }}
+    </Query>
+  );
+};
+
+export default WishlistScreen;
+
+/*
   return (
     <div style={{ width: '100%', height: '500px', overflow: 'scroll' }}>
       <div style={{ margin: '10px' }}>
@@ -61,6 +86,4 @@ const WishlistScreen = () => {
       <WishListGroupItem />
     </div>
   );
-};
-
-export default WishlistScreen;
+*/

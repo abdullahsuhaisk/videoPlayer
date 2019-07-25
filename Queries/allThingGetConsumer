@@ -1,0 +1,79 @@
+query getConsumerWishList {
+  consumer {
+    id
+    uid
+    name
+    email
+    birthDate
+    countryId
+    city
+    address
+    zipCode
+    phone
+    gender
+    profileImageUrl
+    coverImageUrl
+    whisLists {
+      id
+    }
+    cart {
+      totalProductCount
+      totalPrices {
+        productCount
+        totalPrice
+      }
+      items {
+        quantity
+        product {
+          id
+          name
+          header
+          description
+          parentId
+          image {
+            id
+            name
+            header
+            description
+            type
+            creationTime
+            imageUrl
+            thumbnailUrl
+          }
+          images {
+            id
+            imageUrl
+            thumbnailUrl
+          }
+          company {
+            id
+            name
+            header
+            description
+            legalname
+          }
+          brand {
+            id
+            name
+            header
+            description
+            logo {
+              id
+            }
+          }
+          currency {
+            id
+            name
+            code
+            symbol
+          }
+          price
+          stockCount
+          discount
+          rank
+          creationTime
+        }  
+      }
+    }
+  }
+}

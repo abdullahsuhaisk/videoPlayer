@@ -4,25 +4,32 @@ import PropTypes from 'prop-types';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 import { wishlistgroupStyle, Wrapper } from './WishListGroupItem.style';
 
-const WishListGroupItem = ({ styles, price, imageUrl }) => {
+const WishListGroupItem = ({ styles, price, imageUrl, items }) => {
+  console.log(items);
+
   useEffect(() => {
     loadWebFontsFromStyles(wishlistgroupStyle);
     loadWebFontsFromStyles(styles);
   }, []);
 
-  return (
-    <Wrapper styles={styles}>
-      <div className="vb--wishlist--group--item--container">
-        <div
-          className="vb--wishlist--group--item--image"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        />
-        <div className="vb--wishlist--group--item--price">
-          <span>{price}</span>
-        </div>
-      </div>
-    </Wrapper>
-  );
+  return items
+    ? items.map((item) => {
+        return (
+          <Wrapper key={item.id}>
+            <div className="vb--wishlist--group--item--container">
+              <img
+                className="vb--wishlist--group--item--image"
+                src={item.image ? item.image.thumbnailUrl : null}
+                alt={item.name}
+              />
+              <div className="vb--wishlist--group--item--price">
+                <span>{item.price}</span>
+              </div>
+            </div>
+          </Wrapper>
+        );
+      })
+    : null;
 };
 
 WishListGroupItem.propTypes = {

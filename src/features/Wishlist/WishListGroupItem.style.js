@@ -12,7 +12,6 @@ export const wishlistgroupStyle = {
     padding: '1px'
   },
   '.vb--wishlist--group--item--image': {
-    background: 'url(/images/emptyFavorite.svg) center center no-repeat',
     display: 'inline-block',
     width: '99px',
     height: '100px',
