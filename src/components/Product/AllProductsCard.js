@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Carousel from '../Carousel/Carousel';
 import ProductCard from '../../features/Product/ProductList/ProductCard';
+import { PRODLINK_ID } from '../../common/GrapqlConstant';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -42,10 +43,10 @@ const AllProductsCard = () => {
     <>
       <Query
         query={GET_PRODUCTS}
-        variables={{ prodLinkId: 1 }}
+        variables={{ prodLinkId: PRODLINK_ID }}
         fetchPolicy="cache-first">
         {({ loading, error, data }) => {
-          console.log(data);
+          // console.log(data);
           if (loading || error) {
             return null;
           }

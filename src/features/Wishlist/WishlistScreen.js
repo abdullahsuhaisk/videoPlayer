@@ -3,9 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import EmptyWishList from './EmptyWishList';
-import WishListGroupItem from './WishListGroupItem';
 import WishListGroup from './WishListGroup';
-import WishListCardItem from './WishListCardItem';
 
 const GET_CONSUMER_WISHLIST = gql`
   query getConsumerWishList {
@@ -60,8 +58,6 @@ const WishlistScreen = () => {
                 <WishListGroup wishList={wishList} key={index} />
               ))}
             </div>
-            <div style={{ margin: '10px' }}></div>
-            <WishListGroupItem />
           </div>
         );
       }}
