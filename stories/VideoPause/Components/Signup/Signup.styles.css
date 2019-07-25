@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+.signup{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    padding: 3.5em;
+    font-family: 'Source Sans Pro';
+}
+.signup .signup--imgWrapper{
+    max-width: 350px;
+    margin-bottom: 3em;
+}
+.signup .signup--imgWrapper .signup--img{
+    height: 100%;
+    width: 100%;
+}
+.signup .signup--emailWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1em;
+}
+.signup .signup--passwordWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: .5em;
+}
+.signup .signup--label{
+    margin-bottom: .5em;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    color: #0b2443;  
+}
+.signup .signup--input{
+    height: 2em;
+    border: 0;
+    border-bottom: 1px solid #0b244359;
+    font-size: 18px;
+    color: #0b2443;
+}
+.signup .signup--input:focus{
+    outline: none;
+    border-bottom: 1px solid #0b2443;
+}
+.signup .signup--minChar{ 
+    font-size: 15px;
+    color: #0b2443;
+    letter-spacing: 0.025em;
+    text-align: left;
+    width: 100%;
+}
+.signup .signup--buttonWrapper{
+    width:100%;
+    margin-top: 2em;
+}
+.signup .signup--buttonWrapper .signup--button{
+    color: #ffffff;
+    height: 45px;
+    width: 100%;
+    min-width: 120px;
+    border-radius: 39px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+    background-color: #00acd8 ;
+    outline: 0;
+    border: 0;
+    overflow: visible;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.025em;
+}
+.signup .signup--signupWith{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0b2443;
+    letter-spacing: 0.025em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.signup .signup--withSocialMedia{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 120px;
+}
+.signup .signup--withSocialMedia .signup--withFacebook{
+    background: url(/images/fb_round_logo.png) center / contain no-repeat;
+    width:30px;
+    height: 30px;
+    cursor: pointer;
+}
+.signup .signup--withSocialMedia .signup--withGoogle{
+    background: url(/images/google_logo.png) center / contain no-repeat;
+    width:45px;
+    height: 45px;
+    cursor: pointer;
+}
+.signup .signup--hr{
+    width: 100%;
+    border:1px solid rgba(0, 0, 0, 0.16);
+    margin: 2em 0;
+}
+.signup .signup-haveAccount{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0b2443;
+    letter-spacing: 0.025em;
+    margin-bottom: 1em;
+}
+.signup .signup--signupButton{
+    color: #83329c;
+    height: 45px;
+    width: 100%;
+    min-width: 120px;
+    border-radius: 39px;
+    border: solid 1px #83329c;
+    background-color: #ffffff ;
+    outline: 0;
+    overflow: visible;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.025em;
+}
