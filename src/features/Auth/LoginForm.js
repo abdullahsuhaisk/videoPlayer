@@ -3,9 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { Wrapper, loginFormStyles } from './LoginForm.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
-import './Login.styles.css';
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -44,7 +42,7 @@ const LoginForm = ({ styles }) => {
     <Mutation mutation={LOGIN}>
       {(login, { data, client }) => {
         return (
-          <div className="login">
+          <div className="login" style={{ pointerEvents: 'auto' }}>
             <form
               onSubmit={(e) => {
                 e.preventDefault();

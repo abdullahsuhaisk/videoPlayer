@@ -41,7 +41,7 @@ const HotspotScreen = () => {
         if (loading || error) {
           return null;
         }
-        console.log(data);
+        // console.log(data);
         const { hotSpots } = data.prodLink;
 
         return (
