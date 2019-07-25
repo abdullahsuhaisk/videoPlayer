@@ -1,15 +1,5 @@
-.vb--login-banner {
-  background: url(/images/login_image.svg) center / contain no-repeat;
-  margin: 30px 0 30px 0;
-  width: 100%;
-  height: 300px;
 
-}
-.vb--login {
-  position: relative;
-  margin: auto;
-  z-index: 85;
-}
+
 .Header {
   display: flex;
   justify-content: space-between;
@@ -375,4 +365,158 @@ img {
 
 .checkImage {
   display: inline;
+}
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  max-width: 580px;
+  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  /* padding: 2.5em; */
+  font-family: 'Source Sans Pro';
+  pointer-events: auto;
+  width: 385px;
+  float: right;
+  height: 100%;
+}
+.login .login--imgWrapper {
+  max-width: 230px;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+.login .login--imgWrapper .login--img {
+  height: 100%;
+  width: 100%;
+}
+.login .login--inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.login .login--label {
+  margin-bottom: 0.15em;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+}
+.login .login--input {
+  height: 1.4em;
+  border: 0;
+  border-bottom: 1px solid #0b244359;
+  font-size: 14px;
+  color: #0b2443 !important;
+  background-color: #ffffff !important;
+}
+.login .login--input:focus {
+  outline: none;
+  border-bottom: 1px solid #0b2443;
+}
+.login .login--resetWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.login .login--resetWrapper .login--staySigned {
+  display: flex;
+  align-items: center;
+}
+.login .login--resetWrapper .login--staySigned .login--staySigned--label {
+  font-size: 12px;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  margin-left: 0.3em;
+}
+.login .login--resetWrapper .login--forgotPassword .login--forgotPassword--a {
+  font-size: 12px;
+  color: #00acd8;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login .login--buttonWrapper {
+  width: 100%;
+  margin-top: 1.4em;
+}
+.login .loginWithWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login .login--buttonWrapper .login--button {
+  color: #ffffff;
+  height: 30px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #00acd8;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+}
+.login .loginWithWrapper .login--loginWith-p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+}
+.login .loginWithWrapper .login--withSocialMedia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 120px;
+}
+.login .login--withSocialMedia .login--withFacebook {
+  background: url(/images/fb_round_logo.png) center / contain no-repeat;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.login .login--withSocialMedia .login--withGoogle {
+  background: url(/images/google_logo.png) center / contain no-repeat;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.login .login--hr {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  margin: 1.4em 0;
+}
+.login .login-haveAccount {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.login .login--signupButton {
+  color: #83329c;
+  height: 30px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  border: solid 1px #83329c;
+  background-color: #ffffff;
+  outline: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
 }

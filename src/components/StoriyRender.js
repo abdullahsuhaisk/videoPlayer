@@ -1,9 +1,11 @@
 import React from 'react';
+import { useCss } from '../features/Overlay/TemplateHook';
+
 import LoginForm from '../features/Auth/LoginForm';
-import Button from './Button/Button';
-import Card from './Card/Card';
 
 const StoriyRender = () => {
+  useCss();
+
   return (
     <>
       <LoginForm />
