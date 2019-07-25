@@ -18,6 +18,7 @@ const Watchlist = () => {
                 <hr className="watchlist--hr" />
                 <div className="watchlist--viewsInfoContainer">
                     <div className="watchlist--iconCintainer"><i className="watchlist--tagsIcon"></i> 24</div>
+                    {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
                     <div className="watchlist--iconCintainer"><i className="watchlist--heartIcon"></i> 40</div>
                     <div className="watchlist--iconCintainer"><i className="watchlist--eyeIcon"></i> 325</div>
                 </div>
