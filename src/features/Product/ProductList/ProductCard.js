@@ -1,8 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer } from 'react-apollo';
+import { ApolloConsumer, Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 import { Wrapper } from './ProductCard.style';
+
+// const ADD_WISHLIST_MUTATION = gql`
+//   mutation
+// `;
 
 const ProductCard = ({ styles, product }) => {
   return (

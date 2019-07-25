@@ -37,7 +37,7 @@ import Header from '../Template/Header';
 import NavigationWrapper from '../NavigationWrapper/NavigationWrapper';
 import ProductListCard from '../ProductListWrapper/ProductListCard';
 
-import AllProductsCard from '../ProductListWrapper/AllProductsCard';
+import AllProductsCard from '../Product/AllProductsCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 
 const widgetList = {

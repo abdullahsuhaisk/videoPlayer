@@ -8,7 +8,6 @@ const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
     prodLink(prodLinkId: $prodLinkId) {
       id
-
       hotSpots {
         id
         product {
@@ -41,7 +40,10 @@ const GET_PRODUCTS = gql`
 const AllProductsCard = () => {
   return (
     <>
-      <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
+      <Query
+        query={GET_PRODUCTS}
+        variables={{ prodLinkId: 1 }}
+        fetchPolicy="cache-first">
         {({ loading, error, data }) => {
           console.log(data);
           if (loading || error) {
@@ -56,13 +58,11 @@ const AllProductsCard = () => {
                   if (acc[i].id === product.id) {
                     break;
                   }
-
                   acc.push(product);
                 }
               } else {
                 acc.push(product);
               }
-
               return acc;
             }, []);
 

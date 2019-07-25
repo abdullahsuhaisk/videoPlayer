@@ -25,7 +25,10 @@ const GET_HEADER_COMPANY_CAMPAING = gql`
 const ProductListHeader = ({ profileImage, profileName, children }) => {
   return (
     <React.Fragment>
-      <Query query={GET_HEADER_COMPANY_CAMPAING} variables={{ prodLinkId: 7 }}>
+      <Query
+        query={GET_HEADER_COMPANY_CAMPAING}
+        variables={{ prodLinkId: 1 }}
+        fetchPolicy="cache-first">
         {({ data, loading, error }) => {
           if (loading || error) return null;
           const { campaign, company } = data.prodLink;

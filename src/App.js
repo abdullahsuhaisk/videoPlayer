@@ -10,8 +10,54 @@ const GET_VIDEO = gql`
   query getVideoForApp($prodLinkId: Int!) {
     prodLink(prodLinkId: $prodLinkId) {
       id
+      name
+      header
+      description
+      creationTime
+      numberOfViews
+      numberOfLikes
+      numberOfShares
+      numberOfComments
+      numberOfProducts
+      videoId
+      companyId
+      campaignId
+      brands {
+        id
+        name
+        header
+        description
+        logo {
+          id
+          name
+          header
+          thumbnailUrl
+          imageUrl
+        }
+      }
+      company {
+        id
+        name
+        header
+        description
+        logo {
+          id
+          imageUrl
+          thumbnailUrl
+        }
+      }
+      campaign {
+        id
+        name
+        header
+        description
+        creationTime
+      }
       video {
         id
+        name
+        header
+        description
         qualities {
           id
           url
@@ -20,13 +66,35 @@ const GET_VIDEO = gql`
       image {
         id
         imageUrl
+        thumbnailUrl
+        name
+        header
+        description
+        type
+        creationTime
       }
       hotSpots {
         id
-        in
-        out
         product {
           id
+          name
+          brand {
+            id
+            name
+          }
+          image {
+            id
+            thumbnailUrl
+          }
+          price
+          discount
+          stockCount
+          currency {
+            id
+            name
+            code
+            symbol
+          }
         }
       }
     }
@@ -45,7 +113,7 @@ const GET_PLAYER = gql`
 const App = () => {
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Query query={GET_VIDEO} variables={{ prodLinkId: 7 }}>
+      <Query query={GET_VIDEO} variables={{ prodLinkId: 1 }}>
         {({ loading, error, data }) => {
           if (loading || error) return null;
           // console.log(data)
