@@ -126,6 +126,6 @@ export const loginFormStyles = {
 };
 
 export const Wrapper = styled.div((props) => ({
-  ...loginFormStyles,
+  // ...loginFormStyles,
   ...props.styles
 }));

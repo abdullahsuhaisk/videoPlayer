@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { Wrapper, loginFormStyles } from './LoginForm.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const LOGIN = gql`
@@ -35,7 +34,7 @@ const LoginForm = ({ styles }) => {
   const passwordRef = useRef();
 
   useEffect(() => {
-    loadWebFontsFromStyles(loginFormStyles);
+    // loadWebFontsFromStyles(loginFormStyles);
     loadWebFontsFromStyles(styles);
   }, []);
 
@@ -43,7 +42,7 @@ const LoginForm = ({ styles }) => {
     <Mutation mutation={LOGIN}>
       {(login, { data, client }) => {
         return (
-          <Wrapper styles={styles} className="vb--login">
+          <div className="login" style={{ pointerEvents: 'auto' }}>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -54,64 +53,79 @@ const LoginForm = ({ styles }) => {
                   }
                 });
               }}>
-              <span
-                className="vb--login-close"
-                role="button"
-                tabIndex="0"
-                onClick={() =>
-                  client.writeData({ data: { isLoginFormShowing: false } })
-                }>
-                &times;
-              </span>
-              <div className="vb--login-banner" />
-              <div className="vb--login-input-container">
-                <input type="email" placeholder="Email" ref={emailRef} />
+              <figure className="login--imgWrapper">
+                <img className="login--img" src="/images/login_image.svg" />
+              </figure>
+              <div className="login--inputWrapper">
+                <span className="login--label">Mobile Number or Email</span>
+                <input
+                  type="email"
+                  className="login--input"
+                  placeholder="Email"
+                  ref={emailRef}
+                />
+              </div>
+              <div className="login--inputWrapper">
+                <span className="login--label">Password</span>
                 <input
                   type="password"
+                  className="login--input"
                   placeholder="Password"
                   ref={passwordRef}
                 />
               </div>
-              <button className="vb--login-button" type="submit">
-                Login
-              </button>
-              <div className="vb--login-with-wrapper">
-                <span>or log in with</span>
-                <div className="vb--login-with-buttons-container">
+              <div className="login--resetWrapper">
+                <div className="login--staySigned">
+                  <input type="checkbox" id="stay_signed" />{' '}
+                  <label className="login--staySigned--label" for="stay_signed">
+                    Stay signed in
+                  </label>
+                </div>
+                <div className="login--forgotPassword">
                   <div
-                    className="vb--login-with-google"
+                    className="login--forgotPassword--a"
+                    role="button"
+                    tabIndex="0"
+                    onClick={() =>
+                      client.writeData({
+                        data: {
+                          isLoginFormShowing: false,
+                          isForgotPasswordFormShowing: true
+                        }
+                      })
+                    }>
+                    Forgot your password?
+                  </div>
+                </div>
+              </div>
+              <div className="login--buttonWrapper">
+                <button className="login--button">Login</button>
+              </div>
+              <div className="loginWithWrapper">
+                <p className="login--loginWith-p">or Login with</p>
+                <div className="login--withSocialMedia">
+                  <div
+                    href="#"
+                    className="login--withFacebook"
                     role="button"
                     tabIndex="-1"
                     onClick={() =>
                       client.mutate({ mutation: LOGIN_WITH_GOOGLE })
-                    }
-                  />
+                    }></div>
                   <div
-                    className="vb--login-with-facebook"
+                    href="#"
+                    className="login--withGoogle"
                     role="button"
                     tabIndex="-1"
                     onClick={() =>
                       client.mutate({ mutation: LOGIN_WITH_FACEBOOK })
-                    }
-                  />
+                    }></div>
                 </div>
               </div>
-              <span
-                className="vb--login-forgot-password-button"
-                role="button"
-                tabIndex="0"
-                onClick={() =>
-                  client.writeData({
-                    data: {
-                      isLoginFormShowing: false,
-                      isForgotPasswordFormShowing: true
-                    }
-                  })
-                }>
-                I forgot my password!
-              </span>
+              <hr className="login--hr" />
+              <p className="login-haveAccount">Don’t have an account? </p>
               <button
-                className="vb--login-register-button"
+                className="login--signupButton"
                 onClick={() =>
                   client.writeData({
                     data: {
@@ -120,10 +134,10 @@ const LoginForm = ({ styles }) => {
                     }
                   })
                 }>
-                Do not have an account? <b>Create</b>
+                Sign up
               </button>
             </form>
-          </Wrapper>
+          </div>
         );
       }}
     </Mutation>
