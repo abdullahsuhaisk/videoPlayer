@@ -4,6 +4,9 @@ import { Query } from 'react-apollo';
 
 import EmptyWishList from './EmptyWishList';
 import WishListGroup from './WishListGroup';
+// import ProductWishList from './ProductWishList/ProductWishList';
+import ShowConsumersWishList from './PreComponent/showConsumersWishList';
+import AddNewWishList from './PreComponent/addNewWishList';
 
 const GET_CONSUMER_WISHLIST = gql`
   query getConsumerWishList {
@@ -39,7 +42,7 @@ const GET_CONSUMER_WISHLIST = gql`
 
 const WishlistScreen = () => {
   return (
-    <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
+    <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="network-only">
       {({ loading, error, data }) => {
         if (loading || error) {
           return null;
@@ -58,6 +61,8 @@ const WishlistScreen = () => {
                 <WishListGroup wishList={wishList} key={index} />
               ))}
             </div>
+            <AddNewWishList />
+            <ShowConsumersWishList />
           </div>
         );
       }}

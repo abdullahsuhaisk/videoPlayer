@@ -25,7 +25,7 @@ const ProductCard = ({ styles, product }) => {
       {(client) => (
         <Mutation
           mutation={ADD_WISHLIST_MUTATION}
-          variables={{ productId, wishListId: 15 }}>
+          variables={{ productId, wishListId: WISH_LIST_ID }}>
           {(addProductToConsumerWishList, { data }) => (
             <Wrapper styles={styles} className="vb--product-card">
               <div className="vb--product-card-first-container">
@@ -81,7 +81,6 @@ const ProductCard = ({ styles, product }) => {
                   Details
                 </button>
               </div>
-              {console.log(data)}
             </Wrapper>
           )}
         </Mutation>
@@ -100,57 +99,3 @@ ProductCard.defaultProps = {
 };
 
 export default ProductCard;
-
-/*
-        return (
-          <Wrapper styles={styles} className="vb--product-card">
-            <div className="vb--product-card-first-container">
-              <div
-                className="vb--product-card-product-image"
-                style={{ backgroundImage: `url(${product.image.thumbnailUrl}` }}
-              />
-              <button className="vb--product-card-add-to-wishlist">
-                Add to Wish List
-              </button>
-            </div>
-            <div className="vb--product-card-second-container">
-              <span className="vb--product-card-brand">
-                {product.brand.name}
-              </span>
-              <span className="vb--product-card-title">{product.name}</span>
-              {product.discount !== 0 ? (
-                <div className="vb--product-card-price-container">
-                  <div className="vb--product-card-discount-rate">
-                    <span>{`%${product.discount}`}</span>
-                  </div>
-                  <div className="vb--product-card-base-price">
-                    <span>{`${product.currency.symbol}${product.price.toFixed(
-                      2
-                    )}`}</span>
-                  </div>
-                  <div className="vb--product-card-current-price">
-                    <span>{`${
-                      product.currency.symbol
-                    }${product.currentPrice.toFixed(2)}`}</span>
-                  </div>
-                </div>
-              ) : (
-                <span className="vb--product-card-price">{`${
-                  product.currency.symbol
-                }${product.price.toFixed(2)}`}</span>
-              )}
-              <span className="vb--product-card-in-stock">
-                {product.stockCount > 0 ? 'In Stock' : 'No Stock'}
-              </span>
-              <hr />
-              <button
-                className="vb--product-card-details"
-                onClick={() =>
-                  client.writeData({ data: { productIdInDetails: product.id } })
-                }>
-                Details
-              </button>
-            </div>
-          </Wrapper>
-        );
-*/
