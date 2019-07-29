@@ -4,28 +4,40 @@ import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
 import DeleteWishlistComponent from './deleteWishlistComponent';
 
 const showConsumersWishList = () => {
-  const [wishList, setWishLists] = useState('null');
+  const updateCashe = async (cache, { data: { deleteConsumerWishList } }) => {
+    const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });
+    // console.log(consumer.whisLists);
+    const { whisLists } = consumer;
+    consumer.whisLists = whisLists.filter(
+      (item) => item.id !== deleteConsumerWishList.id
+    );
+    // console.log(consumer.whisLists);
+    await cache.writeQuery({
+      query: GET_CONSUMER_WISHLIST,
+      data: { consumer }
+    });
+  };
+
   return (
     <>
-      <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
+      <Query query={GET_CONSUMER_WISHLIST}>
         {({ data, error, loading }) => {
           if (loading || error) {
             return null;
           }
           const { consumer } = data;
           const { whisLists } = consumer;
-          console.log(whisLists);
           const whisListsCount = whisLists.length;
-          if (whisLists) {
-            setWishLists(whisLists);
-          }
           return (
             // TODO: DELETE MUTATİON ERROR TURN BACK
             <div>
-              {whisLists &&
-                whisLists.map((item) => {
+              {consumer.whisLists &&
+                consumer.whisLists.map((item) => {
                   return (
-                    <Mutation mutation={DELETE_WISH_LIST} key={item.id}>
+                    <Mutation
+                      mutation={DELETE_WISH_LIST}
+                      key={item.id}
+                      update={updateCashe}>
                       {(deleteConsumerWishList, attrs = {}) => (
                         <div className="wishlistdelete">
                           <span>{item.name}</span>

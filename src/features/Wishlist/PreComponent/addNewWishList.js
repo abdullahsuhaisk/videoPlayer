@@ -5,13 +5,13 @@ import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
 const updateCache = (cache, { data: { createConsumerWishList } }) => {
   const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });
 
-  console.log(consumer.whisLists);
-  console.log(createConsumerWishList);
-  console.log(consumer);
+  // console.log(consumer.whisLists);
+  // console.log(createConsumerWishList);
+  // console.log(consumer);
 
   consumer.whisLists = consumer.whisLists.concat(createConsumerWishList);
-  console.log(consumer.whisLists);
-  console.log(consumer);
+  // console.log(consumer.whisLists);
+  // console.log(consumer);
   cache.writeQuery({
     query: GET_CONSUMER_WISHLIST,
     data: {
