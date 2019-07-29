@@ -1,51 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Query, Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const GET_CONSUMERS_WISHLIST = gql`
-  query getConsumerWishList {
-    consumer {
-      id
-      whisLists {
-        id
-        name
-        isPrivate
-        products {
-          id
-          name
-          image {
-            id
-            name
-          }
-        }
-      }
-    }
-  }
-`;
-
-const DELETE_WISH_LIST = gql`
-  mutation deleteWishList($whisListId: Int!) {
-    deleteConsumerWishList(wishListId: $whisListId) {
-      id
-      name
-      isPrivate
-    }
-  }
-`;
+import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
+import DeleteWishlistComponent from './deleteWishlistComponent';
 
 const showConsumersWishList = () => {
+  const [wishList, setWishLists] = useState('null');
   return (
     <>
-      <Query query={GET_CONSUMERS_WISHLIST}>
+      <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
         {({ data, error, loading }) => {
           if (loading || error) {
             return null;
           }
-          console.log(data);
           const { consumer } = data;
           const { whisLists } = consumer;
+          console.log(whisLists);
           const whisListsCount = whisLists.length;
-          console.log(whisListsCount);
+          if (whisLists) {
+            setWishLists(whisLists);
+          }
           return (
             // TODO: DELETE MUTATİON ERROR TURN BACK
             <div>
@@ -53,25 +26,28 @@ const showConsumersWishList = () => {
                 whisLists.map((item) => {
                   return (
                     <Mutation mutation={DELETE_WISH_LIST} key={item.id}>
-                      {(deleteConsumerWishList) => (
+                      {(deleteConsumerWishList, attrs = {}) => (
                         <div className="wishlistdelete">
                           <span>{item.name}</span>
                           <button
+                            style={{ marginLeft: 30 }}
                             onClick={() =>
                               deleteConsumerWishList({
-                                variables: { wishListId: item.id }
+                                variables: { whisListId: item.id }
                               })
                             }>
-                            X
+                            <span>{attrs.loading ? 'loading' : 'X'} </span>
+                            <span>
+                              {attrs.error ? console.log(attrs.error) : null}
+                            </span>
                           </button>
-                          <span></span>
-                          {loading && <p>Loading...</p>}
-                          {error && <p>Error :</p>}
                         </div>
                       )}
                     </Mutation>
                   );
                 })}
+              {loading && <p>Loading...</p>}
+              {error && <p>Error :(</p>}
             </div>
           );
         }}

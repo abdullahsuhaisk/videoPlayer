@@ -1,40 +1,53 @@
 import React, { useState } from 'react';
-import { ApolloConsumer, Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
 
-const CREATE_NEW_WISHLIST = gql`
-  mutation addNewConsumersWishList($name: String!) {
-    createConsumerWishList(name: $name) {
-      id
-      name
+const updateCache = (cache, { data: { createConsumerWishList } }) => {
+  const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });
+
+  console.log(consumer.whisLists);
+  console.log(createConsumerWishList);
+  console.log(consumer);
+
+  consumer.whisLists = consumer.whisLists.concat(createConsumerWishList);
+  console.log(consumer.whisLists);
+  console.log(consumer);
+  cache.writeQuery({
+    query: GET_CONSUMER_WISHLIST,
+    data: {
+      consumer
     }
-  }
-`;
+  });
+};
 
-const addNewWishList = () => {
-  const [wishListName, setWishListName] = useState('Empty Name');
-  console.log(wishListName);
+const addNewWishList = ({ client }) => {
+  console.log(client);
+  const [wishListName, setWishListName] = useState(
+    'Please write a wishlist name'
+  );
   return (
-    <ApolloConsumer>
-      {(client) => (
-        <Mutation
-          mutation={CREATE_NEW_WISHLIST}
-          variables={{ name: wishListName }}>
-          {(createConsumerWishList, { data }) => (
-            <>
-              <label>Please Enter Wist list name</label>
-              <input onChange={(e) => setWishListName(e.target.value)} />
-              <button
-                onClick={() => {
-                  createConsumerWishList();
-                }}>
-                Add wishList
-              </button>
-            </>
-          )}
-        </Mutation>
+    <Mutation
+      mutation={CREATE_NEW_WISHLIST}
+      variables={{ name: wishListName }}
+      update={updateCache}>
+      {(createConsumerWishList) => (
+        <>
+          <label>Please Enter Wist list name</label>
+          <input
+            onChange={(e) => setWishListName(e.target.value)}
+            value={wishListName}
+          />
+          <button
+            onClick={async (e) => {
+              e.preventDefault();
+              await createConsumerWishList();
+              setWishListName('');
+            }}>
+            Add wishList
+          </button>
+        </>
       )}
-    </ApolloConsumer>
+    </Mutation>
   );
 };
 

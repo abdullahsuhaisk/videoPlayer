@@ -69,3 +69,40 @@ export const WISH_LIST = gql`
     }
   }
 `;
+export const DELETE_WISH_LIST = gql`
+  mutation deleteConsumerWishList($whisListId: Int!) {
+    deleteConsumerWishList(wishListId: $whisListId) {
+      id
+      name
+      isPrivate
+    }
+  }
+`;
+export const CREATE_NEW_WISHLIST = gql`
+  mutation addNewConsumersWishList($name: String!) {
+    createConsumerWishList(name: $name) {
+      id
+      name
+      isPrivate
+      products {
+        id
+        name
+        price
+        stockCount
+        discount
+        rank
+        header
+        description
+        parentId
+        image {
+          id
+          thumbnailUrl
+          imageUrl
+        }
+        images {
+          id
+        }
+      }
+    }
+  }
+`;
