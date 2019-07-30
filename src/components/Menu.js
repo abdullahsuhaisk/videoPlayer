@@ -14,6 +14,11 @@ const Menu = [
     pageComponents: [
       <ProductCardWishlisted />,
       <ProductCardWishlisted />,
+      <ProductCardDiscount />,
+      <ProductCardWishlisted />,
+      <ProductCardWishlisted />,
+      <ProductCardWishlisted />,
+      <ProductCardWishlisted />,
       <ProductCardDiscount />
     ]
   },
@@ -49,14 +54,24 @@ const Menu = [
     name: 'Wishlist',
     flexClass: 'd-flex-rows',
     haveBullet: true,
-    pageComponents: [<WishlistCollection />, <WishlistCollection />]
+    pageComponents: [
+      <WishlistCollection />,
+      <WishlistCollection />,
+      <WishlistCollection />
+    ]
   },
   {
     page: 5,
     name: 'Watchlist',
     flexClass: 'd-flex-rows',
     haveBullet: false,
-    pageComponents: [<Watchlist />, <Watchlist />, <Watchlist />]
+    pageComponents: [
+      <Watchlist />,
+      <Watchlist />,
+      <Watchlist />,
+      <Watchlist />,
+      <Watchlist />
+    ]
   },
   {
     page: 6,

@@ -2,16 +2,13 @@
 *{
   font-family: 'Source Sans Pro';
 }
-.d-flex-rows{
-  display: flex;
+.VideoPlayerContainer{
   margin-top: 40px;
   margin-left: 47.5px;
 }
-.d-flex-column{
-  display: flex;
+.flex-column{
+  display:flex;
   flex-direction: column;
-  margin-top: 40px;
-  margin-left: 160px;
 }
 .vjs-overlay-container, .vb--overlay-container{
   pointer-events: auto !important;
