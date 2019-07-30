@@ -1,57 +1,28 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import EmptyWishList from './EmptyWishList';
-import WishListGroupItem from './WishListGroupItem';
 import WishListGroup from './WishListGroup';
-import WishListCardItem from './WishListCardItem';
-
-const GET_CONSUMER_WISHLIST = gql`
-  query getConsumerWishList {
-    consumer {
-      id
-      whisLists {
-        id
-        name
-        isPrivate
-        products {
-          id
-          name
-          price
-          stockCount
-          discount
-          rank
-          header
-          description
-          parentId
-          image {
-            id
-            thumbnailUrl
-            imageUrl
-          }
-          images {
-            id
-          }
-        }
-      }
-    }
-  }
-`;
+// import ProductWishList from './ProductWishList/ProductWishList';
+import ShowConsumersWishList from './PreComponent/showConsumersWishList';
+import AddNewWishList from './PreComponent/addNewWishList';
+import { GET_CONSUMER_WISHLIST } from './wishListQueries';
 
 const WishlistScreen = () => {
   return (
-    <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
+    <Query query={GET_CONSUMER_WISHLIST}>
       {({ loading, error, data }) => {
         if (loading || error) {
           return null;
         }
         const { consumer } = data;
         const { whisLists } = consumer;
-        // console.log(whisLists);
+        {
+          /* console.log(whisLists); */
+        }
         if (whisLists.length === 0) {
           // TODO: TRY EMPTYWİSHLİST Case
-          return <EmptyWishList />;
+          // return <EmptyWishList />;
         }
         return (
           <div style={{ width: '100%', height: '500px', overflow: 'scroll' }}>
@@ -60,8 +31,8 @@ const WishlistScreen = () => {
                 <WishListGroup wishList={wishList} key={index} />
               ))}
             </div>
-            <div style={{ margin: '10px' }}></div>
-            <WishListGroupItem />
+            <AddNewWishList />
+            <ShowConsumersWishList />
           </div>
         );
       }}

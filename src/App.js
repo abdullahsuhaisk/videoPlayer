@@ -5,6 +5,7 @@ import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
+import { PRODLINK_ID } from './common/GrapqlConstant';
 
 const GET_VIDEO = gql`
   query getVideoForApp($prodLinkId: Int!) {
@@ -113,15 +114,17 @@ const GET_PLAYER = gql`
 const App = () => {
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Query query={GET_VIDEO} variables={{ prodLinkId: 1 }}>
+      <Query query={GET_VIDEO} variables={{ prodLinkId: PRODLINK_ID }}>
         {({ loading, error, data }) => {
           if (loading || error) return null;
           // console.log(data)
           const { video } = data.prodLink;
           const { image } = data.prodLink;
-          // const poster = image.imageUrl;
-          const poster =
-            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
+          const poster = image.imageUrl;
+          {
+            /* const poster =
+            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg'; */
+          }
           const src = video.qualities[2].url;
           const { type } = video.qualities[2];
 
