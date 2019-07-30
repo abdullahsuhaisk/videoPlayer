@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1{fill:#00acd8}
+        </style>
+    </defs>
+    <g id="ic_check_circle_24px" transform="translate(-22 -4)">
+        <path id="Path_6882" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" class="cls-1" data-name="Path 6882" transform="translate(20 2)"/>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="network-connection_1_" width="32" height="32" data-name="network-connection (1)" viewBox="0 0 32 32">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:#0b2443}.cls-1{opacity:0}
+        </style>
+    </defs>
+    <path id="Rectangle_2184" d="M0 0h32v32H0z" class="cls-1" data-name="Rectangle 2184"/>
+    <g id="Group_8042" data-name="Group 8042" transform="translate(6 6)">
+        <path id="Path_6444" d="M15 12a3.592 3.592 0 0 0-2.808 1.352L7.591 10.8a3.54 3.54 0 0 0 0-2.4l4.6-2.556a3.628 3.628 0 1 0-.582-1.044l-4.6 2.556a3.6 3.6 0 1 0 0 4.493l4.6 2.551A3.6 3.6 0 1 0 15 12z" class="cls-2" data-name="Path 6444"/>
+    </g>
+</svg>

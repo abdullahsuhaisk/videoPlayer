@@ -7,5 +7,5 @@ export const PLAYER = {
 
 export const WIDTH = 800;
 export const HEIGHT = 454;
-export const BASE_WIDTH = 1000;
-export const BASE_HEIGHT = 562;
+export const BASE_WIDTH = 1588;
+export const BASE_HEIGHT = 894;

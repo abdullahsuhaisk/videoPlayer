@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import Overlay from './VideoPause/Components/Overlay/Overlay';
-import Header from './VideoPause/Components/Header/Header';
-import Submenu from './VideoPause/Components/Submenu/Submenu';
-import ProductCardSimple from './VideoPause/Components/Cards/ProductCardSimple/ProductCardSimple';
-import ProductCardDiscount from './VideoPause/Components/Cards/ProductCardDiscount/ProductCardDicount';
-import ProductCardWishlisted from './VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
-import Login from './VideoPause/Components/Login/Login';
-import Signup from './VideoPause/Components/Signup/Signup';
-import ForgotPassword from './VideoPause/Components/ForgotPassword/ForgotPassword';
-import NewPassword from './VideoPause/Components/NewPassword/NewPassword';
-import WishlistCollection from './VideoPause/Components/WishlistCollection/WishlistCollection';
-import Watchlist from './VideoPause/Components/Watchlist/Watchlist';
+import Overlay from '../src/components/Zak/VideoPause/Components/Overlay/Overlay'
+import Header from '../src/components/Zak/VideoPause/Components/Header/Header'
+import Submenu from '../src/components/Zak/VideoPause/Components/Submenu/Submenu'
+import ProductCardDiscount from '../src/components/Zak/VideoPause/Components/Cards/ProductCardDiscount/ProductCardDicount'
+import ProductCardWishlisted from '../src/components/Zak/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted'
+import Login from '../src/components/Zak/VideoPause/Components/Login/Login'
+import Signup from '../src/components/Zak/VideoPause/Components/Signup/Signup'
+import ForgotPassword from '../src/components/Zak/VideoPause/Components/ForgotPassword/ForgotPassword'
+import NewPassword from '../src/components/Zak/VideoPause/Components/NewPassword/NewPassword'
+import WishlistCollection from '../src/components/Zak/VideoPause/Components/WishlistCollection/WishlistCollection'
+import Watchlist from '../src/components/Zak/VideoPause/Components/Watchlist/Watchlist'
+import ShoppingCart from '../src/components/Zak/VideoPause/Components/ShoppingCart/ShoppingCart'
+import ShoppingCartTotal from '../src/components/Zak/VideoPause/Components/ShoppingCartTotal/ShoppingCartTotal'
+import Profile from '../src/components/Zak/VideoPause/Components/Profile/Profile'
 
 const Wrapper = styled.div`
   padding: 5em;
@@ -25,12 +27,14 @@ storiesOf('Video Paused Components', module)
   .add('Overlay', () => <Overlay />)
   .add('Header', () => <Header />)
   .add('Submenu', () => <Submenu />)
-  .add('Card', () => <ProductCardSimple />)
-  .add('Card2', () => <ProductCardDiscount />)
-  .add('Card3', () => <ProductCardWishlisted />)
+  .add('On Wishlist Card', () => <ProductCardDiscount />)
+  .add('Add to Wishlist Card', () => <ProductCardWishlisted />)
   .add('Login', () => <Login />)
   .add('Sign up', () => <Signup />)
   .add('Forgot Password', () => <ForgotPassword />)
   .add('New Password', () => <NewPassword />)
   .add('Wishlist Collection', () => <WishlistCollection />)
-  .add('Watchlist', () => <Watchlist />);
+  .add('Watchlist', () => <Watchlist />)
+  .add('Shopping Cart', () => <ShoppingCart />)
+  .add('Shopping Cart Total', () => <ShoppingCartTotal />)
+  .add('Profile', () => <Profile />);
