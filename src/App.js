@@ -120,9 +120,11 @@ const App = () => {
           // console.log(data)
           const { video } = data.prodLink;
           const { image } = data.prodLink;
-          // const poster = image.imageUrl;
-          const poster =
-            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
+          const poster = image.imageUrl;
+          {
+            /* const poster =
+            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg'; */
+          }
           const src = video.qualities[2].url;
           const { type } = video.qualities[2];
 
