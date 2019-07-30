@@ -11,7 +11,11 @@ const updateCache = (cache, { data: { createConsumerWishList } }) => {
 
   consumer.whisLists = consumer.whisLists.concat(createConsumerWishList);
   // console.log(consumer.whisLists);
-  // console.log(consumer);
+  console.log({
+    data: {
+      consumer
+    }
+  });
   cache.writeQuery({
     query: GET_CONSUMER_WISHLIST,
     data: {
@@ -21,7 +25,7 @@ const updateCache = (cache, { data: { createConsumerWishList } }) => {
 };
 
 const addNewWishList = ({ client }) => {
-  console.log(client);
+  // console.log(client);
   const [wishListName, setWishListName] = useState(
     'Please write a wishlist name'
   );
@@ -29,9 +33,19 @@ const addNewWishList = ({ client }) => {
     <Mutation
       mutation={CREATE_NEW_WISHLIST}
       variables={{ name: wishListName }}
-      update={updateCache}>
-      {(createConsumerWishList) => (
+      refetchQueries={() => {
+        console.log('refetchQueries');
+        return [
+          {
+            query: GET_CONSUMER_WISHLIST
+          }
+        ];
+      }}>
+      {(createConsumerWishList, error, loading) => (
         <>
+          {error ? console.log(error) : null}
+          {loading ? console.log(loading) : null}
+
           <label>Please Enter Wist list name</label>
           <input
             onChange={(e) => setWishListName(e.target.value)}

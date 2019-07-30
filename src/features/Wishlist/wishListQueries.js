@@ -75,6 +75,25 @@ export const DELETE_WISH_LIST = gql`
       id
       name
       isPrivate
+      products {
+        id
+        name
+        price
+        stockCount
+        discount
+        rank
+        header
+        description
+        parentId
+        image {
+          id
+          thumbnailUrl
+          imageUrl
+        }
+        images {
+          id
+        }
+      }
     }
   }
 `;

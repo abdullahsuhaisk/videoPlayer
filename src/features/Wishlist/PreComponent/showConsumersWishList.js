@@ -4,23 +4,29 @@ import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
 import DeleteWishlistComponent from './deleteWishlistComponent';
 
 const showConsumersWishList = () => {
-  const updateCashe = async (cache, { data: { deleteConsumerWishList } }) => {
+  // TODO: UPDATE CASHE IT MUST BE
+  /*  const updateCashe = async (cache, { data: { deleteConsumerWishList } }) => {
     const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });
     // console.log(consumer.whisLists);
     const { whisLists } = consumer;
     consumer.whisLists = whisLists.filter(
       (item) => item.id !== deleteConsumerWishList.id
     );
-    // console.log(consumer.whisLists);
+    console.log({
+      data: { consumer: { whisLists } }
+    });
+    console.log(whisLists);
+    console.log(consumer);
     await cache.writeQuery({
       query: GET_CONSUMER_WISHLIST,
       data: { consumer }
     });
   };
+  */
 
   return (
     <>
-      <Query query={GET_CONSUMER_WISHLIST}>
+      <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
         {({ data, error, loading }) => {
           if (loading || error) {
             return null;
@@ -29,15 +35,22 @@ const showConsumersWishList = () => {
           const { whisLists } = consumer;
           const whisListsCount = whisLists.length;
           return (
-            // TODO: DELETE MUTATİON ERROR TURN BACK
+            // TODO: DELETE MUTATION ERROR TURN BACK
             <div>
               {consumer.whisLists &&
                 consumer.whisLists.map((item) => {
                   return (
                     <Mutation
+                      refetchQueries={() => {
+                        console.log('refetchQueries');
+                        return [
+                          {
+                            query: GET_CONSUMER_WISHLIST
+                          }
+                        ];
+                      }}
                       mutation={DELETE_WISH_LIST}
-                      key={item.id}
-                      update={updateCashe}>
+                      key={item.id}>
                       {(deleteConsumerWishList, attrs = {}) => (
                         <div className="wishlistdelete">
                           <span>{item.name}</span>
