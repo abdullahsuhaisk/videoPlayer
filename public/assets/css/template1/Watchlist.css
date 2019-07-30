@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+.watchlist {
+  font-family: 'Source Sans Pro';
+  width: 100%;
+  max-width: 375px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 2;
+  margin-right: 30px;
+}
+.watchlist .watchlist--thumbnail {
+  margin: 0;
+  width: 375px;
+  height: 210px;
+}
+.watchlist .watchlist--thumbnail .watchlist--thumbnail--img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+.watchlist .watchlist--infoContainer {
+  height: 217px;
+  padding: 12.2px 20px 0 20px;
+}
+.watchlist .watchlist--brands {
+  display: flex;
+}
+.watchlist .watchlist--brands .watchlist--brands-icon {
+  width: 28px;
+  height: 28px;
+  border: solid 0.3px #f9f9f9;
+  margin-right: 0;
+  margin-left: -8px;
+}
+.watchlist .watchlist--brands img:first-child {
+  margin-left: 0;
+}
+
+.watchlist .watchlist--infoContainer--h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+  margin: 15px 0;
+}
+.watchlist .watchlist--infoContainer--p {
+  font-size: 14px;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #515252;
+}
+.watchlist .watchlist--hr {
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  margin: 0;
+}
+.watchlist .watchlist--viewsInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 250px;
+  margin: auto;
+  height: 59px;
+}
+.watchlist .watchlist--viewsInfoContainer .watchlist--iconCintainer {
+  display: flex;
+  align-items: center;
+  color: #0e273b;
+}
+.watchlist .watchlist--viewsInfoContainer .watchlist--tagsIcon {
+  background: url(/images/tags.svg) center / contain no-repeat;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  display: block;
+  margin-right: 8px;
+}
+.watchlist .watchlist--viewsInfoContainer .watchlist--heartIcon {
+  background: url(/images/heart-black.svg) center / contain no-repeat;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: block;
+}
+.watchlist .watchlist--viewsInfoContainer .watchlist--heartIcon:hover,
+.watchlist .watchlist--viewsInfoContainer .watchlist--heartIcon.loved {
+  background: url(/images/heart.svg) center / contain no-repeat;
+}
+.watchlist .watchlist--viewsInfoContainer .watchlist--eyeIcon {
+  background: url(/images/eye.svg) center / contain no-repeat;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: block;
+}
+.watchlist .watchlist--videoContainer {
+  position: relative;
+}
+.watchlist .watchlist--videoContainer:hover {
+  background-image: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0));
+  cursor: pointer;
+}
+.watchlist .watchlist--videoContainer::before {
+  content: '';
+  width: 23px;
+  height: 30px;
+  background: url(/images/play.svg) center / contain no-repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  display: none;
+}
+.watchlist .watchlist--videoContainer::after {
+  content: '';
+  width: 80px;
+  height: 80px;
+  opacity: 0.7;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+  display: none;
+}
+.watchlist .watchlist--videoContainer .watchlist--brand {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+.watchlist .watchlist--videoContainer .watchlist--brand .watchlist--brand-img {
+  width: 37px;
+  height: 37px;
+}
+.watchlist .watchlist--videoContainer .watchlist--brand .watchlist--brand-span {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #f7f7f7;
+  margin-left: 7px;
+}
+.watchlist .watchlist--videoContainer .watchlist--videoTime {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  background-color: #000000;
+  opacity: 0.8;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+}
+.watchlist
+  .watchlist--videoContainer
+  .watchlist--videoTime
+  .watchlist--videoTimeValue {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+}
+.watchlist .watchlist--videoContainer:hover::after,
+.watchlist .watchlist--videoContainer:hover::before {
+  display: flex;
+}
