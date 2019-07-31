@@ -68,11 +68,11 @@ const AllProductsCard = () => {
             }, []);
 
           return (
-            <Carousel>
+            <div className="VideoPlayerContainer flex-row">
               {products.map((product) => (
                 <ProductCard product={product} key={product.id} />
               ))}
-            </Carousel>
+            </div>
           );
         }}
       </Query>

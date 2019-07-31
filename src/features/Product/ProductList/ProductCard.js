@@ -27,61 +27,59 @@ const ProductCard = ({ styles, product }) => {
           mutation={ADD_WISHLIST_MUTATION}
           variables={{ productId, wishListId: WISH_LIST_ID }}>
           {(addProductToConsumerWishList, { data }) => (
-            <Wrapper styles={styles} className="vb--product-card">
-              <div className="vb--product-card-first-container">
-                <div
-                  className="vb--product-card-product-image"
-                  style={{
-                    backgroundImage: `url(${product.image.thumbnailUrl}`
-                  }}
+            <div className="Product-Card">
+              <figure className="productCard--imageWrapper">
+                <img
+                  src={product.image.thumbnailUrl}
+                  className="productCard--image"
+                  alt={product.brand.name}
                 />
-                <button
-                  onClick={() => addProductToConsumerWishList()}
-                  className="vb--product-card-add-to-wishlist">
+              </figure>
+              <div className="productCard--wishlist-statusWrapper">
+                <a
+                  className="productCard--wishlist-status"
+                  onClick={() => addProductToConsumerWishList()}>
                   Add to Wish List
-                </button>
+                </a>
               </div>
-              <div className="vb--product-card-second-container">
-                <span className="vb--product-card-brand">
-                  {product.brand.name}
-                </span>
-                <span className="vb--product-card-title">{product.name}</span>
-                {product.discount !== 0 ? (
-                  <div className="vb--product-card-price-container">
-                    <div className="vb--product-card-discount-rate">
-                      <span>{`%${product.discount}`}</span>
-                    </div>
-                    <div className="vb--product-card-base-price">
-                      <span>{`${product.currency.symbol}${product.price.toFixed(
-                        2
-                      )}`}</span>
-                    </div>
-                    <div className="vb--product-card-current-price">
-                      <span>{`${
-                        product.currency.symbol
-                      }${product.currentPrice.toFixed(2)}`}</span>
-                    </div>
+              <p className="productCard--name">{product.brand.name}</p>
+              {product.discount !== 0 ? (
+                <div className="productCard--priceWrapper">
+                  <div className="productCard--discountWrapper">
+                    <p className="productCard--dicount-percent">{`%${product.discount}`}</p>
+                    <p className="productCard--dicount-price">
+                      {`${product.currency.symbol}${product.price.toFixed(2)}`}
+                      <svg>
+                        <line x1="0" y1="100%" x2="100%" y2="0" />
+                      </svg>
+                    </p>
                   </div>
-                ) : (
-                  <span className="vb--product-card-price">{`${
+                  <p className="productCard--Onwishlist--price">{`${
                     product.currency.symbol
-                  }${product.price.toFixed(2)}`}</span>
-                )}
-                <span className="vb--product-card-in-stock">
-                  {product.stockCount > 0 ? 'In Stock' : 'No Stock'}
-                </span>
-                <hr />
-                <button
-                  className="vb--product-card-details"
-                  onClick={() =>
-                    client.writeData({
-                      data: { productIdInDetails: product.id }
-                    })
-                  }>
-                  Details
-                </button>
-              </div>
-            </Wrapper>
+                  }${product.currentPrice.toFixed(2)}`}</p>
+                </div>
+              ) : (
+                <div className="productCard--priceWrapper">
+                  <p className="productCard--wishlist--price">{`${
+                    product.currency.symbol
+                  }${product.price.toFixed(2)}`}</p>
+                </div>
+              )}
+              <p className="productCard--stock-status">
+                {' '}
+                {product.stockCount > 0 ? 'In Stock' : 'No Stock'}
+              </p>
+              <hr className="productCard--underline" />
+              <a
+                className="productCard--detail"
+                onClick={() =>
+                  client.writeData({
+                    data: { productIdInDetails: product.id }
+                  })
+                }>
+                Details
+              </a>
+            </div>
           )}
         </Mutation>
       )}
