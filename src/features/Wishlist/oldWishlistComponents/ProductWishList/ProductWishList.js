@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { ProductWishListStyle, Wrapper } from './ProductWishList.style';
-import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
+// import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
 import ProductWishListItem from './ProductWishListItem';
-import Button from '../../../components/Button/Button';
+import Button from '../../../../components/Button/Button';
+import { loadWebFontsFromStyles } from '../../../../utils/parseStyles';
 
 const ProductWishList = ({ setWishlist, styles }) => {
   useEffect(() => {

@@ -7,8 +7,9 @@ import { Wrapper } from './ProductDetailsDialog.style';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
 import Stepper from '../../../components/Stepper/Stepper';
+import ProductWishList from '../../Wishlist/oldWishlistComponents/ProductWishList/ProductWishList';
 
-import ProductWishList from '../../Wishlist/ProductWishList/ProductWishList';
+// import ProductWishList from '../../Wishlist/ProductWishList/ProductWishList';
 
 const GET_PRODUCT = gql`
   query getProductForProductDetailsDialog($productId: Int!) {
@@ -114,9 +115,7 @@ const ProductDetailDialog = ({ productId }) => {
                                   <span>{`%${product.discount}`}</span>
                                 </div>
                                 <div className="vb--product-card-current-price">
-                                  <span>{`${product.currency.symbol}${
-                                    product.currentPrice
-                                  }`}</span>
+                                  <span>{`${product.currency.symbol}${product.currentPrice}`}</span>
                                 </div>
                                 <AddToCardButton
                                   styles={{ paddingTop: '9px' }}
