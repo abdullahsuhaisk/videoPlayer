@@ -1,15 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { stepperStyles, Wrapper } from './Stepper.style';
-import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const Stepper = ({ value, minValue, onValueChanged, styles }) => {
   const [_value, setValue] = useState(value);
-
-  useEffect(() => {
-    loadWebFontsFromStyles(stepperStyles);
-    loadWebFontsFromStyles(styles);
-  }, []);
 
   const increment = useCallback(() => {
     const newValue = _value + 1;
@@ -26,17 +19,22 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
   }, [_value]);
 
   return (
-    <Wrapper styles={styles}>
-      <div className="vb--stepper--group">
-        <button className="btn-nonoutline" onClick={decrement}>
-          -
-        </button>
-        <div className="vb--stepper--value">{_value}</div>
-        <button className="btn-nonoutline" onClick={increment}>
-          +
-        </button>
+    <div className="ShoppingCart--quantite">
+      <div className="ShoppingCart--quantite-iconContainer">
+        <i className="ShoppingCart--quantite-minusIcon" onClick={decrement}></i>
       </div>
-    </Wrapper>
+      <div className="ShoppingCart--quantite-inputContrainer">
+        <input
+          type="number"
+          className="ShoppingCart--quantite-input"
+          value={_value}
+          onChange={setValue}
+        />
+      </div>
+      <div className="ShoppingCart--quantite-iconContainer">
+        <i className="ShoppingCart--quantite-plusIcon" onClick={increment}></i>
+      </div>
+    </div>
   );
 };
 

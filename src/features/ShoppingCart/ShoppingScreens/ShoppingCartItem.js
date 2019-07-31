@@ -8,8 +8,6 @@ import CardImage from '../../../components/Card/ProductCard/CardImage';
 import CardInfo from '../../../components/Card/ProductCard/CardInfo';
 import CardPrice from '../../../components/Card/ProductCard/CardPrice';
 import CardClose from '../../../components/Card/ProductCard/CardClose';
-import { Wrapper, ShoppingCartItemStyles } from './ShoppingCartItem.style';
-import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
 import {
   UPDATE_PRODUCT_IN_CART,
   GET_CONSUMER_CART
@@ -30,51 +28,61 @@ const updateCache = (cache, { updateProductInCart }) => {
   });
 };
 
-const ShoppingCartItem = ({ styles, cartItem, onRemoveItem }) => {
-  useEffect(() => {
-    loadWebFontsFromStyles(ShoppingCartItemStyles);
-    loadWebFontsFromStyles(styles);
-  }, []);
-
+const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
   return (
-    <Wrapper styles={styles}>
-      <CardImage
-        style={{
-          backgroundImage: `url(${cartItem.product.image.thumbnailUrl}`
-        }}
-      />
-      <CardInfo
-        name={cartItem.product.name}
-        seller={cartItem.product.brand.name}
-        style={{ marginLeft: '30px' }}
-      />
-      <Mutation
-        mutation={UPDATE_PRODUCT_IN_CART}
-        update={(cache, { data }) => updateCache(cache, data)}>
-        {(updateProductInCart) => {
-          return (
-            <Stepper
-              value={cartItem.quantity}
-              onValueChanged={(value) => {
-                if (value === 0) {
-                  onRemoveItem();
-                }
-                if (value > 0) {
-                  updateProductInCart({
-                    variables: {
-                      productId: cartItem.product.id,
-                      quantity: value
-                    }
-                  });
-                }
-              }}
-            />
-          );
-        }}
-      </Mutation>
-      <CardPrice currentPrice={cartItem.product.price} />
-      <CardClose onClose={onRemoveItem} />
-    </Wrapper>
+    <div className="ShoppingCart">
+      <div className="ShoppingCart--product">
+        <figure className="ShoppingCart--product-figure">
+          <img
+            src={cartItem.product.image.thumbnailUrl}
+            className="ShoppingCart--product-figure-img"
+          />
+        </figure>
+        <div className="ShoppingCart--product-info">
+          <h3 className="ShoppingCart--product-name">
+            {cartItem.product.name}
+          </h3>
+          <div className="ShoppingCart--product-seller">
+            <label className="ShoppingCart--product-seller-label">
+              Seller :
+            </label>
+            <span className="ShoppingCart--product-seller-name">
+              {cartItem.product.brand.name}
+            </span>
+          </div>
+        </div>
+        <Mutation
+          mutation={UPDATE_PRODUCT_IN_CART}
+          update={(cache, { data }) => updateCache(cache, data)}>
+          {(updateProductInCart) => {
+            return (
+              <Stepper
+                value={cartItem.quantity}
+                onValueChanged={(value) => {
+                  if (value === 0) {
+                    onRemoveItem();
+                  }
+                  if (value > 0) {
+                    updateProductInCart({
+                      variables: {
+                        productId: cartItem.product.id,
+                        quantity: value
+                      }
+                    });
+                  }
+                }}
+              />
+            );
+          }}
+        </Mutation>
+        <div className="ShoppingCart--priceContainer">
+          <span class="ShoppingCart--price">{cartItem.product.price}</span>
+        </div>
+        <div className="ShoppingCart--closeContainer">
+          <i class="ShoppingCart--close" onClick={onRemoveItem}></i>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -84,8 +92,6 @@ ShoppingCartItem.propTypes = {
   onRemoveItem: PropTypes.func.isRequired
 };
 
-ShoppingCartItem.defaultProps = {
-  styles: {}
-};
+ShoppingCartItem.defaultProps = {};
 
 export default ShoppingCartItem;
