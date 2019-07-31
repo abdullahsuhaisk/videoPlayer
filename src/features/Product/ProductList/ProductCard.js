@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Wrapper } from './ProductCard.style';
 import { WISH_LIST_ID } from '../../../common/GrapqlConstant';
 
 const ADD_WISHLIST_MUTATION = gql`
@@ -18,7 +17,7 @@ const ADD_WISHLIST_MUTATION = gql`
   }
 `;
 
-const ProductCard = ({ styles, product }) => {
+const ProductCard = ({ product }) => {
   const productId = product.id;
   return (
     <ApolloConsumer>
@@ -88,12 +87,9 @@ const ProductCard = ({ styles, product }) => {
 };
 
 ProductCard.propTypes = {
-  styles: PropTypes.object,
   product: PropTypes.object.isRequired
 };
 
-ProductCard.defaultProps = {
-  styles: {}
-};
+ProductCard.defaultProps = {};
 
 export default ProductCard;

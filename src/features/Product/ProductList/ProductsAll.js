@@ -38,7 +38,7 @@ const GET_PRODUCTS = gql`
 `;
 
 // TODO: change prodLinkId
-const ProductList = () => {
+const ProductsAll = () => {
   return (
     <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
       {({ loading, error, data }) => {
@@ -82,4 +82,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductsAll;

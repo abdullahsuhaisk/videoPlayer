@@ -33,15 +33,15 @@
                     "tabs": [
                       {
                         "title": " Product in this Scene",
-                        "key": "AllProductsCard"
+                        "key": "productInThisScene"
                       },
                       {
                         "title": "All Product",
-                        "key": "AllProductsCard"
+                        "key": "productsInThisVideo"
                       },
                       {
                         "title": "Suggested Products",
-                        "key": "AllProductsCard"
+                        "key": "suggestedProduct"
                       },
                       {
                         "title": "Wishlist",

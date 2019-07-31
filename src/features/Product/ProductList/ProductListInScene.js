@@ -2,6 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import ProductCarousel from './ProductCarousel';
+import ProductCard from './ProductCard';
 
 const GET_PLAYER = gql`
   query getPlayerForProductListInScene {
@@ -86,7 +87,16 @@ const ProductListInScene = () => {
                   return acc;
                 }, []);
 
-              return <ProductCarousel products={products} />;
+              {
+                /* return <ProductCarousel products={products} />; */
+              }
+              return (
+                <div className="VideoPlayerContainer flex-row">
+                  {products.map((product) => (
+                    <ProductCard product={product} key={product.id} />
+                  ))}
+                </div>
+              );
             }}
           </Query>
         );
