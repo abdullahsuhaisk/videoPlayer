@@ -34,7 +34,7 @@ const AuthScreen = () => {
           }
         }) => {
           return (
-            <>
+            <div style={{ pointerEvents: 'auto' }}>
               {player &&
                 player.isStarted &&
                 player.playingState === PLAYER.PAUSED && <ProfileButton />}
@@ -47,7 +47,7 @@ const AuthScreen = () => {
               {isLoggedIn === false && isForgotPasswordFormShowing === true && (
                 <ForgotPasswordForm />
               )}
-            </>
+            </div>
           );
         }}
       </Query>

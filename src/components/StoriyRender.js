@@ -11,6 +11,7 @@ import ProductCardWishlisted from './Zak/VideoPause/Components/Cards/ProductCard
 import WishlistCollection from './Zak/VideoPause/Components/WishlistCollection/WishlistCollection';
 import Watchlist from './Zak/VideoPause/Components/Watchlist/Watchlist';
 import ShoppingCart from './Zak/VideoPause/Components/ShoppingCart/ShoppingCart';
+import Login from './Zak/VideoPause/Components/Login/Login';
 
 const StoriyRender = () => {
   useCss();
@@ -24,10 +25,11 @@ const StoriyRender = () => {
     <>
       <Overlay />
       <Header />
+      <Login />
       <StaticSubMenu />
       {/* use Flickity Component with  className="VideoPlayerContainer" as a Container in  All Products, Suggested Products, Wishlist, Watchlist Pages*/}
       {/* use a Div with className="VideoPlayerContainer flex-column" as a Container in Shopping Cart page*/}
-      <Watchlist />
+      {/* <Watchlist /> */}
       {/* <Flickity
         className="VideoPlayerContainer"
         reloadOnUpdate={true}

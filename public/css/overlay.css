@@ -2,6 +2,10 @@
 * {
   font-family: 'Source Sans Pro';
 }
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+* {
+  font-family: 'Source Sans Pro';
+}
 .VideoPlayerContainer {
   margin-top: 40px;
   margin-left: 47.5px;
@@ -13,201 +17,327 @@
 .flex-row {
   display: flex;
 }
-.sub-Menu {
-  display: flex;
-  position: relative;
-  width: 100%;
-  font-family: 'Source Sans Pro';
-  align-items: center;
-}
-.sub-Menu .subMenu--linksWithIcons {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1650px;
-  margin-left: 40px;
-}
-.sub-Menu .subMenu--linksWrapper {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
-.sub-Menu .subMenu--linksWrapper .subMenu--link {
-  color: rgb(11, 36, 67, 0.4);
-  font-size: 18px;
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 0 34px;
-  cursor: pointer;
-}
-
-.sub-Menu .subMenu--linksWrapper .subMenu--link:hover,
-.sub-Menu .subMenu--linksWrapper .subMenu--link--active {
-  color: rgb(11, 36, 67);
-}
-
-.sub-Menu .subMenu--statsWrapper {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.sub-Menu .subMenu--statsWrapper .stats--content {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 600;
-  color: #0b2443;
-  line-height: 1.3em;
-  padding: 0 1em;
-  opacity: 0.4;
-  cursor: pointer;
-}
-.sub-Menu .subMenu--statsWrapper .stats--content:hover {
-  opacity: 1;
-}
-.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--likeIcon {
-  background: url(/images/likeIcon.svg) center / contain no-repeat;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: block;
-}
-.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--heartIcon {
-  background: url(/images/heart-black.svg) center / contain no-repeat;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: block;
-}
-.sub-Menu
-  .subMenu--statsWrapper
-  .stats--content--heart:hover
-  .stats--content--heartIcon,
-.sub-Menu
-  .subMenu--statsWrapper
-  .stats--content
-  .stats--content--heartIcon.loved {
-  background: url(/images/heart.svg) center / contain no-repeat;
-}
-.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--shareIcon {
-  background: url(/images/shareIcon.svg) center / contain no-repeat;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: block;
-}
-.sub-Menu .subMenu--profileInfo {
-  margin-right: 48px;
-  cursor: pointer;
-}
-.sub-Menu .subMenu--profileInfo .subMenu--profileInfo--img {
-  width: 50px;
-  height: 50px;
-  border: solid 4px rgba(11, 36, 67, 0.28);
-  border-radius: 50%;
-}
-.subMenu--underline {
-  position: absolute;
-  left: -11%;
-  bottom: -12.5px;
-  width: 110%;
-  opacity: 0.75;
-  border: 2px solid rgba(11, 36, 67, 0.28);
-  margin-top: 0.3em;
-}
-.sub-Menu .subMenu--link-bullet {
-  position: relative;
-}
-.sub-Menu .subMenu--link-bullet:after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #f03c3c;
-  border-radius: 50%;
-}
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
-.WishlistCollection {
-  width: 100%;
-  max-width: 610px;
-  padding: 4px;
-  border-radius: 10px;
+.Product-Card {
+  width: 228px;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 0 17.5px;
   font-family: 'Source Sans Pro';
+  position: relative;
+}
+.Product-Card .productCard--imageWrapper {
+  width: 228px;
+  height: 266px;
+  margin: 0 auto;
   z-index: 2;
-  margin-right: 35px;
+  border-radius: 8px;
 }
-.WishlistCollection .WishlistCollection--gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 100px);
-  grid-gap: 4px;
-  max-width: 610px;
-}
-.WishlistCollection .WishlistCollection--gallery .gallery--item-1,
-.WishlistCollection .WishlistCollection--gallery .gallery--item-2,
-.WishlistCollection .WishlistCollection--gallery .gallery--item-4,
-.WishlistCollection .WishlistCollection--gallery .gallery--item-5 {
-  grid-row: span 2;
-}
-.gallery--item-3 {
-  grid-row: span 3;
-}
-.gallery--item-6 {
-  grid-row: span 1;
-}
-
-.WishlistCollection .WishlistCollection--gallery .gallery--item {
-  margin: 0;
-}
-.WishlistCollection .WishlistCollection--gallery .gallery--item .gallery--img {
+.Product-Card .productCard--imageWrapper .productCard--image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: solid 2px #ffffff;
   border-radius: 8px;
 }
-.WishlistCollection
-  .WishlistCollection--collection
-  .WishlistCollection--collection-h2 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3em;
-  letter-spacing: 0.025em;
-  color: #0b2443;
-  margin-top: 16px;
-  margin-bottom: 4px;
-  margin-left: 23.5px;
+.Product-Card .productCard--wishlist-statusWrapper {
+  height: 34px;
+  background-color: #00acd8;
+  padding-top: 11px;
+  padding-bottom: 5px;
+  margin-top: -5px;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
   cursor: pointer;
 }
-.WishlistCollection
-  .WishlistCollection--collection
-  .WishlistCollection--collection-span {
-  display: block;
+.Product-Card
+  .productCard--wishlist-statusWrapper
+  .productCard--wishlist-status {
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.3em;
-  letter-spacing: 0.025em;
-  color: #0b2443;
-  opacity: 0.4;
-  margin-left: 23.5px;
-  margin-top: 0;
-  margin-bottom: 26px;
+  color: #ebeae9;
+  /* padding-top: 6px; */
+  display: block;
 }
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
-.login {
+.Product-Card .productCard--Onwishlist-statusWrapper {
+  height: 34px;
+  background-color: #e5e5e5;
+  padding-top: 11px;
+  padding-bottom: 5px;
+  margin-top: -5px;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  cursor: pointer;
+}
+.Product-Card
+  .productCard--Onwishlist-statusWrapper
+  .productCard--Onwishlist-status {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00acd8;
+  display: block;
+  /* margin-top: 6px; */
+}
+.Product-Card
+  .productCard--Onwishlist-statusWrapper
+  .productCard--Onwishlist-checkedIcon {
+  width: 20px;
+  height: 20px;
+  background: url(/images/ic_check.svg) center / contain no-repeat;
+  display: block;
+  margin-right: 10px;
+  /* margin-top: 6px; */
+}
+.Product-Card .productCard--name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #515252;
+  letter-spacing: 0.025em;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 11px;
+  padding: 0 10px;
+  z-index: 1;
+  max-width: 192px;
+}
+.Product-Card .productCard--priceWrapper {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.Product-Card .productCard--priceWrapper .productCard--discountWrapper {
+  display: flex;
+  margin-top: 13px;
+}
+.Product-Card
+  .productCard--priceWrapper
+  .productCard--discountWrapper
+  .productCard--dicount-percent {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+  background: #d33737;
+  padding: 3.4px;
+  border-radius: 6px;
+  margin: 0;
+}
+.Product-Card
+  .productCard--priceWrapper
+  .productCard--discountWrapper
+  .productCard--dicount-price {
+  position: relative;
+  font-size: 13px;
+  letter-spacing: 0.015em;
+  color: #515252;
+  margin-left: 2.6px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.Product-Card
+  .productCard--priceWrapper
+  .productCard--discountWrapper
+  .productCard--dicount-price
+  svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+.Product-Card
+  .productCard--priceWrapper
+  .productCard--discountWrapper
+  .productCard--dicount-price
+  svg
+  line {
+  stroke: #ff1010;
+  stroke-width: 1;
+}
+.Product-Card .productCard--priceWrapper .productCard--Onwishlist--price {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  color: #515252;
+  margin: 0;
+}
+.Product-Card .productCard--priceWrapper .productCard--wishlist--price {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  color: #515252;
+  margin-top: 23px;
+  margin-bottom: 10px;
+}
+.Product-Card .productCard--stock-status {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: #00acd8;
+  margin: 0;
+  margin-bottom: 5.5px;
+  margin-top: 7px;
+  letter-spacing: 0.025em;
+  z-index: 1;
+}
+.Product-Card .productCard--underline {
+  height: 1px;
+  width: 140px;
+  border: 0;
+  background-color: #00acd8;
+  margin: 0 auto;
+  z-index: 1;
+}
+.Product-Card .productCard--detail {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00acd8;
+  text-align: center;
+  margin-top: 5.5px;
+  margin-bottom: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+.forgotPassword {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 779px;
+  height: 894px;
   width: 450px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   padding: 53px 65px 62px 56px;
   font-family: 'Source Sans Pro';
+}
+.forgotPassword .forgotPassword--imgWrapper {
+  max-width: 350px;
+  margin: 0;
+  margin-bottom: 60px;
+}
+.forgotPassword .forgotPassword--imgWrapper .forgotPassword--img {
+  height: 100%;
+  width: 100%;
+}
+.forgotPassword .forgotPassword--emailWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.forgotPassword .forgotPassword--label {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+}
+.forgotPassword .forgotPassword--input {
+  height: 1.2em;
+  border: 0;
+  border-bottom: 1px solid #0b244359;
+  font-size: 18px;
+  color: #0b2443;
+}
+.forgotPassword .forgotPassword--input:focus {
+  outline: none;
+  border-bottom: 1px solid #0b2443;
+}
+
+.forgotPassword .forgotPassword--buttonWrapper {
+  width: 100%;
+  margin-top: 40.6px;
+  display: flex;
+  justify-content: flex-end;
+}
+.forgotPassword .forgotPassword--buttonWrapper .forgotPassword--button {
+  color: #ffffff;
+  height: 40px;
+  min-width: 150px;
+  font-size: 14px;
+  border-radius: 39px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+}
+.forgotPassword .forgotPassword--signupButtonWrapper {
+  width: 100%;
+}
+.forgotPassword
+  .forgotPassword--signupButtonWrapper
+  .forgotPassword--signupButton {
+  color: #83329c;
+  height: 45px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  border: solid 1px #83329c;
+  background-color: #ffffff;
+  outline: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  margin-top: 345px;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  width: 1454px;
+  margin-left: 67px;
+}
+
+.Header .mainMenu--brandInfo {
+  display: flex;
+  align-items: baseline;
+  z-index: 1;
+  margin-top: 24px;
+}
+
+.Header .mainMenu--brandInfo .company--name {
+  font-size: 70px;
+  font-weight: 600;
+  color: #0b2443;
+  margin: 0;
+  margin-right: 19px;
+}
+.Header .mainMenu--brandInfo .campaign--name {
+  display: flex;
+  align-self: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b2443;
+  margin: 0;
+  margin-top: 1.6em;
+}
+.login {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 894px;
+  width: 450px;
+  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  font-family: 'Source Sans Pro';
+  padding: 53px 65px 62px 56px;
 }
 .login .login--imgWrapper {
   max-width: 350px;
@@ -361,13 +491,120 @@
   letter-spacing: 0.025em;
   padding: 0;
 }
+.newPassword {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 894px;
+  width: 450px;
+  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  padding: 53px 65px 62px 56px;
+  font-family: 'Source Sans Pro';
+}
+.newPassword .newPassword--imgWrapper {
+  max-width: 350px;
+  margin: 0;
+  margin-bottom: 60px;
+}
+.newPassword .newPassword--imgWrapper .newPassword--img {
+  height: 100%;
+  width: 100%;
+}
+.newPassword .newPassword--passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.newPassword .newPassword--passwordRepeatWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10.6px;
+}
+.newPassword .newPassword--label {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+  margin-bottom: 15.6px;
+}
+.newPassword .newPassword--input {
+  height: 1.2em;
+  border: 0;
+  border-bottom: 1px solid #0b244359;
+  font-size: 18px;
+  color: #0b2443;
+  padding: 0;
+}
+.newPassword .newPassword--input:focus {
+  outline: none;
+  border-bottom: 1px solid #0b2443;
+}
+.newPassword .newPassword--minCharErrorWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.newPassword .newPassword--minCharErrorWrapper .newPassword--minChar {
+  font-size: 15px;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+}
+.newPassword .newPassword--minCharErrorWrapper .newPassword--error {
+  font-size: 15px;
+  color: #d80011;
+  letter-spacing: 0.025em;
+}
+.newPassword .newPassword--buttonWrapper {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+.newPassword .newPassword--buttonWrapper .newPassword--button {
+  color: #ffffff;
+  height: 40px;
+  min-width: 150px;
+  font-size: 14px;
+  border-radius: 39px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+}
+.newPassword .newPassword--signupButton {
+  color: #83329c;
+  height: 45px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  border: solid 1px #83329c;
+  background-color: #ffffff;
+  outline: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  margin-top: 217px;
+  padding: 0;
+}
 .mainMenu--background {
   position: absolute;
   top: 0;
   left: 0;
   width: 1588px;
   height: 894px;
-  background-image: url(../assets/bg.png);
+  background-image: url('../../bg.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -383,6 +620,145 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background-color: #f5f9fc;
+}
+.ProfileAdresses--Container {
+  display: flex;
+}
+.Profile,
+.Adresses {
+  width: 445px;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+  font-family: 'Source Sans Pro';
+}
+.Profile {
+  height: 428px;
+  margin-right: 35px;
+  padding: 32px 45px 40px 45px;
+}
+.Adresses {
+  width: 646px;
+  padding: 45px 45px 40px 45px;
+}
+.Profile .profile--head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.Profile .profile--head .profile--head--label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+}
+.Profile .profile--head .profile--head--img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.Profile .profile--info {
+  display: flex;
+  margin-bottom: 30px;
+}
+.Profile .profile--info .profile--info--label {
+  width: 210px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.Profile .profile--info .profile--info--p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+}
+.Profile .profile--editButtonWrapper {
+  width: 100%;
+  margin-top: 2px;
+  display: flex;
+  justify-content: flex-end;
+}
+.Profile .profile--editButtonWrapper .profile--editButton {
+  color: #ffffff;
+  height: 40px;
+  width: 150px;
+  font-size: 14px;
+  border-radius: 38px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+}
+.Adresses .adresses--head {
+  margin-bottom: 30px;
+}
+.Adresses .adresses--head .profile--head--label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+}
+.Adresses .adresses--info {
+  display: flex;
+}
+.Adresses .adresses--info .adresses--info--label {
+  width: 210px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.Adresses .adresses--info .adresses--info--p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+}
+.Adresses .adresses--hr {
+  width: 424px;
+  height: 1px;
+  background-color: #ebeae9;
+  border-radius: 8px;
+  border: 0;
+  margin: 0;
+  margin-top: 42px;
+  margin-bottom: 50px;
+}
+.Adresses .adresses--editButtonWrapper {
+  width: 100%;
+  margin-top: 88px;
+  display: flex;
+  justify-content: flex-end;
+}
+.Adresses .adresses--editButtonWrapper .adresses--editButton {
+  color: #ffffff;
+  height: 40px;
+  width: 150px;
+  font-size: 14px;
+  border-radius: 38px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
 }
 .ShoppingCart {
   display: flex;
@@ -594,7 +970,290 @@
   background-color: rgba(131, 50, 156, 0.1);
   margin-left: 1em;
 }
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+.signup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 894px;
+  width: 450px;
+  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  padding: 53px 65px 62px 56px;
+  font-family: 'Source Sans Pro';
+}
+.signup .signup--imgWrapper {
+  max-width: 350px;
+  margin: 0;
+  margin-bottom: 60px;
+}
+.signup .signup--imgWrapper .signup--img {
+  height: 100%;
+  width: 100%;
+}
+.signup .signup--emailWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.signup .signup--passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10.6px;
+}
+.signup .signup--label {
+  margin-bottom: 15.6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+}
+.signup .signup--input {
+  height: 1.2em;
+  border: 0;
+  border-bottom: 1px solid #0b244359;
+  font-size: 18px;
+  color: #0b2443;
+  padding-left: 10px;
+}
+.signup .signup--input:focus {
+  outline: none;
+  border-bottom: 1px solid #0b2443;
+}
+.signup .signup--resetWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.signup .signup--resetWrapper .signup--staySigned {
+  display: flex;
+  align-items: center;
+}
+.signup .signup--resetWrapper .signup--staySigned .signup--staySigned-checkbox {
+  margin-left: 0;
+}
+.signup .signup--resetWrapper .signup--staySigned .signup--staySigned--label {
+  font-size: 15px;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  margin-left: 0.3em;
+}
+.signup
+  .signup--resetWrapper
+  .signup--forgotPassword
+  .signup--forgotPassword--a {
+  font-size: 15px;
+  color: #00acd8;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signup .signup--buttonWrapper {
+  width: 100%;
+  margin-top: 40px;
+}
+.signup .signup--buttonWrapper .signup--button {
+  color: #ffffff;
+  height: 45px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #00acd8;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  padding: 0;
+}
+.signup .signupWithWrapper {
+  margin-top: 40px;
+}
+.signup .signup--signupWith {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.signup .signup--withSocialMedia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 118px;
+  margin-right: -4px;
+}
+.signup .signup--withSocialMedia .signup--withFacebook {
+  background: url(/images/fb_round_logo.png) center / contain no-repeat;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.signup .signup--withSocialMedia .signup--withGoogle {
+  background: url(/images/google_logo.png) center / contain no-repeat;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+.signup .signup--hr {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  margin-top: 49px;
+  margin-bottom: 40px;
+}
+.signup .signup-haveAccount {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  margin-bottom: 21px;
+  margin-top: 0;
+}
+.signup .signup--signupButtonWrapper {
+  width: 100%;
+}
+.signup .signup--signupButtonWrapper .signup--signupButton {
+  color: #83329c;
+  height: 45px;
+  width: 100%;
+  min-width: 120px;
+  border-radius: 39px;
+  border: solid 1px #83329c;
+  background-color: #ffffff;
+  outline: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  padding: 0;
+}
+.sub-Menu {
+  display: flex;
+  position: relative;
+  width: 100%;
+  font-family: 'Source Sans Pro';
+  align-items: center;
+}
+.sub-Menu .subMenu--linksWithIcons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1650px;
+  margin-left: 40px;
+}
+.sub-Menu .subMenu--linksWrapper {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-Menu .subMenu--linksWrapper .subMenu--link {
+  color: rgb(11, 36, 67, 0.4);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0 34px;
+  cursor: pointer;
+}
+
+.sub-Menu .subMenu--linksWrapper .subMenu--link:hover,
+.sub-Menu .subMenu--linksWrapper .subMenu--link--active {
+  color: rgb(11, 36, 67);
+}
+
+.sub-Menu .subMenu--statsWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sub-Menu .subMenu--statsWrapper .stats--content {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b2443;
+  line-height: 1.3em;
+  padding: 0 1em;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.sub-Menu .subMenu--statsWrapper .stats--content:hover {
+  opacity: 1;
+}
+.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--likeIcon {
+  background: url(/images/likeIcon.svg) center / contain no-repeat;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: block;
+}
+.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--heartIcon {
+  background: url(/images/heart-black.svg) center / contain no-repeat;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: block;
+}
+.sub-Menu
+  .subMenu--statsWrapper
+  .stats--content--heart:hover
+  .stats--content--heartIcon,
+.sub-Menu
+  .subMenu--statsWrapper
+  .stats--content
+  .stats--content--heartIcon.loved {
+  background: url(/images/heart.svg) center / contain no-repeat;
+}
+.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--shareIcon {
+  background: url(/images/shareIcon.svg) center / contain no-repeat;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: block;
+}
+.sub-Menu .subMenu--profileInfo {
+  margin-right: 48px;
+  cursor: pointer;
+}
+.sub-Menu .subMenu--profileInfo .subMenu--profileInfo--img {
+  width: 50px;
+  height: 50px;
+  border: solid 4px rgba(11, 36, 67, 0.28);
+  border-radius: 50%;
+}
+.subMenu--underline {
+  position: absolute;
+  left: -11%;
+  bottom: -12.5px;
+  width: 110%;
+  opacity: 0.75;
+  border: 2px solid rgba(11, 36, 67, 0.28);
+  margin-top: 0.3em;
+}
+.sub-Menu .subMenu--link-bullet {
+  position: relative;
+}
+.sub-Menu .subMenu--link-bullet:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f03c3c;
+  border-radius: 50%;
+}
 .watchlist {
   font-family: 'Source Sans Pro';
   width: 100%;
@@ -771,7 +1430,6 @@
 .watchlist .watchlist--videoContainer:hover::before {
   display: flex;
 }
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
 .WishlistCollection {
   width: 100%;
   max-width: 610px;
@@ -837,171 +1495,4 @@
   margin-left: 23.5px;
   margin-top: 0;
   margin-bottom: 26px;
-}
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
-.signup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 779px;
-  width: 450px;
-  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
-  background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
-  font-family: 'Source Sans Pro';
-}
-.signup .signup--imgWrapper {
-  max-width: 350px;
-  margin: 0;
-  margin-bottom: 60px;
-}
-.signup .signup--imgWrapper .signup--img {
-  height: 100%;
-  width: 100%;
-}
-.signup .signup--emailWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 20px;
-}
-.signup .signup--passwordWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 10.6px;
-}
-.signup .signup--label {
-  margin-bottom: 15.6px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3em;
-  letter-spacing: 0.025em;
-  color: #0b2443;
-}
-.signup .signup--input {
-  height: 1.2em;
-  border: 0;
-  border-bottom: 1px solid #0b244359;
-  font-size: 18px;
-  color: #0b2443;
-  padding-left: 10px;
-}
-.signup .signup--input:focus {
-  outline: none;
-  border-bottom: 1px solid #0b2443;
-}
-.signup .signup--resetWrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.signup .signup--resetWrapper .signup--staySigned {
-  display: flex;
-  align-items: center;
-}
-.signup .signup--resetWrapper .signup--staySigned .signup--staySigned-checkbox {
-  margin-left: 0;
-}
-.signup .signup--resetWrapper .signup--staySigned .signup--staySigned--label {
-  font-size: 15px;
-  color: #0b2443;
-  letter-spacing: 0.025em;
-  margin-left: 0.3em;
-}
-.signup
-  .signup--resetWrapper
-  .signup--forgotPassword
-  .signup--forgotPassword--a {
-  font-size: 15px;
-  color: #00acd8;
-  letter-spacing: 0.025em;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.signup .signup--buttonWrapper {
-  width: 100%;
-  margin-top: 40px;
-}
-.signup .signup--buttonWrapper .signup--button {
-  color: #ffffff;
-  height: 45px;
-  width: 100%;
-  min-width: 120px;
-  border-radius: 39px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-color: #00acd8;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.025em;
-  padding: 0;
-}
-.signup .signupWithWrapper {
-  margin-top: 40px;
-}
-.signup .signup--signupWith {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0b2443;
-  letter-spacing: 0.025em;
-  text-align: center;
-  margin: 0;
-  margin-bottom: 30px;
-}
-.signup .signup--withSocialMedia {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 118px;
-  margin-right: -4px;
-}
-.signup .signup--withSocialMedia .signup--withFacebook {
-  background: url(/images/fb_round_logo.png) center / contain no-repeat;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-.signup .signup--withSocialMedia .signup--withGoogle {
-  background: url(/images/google_logo.png) center / contain no-repeat;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-}
-.signup .signup--hr {
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  margin-top: 49px;
-  margin-bottom: 40px;
-}
-.signup .signup-haveAccount {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0b2443;
-  letter-spacing: 0.025em;
-  margin-bottom: 21px;
-  margin-top: 0;
-}
-.signup .signup--signupButtonWrapper {
-  width: 100%;
-}
-.signup .signup--signupButtonWrapper .signup--signupButton {
-  color: #83329c;
-  height: 45px;
-  width: 100%;
-  min-width: 120px;
-  border-radius: 39px;
-  border: solid 1px #83329c;
-  background-color: #ffffff;
-  outline: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.025em;
-  padding: 0;
 }

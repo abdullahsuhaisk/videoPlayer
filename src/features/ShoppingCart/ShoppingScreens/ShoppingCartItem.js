@@ -4,10 +4,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import Stepper from '../../../components/Stepper/Stepper';
-import CardImage from '../../../components/Card/ProductCard/CardImage';
-import CardInfo from '../../../components/Card/ProductCard/CardInfo';
-import CardPrice from '../../../components/Card/ProductCard/CardPrice';
-import CardClose from '../../../components/Card/ProductCard/CardClose';
 import {
   UPDATE_PRODUCT_IN_CART,
   GET_CONSUMER_CART
@@ -76,10 +72,10 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
           }}
         </Mutation>
         <div className="ShoppingCart--priceContainer">
-          <span class="ShoppingCart--price">{cartItem.product.price}</span>
+          <span className="ShoppingCart--price">{cartItem.product.price}</span>
         </div>
         <div className="ShoppingCart--closeContainer">
-          <i class="ShoppingCart--close" onClick={onRemoveItem}></i>
+          <i className="ShoppingCart--close" onClick={onRemoveItem}></i>
         </div>
       </div>
     </div>
@@ -87,7 +83,6 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
 };
 
 ShoppingCartItem.propTypes = {
-  styles: PropTypes.object,
   cartItem: PropTypes.object.isRequired,
   onRemoveItem: PropTypes.func.isRequired
 };

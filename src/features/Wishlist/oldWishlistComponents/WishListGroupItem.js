@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { loadWebFontsFromStyles } from '../../utils/parseStyles';
+import { loadWebFontsFromStyles } from '../../../utils/parseStyles';
 import { wishlistgroupStyle, Wrapper } from './WishListGroupItem.style';
 
 const WishListGroupItem = ({ styles, price, imageUrl, items }) => {
