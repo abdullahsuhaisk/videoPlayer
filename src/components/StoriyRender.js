@@ -27,7 +27,8 @@ const StoriyRender = () => {
       <StaticSubMenu />
       {/* use Flickity Component with  className="VideoPlayerContainer" as a Container in  All Products, Suggested Products, Wishlist, Watchlist Pages*/}
       {/* use a Div with className="VideoPlayerContainer flex-column" as a Container in Shopping Cart page*/}
-      <Flickity
+      <Watchlist />
+      {/* <Flickity
         className="VideoPlayerContainer"
         reloadOnUpdate={true}
         options={flickityOptions}>
@@ -40,7 +41,7 @@ const StoriyRender = () => {
         <ProductCardDiscount />
         <ProductCardWishlisted />
         <ProductCardWishlisted />
-      </Flickity>
+      </Flickity> */}
       {/* <Submenu setPage={setPage} page={page} Menu={Menu} /> */}
       {/* {getPage(page)} */}
     </>

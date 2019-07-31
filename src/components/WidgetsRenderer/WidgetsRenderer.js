@@ -16,6 +16,8 @@ import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
 import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
+import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
+
 // Wrapper Section //
 
 // Screen Section Screen has all of logic and own State //
@@ -68,7 +70,8 @@ const widgetList = {
   Header,
   ProductListCard,
   AllProductsCard,
-  ShoppingCartScreen
+  ShoppingCartScreen,
+  ScreenPauseOverlayComponent
 };
 
 const WidgetsRenderer = (props) => {

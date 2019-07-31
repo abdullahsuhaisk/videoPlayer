@@ -5,6 +5,10 @@
       "props": {
         "children": [
           {
+            "type": "ScreenPauseOverlayComponent",
+            "props": {}
+          },
+          {
             "type": "AuthScreen",
             "props": {}
           },
@@ -28,24 +32,28 @@
                   "props": {
                     "tabs": [
                       {
-                        "title": " My wish List",
-                        "key": "wishList"
-                      },
-                      {
-                        "title": "login",
-                        "key": "login"
-                      },
-                      {
-                        "title": "product",
-                        "key": "product"
-                      },
-                      {
-                        "title": "AllProductsCard",
+                        "title": " Product in this Scene",
                         "key": "AllProductsCard"
+                      },
+                      {
+                        "title": "All Product",
+                        "key": "AllProductsCard"
+                      },
+                      {
+                        "title": "Suggested Products",
+                        "key": "AllProductsCard"
+                      },
+                      {
+                        "title": "Wishlist",
+                        "key": "wishList"
                       },
                       {
                         "title": "WatchListScreen",
                         "key": "WatchListScreen"
+                      },
+                      {
+                        "title": "Shopping Cart",
+                        "key": "ShoppingCartScreen"
                       }
                     ]
                   }

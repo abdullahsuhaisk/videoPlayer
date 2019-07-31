@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/css/template1/Submenu.css';
 
 const Submenu = (props) => {
   return (

@@ -6,23 +6,23 @@ const StaticSubMenu = (props) => {
     <React.Fragment>
       <div className="sub-Menu">
         <div className="subMenu--linksWithIcons">
-          <ul class="subMenu--linksWrapper">
-            <li class="subMenu--link subMenu--link--active">
+          <ul className="subMenu--linksWrapper">
+            <li className="subMenu--link subMenu--link--active">
               <a>Products in this Scene</a>
             </li>
-            <li class="subMenu--link">
+            <li className="subMenu--link">
               <a>All Products</a>
             </li>
-            <li class="subMenu--link">
+            <li className="subMenu--link">
               <a>Suggested Products</a>
             </li>
-            <li class="subMenu--link subMenu--link-bullet">
+            <li className="subMenu--link subMenu--link-bullet">
               <a>Wishlist</a>
             </li>
-            <li class="subMenu--link">
+            <li className="subMenu--link">
               <a>Watchlist</a>
             </li>
-            <li class="subMenu--link">
+            <li className="subMenu--link">
               <a>Shopping Cart</a>
             </li>
           </ul>

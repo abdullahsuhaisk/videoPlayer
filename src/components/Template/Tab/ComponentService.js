@@ -6,6 +6,7 @@ import LoginForm from '../../../features/Auth/LoginForm';
 import AllProductsCard from '../../Product/AllProductsCard';
 import WatchListScreen from '../../../features/Watchlist/WatchListScreen';
 import ShowConsumersWishList from '../../../features/Wishlist/PreComponent/showConsumersWishList';
+import ShoppingCartScreen from '../../../features/ShoppingCart/ShoppingCartScreen';
 
 export const ComponentsService = {
   // KEY : COMPONENT
@@ -15,5 +16,6 @@ export const ComponentsService = {
   auth: AuthScreen,
   favorites: FavoritesScreen,
   AllProductsCard,
-  WatchListScreen
+  WatchListScreen,
+  ShoppingCartScreen
 };

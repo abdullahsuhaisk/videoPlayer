@@ -67,12 +67,12 @@ const OverlayScreen = ({ playingState }) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          <StoriyRender />
-          {/* <Screen
+          {/* <StoriyRender /> */}
+          <Screen
             playingState={playingState}
             videoPlayer={videoPlayer}
             temp={temp}
-          /> */}
+          />
           {/* <HotspotScreen />
           <ProductListScreen />
           <ProductDetailsScreen />
