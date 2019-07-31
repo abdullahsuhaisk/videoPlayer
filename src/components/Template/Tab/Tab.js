@@ -22,28 +22,28 @@ export const Tab = ({ tabs }) => {
     <>
       <div className="sub-Menu">
         <div className="subMenu--linksWithIcons">
-          <div className="subMenu--linksWrapper">
+          <ul className="subMenu--linksWrapper">
             {buildMenu(tabs, setTab, tab)}
-            <div className="subMenu--statsWrapper">
-              <div className="stats--content">
-                <i className="stats--content--likeIcon"></i> 24
-              </div>
-              {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
-              <div className="stats--content stats--content--heart">
-                <i className="stats--content--heartIcon"></i> 40
-              </div>
-              <div className="stats--content">
-                <i className="stats--content--shareIcon"></i> 325
-              </div>
+          </ul>
+          <div className="subMenu--statsWrapper">
+            <div className="stats--content">
+              <i className="stats--content--likeIcon"></i> 24
             </div>
-            <hr className="subMenu--underline" />
-            <div className="subMenu--profileInfo">
-              <img
-                src="/images/dp.png"
-                className="subMenu--profileInfo--img"
-                alt="Profile"
-              />
+            {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
+            <div className="stats--content stats--content--heart">
+              <i className="stats--content--heartIcon"></i> 40
             </div>
+            <div className="stats--content">
+              <i className="stats--content--shareIcon"></i> 325
+            </div>
+          </div>
+          <hr className="subMenu--underline" />
+          <div className="subMenu--profileInfo">
+            <img
+              src="/images/dp.png"
+              className="subMenu--profileInfo--img"
+              alt="Profile"
+            />
           </div>
         </div>
       </div>
