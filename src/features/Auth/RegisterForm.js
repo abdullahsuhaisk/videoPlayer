@@ -43,75 +43,80 @@ const RegisterForm = ({ styles }) => {
     <Mutation mutation={REGISTER}>
       {(register, { data, client }) => {
         return (
-          <Wrapper styles={styles} className="vb--register">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                register({
-                  variables: {
-                    email: emailRef.current.value,
-                    password: passwordRef.current.value
-                  }
-                });
-              }}>
-              <span
-                className="vb--register-close"
-                role="button"
-                tabIndex="0"
-                onClick={() =>
-                  client.writeData({ data: { isRegisterFormShowing: false } })
-                }>
-                &times;
-              </span>
-              <div className="vb--register-banner" />
-              <div className="vb--register-input-container">
-                <input type="text" placeholder="Full name" />
-                <input type="email" placeholder="Email" ref={emailRef} />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  ref={passwordRef}
-                />
-                <span>*Min 6 characters.</span>
-              </div>
-              <button className="vb--register-button" type="submit">
-                Create Account
-              </button>
-              <div className="vb--register-with-wrapper">
-                <span>or log in with</span>
-                <div className="vb--register-with-buttons-container">
-                  <div
-                    className="vb--register-with-google"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() =>
-                      client.mutate({ mutation: LOGIN_WITH_GOOGLE })
+          <React.Fragment>
+            <div className="signup">
+              <figure className="signup--imgWrapper">
+                <img className="signup--img" src="/images/login_image.svg" />
+              </figure>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  register({
+                    variables: {
+                      email: emailRef.current.value,
+                      password: passwordRef.current.value
                     }
-                  />
-                  <div
-                    className="vb--register-with-facebook"
-                    role="button"
-                    tabIndex="-1"
-                    onClick={() =>
-                      client.mutate({ mutation: LOGIN_WITH_FACEBOOK })
-                    }
+                  });
+                }}>
+                <div className="signup--emailWrapper">
+                  <span className="signup--label">Mobile Number or Email</span>
+                  <input type="email" placeholder="Email" ref={emailRef} />
+                </div>
+                <div className="signup--passwordWrapper">
+                  <span className="signup--label">Password</span>
+                  <input
+                    type="password"
+                    className="signup--input"
+                    placeholder="Password"
+                    ref={passwordRef}
                   />
                 </div>
-              </div>
-              <button
-                className="vb--register-login-button"
-                onClick={() =>
-                  client.writeData({
-                    data: {
-                      isRegisterFormShowing: false,
-                      isLoginFormShowing: true
-                    }
-                  })
-                }>
-                Already have an account? <b>Log in</b>
-              </button>
-            </form>
-          </Wrapper>
+                <span className="signup--minChar">*Min 6 characters</span>
+                <div className="signup--buttonWrapper">
+                  <button className="signup--button" type="submit">
+                    Sign up
+                  </button>
+                </div>
+                <div className="signupWithWrapper">
+                  <p className="signup--signupWith">or Signup with</p>
+                  <div className="signup--withSocialMedia">
+                    <div
+                      className="signup--withFacebook"
+                      className="vb--register-with-facebook"
+                      role="button"
+                      tabIndex="-1"
+                      onClick={() =>
+                        client.mutate({ mutation: LOGIN_WITH_FACEBOOK })
+                      }></div>
+                    <div
+                      className="signup--withGoogle"
+                      className="vb--register-with-google"
+                      role="button"
+                      tabIndex="-1"
+                      onClick={() =>
+                        client.mutate({ mutation: LOGIN_WITH_GOOGLE })
+                      }></div>
+                  </div>
+                </div>
+                <hr className="signup--hr" />
+                <p className="signup-haveAccount">Have an account? </p>
+                <div className="signup--signupButtonWrapper">
+                  <button
+                    className="signup--signupButton"
+                    onClick={() =>
+                      client.writeData({
+                        data: {
+                          isRegisterFormShowing: false,
+                          isLoginFormShowing: true
+                        }
+                      })
+                    }>
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          </React.Fragment>
         );
       }}
     </Mutation>

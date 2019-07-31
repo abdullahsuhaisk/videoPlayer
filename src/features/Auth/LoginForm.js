@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -29,14 +28,9 @@ const LOGIN_WITH_FACEBOOK = gql`
   }
 `;
 
-const LoginForm = ({ styles }) => {
+const LoginForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  useEffect(() => {
-    // loadWebFontsFromStyles(loginFormStyles);
-    loadWebFontsFromStyles(styles);
-  }, []);
 
   return (
     <Mutation mutation={LOGIN}>
