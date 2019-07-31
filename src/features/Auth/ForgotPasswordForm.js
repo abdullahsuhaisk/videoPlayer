@@ -26,40 +26,44 @@ const ForgotPasswordForm = ({ styles }) => {
     <Mutation mutation={SEND_FORGOT_PASSWORD_EMAIL}>
       {(sendPasswordResetEmail, { data, client }) => {
         return (
-          <Wrapper styles={styles} className="vb--forgot-password">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                sendPasswordResetEmail({
-                  variables: { email: emailRef.current.value }
-                });
-              }}>
-              <span
-                className="vb--forgot-password-close"
-                role="button"
-                tabIndex="0"
-                onClick={() =>
-                  client.writeData({
-                    data: {
-                      isForgotPasswordFormShowing: false
-                    }
-                  })
-                }>
-                &times;
-              </span>
-              <div className="vb--forgot-password-banner" />
-              <span className="vb--forgot-password-text">
-                Please enter your email address below to receive an email
-                instraction for resetting your password.
-              </span>
-              <div className="vb--forgot-password-input-container">
-                <input type="email" placeholder="Email" ref={emailRef} />
-              </div>
-              <button className="vb--forgot-password-button" type="submit">
-                Send
-              </button>
-            </form>
-          </Wrapper>
+          <React.Fragment>
+            <div className="forgotPassword">
+              <figure className="forgotPassword--imgWrapper">
+                <img
+                  className="forgotPassword--img"
+                  src="/images/login_image.svg"
+                />
+              </figure>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  sendPasswordResetEmail({
+                    variables: { email: emailRef.current.value }
+                  });
+                }}>
+                <div className="forgotPassword--emailWrapper">
+                  <span className="forgotPassword--label">
+                    Enter your email address or phone number to help us identify
+                    you
+                  </span>
+                  <input
+                    type="text"
+                    className="forgotPassword--input"
+                    placeholder="Email"
+                    ref={emailRef}
+                  />
+                </div>
+                <div className="forgotPassword--buttonWrapper">
+                  <button className="forgotPassword--button" type="submit">
+                    Send
+                  </button>
+                </div>
+                <div className="forgotPassword--signupButtonWrapper">
+                  <button className="forgotPassword--signupButton">Back</button>
+                </div>
+              </form>
+            </div>
+          </React.Fragment>
         );
       }}
     </Mutation>
