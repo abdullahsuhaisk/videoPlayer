@@ -14,7 +14,7 @@ const WatchListScreen = () => {
             return null;
           }
           const { watchList } = consumer;
-          console.log(watchList.length);
+          // console.log(watchList.length);
           return (
             <div className="VideoPlayerContainer flex-row">
               {watchList.length !== 0 ? (

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { ComponentsService } from './ComponentService';
 import ProfileButton from './ProfileButton';
 import Like from './Like';
+import UnLike from './UnLike';
+
 import Favorite from './Favorite';
 import Share from './Share';
 
@@ -20,6 +22,7 @@ function buildMenu(tabs, callback, tab) {
 }
 // TODO: SCALABLE FOR TAB CONTENT
 export const Tab = ({ tabs, children }) => {
+  const [isLiked, setIsLiked] = useState(true);
   const [tab, setTab] = useState(tabs[0].key);
   const Component = ComponentsService[tab];
   return (
@@ -30,7 +33,11 @@ export const Tab = ({ tabs, children }) => {
             {buildMenu(tabs, setTab, tab)}
           </ul>
           <div className="subMenu--statsWrapper">
-            <Like />
+            {isLiked === true ? (
+              <UnLike setIsLiked={setIsLiked} />
+            ) : (
+              <Like setIsLiked={setIsLiked} />
+            )}
             <Favorite />
             <Share />
           </div>

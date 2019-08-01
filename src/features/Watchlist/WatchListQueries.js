@@ -11,6 +11,17 @@ export const ADD_WATCHED_LIST = gql`
     }
   }
 `;
+export const DELETE_WATCHED_LIST = gql`
+  mutation deleteProdLinkFromWatchList($prodLinkId: Int!) {
+    deleteProdLinkFromWatchList(prodLinkId: $prodLinkId) {
+      id
+      name
+      image {
+        id
+      }
+    }
+  }
+`;
 export const GET_CONSUMER_WATCHLIST = gql`
   query getConsumerWhatchList {
     consumer {
