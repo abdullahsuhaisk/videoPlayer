@@ -9,7 +9,7 @@ const Menu = [
   {
     page: 1,
     name: 'Products in this Scene',
-    flexClass: 'd-flex-rows',
+    flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
       <ProductCardWishlisted />,
@@ -25,7 +25,7 @@ const Menu = [
   {
     page: 2,
     name: 'All Products',
-    flexClass: 'd-flex-rows',
+    flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
       <ProductCardWishlisted />,
@@ -39,7 +39,7 @@ const Menu = [
   {
     page: 3,
     name: 'Suggested Products',
-    flexClass: 'd-flex-rows',
+    flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
       <ProductCardDiscount />,
@@ -52,7 +52,7 @@ const Menu = [
   {
     page: 4,
     name: 'Wishlist',
-    flexClass: 'd-flex-rows',
+    flexClass: 'VideoPlayerContainer',
     haveBullet: true,
     pageComponents: [
       <WishlistCollection />,
@@ -63,7 +63,7 @@ const Menu = [
   {
     page: 5,
     name: 'Watchlist',
-    flexClass: 'd-flex-rows',
+    flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
       <Watchlist />,

@@ -11,23 +11,28 @@ import ProductCardWishlisted from './Zak/VideoPause/Components/Cards/ProductCard
 import WishlistCollection from './Zak/VideoPause/Components/WishlistCollection/WishlistCollection';
 import Watchlist from './Zak/VideoPause/Components/Watchlist/Watchlist';
 import ShoppingCart from './Zak/VideoPause/Components/ShoppingCart/ShoppingCart';
+import Login from './Zak/VideoPause/Components/Login/Login';
+import Signup from './Zak/VideoPause/Components/Signup/Signup';
+import NewPassword from './Zak/VideoPause/Components/NewPassword/NewPassword';
+import ForgotPassword from './Zak/VideoPause/Components/ForgotPassword/ForgotPassword';
 
 const StoriyRender = () => {
   useCss();
-  // const [page, setPage] = useState(1);
-  const flickityOptions = {
-    cellAlign: 'left',
-    contain: true,
-    resize: false
-  };
+  const [page, setPage] = useState(1);
+  // const flickityOptions = {
+  //   cellAlign: 'left',
+  //   contain: true,
+  //   resize: false
+  // };
   return (
     <>
       <Overlay />
-      <Header />
-      <StaticSubMenu />
-      {/* use Flickity Component with  className="VideoPlayerContainer" as a Container in  All Products, Suggested Products, Wishlist, Watchlist Pages*/}
+      {/* <ForgotPassword /> */}
+      <Header /> */}
+      {/* <StaticSubMenu /> */}
+      {/* use Flickity Component with  className="VideoPlayerContainer" as a Container in  All Products, Suggested Products, Wishlist, Watchlist Pages */}
       {/* use a Div with className="VideoPlayerContainer flex-column" as a Container in Shopping Cart page*/}
-      <Watchlist />
+      {/* <Watchlist /> */}
       {/* <Flickity
         className="VideoPlayerContainer"
         reloadOnUpdate={true}
@@ -42,24 +47,27 @@ const StoriyRender = () => {
         <ProductCardWishlisted />
         <ProductCardWishlisted />
       </Flickity> */}
-      {/* <Submenu setPage={setPage} page={page} Menu={Menu} /> */}
-      {/* {getPage(page)} */}
+      <Submenu setPage={setPage} page={page} Menu={Menu} />
+      {getPage(page)}
     </>
   );
 };
 
-// const getPage = (page) => {
-//   const pageContent = Menu.filter((content) => content.page == page);
-//   const flickityOptions = {
-//       cellAlign: 'left',
-//       contain: true,
-//       resize: false
-//   }
-//   return (
-//       <Flickity className={pageContent[0].flexClass} reloadOnUpdate={true} options={flickityOptions} >
-//         {pageContent[0].pageComponents.map((component) => component)}
-//       </Flickity>
-//   );
-// };
+const getPage = (page) => {
+  const pageContent = Menu.filter((content) => content.page == page);
+  const flickityOptions = {
+    cellAlign: 'left',
+    contain: true,
+    resize: false
+  };
+  return (
+    <Flickity
+      className={pageContent[0].flexClass}
+      reloadOnUpdate={true}
+      options={flickityOptions}>
+      {pageContent[0].pageComponents.map((component) => component)}
+    </Flickity>
+  );
+};
 
 export default StoriyRender;
