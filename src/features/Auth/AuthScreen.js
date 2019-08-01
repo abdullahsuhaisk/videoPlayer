@@ -37,7 +37,9 @@ const AuthScreen = () => {
             <div style={{ pointerEvents: 'auto' }}>
               {player &&
                 player.isStarted &&
-                player.playingState === PLAYER.PAUSED && <ProfileButton />}
+                player.playingState === PLAYER.PAUSED &&
+                //<ProfileButton />
+                null}
               {isLoggedIn === false && isLoginFormShowing === true && (
                 <LoginForm />
               )}

@@ -1,6 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { ComponentsService } from './ComponentService';
+import ProfileButton from './ProfileButton';
+import Like from './Like';
+import Favorite from './Favorite';
+import Share from './Share';
 
 function buildMenu(tabs, callback, tab) {
   return tabs.map((item) => (
@@ -15,7 +19,7 @@ function buildMenu(tabs, callback, tab) {
   ));
 }
 // TODO: SCALABLE FOR TAB CONTENT
-export const Tab = ({ tabs }) => {
+export const Tab = ({ tabs, children }) => {
   const [tab, setTab] = useState(tabs[0].key);
   const Component = ComponentsService[tab];
   return (
@@ -26,25 +30,12 @@ export const Tab = ({ tabs }) => {
             {buildMenu(tabs, setTab, tab)}
           </ul>
           <div className="subMenu--statsWrapper">
-            <div className="stats--content">
-              <i className="stats--content--likeIcon"></i> 24
-            </div>
-            {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
-            <div className="stats--content stats--content--heart">
-              <i className="stats--content--heartIcon"></i> 40
-            </div>
-            <div className="stats--content">
-              <i className="stats--content--shareIcon"></i> 325
-            </div>
+            <Like />
+            <Favorite />
+            <Share />
           </div>
           <hr className="subMenu--underline" />
-          <div className="subMenu--profileInfo">
-            <img
-              src="/images/dp.png"
-              className="subMenu--profileInfo--img"
-              alt="Profile"
-            />
-          </div>
+          <ProfileButton />
         </div>
       </div>
       <Component content="my products" />
