@@ -1,5 +1,16 @@
 import gql from 'graphql-tag';
 
+export const ADD_WATCHED_LIST = gql`
+  mutation AddWachtListToVideo($prodLinkId: Int!) {
+    addProdLinkToWatchList(prodLinkId: $prodLinkId) {
+      id
+      name
+      image {
+        id
+      }
+    }
+  }
+`;
 export const GET_CONSUMER_WATCHLIST = gql`
   query getConsumerWhatchList {
     consumer {

@@ -71,7 +71,12 @@
     {
       "type": "ScreenReadyWrapper",
       "props": {
-        "children": []
+        "children": [
+          {
+            "type": "ScreenReadyComponent",
+            "props": {}
+          }
+        ]
       }
     },
     {

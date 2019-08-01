@@ -2,10 +2,9 @@ import React from 'react';
 
 const WatchListCard = ({ item }) => {
   const { campaign, company, video, image, brands } = item;
-  console.log(item);
+  // console.log(item);
   // console.log(campaign, company, video);
   const thumbnailUrl = image && image.thumbnailUrl;
-
   const itemDescription = item ? item.description : 'loading';
   // const brandsLogos = brands.map(
   //   (brand) => brand.logo && brand.logo.thumbnailUrl

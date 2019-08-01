@@ -11,6 +11,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
 import { PLAYER } from '../../common/constants';
+import { PRODLINK_ID } from '../../common/GrapqlConstant';
 
 // TODO: remove this when browser console debug is not necessary
 window.videojs = videojs;
@@ -95,7 +96,7 @@ const Player = ({ width, height, poster, sources }) => {
       // TODO: set prodLinkId
       const { data } = await apolloClientRef.current.query({
         query: GET_HOTSPOTS,
-        variables: { prodLinkId: 1 }
+        variables: { prodLinkId: PRODLINK_ID }
       });
       const { hotSpots } = data.prodLink;
       const markers = hotSpots.reduce((acc, hotspot) => {
