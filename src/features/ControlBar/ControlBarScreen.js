@@ -4,6 +4,7 @@ import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
 
 import { Wrapper, VideoProgressBar, HotspotPoint } from './ControlBar.style';
+import { composeInitialProps } from 'react-i18next';
 
 const ControlBarScreen = ({ styles }) => {
   // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
