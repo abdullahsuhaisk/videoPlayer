@@ -14,10 +14,15 @@ const WatchListScreen = () => {
             return null;
           }
           const { watchList } = consumer;
+          console.log(watchList.length);
           return (
             <div className="VideoPlayerContainer flex-row">
-              {watchList.map((item, key) =>
-                key > 3 ? null : <WatchListCard item={item} key={item.id} />
+              {watchList.length !== 0 ? (
+                watchList.map((item, key) =>
+                  key > 3 ? null : <WatchListCard item={item} key={item.id} />
+                )
+              ) : (
+                <EmptyWatchList />
               )}
             </div>
           );

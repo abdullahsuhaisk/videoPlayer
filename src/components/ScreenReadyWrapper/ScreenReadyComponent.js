@@ -44,7 +44,38 @@ const ScreenReadyComponent = ({ children }) => {
   };
 
   return (
-    <Mutation
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <Wrapper>
+            <div className="container-ready-screen">
+              <div
+                role="button"
+                className="container-button"
+                onClick={() => {
+                  client.writeData({
+                    data: {
+                      player: {
+                        __typename: 'Player',
+                        playingState: 'PLAY'
+                      }
+                    }
+                  });
+                  videoPlayer.play();
+                }}
+              />
+            </div>
+          </Wrapper>
+        );
+      }}
+    </ApolloConsumer>
+  );
+};
+
+export default ScreenReadyComponent;
+
+{
+  /* <Mutation
       mutation={ADD_WATCHED_LIST}
       // variables={{ prodLinkId: PRODLINK_ID }}
       // update={(cache, { data }) => updateCache(cache, data)}
@@ -65,13 +96,10 @@ const ScreenReadyComponent = ({ children }) => {
           </Wrapper>
         );
       }}
-    </Mutation>
-  );
-};
+    </Mutation> */
+}
 
-export default ScreenReadyComponent;
-{
-  /* <ApolloConsumer>
+/* <ApolloConsumer>
       {(client) => {
         return (
           <>
@@ -96,4 +124,3 @@ export default ScreenReadyComponent;
         );
       }}
     </ApolloConsumer> */
-}
