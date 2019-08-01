@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import Overlay from '../src/components/Zak/VideoPause/Components/Overlay/Overlay'
 import Header from '../src/components/Zak/VideoPause/Components/Header/Header'
-import Submenu from '../src/components/Zak/VideoPause/Components/Submenu/Submenu'
+import StaticSubMenu from '../src/components/Zak/VideoPause/Components/Submenu/StaticSubMenu'
 import ProductCardDiscount from '../src/components/Zak/VideoPause/Components/Cards/ProductCardDiscount/ProductCardDicount'
 import ProductCardWishlisted from '../src/components/Zak/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted'
 import Login from '../src/components/Zak/VideoPause/Components/Login/Login'
@@ -26,7 +26,7 @@ storiesOf('Video Paused Components', module)
   .addDecorator(PaddingDecorator)
   .add('Overlay', () => <Overlay />)
   .add('Header', () => <Header />)
-  .add('Submenu', () => <Submenu />)
+  .add('Submenu', () => <StaticSubMenu />)
   .add('On Wishlist Card', () => <ProductCardDiscount />)
   .add('Add to Wishlist Card', () => <ProductCardWishlisted />)
   .add('Login', () => <Login />)

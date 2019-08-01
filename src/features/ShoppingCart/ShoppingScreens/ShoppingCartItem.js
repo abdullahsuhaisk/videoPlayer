@@ -47,36 +47,36 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
             </span>
           </div>
         </div>
-        <Mutation
-          mutation={UPDATE_PRODUCT_IN_CART}
-          update={(cache, { data }) => updateCache(cache, data)}>
-          {(updateProductInCart) => {
-            return (
-              <Stepper
-                value={cartItem.quantity}
-                onValueChanged={(value) => {
-                  if (value === 0) {
-                    onRemoveItem();
-                  }
-                  if (value > 0) {
-                    updateProductInCart({
-                      variables: {
-                        productId: cartItem.product.id,
-                        quantity: value
-                      }
-                    });
-                  }
-                }}
-              />
-            );
-          }}
-        </Mutation>
-        <div className="ShoppingCart--priceContainer">
-          <span className="ShoppingCart--price">{cartItem.product.price}</span>
-        </div>
-        <div className="ShoppingCart--closeContainer">
-          <i className="ShoppingCart--close" onClick={onRemoveItem}></i>
-        </div>
+      </div>
+      <Mutation
+        mutation={UPDATE_PRODUCT_IN_CART}
+        update={(cache, { data }) => updateCache(cache, data)}>
+        {(updateProductInCart) => {
+          return (
+            <Stepper
+              value={cartItem.quantity}
+              onValueChanged={(value) => {
+                if (value === 0) {
+                  onRemoveItem();
+                }
+                if (value > 0) {
+                  updateProductInCart({
+                    variables: {
+                      productId: cartItem.product.id,
+                      quantity: value
+                    }
+                  });
+                }
+              }}
+            />
+          );
+        }}
+      </Mutation>
+      <div className="ShoppingCart--priceContainer">
+        <span className="ShoppingCart--price">{cartItem.product.price}</span>
+      </div>
+      <div className="ShoppingCart--closeContainer">
+        <i className="ShoppingCart--close" onClick={onRemoveItem}></i>
       </div>
     </div>
   );

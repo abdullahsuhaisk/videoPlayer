@@ -4,25 +4,36 @@ import PropTypes from 'prop-types';
 const WishlistCollection = ({ whisList, name, id }) => {
   const { products } = whisList;
   const totalProduct = products.length;
+  let productRender = [];
+  productRender = products.map((item, key) => (
+    <figure className={`gallery--item gallery--item-${key + 1}`} key={item.id}>
+      <img
+        src={
+          item.image
+            ? item.image.thumbnailUrl
+            : '/images/wishlist/whishlist3.jpg'
+        }
+        alt={item.name}
+        className="gallery--img"
+      />
+    </figure>
+  ));
+  for (let i = products.length + 1; i <= 6; i++) {
+    productRender.push(
+      <figure
+        className={`gallery--item gallery--item-${i} gallery--img-placeholder`}
+        key={'placeHolder' + i}>
+        <img
+          src="/images/wishlist/whishlist3.jpg"
+          alt="placeHolder"
+          className="gallery--img"
+        />
+      </figure>
+    );
+  }
   return (
     <div className="WishlistCollection">
-      <div className="WishlistCollection--gallery">
-        {products.map((item, key) => (
-          <figure
-            className={`gallery--item gallery--item-${key}`}
-            key={item.id}>
-            <img
-              src={
-                item.image
-                  ? item.image.thumbnailUrl
-                  : '/images/wishlist/whishlist3.jpg'
-              }
-              alt={item.name}
-              className="gallery--img"
-            />
-          </figure>
-        ))}
-      </div>
+      <div className="WishlistCollection--gallery">{productRender}</div>
       <div className="WishlistCollection--collection">
         <h2 className="WishlistCollection--collection-h2">{name}</h2>
         <span className="WishlistCollection--collection-span">

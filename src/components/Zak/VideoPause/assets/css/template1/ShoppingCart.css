@@ -128,7 +128,7 @@
   outline: none;
 }
 .ShoppingCart .ShoppingCart--priceContainer {
-  margin-right: 157px;
+  width: 200px;
 }
 .ShoppingCart .ShoppingCart--priceContainer .ShoppingCart--price {
   font-size: 18px;
@@ -148,8 +148,8 @@
   margin-right: 2em;
   cursor: pointer;
 }
-.ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close {
-}
+/* .ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close {
+} */
 .ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close::after {
   content: '';
   position: absolute;
