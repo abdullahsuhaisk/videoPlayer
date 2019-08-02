@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .ProfileAdresses--Container {
   display: flex;
 }
@@ -9,21 +12,21 @@
   font-family: 'Source Sans Pro';
 }
 .Profile {
-  width: 488px;
-  height: 426px;
+  width: 628px;
+  height: 500px;
   margin-right: 35px;
   padding: 44px 30px 30px 110px;
 }
 .Adresses {
   position: relative;
-  width: 547px;
-  height: 415px;
+  width: 646px;
+  height: 500px;
   padding: 45px 59px 40px 40px;
 }
 .Profile .profile--head {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   position: relative;
 }
 .Profile .profile--head .profile--head--label {
@@ -93,7 +96,7 @@
   display: flex;
 }
 .Adresses .adresses--info .adresses--info--label {
-  width: 210px;
+  width: 166px;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.28;
@@ -106,6 +109,7 @@
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
+  height: 95px;
 }
 .Adresses .adresses--hr {
   width: 100%;
@@ -122,7 +126,7 @@
 }
 .Adresses .adresses--editButtonWrapper {
   width: 100%;
-  margin-top: 30px;
+  margin-top: 6px;
   display: flex;
   justify-content: flex-end;
 }

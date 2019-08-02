@@ -16,6 +16,9 @@ import ShoppingCart from '../src/components/Zak/VideoPause/Components/ShoppingCa
 import ShoppingCartTotal from '../src/components/Zak/VideoPause/Components/ShoppingCartTotal/ShoppingCartTotal'
 import Profile from '../src/components/Zak/VideoPause/Components/Profile/Profile'
 import UpdateAdress from '../src/components/Zak/VideoPause/Components/UpdateAdress/UpdateAdress'
+import UpdateProfile from '../src/components/Zak/VideoPause/Components/UpdateProfile/UpdateProfile'
+import ProductDetail from '../src/components/Zak/VideoPause/Components/ProductDetail/ProductDetail'
+import AddToWishlist from '../src/components/Zak/VideoPause/Components/AddToWishlist/AddToWishlist'
 
 const Wrapper = styled.div`
   padding: 5em;
@@ -28,8 +31,8 @@ storiesOf('Video Paused Components', module)
   .add('Overlay', () => <Overlay />)
   .add('Header', () => <Header />)
   .add('Submenu', () => <StaticSubMenu />)
-  .add('On Wishlist Card', () => <ProductCardDiscount />)
-  .add('Add to Wishlist Card', () => <ProductCardWishlisted />)
+  .add('Product OnWishlist Card', () => <ProductCardDiscount />)
+  .add('Product WishlistAdd Card', () => <ProductCardWishlisted />)
   .add('Login', () => <Login />)
   .add('Sign up', () => <Signup />)
   .add('Forgot Password', () => <ForgotPassword />)
@@ -39,4 +42,7 @@ storiesOf('Video Paused Components', module)
   .add('Shopping Cart', () => <ShoppingCart />)
   .add('Shopping Cart Total', () => <ShoppingCartTotal />)
   .add('Profile', () => <Profile />)
-  .add('Update Adress', () => <UpdateAdress />);
+  .add('Update Adress', () => <UpdateAdress />)
+  .add('Update Profile', () => <UpdateProfile />)
+  .add('Product Detail', () => <ProductDetail />)
+  .add('Add To Wishlist', () => <AddToWishlist />);
