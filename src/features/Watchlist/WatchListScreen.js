@@ -6,6 +6,7 @@ import WatchListCard from './WatchListCard';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 
 const WatchListScreen = () => {
+  // TODO: ADD THE UPDATE CACHE METHOD
   return (
     <>
       <Query query={GET_CONSUMER_WATCHLIST}>
