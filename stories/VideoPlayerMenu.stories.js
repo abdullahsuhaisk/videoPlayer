@@ -15,6 +15,7 @@ import Watchlist from '../src/components/Zak/VideoPause/Components/Watchlist/Wat
 import ShoppingCart from '../src/components/Zak/VideoPause/Components/ShoppingCart/ShoppingCart'
 import ShoppingCartTotal from '../src/components/Zak/VideoPause/Components/ShoppingCartTotal/ShoppingCartTotal'
 import Profile from '../src/components/Zak/VideoPause/Components/Profile/Profile'
+import UpdateAdress from '../src/components/Zak/VideoPause/Components/UpdateAdress/UpdateAdress'
 
 const Wrapper = styled.div`
   padding: 5em;
@@ -37,4 +38,5 @@ storiesOf('Video Paused Components', module)
   .add('Watchlist', () => <Watchlist />)
   .add('Shopping Cart', () => <ShoppingCart />)
   .add('Shopping Cart Total', () => <ShoppingCartTotal />)
-  .add('Profile', () => <Profile />);
+  .add('Profile', () => <Profile />)
+  .add('Update Adress', () => <UpdateAdress />);

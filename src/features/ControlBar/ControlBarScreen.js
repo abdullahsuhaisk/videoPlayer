@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { css } from 'styled-components';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-
+import * as Dom from './Dom';
 import { Wrapper, VideoProgressBar, HotspotPoint } from './ControlBar.style';
 import { composeInitialProps } from 'react-i18next';
 
 const ControlBarScreen = ({ styles }) => {
   // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+  const [position, setPosition] = useState(0); // Which videoPlayer should be renderer
+  let videoProgressBarRef = React.createRef();
   useEffect(() => {
     const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
     setVideoPlayer(videoPlayerJs);
@@ -76,18 +78,18 @@ const ControlBarScreen = ({ styles }) => {
     }
     return soundsIconClassName;
   };
-  const timeHandler = (time, totalTime) => {
+  const timeHandler = (time) => {
     const pad = (input) => {
       return input < 10 ? '0' + input : input;
     };
     let timeString = [];
-    if (pad(Math.floor(totalTime / 3600)) > 0) {
+    if (pad(Math.floor(videoPlayer.duration() / 3600)) > 0) {
       timeString.push(pad(Math.floor(time / 3600)));
     }
-    if (pad(Math.floor((totalTime % 3600) / 60)) > 0) {
+    if (pad(Math.floor((videoPlayer.duration() % 3600) / 60)) > 0) {
       timeString.push(pad(Math.floor((time % 3600) / 60)));
     }
-    if (pad(Math.floor(totalTime % 60)) > 0) {
+    if (pad(Math.floor(videoPlayer.duration() % 60)) > 0) {
       timeString.push(pad(Math.floor(time % 60)));
     }
     return timeString.join(':');
@@ -95,20 +97,30 @@ const ControlBarScreen = ({ styles }) => {
   const soundsOffHandler = () => {
     videoPlayer.muted(!videoPlayer.muted());
   };
-  const progressBarHandler = () => {
-    if (videoPlayer && videoPlayer.currentTime() > 0) {
-      return (videoPlayer.currentTime() * 100) / videoPlayer.duration();
-    }
-    return 0;
-  };
   const hotspotPointHandler = (time) => {
     if (videoPlayer && videoPlayer.duration() > 0) {
       return (time * 100) / videoPlayer.duration();
     }
     return 0;
   };
+  const progressBarHandler = () => {
+    if (videoPlayer && videoPlayer.currentTime() > 0) {
+      return (
+        (videoPlayer.currentTime() / videoPlayer.duration()) *
+        100
+      ).toFixed(2);
+    }
+    return 0;
+  };
   const progressBarClickHandler = (e) => {
-    //TODO : Need to handle progressBar (e.offsetX Problem !)
+    // TODO : Fix time gap problem !
+    const node = videoProgressBarRef.current;
+    const newTime = Dom.getPointerPosition(node, e).x * videoPlayer.duration();
+    videoPlayer.currentTime(newTime);
+
+    // console.log("current time =>" + timeHandler(newTime));
+    // console.log("new time =>" + newTime);
+    // console.log("progressBar =>" + progressBarHandler(newTime));
   };
   const settingsHandler = () => {
     // TODO: Add sttings handler
@@ -123,10 +135,9 @@ const ControlBarScreen = ({ styles }) => {
         return (
           <Wrapper styles={styles}>
             <VideoProgressBar
+              ref={videoProgressBarRef}
               progressValue={progressBarHandler()}
-              onMouseMove={(e) =>
-                progressBarClickHandler(e)
-              }></VideoProgressBar>
+              onClick={(e) => progressBarClickHandler(e)}></VideoProgressBar>
             <HotspotPoint timeValue={hotspotPointHandler(12)}></HotspotPoint>
             <HotspotPoint timeValue={hotspotPointHandler(45)}></HotspotPoint>
             <HotspotPoint timeValue={hotspotPointHandler(65)}></HotspotPoint>
@@ -155,19 +166,13 @@ const ControlBarScreen = ({ styles }) => {
                 <div className="timeContainer">
                   <p>
                     {videoPlayer
-                      ? timeHandler(
-                          videoPlayer.currentTime(),
-                          videoPlayer.duration()
-                        )
+                      ? timeHandler(videoPlayer.currentTime())
                       : '00:00'}
                   </p>
                   <p className="timeDevider"> / </p>
                   <p>
                     {videoPlayer
-                      ? timeHandler(
-                          videoPlayer.duration(),
-                          videoPlayer.duration()
-                        )
+                      ? timeHandler(videoPlayer.duration())
                       : '00:00'}
                   </p>
                 </div>
