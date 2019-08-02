@@ -10,7 +10,7 @@
   margin-top: 40px;
   margin-left: 47.5px;
 }
-.VideoPlayerContainer:focus{
+.VideoPlayerContainer:focus {
   outline: none;
 }
 .flex-column {
@@ -20,7 +20,7 @@
 .flex-row {
   display: flex;
 }
-.whisListGroupeContainer{
+.whisListGroupeContainer {
   padding-top: 40px;
   margin-left: 47.5px;
   display: flex;
@@ -1475,9 +1475,12 @@
 .WishlistCollection .WishlistCollection--gallery .gallery--img-placeholder {
   background: #ccc;
   border-radius: 8px;
-  opacity: .4;
+  opacity: 0.4;
 }
-.WishlistCollection .WishlistCollection--gallery .gallery--img-placeholder .gallery--img{
+.WishlistCollection
+  .WishlistCollection--gallery
+  .gallery--img-placeholder
+  .gallery--img {
   opacity: 0;
 }
 .WishlistCollection .WishlistCollection--gallery .gallery--item .gallery--img {
@@ -1512,4 +1515,253 @@
   margin-left: 15.5px;
   margin-top: 0;
   margin-bottom: 17px;
+}
+.ProfileAdresses--Container {
+  display: flex;
+}
+.Profile,
+.Adresses {
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+  font-family: 'Source Sans Pro';
+}
+.Profile {
+  width: 488px;
+  height: 426px;
+  margin-right: 35px;
+  padding: 44px 30px 30px 110px;
+}
+.Adresses {
+  position: relative;
+  width: 547px;
+  height: 415px;
+  padding: 45px 59px 40px 40px;
+}
+.Profile .profile--head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+.Profile .profile--head .profile--head--label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+}
+.Profile .profile--head .profile--head--img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  left: -80px;
+}
+.Profile .profile--info {
+  display: flex;
+  margin-bottom: 30px;
+}
+.Profile .profile--info .profile--info--label {
+  width: 210px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.Profile .profile--info .profile--info--p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+}
+.Profile .profile--editButtonWrapper {
+  width: 100%;
+  margin-top: 2px;
+  display: flex;
+  justify-content: flex-end;
+}
+.Profile .profile--editButtonWrapper .profile--editButton {
+  color: #ffffff;
+  height: 40px;
+  width: 150px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+}
+.Adresses .adresses--head {
+  margin-bottom: 30px;
+}
+.Adresses .adresses--head .profile--head--label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+}
+.Adresses .adresses--info {
+  display: flex;
+}
+.Adresses .adresses--info .adresses--info--label {
+  width: 210px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.Adresses .adresses--info .adresses--info--p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+}
+.Adresses .adresses--hr {
+  width: 100%;
+  height: 1px;
+  background-color: #ebeae9;
+  border-radius: 8px;
+  border: 0;
+  margin: 0;
+  margin-top: 42px;
+  margin-bottom: 50px;
+  position: absolute;
+  left: 0;
+  top: 233px;
+}
+.Adresses .adresses--editButtonWrapper {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+.Adresses .adresses--editButtonWrapper .adresses--editButton {
+  color: #ffffff;
+  height: 40px;
+  width: 150px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #83329c;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+}
+.adresses--info-m {
+  margin-top: 79px;
+}
+.UpdateAdress {
+  width: 558px;
+  height: 462px;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+  padding: 44px 30px 30px 40px;
+  font-family: 'Source Sans Pro';
+}
+.UpdateAdress .UpdateAdress--head {
+  margin-bottom: 30px;
+}
+.UpdateAdress .UpdateAdress--head .UpdateAdress--head-p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+  margin: 0;
+}
+.UpdateAdress .UpdateAdress--info .UpdateAdress--info-item {
+  display: flex;
+}
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-label {
+  width: 200px;
+  margin-right: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-input,
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-select {
+  width: 272px;
+  height: 33px;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+  margin-bottom: 20.5px;
+  border: 0;
+  border-bottom: 1px solid rgb(0, 1, 16, 0.4);
+  padding-bottom: 10px;
+}
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-input:focus,
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-select:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(0, 1, 16, 0.6);
+}
+.UpdateAdress
+  .UpdateAdress--info
+  .UpdateAdress--info-item
+  .UpdateAdress--info-adress {
+  display: flex;
+  flex-direction: column;
+}
+.UpdateAdress .UpdateAdress--info--btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 56px;
+}
+.UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-save {
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #83329c;
+  color: #ffffff;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+  margin-left: 30px;
+}
+.UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-discard {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #83329c;
 }
