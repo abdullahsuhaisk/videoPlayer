@@ -5,7 +5,10 @@ import { Mutation } from 'react-apollo';
 
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
 import { PRODLINK_ID } from '../../../common/GrapqlConstant';
-import { DELETE_WATCHED_LIST } from '../../../features/Watchlist/WatchListQueries';
+import {
+  DELETE_WATCHED_LIST,
+  GET_CONSUMER_WATCHLIST
+} from '../../../features/Watchlist/WatchListQueries';
 
 const updateCache = () => {};
 
@@ -28,7 +31,15 @@ const UnLike = ({ setIsLiked }) => {
   return (
     <Mutation
       mutation={DELETE_WATCHED_LIST}
-      variables={{ prodLinkId: PRODLINK_ID }}>
+      variables={{ prodLinkId: PRODLINK_ID }}
+      refetchQueries={() => {
+        console.log('refetchQueries');
+        return [
+          {
+            query: GET_CONSUMER_WATCHLIST
+          }
+        ];
+      }}>
       {(deleteProdLinkFromWatchList, { client, loading, error }) => {
         if (loading || error) {
           console.log(error);

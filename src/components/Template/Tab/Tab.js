@@ -22,7 +22,7 @@ function buildMenu(tabs, callback, tab) {
 }
 // TODO: SCALABLE FOR TAB CONTENT
 export const Tab = ({ tabs, children }) => {
-  const [isLiked, setIsLiked] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
   const [tab, setTab] = useState(tabs[0].key);
   const Component = ComponentsService[tab];
   return (
