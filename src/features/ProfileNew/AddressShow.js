@@ -41,6 +41,7 @@ const AddressShow = ({ address }) => {
       address={address}
       ShowingAddress={ShowingAddress}
       setShowingAddress={setShowingAddress}
+      addressId={id}
     />
   );
 };

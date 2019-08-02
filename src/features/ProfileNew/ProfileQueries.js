@@ -20,6 +20,7 @@ export const GET_PERSON = gql`
         country {
           id
           name
+          nativeName
         }
         city
         phoneGsm
@@ -29,5 +30,27 @@ export const GET_PERSON = gql`
         creationTime
       }
     }
+  }
+`;
+
+export const UPDATE_CONSUMER_ADDRESS = gql`
+  mutation updateConsumerAddress(
+    $adressId: Int!
+    $input: ConsumerAddressInput!
+  ) {
+    id
+    name
+    text
+    country {
+      id
+      name
+      nativeName
+    }
+    countryId
+    city
+    phoneGsm
+    phoneLandLine
+    fax
+    type
   }
 `;
