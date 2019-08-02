@@ -9,7 +9,7 @@ const updateAdress = async (AdressId, setShowingAddress) => {
 const AddressShow = ({ address }) => {
   const [ShowingAddress, setShowingAddress] = useState(true);
 
-  console.log(address);
+  // console.log(address);
   const id = address && address.id;
   const name = address && address.name;
   const text = address && address.text;

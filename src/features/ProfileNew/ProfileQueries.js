@@ -35,22 +35,24 @@ export const GET_PERSON = gql`
 
 export const UPDATE_CONSUMER_ADDRESS = gql`
   mutation updateConsumerAddress(
-    $adressId: Int!
+    $addressId: Int!
     $input: ConsumerAddressInput!
   ) {
-    id
-    name
-    text
-    country {
+    updateConsumerAddress(addressId: $addressId, input: $input) {
       id
       name
-      nativeName
+      text
+      country {
+        id
+        name
+        nativeName
+      }
+      countryId
+      city
+      phoneGsm
+      phoneLandLine
+      fax
+      type
     }
-    countryId
-    city
-    phoneGsm
-    phoneLandLine
-    fax
-    type
   }
 `;
