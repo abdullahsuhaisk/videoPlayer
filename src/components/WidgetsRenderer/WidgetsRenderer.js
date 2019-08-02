@@ -27,6 +27,7 @@ import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
+
 // Screen Section //
 
 // Tab Component //
@@ -40,6 +41,7 @@ import NavigationWrapper from '../NavigationWrapper/NavigationWrapper';
 import ProductListCard from '../ProductListWrapper/ProductListCard';
 
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
+import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 
 const widgetList = {
   Empty,
@@ -69,7 +71,8 @@ const widgetList = {
   Header,
   ProductListCard,
   ShoppingCartScreen,
-  ScreenPauseOverlayComponent
+  ScreenPauseOverlayComponent,
+  ScreenReadyComponent
 };
 
 const WidgetsRenderer = (props) => {
