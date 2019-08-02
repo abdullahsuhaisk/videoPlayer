@@ -35,7 +35,6 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
       variables={{ addressId, input }}>
       {(updateConsumerAddress) => (
         <React.Fragment>
-          {console.log({ addressId, input })}
           <div className="UpdateAdress--head">
             <p className="UpdateAdress--head-p">Home Adress</p>
           </div>
