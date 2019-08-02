@@ -21,7 +21,6 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
     setId(address.id);
   }, []);
 
-  // Use Effect and update state
   const updateField = (e) => {
     setInput({
       ...input,

@@ -6,6 +6,7 @@ export const GET_PERSON = gql`
       id
       name
       email
+      countryId
       profileImageUrl
       birthDate
       coverImageUrl
@@ -53,6 +54,23 @@ export const UPDATE_CONSUMER_ADDRESS = gql`
       phoneLandLine
       fax
       type
+    }
+  }
+`;
+
+export const UPDATE_CONSUMER_PROFILE = gql`
+  mutation updateConsumerProfile($input: ConsumerInput!) {
+    updateConsumer(input: $input) {
+      id
+      name
+      email
+      gender
+      countryId
+      country {
+        id
+      }
+      city
+      phone
     }
   }
 `;

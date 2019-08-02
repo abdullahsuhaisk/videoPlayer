@@ -1,8 +1,134 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Mutation } from 'react-apollo';
 
-const ProfileEdit = () => {
+import { UPDATE_CONSUMER_PROFILE } from './ProfileQueries';
+
+const ProfileEdit = ({ consumer, setShowingProfile }) => {
   // TODO: ZAC will make it
-  return <div>aa</div>;
+  const [input, setInput] = useState({
+    name: '',
+    birthDate: '',
+    countryId: '',
+    gender: '',
+    phone: ''
+  });
+  //     email: ''
+  useEffect(() => {
+    setInput({
+      name: consumer.name,
+      birthDate: consumer.birthDate,
+      countryId: consumer.countryId,
+      gender: consumer.gender,
+      phone: consumer.phone
+    });
+  }, []);
+
+  // email: consumer.email
+  const updateField = (e) => {
+    setInput({
+      ...input,
+      [e.target.id]: e.target.value
+    });
+  };
+  return (
+    <Mutation mutation={UPDATE_CONSUMER_PROFILE} variables={{ input }}>
+      {(updateConsumer) => (
+        <React.Fragment>
+          <div className="UpdateProfile">
+            <div className="UpdateProfile--head">
+              <img src="/images/dp.png" className="UpdateProfile--head--img" />
+              <p className="UpdateProfile--head-p">Profile</p>
+            </div>
+            <div className="UpdateProfile--info">
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Name</label>
+                <input
+                  type="text"
+                  value={input.name}
+                  className="UpdateProfile--info-input"
+                  onChange={updateField}
+                  id="name"
+                />
+              </div>
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Birthdate</label>
+                <input
+                  type="date"
+                  value={input.birthDate}
+                  placeholder="Birthdate"
+                  className="UpdateProfile--info-input"
+                  onChange={updateField}
+                  id="birthDate"
+                />
+              </div>
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Country</label>
+                <select
+                  className="UpdateProfile--info-select"
+                  onChange={updateField}
+                  id="countryId">
+                  <option value="Turkey">Turkey</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="Moroco">Moroco</option>
+                  <option value="Brazil">Brazil</option>
+                </select>
+              </div>
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Gender</label>
+                <select
+                  className="UpdateProfile--info-select"
+                  onChange={updateField}
+                  id="gender">
+                  <option value="Not Specified">Not Specified</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  className="UpdateProfile--info-input"
+                  onChange={updateField}
+                  id="phone"
+                  value={consumer.phone}
+                />
+              </div>
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Mail Adress</label>
+                <input
+                  type="email"
+                  value={consumer.email}
+                  className="UpdateProfile--info-input"
+                  id="email"
+                />
+              </div>
+            </div>
+            <div className="UpdateProfile--info--btn">
+              <button
+                className="UpdateProfile--info--btn-discard"
+                onClick={() => {
+                  setShowingProfile(true);
+                }}>
+                Discard
+              </button>
+              <button
+                className="UpdateProfile--info--btn-save"
+                onClick={() => {
+                  updateConsumer();
+                  setShowingProfile(true);
+                }}>
+                Save
+              </button>
+            </div>
+          </div>
+        </React.Fragment>
+      )}
+    </Mutation>
+  );
 };
 
 export default ProfileEdit;
