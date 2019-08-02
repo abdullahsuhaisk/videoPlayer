@@ -15,12 +15,12 @@ import Login from './Zak/VideoPause/Components/Login/Login';
 
 const StoriyRender = () => {
   useCss();
-  // const [page, setPage] = useState(1);
-  const flickityOptions = {
-    cellAlign: 'left',
-    contain: true,
-    resize: false
-  };
+  const [page, setPage] = useState(1);
+  // const flickityOptions = {
+  //   cellAlign: 'left',
+  //   contain: true,
+  //   resize: false
+  // };
   return (
     <>
       <Overlay />
@@ -44,24 +44,27 @@ const StoriyRender = () => {
         <ProductCardWishlisted />
         <ProductCardWishlisted />
       </Flickity> */}
-      {/* <Submenu setPage={setPage} page={page} Menu={Menu} /> */}
-      {/* {getPage(page)} */}
+      <Submenu setPage={setPage} page={page} Menu={Menu} />
+      {getPage(page)}
     </>
   );
 };
 
-// const getPage = (page) => {
-//   const pageContent = Menu.filter((content) => content.page == page);
-//   const flickityOptions = {
-//       cellAlign: 'left',
-//       contain: true,
-//       resize: false
-//   }
-//   return (
-//       <Flickity className={pageContent[0].flexClass} reloadOnUpdate={true} options={flickityOptions} >
-//         {pageContent[0].pageComponents.map((component) => component)}
-//       </Flickity>
-//   );
-// };
+const getPage = (page) => {
+  const pageContent = Menu.filter((content) => content.page == page);
+  const flickityOptions = {
+    cellAlign: 'left',
+    contain: true,
+    resize: false
+  };
+  return (
+    <Flickity
+      className={pageContent[0].flexClass}
+      reloadOnUpdate={true}
+      options={flickityOptions}>
+      {pageContent[0].pageComponents.map((component) => component)}
+    </Flickity>
+  );
+};
 
 export default StoriyRender;

@@ -10,6 +10,9 @@
   margin-top: 40px;
   margin-left: 47.5px;
 }
+.VideoPlayerContainer:focus{
+  outline: none;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -17,7 +20,12 @@
 .flex-row {
   display: flex;
 }
-
+.whisListGroupeContainer{
+  padding-top: 40px;
+  margin-left: 47.5px;
+  display: flex;
+  height: 660px;
+}
 .Product-Card {
   width: 228px;
   height: 500px;
@@ -890,7 +898,7 @@
   outline: none;
 }
 .ShoppingCart .ShoppingCart--priceContainer {
-  margin-right: 157px;
+  width: 200px;
 }
 .ShoppingCart .ShoppingCart--priceContainer .ShoppingCart--price {
   font-size: 18px;
@@ -910,8 +918,8 @@
   margin-right: 2em;
   cursor: pointer;
 }
-.ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close {
-}
+/* .ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close {
+} */
 .ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close::after {
   content: '';
   position: absolute;
@@ -932,6 +940,7 @@
   background-color: #0b2443;
   transform: rotate(135deg);
 }
+
 .ShoppingCartTotal {
   width: 1580px;
   height: 60px;
@@ -1051,7 +1060,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-
 .signup .signup--buttonWrapper {
   width: 100%;
   margin-top: 40px;
@@ -1432,20 +1440,21 @@
 }
 .WishlistCollection {
   width: 100%;
-  max-width: 610px;
+  max-width: 406px;
   padding: 4px;
   border-radius: 10px;
   background-color: #ffffff;
   font-family: 'Source Sans Pro';
   z-index: 2;
   margin-right: 35px;
+  margin-bottom: 35px;
 }
 .WishlistCollection .WishlistCollection--gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 100px);
-  grid-gap: 4px;
-  max-width: 610px;
+  grid-template-rows: repeat(4, 66px);
+  grid-gap: 3px;
+  width: 400px;
 }
 .WishlistCollection .WishlistCollection--gallery .gallery--item-1,
 .WishlistCollection .WishlistCollection--gallery .gallery--item-2,
@@ -1463,6 +1472,14 @@
 .WishlistCollection .WishlistCollection--gallery .gallery--item {
   margin: 0;
 }
+.WishlistCollection .WishlistCollection--gallery .gallery--img-placeholder {
+  background: #ccc;
+  border-radius: 8px;
+  opacity: .4;
+}
+.WishlistCollection .WishlistCollection--gallery .gallery--img-placeholder .gallery--img{
+  opacity: 0;
+}
 .WishlistCollection .WishlistCollection--gallery .gallery--item .gallery--img {
   width: 100%;
   height: 100%;
@@ -1477,9 +1494,9 @@
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #0b2443;
-  margin-top: 16px;
-  margin-bottom: 4px;
-  margin-left: 23.5px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-left: 15.5px;
   cursor: pointer;
 }
 .WishlistCollection
@@ -1492,7 +1509,7 @@
   letter-spacing: 0.025em;
   color: #0b2443;
   opacity: 0.4;
-  margin-left: 23.5px;
+  margin-left: 15.5px;
   margin-top: 0;
-  margin-bottom: 26px;
+  margin-bottom: 17px;
 }

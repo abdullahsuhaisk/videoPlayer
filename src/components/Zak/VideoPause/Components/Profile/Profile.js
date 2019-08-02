@@ -7,8 +7,8 @@ const Profile = () => {
       <div className="ProfileAdresses--Container">
         <div className="Profile">
           <div className="profile--head">
-            <label className="profile--head--label">Profile</label>
             <img src="/images/dp.png" className="profile--head--img" />
+            <label className="profile--head--label">Profile</label>
           </div>
           <div className="profile--info">
             <label className="profile--info--label">Name</label>
@@ -50,8 +50,11 @@ const Profile = () => {
               Phone: 01701077215
             </p>
           </div>
+          <div className="adresses--editButtonWrapper">
+            <button className="adresses--editButton">Edit</button>
+          </div>
           <hr className="adresses--hr" />
-          <div className="adresses--info">
+          <div className="adresses--info adresses--info-m">
             <label className="adresses--info--label">Depot Adress</label>
             <p className="adresses--info--p">
               Doruk mahallesi akdeniz caddesi tevler sitesi <br />
