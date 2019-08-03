@@ -10,6 +10,7 @@ import Share from './Share';
 
 function buildMenu(tabs, callback, tab) {
   return tabs.map((item) => (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       key={item.title}
       onClick={() => callback(item.key)}

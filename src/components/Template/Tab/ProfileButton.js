@@ -22,8 +22,8 @@ const LOGOUT = gql`
 
 const handleClick = (client, userInfo) => {
   if (userInfo) {
-    client.writeData({ data: { isLoginFormShowing: false } });
-    client.mutate({ mutation: LOGOUT });
+    client.writeData({ data: { isProfileOpen: true } });
+    // client.mutate({ mutation: LOGOUT });
   } else {
     client.writeData({ data: { isLoginFormShowing: true } });
   }

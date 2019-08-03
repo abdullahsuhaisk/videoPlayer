@@ -64,13 +64,35 @@ export const UPDATE_CONSUMER_PROFILE = gql`
       id
       name
       email
-      gender
       countryId
-      country {
-        id
-      }
-      city
+      profileImageUrl
+      birthDate
+      coverImageUrl
+      gender
+      uid
       phone
+      addresses {
+        id
+        name
+        text
+        countryId
+        country {
+          id
+          name
+          nativeName
+        }
+        city
+        phoneGsm
+        phoneLandLine
+        fax
+        type
+        creationTime
+      }
     }
+  }
+`;
+export const GET_PROFILE_SCREEN_IS_OPEN = gql`
+  {
+    isProfileOpen @client
   }
 `;
