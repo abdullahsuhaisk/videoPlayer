@@ -7,7 +7,6 @@ import ProfileEdit from './ProfileEdit';
 
 const ProfileScreen = () => {
   const renderContent = () => {
-    console.log('render profile screen');
     return (
       <div
         style={{ zIndex: 999, marginLeft: 30, width: '100%', marginTop: 10 }}>
