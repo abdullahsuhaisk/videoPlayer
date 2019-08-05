@@ -19,6 +19,7 @@ import UpdateAdress from '../src/components/Zak/VideoPause/Components/UpdateAdre
 import UpdateProfile from '../src/components/Zak/VideoPause/Components/UpdateProfile/UpdateProfile'
 import ProductDetail from '../src/components/Zak/VideoPause/Components/ProductDetail/ProductDetail'
 import AddToWishlist from '../src/components/Zak/VideoPause/Components/AddToWishlist/AddToWishlist'
+import VideoPlay from '../src/components/Zak/VideoPause/Components/VideoPlay/VideoPlay'
 
 const Wrapper = styled.div`
   padding: 5em;
@@ -45,4 +46,5 @@ storiesOf('Video Paused Components', module)
   .add('Update Adress', () => <UpdateAdress />)
   .add('Update Profile', () => <UpdateProfile />)
   .add('Product Detail', () => <ProductDetail />)
-  .add('Add To Wishlist', () => <AddToWishlist />);
+  .add('Add To Wishlist', () => <AddToWishlist />)
+  .add('Vide Player Screen', () => <VideoPlay />);

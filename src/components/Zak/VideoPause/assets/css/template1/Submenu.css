@@ -47,19 +47,20 @@
   font-weight: 600;
   color: #0b2443;
   line-height: 1.3em;
-  padding: 0 1em;
+  padding: 0 13px;
   opacity: 0.4;
   cursor: pointer;
 }
 .sub-Menu .subMenu--statsWrapper .stats--content:hover {
   opacity: 1;
 }
-.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--likeIcon {
-  background: url(/images/likeIcon.svg) center / contain no-repeat;
-  width: 32px;
-  height: 32px;
+.sub-Menu .subMenu--statsWrapper .stats--content .stats--content--starIcon {
+  background: url(/images/star-empty-big.svg) center / contain no-repeat;
+  width: 21px;
+  height: 20px;
   cursor: pointer;
   display: block;
+  margin-right: 11px;
 }
 .sub-Menu .subMenu--statsWrapper .stats--content .stats--content--heartIcon {
   background: url(/images/heart-black.svg) center / contain no-repeat;
