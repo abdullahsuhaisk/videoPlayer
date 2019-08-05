@@ -51,7 +51,7 @@ const Player = ({ width, height, poster, sources }) => {
 
   useEffect(() => {
     playerRef.current = videojs(videoRef.current, {
-      poster,
+      poster: 'http://localhost:50192/images/videoThumb.jpg',
       controls: false,
       sources,
       responsive: true,

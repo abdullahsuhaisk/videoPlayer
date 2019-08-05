@@ -23,7 +23,7 @@ const Submenu = (props) => {
           </ul>
           <div className="subMenu--statsWrapper">
             <div className="stats--content">
-              <i className="stats--content--likeIcon"></i> 24
+              <i className="stats--content--starIcon"></i> 24
             </div>
             {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
             <div className="stats--content stats--content--heart">

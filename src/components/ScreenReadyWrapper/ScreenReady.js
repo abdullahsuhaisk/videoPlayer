@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-
+import VideoHeader from './VideoHeader';
 import { Wrapper } from './ScreenReady.style';
 
 const ScreenReadyWrapper = ({ children }) => {
@@ -12,18 +12,19 @@ const ScreenReadyWrapper = ({ children }) => {
   useEffect(() => {
     // Which video player logic
     const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
-    setVideoPlayer(videoPlayerJs);
     // Set video Player
+    setVideoPlayer(videoPlayerJs);
+    videoPlayerJs.poster('http://localhost:50192/images/videoThumb.jpg');
   }, [videoPlayer]);
   return (
     <ApolloConsumer>
       {(client) => {
         return (
           <Wrapper>
-            <div className="container-ready-screen">
+            <VideoHeader color="#ebeae9" inline={false} />
+            <div className="VideoPlay">
               <div
-                role="button"
-                className="container-button"
+                className="VideoPlay--playBtn"
                 onClick={() => {
                   client.writeData({
                     data: {
@@ -34,8 +35,7 @@ const ScreenReadyWrapper = ({ children }) => {
                     }
                   });
                   videoPlayer.play();
-                }}
-              />
+                }}></div>
             </div>
             {children}
           </Wrapper>
