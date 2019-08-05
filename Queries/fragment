@@ -1,0 +1,14 @@
+mutation updateConsumer($input: ConsumerInput!) {
+  updateConsumer(input: $input) {
+...Consumer
+  }
+}
+
+fragment Consumer on ConsumerType {
+id
+name
+email
+profileImageUrl
+coverImageUrl
+birthDate  
+}

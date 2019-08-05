@@ -22,7 +22,13 @@ const WishlistScreen = () => {
             // TODO: TRY EMPTYWİSHLİST Case
             return <EmptyWishList />;
           }
-          return <WishListGroup whisLists={whisLists} />;
+          return (
+            <>
+              <WishListGroup whisLists={whisLists} />
+              <ShowConsumersWishList />
+              <AddNewWishList />
+            </>
+          );
         }}
       </Query>
     </div>
