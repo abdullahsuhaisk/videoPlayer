@@ -17,6 +17,7 @@ const GET_PLAYER_AND_AUTH_STATE = gql`
     isLoginFormShowing @client
     isRegisterFormShowing @client
     isForgotPasswordFormShowing @client
+    isProfileOpen @client
   }
 `;
 

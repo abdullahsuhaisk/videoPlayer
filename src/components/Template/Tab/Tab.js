@@ -11,10 +11,11 @@ import Share from './Share';
 
 function buildMenu(tabs, callback, tab, client) {
   return tabs.map((item) => (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       key={item.title}
       onClick={() => {
-        client.writeData({ data: { navigationDialogShowing: true } });
+        client.writeData({ data: { isProfileOpen: false } });
         callback(item.key);
       }}
       className={

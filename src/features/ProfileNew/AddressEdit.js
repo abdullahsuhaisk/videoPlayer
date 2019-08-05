@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mutation } from 'react-apollo';
 import { UPDATE_CONSUMER_ADDRESS } from './ProfileQueries';
 
-const AddressEdit = ({ setShowingAddress, ShowingAddress, addressId }) => {
+const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
   // DELETE TO UPDATEADRESS CLASS NAME ADRESS AND ADRES UPDATE MUST BE IN SAME CONTAINER
   const [input, setInput] = useState({
     name: '',
@@ -10,7 +10,17 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, addressId }) => {
     city: '',
     countryId: ''
   });
-  // Use Effect and update state
+  const [addressId, setId] = useState(null);
+  useEffect(() => {
+    setInput({
+      name: address.name,
+      text: address.text,
+      city: address.city,
+      countryId: address.countryId
+    });
+    setId(address.id);
+  }, []);
+
   const updateField = (e) => {
     setInput({
       ...input,
@@ -21,10 +31,9 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, addressId }) => {
   return ShowingAddress === false ? (
     <Mutation
       mutation={UPDATE_CONSUMER_ADDRESS}
-      variables={(addressId, { input })}>
+      variables={{ addressId, input }}>
       {(updateConsumerAddress) => (
         <React.Fragment>
-          {console.log(addressId, { input })}
           <div className="UpdateAdress--head">
             <p className="UpdateAdress--head-p">Home Adress</p>
           </div>

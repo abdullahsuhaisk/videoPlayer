@@ -1765,3 +1765,111 @@
   background-color: transparent;
   color: #83329c;
 }
+* {
+  box-sizing: border-box;
+}
+.UpdateProfile {
+  width: 628px;
+  height: 500px;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+  padding: 44px 30px 30px 110px;
+  font-family: 'Source Sans Pro';
+}
+.UpdateProfile .UpdateProfile--head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.UpdateProfile .UpdateProfile--head .UpdateProfile--head-p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+  margin: 0;
+}
+.UpdateProfile .UpdateProfile--head .UpdateProfile--head--img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  left: -80px;
+}
+.UpdateProfile .UpdateProfile--info .UpdateProfile--info-item {
+  display: flex;
+}
+.UpdateProfile
+  .UpdateProfile--info
+  .UpdateProfile--info-item
+  .UpdateProfile--info-label {
+  width: 200px;
+  margin-right: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.UpdateProfile
+  .UpdateProfile--info
+  .UpdateProfile--info-item
+  .UpdateProfile--info-input,
+.UpdateProfile
+  .UpdateProfile--info
+  .UpdateProfile--info-item
+  .UpdateProfile--info-select {
+  width: 272px;
+  height: 33px;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+  margin-bottom: 20.5px;
+  border: 0;
+  border-bottom: 1px solid rgb(0, 1, 16, 0.4);
+  padding-bottom: 10px;
+}
+.UpdateProfile
+  .UpdateProfile--info
+  .UpdateProfile--info-item
+  .UpdateProfile--info-input:focus,
+.UpdateProfile
+  .UpdateProfile--info
+  .UpdateProfile--info-item
+  .UpdateProfile--info-select:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(0, 1, 16, 0.6);
+}
+.UpdateProfile .UpdateProfile--info--btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 13px;
+}
+.UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-save {
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #83329c;
+  color: #ffffff;
+  outline: 0;
+  border: 0;
+  overflow: visible;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+  margin-left: 30px;
+}
+.UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-discard {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #83329c;
+}

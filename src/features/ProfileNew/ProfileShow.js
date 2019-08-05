@@ -1,6 +1,10 @@
 import React from 'react';
+import { Query } from 'react-apollo';
+
+import { GET_COUNTRIES } from '../../components/Base/BaseQueries';
 
 const ProfileShow = ({ consumer, setShowingProfile }) => {
+  // console.log(consumer);
   const name = consumer && consumer.name;
   const Birthdate = consumer && consumer.birthDate;
   const Country = consumer && consumer.countryId;
@@ -23,12 +27,33 @@ const ProfileShow = ({ consumer, setShowingProfile }) => {
         </div>
         <div className="profile--info">
           <label className="profile--info--label">Birthdate</label>
-          <p className="profile--info--p">07/03/1992 {Birthdate}</p>
+          <p className="profile--info--p">{Birthdate}</p>
         </div>
-        <div className="profile--info">
-          <label className="profile--info--label">Country</label>
-          <p className="profile--info--p">{Country}</p>
-        </div>
+
+        <Query query={GET_COUNTRIES} fetchPolicy="cache-first">
+          {({ loading, error, data }) => {
+            if (error) {
+              // console.log(error);
+            }
+            if (loading) {
+              return 'loading...';
+            }
+            const { countries } = data;
+            return (
+              <div className="profile--info">
+                <label className="profile--info--label">Country</label>
+                <p className="profile--info--p">
+                  {Country !== null
+                    ? countries.map((item) =>
+                        item.id === Country ? item.name : null
+                      )
+                    : null}
+                </p>
+              </div>
+            );
+          }}
+        </Query>
+
         <div className="profile--info">
           <label className="profile--info--label">Gender</label>
           <p className="profile--info--p">{Gender}</p>

@@ -6,6 +6,7 @@ export const GET_PERSON = gql`
       id
       name
       email
+      countryId
       profileImageUrl
       birthDate
       coverImageUrl
@@ -35,22 +36,63 @@ export const GET_PERSON = gql`
 
 export const UPDATE_CONSUMER_ADDRESS = gql`
   mutation updateConsumerAddress(
-    $adressId: Int!
+    $addressId: Int!
     $input: ConsumerAddressInput!
   ) {
-    id
-    name
-    text
-    country {
+    updateConsumerAddress(addressId: $addressId, input: $input) {
       id
       name
-      nativeName
+      text
+      country {
+        id
+        name
+        nativeName
+      }
+      countryId
+      city
+      phoneGsm
+      phoneLandLine
+      fax
+      type
     }
-    countryId
-    city
-    phoneGsm
-    phoneLandLine
-    fax
-    type
+  }
+`;
+
+export const UPDATE_CONSUMER_PROFILE = gql`
+  mutation updateConsumerProfile($input: ConsumerInput!) {
+    updateConsumer(input: $input) {
+      id
+      name
+      email
+      countryId
+      profileImageUrl
+      birthDate
+      coverImageUrl
+      gender
+      uid
+      phone
+      addresses {
+        id
+        name
+        text
+        countryId
+        country {
+          id
+          name
+          nativeName
+        }
+        city
+        phoneGsm
+        phoneLandLine
+        fax
+        type
+        creationTime
+      }
+    }
+  }
+`;
+export const GET_PROFILE_SCREEN_IS_OPEN = gql`
+  {
+    isProfileOpen @client
   }
 `;

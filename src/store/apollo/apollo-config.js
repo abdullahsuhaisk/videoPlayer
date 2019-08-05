@@ -76,6 +76,7 @@ const setInitialCache = () => {
     isForgotPasswordFormShowing: false,
     productIdInDetails: null,
     navigationDialogShowing: false,
+    isProfileOpen: false,
     consumer: {
       __typename: 'ConsumerType',
       id: 0,
