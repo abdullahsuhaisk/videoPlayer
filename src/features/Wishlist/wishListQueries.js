@@ -125,3 +125,15 @@ export const CREATE_NEW_WISHLIST = gql`
     }
   }
 `;
+
+export const ADD_WISHLIST_MUTATION = gql`
+  mutation addWishList($wishListId: Int!, $productId: Int!) {
+    addProductToConsumerWishList(
+      wishListId: $wishListId
+      productId: $productId
+    ) {
+      id
+      name
+    }
+  }
+`;

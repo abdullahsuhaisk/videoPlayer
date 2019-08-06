@@ -37,7 +37,12 @@ const ProductCard = ({ product }) => {
               <div className="productCard--wishlist-statusWrapper">
                 <a
                   className="productCard--wishlist-status"
-                  onClick={() => addProductToConsumerWishList()}>
+                  onClick={() =>
+                    // addProductToConsumerWishList()
+                    client.writeData({
+                      data: { isAddWishListOpen: true, productId: productId }
+                    })
+                  }>
                   Add to Wish List
                 </a>
               </div>

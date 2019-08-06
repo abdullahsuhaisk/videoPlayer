@@ -1,5 +1,6 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query, ApolloConsumer } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import EmptyWishList from './EmptyWishList';
 import WishListGroup from './WishListGroup';
@@ -7,10 +8,17 @@ import WishListGroup from './WishListGroup';
 import ShowConsumersWishList from './PreComponent/showConsumersWishList';
 import AddNewWishList from './PreComponent/addNewWishList';
 import { GET_CONSUMER_WISHLIST } from './wishListQueries';
+import AddToWishListFromProduct from './AddToWishListFromProduct';
+
+const GET_ADD_WISHLIST_OPEN = gql`
+  {
+    isAddWishListOpen @client
+  }
+`;
 
 const WishlistScreen = () => {
   return (
-    <div className="">
+    <>
       <Query query={GET_CONSUMER_WISHLIST}>
         {({ loading, error, data }) => {
           if (loading || error) {
@@ -24,14 +32,25 @@ const WishlistScreen = () => {
           }
           return (
             <>
+              {/* 
+                
               <WishListGroup whisLists={whisLists} />
               <ShowConsumersWishList />
-              <AddNewWishList />
+              <AddNewWishList /> */}
+              <div className="VideoPlayerContainer">
+                <Query query={GET_ADD_WISHLIST_OPEN}>
+                  {({ data: { isAddWishListOpen } }) => {
+                    return isAddWishListOpen === true ? (
+                      <AddToWishListFromProduct />
+                    ) : null;
+                  }}
+                </Query>
+              </div>
             </>
           );
         }}
       </Query>
-    </div>
+    </>
   );
 };
 

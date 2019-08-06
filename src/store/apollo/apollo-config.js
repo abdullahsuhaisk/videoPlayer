@@ -77,6 +77,8 @@ const setInitialCache = () => {
     productIdInDetails: null,
     navigationDialogShowing: false,
     isProfileOpen: false,
+    isAddWishListOpen: true,
+    productId: null,
     consumer: {
       __typename: 'ConsumerType',
       id: 0,

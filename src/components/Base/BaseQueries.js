@@ -15,3 +15,9 @@ export const GET_COUNTRIES = gql`
     }
   }
 `;
+
+export const GET_PRODUCT_ID = gql`
+  query getProduct {
+    productId @client
+  }
+`;

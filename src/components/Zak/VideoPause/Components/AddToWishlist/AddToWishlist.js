@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/AddToWishlist.css';
+// import '../../assets/css/template1/AddToWishlist.css';
 import Flickity from 'react-flickity-component';
 const flickityOptions = {
   cellAlign: 'center',
