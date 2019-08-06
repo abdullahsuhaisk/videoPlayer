@@ -9,6 +9,7 @@ import {
   ADD_WISHLIST_MUTATION
 } from './wishListQueries';
 import { GET_PRODUCT_ID } from '../../components/Base/BaseQueries';
+import AddNewWishList from './PreComponent/addNewWishList';
 
 const flickityOptions = {
   cellAlign: 'center',
@@ -22,7 +23,9 @@ const flickityOptions = {
 const AddToWishListFromProduct = () => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);
   const [selectedItem, setselectedItem] = useState(null);
-
+  const [wishListName, setWishListName] = useState(
+    'Please write a wishlist name'
+  );
   const selectedItemClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected';
   const selectedRemoveClassName =
@@ -133,9 +136,12 @@ const AddToWishListFromProduct = () => {
                         })}
                       </div>
                       <div className="AddToWishlist--information--btnContainer">
-                        <button className="AddToWishlist--information--btnContainer--createBtn">
-                          Create new list
-                        </button>
+                        <AddNewWishList
+                          classNames="AddToWishlist--information--btnContainer--createBtn"
+                          title="Create new list"
+                          setWishListName={setWishListName}
+                          wishListName={wishListName}
+                        />
                         <Query query={GET_PRODUCT_ID}>
                           {({ data: productId }) => {
                             // console.log(productId);
