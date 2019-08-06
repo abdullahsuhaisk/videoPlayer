@@ -109,7 +109,15 @@ const AddToWishListFromProduct = () => {
                               <figure className="AddToWishlist--information--wishlistItem--figure">
                                 <img
                                   className="AddToWishlist--information--wishlistItem--figure--img"
-                                  src="/images/wishlist/whishlist1.jpg"
+                                  src={
+                                    whisList &&
+                                    whisList.products &&
+                                    whisList.products[0].image &&
+                                    whisList.products[0].image.thumbnailUrl
+                                      ? whisList.products[0].image.thumbnailUrl
+                                      : '/images/wishlist/whishlist1.jpg'
+                                  }
+                                  // "/images/wishlist/whishlist1.jpg"
                                 />
                               </figure>
                               <div className="AddToWishlist--information--wishlistItem--titleItems">
