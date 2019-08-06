@@ -43,6 +43,7 @@ import ProductListCard from '../ProductListWrapper/ProductListCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
+import AddToWishListScreen from '../../features/Wishlist/AddToWishListScreen';
 
 const widgetList = {
   Empty,
@@ -74,7 +75,8 @@ const widgetList = {
   ShoppingCartScreen,
   ScreenPauseOverlayComponent,
   ScreenReadyComponent,
-  ProfileScreen
+  ProfileScreen,
+  AddToWishListScreen
 };
 
 const WidgetsRenderer = (props) => {

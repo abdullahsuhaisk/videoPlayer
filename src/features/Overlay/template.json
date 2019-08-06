@@ -68,6 +68,10 @@
           {
             "type": "ProductDetailScreen",
             "props": {}
+          },
+          {
+            "type": "AddToWishListScreen",
+            "props": {}
           }
         ]
       }

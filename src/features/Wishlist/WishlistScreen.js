@@ -1,20 +1,12 @@
 import React from 'react';
 import { Query, ApolloConsumer } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import EmptyWishList from './EmptyWishList';
 import WishListGroup from './WishListGroup';
 // import ProductWishList from './ProductWishList/ProductWishList';
-import ShowConsumersWishList from './PreComponent/showConsumersWishList';
-import AddNewWishList from './PreComponent/addNewWishList';
+// import ShowConsumersWishList from './PreComponent/showConsumersWishList';
+// import AddNewWishList from './PreComponent/addNewWishList';
 import { GET_CONSUMER_WISHLIST } from './wishListQueries';
-import AddToWishListFromProduct from './AddToWishListFromProduct';
-
-const GET_ADD_WISHLIST_OPEN = gql`
-  {
-    isAddWishListOpen @client
-  }
-`;
 
 const WishlistScreen = () => {
   return (
@@ -32,20 +24,9 @@ const WishlistScreen = () => {
           }
           return (
             <>
-              {/* 
-                
               <WishListGroup whisLists={whisLists} />
-              <ShowConsumersWishList />
-              <AddNewWishList /> */}
-              <div className="VideoPlayerContainer">
-                <Query query={GET_ADD_WISHLIST_OPEN}>
-                  {({ data: { isAddWishListOpen } }) => {
-                    return isAddWishListOpen === true ? (
-                      <AddToWishListFromProduct />
-                    ) : null;
-                  }}
-                </Query>
-              </div>
+              {/* <ShowConsumersWishList />
+              <AddNewWishList />  */}
             </>
           );
         }}
