@@ -2,27 +2,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import Flickity from 'react-flickity-component';
 import { ApolloConsumer, Query, Mutation } from 'react-apollo';
 import {
   GET_CONSUMER_WISHLIST,
   ADD_WISHLIST_MUTATION
-} from './wishListQueries';
-import { GET_PRODUCT_ID } from '../../components/Base/BaseQueries';
-import AddNewWishList from './PreComponent/addNewWishList';
-
-const flickityOptions = {
-  cellAlign: 'center',
-  contain: true,
-  // resize: false,
-  pageDots: false,
-  prevNextButtons: true,
-  wrapAround: true
-};
+} from '../wishListQueries';
+import { GET_PRODUCT_ID } from '../../../components/Base/BaseQueries';
+import AddNewWishList from '../PreComponent/addNewWishList';
+import WishListFlickity from './WishListFlickity';
 
 const AddToWishListFromProduct = () => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);
   const [selectedItem, setselectedItem] = useState(null);
+  //console.log(selectedItem);
   const [wishListName, setWishListName] = useState(
     'Please write a wishlist name'
   );
@@ -31,7 +23,7 @@ const AddToWishListFromProduct = () => {
   const selectedRemoveClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected-remove';
   const wishListItemClassName = 'AddToWishlist--information--wishlistItem';
-  console.log(selectedWhishListId);
+  // console.log(selectedWhishListId);
   return (
     <ApolloConsumer>
       {(client) => {
@@ -45,33 +37,11 @@ const AddToWishListFromProduct = () => {
                 const { consumer } = data;
                 const whisLists = consumer && consumer.whisLists;
 
-                const whisListsCount = whisLists && whisLists.length;
-                console.log('Add To WishListFrom Product', whisLists);
+                // const whisListsCount = whisLists && whisLists.length;
+                // console.log('Add To WishListFrom Product', whisLists);
                 return (
                   <div className="AddToWishlist">
-                    <Flickity
-                      className="AddToWishlist--imagesSlider"
-                      options={flickityOptions}>
-                      <figure className="AddToWishlist--imagesSlider--figure">
-                        <img
-                          className="AddToWishlist--imagesSlider--figure--img"
-                          src="/images/ProductDetail3.jpg"
-                        />
-                      </figure>
-                      <figure className="AddToWishlist--imagesSlider--figure">
-                        <img
-                          className="AddToWishlist--imagesSlider--figure--img"
-                          src="/images/ProductDetail2.jpg"
-                        />
-                      </figure>
-                      <figure className="AddToWishlist--imagesSlider--figure">
-                        <img
-                          className="AddToWishlist--imagesSlider--figure--img"
-                          src="/images/ProductDetail1.jpg"
-                        />
-                      </figure>
-                    </Flickity>
-
+                    <WishListFlickity whisListId={selectedItem} />
                     <div className="AddToWishlist--information">
                       <i
                         className="AddToWishlist--information--close"
@@ -100,13 +70,14 @@ const AddToWishListFromProduct = () => {
                           return (
                             <div
                               className={
-                                selectedItem && selectedItem === whisList.name
+                                selectedWhishListId &&
+                                selectedWhishListId === whisList.id
                                   ? selectedItemClassName
                                   : wishListItemClassName
                               }
                               key={whisList.name + key}
                               onClick={() => {
-                                setselectedItem(whisList.name);
+                                setselectedItem(key);
                                 setselectedWhishListIdId(whisList.id);
                               }}>
                               <figure className="AddToWishlist--information--wishlistItem--figure">
@@ -154,7 +125,7 @@ const AddToWishListFromProduct = () => {
                                     ...productId
                                   }}
                                   refetchQueries={() => {
-                                    console.log('refetchQueries');
+                                    // console.log('refetchQueries');
                                     return [
                                       {
                                         query: GET_CONSUMER_WISHLIST
@@ -163,7 +134,7 @@ const AddToWishListFromProduct = () => {
                                   }}>
                                   {(addProductToConsumerWishList) => (
                                     <button
-                                      disabled={!selectedItem}
+                                      disabled={!selectedWhishListId}
                                       className="AddToWishlist--information--btnContainer--doneBtn"
                                       onClick={() => {
                                         addProductToConsumerWishList();

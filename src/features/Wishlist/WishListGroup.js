@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import WishlistCollection from './WishlistCollection';
 import Flickity from 'react-flickity-component';
+
+import WishlistCollection from './WishlistCollection';
 
 //     imageUrl: '/images/wishListGroup.jpg',
 

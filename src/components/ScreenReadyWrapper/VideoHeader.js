@@ -1,7 +1,8 @@
 import React from 'react';
 import Wrapper from './VideoHeader.style';
+
 const VideoHeader = (props) => {
-  console.log(props);
+  // console.log(props);
   const brandInfoClass = props.inline
     ? 'mainMenu--brandInfo--inline'
     : 'mainMenu--brandInfo';

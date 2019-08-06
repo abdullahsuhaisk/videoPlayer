@@ -27,13 +27,14 @@ const addNewWishList = ({
   title
 }) => {
   // console.log(client);
-  console.log(classNames);
+  //
+  // console.log(classNames);
   return (
     <Mutation
       mutation={CREATE_NEW_WISHLIST}
       variables={{ name: wishListName }}
       refetchQueries={() => {
-        console.log('refetchQueries');
+        // console.log('refetchQueries');
         return [
           {
             query: GET_CONSUMER_WISHLIST
@@ -42,7 +43,6 @@ const addNewWishList = ({
       }}>
       {(createConsumerWishList, error, loading) => (
         <>
-          {error ? console.log(error) : null}
           {/* {loading ? console.log(loading) : null} */}
           <input
             onChange={(e) => setWishListName(e.target.value)}

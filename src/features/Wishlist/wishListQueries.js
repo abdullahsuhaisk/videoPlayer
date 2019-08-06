@@ -37,6 +37,24 @@ export const GET_CONSUMER_WISHLIST = gql`
     }
   }
 `;
+export const GET_WISHLISTS_IMAGE = gql`
+  query getConsumerWishList {
+    consumer {
+      id
+      whisLists {
+        id
+        products {
+          id
+          name
+          images {
+            id
+            thumbnailUrl
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const WISH_LIST = gql`
   fragment wish on WishListType {

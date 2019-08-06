@@ -43,7 +43,7 @@ import ProductListCard from '../ProductListWrapper/ProductListCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
-import AddToWishListScreen from '../../features/Wishlist/AddToWishListScreen';
+import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
 
 const widgetList = {
   Empty,
