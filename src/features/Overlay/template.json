@@ -13,10 +13,6 @@
             "props": {}
           },
           {
-            "type": "NavigationScreen",
-            "props": {}
-          },
-          {
             "type": "TabWrapper",
             "props": {
               "children": [
