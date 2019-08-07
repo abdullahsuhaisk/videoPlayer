@@ -1840,14 +1840,19 @@
 .ProductDetail {
   display: flex;
   width: fit-content;
-  height: 100%;
+  height: 672px;
   border: 1px solid #ccc;
   margin: auto;
   margin-top: 2px;
+  pointer-events: auto;
+  background-color: #ffffff;
+  position: absolute;
+  top: 171px;
+  left: 61px;
 }
 .ProductDetail--imagesSlider {
   width: 616px;
-  height: 672.5px;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -1855,9 +1860,9 @@
   outline: none;
 }
 .ProductDetail--imagesSlider--figure {
-  margin: 0;
   width: 100%;
-  height: 100%;
+  height: 672px;
+  display: flex;
 }
 .ProductDetail--imagesSlider--figure:focus {
   outline: none;
@@ -1865,7 +1870,6 @@
 .ProductDetail--imagesSlider--figure--img {
   width: 100%;
   object-fit: cover;
-  padding: 0 2px;
 }
 .ProductDetail .ProductDetail--imagesSlider .flickity-prev-next-button {
   position: absolute;
@@ -1892,7 +1896,7 @@
 .ProductDetail .ProductDetail--information {
   position: relative;
   width: 770.1px;
-  height: 672.3px;
+  height: 100%;
   background-color: #ffffff;
   padding: 38.5px 60.5px 60px 70.7px;
 }
