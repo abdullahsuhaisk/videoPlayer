@@ -19,7 +19,6 @@ const flickityOptions = {
 const FlickityClassName = 'ProductDetail--imagesSlider';
 
 const ProductDetail = ({ productId }) => {
-  console.log('Product DEtaisss');
   return (
     <div className="VideoPlayerContainer" style={{ pointerEvents: 'auto' }}>
       <ApolloConsumer>
@@ -30,11 +29,17 @@ const ProductDetail = ({ productId }) => {
                 if (loading || error) return null;
                 const { product } = data;
                 console.log(product);
+                const images = [];
+                if (product && product.images) {
+                  product.images.map((i) => images.push(i));
+                }
                 return (
                   <div className="ProductDetail">
                     <FlickityComponent
                       FlickityClassName={FlickityClassName}
                       flickityOptions={flickityOptions}
+                      images={images}
+                      key={product.name + product.id}
                     />
                     <div className="ProductDetail--information">
                       <i
@@ -59,7 +64,7 @@ const ProductDetail = ({ productId }) => {
                           <span className="ProductDetail--information--rating--stars--icon"></span>
                         </div>
                         <p className="ProductDetail--information--rating--total">
-                          3.9
+                          {product.rank}
                         </p>
                         <p className="ProductDetail--information--rating--votes">
                           (381 votes)
@@ -82,6 +87,7 @@ const ProductDetail = ({ productId }) => {
                               <img
                                 className="ProductDetail--information--settings-opt-div-img"
                                 src="/images/Blue.jpg"
+                                alt="option1"
                               />
                               <span className="ProductDetail--information--settings-opt-div-span">
                                 Blue
@@ -91,6 +97,7 @@ const ProductDetail = ({ productId }) => {
                               <img
                                 className="ProductDetail--information--settings-opt-div-img"
                                 src="/images/Purple.jpg"
+                                alt="option1"
                               />
                               <span className="ProductDetail--information--settings-opt-div-span">
                                 Purple
@@ -100,6 +107,7 @@ const ProductDetail = ({ productId }) => {
                               <img
                                 className="ProductDetail--information--settings-opt-div-img"
                                 src="/images/White.jpg"
+                                alt="option1"
                               />
                               <span className="ProductDetail--information--settings-opt-div-span">
                                 White

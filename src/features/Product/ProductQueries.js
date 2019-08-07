@@ -6,10 +6,15 @@ export const GET_PRODUCT = gql`
       id
       name
       description
+      images {
+        id
+        thumbnailUrl
+      }
       image {
         id
         imageUrl
       }
+      rank
       price
       discount
       currentPrice @client

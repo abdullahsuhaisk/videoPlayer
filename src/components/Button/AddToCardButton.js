@@ -62,13 +62,11 @@ const AddToCardButton = ({ productId, quantity }) => {
 };
 
 AddToCardButton.propTypes = {
-  styles: PropTypes.object,
   productId: PropTypes.number.isRequired,
   quantity: PropTypes.number
 };
 
 AddToCardButton.defaultProps = {
-  styles: {},
   quantity: 1
 };
 
