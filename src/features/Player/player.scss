@@ -1,4 +1,7 @@
-@import '../../../node_modules/video.js/src/css/video-js';
+// @import '../../../node_modules/video.js/src/css/video-js';
+// moving the node_modules/video.js/src/css folder to ./videojs to have more control on the scss components
+// now we don't have to import all components from videojs, we can import only important scss components
+@import './videojs/video-js';
 
 $color-font: rgb(238, 238, 238);
 $color-primary: rgb(0, 172, 216);

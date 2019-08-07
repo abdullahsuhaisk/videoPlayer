@@ -38,7 +38,7 @@ const addToCartCb = async (client, addToCart) => {
   }
 };
 
-const AddToCardButton = ({ styles, productId, quantity }) => {
+const AddToCardButton = ({ productId, quantity }) => {
   return (
     <Mutation
       mutation={ADD_PRODUCT_TO_CART}
@@ -46,14 +46,14 @@ const AddToCardButton = ({ styles, productId, quantity }) => {
       update={(cache, { data }) => updateCache(cache, data)}>
       {(addToCart, { client }) => {
         return (
-          <AddToCardButtonWrapper styles={styles}>
+          <>
             <button
               onClick={() => addToCartCb(client, addToCart)}
-              className="vb--addToCardButton">
-              <div className="vb--addToCardButton-icon" />
-              <div className="vb--addToCardButton-text">Add To Card</div>
+              className="ProductDetail--addToCartBtn">
+              <i className="ProductDetail--addToCartBtn-icon"></i>
+              Add To Card
             </button>
-          </AddToCardButtonWrapper>
+          </>
         );
       }}
     </Mutation>
@@ -61,13 +61,11 @@ const AddToCardButton = ({ styles, productId, quantity }) => {
 };
 
 AddToCardButton.propTypes = {
-  styles: PropTypes.object,
   productId: PropTypes.number.isRequired,
   quantity: PropTypes.number
 };
 
 AddToCardButton.defaultProps = {
-  styles: {},
   quantity: 1
 };
 

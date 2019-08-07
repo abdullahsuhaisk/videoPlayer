@@ -44,10 +44,10 @@ const addNewWishList = ({
       {(createConsumerWishList, error, loading) => (
         <>
           {/* {loading ? console.log(loading) : null} */}
-          <input
+          {/* <input
             onChange={(e) => setWishListName(e.target.value)}
             value={wishListName}
-          />
+          /> */}
           <button
             onClick={async (e) => {
               e.preventDefault();

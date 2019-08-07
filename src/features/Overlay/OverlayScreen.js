@@ -11,7 +11,7 @@ import { PLAYER } from '../../common/constants';
 import ControlBarScreen from '../ControlBar/ControlBarScreen';
 import { useTemplate, useCss } from './TemplateHook';
 import temp from './template.json';
-import StoriyRender from '../../components/StoriyRender';
+// import StoriyRender from '../../components/StoriyRender';
 
 const Screen = ({ playingState, videoPlayer }) => {
   const template = useTemplate();
