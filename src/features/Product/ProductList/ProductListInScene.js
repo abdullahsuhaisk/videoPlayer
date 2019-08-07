@@ -100,9 +100,11 @@ const ProductListInScene = () => {
                 lazyLoad: true,
                 percentPosition: false
               };
+              let containerClasses = 'VideoPlayerContainer';
+              containerClasses += products.length > 4 ? ' swipeGradient' : '';
               return (
                 <Flickity
-                  className="VideoPlayerContainer"
+                  className={containerClasses}
                   reloadOnUpdate={true}
                   options={flickityOptions}>
                   {products.map((product) => (

@@ -82,11 +82,22 @@ const ProductList = () => {
           lazyLoad: true,
           percentPosition: false
         };
+        let containerClasses = 'VideoPlayerContainer';
+        containerClasses += products.length > 1 ? ' swipeGradient' : '';
         return (
           <Flickity
-            className="VideoPlayerContainer"
+            className={containerClasses}
             reloadOnUpdate={true}
             options={flickityOptions}>
+            {products.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))}
+            {products.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))}
+            {products.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))}
             {products.map((product) => (
               <ProductCard product={product} key={product.id} />
             ))}

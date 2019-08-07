@@ -41,17 +41,19 @@ export const Tab = ({ tabs, children }) => {
                   <ul className="subMenu--linksWrapper">
                     {buildMenu(tabs, setTab, tab, client)}
                   </ul>
-                  <div className="subMenu--statsWrapper">
-                    {isLiked === true ? (
-                      <UnLike setIsLiked={setIsLiked} />
-                    ) : (
-                      <Like setIsLiked={setIsLiked} />
-                    )}
-                    <Favorite />
-                    <Share />
+                  <div className="subMenu--statsProfileWrapper">
+                    <div className="subMenu--statsWrapper">
+                      {isLiked === true ? (
+                        <UnLike setIsLiked={setIsLiked} />
+                      ) : (
+                        <Like setIsLiked={setIsLiked} />
+                      )}
+                      <Favorite />
+                      <Share />
+                    </div>
+                    <ProfileButton />
                   </div>
                   <hr className="subMenu--underline" />
-                  <ProfileButton />
                 </div>
               </div>
               <Component content="my products" />

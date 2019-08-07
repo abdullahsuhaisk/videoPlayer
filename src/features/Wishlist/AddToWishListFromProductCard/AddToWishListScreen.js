@@ -12,15 +12,11 @@ const GET_ADD_WISHLIST_OPEN = gql`
 
 const AddToWishListScreen = () => {
   return (
-    <div className="VideoPlayerContainer" style={{ pointerEvents: 'auto' }}>
-      <Query query={GET_ADD_WISHLIST_OPEN}>
-        {({ data: { isAddWishListOpen } }) => {
-          return isAddWishListOpen === true ? (
-            <AddToWishListFromProduct />
-          ) : null;
-        }}
-      </Query>
-    </div>
+    <Query query={GET_ADD_WISHLIST_OPEN}>
+      {({ data: { isAddWishListOpen } }) => {
+        return isAddWishListOpen === true ? <AddToWishListFromProduct /> : null;
+      }}
+    </Query>
   );
 };
 

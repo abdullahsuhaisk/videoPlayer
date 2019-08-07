@@ -74,6 +74,7 @@ const ControlBarStyle = css`
         background: url(/images/play-button.svg) center / contain no-repeat;
         margin-right: 27px;
         cursor: pointer;
+        border: none;
         &.playing {
           background: url(/images/button-pause.svg) center / contain no-repeat;
         }
@@ -179,6 +180,7 @@ const ControlBarStyle = css`
         height: 20px;
         background: url(/images/full-screen.svg) center / contain no-repeat;
         cursor: pointer;
+        border: none;
         &:focus{
           outline: none
         }
@@ -189,6 +191,7 @@ const ControlBarStyle = css`
         background: url(/images/cogwheel.svg) center / contain no-repeat;
         cursor: pointer;
         margin-right: 20px;
+        border: none;
         &:focus{
           outline: none
         }
@@ -199,6 +202,7 @@ const ControlBarStyle = css`
         background: url(/images/cart-simple.svg) center / contain no-repeat;
         cursor: pointer;
         margin-right: 20px;
+        border: none;
         &:focus{
           outline: none
         }

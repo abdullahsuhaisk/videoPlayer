@@ -138,12 +138,6 @@ const AddToWishListFromProduct = () => {
                                       className="AddToWishlist--information--btnContainer--doneBtn"
                                       onClick={() => {
                                         addProductToConsumerWishList();
-                                      }}
-                                      style={{
-                                        background: 'red',
-                                        position: 'absolute',
-                                        right: 0,
-                                        top: 100
                                       }}>
                                       Done
                                     </button>

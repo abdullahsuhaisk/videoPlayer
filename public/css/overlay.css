@@ -18,8 +18,20 @@
 }
 /* VideoPlayerContainer */
 .VideoPlayerContainer {
+  width: 1361px;
   margin-top: 40px;
-  margin-left: 47.5px;
+  margin-left: 62px;
+  overflow: hidden;
+  position: relative;
+}
+.swipeGradient::after {
+  content: "";
+  width: 70px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgb(255, 255, 255, 0.7));
 }
 .VideoPlayerContainer:focus {
   outline: none;
@@ -659,13 +671,16 @@
   align-items: center;
   margin-top: 30px;
 }
+.subMenu--statsProfileWrapper{
+  display: flex;
+}
 .sub-Menu .subMenu--linksWithIcons {
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 1650px;
   margin-left: 40px;
+  justify-content: space-between;
 }
 .sub-Menu .subMenu--linksWrapper {
   display: flex;
@@ -752,6 +767,7 @@
 }
 .sub-Menu .subMenu--profileInfo {
   margin-right: 48px;
+  margin-left: 25px;
   cursor: pointer;
 }
 .sub-Menu .subMenu--profileInfo .subMenu--profileInfo--img {
@@ -762,8 +778,8 @@
 }
 .subMenu--underline {
   position: absolute;
-  left: -10.2%;
-  bottom: -12.5px;
+  left: -18.78%;
+  bottom: 2.5px;
   width: 110%;
   opacity: 0.75;
   border: 2px solid rgba(11, 36, 67, 0.28);
@@ -796,7 +812,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  margin: 0 17.5px;
+  margin: 0 15px;
   font-family: 'Source Sans Pro';
   position: relative;
 }
@@ -1233,9 +1249,8 @@
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  margin-left: 47.5px;
   height: 510px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
 }
 .ShoppingCart {
@@ -2076,11 +2091,16 @@
   width: fit-content;
   height: 100%;
   border: 1px solid #ccc;
-  margin: auto;
-  margin-top: 2px;
+  /* margin: auto; */
+  position: absolute;
+  top: 173px;
+  /* right: 0; */
+  left: 59px;
+  pointer-events: auto;
+  background-color: #ffffff;
 }
 .AddToWishlist--imagesSlider {
-  width: 616px;
+  width: 617px;
   height: 672.5px;
   position: relative;
   overflow: hidden;
@@ -2125,7 +2145,7 @@
 
 .AddToWishlist .AddToWishlist--information {
   position: relative;
-  width: 767px;
+  width: 774px;
   height: 671px;
   background-color: #f7f7f7;
   padding: 36.4px 60px 30px 55px;
@@ -2182,7 +2202,9 @@
   outline: none;
 }
 .AddToWishlist--information--wishlistItemContainer {
-  height: 485px;
+  height: 475px;
+  margin-bottom: 10px;
+  overflow: auto;
 }
 .AddToWishlist--information--wishlistItem {
   display: flex;
