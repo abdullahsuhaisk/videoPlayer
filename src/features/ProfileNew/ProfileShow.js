@@ -16,7 +16,7 @@ const ProfileShow = ({ consumer, setShowingProfile }) => {
     : '/images/dp.png';
   return (
     <React.Fragment>
-      <div className="Profile" style={{ height: 520 }}>
+      <div className="Profile">
         <div className="profile--head">
           <img src={image} className="profile--head--img" alt="Profile" />
           <label className="profile--head--label">Profile</label>

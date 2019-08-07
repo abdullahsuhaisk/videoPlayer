@@ -4,17 +4,23 @@ import ProductCardWishlisted from './Zak/VideoPause/Components/Cards/ProductCard
 import WishlistCollection from './Zak/VideoPause/Components/WishlistCollection/WishlistCollection';
 import Watchlist from './Zak/VideoPause/Components/Watchlist/Watchlist';
 import ShoppingCart from './Zak/VideoPause/Components/ShoppingCart/ShoppingCart';
+import ShoppingCartTotal from './Zak/VideoPause/Components/ShoppingCartTotal/ShoppingCartTotal';
+import Profile from './Zak/VideoPause/Components/Profile/Profile';
+import UpdateProfile from './Zak/VideoPause/Components/UpdateProfile/UpdateProfile';
+import UpdateAdress from './Zak/VideoPause/Components/UpdateAdress/UpdateAdress';
+import ProductDetail from './Zak/VideoPause/Components/ProductDetail/ProductDetail';
+import AddToWishlist from './Zak/VideoPause/Components/AddToWishlist/AddToWishlist';
 
 const Menu = [
   {
     page: 1,
     name: 'Products in this Scene',
+    display: true,
     flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
       <ProductCardWishlisted />,
       <ProductCardWishlisted />,
-      <ProductCardDiscount />,
       <ProductCardWishlisted />,
       <ProductCardWishlisted />,
       <ProductCardWishlisted />,
@@ -25,6 +31,7 @@ const Menu = [
   {
     page: 2,
     name: 'All Products',
+    display: true,
     flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
@@ -39,6 +46,7 @@ const Menu = [
   {
     page: 3,
     name: 'Suggested Products',
+    display: true,
     flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
@@ -52,9 +60,12 @@ const Menu = [
   {
     page: 4,
     name: 'Wishlist',
-    flexClass: 'VideoPlayerContainer',
+    display: true,
+    flexClass: 'WishlistContainer',
     haveBullet: true,
     pageComponents: [
+      <WishlistCollection />,
+      <WishlistCollection />,
       <WishlistCollection />,
       <WishlistCollection />,
       <WishlistCollection />
@@ -63,6 +74,7 @@ const Menu = [
   {
     page: 5,
     name: 'Watchlist',
+    display: true,
     flexClass: 'VideoPlayerContainer',
     haveBullet: false,
     pageComponents: [
@@ -76,9 +88,49 @@ const Menu = [
   {
     page: 6,
     name: 'Shopping Cart',
-    flexClass: 'd-flex-column',
+    display: true,
+    flexClass: 'ShoppingCartContainer',
     haveBullet: false,
-    pageComponents: [<ShoppingCart />, <ShoppingCart />, <ShoppingCart />]
+    pageComponents: [
+      <ShoppingCart />,
+      <ShoppingCart />,
+      <ShoppingCart />,
+      <ShoppingCart />,
+      <ShoppingCart />,
+      <ShoppingCart />
+    ]
+  },
+  {
+    page: 7,
+    name: 'Profile',
+    display: false,
+    flexClass: 'VideoPlayerContainer',
+    haveBullet: false,
+    pageComponents: [<Profile />]
+  },
+  {
+    page: 8,
+    name: 'Update Components',
+    display: false,
+    flexClass: 'VideoPlayerContainer flex-row',
+    haveBullet: false,
+    pageComponents: [<UpdateProfile />, <UpdateAdress />]
+  },
+  {
+    page: 9,
+    name: 'Product Details',
+    display: false,
+    flexClass: '',
+    haveBullet: false,
+    pageComponents: [<ProductDetail />]
+  },
+  {
+    page: 10,
+    name: 'Add to wishlist',
+    display: false,
+    flexClass: '',
+    haveBullet: false,
+    pageComponents: [<AddToWishlist />]
   }
 ];
 

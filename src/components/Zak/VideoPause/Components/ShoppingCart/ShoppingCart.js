@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/ShoppingCart.css';
+// import '../../assets/css/template1/ShoppingCart.css';
 
 const ShoppingCart = () => {
   return (
@@ -42,10 +42,10 @@ const ShoppingCart = () => {
           </div>
         </div>
         <div className="ShoppingCart--priceContainer">
-          <span class="ShoppingCart--price">$ 205,00</span>
+          <span className="ShoppingCart--price">$ 205,00</span>
         </div>
         <div className="ShoppingCart--closeContainer">
-          <i class="ShoppingCart--close"></i>
+          <i className="ShoppingCart--close"></i>
         </div>
       </div>
     </React.Fragment>

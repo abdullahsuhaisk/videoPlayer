@@ -1,13 +1,14 @@
 import React from 'react';
-import '../../assets/css/template1/ProductDetail.css';
+// import '../../assets/css/template1/ProductDetail.css';
 import Flickity from 'react-flickity-component';
 const flickityOptions = {
   cellAlign: 'center',
   contain: true,
-  // resize: false,
   pageDots: false,
   prevNextButtons: true,
-  wrapAround: true
+  wrapAround: true,
+  selectedAttraction: 0.1,
+  friction: 0.8
 };
 
 const ProductDetail = () => {
@@ -46,11 +47,11 @@ const ProductDetail = () => {
           </div>
           <div className="ProductDetail--information--rating">
             <div className="ProductDetail--information--rating--stars">
+              <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
+              <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
+              <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
               <span className="ProductDetail--information--rating--stars--icon"></span>
               <span className="ProductDetail--information--rating--stars--icon"></span>
-              <span className="ProductDetail--information--rating--stars--icon"></span>
-              <span className="ProductDetail--information--rating--stars--icon-empty"></span>
-              <span className="ProductDetail--information--rating--stars--icon-empty"></span>
             </div>
             <p className="ProductDetail--information--rating--total">3.9</p>
             <p className="ProductDetail--information--rating--votes">

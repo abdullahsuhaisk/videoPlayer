@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Submenu = (props) => {
+  const mainMenu = props.Menu.filter((content) => content.display === true);
   return (
     <React.Fragment>
       <div className="sub-Menu">
         <div className="subMenu--linksWithIcons">
           <ul className="subMenu--linksWrapper">
-            {props.Menu.map((menu) => {
+            {mainMenu.map((menu) => {
               let classes = 'subMenu--link';
               classes +=
                 menu.page == props.page ? ' subMenu--link--active' : '';
@@ -22,12 +23,13 @@ const Submenu = (props) => {
             })}
           </ul>
           <div className="subMenu--statsWrapper">
-            <div className="stats--content">
-              <i className="stats--content--likeIcon"></i> 24
-            </div>
-            {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
+            {/* add 'loved' class name beside 'stats--content--heart' class to display red heart */}
             <div className="stats--content stats--content--heart">
-              <i className="stats--content--heartIcon"></i> 40
+              <i className="stats--content--heartIcon"></i> 24
+            </div>
+            {/* add 'favorite' class name beside 'stats--content--star' class to display yellow star */}
+            <div className="stats--content stats--content--star">
+              <i className="stats--content--starIcon"></i> 40
             </div>
             <div className="stats--content">
               <i className="stats--content--shareIcon"></i> 325
@@ -35,7 +37,10 @@ const Submenu = (props) => {
           </div>
           <hr className="subMenu--underline" />
         </div>
-        <div className="subMenu--profileInfo">
+        <div
+          className="subMenu--profileInfo"
+          onClick={() => props.setPage(7)}
+          key={7}>
           <img src="/images/dp.png" className="subMenu--profileInfo--img" />
         </div>
       </div>

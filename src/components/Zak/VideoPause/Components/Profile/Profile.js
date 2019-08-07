@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/Profile.css';
+// import '../../assets/css/template1/Profile.css';
 
 const Profile = () => {
   return (

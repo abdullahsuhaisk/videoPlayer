@@ -1,19 +1,19 @@
 import React from 'react';
-import '../../assets/css/template1/Watchlist.css';
+// import '../../assets/css/template1/Watchlist.css';
 
 const Watchlist = () => {
   return (
     <React.Fragment>
       <div className="watchlist">
         <div className="watchlist--videoContainer">
-          <figure class="watchlist--thumbnail">
+          <figure className="watchlist--thumbnail">
             <img
               src="/images/watchlist1.png"
-              class="watchlist--thumbnail--img"
+              className="watchlist--thumbnail--img"
             />
           </figure>
           <div className="watchlist--brand">
-            <img src="/images/inditex.png" class="watchlist--brand-img" />
+            <img src="/images/inditex.png" className="watchlist--brand-img" />
             <span className="watchlist--brand-span">Inditex</span>
           </div>
           <div className="watchlist--videoTime">
@@ -24,9 +24,12 @@ const Watchlist = () => {
           <div className="watchlist--brands">
             <img
               src="/images/addidas-brand.png"
-              class="watchlist--brands-icon"
+              className="watchlist--brands-icon"
             />
-            <img src="/images/nike-brand.png" class="watchlist--brands-icon" />
+            <img
+              src="/images/nike-brand.png"
+              className="watchlist--brands-icon"
+            />
           </div>
           <h2 className="watchlist--infoContainer--h2">
             Sunglasses Girl in Rainbow Coat Standing Against Railings

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/Overlay.css';
+// import '../../assets/css/template1/Overlay.css';
 
 const Overlay = (props) => {
   return (

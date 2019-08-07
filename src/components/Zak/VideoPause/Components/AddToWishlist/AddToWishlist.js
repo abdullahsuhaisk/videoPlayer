@@ -4,10 +4,11 @@ import Flickity from 'react-flickity-component';
 const flickityOptions = {
   cellAlign: 'center',
   contain: true,
-  // resize: false,
   pageDots: false,
   prevNextButtons: true,
-  wrapAround: true
+  wrapAround: true,
+  selectedAttraction: 0.1,
+  friction: 0.8
 };
 
 const AddToWishlist = () => {
@@ -97,7 +98,7 @@ const AddToWishlist = () => {
                 </p>
               </div>
             </div>
-            <div className="AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected-remove">
+            <div className="AddToWishlist--information--wishlistItem">
               <figure className="AddToWishlist--information--wishlistItem--figure">
                 <img
                   className="AddToWishlist--information--wishlistItem--figure--img"

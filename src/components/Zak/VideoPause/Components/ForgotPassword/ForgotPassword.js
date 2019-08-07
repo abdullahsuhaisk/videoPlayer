@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/ForgotPassword.css';
+// import '../../assets/css/template1/ForgotPassword.css';
 
 const ForgotPassword = () => {
   return (

@@ -35,7 +35,7 @@ const ProductListHeader = ({ profileImage, profileName, children }) => {
           // console.log(data);
           return (
             <div className="Header">
-              <div className="mainMenu--brandInfo">
+              <div className="mainMenu--brandInfo--inline">
                 <h1 className="company--name">{company.name}</h1>
                 <h5 className="campaign--name">{campaign.name}</h5>
               </div>
