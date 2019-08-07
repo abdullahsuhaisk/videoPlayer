@@ -6,7 +6,6 @@ import { GET_PRODUCT } from '../ProductQueries';
 import FlickityComponent from '../../../components/Flickity/FlickityComponent';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
-// import '../../assets/css/template1/ProductDetail.css';
 const flickityOptions = {
   cellAlign: 'center',
   contain: true,

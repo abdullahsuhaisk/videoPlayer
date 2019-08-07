@@ -9,6 +9,7 @@ export const GET_PRODUCT = gql`
       images {
         id
         thumbnailUrl
+        imageUrl
       }
       image {
         id
