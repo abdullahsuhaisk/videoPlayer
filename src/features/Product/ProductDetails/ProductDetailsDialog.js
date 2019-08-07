@@ -1,160 +1,185 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
-import { Query, ApolloConsumer } from 'react-apollo';
-import ModalDialog from '../../../components/ModalDialog/ModalDialog';
-import { Wrapper } from './ProductDetailsDialog.style';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from 'react';
+import { ApolloConsumer, Query } from 'react-apollo';
+import { GET_PRODUCT } from '../ProductQueries';
+import FlickityComponent from '../../../components/Flickity/FlickityComponent';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 
-import Stepper from '../../../components/Stepper/Stepper';
-import ProductWishList from '../../Wishlist/oldWishlistComponents/ProductWishList/ProductWishList';
+// import '../../assets/css/template1/ProductDetail.css';
+const flickityOptions = {
+  cellAlign: 'center',
+  contain: true,
+  pageDots: false,
+  prevNextButtons: true,
+  wrapAround: true,
+  selectedAttraction: 0.1,
+  friction: 0.8
+};
+const FlickityClassName = 'ProductDetail--imagesSlider';
 
-// import ProductWishList from '../../Wishlist/ProductWishList/ProductWishList';
-
-const GET_PRODUCT = gql`
-  query getProductForProductDetailsDialog($productId: Int!) {
-    product(productId: $productId) {
-      id
-      name
-      description
-      image {
-        id
-        imageUrl
-      }
-      price
-      discount
-      currentPrice @client
-      currency {
-        id
-        symbol
-      }
-    }
-  }
-`;
-
-const ProductDetailDialog = ({ productId }) => {
-  const wrapperStyle = {
-    Wrapper: {
-      // zIndex: '1',
-      top: '50px',
-      left: '100px',
-      width: '80%',
-      height: '80%',
-      borderRadius: '8px'
-    },
-    CloseButton: { color: 'black' }
-  };
-  const [wishListOpen, setWishlist] = useState(false);
-
-  const [quantity, setQuantity] = React.useState(1);
-
+const ProductDetail = ({ productId }) => {
+  console.log('Product DEtaisss');
   return (
-    <ApolloConsumer>
-      {(client) => (
-        <Wrapper>
-          <ModalDialog
-            styles={wrapperStyle}
-            onClose={() =>
-              client.writeData({ data: { productIdInDetails: null } })
-            }>
-            <div className="vb--product-details-container">
-              <Query query={GET_PRODUCT} variables={{ productId }}>
-                {({ loading, error, data }) => {
-                  if (loading || error) return null;
-
-                  const { product } = data;
-                  return (
-                    <>
-                      <div className="vb--product-detail-dialog-slider">
-                        <div
-                          className="vb--product-detail-dialog-slider-image"
-                          style={{
-                            backgroundImage: `url(${product.image.imageUrl}`
-                          }}
-                        />
+    <div className="VideoPlayerContainer" style={{ pointerEvents: 'auto' }}>
+      <ApolloConsumer>
+        {(client) => (
+          <React.Fragment>
+            <Query query={GET_PRODUCT} variables={{ productId }}>
+              {({ loading, error, data }) => {
+                if (loading || error) return null;
+                const { product } = data;
+                console.log(product);
+                return (
+                  <div className="ProductDetail">
+                    <FlickityComponent
+                      FlickityClassName={FlickityClassName}
+                      flickityOptions={flickityOptions}
+                    />
+                    <div className="ProductDetail--information">
+                      <i
+                        className="ProductDetail--information--close"
+                        onClick={() =>
+                          client.writeData({
+                            data: { productIdInDetails: null }
+                          })
+                        }></i>
+                      <div className="ProductDetail--information--title">
+                        <h2 className="ProductDetail--information--title--h2">
+                          {product.name}
+                        </h2>
+                        <i className="ProductDetail--information--title--heartIcon"></i>
                       </div>
-                      {wishListOpen ? (
-                        <ProductWishList setWishlist={setWishlist} />
-                      ) : (
-                        <div className="vb--product-detail-dialog-contents">
-                          <div className="vb--product-detail-dialog-content-header">
-                            {product.name}
-                          </div>
-                          <div className="vb--product-detail-dialog-content-content">
-                            {product.description}
-                          </div>
-                          <div className="vb--product-detail-dialog-content-features">
-                            <div className="vb--product-detail-dialog-content-features-header">
-                              Colors
-                            </div>
-                            <div className="vb--product-detail-dialog-content-features-content">
-                              <button>Blue</button>
-                              <button>Purple</button>
-                              <button>Black</button>
-                              <button>White</button>
-                            </div>
-                            <div className="vb--product-detail-dialog-content-features-header">
-                              Size
-                            </div>
-                            <div className="vb--product-detail-dialog-content-features-content">
-                              <button>64 GB</button>
-                              <button>128 GB</button>
-                              <button>256 GB</button>
-                              <button>512 GB</button>
-                            </div>
-                          </div>
-                          <div className="vb--product-detail-dialog-content-price-and-cartButton">
-                            <div className="vb--product-card-price-container">
-                              <div className="vb--product-card-base-price">
-                                <span>{`${
-                                  product.currency.symbol
-                                }${product.price.toFixed(2)}`}</span>
-                              </div>
-                              <div className="vb--product-card-discount-rate-and-price">
-                                <div className="vb--product-card-discount-rate">
-                                  <span>{`%${product.discount}`}</span>
-                                </div>
-                                <div className="vb--product-card-current-price">
-                                  <span>{`${product.currency.symbol}${product.currentPrice}`}</span>
-                                </div>
-                                <AddToCardButton
-                                  styles={{ paddingTop: '9px' }}
-                                  productId={product.id}
-                                />
-                              </div>
-                              <Stepper
-                                value={1}
-                                minValue={1}
-                                onValueChanged={(value) => {
-                                  setQuantity(value);
-                                }}
-                              />
-                              <AddToCardButton
-                                styles={{ paddingTop: '9px' }}
-                                productId={product.id}
-                                quantity={quantity}
-                              />
-                            </div>
-                          </div>
-                          <button onClick={() => setWishlist(true)}>
-                            Open Wish List
-                          </button>
+                      <div className="ProductDetail--information--rating">
+                        <div className="ProductDetail--information--rating--stars">
+                          <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
+                          <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
+                          <span className="ProductDetail--information--rating--stars--icon ProductDetail--information--rating--stars--icon-full"></span>
+                          <span className="ProductDetail--information--rating--stars--icon"></span>
+                          <span className="ProductDetail--information--rating--stars--icon"></span>
                         </div>
-                      )}
-                    </>
-                  );
-                }}
-              </Query>
-            </div>
-          </ModalDialog>
-        </Wrapper>
-      )}
-    </ApolloConsumer>
+                        <p className="ProductDetail--information--rating--total">
+                          3.9
+                        </p>
+                        <p className="ProductDetail--information--rating--votes">
+                          (381 votes)
+                        </p>
+                      </div>
+                      <div className="ProductDetail--information--details">
+                        <p>{product.description}</p>
+                        <p>Easy care: Quick-drying and easy to iron.</p>
+                        <p>Erkek Ceket ve Yelek</p>
+                        <p>Tarz : LCW Vision</p>
+                        <p>Kalıp : Dar</p>
+                      </div>
+                      <div className="ProductDetail--information--settingsContainer">
+                        <div className="ProductDetail--information--settings">
+                          <p className="ProductDetail--information--settings-name">
+                            Colors
+                          </p>
+                          <div className="ProductDetail--information--settings-opt">
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <img
+                                className="ProductDetail--information--settings-opt-div-img"
+                                src="/images/Blue.jpg"
+                              />
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                Blue
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <img
+                                className="ProductDetail--information--settings-opt-div-img"
+                                src="/images/Purple.jpg"
+                              />
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                Purple
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div ProductDetail--information--settings-opt-active">
+                              <img
+                                className="ProductDetail--information--settings-opt-div-img"
+                                src="/images/White.jpg"
+                              />
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                White
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <img
+                                className="ProductDetail--information--settings-opt-div-img"
+                                src="/images/Black.jpg"
+                              />
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                Black
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="ProductDetail--information--settings">
+                          <p className="ProductDetail--information--settings-name">
+                            Size
+                          </p>
+                          <div className="ProductDetail--information--settings-opt">
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                64 GB
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div ProductDetail--information--settings-opt-active">
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                128 GB
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                256 GB
+                              </span>
+                            </div>
+                            <div className="ProductDetail--information--settings-opt-div">
+                              <span className="ProductDetail--information--settings-opt-div-span">
+                                512 GB
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="ProductDetail--information--priceBtnContainer">
+                        <div className="ProductDetail--information--price">
+                          <p className="ProductDetail--information--price--discount">
+                            {`%${product.discount}`}
+                          </p>
+                          <p className="ProductDetail--information--price--value">
+                            {`${product.currency.symbol}${product.currentPrice}`}
+                          </p>
+                          <p className="ProductDetail--information--price--beforeDiscountvalue">
+                            {`${product.currency.symbol}${product.price.toFixed(
+                              2
+                            )}`}
+                            <svg>
+                              <line
+                                x1="0"
+                                y1="70%"
+                                x2="140%"
+                                y2="0"
+                                stroke="#ff1010"
+                                strokeWidth="1"
+                              />
+                            </svg>
+                          </p>
+                        </div>
+                        <AddToCardButton productId={product.id} />
+                      </div>
+                    </div>
+                  </div>
+                );
+              }}
+            </Query>
+          </React.Fragment>
+        )}
+      </ApolloConsumer>
+    </div>
   );
 };
 
-ProductDetailDialog.propTypes = {
-  productId: PropTypes.number.isRequired
-};
-
-export default ProductDetailDialog;
+export default ProductDetail;
