@@ -19,7 +19,7 @@ function buildMenu(tabs, callback, tab, client) {
         callback(item.key);
       }}
       className={
-        'subMenu--link' + (item.key === tab ? 'subMenu--link--active' : '')
+        'subMenu--link' + (item.key === tab ? ' subMenu--link--active' : '')
       }>
       <a>{item.title}</a>
     </li>

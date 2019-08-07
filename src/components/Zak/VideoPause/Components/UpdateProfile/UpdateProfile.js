@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/UpdateProfile.css';
+// import '../../assets/css/template1/UpdateProfile.css';
 
 const UpdateProfile = () => {
   return (

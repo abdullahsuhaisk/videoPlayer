@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/NewPassword.css';
+// import '../../assets/css/template1/NewPassword.css';
 
 const NewPassword = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/WishlistCollection.css';
+// import '../../assets/css/template1/WishlistCollection.css';
 
 const WishlistCollection = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/template1/ShoppingCartTotal.css';
+// import '../../assets/css/template1/ShoppingCartTotal.css';
 
 const ShoppingCartTotal = () => {
   return (

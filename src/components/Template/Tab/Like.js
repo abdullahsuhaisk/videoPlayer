@@ -46,9 +46,9 @@ const Like = ({ setIsLiked }) => {
           return 'loading';
         }
         return (
-          <div className="stats--content">
+          <div className="stats--content stats--content--heart">
             <i
-              className={`stats--content--likeIcon`}
+              className={`stats--content--heartIcon`}
               onClick={() => {
                 addToWatchList(client, addProdLinkToWatchList);
                 setIsLiked(true);

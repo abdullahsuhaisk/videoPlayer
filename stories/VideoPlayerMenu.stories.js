@@ -20,6 +20,8 @@ import UpdateProfile from '../src/components/Zak/VideoPause/Components/UpdatePro
 import ProductDetail from '../src/components/Zak/VideoPause/Components/ProductDetail/ProductDetail'
 import AddToWishlist from '../src/components/Zak/VideoPause/Components/AddToWishlist/AddToWishlist'
 import VideoPlay from '../src/components/Zak/VideoPause/Components/VideoPlay/VideoPlay'
+import '../public/css/overlay.css';
+
 
 const Wrapper = styled.div`
   padding: 5em;

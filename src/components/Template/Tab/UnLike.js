@@ -46,9 +46,9 @@ const UnLike = ({ setIsLiked }) => {
           return 'loading';
         }
         return (
-          <div className="stats--content">
+          <div className="stats--content stats--content--heart loved">
             <i
-              className={`stats--content--likeIcon liked`}
+              className={`stats--content--heartIcon`}
               onClick={() => {
                 deleteToWatchList(client, deleteProdLinkFromWatchList);
                 setIsLiked(false);

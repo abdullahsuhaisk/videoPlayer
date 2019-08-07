@@ -8,15 +8,8 @@
 //  - Product Card
 //  - Forgot Password
 //  - New Password
-//  -
-//  -
-//  -
-//  -
-//  -
 **********************************************************************************/
 
-
-zzzzzz
 * {
   box-sizing: border-box;
   padding: 0;
@@ -44,196 +37,23 @@ zzzzzz
   display: flex;
   height: 660px;
 }
-.Product-Card {
-  width: 228px;
-  height: 500px;
-  border-radius: 8px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  margin: 0 17.5px;
-  font-family: 'Source Sans Pro';
-  position: relative;
+.WishlistContainer {
+  margin-top: 40px;
+  margin-left: 50.5px;
 }
-.Product-Card .productCard--imageWrapper {
-  width: 228px;
-  height: 266px;
-  margin: 0 auto;
-  z-index: 2;
-  border-radius: 8px;
-}
-.Product-Card .productCard--imageWrapper .productCard--image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: solid 2px #ffffff;
-  border-radius: 8px;
-}
-.Product-Card .productCard--wishlist-statusWrapper {
-  height: 34px;
-  background-color: #00acd8;
-  padding-top: 11px;
-  padding-bottom: 5px;
-  margin-top: -5px;
-  border-radius: 0 0 8px 8px;
-  text-align: center;
-  cursor: pointer;
-}
-.Product-Card
-  .productCard--wishlist-statusWrapper
-  .productCard--wishlist-status {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ebeae9;
-  /* padding-top: 6px; */
-  display: block;
-}
-.Product-Card .productCard--Onwishlist-statusWrapper {
-  height: 34px;
-  background-color: #e5e5e5;
-  padding-top: 11px;
-  padding-bottom: 5px;
-  margin-top: -5px;
-  border-radius: 0 0 8px 8px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  cursor: pointer;
-}
-.Product-Card
-  .productCard--Onwishlist-statusWrapper
-  .productCard--Onwishlist-status {
-  font-size: 18px;
-  font-weight: 600;
-  color: #00acd8;
-  display: block;
-  /* margin-top: 6px; */
-}
-.Product-Card
-  .productCard--Onwishlist-statusWrapper
-  .productCard--Onwishlist-checkedIcon {
-  width: 20px;
-  height: 20px;
-  background: url(/images/ic_check.svg) center / contain no-repeat;
-  display: block;
-  margin-right: 10px;
-  /* margin-top: 6px; */
-}
-.Product-Card .productCard--name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #515252;
-  letter-spacing: 0.025em;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 11px;
-  padding: 0 10px;
-  z-index: 1;
-  max-width: 192px;
-}
-.Product-Card .productCard--priceWrapper {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1;
-}
-.Product-Card .productCard--priceWrapper .productCard--discountWrapper {
-  display: flex;
-  margin-top: 13px;
-}
-.Product-Card
-  .productCard--priceWrapper
-  .productCard--discountWrapper
-  .productCard--dicount-percent {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.025em;
-  color: #ffffff;
-  background: #d33737;
-  padding: 3.4px;
-  border-radius: 6px;
-  margin: 0;
-}
-.Product-Card
-  .productCard--priceWrapper
-  .productCard--discountWrapper
-  .productCard--dicount-price {
-  position: relative;
-  font-size: 13px;
-  letter-spacing: 0.015em;
-  color: #515252;
-  margin-left: 2.6px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-.Product-Card
-  .productCard--priceWrapper
-  .productCard--discountWrapper
-  .productCard--dicount-price
-  svg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-}
-.Product-Card
-  .productCard--priceWrapper
-  .productCard--discountWrapper
-  .productCard--dicount-price
-  svg
-  line {
-  stroke: #ff1010;
-  stroke-width: 1;
-}
-.Product-Card .productCard--priceWrapper .productCard--Onwishlist--price {
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 0.015em;
-  color: #515252;
-  margin: 0;
-}
-.Product-Card .productCard--priceWrapper .productCard--wishlist--price {
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 0.015em;
-  color: #515252;
-  margin-top: 23px;
-  margin-bottom: 10px;
-}
-.Product-Card .productCard--stock-status {
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  color: #00acd8;
-  margin: 0;
-  margin-bottom: 5.5px;
-  margin-top: 7px;
-  letter-spacing: 0.025em;
-  z-index: 1;
-}
-.Product-Card .productCard--underline {
-  height: 1px;
-  width: 140px;
-  border: 0;
-  background-color: #00acd8;
-  margin: 0 auto;
-  z-index: 1;
-}
-.Product-Card .productCard--detail {
-  font-size: 18px;
-  font-weight: 600;
-  color: #00acd8;
-  text-align: center;
-  margin-top: 5.5px;
-  margin-bottom: 10px;
-  z-index: 1;
-  cursor: pointer;
-}
+
 .forgotPassword {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 894px;
+  width: 450px;
+  box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  padding: 53px 65px 62px 56px;
+}
+.login {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -771,7 +591,7 @@ zzzzzz
   left: 0;
   width: 1588px;
   height: 894px;
-  background-image: url('../../bg.png');
+  background-image: url('../images/bg.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -796,7 +616,9 @@ zzzzzz
   width: 1454px;
   margin-left: 67px;
 }
-
+.Header .mainMenu--brandInfo{
+  z-index: 2;
+}
 .Header .mainMenu--brandInfo--inline {
   display: flex;
   align-items: baseline;
@@ -835,6 +657,7 @@ zzzzzz
   position: relative;
   width: 100%;
   align-items: center;
+  margin-top: 30px;
 }
 .sub-Menu .subMenu--linksWithIcons {
   position: relative;
@@ -891,6 +714,13 @@ zzzzzz
   display: block;
   margin-right: 11px;
 }
+.sub-Menu .subMenu--statsWrapper .stats--content--star:hover .stats--content--starIcon,
+.sub-Menu .subMenu--statsWrapper .favorite .stats--content--starIcon{
+  background: url(/images/star-full.svg) center / contain no-repeat;
+}
+.sub-Menu .subMenu--statsWrapper .favorite{
+  opacity: 1;
+}
 .sub-Menu .subMenu--statsWrapper .stats--content .stats--content--heartIcon {
   background: url(/images/heart-black.svg) center / contain no-repeat;
   width: 32px;
@@ -904,10 +734,15 @@ zzzzzz
   .stats--content--heartIcon,
 .sub-Menu
   .subMenu--statsWrapper
-  .stats--content
-  .stats--content--heartIcon.loved {
+  .loved
+  .stats--content--heartIcon {
   background: url(/images/heart.svg) center / contain no-repeat;
 }
+.sub-Menu
+  .subMenu--statsWrapper
+  .loved{
+    opacity: 1;
+  }
 .sub-Menu .subMenu--statsWrapper .stats--content .stats--content--shareIcon {
   background: url(/images/shareIcon.svg) center / contain no-repeat;
   width: 32px;
@@ -927,7 +762,7 @@ zzzzzz
 }
 .subMenu--underline {
   position: absolute;
-  left: -11%;
+  left: -10.2%;
   bottom: -12.5px;
   width: 110%;
   opacity: 0.75;
@@ -947,6 +782,12 @@ zzzzzz
 }
 
 /* Product Card */
+.singleCarContainer{
+  display: flex;
+  align-items: center;
+  width: 263px;
+  height: 500px;
+}
 .Product-Card {
   width: 228px;
   height: 500px;
@@ -955,7 +796,7 @@ zzzzzz
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  margin: 0 17.5px;
+  /* margin: 0 17.5px; */
   font-family: 'Source Sans Pro';
   position: relative;
 }
@@ -1136,21 +977,26 @@ zzzzzz
 
 /* Wishlist Collection */
 .WishlistCollection {
+  display: block;
   width: 100%;
-  max-width: 610px;
-  padding: 4px;
+  max-width: 406px;
+  height: 335px;
+  overflow: hidden;
   border-radius: 10px;
   background-color: #ffffff;
-  font-family: 'Source Sans Pro';
   z-index: 2;
-  margin-right: 35px;
+  padding: 2.7px;
+  margin: 0 12.5px;
+}
+.flickity-viewport {
+  position: relative;
 }
 .WishlistCollection .WishlistCollection--gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 100px);
-  grid-gap: 4px;
-  max-width: 610px;
+  grid-template-rows: repeat(4, 66px);
+  grid-gap: 2.7px;
+  width: 400px;
 }
 .WishlistCollection .WishlistCollection--gallery .gallery--item-1,
 .WishlistCollection .WishlistCollection--gallery .gallery--item-2,
@@ -1177,12 +1023,12 @@ zzzzzz
 .WishlistCollection
   .WishlistCollection--collection
   .WishlistCollection--collection-h2 {
-  font-size: 18px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #0b2443;
-  margin-top: 16px;
+  margin-top: 13px;
   margin-bottom: 4px;
   margin-left: 23.5px;
   cursor: pointer;
@@ -1191,7 +1037,7 @@ zzzzzz
   .WishlistCollection--collection
   .WishlistCollection--collection-span {
   display: block;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -1199,7 +1045,7 @@ zzzzzz
   opacity: 0.4;
   margin-left: 23.5px;
   margin-top: 0;
-  margin-bottom: 26px;
+  margin-bottom: 15px;
 }
 
 /* Watch list */
@@ -1345,6 +1191,7 @@ zzzzzz
 .watchlist .watchlist--videoContainer .watchlist--brand .watchlist--brand-img {
   width: 37px;
   height: 37px;
+  border-radius: 50%;
 }
 .watchlist .watchlist--videoContainer .watchlist--brand .watchlist--brand-span {
   font-size: 17px;
@@ -1380,7 +1227,18 @@ zzzzzz
 }
 
 /* Shopping Cart */
+.ShoppingCartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 47.5px;
+  height: 510px;
+  overflow-y: scroll;
+  position: relative;
+}
 .ShoppingCart {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: #ffffff;
@@ -1388,8 +1246,8 @@ zzzzzz
   border-radius: 8px;
   overflow: hidden;
   z-index: 2;
-  width: 1267px;
-  height: 100px;
+  width: 1260px;
+  min-height: 100px;
   margin-bottom: 20px;
 }
 .ShoppingCart .ShoppingCart--product {
@@ -1523,10 +1381,9 @@ zzzzzz
   display: flex;
   width: 20px;
   height: 20px;
-  position: relative;
+  position: absolute;
+  right: 30px;
   align-items: center;
-  position: relative;
-  margin-right: 2em;
   cursor: pointer;
 }
 .ShoppingCart .ShoppingCart--closeContainer .ShoppingCart--close::after {
@@ -1552,11 +1409,19 @@ zzzzzz
 
 /* Shopping Cart Total */
 .ShoppingCartTotal {
-  width: 1580px;
+  width: 100%;
   height: 60px;
   background-color: #ffffff;
-  border: 1px solid #000000;
   overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 44px;
+}
+.ShoppingCartTotal::after{
+  content:'';
+  opacity: 0.77;
+  background-color: #d2dee1;
 }
 .ShoppingCartTotal .ShoppingCartTotalContainer {
   width: 100%;
@@ -1587,6 +1452,7 @@ zzzzzz
 .ShoppingCartTotal .ShoppingCartTotalContainer .ShoppingCartTotal--next {
   background-color: rgba(131, 50, 156, 0.1);
   margin-left: 1em;
+  cursor: pointer;
 }
 
 /* Profile */
@@ -1598,6 +1464,7 @@ zzzzzz
   border-radius: 8px;
   border: solid 1px #ebeae9;
   background-color: #ffffff;
+  z-index: 1;
 }
 .Profile {
   width: 628px;
@@ -1670,6 +1537,7 @@ zzzzzz
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
+  margin-top: 13px;
 }
 .Adresses .adresses--head {
   margin-bottom: 30px;
@@ -1746,6 +1614,7 @@ zzzzzz
   border: solid 1px #ebeae9;
   background-color: #ffffff;
   padding: 44px 30px 30px 40px;
+  z-index: 1;
 }
 .UpdateAdress .UpdateAdress--head {
   margin-bottom: 30px;
@@ -1849,6 +1718,8 @@ zzzzzz
   border: solid 1px #ebeae9;
   background-color: #ffffff;
   padding: 44px 30px 30px 110px;
+  z-index: 1;
+  margin-right: 35px;
 }
 .UpdateProfile .UpdateProfile--head {
   position: relative;
@@ -1899,7 +1770,7 @@ zzzzzz
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
-  margin-bottom: 20.5px;
+  margin-bottom: 20px;
   border: 0;
   border-bottom: 1px solid rgb(0, 1, 16, 0.4);
   padding-bottom: 10px;
@@ -1953,6 +1824,8 @@ zzzzzz
   width: fit-content;
   height: 100%;
   border: 1px solid #ccc;
+  margin: auto;
+  margin-top: 2px;
 }
 .ProductDetail--imagesSlider {
   width: 616px;
@@ -2043,17 +1916,20 @@ zzzzzz
 .ProductDetail--information--rating--stars {
   display: flex;
 }
-.ProductDetail--information--rating--stars--icon {
-  width: 15px;
-  height: 15px;
-  background: url(/images/star-full.svg) center / contain no-repeat;
-  margin: 0 1px;
-}
-.ProductDetail--information--rating--stars--icon-empty {
-  width: 15px;
+.ProductDetail--information--rating--stars span{
+  width: 17px;
   height: 15px;
   background: url(/images/star-empty.svg) center / contain no-repeat;
-  margin: 0 1px;
+  cursor: pointer;
+}
+.ProductDetail--information--rating--stars:hover span{
+  background: url(/images/star-full.svg) center / contain no-repeat;
+}
+.ProductDetail--information--rating--stars span:hover ~ span{
+  background: url(/images/star-empty.svg) center / contain no-repeat !important;
+}
+.ProductDetail--information--rating--stars--icon-full {
+  background: url(/images/star-full.svg) center / contain no-repeat !important;
 }
 .ProductDetail--information--rating--total {
   font-size: 15px;
@@ -2169,20 +2045,20 @@ zzzzzz
   left: 0;
 }
 .ProductDetail--addToCartBtn {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #83329c;
-  color: #ffffff;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.43px;
-  padding: 9px 20px 9px 20px;
+  display: flex !important;
+  align-items: center !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+  background-color: #83329c !important;
+  color: #ffffff !important;
+  outline: 0 !important;
+  border: 0 !important;
+  overflow: visible !important;
+  cursor: pointer !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.43px !important;
+  padding: 9px 20px 9px 20px !important;
 }
 .ProductDetail--addToCartBtn-icon {
   width: 16px;
@@ -2197,6 +2073,8 @@ zzzzzz
   width: fit-content;
   height: 100%;
   border: 1px solid #ccc;
+  margin: auto;
+  margin-top: 2px;
 }
 .AddToWishlist--imagesSlider {
   width: 616px;
@@ -2330,21 +2208,11 @@ zzzzzz
   height: 17.5px;
   background: url(/images/o-check.svg) center / contain no-repeat;
 }
-.AddToWishlist--information--wishlistItem-selected-remove {
-  border: solid 1px #eaeaea;
-  background-color: #def0f4;
-  position: relative;
+.AddToWishlist--information--wishlistItem-selected:hover::after{
+  background: url(/images/remove-from-wishlist.svg) center / contain no-repeat;
 }
-.AddToWishlist--information--wishlistItem-selected-remove::after {
-  content: '';
-  position: absolute;
-  right: 30px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 24px;
-  height: 17.5px;
-  background: url(/images/remove.svg) center / contain no-repeat;
+.AddToWishlist--information--wishlistItem-selected:hover{
+  border: solid 1px  #eaeaea!important;
 }
 .AddToWishlist--information--wishlistItem:hover {
   border: solid 1px #83329c;
@@ -2353,6 +2221,20 @@ zzzzzz
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.AddToWishlist--information--wishlistItem--titleItems--h3{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #515252;
+}
+.AddToWishlist--information--wishlistItem--titleItems--p{
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.27;
+  letter-spacing: 0.36px;
+  color: #515252;
 }
 .AddToWishlist--information--wishlistItem--figure {
   width: 60px;
@@ -2461,360 +2343,50 @@ zzzzzz
   background: url(/images/play-btn.svg) center / contain no-repeat;
   cursor: pointer;
 }
-.ProfileAdresses--Container {
-  display: flex;
-}
-.Profile,
-.Adresses {
-  border-radius: 8px;
-  border: solid 1px #ebeae9;
-  background-color: #ffffff;
-  font-family: 'Source Sans Pro';
-}
-.Profile {
-  width: 488px;
-  height: 426px;
-  margin-right: 35px;
-  padding: 44px 30px 30px 110px;
-}
-.Adresses {
+
+
+
+
+/* StoryBook Classes */
+
+.VideoPlayStory {
   position: relative;
-  width: 547px;
-  height: 415px;
-  padding: 45px 59px 40px 40px;
+  width: 1588px;
+  height: 894px;
 }
-.Profile .profile--head {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  position: relative;
-}
-.Profile .profile--head .profile--head--label {
-  font-size: 18px;
-  font-weight: 600;
-  color: #83329c;
-  letter-spacing: 0.12px;
-}
-.Profile .profile--head .profile--head--img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.VideoPlayStory--thumbnail {
   position: absolute;
-  left: -80px;
-}
-.Profile .profile--info {
-  display: flex;
-  margin-bottom: 30px;
-}
-.Profile .profile--info .profile--info--label {
-  width: 210px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0b2443;
-}
-.Profile .profile--info .profile--info--p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0e273b;
-}
-.Profile .profile--editButtonWrapper {
   width: 100%;
-  margin-top: 2px;
-  display: flex;
-  justify-content: flex-end;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
-.Profile .profile--editButtonWrapper .profile--editButton {
-  color: #ffffff;
-  height: 40px;
-  width: 150px;
-  font-size: 14px;
-  border-radius: 8px;
-  background-color: #83329c;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-}
-.Adresses .adresses--head {
-  margin-bottom: 30px;
-}
-.Adresses .adresses--head .profile--head--label {
-  font-size: 18px;
-  font-weight: 600;
-  color: #83329c;
-  letter-spacing: 0.12px;
-}
-.Adresses .adresses--info {
-  display: flex;
-}
-.Adresses .adresses--info .adresses--info--label {
-  width: 210px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0b2443;
-}
-.Adresses .adresses--info .adresses--info--p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0e273b;
-}
-.Adresses .adresses--hr {
+.VideoPlayStory--thumbnail::before {
+  content: '';
   width: 100%;
-  height: 1px;
-  background-color: #ebeae9;
-  border-radius: 8px;
-  border: 0;
-  margin: 0;
-  margin-top: 42px;
-  margin-bottom: 50px;
+  height: 100%;
   position: absolute;
   left: 0;
-  top: 233px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0.5;
+  background-color: #434343;
 }
-.Adresses .adresses--editButtonWrapper {
+.VideoPlayStory--thumbnail--img {
+  height: 100%;
   width: 100%;
-  margin-top: 30px;
-  display: flex;
-  justify-content: flex-end;
 }
-.Adresses .adresses--editButtonWrapper .adresses--editButton {
-  color: #ffffff;
-  height: 40px;
-  width: 150px;
-  font-size: 18px;
-  border-radius: 8px;
-  background-color: #83329c;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-}
-.adresses--info-m {
-  margin-top: 79px;
-}
-.UpdateAdress {
-  width: 558px;
-  height: 462px;
-  border-radius: 8px;
-  border: solid 1px #ebeae9;
-  background-color: #ffffff;
-  padding: 44px 30px 30px 40px;
-  font-family: 'Source Sans Pro';
-}
-.UpdateAdress .UpdateAdress--head {
-  margin-bottom: 30px;
-}
-.UpdateAdress .UpdateAdress--head .UpdateAdress--head-p {
-  font-size: 18px;
-  font-weight: 600;
-  color: #83329c;
-  letter-spacing: 0.12px;
-  margin: 0;
-}
-.UpdateAdress .UpdateAdress--info .UpdateAdress--info-item {
-  display: flex;
-}
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-label {
-  width: 200px;
-  margin-right: 6px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0b2443;
-}
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-input,
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-select {
-  width: 272px;
-  height: 33px;
-  font-size: 18px;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0e273b;
-  margin-bottom: 20.5px;
-  border: 0;
-  border-bottom: 1px solid rgb(0, 1, 16, 0.4);
-  padding-bottom: 10px;
-}
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-input:focus,
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-select:focus {
-  outline: none;
-  border-bottom: 1px solid rgb(0, 1, 16, 0.6);
-}
-.UpdateAdress
-  .UpdateAdress--info
-  .UpdateAdress--info-item
-  .UpdateAdress--info-adress {
-  display: flex;
-  flex-direction: column;
-}
-.UpdateAdress .UpdateAdress--info--btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 56px;
-}
-.UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-save {
-  width: 150px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #83329c;
-  color: #ffffff;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-  margin-left: 30px;
-}
-.UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-discard {
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  color: #83329c;
-}
-* {
-  box-sizing: border-box;
-}
-.UpdateProfile {
-  width: 628px;
-  height: 500px;
-  border-radius: 8px;
-  border: solid 1px #ebeae9;
-  background-color: #ffffff;
-  padding: 44px 30px 30px 110px;
-  font-family: 'Source Sans Pro';
-}
-.UpdateProfile .UpdateProfile--head {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-}
-.UpdateProfile .UpdateProfile--head .UpdateProfile--head-p {
-  font-size: 18px;
-  font-weight: 600;
-  color: #83329c;
-  letter-spacing: 0.12px;
-  margin: 0;
-}
-.UpdateProfile .UpdateProfile--head .UpdateProfile--head--img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.shoopingCart--overlay{
+  opacity: 0.77;
+  background-color: #d2dee1;
   position: absolute;
-  left: -80px;
-}
-.UpdateProfile .UpdateProfile--info .UpdateProfile--info-item {
-  display: flex;
-}
-.UpdateProfile
-  .UpdateProfile--info
-  .UpdateProfile--info-item
-  .UpdateProfile--info-label {
-  width: 200px;
-  margin-right: 6px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0b2443;
-}
-.UpdateProfile
-  .UpdateProfile--info
-  .UpdateProfile--info-item
-  .UpdateProfile--info-input,
-.UpdateProfile
-  .UpdateProfile--info
-  .UpdateProfile--info-item
-  .UpdateProfile--info-select {
-  width: 272px;
-  height: 33px;
-  font-size: 18px;
-  line-height: 1.28;
-  letter-spacing: 0.43px;
-  color: #0e273b;
-  margin-bottom: 20.5px;
-  border: 0;
-  border-bottom: 1px solid rgb(0, 1, 16, 0.4);
-  padding-bottom: 10px;
-}
-.UpdateProfile
-  .UpdateProfile--info
-  .UpdateProfile--info-item
-  .UpdateProfile--info-input:focus,
-.UpdateProfile
-  .UpdateProfile--info
-  .UpdateProfile--info-item
-  .UpdateProfile--info-select:focus {
-  outline: none;
-  border-bottom: 1px solid rgb(0, 1, 16, 0.6);
-}
-.UpdateProfile .UpdateProfile--info--btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 13px;
-}
-.UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-save {
-  width: 150px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #83329c;
-  color: #ffffff;
-  outline: 0;
-  border: 0;
-  overflow: visible;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-  margin-left: 30px;
-}
-.UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-discard {
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 0.43px;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  color: #83329c;
+  bottom: 0;
+  height: 683px;
+  width: 100%;
+  pointer-events: none;
 }
