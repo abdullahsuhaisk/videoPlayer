@@ -3,6 +3,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import ProductCarousel from './ProductCarousel';
 import ProductCard from './ProductCard';
+import Flickity from 'react-flickity-component';
+import 'flickity-imagesloaded';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -70,12 +72,23 @@ const ProductsAll = () => {
         {
           /* return <ProductCarousel products={products} />; */
         }
+        const flickityOptions = {
+          cellAlign: 'left',
+          contain: true,
+          resize: false,
+          imagesLoaded: true,
+          lazyLoad: true,
+          percentPosition: false
+        };
         return (
-          <div className="VideoPlayerContainer flex-row">
+          <Flickity
+            className="VideoPlayerContainer"
+            reloadOnUpdate={true}
+            options={flickityOptions}>
             {products.map((product) => (
               <ProductCard product={product} key={product.id} />
             ))}
-          </div>
+          </Flickity>
         );
       }}
     </Query>

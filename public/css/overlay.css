@@ -796,7 +796,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  /* margin: 0 17.5px; */
+  margin: 0 17.5px;
   font-family: 'Source Sans Pro';
   position: relative;
 }
@@ -874,6 +874,7 @@
   padding: 0 10px;
   z-index: 1;
   max-width: 192px;
+  min-height: 60px;
 }
 .Product-Card .productCard--priceWrapper {
   height: 80px;
@@ -1817,7 +1818,9 @@
   background-color: transparent;
   color: #83329c;
 }
-
+.UpdateProfile--info--btn-discard:focus{
+  outline: none;
+}
 /* Product Detail */
 .ProductDetail {
   display: flex;

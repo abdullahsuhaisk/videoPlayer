@@ -6,7 +6,7 @@ import ShoppingCart from './ShoppingScreens/ShoppingCart';
 
 const ShoppingCartScreen = () => {
   return (
-    <div className="VideoPlayerContainer flex-column">
+    <div className="ShoppingCartContainer">
       <ShoppingCart />
     </div>
   );
