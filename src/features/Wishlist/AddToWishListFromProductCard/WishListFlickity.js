@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Flickity from 'react-flickity-component';
 import { Query } from 'react-apollo';
 import { GET_WISHLISTS_IMAGE } from '../wishListQueries';
@@ -15,24 +15,30 @@ const WishListFlickity = ({ whisListId }) => {
     prevNextButtons: true,
     wrapAround: true
   };
-  // const imageParser = async (consumer, whishListId) => {
-  //   const imagesArray = [];
-  //   const whisLists = consumer && consumer.whisLists && consumer.whisLists[whishListId];
+
+  // const imageParser = (consumer) => {
+  //   const whisLists =
+  //     consumer && consumer.whisLists ? consumer.whisLists[whisListId] : null;
   //   console.log(whisLists);
-  //   return whisLists.products && whisLists.products
-  //     ? whisLists.products.map((item) =>
-  //         item.images.map((image) => imagesArray.push(...image.thumbnailUrl))
-  //       )
-  //     : null;
+  //   const products = whisLists && whisLists.products;
+  //   console.log(products);
+  //   setImages(
+  //     products.map((product) => {
+  //       return product.images.map((image) => image.thumbnailUrl);
+  //     })
+  //   );
   // };
+  // console.log(images);
+
   return (
     <Query query={GET_WISHLISTS_IMAGE}>
       {({ data: { consumer }, error, loading }) => {
         if (error || loading) {
           return null;
         }
-        {
-          /* console.log(imageParser(consumer, whisListId)); */
+        // console.log(consumer);
+        if (consumer && whisListId) {
+          // imageParser(consumer);
         }
 
         return (
@@ -43,18 +49,21 @@ const WishListFlickity = ({ whisListId }) => {
               <img
                 className="AddToWishlist--imagesSlider--figure--img"
                 src="/images/ProductDetail3.jpg"
+                alt="whishlist-1"
               />
             </figure>
             <figure className="AddToWishlist--imagesSlider--figure">
               <img
                 className="AddToWishlist--imagesSlider--figure--img"
                 src="/images/ProductDetail2.jpg"
+                alt="whishlist-1-1"
               />
             </figure>
             <figure className="AddToWishlist--imagesSlider--figure">
               <img
                 className="AddToWishlist--imagesSlider--figure--img"
                 src="/images/ProductDetail1.jpg"
+                alt="whishlist-2-1"
               />
             </figure>
           </Flickity>
