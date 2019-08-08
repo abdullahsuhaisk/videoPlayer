@@ -19,8 +19,9 @@ const WishListInside = ({ whichWishList, whisLists, setWhichWishList }) => {
   const { products } = whisLists[whichWishList];
 
   console.log(whisLists[whichWishList]);
-  let containerClasses = 'VideoPlayerContainer';
-  containerClasses += products.length > 1 ? ' swipeGradient' : '';
+
+  const containerClasses =
+    products && products.length > 1 ? ' swipeGradient' : 'VideoPlayerContainer';
 
   return (
     <>
