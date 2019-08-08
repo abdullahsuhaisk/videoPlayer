@@ -2419,3 +2419,81 @@
   width: 100%;
   pointer-events: none;
 }
+/* Share On Social Media */
+.ShareOnSocialMedia{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1588px;
+  height: 850px;
+  background-color: rgb(11,36,67,.95);
+}
+.ShareOnSocialMedia--icons{
+  display: flex;
+  justify-content: space-between;
+  width: 630px;
+}
+.ShareOnSocialMedia--icons--facebook{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-facebook.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--linkedin{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-linkedin.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--pinterest{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-pinterest.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--twitter{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-twitter.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--whatsapp{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-whatsapp.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--link{
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 667px;
+  height: 49px;
+  background-color: #ffffff;
+  border-radius: 38px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+.ShareOnSocialMedia--link--p{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.ShareOnSocialMedia--link--label{
+  height: 40px;
+  width: 150px;
+  padding: 8px 0;
+  background-color: #83329c;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+  border-radius: 38px;
+  cursor: pointer;
+}
