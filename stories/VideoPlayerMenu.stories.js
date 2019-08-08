@@ -22,6 +22,7 @@ import AddToWishlist from '../src/components/Zak/VideoPause/Components/AddToWish
 import VideoPlay from '../src/components/Zak/VideoPause/Components/VideoPlay/VideoPlay'
 import Share from '../src/components/Zak/VideoPause/Components/Share/Share'
 import EmptyWishlist from '../src/components/Zak/VideoPause/Components/EmptyWishlist/EmptyWishlist'
+import ShoppingCartCard from '../src/components/Zak/VideoPause/Components/ShoppingCartCard/ShoppingCartCard'
 import '../public/css/overlay.css';
 
 
@@ -53,4 +54,5 @@ storiesOf('Video Paused Components', module)
   .add('Add To Wishlist', () => <AddToWishlist />)
   .add('Vide Player Screen', () => <VideoPlay />)
   .add('Share', () => <Share />)
-  .add('Empty Wishlist', () => <EmptyWishlist />);
+  .add('Empty Wishlist', () => <EmptyWishlist />)
+  .add('Shopping Cart Card', () => <ShoppingCartCard />);
