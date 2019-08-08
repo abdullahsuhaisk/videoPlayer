@@ -2749,3 +2749,96 @@
   background: url(/images/paypal.svg) center / contain no-repeat;
   cursor: pointer;
 }
+
+/* Payement Success */
+.PaymentSuccess{
+  display: flex;
+  justify-content: space-between;
+  width: 1587px;
+  height: 671px;
+  background-color: rgb(210,222,225,.77);
+}
+.PaymentSuccess--illustration{
+  margin-top: 57px;
+  margin-left: 200px;
+  max-width: 608px;
+  max-height: 385px;
+}
+.PaymentSuccess--details{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 530px;
+  margin-top: 88px;
+  margin-right: 155px;
+}
+.PaymentSuccess--details--title{
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.48;
+  letter-spacing: 0.65px;
+  color: #5cb85b;
+  margin-bottom: 18px;
+}
+.PaymentSuccess--details--info{
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.PaymentSuccess--details--info--highlight{
+  color: #00acd8;
+}
+.PaymentSuccess--details--transaction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 38px 50px 49px 50px;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+}
+.PaymentSuccess--details--transaction--title{
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--id{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.48px;
+  color: #0e273b;
+  margin-bottom: 48px;
+}
+.PaymentSuccess--details--transaction--info{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.PaymentSuccess--details--transaction--info--label{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--info--value{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--hr{
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  margin: 19px 0;
+}
