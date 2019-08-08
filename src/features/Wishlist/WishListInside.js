@@ -38,13 +38,14 @@ const WishListInside = ({ whichWishList, whisLists, setWhichWishList }) => {
           className={containerClasses}
           reloadOnUpdate={true}
           options={flickityOptions}>
-          {products.map((product) => (
-            <AddedWishListProductCard
-              product={product}
-              key={product.id}
-              wishListId={wishListId}
-            />
-          ))}
+          {products &&
+            products.map((product) => (
+              <AddedWishListProductCard
+                product={product}
+                key={product.id}
+                wishListId={wishListId}
+              />
+            ))}
         </Flickity>
         <div>
           <button
