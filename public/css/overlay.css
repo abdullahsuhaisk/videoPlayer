@@ -2497,3 +2497,33 @@
   border-radius: 38px;
   cursor: pointer;
 }
+.EmptyWishlist{
+  width: 1587px;
+  height: 671px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(210,222,225,.77);
+}
+.EmptyWishlist--icon{
+  width: 191px;
+  height: 181px;
+  background: url(/images/empty-wishlist.svg) center / contain no-repeat;
+  margin-bottom: 28px;
+}
+.EmptyWishlist--p-bold{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.12px;
+  color: #4c5055;
+  text-transform: uppercase;
+}
+.EmptyWishlist--p-light{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.3px;
+  color: #4c5055;
+}
