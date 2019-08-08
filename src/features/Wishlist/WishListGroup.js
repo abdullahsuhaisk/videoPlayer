@@ -6,7 +6,7 @@ import WishlistCollection from './WishlistCollection';
 
 //     imageUrl: '/images/wishListGroup.jpg',
 
-const WishListGroup = ({ whisLists }) => {
+const WishListGroup = ({ whisLists, setWhichWishList }) => {
   // console.log(wishList);
   const items = whisLists && whisLists;
   const flickityOptions = {
@@ -24,11 +24,13 @@ const WishListGroup = ({ whisLists }) => {
       reloadOnUpdate={true}
       options={flickityOptions}>
       {items
-        ? items.map((whisList) => (
+        ? items.map((whisList, key) => (
             <WishlistCollection
               whisList={whisList}
               name={whisList.name}
               key={whisList.id}
+              id={key}
+              setWhichWishList={setWhichWishList}
             />
           ))
         : null}

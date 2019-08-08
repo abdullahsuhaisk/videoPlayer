@@ -19,6 +19,7 @@ export const GET_CONSUMER_WISHLIST = gql`
           name
           price
           stockCount
+          currentPrice @client
           discount
           rank
           header
@@ -31,6 +32,14 @@ export const GET_CONSUMER_WISHLIST = gql`
           }
           images {
             id
+          }
+          brand {
+            id
+            name
+          }
+          currency {
+            id
+            symbol
           }
         }
       }
@@ -152,6 +161,36 @@ export const ADD_WISHLIST_MUTATION = gql`
     ) {
       id
       name
+    }
+  }
+`;
+export const DELETE_WISHLIST_ITEM = gql`
+  mutation deleteWishListItem($wishListId: Int!, $productId: Int!) {
+    deleteProductFromConsumerWishList(
+      wishListId: $wishListId
+      productId: $productId
+    ) {
+      id
+      name
+      isPrivate
+      products {
+        id
+        name
+        description
+        parentId
+        image {
+          id
+        }
+        images {
+          id
+        }
+        company {
+          id
+        }
+        brand {
+          id
+        }
+      }
     }
   }
 `;

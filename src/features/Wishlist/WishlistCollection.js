@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const WishlistCollection = ({ whisList, name, id }) => {
+const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   // TODO: Needs Refactor
   const { products } = whisList;
   const totalProduct = products ? products.length : null;
@@ -40,7 +40,7 @@ const WishlistCollection = ({ whisList, name, id }) => {
   }
 
   return (
-    <div className="WishlistCollection">
+    <div className="WishlistCollection" onClick={() => setWhichWishList(id)}>
       <div className="WishlistCollection--gallery">{productRender}</div>
       <div className="WishlistCollection--collection">
         <h2 className="WishlistCollection--collection-h2">{name}</h2>
