@@ -2842,3 +2842,37 @@
   border: 1px solid #f5f5f5;
   margin: 19px 0;
 }
+.EmptyAdress{
+  position: relative;
+  width: 650px;
+  height: 280px;
+  padding: 40px 45px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+}
+.EmptyAdress--label{
+  font-size: 18px;
+  font-weight: 600;
+  color: #83329c;
+  letter-spacing: 0.12px;
+}
+.EmptyAdress--plusIcon{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgb(131,50,156,.5);
+  background-image: url(/images/adress-add.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.EmptyAdress--plusIcon:hover{
+  background-color: rgb(131,50,156,.9);
+}
