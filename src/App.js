@@ -6,6 +6,7 @@ import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
 import { PRODLINK_ID } from './common/GrapqlConstant';
+import { getProdLinkId } from './hooks/ProdLinkHook';
 
 const GET_VIDEO = gql`
   query getVideoForApp($prodLinkId: Int!) {
@@ -111,10 +112,12 @@ const GET_PLAYER = gql`
   }
 `;
 
-const App = () => {
+const App = ({ client }) => {
+  const a = getProdLinkId(client);
+  console.log(a);
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Query query={GET_VIDEO} variables={{ prodLinkId: PRODLINK_ID }}>
+      <Query query={GET_VIDEO} variables={{ prodLinkId: a }}>
         {({ loading, error, data }) => {
           if (loading || error) return null;
           // console.log(data)

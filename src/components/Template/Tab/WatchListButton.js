@@ -12,7 +12,7 @@ import { PRODLINK_ID } from '../../../common/GrapqlConstant';
 function desider(List, item) {
   const listArray = [];
   List && List.map((i) => listArray.push(i.id));
-  console.log(listArray && listArray.includes(item));
+  // console.log(listArray && listArray.includes(item));
   return listArray && listArray.includes(item);
 }
 
@@ -44,7 +44,7 @@ const WatchListButton = () => {
 export default WatchListButton;
 
 const AddWatchList = () => {
-  console.log('add');
+  // console.log('add');
   return (
     <Mutation
       mutation={ADD_WATCH_LIST}
@@ -58,7 +58,9 @@ const AddWatchList = () => {
       }}>
       {(addProdLinkToWatchList, { data, error, loading }) => {
         if (loading || error) return null;
-        console.log(data);
+        {
+          /* console.log(data); */
+        }
         return (
           <div
             className="stats--content"
@@ -75,7 +77,7 @@ const AddWatchList = () => {
 };
 
 const DeleteWatchList = () => {
-  console.log('delete');
+  // console.log('delete');
   return (
     <Mutation
       mutation={DELETE_WATCHED_LIST}
@@ -89,7 +91,9 @@ const DeleteWatchList = () => {
       }}>
       {(deleteProdLinkFromWatchList, { data, error, loading }) => {
         if (loading || error) return null;
-        console.log(data);
+        {
+          /* console.log(data); */
+        }
         return (
           <div
             className="stats--content"

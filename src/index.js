@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, ApolloConsumer } from 'react-apollo';
 import App from './App';
-import { client } from './store/apollo/apollo-config';
+import { clientInit } from './store/apollo/apollo-config';
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
+  <ApolloProvider client={clientInit}>
+    <ApolloConsumer>
+      {(client) => {
+        return <App client={client} />;
+      }}
+    </ApolloConsumer>
   </ApolloProvider>,
   document.getElementById('root')
 );

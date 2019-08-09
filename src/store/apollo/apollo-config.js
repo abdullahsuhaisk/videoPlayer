@@ -35,7 +35,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const cache = new InMemoryCache();
-const client = new ApolloClient({
+const clientInit = new ApolloClient({
   connectToDevTools: true,
   cache,
   link: authLink.concat(httpLink),
@@ -57,7 +57,8 @@ const setInitialCache = () => {
       playingState: 'READY',
       currentTime: 0,
       seekTo: -1,
-      overlayContainerClassName: ''
+      overlayContainerClassName: '',
+      prodLinkId: null
     },
     layout: {
       __typename: 'Layout',
@@ -95,6 +96,6 @@ const setInitialCache = () => {
 
 setInitialCache();
 
-client.onResetStore(() => setInitialCache());
+clientInit.onResetStore(() => setInitialCache());
 
-export { client };
+export { clientInit };
