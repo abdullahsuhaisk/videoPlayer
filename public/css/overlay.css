@@ -2419,3 +2419,426 @@
   width: 100%;
   pointer-events: none;
 }
+/* Share On Social Media */
+.ShareOnSocialMedia{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1588px;
+  height: 850px;
+  background-color: rgb(11,36,67,.95);
+}
+.ShareOnSocialMedia--icons{
+  display: flex;
+  justify-content: space-between;
+  width: 630px;
+}
+.ShareOnSocialMedia--icons--facebook{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-facebook.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--linkedin{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-linkedin.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--pinterest{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-pinterest.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--twitter{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-twitter.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--icons--whatsapp{
+  width: 48px;
+  height: 48px;
+  background: url(/images/logo-whatsapp.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.ShareOnSocialMedia--link{
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 667px;
+  height: 49px;
+  background-color: #ffffff;
+  border-radius: 38px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+.ShareOnSocialMedia--link--p{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0b2443;
+}
+.ShareOnSocialMedia--link--label{
+  height: 40px;
+  width: 150px;
+  padding: 8px 0;
+  background-color: #83329c;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+  border-radius: 38px;
+  cursor: pointer;
+}
+/* Empty Wishlist */
+.EmptyWishlist{
+  width: 1587px;
+  height: 671px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(210,222,225,.77);
+}
+.EmptyWishlist--icon{
+  width: 191px;
+  height: 181px;
+  background: url(/images/empty-wishlist.svg) center / contain no-repeat;
+  margin-bottom: 28px;
+}
+.EmptyWishlist--p-bold{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.12px;
+  color: #4c5055;
+  text-transform: uppercase;
+}
+.EmptyWishlist--p-light{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.3px;
+  color: #4c5055;
+}
+/* Shopping Cart Card */
+.ShoppingCartCard{
+  width: 1587px;
+  height: 671px;
+  background-color: rgb(210,222,225,.77);
+  display: flex;
+}
+.ShoppingCartCard--adress{
+  margin-left: 96px;
+}
+.ShoppingCartCard--adress--container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.ShoppingCartCard--adress--type{
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.12px;
+  color: #0e273b;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 8px 25px 7px 26px;
+}
+.ShoppingCartCard--adress--details{
+  position: relative;
+  max-width: 483px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: solid 1px #ffffff;
+  padding: 23px 45px 22px 57px;
+  margin-top: 20px;
+}
+.ShoppingCartCard--adress--details:hover{
+  cursor: pointer;
+}
+.ShoppingCartCard--adress--selected, .ShoppingCartCard--adress--selected:hover{
+  cursor: auto;
+}
+.ShoppingCartCard--adress--details:hover, .ShoppingCartCard--adress--selected{
+  border: solid 1px #00acd8;
+}
+.ShoppingCartCard--adress--details:hover .ShoppingCartCard--adress--details--edit,
+.ShoppingCartCard--adress--details:hover .ShoppingCartCard--adress--details--delete{
+  opacity: 1;
+}
+.ShoppingCartCard--adress--details:hover .ShoppingCartCard--adress--details--title::before,
+.ShoppingCartCard--adress--selected .ShoppingCartCard--adress--details--title::before{
+  opacity: 1;
+  background: url(/images/adress-check-blue.svg) center / contain no-repeat;
+}
+.ShoppingCartCard--adress--details--edit{
+  position: absolute;
+  top: -12px;
+  right: 21px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #00acd8;
+  background-image: url(/images/adress-edit.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0;
+}
+.ShoppingCartCard--adress--details--delete{
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #00acd8;
+  background-image: url(/images/adress-delete.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0;
+}
+.ShoppingCartCard--adress--details--title{
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.12px;
+  color: #0e273b;
+}
+.ShoppingCartCard--adress--details--title::before{
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -40px;
+  width: 20px;
+  height: 14.3px;
+  opacity: 0.5;
+  background: url(/images/adress-check.svg) center / contain no-repeat;
+
+}
+.ShoppingCartCard--adress--details--value{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.43px;
+  color: #0e273b;
+  margin-top: 1px;
+}
+.ShoppingCartCard--paymentInfo{
+  margin-left: 124px;
+  margin-top: 55px;
+  position: relative;
+}
+.ShoppingCartCard--paymentInfo::after{
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 700px;
+  height: 60px;
+  opacity: 0.69;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(112, 112, 112, 0);
+  background-color: #ffffff;
+  z-index: 1;
+}
+.ShoppingCartCard--paymentInfo--card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 760px;
+  height: 414.8px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(112, 112, 112, 0);
+  background-color: #ffffff;
+  padding: 40px 60px 48px 59px;
+  z-index: 2;
+}
+.ShoppingCartCard--paymentInfo--card--title{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: 0.43px;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.ShoppingCartCard--paymentInfo--card--item{
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+}
+.ShoppingCartCard--paymentInfo--card--left{
+  width: 314px;
+}
+.ShoppingCartCard--paymentInfo--card--item--label{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.38px;
+  color: #666666;
+  margin-bottom: 11px;
+}
+.ShoppingCartCard--paymentInfo--card--item--input{
+  width: 100%;
+  /* height: 33px; */
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0.48px;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid rgb(210,222,225,.77);
+  padding-bottom: 10px;
+}
+.ShoppingCartCard--paymentInfo--card--item--input:focus{
+  outline: none;
+  border-bottom: 1px solid #214f86;
+}
+.ShoppingCartCard--paymentInfo--card--item .cvv-width{
+  width: 35px;
+}
+.ShoppingCartCard--paymentInfo--card--right{
+  width: 130px;
+}
+.ShoppingCartCard--visaIcon{
+  width: 140px;
+  height: 59px;
+  display: block;
+  margin-left: -20px;
+  background: url(/images/visa.svg) center / contain no-repeat;
+}
+.ShoppingCartCard--paymentInfo--paymentMethod{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px; 
+}
+.ShoppingCartCard--paymentInfo--paymentMethod--p{
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.26;
+  color: #4a494a;
+  margin-bottom: 17.5px
+}
+.ShoppingCartCard--paymentInfo--paymentMethod--hr{
+  width: 350px;
+  border: 1px solid rgb(196, 213, 218);
+}
+.ShoppingCartCard--paymentInfo--paymentMethod--paypal{
+  margin-top: 20px;
+  width: 157px;
+  height: 20px;
+  background: url(/images/paypal.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+
+/* Payement Success */
+.PaymentSuccess{
+  display: flex;
+  justify-content: space-between;
+  width: 1587px;
+  height: 671px;
+  background-color: rgb(210,222,225,.77);
+}
+.PaymentSuccess--illustration{
+  margin-top: 57px;
+  margin-left: 200px;
+  max-width: 608px;
+  max-height: 385px;
+}
+.PaymentSuccess--details{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 530px;
+  margin-top: 88px;
+  margin-right: 155px;
+}
+.PaymentSuccess--details--title{
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.48;
+  letter-spacing: 0.65px;
+  color: #5cb85b;
+  margin-bottom: 18px;
+}
+.PaymentSuccess--details--info{
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.PaymentSuccess--details--info--highlight{
+  color: #00acd8;
+}
+.PaymentSuccess--details--transaction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 38px 50px 49px 50px;
+  border-radius: 8px;
+  border: solid 1px #ebeae9;
+  background-color: #ffffff;
+}
+.PaymentSuccess--details--transaction--title{
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--id{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.48px;
+  color: #0e273b;
+  margin-bottom: 48px;
+}
+.PaymentSuccess--details--transaction--info{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.PaymentSuccess--details--transaction--info--label{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--info--value{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.43px;
+  color: #4d4f5c;
+}
+.PaymentSuccess--details--transaction--hr{
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  margin: 19px 0;
+}
