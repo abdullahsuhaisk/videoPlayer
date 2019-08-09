@@ -24,6 +24,7 @@ const WatchListScreen = () => {
           prodLinks &&
             prodLinks[0] &&
             prodLinks.map((item) => LikedProdLinksId.push(item.id));
+          // TODO: Missing isliked properties from backend!
           // console.log(favorites);
           // console.log(watchList.length);
           const flickityOptions = {

@@ -6,7 +6,7 @@ import ProfileButton from './ProfileButton';
 import Like from './Like';
 import UnLike from './UnLike';
 
-import Favorite from './Favorite';
+import WatchListButton from './WatchListButton';
 import Share from './Share';
 
 function buildMenu(tabs, callback, tab, client) {
@@ -48,7 +48,7 @@ export const Tab = ({ tabs, children }) => {
                       ) : (
                         <Like setIsLiked={setIsLiked} />
                       )}
-                      <Favorite />
+                      <WatchListButton />
                       <Share />
                     </div>
                     <ProfileButton />

@@ -87,3 +87,14 @@ export const GET_CONSUMER_WATCHLIST = gql`
     }
   }
 `;
+
+export const GET_CONSUMER_WATCH_LISTID = gql`
+  query getConsumerWhatchList {
+    consumer {
+      id
+      watchList {
+        id
+      }
+    }
+  }
+`;

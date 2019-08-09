@@ -14,7 +14,7 @@ const Like = ({ numberOfLikes, prodLinkId }) => {
   console.log('Like');
   return (
     <Mutation
-      mutation={ADD_PRODLINK_TO_FAVORITE}
+      mutation={LIKE_PRODLINK}
       variables={{ prodLinkId }}
       refetchQueries={() => {
         return [
@@ -23,14 +23,14 @@ const Like = ({ numberOfLikes, prodLinkId }) => {
           }
         ];
       }}>
-      {(addProdLinkToFavorite, { client, loading, error }) => {
+      {(likeProdLink, { client, loading, error }) => {
         if (loading || error) {
           return null;
         }
         return (
           <div
             className="watchlist--iconCintainer"
-            onClick={() => addProdLinkToFavorite()}>
+            onClick={() => likeProdLink()}>
             <i className="watchlist--heartIcon"></i> {numberOfLikes}
           </div>
         );
@@ -41,7 +41,7 @@ const Like = ({ numberOfLikes, prodLinkId }) => {
 const UnLike = ({ numberOfLikes, prodLinkId }) => {
   return (
     <Mutation
-      mutation={DELETE_PRODLINK_TO_FAVORITE}
+      mutation={UNLIKE_PRODLINK}
       refetchQueries={() => {
         console.log('refetchQueries');
         return [
@@ -51,14 +51,14 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
         ];
       }}
       variables={{ prodLinkId }}>
-      {(deleteProdLinkFromFavorite, { client, loading, error }) => {
+      {(unlikeProdLink, { client, loading, error }) => {
         if (loading || error) {
           return null;
         }
         return (
           <div
             className="watchlist--iconCintainer"
-            onClick={() => deleteProdLinkFromFavorite()}>
+            onClick={() => unlikeProdLink()}>
             <i className="watchlist--heartIcon loved"></i> {numberOfLikes}
           </div>
         );
@@ -160,14 +160,13 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
 export default WatchListCard;
 
 const LikeUnLikeScreen = ({ numberOfLikes, prodLinkId, LikedProdLinksIds }) => {
-  console.log(LikedProdLinksIds);
-  console.log(prodLinkId);
-  return LikedProdLinksIds ? (
-    LikedProdLinksIds.map((item) =>
-      item === prodLinkId ? (
-        <UnLike numberOfLikes={numberOfLikes} prodLinkId={prodLinkId} />
-      ) : null
-    )
+  // console.log(LikedProdLinksIds);
+  // console.log(prodLinkId);
+  const res =
+    LikedProdLinksIds &&
+    LikedProdLinksIds.filter((item) => item === prodLinkId);
+  return res.length > 0 ? (
+    <UnLike numberOfLikes={numberOfLikes} prodLinkId={prodLinkId} />
   ) : (
     <Like numberOfLikes={numberOfLikes} prodLinkId={prodLinkId} />
   );
