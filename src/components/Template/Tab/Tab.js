@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import { ComponentsService } from './ComponentService';
 import ProfileButton from './ProfileButton';
-import Like from './Like';
-import UnLike from './UnLike';
+import LikeButtonScreen from './LikeButtonScreen';
 
 import WatchListButton from './WatchListButton';
 import Share from './Share';
@@ -27,7 +26,6 @@ function buildMenu(tabs, callback, tab, client) {
 }
 // TODO: SCALABLE FOR TAB CONTENT
 export const Tab = ({ tabs, children }) => {
-  const [isLiked, setIsLiked] = useState(false);
   const [tab, setTab] = useState(tabs[0].key);
   const Component = ComponentsService[tab];
   return (
@@ -43,11 +41,7 @@ export const Tab = ({ tabs, children }) => {
                   </ul>
                   <div className="subMenu--statsProfileWrapper">
                     <div className="subMenu--statsWrapper">
-                      {isLiked === true ? (
-                        <UnLike setIsLiked={setIsLiked} />
-                      ) : (
-                        <Like setIsLiked={setIsLiked} />
-                      )}
+                      <LikeButtonScreen />
                       <WatchListButton />
                       <Share />
                     </div>
