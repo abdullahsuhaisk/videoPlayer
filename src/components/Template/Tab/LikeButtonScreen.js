@@ -6,7 +6,8 @@ import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
-import { PRODLINK_ID } from '../../../common/GrapqlConstant';
+// import { PRODLINK_ID } from '../../../common/GrapqlConstant';
+import { getProdLinkId } from '../../../hooks/ProdLinkHook';
 import {
   ADD_WATCH_LIST,
   GET_CONSUMER_WATCHLIST,
@@ -15,7 +16,7 @@ import {
 
 const updateCache = () => {};
 
-const addToWatchList = async (client, addProdLinkToWatchList) => {
+const addToWatchList = async (client, addProdLinkToWatchList, PRODLINK_ID) => {
   // const { isLoggedIn } = client.readQuery({
   //   query: IS_LOGGED_IN
   // });
@@ -38,7 +39,7 @@ const GET_LIKED = gql`
   }
 `;
 
-const Like = ({ setIsLiked }) => {
+const Like = ({ setIsLiked, PRODLINK_ID }) => {
   console.log('liked Component');
   return (
     <Mutation
@@ -61,7 +62,7 @@ const Like = ({ setIsLiked }) => {
             <i
               className={`stats--content--heartIcon`}
               onClick={() => {
-                addToWatchList(client, addProdLinkToWatchList);
+                addToWatchList(client, addProdLinkToWatchList, PRODLINK_ID);
                 // setIsLiked(true);
               }}></i>
             24
@@ -72,7 +73,11 @@ const Like = ({ setIsLiked }) => {
   );
 };
 
-const deleteToWatchList = async (client, addProdLinkToWatchList) => {
+const deleteToWatchList = async (
+  client,
+  addProdLinkToWatchList,
+  PRODLINK_ID
+) => {
   // const { isLoggedIn } = client.readQuery({
   //   query: IS_LOGGED_IN
   // });
@@ -86,7 +91,7 @@ const deleteToWatchList = async (client, addProdLinkToWatchList) => {
   await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
 };
 
-const UnLike = ({ setIsLiked }) => {
+const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
   console.log('unliked Component');
   return (
     <Mutation
@@ -109,7 +114,11 @@ const UnLike = ({ setIsLiked }) => {
             <i
               className={`stats--content--heartIcon`}
               onClick={() => {
-                deleteToWatchList(client, deleteProdLinkFromWatchList);
+                deleteToWatchList(
+                  client,
+                  deleteProdLinkFromWatchList,
+                  PRODLINK_ID
+                );
                 setIsLiked(false);
               }}></i>
             24
@@ -120,13 +129,23 @@ const UnLike = ({ setIsLiked }) => {
   );
 };
 
-const LikeButtonScreen = () => {
+const LikeButtonScreen = ({ client }) => {
+  const PRODLINK_ID = getProdLinkId(client);
+
   return (
     <Query query={GET_LIKED} variables={{ prodLinkId: PRODLINK_ID }}>
       {({ data, error, loading }) => {
         if (loading || error) return <Like />;
         const isLiked = data.isLiked ? data.isLiked : null;
-        return isLiked ? isLiked === true ? <UnLike /> : <Like /> : <Like />;
+        return isLiked ? (
+          isLiked === true ? (
+            <UnLike PRODLINK_ID={PRODLINK_ID} />
+          ) : (
+            <Like PRODLINK_ID={PRODLINK_ID} />
+          )
+        ) : (
+          <Like PRODLINK_ID={PRODLINK_ID} />
+        );
       }}
     </Query>
   );

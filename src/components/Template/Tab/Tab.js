@@ -41,8 +41,8 @@ export const Tab = ({ tabs, children }) => {
                   </ul>
                   <div className="subMenu--statsProfileWrapper">
                     <div className="subMenu--statsWrapper">
-                      <LikeButtonScreen />
-                      <WatchListButton />
+                      <LikeButtonScreen client={client} />
+                      <WatchListButton client={client} />
                       <Share />
                     </div>
                     <ProfileButton />
@@ -50,7 +50,7 @@ export const Tab = ({ tabs, children }) => {
                   <hr className="subMenu--underline" />
                 </div>
               </div>
-              <Component content="my products" />
+              <Component content="my products" client={client} />
             </>
           );
         }}

@@ -7,7 +7,7 @@ import {
   ADD_WATCH_LIST,
   DELETE_WATCHED_LIST
 } from '../../../features/Watchlist/WatchListQueries';
-import { PRODLINK_ID } from '../../../common/GrapqlConstant';
+import { getProdLinkId } from '../../../hooks/ProdLinkHook';
 
 function desider(List, item) {
   const listArray = [];
@@ -16,7 +16,9 @@ function desider(List, item) {
   return listArray && listArray.includes(item);
 }
 
-const WatchListButton = () => {
+const WatchListButton = ({ client }) => {
+  const PRODLINK_ID = getProdLinkId(client);
+  // console.log(PRODLINK_ID);
   const [watchlist, setWatchlist] = React.useState(null);
   const [watchListButtonManager, setWatchListButtonManager] = React.useState(
     false
@@ -43,7 +45,7 @@ const WatchListButton = () => {
 
 export default WatchListButton;
 
-const AddWatchList = () => {
+const AddWatchList = ({ PRODLINK_ID }) => {
   // console.log('add');
   return (
     <Mutation
@@ -76,7 +78,7 @@ const AddWatchList = () => {
   );
 };
 
-const DeleteWatchList = () => {
+const DeleteWatchList = ({ PRODLINK_ID }) => {
   // console.log('delete');
   return (
     <Mutation

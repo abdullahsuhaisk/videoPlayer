@@ -1,4 +1,3 @@
-import React from 'react';
 import WishlistScreen from '../../../features/Wishlist/WishlistScreen';
 import AuthScreen from '../../../features/Auth/AuthScreen';
 import FavoritesScreen from '../../../features/Favorites/FavoritesScreen';
@@ -13,6 +12,7 @@ import ProductsAll from '../../../features/Product/ProductList/ProductsAll';
 
 export const ComponentsService = {
   // KEY : COMPONENT
+  // We can getPros client and set the other componets for the getProdLinId hooks
   login: LoginForm,
   product: ShowConsumersWishList,
   wishList: WishlistScreen,
@@ -21,6 +21,6 @@ export const ComponentsService = {
   WatchListScreen,
   ShoppingCartScreen,
   productInThisScene: ProductListInScene,
-  productsInThisVideo: ProductList,
+  productsInThisVideo: ProductsAll,
   suggestedProduct: ProductsAll
 };

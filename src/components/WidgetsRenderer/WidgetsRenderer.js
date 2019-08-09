@@ -4,7 +4,7 @@ import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 import Empty from '../Empty/Empty';
 import Tabs from '../Tabs/Tabs';
 import Title from '../TitleDescription/TitleDescription';
-import Like from '../Like/Like';
+// import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import ProfileButton from '../../features/Auth/ProfileButton';
@@ -49,7 +49,6 @@ const widgetList = {
   Empty,
   Tabs,
   Title,
-  Like,
   Favorite,
   Share,
   ProfileButton,
