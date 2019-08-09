@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
 import { PRODLINK_ID } from '../../../common/GrapqlConstant';
 import {
-  ADD_WATCHED_LIST,
+  ADD_WATCH_LIST,
   GET_CONSUMER_WATCHLIST
 } from '../../../features/Watchlist/WatchListQueries';
 
@@ -30,7 +30,7 @@ const Like = ({ setIsLiked }) => {
   console.log('liked Component');
   return (
     <Mutation
-      mutation={ADD_WATCHED_LIST}
+      mutation={ADD_WATCH_LIST}
       variables={{ prodLinkId: PRODLINK_ID }}
       refetchQueries={() => {
         console.log('refetchQueries');

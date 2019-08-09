@@ -1,11 +1,11 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import Flickity from 'react-flickity-component';
+import 'flickity-imagesloaded';
 
 import EmptyWatchList from './EmptyWatchList';
 import WatchListCard from './WatchListCard';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
-import Flickity from 'react-flickity-component';
-import 'flickity-imagesloaded';
 
 const WatchListScreen = () => {
   // TODO: ADD THE UPDATE CACHE METHOD
@@ -16,7 +16,16 @@ const WatchListScreen = () => {
           if (loading || error) {
             return null;
           }
+          console.log(consumer);
           const { watchList } = consumer;
+          const favorites = consumer.favorites ? consumer.favorites : null;
+          const { prodLinks } = favorites;
+          const LikedProdLinksId = [];
+          prodLinks &&
+            prodLinks[0] &&
+            prodLinks.map((item) => LikedProdLinksId.push(item.id));
+          // TODO: Missing isliked properties from backend!
+          // console.log(favorites);
           // console.log(watchList.length);
           const flickityOptions = {
             cellAlign: 'left',
@@ -33,7 +42,13 @@ const WatchListScreen = () => {
               options={flickityOptions}>
               {watchList.length !== 0 ? (
                 watchList.map((item, key) =>
-                  key > 3 ? null : <WatchListCard item={item} key={item.id} />
+                  key > 3 ? null : (
+                    <WatchListCard
+                      item={item}
+                      key={item.id}
+                      LikedProdLinksIds={LikedProdLinksId}
+                    />
+                  )
                 )
               ) : (
                 <EmptyWatchList />

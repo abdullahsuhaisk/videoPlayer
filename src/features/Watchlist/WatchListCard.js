@@ -1,6 +1,77 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { Mutation } from 'react-apollo';
+import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
+import {
+  LIKE_PRODLINK,
+  UNLIKE_PRODLINK,
+  ADD_PRODLINK_TO_FAVORITE,
+  DELETE_PRODLINK_TO_FAVORITE
+} from '../../components/Base/BaseQueries';
 
-const WatchListCard = ({ item }) => {
+const Like = ({ numberOfLikes, prodLinkId }) => {
+  console.log('Like');
+  return (
+    <Mutation
+      mutation={LIKE_PRODLINK}
+      variables={{ prodLinkId }}
+      refetchQueries={() => {
+        return [
+          {
+            query: GET_CONSUMER_WATCHLIST
+          }
+        ];
+      }}>
+      {(likeProdLink, { client, loading, error }) => {
+        if (loading || error) {
+          return null;
+        }
+        return (
+          <div
+            className="watchlist--iconCintainer"
+            onClick={() => likeProdLink()}>
+            <i className="watchlist--heartIcon"></i> {numberOfLikes}
+          </div>
+        );
+      }}
+    </Mutation>
+  );
+};
+const UnLike = ({ numberOfLikes, prodLinkId }) => {
+  return (
+    <Mutation
+      mutation={UNLIKE_PRODLINK}
+      refetchQueries={() => {
+        console.log('refetchQueries');
+        return [
+          {
+            query: GET_CONSUMER_WATCHLIST
+          }
+        ];
+      }}
+      variables={{ prodLinkId }}>
+      {(unlikeProdLink, { client, loading, error }) => {
+        if (loading || error) {
+          return null;
+        }
+        return (
+          <div
+            className="watchlist--iconCintainer"
+            onClick={() => unlikeProdLink()}>
+            <i className="watchlist--heartIcon loved"></i> {numberOfLikes}
+          </div>
+        );
+      }}
+    </Mutation>
+  );
+};
+
+const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
+  // console.log(favorites);
+  // console.log(item);
+
+  const prodLinkId = item && item.id;
   const { campaign, company, video, image, brands } = item;
   // console.log(item);
   // console.log(campaign, company, video);
@@ -68,9 +139,15 @@ const WatchListCard = ({ item }) => {
             <i className="watchlist--tagsIcon"></i> {item.numberOfShares}
           </div>
           {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
-          <div className="watchlist--iconCintainer">
+
+          {/* <div className="watchlist--iconCintainer">
             <i className="watchlist--heartIcon"></i> {item.numberOfLikes}
-          </div>
+          </div> */}
+          <LikeUnLikeScreen
+            numberOfLikes={item.numberOfLikes}
+            prodLinkId={prodLinkId}
+            LikedProdLinksIds={LikedProdLinksIds}
+          />
           <div className="watchlist--iconCintainer">
             <i className="watchlist--eyeIcon"></i> {item.numberOfViews}
           </div>
@@ -81,3 +158,16 @@ const WatchListCard = ({ item }) => {
 };
 
 export default WatchListCard;
+
+const LikeUnLikeScreen = ({ numberOfLikes, prodLinkId, LikedProdLinksIds }) => {
+  // console.log(LikedProdLinksIds);
+  // console.log(prodLinkId);
+  const res =
+    LikedProdLinksIds &&
+    LikedProdLinksIds.filter((item) => item === prodLinkId);
+  return res.length > 0 ? (
+    <UnLike numberOfLikes={numberOfLikes} prodLinkId={prodLinkId} />
+  ) : (
+    <Like numberOfLikes={numberOfLikes} prodLinkId={prodLinkId} />
+  );
+};

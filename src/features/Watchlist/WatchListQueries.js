@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const ADD_WATCHED_LIST = gql`
+export const ADD_WATCH_LIST = gql`
   mutation AddWachtListToVideo($prodLinkId: Int!) {
     addProdLinkToWatchList(prodLinkId: $prodLinkId) {
       id
@@ -26,6 +26,15 @@ export const GET_CONSUMER_WATCHLIST = gql`
   query getConsumerWhatchList {
     consumer {
       id
+      favorites {
+        products {
+          id
+        }
+        prodLinks {
+          id
+          name
+        }
+      }
       watchList {
         id
         name
@@ -74,6 +83,17 @@ export const GET_CONSUMER_WATCHLIST = gql`
             thumbnailUrl
           }
         }
+      }
+    }
+  }
+`;
+
+export const GET_CONSUMER_WATCH_LISTID = gql`
+  query getConsumerWhatchList {
+    consumer {
+      id
+      watchList {
+        id
       }
     }
   }
