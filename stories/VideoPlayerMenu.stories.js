@@ -25,6 +25,7 @@ import EmptyWishlist from '../src/components/Zak/VideoPause/Components/EmptyWish
 import ShoppingCartCard from '../src/components/Zak/VideoPause/Components/ShoppingCartCard/ShoppingCartCard'
 import PaymentSuccess from '../src/components/Zak/VideoPause/Components/PaymentSuccess/PaymentSuccess'
 import EmptyAdress from '../src/components/Zak/VideoPause/Components/EmptyAdress/EmptyAdress'
+import EmptyCart from '../src/components/Zak/VideoPause/Components/EmptyCart/EmptyCart'
 import '../public/css/overlay.css';
 
 
@@ -59,4 +60,5 @@ storiesOf('Video Paused Components', module)
   .add('Empty Wishlist', () => <EmptyWishlist />)
   .add('Shopping Cart Card', () => <ShoppingCartCard />)
   .add('Payment Success', () => <PaymentSuccess />)
-  .add('Empty Adress', () => <EmptyAdress />);
+  .add('Empty Adress', () => <EmptyAdress />)
+  .add('Empty Cart', () => <EmptyCart />);
