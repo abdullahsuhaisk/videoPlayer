@@ -5,12 +5,12 @@ import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
 // import { PRODLINK_ID } from './common/GrapqlConstant';
-import { getProdLinkId } from './hooks/ProdLinkHook';
+import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 
 const App = ({ client }) => {
-  const prodLinkId = getProdLinkId(client);
-  // console.log(prodLinkId);
+  const prodLinkId = getProdLinkIdApollo(client);
+  console.log(prodLinkId);
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
       <Query query={GET_VIDEO} variables={{ prodLinkId: prodLinkId }}>

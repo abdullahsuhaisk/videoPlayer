@@ -9,6 +9,7 @@ import ShoppingCartScreen from '../../../features/ShoppingCart/ShoppingCartScree
 import ProductListInScene from '../../../features/Product/ProductList/ProductListInScene';
 import ProductList from '../../../features/Product/ProductList/ProductList';
 import ProductsAll from '../../../features/Product/ProductList/ProductsAll';
+import SuggestedProducts from '../../../features/Product/ProductList/SuggestedProducts';
 
 export const ComponentsService = {
   // KEY : COMPONENT
@@ -22,5 +23,5 @@ export const ComponentsService = {
   ShoppingCartScreen,
   productInThisScene: ProductListInScene,
   productsInThisVideo: ProductsAll,
-  suggestedProduct: ProductsAll
+  suggestedProduct: SuggestedProducts
 };

@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
 // import { PRODLINK_ID } from '../../../common/GrapqlConstant';
-import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 import {
   ADD_WATCH_LIST,
   GET_CONSUMER_WATCHLIST,
@@ -40,7 +40,7 @@ const GET_LIKED = gql`
 `;
 
 const Like = ({ setIsLiked, PRODLINK_ID }) => {
-  console.log('liked Component');
+  // console.log('liked Component');
   return (
     <Mutation
       mutation={ADD_WATCH_LIST}
@@ -92,7 +92,7 @@ const deleteToWatchList = async (
 };
 
 const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
-  console.log('unliked Component');
+  // console.log('unliked Component');
   return (
     <Mutation
       mutation={DELETE_WATCHED_LIST}
@@ -130,7 +130,7 @@ const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
 };
 
 const LikeButtonScreen = ({ client }) => {
-  const PRODLINK_ID = getProdLinkId(client);
+  const PRODLINK_ID = getProdLinkIdApollo(client);
 
   return (
     <Query query={GET_LIKED} variables={{ prodLinkId: PRODLINK_ID }}>

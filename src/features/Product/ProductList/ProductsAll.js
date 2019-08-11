@@ -6,7 +6,7 @@ import Flickity from 'react-flickity-component';
 // import ProductCarousel from './ProductCarousel';
 import ProductCard from './ProductCard';
 import 'flickity-imagesloaded';
-import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+// import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -83,7 +83,9 @@ const ProductsAll = () => {
 
                   return acc;
                 }, []);
-              console.log(products);
+              {
+                /* console.log(products); */
+              }
 
               const flickityOptions = {
                 cellAlign: 'left',

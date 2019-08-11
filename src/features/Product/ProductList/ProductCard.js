@@ -13,9 +13,9 @@ const ProductCard = ({ product }) => {
         <div className="Product-Card">
           <figure className="productCard--imageWrapper">
             <img
-              src={product.image.thumbnailUrl}
+              src={product.image && product.image.thumbnailUrl}
               className="productCard--image"
-              alt={product.brand.name}
+              alt={product.brand && product.brand.name}
             />
           </figure>
           <div className="productCard--wishlist-statusWrapper">
@@ -30,31 +30,34 @@ const ProductCard = ({ product }) => {
               Add to Wish List
             </a>
           </div>
-          <p className="productCard--name">{product.brand.name}</p>
+          <p className="productCard--name">
+            {product.brand && product.brand.name}
+          </p>
           {product.discount !== 0 ? (
             <div className="productCard--priceWrapper">
               <div className="productCard--discountWrapper">
                 <p className="productCard--dicount-percent">{`%${product.discount}`}</p>
                 <p className="productCard--dicount-price">
-                  {`${product.currency.symbol}${product.price.toFixed(2)}`}
+                  {`${product.currency &&
+                    product.currency.symbol}${product.price &&
+                    product.price.toFixed(2)}`}
                   <svg>
                     <line x1="0" y1="100%" x2="100%" y2="0" />
                   </svg>
                 </p>
               </div>
-              <p className="productCard--Onwishlist--price">{`${
-                product.currency.symbol
-              }${product.currentPrice.toFixed(2)}`}</p>
+              <p className="productCard--Onwishlist--price">{`${product.currency &&
+                product.currency.symbol}${product.currentPrice &&
+                product.currentPrice.toFixed(2)}`}</p>
             </div>
           ) : (
             <div className="productCard--priceWrapper">
-              <p className="productCard--wishlist--price">{`${
-                product.currency.symbol
-              }${product.price.toFixed(2)}`}</p>
+              <p className="productCard--wishlist--price">{`${product.price &&
+                product.currency.symbol}${product.price &&
+                product.price.toFixed(2)}`}</p>
             </div>
           )}
           <p className="productCard--stock-status">
-            {' '}
             {product.stockCount > 0 ? 'In Stock' : 'No Stock'}
           </p>
           <hr className="productCard--underline" />

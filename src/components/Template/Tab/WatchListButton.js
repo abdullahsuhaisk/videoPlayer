@@ -7,7 +7,7 @@ import {
   ADD_WATCH_LIST,
   DELETE_WATCHED_LIST
 } from '../../../features/Watchlist/WatchListQueries';
-import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 
 function desider(List, item) {
   const listArray = [];
@@ -17,7 +17,7 @@ function desider(List, item) {
 }
 
 const WatchListButton = ({ client }) => {
-  const PRODLINK_ID = getProdLinkId(client);
+  const PRODLINK_ID = getProdLinkIdApollo(client);
   // console.log(PRODLINK_ID);
   const [watchlist, setWatchlist] = React.useState(null);
   const [watchListButtonManager, setWatchListButtonManager] = React.useState(

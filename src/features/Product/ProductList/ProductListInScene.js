@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import ProductCarousel from './ProductCarousel';
+// import ProductCarousel from './ProductCarousel';
 import ProductCard from './ProductCard';
 import Flickity from 'react-flickity-component';
 import 'flickity-imagesloaded';

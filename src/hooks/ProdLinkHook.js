@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 
-const setProdLinkId = async (client) => {
+const getUrlProdLinkId = () => {
   const urlString = window.location.href;
   const url = new URL(urlString);
-  const prodLinkId = url.searchParams.get('prodLinkId')
-    ? url.searchParams.get('prodLinkId')
-    : 1;
+  return (
+    (url.searchParams.get('prodLinkId') &&
+      url.searchParams.get('prodLinkId')) ||
+    1
+  );
+};
+
+const setProdLinkIdToApollo = async (client) => {
+  const prodLinkId = getUrlProdLinkId();
   client.writeData({
     data: {
       player: {
@@ -17,14 +23,21 @@ const setProdLinkId = async (client) => {
   return parseInt(prodLinkId, 10);
 };
 
-export function getProdLinkId(client) {
+export function getProdLinkIdApollo(client) {
   const [id, setId] = useState(1);
   useEffect(() => {
-    setProdLinkId(client).then((res) => {
+    setProdLinkIdToApollo(client).then((res) => {
       setId(res);
     });
   }, [id]);
   return id;
 }
 
+export const getProdLinkId = () => {
+  const [prodId, setProdId] = useState(getUrlProdLinkId());
+  useEffect(() => {
+    setProdId(getUrlProdLinkId);
+  }, [prodId]);
+  return prodId;
+};
 // http://localhost:3000/?prodLinkId=5
