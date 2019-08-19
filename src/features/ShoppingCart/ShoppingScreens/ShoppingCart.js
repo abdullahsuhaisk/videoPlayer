@@ -3,7 +3,11 @@ import { Query, Mutation } from 'react-apollo';
 import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
-import { GET_CONSUMER_CART, REMOVE_ITEM } from '../shoppingCartQueries';
+import {
+  GET_CONSUMER_CART,
+  REMOVE_ITEM,
+  GET_CONSUMER_TOTAL_PRICE
+} from '../shoppingCartQueries';
 import EmptyShoppingCart from '../EmptyShoppingCart';
 
 const updateConsumerCart = (cache, { deleteProductInCart }) => {
@@ -54,6 +58,9 @@ const ShoppingCart = () => {
                 return [
                   {
                     query: GET_CONSUMER_CART
+                  },
+                  {
+                    query: GET_CONSUMER_TOTAL_PRICE
                   }
                 ];
               }}

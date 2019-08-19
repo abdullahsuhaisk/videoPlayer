@@ -67,3 +67,27 @@ export const UPDATE_PRODUCT_IN_CART = gql`
   }
   ${CART_FRAGMENT}
 `;
+
+export const GET_CONSUMER_TOTAL_PRICE = gql`
+  query getTotalPrice {
+    consumer {
+      id
+      cart {
+        totalProductCount
+        items {
+          quantity
+        }
+        totalPrices {
+          productCount
+          totalPrice
+          currency {
+            id
+            name
+            code
+            symbol
+          }
+        }
+      }
+    }
+  }
+`;

@@ -6,7 +6,8 @@ import { Mutation } from 'react-apollo';
 import Stepper from '../../../components/Stepper/Stepper';
 import {
   UPDATE_PRODUCT_IN_CART,
-  GET_CONSUMER_CART
+  GET_CONSUMER_CART,
+  GET_CONSUMER_TOTAL_PRICE
 } from '../shoppingCartQueries';
 
 const updateCache = (cache, { updateProductInCart }) => {
@@ -50,7 +51,17 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
       </div>
       <Mutation
         mutation={UPDATE_PRODUCT_IN_CART}
-        update={(cache, { data }) => updateCache(cache, data)}>
+        update={(cache, { data }) => updateCache(cache, data)}
+        refetchQueries={() => {
+          return [
+            {
+              query: GET_CONSUMER_CART
+            },
+            {
+              query: GET_CONSUMER_TOTAL_PRICE
+            }
+          ];
+        }}>
         {(updateProductInCart) => {
           return (
             <Stepper
