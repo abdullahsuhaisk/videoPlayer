@@ -75,8 +75,13 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
       <div className="ShoppingCart--priceContainer">
         <span className="ShoppingCart--price">{cartItem.product.price}</span>
       </div>
-      <div className="ShoppingCart--closeContainer">
-        <i className="ShoppingCart--close" onClick={onRemoveItem}></i>
+      <div
+        className="ShoppingCart--closeContainer"
+        onClick={() => {
+          console.log('deleted item');
+          return onRemoveItem();
+        }}>
+        <i className="ShoppingCart--close"></i>
       </div>
     </div>
   );

@@ -50,6 +50,13 @@ const ShoppingCart = () => {
               key={item.product.id}
               mutation={REMOVE_ITEM}
               variables={{ productId: item.product.id }}
+              refetchQueries={() => {
+                return [
+                  {
+                    query: GET_CONSUMER_CART
+                  }
+                ];
+              }}
               update={(cache, { data: deleteProductInCart }) =>
                 updateConsumerCart(cache, deleteProductInCart)
               }>

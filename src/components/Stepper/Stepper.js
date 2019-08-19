@@ -20,8 +20,8 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
 
   return (
     <div className="ShoppingCart--quantite">
-      <div className="ShoppingCart--quantite-iconContainer">
-        <i className="ShoppingCart--quantite-minusIcon" onClick={decrement}></i>
+      <div className="ShoppingCart--quantite-iconContainer" onClick={decrement}>
+        <i className="ShoppingCart--quantite-minusIcon"></i>
       </div>
       <div className="ShoppingCart--quantite-inputContrainer">
         <input
@@ -31,8 +31,8 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
           onChange={setValue}
         />
       </div>
-      <div className="ShoppingCart--quantite-iconContainer">
-        <i className="ShoppingCart--quantite-plusIcon" onClick={increment}></i>
+      <div className="ShoppingCart--quantite-iconContainer" onClick={increment}>
+        <i className="ShoppingCart--quantite-plusIcon"></i>
       </div>
     </div>
   );
