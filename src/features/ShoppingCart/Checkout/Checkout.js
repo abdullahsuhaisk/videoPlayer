@@ -17,7 +17,7 @@ const Checkout = () => {
     e.preventDefault();
     setPayment({ ...payment, [e.target.id]: e.target.value });
   };
-  console.log(payment);
+  // console.log(payment);
   return (
     <React.Fragment>
       <div className="ShoppingCartCard">
@@ -32,7 +32,6 @@ const Checkout = () => {
                 if (error) return 'Something Wrong';
                 const addresses =
                   consumer && consumer ? consumer.addresses : null;
-                console.log(addresses);
                 return addresses
                   ? addresses.map((address) => (
                       <CheckOutAddressCard

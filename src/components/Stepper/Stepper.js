@@ -1,13 +1,20 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Stepper = ({ value, minValue, onValueChanged, styles }) => {
+const Stepper = ({
+  value,
+  minValue,
+  onValueChanged,
+  setCheckValue,
+  checkValue
+}) => {
   const [_value, setValue] = useState(value);
 
   const increment = useCallback(() => {
     const newValue = _value + 1;
     setValue(newValue);
     onValueChanged(newValue);
+    setCheckValue(checkValue + 1);
   }, [_value]);
 
   const decrement = useCallback(() => {
@@ -15,6 +22,7 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
       const newValue = _value - 1;
       setValue(newValue);
       onValueChanged(newValue);
+      setCheckValue(checkValue + 1);
     }
   }, [_value]);
 

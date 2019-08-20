@@ -25,7 +25,7 @@ const updateConsumerCart = (cache, { deleteProductInCart }) => {
   });
 };
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ setCheckValue, checkValue }) => {
   return (
     <>
       <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
@@ -68,7 +68,12 @@ const ShoppingCart = () => {
                 updateConsumerCart(cache, deleteProductInCart)
               }>
               {(removeItem) => (
-                <ShoppingCartItem cartItem={item} onRemoveItem={removeItem} />
+                <ShoppingCartItem
+                  cartItem={item}
+                  onRemoveItem={removeItem}
+                  setCheckValue={setCheckValue}
+                  checkValue={checkValue}
+                />
               )}
             </Mutation>
           ));

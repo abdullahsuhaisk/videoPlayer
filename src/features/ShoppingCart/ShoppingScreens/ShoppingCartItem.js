@@ -25,7 +25,12 @@ const updateCache = (cache, { updateProductInCart }) => {
   });
 };
 
-const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
+const ShoppingCartItem = ({
+  cartItem,
+  onRemoveItem,
+  setCheckValue,
+  checkValue
+}) => {
   return (
     <div className="ShoppingCart">
       <div className="ShoppingCart--product">
@@ -65,10 +70,13 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
         {(updateProductInCart) => {
           return (
             <Stepper
+              checkValue={checkValue}
+              setCheckValue={setCheckValue}
               value={cartItem.quantity}
               onValueChanged={(value) => {
                 if (value === 0) {
                   onRemoveItem();
+                  setCheckValue(checkValue + 1);
                 }
                 if (value > 0) {
                   updateProductInCart({
@@ -90,6 +98,7 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
         className="ShoppingCart--closeContainer"
         onClick={() => {
           console.log('deleted item');
+          setCheckValue(checkValue + 1);
           return onRemoveItem();
         }}>
         <i className="ShoppingCart--close"></i>

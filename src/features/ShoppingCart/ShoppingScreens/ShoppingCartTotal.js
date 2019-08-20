@@ -50,8 +50,6 @@ const ShoppingCartTotal = ({
       );
     setTotalPrice(0);
   };
-  console.log(totalPrice);
-
   return (
     <Query query={GET_CONSUMER_TOTAL_PRICE}>
       {({ loading, error, data: { consumer } }) => {
@@ -62,11 +60,6 @@ const ShoppingCartTotal = ({
         const items = cart && cart.items;
         const productArray = [];
         items.map((item) => productArray.push(item.product.id));
-
-        consumer.cart &&
-          consumer.cart.totalPrices &&
-          consumer.cart.totalPrices[0] &&
-          setTotalPrice(consumer.cart.totalPrices[0].totalPrice);
 
         const currencySymbol =
           consumer.cart &&
