@@ -10,7 +10,9 @@ const ProfileScreen = () => {
     return (
       <div
         style={{ zIndex: 999, marginLeft: 30, width: '100%', marginTop: 10 }}>
-        <div className="ProfileAdresses--Container">
+        <div
+          className="ProfileAdresses--Container"
+          style={{ position: 'absolute', top: 200 }}>
           <Query query={GET_PERSON}>
             {({ loading, error, data }) => {
               if (loading) return 'Loading';
