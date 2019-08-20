@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_PERSON } from '../../ProfileNew/ProfileQueries';
 
-const CheckoutResult = () => {
+const CheckoutResult = ({ totalPrice }) => {
   return (
     <React.Fragment>
       <div className="PaymentSuccess">
@@ -17,7 +17,7 @@ const CheckoutResult = () => {
               {({ data: { consumer }, loading, error }) => {
                 return (
                   <span className="PaymentSuccess--details--info--highlight">
-                    carlos@smartover.net
+                    {consumer.email}
                   </span>
                 );
               }}
@@ -35,7 +35,7 @@ const CheckoutResult = () => {
                 Total Amount Paid
               </label>
               <p className="PaymentSuccess--details--transaction--info--value">
-                $1950
+                ${totalPrice}
               </p>
             </div>
             <hr className="PaymentSuccess--details--transaction--hr" />

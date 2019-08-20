@@ -76,6 +76,9 @@ export const GET_CONSUMER_TOTAL_PRICE = gql`
         totalProductCount
         items {
           quantity
+          product {
+            id
+          }
         }
         totalPrices {
           productCount
@@ -87,6 +90,17 @@ export const GET_CONSUMER_TOTAL_PRICE = gql`
             symbol
           }
         }
+      }
+    }
+  }
+`;
+export const DELETE_PRODUCT_FROM_CART = gql`
+  mutation deleteProductFromCart($productId: Int!) {
+    deleteProductInCart(productId: $productId) {
+      totalProductCount
+      totalPrices {
+        productCount
+        totalPrice
       }
     }
   }
