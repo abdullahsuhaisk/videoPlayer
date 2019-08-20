@@ -1,17 +1,17 @@
 import React from 'react';
 import Checkout from './Checkout';
 import CheckoutResult from './CheckoutResult';
-import Button from '../../../components/Button/Button';
 
-const CheckoutScreen = () => {
-  return (
-    <>
-      <Checkout />
-      <div className="vb--tabs--shoppingCart-basket-below-item">
-        <Button>Back</Button>
-      </div>
-    </>
-  );
+const CheckoutScreen = ({ checkOutSteps, totalPrice }) => {
+  console.log(checkOutSteps);
+  switch (checkOutSteps) {
+    case 1:
+      return <Checkout />;
+    case 2:
+      return <CheckoutResult totalPrice={totalPrice} />;
+    default:
+      return null;
+  }
 };
 
 export default CheckoutScreen;
