@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { ApolloConsumer } from 'react-apollo';
+import { ApolloConsumer, Query } from 'react-apollo';
+
 import { ComponentsService } from './ComponentService';
 import ProfileButton from './ProfileButton';
 import LikeButtonScreen from './LikeButtonScreen';
@@ -41,7 +42,7 @@ export const Tab = ({ tabs, children }) => {
                   </ul>
                   <div className="subMenu--statsProfileWrapper">
                     <div className="subMenu--statsWrapper">
-                      <LikeButtonScreen client={client} />
+                      <LikeButtonScreen />
                       <WatchListButton client={client} />
                       <Share />
                     </div>

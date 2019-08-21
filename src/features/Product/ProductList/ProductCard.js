@@ -35,17 +35,19 @@ const ProductCard = ({ product }) => {
           </p>
           {product.discount !== 0 ? (
             <div className="productCard--priceWrapper">
-              <div className="productCard--discountWrapper">
-                <p className="productCard--dicount-percent">{`%${product.discount}`}</p>
-                <p className="productCard--dicount-price">
-                  {`${product.currency &&
-                    product.currency.symbol}${product.price &&
-                    product.price.toFixed(2)}`}
-                  <svg>
-                    <line x1="0" y1="100%" x2="100%" y2="0" />
-                  </svg>
-                </p>
-              </div>
+              {product.discount ? (
+                <div className="productCard--discountWrapper">
+                  <p className="productCard--dicount-percent">{`%${product.discount}`}</p>
+                  <p className="productCard--dicount-price">
+                    {`${product.currency &&
+                      product.currency.symbol}${product.price &&
+                      product.price.toFixed(2)}`}
+                    <svg>
+                      <line x1="0" y1="100%" x2="100%" y2="0" />
+                    </svg>
+                  </p>
+                </div>
+              ) : null}
               <p className="productCard--Onwishlist--price">{`${product.currency &&
                 product.currency.symbol}${product.currentPrice &&
                 product.currentPrice.toFixed(2)}`}</p>
