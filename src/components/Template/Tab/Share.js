@@ -13,7 +13,7 @@ const Share = ({ client }) => {
         variables: { prodLinkId }
       })
       .then(({ data }) => {
-        setShareCount(data.prodLink && data.prodLink.numberOfViews);
+        setShareCount(data.prodLink && data.prodLink.numberOfShares);
       });
   }, []);
 

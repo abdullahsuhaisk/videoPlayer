@@ -42,7 +42,7 @@ export const Tab = ({ tabs, children }) => {
                   </ul>
                   <div className="subMenu--statsProfileWrapper">
                     <div className="subMenu--statsWrapper">
-                      <LikeButtonScreen client={client} />
+                      <LikeButtonScreen />
                       <WatchListButton client={client} />
                       <Share />
                     </div>

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { Mutation, Query } from 'react-apollo';
+import { Mutation, Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
@@ -182,4 +182,4 @@ const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
   );
 };
 
-export default LikeButtonScreen;
+export default withApollo(LikeButtonScreen);
