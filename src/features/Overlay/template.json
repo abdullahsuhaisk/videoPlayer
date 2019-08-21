@@ -19,8 +19,7 @@
                 {
                   "type": "Header",
                   "props": {
-                    "companyName": "Addidas",
-                    "campaingName": "Kış kampanyası"
+                    "color": "yellow"
                   }
                 },
                 {
@@ -76,6 +75,10 @@
       "type": "ScreenReadyWrapper",
       "props": {
         "children": [
+          {
+            "type": "Header",
+            "props": {}
+          },
           {
             "type": "ScreenReadyComponent",
             "props": {}

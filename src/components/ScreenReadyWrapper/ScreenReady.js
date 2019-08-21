@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-import VideoHeader from './VideoHeader';
 import { Wrapper } from './ScreenReady.style';
 
 const ScreenReadyWrapper = ({ children }) => {
@@ -20,7 +19,6 @@ const ScreenReadyWrapper = ({ children }) => {
       {(client) => {
         return (
           <Wrapper>
-            <VideoHeader color="#ebeae9" inline={false} />
             <div className="VideoPlay">
               <div
                 className="VideoPlay--playBtn"
