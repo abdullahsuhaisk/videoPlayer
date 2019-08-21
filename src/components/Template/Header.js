@@ -22,7 +22,7 @@ const GET_HEADER_COMPANY_CAMPAING = gql`
   }
 `;
 
-const Header = ({ profileImage, profileName, children, color }) => {
+const Header = ({ children, color }) => {
   return (
     <React.Fragment>
       <Query
@@ -38,14 +38,6 @@ const Header = ({ profileImage, profileName, children, color }) => {
               <div className="mainMenu--brandInfo--inline">
                 <h1 className="company--name">{company.name}</h1>
                 <h5 className="campaign--name">{campaign.name}</h5>
-              </div>
-              <div className="mainMenu--profileInfo">
-                <h6 className="profile--name">{profileName}</h6>
-                <img
-                  className="profile--image"
-                  src={profileImage}
-                  alt="profileImage"
-                />
               </div>
             </div>
           );
