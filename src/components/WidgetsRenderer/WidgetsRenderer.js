@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 import Empty from '../Empty/Empty';
-import Tabs from '../Tabs/Tabs';
+// import Tabs from '../Tabs/Tabs';
 import Title from '../TitleDescription/TitleDescription';
 // import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
@@ -47,7 +47,6 @@ import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProduc
 
 const widgetList = {
   Empty,
-  Tabs,
   Title,
   Favorite,
   Share,

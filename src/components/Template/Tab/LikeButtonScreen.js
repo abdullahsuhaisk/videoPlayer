@@ -6,7 +6,6 @@ import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
-// import { PRODLINK_ID } from '../../../common/GrapqlConstant';
 import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 import {
   ADD_WATCH_LIST,
@@ -31,13 +30,67 @@ const addToWatchList = async (client, addProdLinkToWatchList, PRODLINK_ID) => {
 };
 
 const GET_LIKED = gql`
-  query prodLinkIsLikedByCustomer($prodLinId: Int!) {
-    prodLinkId(prodLinkId: $prodLinId) {
+  query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
+    prodLink(prodLinkId: $prodLinkId) {
       id
-      isLiked
+      # isLiked
+      numberOfLikes
+      numberOfViews
+      numberOfShares
     }
   }
 `;
+
+const LikeButtonScreen = ({ client }) => {
+  const PRODLINK_ID = parseInt(getProdLinkIdApollo(client), 10);
+  return (
+    <Query query={GET_LIKED} variables={{ prodLinkId: PRODLINK_ID }}>
+      {({ data, error, loading }) => {
+        if (loading || error) return <Like />;
+        const isLiked = data.isLiked ? data.isLiked : null;
+        return isLiked ? (
+          isLiked === true ? (
+            <UnLike PRODLINK_ID={PRODLINK_ID} />
+          ) : (
+            <Like PRODLINK_ID={PRODLINK_ID} />
+          )
+        ) : (
+          <LikeDummy data={data} />
+        );
+      }}
+    </Query>
+  );
+};
+
+const LikeDummy = ({ data }) => {
+  const [likeCss, setLikeCss] = useState(null);
+  const [likeCount, setLikeCount] = useState(null);
+  React.useEffect(() => {
+    setLikeCount(data.prodLink.numberOfLikes);
+  }, [data]);
+  const countChanger = (bool) => {
+    if (bool) {
+      setLikeCss('loved');
+      setLikeCount(likeCount + 1);
+    } else {
+      setLikeCss('');
+      setLikeCount(likeCount - 1);
+    }
+  };
+  return (
+    <div className={`stats--content stats--content--heart ${likeCss}`}>
+      <i
+        className={`stats--content--heartIcon`}
+        onClick={() => {
+          !likeCss ? countChanger(true) : countChanger(false);
+        }}></i>
+      {
+        // data.prodLink && data.prodLink.numberOfLikes
+        likeCount
+      }
+    </div>
+  );
+};
 
 const Like = ({ setIsLiked, PRODLINK_ID }) => {
   // console.log('liked Component');
@@ -126,28 +179,6 @@ const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
         );
       }}
     </Mutation>
-  );
-};
-
-const LikeButtonScreen = ({ client }) => {
-  const PRODLINK_ID = getProdLinkIdApollo(client);
-
-  return (
-    <Query query={GET_LIKED} variables={{ prodLinkId: PRODLINK_ID }}>
-      {({ data, error, loading }) => {
-        if (loading || error) return <Like />;
-        const isLiked = data.isLiked ? data.isLiked : null;
-        return isLiked ? (
-          isLiked === true ? (
-            <UnLike PRODLINK_ID={PRODLINK_ID} />
-          ) : (
-            <Like PRODLINK_ID={PRODLINK_ID} />
-          )
-        ) : (
-          <Like PRODLINK_ID={PRODLINK_ID} />
-        );
-      }}
-    </Query>
   );
 };
 

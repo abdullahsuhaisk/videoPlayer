@@ -38,6 +38,6 @@ export const getProdLinkId = () => {
   useEffect(() => {
     setProdId(getUrlProdLinkId);
   }, [prodId]);
-  return prodId;
+  return parseInt(prodId, 10);
 };
 // http://localhost:3000/?prodLinkId=5

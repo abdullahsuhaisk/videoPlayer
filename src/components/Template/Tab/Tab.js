@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { ApolloConsumer } from 'react-apollo';
+import { ApolloConsumer, Query } from 'react-apollo';
+
 import { ComponentsService } from './ComponentService';
 import ProfileButton from './ProfileButton';
 import LikeButtonScreen from './LikeButtonScreen';

@@ -98,3 +98,15 @@ export const GET_CONSUMER_WATCH_LISTID = gql`
     }
   }
 `;
+
+export const GET_NUMBER_OF_VIDEOTHINGS = gql`
+  query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
+    prodLink(prodLinkId: $prodLinkId) {
+      id
+      # isLiked
+      numberOfLikes
+      numberOfViews
+      numberOfShares
+    }
+  }
+`;
