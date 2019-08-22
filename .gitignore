@@ -27,3 +27,4 @@ yarn-error.log*
 ignored-folder
 .env.development
 apollo.config.js
+.env
