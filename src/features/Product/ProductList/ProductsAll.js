@@ -1,12 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { Query, ApolloConsumer } from 'react-apollo';
-import Flickity from 'react-flickity-component';
+import { Query } from 'react-apollo';
+import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
-// import ProductCarousel from './ProductCarousel';
-import ProductCard from './ProductCard';
 import 'flickity-imagesloaded';
-// import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -59,53 +56,36 @@ const ProductsAll = () => {
         return (
           <Query query={GET_PRODUCTS} variables={{ prodLinkId }}>
             {({ loading, error, data }) => {
-              console.log(data);
               if (loading || error) {
                 return null;
               }
-
               const { hotSpots } = data.prodLink;
-
+              console.log(hotSpots);
               const products = hotSpots
-                .map((hotSpot) => hotSpot.product)
+                .map((hotSpot) => {
+                  console.log(hotSpot.product);
+                  return hotSpot.product;
+                })
                 .reduce((acc, product) => {
+                  console.log(acc);
                   if (acc.length > 0) {
+                    console.log(acc);
                     for (let i = 0; i < acc.length; i += 1) {
                       if (acc[i].id === product.id) {
                         break;
                       }
-
                       acc.push(product);
                     }
                   } else {
                     acc.push(product);
                   }
-
+                  console.log(product);
                   return acc;
                 }, []);
-              {
-                /* console.log(products); */
-              }
+              console.log(products);
 
-              const flickityOptions = {
-                cellAlign: 'left',
-                contain: true,
-                resize: false,
-                imagesLoaded: true,
-                lazyLoad: true,
-                percentPosition: false
-              };
-              let containerClasses = 'VideoPlayerContainer';
-              containerClasses += products.length > 4 ? ' swipeGradient' : '';
               return (
-                <Flickity
-                  className={containerClasses}
-                  reloadOnUpdate={true}
-                  options={flickityOptions}>
-                  {products.map((product) => (
-                    <ProductCard product={product} key={product.id} />
-                  ))}
-                </Flickity>
+                <FlickityProductCard products={products} key={products.id} />
               );
             }}
           </Query>

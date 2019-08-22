@@ -106,6 +106,6 @@
   },
   "main": "index.js",
   "repository": "git@gitlab.com:vibuy/videoplayer.git",
-  "author": "Aydin Akan <aakan@smartover.net>",
+  "author": "Abdullah Süha Işık <aisik@smartover.net>",
   "license": "MIT"
 }

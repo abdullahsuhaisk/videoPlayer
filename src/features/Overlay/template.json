@@ -19,7 +19,7 @@
                 {
                   "type": "Header",
                   "props": {
-                    "color": "yellow"
+                    "color": "#0b2443"
                   }
                 },
                 {
@@ -27,7 +27,7 @@
                   "props": {
                     "tabs": [
                       {
-                        "title": " Product in this Scene",
+                        "title": " Product In This Scene",
                         "key": "productInThisScene"
                       },
                       {
@@ -43,7 +43,7 @@
                         "key": "wishList"
                       },
                       {
-                        "title": "WatchListScreen",
+                        "title": "Watchlist",
                         "key": "WatchListScreen"
                       },
                       {

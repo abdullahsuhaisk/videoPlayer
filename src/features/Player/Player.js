@@ -11,7 +11,8 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
 import { PLAYER } from '../../common/constants';
-import { PRODLINK_ID } from '../../common/GrapqlConstant';
+import { getProdLinkId } from '../../hooks/ProdLinkHook';
+// import { PRODLINK_ID } from '../../common/GrapqlConstant';
 
 // TODO: remove this when browser console debug is not necessary
 window.videojs = videojs;
@@ -42,6 +43,7 @@ const Player = ({ width, height, poster, sources }) => {
   const playerRef = useRef(null);
   const apolloClientRef = useRef(null);
   const { i18n } = useTranslation();
+  const PRODLINK_ID = getProdLinkId();
 
   useEffect(() => {
     videojs.addLanguage(
@@ -59,11 +61,11 @@ const Player = ({ width, height, poster, sources }) => {
       liveui: true,
       textTrackSettings: false,
       controlBar: {
-        playbackRateMenuButton: false,
-        subsCapsButton: false,
-        descriptionsButton: false,
-        chaptersButton: false,
-        audioTrackButton: false
+        playbackRateMenuButton: true,
+        subsCapsButton: true,
+        descriptionsButton: true,
+        chaptersButton: true,
+        audioTrackButton: true
       },
       playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
       language: i18n.language
