@@ -26,7 +26,6 @@ const ProductDetail = ({ productId }) => {
             {({ loading, error, data }) => {
               if (loading || error) return null;
               const { product } = data;
-              console.log(product);
               const images = [];
               if (product && product.images) {
                 product.images.map((i) => images.push(i));
@@ -68,7 +67,9 @@ const ProductDetail = ({ productId }) => {
                         (381 votes)
                       </p>
                     </div>
-                    <div className="ProductDetail--information--details">
+                    <div
+                      className="ProductDetail--information--details"
+                      style={{ overflow: 'overlay' }}>
                       <p>{product.description}</p>
                       <p>Easy care: Quick-drying and easy to iron.</p>
                       <p>Erkek Ceket ve Yelek</p>
@@ -151,29 +152,37 @@ const ProductDetail = ({ productId }) => {
                       </div>
                     </div>
                     <div className="ProductDetail--information--priceBtnContainer">
-                      <div className="ProductDetail--information--price">
-                        <p className="ProductDetail--information--price--discount">
-                          {`%${product.discount}`}
-                        </p>
-                        <p className="ProductDetail--information--price--value">
-                          {`${product.currency.symbol}${product.currentPrice}`}
-                        </p>
-                        <p className="ProductDetail--information--price--beforeDiscountvalue">
-                          {`${product.currency.symbol}${product.price.toFixed(
-                            2
-                          )}`}
-                          <svg>
-                            <line
-                              x1="0"
-                              y1="70%"
-                              x2="140%"
-                              y2="0"
-                              stroke="#ff1010"
-                              strokeWidth="1"
-                            />
-                          </svg>
-                        </p>
-                      </div>
+                      {product.discount ? (
+                        <div className="ProductDetail--information--price">
+                          <p className="ProductDetail--information--price--discount">
+                            {`%${product.discount}`}
+                          </p>
+                          <p className="ProductDetail--information--price--value">
+                            {`${product.currency.symbol}${product.currentPrice}`}
+                          </p>
+                          <p className="ProductDetail--information--price--beforeDiscountvalue">
+                            {`${product.currency.symbol}${product.price.toFixed(
+                              2
+                            )}`}
+                            <svg>
+                              <line
+                                x1="0"
+                                y1="70%"
+                                x2="140%"
+                                y2="0"
+                                stroke="#ff1010"
+                                strokeWidth="1"
+                              />
+                            </svg>
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="ProductDetail--information--price">
+                          <p className="ProductDetail--information--price--value">
+                            {`${product.currency.symbol}${product.currentPrice}`}
+                          </p>
+                        </div>
+                      )}
                       <AddToCardButton productId={product.id} />
                     </div>
                   </div>
