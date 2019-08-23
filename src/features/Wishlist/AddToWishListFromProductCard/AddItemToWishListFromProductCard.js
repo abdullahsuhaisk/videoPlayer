@@ -14,16 +14,18 @@ import WishListImageGallery from './WishListImageGallery';
 const AddItemToWishListFromProductCard = () => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);
   const [selectedItem, setselectedItem] = useState(null);
-  // console.log(selectedWhishListId);
   const [wishListName, setWishListName] = useState(
     'Please write a wishlist name'
   );
-  const selectedItemClassName =
+  const AddedItemClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected';
   const selectedRemoveClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected-remove';
-  const wishListItemClassName = 'AddToWishlist--information--wishlistItem';
-  // console.log(selectedWhishListId);
+  const wishListItemClassName = 'AddToWishlist--information--wishlistItem ';
+  const selectedItemClassName =
+    'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItemSelected';
+  const [searchWishList, setSearchWishList] = useState();
+
   return (
     <ApolloConsumer>
       {(client) => {
@@ -36,9 +38,7 @@ const AddItemToWishListFromProductCard = () => {
                 }
                 const { consumer } = data;
                 const whisLists = consumer && consumer.whisLists;
-                {
-                  /* console.log(whisLists); */
-                }
+                console.log(whisLists);
                 const selectedWhisListProduct =
                   consumer &&
                   consumer.whisLists &&
@@ -63,12 +63,13 @@ const AddItemToWishListFromProductCard = () => {
                       <h3 className="AddToWishlist--information--h3">
                         Add this item to wishlist
                       </h3>
-
                       <div className="AddToWishlist--information--search">
                         <i className="AddToWishlist--information--search--icon"></i>
                         <input
                           type="text"
                           className="AddToWishlist--information--search--input"
+                          onChange={(e) => setSearchWishList(e.target.value)}
+                          value={searchWishList}
                         />
                       </div>
                       <div className="AddToWishlist--information--wishlistItemContainer">
@@ -121,7 +122,7 @@ const AddItemToWishListFromProductCard = () => {
                           classNames="AddToWishlist--information--btnContainer--createBtn"
                           title="Create new list"
                           setWishListName={setWishListName}
-                          wishListName={wishListName}
+                          wishListName={searchWishList}
                         />
                         <Query query={GET_PRODUCT_ID}>
                           {({ data: productId }) => {
@@ -146,8 +147,11 @@ const AddItemToWishListFromProductCard = () => {
                                     <button
                                       disabled={!selectedWhishListId}
                                       className="AddToWishlist--information--btnContainer--doneBtn"
-                                      onClick={() => {
-                                        addProductToConsumerWishList();
+                                      onClick={async () => {
+                                        await addProductToConsumerWishList();
+                                        client.writeData({
+                                          data: { isAddWishListOpen: false }
+                                        });
                                       }}>
                                       Done
                                     </button>
