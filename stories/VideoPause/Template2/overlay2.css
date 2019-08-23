@@ -1,0 +1,845 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Source Sans Pro';
+  }
+  /* VideoPlayerContainer */
+  .Template2 .VideoPlayerContainer {
+    width: 1361px;
+    margin-top: 40px;
+    margin-left: 62px;
+    overflow: hidden;
+    position: relative;
+  }
+  .Template2 .swipeGradient::after {
+    content: "";
+    width: 70px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), #fff);
+  }
+  .Template2 .VideoPlayerContainer:focus {
+    outline: none;
+  }
+  .Template2 .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .Template2 .flex-row {
+    display: flex;
+  }
+.Template2 .ProductDetail {
+    display: flex;
+    width: fit-content;
+    border: 1px solid #ccc;
+    margin: auto;
+    margin-top: 2px;
+    pointer-events: auto;
+    background-color: #fff;
+    /* position: absolute;
+    top: 171px;
+    left: 61px; */
+  }
+  .Template2 .ProductDetail--imagesSlider {
+    width: 750px;
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+  }
+  .Template2 .ProductDetail--imagesSlider:focus {
+    outline: none;
+  }
+  .Template2 .ProductDetail--imagesSlider--figure {
+    width: 100%;
+    height: 750px;
+    display: flex;
+  }
+  .Template2 .ProductDetail--imagesSlider--figure:focus {
+    outline: none;
+  }
+  .Template2 .ProductDetail--imagesSlider--figure--img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .Template2 .ProductDetail .ProductDetail--imagesSlider .flickity-prev-next-button {
+    position: absolute;
+    top: 350px;
+    width: 10px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    background: url(/images/ctrl-right.svg) center / contain no-repeat;
+    cursor: pointer;
+  }
+  .Template2 .ProductDetail .ProductDetail--imagesSlider .flickity-prev-next-button svg {
+    display: none;
+  }
+  .Template2 .ProductDetail .ProductDetail--imagesSlider .next {
+    right: 17.6px;
+    content: '';
+  }
+  .Template2 .ProductDetail .ProductDetail--imagesSlider .previous {
+    left: 19px;
+    transform: rotate(180deg);
+  }
+  .Template2 .ProductDetail .ProductDetail--information {
+    position: relative;
+    width: 614px;
+    height: 750px;
+    background-color: #f3f5f9;
+    padding: 40px;
+  }
+
+  .Template2 .ProductDetail--information--close {
+    position: absolute;
+    top: 17.4px;
+    right: 20.5px;
+    width: 21px;
+    height: 21px;
+    background: url(/images/close.svg) center / contain no-repeat;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .Template2 .ProductDetail--information--close:hover {
+    opacity: 1;
+  }
+  .Template2 .ProductDetail--information--title {
+    display: flex;
+    align-items: center;
+  }
+  .Template2 .ProductDetail--information--title--h2 {
+    max-width: 280px;
+    font-size: 40px;
+    font-weight: 600;
+    color: #0e273b;
+    margin: 0;
+    line-height: 1;
+  }
+  .Template2 .ProductDetail--information--rating {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+  }
+  .Template2 .ProductDetail--information--rating--stars {
+    display: flex;
+  }
+  .Template2 .ProductDetail--information--rating--stars span {
+    width: 17px;
+    height: 15px;
+    background: url(/images/star-empty.svg) center / contain no-repeat;
+    cursor: pointer;
+  }
+  .Template2 .ProductDetail--information--rating--stars:hover span {
+    background: url(/images/star-full.svg) center / contain no-repeat;
+  }
+  .Template2 .ProductDetail--information--rating--stars span:hover ~ span {
+    background: url(/images/star-empty.svg) center / contain no-repeat !important;
+  }
+  .Template2 .ProductDetail--information--rating--stars--icon-full {
+    background: url(/images/star-full.svg) center / contain no-repeat !important;
+  }
+  .Template2 .ProductDetail--information--rating--total {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffa200;
+    margin: 0;
+    margin-left: 5px;
+  }
+  .Template2 .ProductDetail--information--rating--votes {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 4px;
+    letter-spacing: 0.1px;
+    color: #0e273b;
+  }
+  .Template2 .ProductDetail--information--details {
+    margin-top: 21px;
+    margin-bottom: 6px;
+    height: 170px;
+    font-size: 18px;
+    letter-spacing: 0.43px;
+    line-height: 1.33;
+    color: #0e273b;
+    font-weight: 400;
+  }
+  .Template2 .ProductDetail--information--details p {
+    position: relative;
+    margin-left: 12px;
+  }
+  .Template2 .ProductDetail--information--details p:before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    background-color: #0b2443;
+    width: 6px;
+    height: 6px;  
+    border-radius: 50%;
+  }
+  .Template2 .ProductDetail--information--settingsContainer {
+    height: 250px;
+    margin-bottom: 10px;
+  }
+  .Template2 .ProductDetail--information--settings {
+    margin-bottom: 20px;
+  }
+  .Template2 .ProductDetail--information--settings-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0e273b;
+    letter-spacing: 0.12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .Template2 .ProductDetail--information--settings-opt {
+    display: flex;
+  }
+  .Template2 .ProductDetail--information--settings-opt-div {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    min-width: 70px;
+    margin-right: 12px;
+    padding: 4px 5px;
+    border-radius: 6px;
+    border: solid 1px #b9b9b9;
+    cursor: pointer;
+  }
+  .Template2 .ProductDetail--information--settings-opt-div:hover, .Template2 .ProductDetail--information--settings-opt-active {
+    border: solid 1px #83329c;
+    background-color: #ffffff;
+    padding: 3px 4px;
+  }
+  .Template2 .ProductDetail--information--settings-opt-div-span {
+    font-size: 15px;
+    color: #0e273b;
+    font-weight: 400;
+    letter-spacing: 0.36px;
+    margin: auto;
+    min-width: 50px;
+    text-align: center;
+  }
+  .Template2 .ProductDetail--information--priceBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .Template2 .ProductDetail--information--price {
+    display: flex;
+    position: relative;
+    width: max-content;
+  }
+  .Template2 .ProductDetail--information--price--discount {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    color: #fff;
+    background: #dc3545;
+    padding: 9px 3.4px;
+    border-radius: 6px;
+    margin: 0;
+    margin-right: 11px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ProductDetail--information--price--container{
+
+  }
+  .Template2 .ProductDetail--information--price--value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: 0.18px;
+    color: #0e273b;
+  }
+  .Template2 .ProductDetail--information--price--beforeDiscountvalue {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.12px;
+    color: #1a1a1a;
+    line-height: 1.28;
+    letter-spacing: 0.12px;
+    opacity: .5;
+    text-decoration: line-through;
+  }
+  .Template2 .ProductDetail--addToCartBtn {
+    display: flex !important;
+    align-items: center !important;
+    height: 60px !important;
+    border-radius: 8px !important;
+    background-color: #83329c !important;
+    border: solid 1px #83329c !important;
+    color: #fff !important;
+    outline: 0 !important;
+    overflow: visible !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.43px !important;
+    padding: 9px 20px 9px 20px !important;
+  }
+  .Template2 .ProductDetail--addToCartBtn-icon {
+    width: 16px;
+    height: 16px;
+    background: url(/images/productcart.svg) center / contain no-repeat;
+    margin-right: 10px;
+  }
+  
+
+  .Template2 .AddToWishlist {
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    border: 1px solid #ccc;
+    /* margin: auto; */
+    /* position: absolute;
+    top: 173px; */
+    /* right: 0; */
+    /* left: 59px; */
+    pointer-events: auto;
+    background-color: #f3f5f9;
+  }
+  .Template2 .AddToWishlist--imagesSlider {
+    width: 750px;
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+  }
+  .Template2 .AddToWishlist--imagesSlider:focus {
+    outline: none;
+  }
+  .Template2 .AddToWishlist--imagesSlider--figure {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .Template2 .AddToWishlist--imagesSlider--figure:focus {
+    outline: none;
+  }
+  .Template2 .AddToWishlist--imagesSlider--figure--img {
+    width: 100%;
+    object-fit: cover;
+    padding: 0 2px;
+  }
+  .Template2 .AddToWishlist .AddToWishlist--imagesSlider .flickity-prev-next-button {
+    position: absolute;
+    top: 350px;
+    width: 10px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    background: url(/images/ctrl-right.svg) center / contain no-repeat;
+    cursor: pointer;
+  }
+  .Template2 .AddToWishlist .AddToWishlist--imagesSlider .flickity-prev-next-button svg {
+    display: none;
+  }
+  .Template2 .AddToWishlist .AddToWishlist--imagesSlider .next {
+    right: 17.6px;
+    content: '';
+  }
+  .Template2 .AddToWishlist .AddToWishlist--imagesSlider .previous {
+    left: 19px;
+    transform: rotate(180deg);
+  }
+  .Template2 .AddToWishlist .AddToWishlist--information {
+    position: relative;
+    width: 615px;
+    height: 750px;
+    background-color: #f3f5f9;
+    padding: 40px 40px 0 40px;
+  }
+  .Template2 .AddToWishlist--information--title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .Template2 .AddToWishlist--information--title--h2 {
+    max-width: 280px;
+    font-size: 40px;
+    font-weight: 600;
+    color: #0e273b;
+    margin: 0;
+    line-height: 1;
+  }
+  .Template2 .AddToWishlist--information--close {
+    position: absolute;
+    top: 17.4px;
+    right: 20.5px;
+    width: 21px;
+    height: 21px;
+    background: url(/images/close.svg) center / contain no-repeat;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .Template2 .AddToWishlist--information--close:hover {
+    opacity: 1;
+  }
+  .Template2 .AddToWishlist--information--h3 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.43px;
+    color: #515252;
+  }
+  .Template2 .AddToWishlist--information--search {
+    width: 100%;
+    position: relative;
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+  .Template2 .AddToWishlist--information--search--icon {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: url(/images/magnifier.svg) center / contain no-repeat;
+    opacity: 0.5;
+  }
+  .Template2 .AddToWishlist--information--search--input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    border-bottom: 1px solid #1a1a1a;
+    padding-left: 28px;
+    padding-bottom: 5.3px;
+    font-size: 18px;
+    line-height: 1.28;
+    letter-spacing: 0.43px;
+    color: #0e273b;
+  }
+  .Template2 .AddToWishlist--information--search:hover .AddToWishlist--information--search--icon {
+    opacity: 1;
+  }
+  .Template2 .AddToWishlist--information--search--input:focus {
+    outline: none;
+  }
+  .Template2 .AddToWishlist--information--wishlistItemContainer {
+    height: 430px;
+    margin-bottom: 10px;
+    overflow: auto;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    padding: 9px 16px;
+    border: solid 1px #fff;
+    border-radius: 8px;
+    margin-top: 9px;
+    cursor: pointer;
+    height: 75px;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem-selected {
+    border: solid 1px #eaeaea;
+    background-color: #def0f4;
+    position: relative;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem-selected::after {
+    content: '';
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 24px;
+    height: 17.5px;
+    background: url(/images/o-check.svg) center / contain no-repeat;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem-selected:hover::after {
+    background: url(/images/remove-from-wishlist.svg) center / contain no-repeat;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem-selected:hover {
+    border: solid 1px #eaeaea !important;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem:hover {
+    border: solid 1px #83329c;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--titleItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--titleItems--h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: 0.43px;
+    color: #515252;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--titleItems--p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.27;
+    letter-spacing: 0.36px;
+    color: #515252;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--figure {
+    width: 60px;
+    height: 60px;
+    margin-right: 13px;
+    border-radius: 8px;
+    background-color: #cbcbcb;  
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--figure--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: solid 2px #fff;
+  }
+  .Template2 .AddToWishlist--information--btnContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Template2 .AddToWishlist--information--btnContainer--createBtn {
+    height: 60px;
+    border-radius: 8px;
+    color: #83329c;
+    border: 1px solid #83329c;
+    background-color: transparent;
+    outline: 0;
+    overflow: visible;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.43px;
+    padding: 9px 18px;
+    line-height: 0;
+  }
+  .Template2 .AddToWishlist--information--btnContainer--doneBtn {
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #83329c;
+    color: #fff;
+    outline: 0;
+    border: 0;
+    overflow: visible;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.43px;
+    padding: 0;
+    line-height: 1.28;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--titleInput {
+    height: 1.2em;
+    margin-top: 2px;
+    /* margin: auto 0; */
+    border: 0;
+    border-left: 1px solid #0b2443;
+    font-size: 18px;
+    color: #0b2443;
+  }
+  .Template2 .AddToWishlist--information--wishlistItem--titleInput:focus {
+    outline: none;
+    border-left: 1px solid #0b2443;
+  }
+  
+  .Template2 .Comments {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    margin-top: 2px;
+    pointer-events: auto;
+    background-color: #fff;
+    /* position: absolute;
+    top: 171px;
+    left: 61px; */
+  }
+  .Template2 .Comments--imagesSlider {
+    width: 750px;
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+  }
+  .Template2 .Comments--imagesSlider:focus {
+    outline: none;
+  }
+  .Template2 .Comments--imagesSlider--figure {
+    width: 100%;
+    height: 750px;
+    display: flex;
+  }
+  .Template2 .Comments--imagesSlider--figure:focus {
+    outline: none;
+  }
+  .Template2 .Comments--imagesSlider--figure--img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .Template2 .Comments .Comments--imagesSlider .flickity-prev-next-button {
+    position: absolute;
+    top: 350px;
+    width: 10px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    background: url(/images/ctrl-right.svg) center / contain no-repeat;
+    cursor: pointer;
+  }
+  .Template2 .Comments .Comments--imagesSlider .flickity-prev-next-button svg {
+    display: none;
+  }
+  .Template2 .Comments .Comments--imagesSlider .next {
+    right: 17.6px;
+    content: '';
+  }
+  .Template2 .Comments .Comments--imagesSlider .previous {
+    left: 19px;
+    transform: rotate(180deg);
+  }
+  .Template2 .Comments--information--container{
+    padding-bottom: 0;
+    overflow-y: scroll;
+    height: 493px;
+    padding-right: 10px;
+    margin-right: -14px;
+  }
+  .Template2 .Comments--information--container2{
+    height: 710px;
+  }
+    /* total width */
+  .Template2 .Comments--information--container::-webkit-scrollbar {
+    background-color:transparent;
+    width:5px;
+  }
+
+  /* background of the scrollbar except button or resizer */
+  .Template2 .Comments--information--container::-webkit-scrollbar-track {
+    background-color:transparent
+  }
+
+  /* scrollbar itself */
+  .Template2 .Comments--information--container::-webkit-scrollbar-thumb {
+    border-radius:16px;
+    border-radius: 100px;
+    background-color: rgba(11, 36, 67, .27);
+  }
+
+  /* set button(top and bottom of the scrollbar) */
+  .Template2 .Comments--information--container::-webkit-scrollbar-button {display:none}
+
+  .Template2 .Comments .Comments--information {
+    position: relative;
+    width: 614px;
+    height: 750px;
+    background-color: #f3f5f9;
+    padding: 40px 40px 0 40px;
+    padding-bottom: 0;
+  }
+
+  .Template2 .Comments--information--close {
+    position: absolute;
+    top: 17.4px;
+    right: 20.5px;
+    width: 21px;
+    height: 21px;
+    background: url(/images/close.svg) center / contain no-repeat;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .Template2 .Comments--information--close:hover {
+    opacity: 1;
+  }
+  .Template2 .Comments--information--back {
+    position: absolute;
+    top: 17.4px;
+    left: 40px;
+    width: 30px;
+    height: 20.8px;
+    background: url(/images/arrow-left.svg) center / contain no-repeat;
+    cursor: pointer;
+  }
+
+  .Template2 .Comments--information--head--rating--total--stars,
+  .Template2 .Comments--information--head--commentStars--all--stars {
+    display: flex;
+    width: 100%;
+  }
+  .Template2 .Comments--information--head--rating--total--stars span,
+  .Template2 .Comments--information--head--commentStars--all--stars span,
+  .Template2 .Comments--information--list--item--stars span {
+    width: 19px;
+    height: 17px;
+    background: url(/images/star-gray.svg) center / contain no-repeat;
+  }
+  .Template2 .Comments--information--head--stars--icon-full,
+  .Template2 .Comments--information--list--item--stars--icon-full {
+    background: url(/images/star-full.svg) center / contain no-repeat !important;
+  }
+  .Template2 .Comments--information--head{
+    margin-top: 18px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 10px;
+  }
+  .Template2 .Comments--information--head--rating{
+    display: flex;
+    width: 100%;
+    padding: 15px 24px 19px 25px;
+  }
+  .Template2 .Comments--information--head--rating--total{
+    width: 152px;
+    height: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+    border-right: 1px solid #B9B9B9;
+  }
+  .Template2 .Comments--information--head--rating--total--rate{
+    font-size: 53px;
+    color: #ffa200;
+    font-weight: 600;
+  }
+  .Template2 .Comments--information--head--rating--total--number{
+    font-size: 16px;
+    font-weight: 400;
+    color: #0E273B;
+  }
+  .Template2 .Comments--information--head--commentStars{
+    margin-left: 38px;
+    width: 100%;
+  }
+  .Template2 .Comments--information--head--commentStars--all--value{
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    color: #0E273B;
+    width: 35px;
+  }
+  .Template2 .Comments--information--head--commentStars--all--value:before{
+    content: "";
+    position: absolute;
+    left: -105px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 87px;
+    height: 1px;
+    background-color: #B9B9B9;
+  }
+  .Template2 .Comments--information--head--commentStars--all{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .Template2 .Comments--information--head--addComment{
+    display: flex;
+    padding: 0 17px 7px 6px;
+  }
+  .Template2 .Comments--information--head--addComment--input{
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    outline: none;  
+    resize: none;
+    padding: 3px 0 0 5px;
+    letter-spacing: .5px;
+    font-size: 16px;
+    width: 100%;
+  }
+ .Template2 .Comments--information--head--addComment--input:focus{
+  background-color: #F7FAFC;
+ }
+ .Comments--information--head--addComment--submit{
+  width: 24px;
+  height: 24px;
+  background: url(/images/send.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-top: auto;
+  margin-left: 2px;
+ }
+ .Template2 .Comments--information--list {
+  width: 100%;
+ }
+ .Template2  .Comments--information--list--item{
+  margin-bottom: 10px;
+  padding: 10px 15px 10px 16px;
+  background-color: #ffffff;
+ }
+ .Template2  .Comments--information--list--item--profil{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+  .Template2  .Comments--information--list--item--figure{
+    width: 37px;
+    height: 37px;
+ }
+ .Template2  .Comments--information--list--item--figure--img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: solid 0.3px #ffffff;
+  border-radius: 50%;
+ }
+ .Template2  .Comments--information--list--item--usernameTime{
+   margin-left: 10px;
+ }
+ .Template2  .Comments--information--list--item--username{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.12px;
+  color: #0e273b;
+ }
+ .Template2  .Comments--information--list--item--time{
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: 0.09px;
+  color: #0e273b;
+ }
+ .Template2 .Comments--information--list--item--stars{
+   display: flex;
+ }
+ .Template2 .Comments--information--list--item--profil--info{
+   display: flex;
+ }
+ .Template2  .Comments--information--list--item--content--likes--icon{
+  width: 24px;
+  height: 24px;
+  background: url(/images/like-comment.svg) center / contain no-repeat;
+  display: block;
+ }
+ .Template2 .Comments--information--list--item--content--liked 
+ .Comments--information--list--item--content--likes--icon,
+ .Template2 .Comments--information--list--item--content--likes:hover
+ .Comments--information--list--item--content--likes--icon{
+  background: url(/images/liked-comment.svg) center / contain no-repeat;
+ }
+ .Template2  .Comments--information--list--item--content--likes--number{
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.11px;
+  color: #0e273b;
+ }
+ .Template2 .Comments--information--list--item--content--liked
+ .Comments--information--list--item--content--likes--number,
+ .Template2 .Comments--information--list--item--content--likes:hover 
+ .Comments--information--list--item--content--likes--number {
+  color: #00acd8;
+ }
+ .Template2 .Comments--information--list--item--content{
+   display: flex;
+   margin-top: 10px;
+ }
+ .Template2 .Comments--information--list--item--content--likes,
+ .Template2 .Comments--information--list--item--content--liked{
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  height: fit-content;
+ }
