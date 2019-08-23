@@ -9,12 +9,12 @@ import {
 } from '../wishListQueries';
 import { GET_PRODUCT_ID } from '../../../components/Base/BaseQueries';
 import AddNewWishList from '../PreComponent/addNewWishList';
-import WishListFlickity from './WishListFlickity';
+import WishListImageGallery from './WishListImageGallery';
 
-const AddToWishListFromProduct = () => {
+const AddItemToWishListFromProductCard = () => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);
   const [selectedItem, setselectedItem] = useState(null);
-  //console.log(selectedItem);
+  // console.log(selectedWhishListId);
   const [wishListName, setWishListName] = useState(
     'Please write a wishlist name'
   );
@@ -36,12 +36,22 @@ const AddToWishListFromProduct = () => {
                 }
                 const { consumer } = data;
                 const whisLists = consumer && consumer.whisLists;
-
+                {
+                  /* console.log(whisLists); */
+                }
+                const selectedWhisListProduct =
+                  consumer &&
+                  consumer.whisLists &&
+                  consumer.whisLists[selectedItem] &&
+                  consumer.whisLists[selectedItem].products;
                 // const whisListsCount = whisLists && whisLists.length;
                 // console.log('Add To WishListFrom Product', whisLists);
                 return (
                   <div className="AddToWishlist">
-                    <WishListFlickity whisListId={selectedItem} />
+                    <WishListImageGallery
+                      whisListId={selectedItem}
+                      whisListProduct={selectedWhisListProduct}
+                    />
                     <div className="AddToWishlist--information">
                       <i
                         className="AddToWishlist--information--close"
@@ -161,7 +171,7 @@ const AddToWishListFromProduct = () => {
   );
 };
 
-export default AddToWishListFromProduct;
+export default AddItemToWishListFromProductCard;
 
 // CLOSO THE MODAL
 

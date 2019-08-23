@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import AddToWishListFromProduct from './AddToWishListFromProduct';
+import AddItemToWishListFromProductCard from './AddItemToWishListFromProductCard';
 
 const GET_ADD_WISHLIST_OPEN = gql`
   {
@@ -14,7 +14,9 @@ const AddToWishListScreen = () => {
   return (
     <Query query={GET_ADD_WISHLIST_OPEN}>
       {({ data: { isAddWishListOpen } }) => {
-        return isAddWishListOpen === true ? <AddToWishListFromProduct /> : null;
+        return isAddWishListOpen === true ? (
+          <AddItemToWishListFromProductCard />
+        ) : null;
       }}
     </Query>
   );

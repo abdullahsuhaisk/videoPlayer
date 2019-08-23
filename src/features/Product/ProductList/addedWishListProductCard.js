@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { ApolloConsumer, Mutation } from 'react-apollo';
 import { DELETE_WISHLIST_ITEM } from '../../Wishlist/wishListQueries';
 
-const ProductCard = ({ product, wishListId }) => {
+const AddedWishListProductCard = ({ product, wishListId }) => {
   const productId = product.id;
   return (
     <ApolloConsumer>
@@ -89,10 +89,10 @@ const ProductCard = ({ product, wishListId }) => {
   );
 };
 
-ProductCard.propTypes = {
+AddedWishListProductCard.propTypes = {
   product: PropTypes.object.isRequired
 };
 
-ProductCard.defaultProps = {};
+AddedWishListProductCard.defaultProps = {};
 
-export default ProductCard;
+export default AddedWishListProductCard;
