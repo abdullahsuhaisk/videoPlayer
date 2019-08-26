@@ -33,7 +33,6 @@ const Like = ({ setIsLiked }) => {
       mutation={ADD_WATCH_LIST}
       variables={{ prodLinkId: PRODLINK_ID }}
       refetchQueries={() => {
-        console.log('refetchQueries');
         return [
           {
             query: GET_CONSUMER_WATCHLIST
