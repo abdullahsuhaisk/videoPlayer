@@ -60,16 +60,16 @@ const ProductsAll = () => {
                 return null;
               }
               const { hotSpots } = data.prodLink;
-              console.log(hotSpots);
+              // console.log(hotSpots);
               const products = hotSpots
                 .map((hotSpot) => {
-                  console.log(hotSpot.product);
+                  // console.log(hotSpot.product);
                   return hotSpot.product;
                 })
                 .reduce((acc, product) => {
-                  console.log(acc);
+                  // console.log(acc);
                   if (acc.length > 0) {
-                    console.log(acc);
+                    // console.log(acc);
                     for (let i = 0; i < acc.length; i += 1) {
                       if (acc[i].id === product.id) {
                         break;
@@ -79,10 +79,10 @@ const ProductsAll = () => {
                   } else {
                     acc.push(product);
                   }
-                  console.log(product);
+                  // console.log(product);
                   return acc;
                 }, []);
-              console.log(products);
+              // console.log(products);
 
               return (
                 <FlickityProductCard products={products} key={products.id} />

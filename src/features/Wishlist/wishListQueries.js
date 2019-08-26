@@ -32,6 +32,8 @@ export const GET_CONSUMER_WISHLIST = gql`
           }
           images {
             id
+            imageUrl
+            thumbnailUrl
           }
           brand {
             id

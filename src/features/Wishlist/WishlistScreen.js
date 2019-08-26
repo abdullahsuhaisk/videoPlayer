@@ -1,18 +1,17 @@
 import React from 'react';
-import { Query, ApolloConsumer } from 'react-apollo';
+import { Query } from 'react-apollo';
 
 import EmptyWishList from './EmptyWishList';
 import WishListGroup from './WishListGroup';
 // import ProductWishList from './ProductWishList/ProductWishList';
-import ShowConsumersWishList from './PreComponent/showConsumersWishList';
+// import ShowConsumersWishList from './PreComponent/showConsumersWishList';
 // import AddNewWishList from './PreComponent/addNewWishList';
 import { GET_CONSUMER_WISHLIST } from './wishListQueries';
 import WishListInside from './WishListInside';
 
 const WishlistScreen = () => {
   const [whichWishList, setWhichWishList] = React.useState(null);
-  const [wishList, setWishList] = React.useState(null);
-
+  // const [wishList, setWishList] = React.useState(null);
   return (
     <>
       <Query query={GET_CONSUMER_WISHLIST}>

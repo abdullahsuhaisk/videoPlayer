@@ -2246,6 +2246,9 @@
 .AddToWishlist--information--wishlistItem:hover {
   border: solid 1px #83329c;
 }
+.AddToWishlist--information--wishlistItemSelected {
+  border: solid 1px #83329c;
+}
 .AddToWishlist--information--wishlistItem--titleItems {
   display: flex;
   flex-direction: column;
