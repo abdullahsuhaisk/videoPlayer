@@ -55,7 +55,7 @@ const Player = ({ width, height, poster, sources }) => {
   useEffect(() => {
     playerRef.current = videojs(videoRef.current, {
       poster,
-      controls: false,
+      controls: true,
       sources,
       responsive: true,
       liveui: true,
