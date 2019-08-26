@@ -12,7 +12,7 @@ const Profile = () => {
   const [addressEdit, setAddressEdit] = useState(0);
 
   return (
-    <ProfileWrapper>
+    <>
       <div className="vb--tabs--profile-container">
         <ProfileImage
           style={{ backgroundImage: 'url(/images/profilScreen.png)' }}
@@ -30,7 +30,7 @@ const Profile = () => {
           )}
         </div>
       </div>
-    </ProfileWrapper>
+    </>
   );
 };
 export default Profile;
