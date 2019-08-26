@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+import { Mutation } from 'react-apollo';
 import PropTypes from 'prop-types';
+import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from './wishListQueries';
 
 const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   // TODO: Needs Refactor
+  console.log(whisList);
   const { products } = whisList;
   const totalProduct = products ? products.length : null;
   let productRender = [];
@@ -40,15 +43,50 @@ const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   }
 
   return (
-    <div className="WishlistCollection" onClick={() => setWhichWishList(id)}>
-      <div className="WishlistCollection--gallery">{productRender}</div>
-      <div className="WishlistCollection--collection">
-        <h2 className="WishlistCollection--collection-h2">{name}</h2>
-        <span className="WishlistCollection--collection-span">
-          {totalProduct} pieces
-        </span>
-      </div>
-    </div>
+    <Mutation
+      mutation={DELETE_WISH_LIST}
+      refetchQueries={() => {
+        return [
+          {
+            query: GET_CONSUMER_WISHLIST
+          }
+        ];
+      }}>
+      {(deleteConsumerWishList) => {
+        return (
+          <div
+            className="WishlistCollection"
+            onClick={() => setWhichWishList(id)}
+            style={{ position: 'relative' }}>
+            <div className="WishlistCollection--gallery">{productRender}</div>
+            <div className="WishlistCollection--collection">
+              <h2 className="WishlistCollection--collection-h2">{name}</h2>
+              <span className="WishlistCollection--collection-span">
+                {totalProduct} pieces
+              </span>
+            </div>
+            <span
+              style={{
+                position: 'absolute',
+                top: '5px',
+                right: 5,
+                fontSize: 'larger',
+                color: 'brown',
+                cursor: 'pointer'
+              }}
+              onClick={() =>
+                deleteConsumerWishList({
+                  variables: {
+                    whisListId: parseInt(whisList.id, 10)
+                  }
+                })
+              }>
+              X
+            </span>
+          </div>
+        );
+      }}
+    </Mutation>
   );
 };
 

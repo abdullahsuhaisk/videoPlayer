@@ -25,7 +25,9 @@ const AddItemToWishListFromProductCard = ({ client }) => {
   const wishListItemClassName = 'AddToWishlist--information--wishlistItem ';
   const selectedItemClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItemSelected';
-  const [searchWishList, setSearchWishList] = useState();
+  const [searchWishList, setSearchWishList] = useState(
+    'Create New Wish List Name'
+  );
   const [PRODUCTiD, setPRODUCTiD] = useState(null);
   const wishListInsideProductsId = [];
   const hasProductWishList = [];
@@ -124,7 +126,9 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                 : null
                             );
                           return (
-                            <Mutation mutation={DELETE_WISHLIST_ITEM}>
+                            <Mutation
+                              mutation={DELETE_WISHLIST_ITEM}
+                              key={whisList.name + whisList.id}>
                               {(deleteWishListItem) => {
                                 return (
                                   <div
