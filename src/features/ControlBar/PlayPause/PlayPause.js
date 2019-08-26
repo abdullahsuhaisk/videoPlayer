@@ -17,7 +17,9 @@ const PlayPause = ({ videoPlayer, client }) => {
         player: {
           __typename: 'Player',
           playingState: ' PLAY'
-        }
+        },
+        isLoginFormShowing: false,
+        isProfileOpen: false
       }
     });
     videoPlayer.play();
