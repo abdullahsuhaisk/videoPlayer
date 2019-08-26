@@ -1,9 +1,18 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query, withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import { GET_COUNTRIES } from '../../components/Base/BaseQueries';
 
-const ProfileShow = ({ consumer, setShowingProfile }) => {
+const LOGOUT = gql`
+  mutation logout {
+    logout @client {
+      displayName
+    }
+  }
+`;
+
+const ProfileShow = ({ consumer, setShowingProfile, client }) => {
   // console.log(consumer);
   const name = consumer && consumer.name;
   const Birthdate = consumer && consumer.birthDate;
@@ -14,12 +23,42 @@ const ProfileShow = ({ consumer, setShowingProfile }) => {
   const image = consumer.coverImageUrl
     ? consumer.coverImageUrl
     : '/images/dp.png';
+
+  const handleLogout = () => {
+    client.mutate({ mutation: LOGOUT });
+  };
   return (
     <React.Fragment>
-      <div className="Profile">
+      <div className="Profile" style={{ position: 'relative' }}>
         <div className="profile--head">
           <img src={image} className="profile--head--img" alt="Profile" />
           <label className="profile--head--label">Profile</label>
+        </div>
+        <div
+          className="profile-logout-container"
+          style={{ position: 'absolute', right: 31, top: 20 }}>
+          <button
+            style={{
+              color: '#ffffff',
+              height: '35px',
+              width: '100px',
+              borderRadius: '8px',
+              backgroundColor: '#83329c',
+              outline: 0,
+              border: 0,
+              overflow: 'visible',
+              cursor: 'pointer',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              letterSpacing: '0.43px',
+              padding: 0,
+              marginTop: '13px',
+              display: 'inline'
+            }}
+            className="profile-logout-button"
+            onClick={() => handleLogout()}>
+            Logout
+          </button>
         </div>
         <div className="profile--info">
           <label className="profile--info--label">Name</label>
@@ -80,4 +119,4 @@ const ProfileShow = ({ consumer, setShowingProfile }) => {
   );
 };
 
-export default ProfileShow;
+export default withApollo(ProfileShow);

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import AddToCardButtonWrapper from './AddToCardButton.style';
 import {
   GET_CONSUMER_CART,
   ADD_PRODUCT_TO_CART,
