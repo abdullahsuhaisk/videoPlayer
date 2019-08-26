@@ -53,8 +53,9 @@ const WatchListButton = ({ client }) => {
   }, []);
   return (
     <Query query={GET_CONSUMER_WATCH_LISTID}>
-      {({ data: { consumer }, loading, error }) => {
+      {({ data, loading, error }) => {
         if (loading || error) return null;
+        const consumer = data.consumer ? data.consumer : null;
         setWatchlist(consumer ? consumer.watchList : null);
         //  watchlist && watchlist.filter((item) => item === PRODLINK_ID);
         return watchListButtonManager === true ? (
