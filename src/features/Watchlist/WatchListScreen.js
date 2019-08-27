@@ -6,6 +6,7 @@ import 'flickity-imagesloaded';
 import EmptyWatchList from './EmptyWatchList';
 import WatchListCard from './WatchListCard';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
+import WachtListContentLoader from '../../components/ContentLoader/WachtListContentLoader';
 
 const WatchListScreen = () => {
   // TODO: ADD THE UPDATE CACHE METHOD
@@ -13,7 +14,10 @@ const WatchListScreen = () => {
     <>
       <Query query={GET_CONSUMER_WATCHLIST}>
         {({ loading, error, data }) => {
-          if (loading || error) {
+          if (loading) {
+            return <WachtListContentLoader />;
+          }
+          if (error) {
             return null;
           }
           const { consumer } = data;

@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import ProductCard from './ProductCard';
 
 import 'flickity-imagesloaded';
+import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -45,9 +46,10 @@ const ProductList = () => {
   return (
     <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
       {({ loading, error, data }) => {
-        {
-          /* console.log(data); */
+        if (loading) {
+          return <ProductCardContentLoader />;
         }
+
         if (loading || error) {
           return null;
         }

@@ -5,6 +5,7 @@ import 'flickity-imagesloaded';
 import { GET_SUGGESTED_PRODUCTS } from './ProductQueries';
 import { getProdLinkId } from '../../../hooks/ProdLinkHook';
 import ProductCard from './ProductCard';
+import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
 const SuggestedProducts = () => {
@@ -13,7 +14,10 @@ const SuggestedProducts = () => {
   return (
     <Query query={GET_SUGGESTED_PRODUCTS} variables={{ prodLinkId }}>
       {({ data, loading, error }) => {
-        if (loading || error) return null;
+        if (loading) {
+          return <ProductCardContentLoader />;
+        }
+        if (error) return null;
         const { prodLink } = data;
         const suggestedProducts =
           prodLink && prodLink.suggestedProducts && prodLink.suggestedProducts;

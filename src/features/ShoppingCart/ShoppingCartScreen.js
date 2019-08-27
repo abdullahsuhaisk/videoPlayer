@@ -6,6 +6,7 @@ import ShoppingCartTotal from './ShoppingScreens/ShoppingCartTotal';
 import CheckoutScreen from './Checkout/CheckoutScreen';
 import { GET_CONSUMER_TOTAL_PRICE } from './shoppingCartQueries';
 import { GET_PERSON } from '../ProfileNew/ProfileQueries';
+import ShoppingCardContentLoader from '../../components/ContentLoader/ShoppingCartContentLoader';
 
 // Other components needs
 // It will manage the cart and wizard status with like a toogle state and render shoppingCart or Checkout
@@ -15,8 +16,10 @@ const ShoppingCartScreen = ({ client }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [checkOutSteps, setCheckOutSteps] = React.useState(1);
   const [isHasConsumer, setIsHasConsumer] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     client
       .query({
         query: GET_CONSUMER_TOTAL_PRICE,
@@ -31,12 +34,20 @@ const ShoppingCartScreen = ({ client }) => {
             )
           : setTotalPrice(0);
         setIsHasConsumer(true);
+        setIsLoading(false);
       })
-      .catch(() => setIsHasConsumer(false));
+      .catch(() => {
+        setIsHasConsumer(false);
+        setIsLoading(false);
+      });
   }, [totalPrice, checkValue]);
 
   if (!isHasConsumer) {
     return null;
+  }
+  console.log(isLoading);
+  if (isLoading) {
+    return <ShoppingCardContentLoader width={700} height={70} />;
   }
   return (
     <div className="ShoppingCartContainer" style={{ height: 630 }}>

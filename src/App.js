@@ -7,6 +7,7 @@ import OverlayScreen from './features/Overlay/OverlayScreen';
 // import { PRODLINK_ID } from './common/GrapqlConstant';
 import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
+import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
   const prodLinkId = getProdLinkIdApollo(client);
@@ -15,7 +16,9 @@ const App = ({ client }) => {
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
       <Query query={GET_VIDEO} variables={{ prodLinkId: prodLinkId }}>
         {({ loading, error, data }) => {
-          if (loading || error) return null;
+          if (loading) return <MainLoader />;
+          // console.log(data)
+          if (error) return null;
           // console.log(data)
           const { video } = data.prodLink;
           const { image } = data.prodLink;

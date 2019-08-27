@@ -2,6 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
+import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 
 import 'flickity-imagesloaded';
 
@@ -48,7 +49,10 @@ const GET_PRODLINK_ID = gql`
 const ProductsAll = () => {
   return (
     <Query query={GET_PRODLINK_ID}>
-      {({ data: { player }, error }) => {
+      {({ data: { player }, error, loading }) => {
+        if (loading) {
+          return <ProductCardContentLoader />;
+        }
         if (error) return null;
         const prodLinkIdString = player.prodLinkId;
         const prodLinkId = parseInt(prodLinkIdString, 10);
