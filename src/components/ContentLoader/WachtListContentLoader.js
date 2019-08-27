@@ -2,6 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 export default function WachtListContentLoader() {
+  // TODO: Get a props and Templatable
   return (
     <div className="VideoPlayerContainer">
       <ContentLoader
