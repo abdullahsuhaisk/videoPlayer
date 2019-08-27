@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { ApolloConsumer } from 'react-apollo';
-import { Wrapper } from './HotspotCard.style';
+import { Wrapper, BouncyDiv } from './HotspotCard.style';
+
 import { PLAYER } from '../../common/constants';
 
 const HotspotCard = ({ styles, hotspot }) => {
@@ -11,21 +13,26 @@ const HotspotCard = ({ styles, hotspot }) => {
     <ApolloConsumer>
       {(client) => {
         return (
-          <Wrapper
-            className="vb--hotspot-card"
-            styles={styles}
-            onClick={() =>
-              client.writeData({
-                data: {
-                  player: { __typename: 'Player', playingState: PLAYER.PAUSED }
-                }
-              })
-            }>
-            <div
-              className="vb--hotspot-card-product-image"
-              style={{ backgroundImage: `url(${product.image.imageUrl}` }}
-            />
-          </Wrapper>
+          <BouncyDiv>
+            <Wrapper
+              className="vb--hotspot-card"
+              styles={styles}
+              onClick={() =>
+                client.writeData({
+                  data: {
+                    player: {
+                      __typename: 'Player',
+                      playingState: PLAYER.PAUSED
+                    }
+                  }
+                })
+              }>
+              <div
+                className="vb--hotspot-card-product-image"
+                style={{ backgroundImage: `url(${product.image.imageUrl}` }}
+              />
+            </Wrapper>
+          </BouncyDiv>
         );
       }}
     </ApolloConsumer>
