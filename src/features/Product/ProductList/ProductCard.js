@@ -4,20 +4,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloConsumer } from 'react-apollo';
-import styled, { keyframes } from 'styled-components';
-import { bounceInLeft } from 'react-animations';
-
-const bounceAnimation = keyframes`${bounceInLeft}`;
-export const BouncyDiv = styled.div`
-  animation: 1s ${bounceAnimation};
-`;
+import Bouncy from '../../../components/HOCS/AnimationsHocs/Bouncy';
 
 const ProductCard = ({ product }) => {
   const productId = product.id;
   return (
     <ApolloConsumer>
       {(client) => (
-        <BouncyDiv>
+        <Bouncy direction="left">
           <div className="Product-Card">
             <figure className="productCard--imageWrapper">
               <img
@@ -81,7 +75,7 @@ const ProductCard = ({ product }) => {
               Details
             </a>
           </div>
-        </BouncyDiv>
+        </Bouncy>
       )}
     </ApolloConsumer>
   );

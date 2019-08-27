@@ -45,10 +45,10 @@ const ShoppingCartScreen = ({ client }) => {
   if (!isHasConsumer) {
     return null;
   }
-  console.log(isLoading);
-  if (isLoading) {
-    return <ShoppingCardContentLoader width={700} height={70} />;
-  }
+  // console.log(isLoading);
+  // if (isLoading) {
+  //   return <ShoppingCardContentLoader width={700} height={70} />;
+  // }
   return (
     <div className="ShoppingCartContainer" style={{ height: 630 }}>
       {checkoutShowing === false ? (
