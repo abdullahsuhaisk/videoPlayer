@@ -12,11 +12,14 @@ const WatchListScreen = () => {
   return (
     <>
       <Query query={GET_CONSUMER_WATCHLIST}>
-        {({ loading, error, data: { consumer } }) => {
+        {({ loading, error, data }) => {
           if (loading || error) {
             return null;
           }
-          console.log(consumer);
+          const { consumer } = data;
+          if (!consumer) {
+            return <div>You need to log-in to see your watchList.</div>;
+          }
           const { watchList } = consumer;
           const favorites = consumer.favorites ? consumer.favorites : null;
           const { prodLinks } = favorites;

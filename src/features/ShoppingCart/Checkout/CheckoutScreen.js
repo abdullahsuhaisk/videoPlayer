@@ -3,7 +3,6 @@ import Checkout from './Checkout';
 import CheckoutResult from './CheckoutResult';
 
 const CheckoutScreen = ({ checkOutSteps, totalPrice }) => {
-  console.log(checkOutSteps);
   switch (checkOutSteps) {
     case 1:
       return <Checkout />;
