@@ -37,6 +37,7 @@ const ProductDetail = () => {
         </Flickity>
         <div className="ProductDetail--information">
           <i className="ProductDetail--information--close"></i>
+          {/* ProductDetail--information--badge--in-wishlist */}
           <i className="ProductDetail--information--badge"></i>
           <div className="ProductDetail--information--title">
             <h2 className="ProductDetail--information--title--h2">

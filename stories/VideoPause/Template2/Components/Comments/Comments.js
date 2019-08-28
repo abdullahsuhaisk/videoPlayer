@@ -40,6 +40,7 @@ const Comments = () => {
         <div className="Comments--information">
           <i className="Comments--information--close"></i>
           <i className="Comments--information--back"></i>
+			<div className="Comments--information--container">
             <div className="Comments--information--head">
               <div className="Comments--information--head--rating">
                 <div className="Comments--information--head--rating--total">
@@ -114,7 +115,6 @@ const Comments = () => {
                     <i className="Comments--information--head--addComment--submit"></i>
               </div>
             </div>
-		<div className="Comments--information--container">
           <div className="Comments--information--list">
             <div className="Comments--information--list--item">
                 <div className="Comments--information--list--item--profil">

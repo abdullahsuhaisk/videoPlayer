@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Overlay = (props) => {
+const Overlay = () => {
   return (
     <React.Fragment>
       <div className="mainMenu--background"></div>
-      <div className="Overlay"></div>
     </React.Fragment>
   );
 };
