@@ -1,19 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddressShow from './AddressShow';
+import AddressEdit from './AddressEdit';
+
+const updateAdress = async (Adress, setShowingAddress, setSelectedAdress) => {
+  setShowingAddress(false);
+  setSelectedAdress(Adress);
+};
 
 const ProfileAddressScreen = ({ addresses }) => {
-  return (
-    <div className="Adresses" style={{ height: 520 }}>
+  const [ShowingAddress, setShowingAddress] = useState(true);
+  const [SelectedAdress, setSelectedAdress] = useState({});
+
+  return ShowingAddress === true ? (
+    <div className="Adresses">
       <div className="adresses--head">
         <label className="profile--head--label">Adresses</label>
       </div>
-      {addresses.length !== 0
-        ? addresses &&
-          addresses.map((address) => {
-            return <AddressShow address={address} key={address.id} />;
-          })
-        : 'Empty Address'}
+      <div className="Adresses--container">
+        {addresses.length !== 0
+          ? addresses &&
+            addresses.map((address) => {
+              return (
+                <AddressShow
+                  address={address}
+                  key={address.id}
+                  updateAdress={updateAdress}
+                  setShowingAddress={setShowingAddress}
+                  setSelectedAdress={setSelectedAdress}
+                />
+              );
+            })
+          : 'Empty Address'}
+      </div>
     </div>
+  ) : (
+    <AddressEdit
+      address={SelectedAdress}
+      ShowingAddress={ShowingAddress}
+      setShowingAddress={setShowingAddress}
+      addressId={SelectedAdress.id}
+    />
   );
 };
 
