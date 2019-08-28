@@ -18,7 +18,11 @@ const Share = ({ client }) => {
   }, []);
 
   return (
-    <div className="stats--content">
+    <div
+      className="stats--content"
+      onClick={() => {
+        console.log('Clicked');
+      }}>
       <i className="stats--content--shareIcon loved"></i> {shareCount}
     </div>
   );

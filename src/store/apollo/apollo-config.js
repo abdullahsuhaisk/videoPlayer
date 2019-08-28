@@ -74,6 +74,7 @@ const setInitialCache = () => {
     },
     isLoginFormShowing: false,
     isRegisterFormShowing: false,
+    isShareModelShowing: false,
     isForgotPasswordFormShowing: false,
     productIdInDetails: null,
     navigationDialogShowing: false,
