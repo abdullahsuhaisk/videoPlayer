@@ -1,5 +1,4 @@
 import React from 'react';
-import { VideoProgressBarWrapper } from './VideoProgressBar.style';
 import HotspotPoints from './HotspotPoints/HotspotPoints';
 
 const VideoProgressBar = ({ videoPlayer }) => {
@@ -23,7 +22,7 @@ const VideoProgressBar = ({ videoPlayer }) => {
   };
 
   return (
-    <VideoProgressBarWrapper>
+    <div className="videoProgressBar">
       <input
         type="range"
         value={progressBarHandler()}
@@ -33,7 +32,7 @@ const VideoProgressBar = ({ videoPlayer }) => {
       />
       <progress value={progressBarHandler()} max="100"></progress>
       <HotspotPoints videoPlayer={videoPlayer} />
-    </VideoProgressBarWrapper>
+    </div>
   );
 };
 

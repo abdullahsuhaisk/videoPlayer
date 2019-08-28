@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartWrapper } from './Cart.style';
+// import { CartWrapper } from './Cart.style';
 
 const ControlBarShoppingIcon = () => {
   const cartHandler = () => {
@@ -7,13 +7,13 @@ const ControlBarShoppingIcon = () => {
     return;
   };
   return (
-    <CartWrapper>
+    <div>
       <button
         className="cartBtn"
         onClick={() => {
           cartHandler();
         }}></button>
-    </CartWrapper>
+    </div>
   );
 };
 

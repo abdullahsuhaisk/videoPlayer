@@ -1,5 +1,4 @@
 import React from 'react';
-import { JumpToProductWrapper } from './JumpToProduct.style';
 
 const JumpToProduct = () => {
   const jumpToProductHandler = () => {
@@ -7,13 +6,13 @@ const JumpToProduct = () => {
     return;
   };
   return (
-    <JumpToProductWrapper>
+    <div>
       <button
         className="jumpToProductBtn"
         onClick={() => {
           jumpToProductHandler();
         }}></button>
-    </JumpToProductWrapper>
+    </div>
   );
 };
 

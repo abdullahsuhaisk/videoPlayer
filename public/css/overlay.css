@@ -2935,3 +2935,284 @@
   color: #4c5055;
   text-transform: uppercase;
 }
+.ControlBar {
+  display: block;
+  width: 100%;
+  height: 44px;
+  background-color: rgb(255,255,255,.4);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: auto;
+}
+.ControlBar .videoControlsContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  padding: 0 26px;
+}
+.ControlBar .videoControlsContainer .leftContainer {
+  display: flex;
+  align-items: center;
+}
+.ControlBar .videoControlsContainer .rightContainer {
+  display: flex;
+  align-items: center;
+}
+.volumControls {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.volumControls .soundIcon {
+  width: 19px;
+  height: 17px;
+  background: url(/images/sound.svg) center / contain no-repeat;
+}
+.volumControls .muted {
+  background: url(/images/volume-off.svg) center / contain no-repeat;
+}
+.volumControls:hover .volumControl {
+  display: block;
+}
+.volumControls .volumControl {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 44px;
+  cursor: pointer;
+  background: transparent;
+  display: none;
+}
+.volumControls .volumControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  margin-top: -3.62px;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+.volumControls .volumControl::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.volumControls .volumControl::-ms-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.volumControls .volumControl::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.volumControls .volumControl:focus {
+  outline: none;
+}
+.volumControls .volumControl::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 1.3px;
+}
+.volumControls .volumControl::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 1.3px;
+}
+.volumControls .volumControl:focus::-webkit-slider-runnable-track {
+  background: #fff;
+}
+.videoProgressBar {
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  top: -9px;
+}
+.videoProgressBar progress, .videoProgressBar input {
+  width: 100%;
+}
+.videoProgressBar progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  height: 2px;
+  display: block;
+  position: absolute;
+  bottom: 5px;
+  pointer-events: none;
+  /* For IE10 */
+  color: #00acd8;
+}
+.videoProgressBar:hover progress {
+  height: 5px;
+}
+.videoProgressBar:hover .HotspotPoint {
+  top: 4px;
+  transition-property: none;
+}
+.videoProgressBar progress[value]::-webkit-progress-value {
+  background-color: #00acd8;
+}
+.videoProgressBar progress[value]::-moz-progress-bar {
+  background-color: #00acd8;
+}
+.videoProgressBar input[type="range"] {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -moz-apperance: none !important;
+  /* height: 4px; */
+  background: none;
+  outline: none !important;
+  border: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.videoProgressBar input[type="range"]:focus {
+  outline: none;
+  border: none;
+}
+.videoProgressBar input[type="range"]::-moz-range-track {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+.videoProgressBar input[type="range"]::-ms-track {
+  border: inherit;
+  color: transparent;
+  /* don't drawn vertical reference line */
+  background: transparent;
+}
+.videoProgressBar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: blue;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+.videoProgressBar input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  background: blue;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+}
+.videoProgressBar input[type="range"]::-ms-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 0;
+  background: blue;
+}
+.videoProgressBar input[type="range"]::-ms-fill-lower, .videoProgressBar input[type="range"]::-ms-fill-upper {
+  background: transparent;
+}
+.videoProgressBar input[type="range"]::-ms-tooltip {
+  display: none;
+}
+.HotspotPoint {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  border: 0px solid transparent;
+  z-index: 2;
+  transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+.HotspotPoint:hover {
+  transform: scale(1.33);
+}
+.timeDisplay {
+  display: flex;
+  margin-left: 23px;
+}
+.timeDisplay p {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0;
+}
+.timeDisplay .timeDevider {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.settingsBtn {
+  width: 24px;
+  height: 24px;
+  background: url(/images/cogwheel.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-right: 20px;
+  border: none;
+}
+.settingsBtn:focus {
+  outline: none;
+}
+.playPauseBtn {
+  width: 21px;
+  height: 22px;
+  background: url(/images/play-button.svg) center / contain no-repeat;
+  margin-right: 30px;
+  cursor: pointer;
+  border: none;
+}
+.playPauseBtn.playing {
+  background: url(/images/button-pause.svg) center / contain no-repeat;
+}
+.playPauseBtn:focus {
+  outline: none;
+}
+.jumpToProductBtn {
+  width: 24px;
+  height: 24px;
+  background: url(/images/jump-to-product.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-right: 30px;
+  border: none;
+}
+.jumpToProductBtn:focus {
+  outline: none;
+}
+.fullScreenBtn {
+  width: 24px;
+  height: 20px;
+  background: url(/images/full-screen.svg) center / contain no-repeat;
+  cursor: pointer;
+  border: none;
+}
+.fullScreenBtn:focus {
+  outline: none;
+}
+.cartBtn {
+  width: 24px;
+  height: 24px;
+  background: url(/images/cart-simple-add.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-right: 20px;
+  border: none;
+}
+.cartBtn:focus {
+  outline: none;
+}

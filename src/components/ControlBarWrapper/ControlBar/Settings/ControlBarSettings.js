@@ -1,5 +1,4 @@
 import React from 'react';
-import { SettingsWrapper } from './Settings.style';
 
 const ControlBarSettings = () => {
   const settingsHandler = () => {
@@ -7,13 +6,13 @@ const ControlBarSettings = () => {
     return;
   };
   return (
-    <SettingsWrapper>
+    <div>
       <button
         className="settingsBtn"
         onClick={() => {
           settingsHandler();
         }}></button>
-    </SettingsWrapper>
+    </div>
   );
 };
 

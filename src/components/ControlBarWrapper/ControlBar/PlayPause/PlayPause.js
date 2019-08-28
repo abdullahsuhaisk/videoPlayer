@@ -1,5 +1,4 @@
 import React from 'react';
-import { PlayPauseWrapper } from './PlayPause.style';
 
 const PlayPause = ({ videoPlayer, client }) => {
   const playPauseHandler = () => {
@@ -44,11 +43,11 @@ const PlayPause = ({ videoPlayer, client }) => {
   };
 
   return (
-    <PlayPauseWrapper>
+    <div>
       <button
         className={playPauseBtnClass()}
         onClick={() => playPauseHandler()}></button>
-    </PlayPauseWrapper>
+    </div>
   );
 };
 

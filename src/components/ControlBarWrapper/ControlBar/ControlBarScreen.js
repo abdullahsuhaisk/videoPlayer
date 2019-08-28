@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { css } from 'styled-components';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-import { Wrapper } from './ControlBar.style';
 import VideoProgressBar from './VideoProgressBar/VideoProgressBar';
 import VolumControl from './VolumControl/VolumControl';
 import TimeDisplay from './TimeDisplay/TimeDisplay';
@@ -26,7 +25,7 @@ const ControlBarScreen = ({ styles }) => {
     <ApolloConsumer>
       {(client) => {
         return (
-          <Wrapper styles={styles}>
+          <div className="ControlBar">
             <VideoProgressBar videoPlayer={videoPlayer} />
             <div className="videoControlsContainer">
               <div className="leftContainer">
@@ -41,7 +40,7 @@ const ControlBarScreen = ({ styles }) => {
                 <ControlBarFullScreen videoPlayer={videoPlayer} />
               </div>
             </div>
-          </Wrapper>
+          </div>
         );
       }}
     </ApolloConsumer>

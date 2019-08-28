@@ -1,5 +1,4 @@
 import React from 'react';
-import { VolumControlWrapper } from './VolumControl.style';
 
 const VolumControl = ({ videoPlayer }) => {
   const volumeHandler = (e) => {
@@ -25,7 +24,7 @@ const VolumControl = ({ videoPlayer }) => {
   };
 
   return (
-    <VolumControlWrapper>
+    <div className="volumControls">
       <i
         className={soundsIconClass()}
         onClick={() => {
@@ -39,7 +38,7 @@ const VolumControl = ({ videoPlayer }) => {
         onChange={(e) => volumeHandler(e)}
         max="100"
       />
-    </VolumControlWrapper>
+    </div>
   );
 };
 

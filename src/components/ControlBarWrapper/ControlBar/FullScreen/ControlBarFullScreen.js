@@ -1,5 +1,4 @@
 import React from 'react';
-import { FullScreenWrapper } from './FullScreen.style';
 
 const ControlBarFullScreen = ({ videoPlayer }) => {
   const fullScreenHnadler = () => {
@@ -10,13 +9,13 @@ const ControlBarFullScreen = ({ videoPlayer }) => {
     }
   };
   return (
-    <FullScreenWrapper>
+    <div>
       <button
         className="fullScreenBtn"
         onClick={() => {
           fullScreenHnadler();
         }}></button>
-    </FullScreenWrapper>
+    </div>
   );
 };
 

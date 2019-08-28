@@ -1,5 +1,4 @@
 import React from 'react';
-import { TimeDisplayWrapper } from './TimeDisplay.style';
 
 const TimeDisplay = ({ videoPlayer }) => {
   const timeHandler = (time) => {
@@ -20,11 +19,11 @@ const TimeDisplay = ({ videoPlayer }) => {
   };
 
   return (
-    <TimeDisplayWrapper>
+    <div className="timeDisplay">
       <p>{videoPlayer ? timeHandler(videoPlayer.currentTime()) : '00:00'}</p>
       <p className="timeDevider"> / </p>
       <p>{videoPlayer ? timeHandler(videoPlayer.duration()) : '00:00'}</p>
-    </TimeDisplayWrapper>
+    </div>
   );
 };
 
