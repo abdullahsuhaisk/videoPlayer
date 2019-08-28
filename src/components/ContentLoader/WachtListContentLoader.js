@@ -12,8 +12,6 @@ export default function WachtListContentLoader() {
         primaryColor="#cadbe2"
         secondaryColor="#a9bac1">
         <rect x="0" y="10" rx="0" ry="0" width="228" height="250" />
-        <rect x="250" y="10" rx="0" ry="0" width="228" height="250" />
-        <rect x="500" y="10" rx="0" ry="0" width="228" height="250" />
       </ContentLoader>
     </div>
   );
