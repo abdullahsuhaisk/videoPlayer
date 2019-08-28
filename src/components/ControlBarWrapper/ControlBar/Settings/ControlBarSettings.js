@@ -1,7 +1,7 @@
 import React from 'react';
 import { SettingsWrapper } from './Settings.style';
 
-const Settings = () => {
+const ControlBarSettings = () => {
   const settingsHandler = () => {
     // TODO: Add Settings handler
     return;
@@ -17,4 +17,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default ControlBarSettings;

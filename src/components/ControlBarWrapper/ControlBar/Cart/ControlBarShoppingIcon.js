@@ -1,7 +1,7 @@
 import React from 'react';
 import { CartWrapper } from './Cart.style';
 
-const Cart = () => {
+const ControlBarShoppingIcon = () => {
   const cartHandler = () => {
     // TODO: Add Cart handler
     return;
@@ -17,4 +17,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default ControlBarShoppingIcon;

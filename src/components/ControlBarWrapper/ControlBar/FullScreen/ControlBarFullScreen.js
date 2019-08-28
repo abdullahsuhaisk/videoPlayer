@@ -1,7 +1,7 @@
 import React from 'react';
 import { FullScreenWrapper } from './FullScreen.style';
 
-const FullScreen = ({ videoPlayer }) => {
+const ControlBarFullScreen = ({ videoPlayer }) => {
   const fullScreenHnadler = () => {
     if (videoPlayer.isFullscreen()) {
       videoPlayer.exitFullscreen();
@@ -20,4 +20,4 @@ const FullScreen = ({ videoPlayer }) => {
   );
 };
 
-export default FullScreen;
+export default ControlBarFullScreen;

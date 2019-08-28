@@ -14,11 +14,22 @@ import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 // Wrapper Section //
 import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
-import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
 
 // Wrapper Section //
+
+// Control Bar
+import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
+import ControlBarScreen from '../ControlBarWrapper/ControlBar/ControlBarScreen';
+import VideoProgressBar from '../ControlBarWrapper/ControlBar/VideoProgressBar/VideoProgressBar';
+import PlayPause from '../ControlBarWrapper/ControlBar/PlayPause/PlayPause';
+import VolumControl from '../ControlBarWrapper/ControlBar/VolumControl/VolumControl';
+import TimeDisplay from '../ControlBarWrapper/ControlBar/TimeDisplay/TimeDisplay';
+import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/ControlBarShoppingIcon';
+import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
+
+// Control Bar
 
 // Screen Section Screen has all of logic and own State //
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
@@ -26,7 +37,6 @@ import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
-import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
 
 // Screen Section //
 
@@ -64,6 +74,12 @@ const widgetList = {
   HotspotScreen,
   ProductDetailScreen,
   ControlBarScreen,
+  PlayPause,
+  VideoProgressBar,
+  VolumControl,
+  TimeDisplay,
+  ControlBarShoppingIcon,
+  ControlBarSettings,
   // ProductCardWishlisted,
   NavigationWrapper,
   TabWrapper,
