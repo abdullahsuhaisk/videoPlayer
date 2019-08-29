@@ -1,12 +1,17 @@
 import React from 'react';
 
-const PlayPause = ({ videoPlayer, client }) => {
+import { withApollo } from 'react-apollo';
+import { getVideoJs } from '../../../../hooks/VideoJsHook';
+
+const PlayPause = ({ position, client }) => {
+  // console.log(props);
+  const videoPlayer = getVideoJs();
   const playPauseHandler = () => {
     if (videoPlayer.paused()) {
-      //Video is paussed we run the Play Handler
+      // Video is paussed we run the Play Handler
       playHandler();
     } else {
-      //Video is playing we run the Pause Handler
+      // Video is playing we run the Pause Handler
       pauseHandler();
     }
   };
@@ -51,4 +56,4 @@ const PlayPause = ({ videoPlayer, client }) => {
   );
 };
 
-export default PlayPause;
+export default withApollo(PlayPause);

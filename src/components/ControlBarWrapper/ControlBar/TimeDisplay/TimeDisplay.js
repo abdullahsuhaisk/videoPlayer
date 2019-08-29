@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
-const TimeDisplay = ({ videoPlayer }) => {
-  const timeHandler = (time) => {
+const TimeDisplay = () => {
+  const videoPlayer = getVideoJs();
+  const timeHandler = useCallback((time) => {
     const pad = (input) => {
       return input < 10 ? '0' + input : input;
     };
@@ -16,7 +18,7 @@ const TimeDisplay = ({ videoPlayer }) => {
       timeString.push(pad(Math.floor(time % 60)));
     }
     return timeString.join(':');
-  };
+  });
 
   return (
     <div className="timeDisplay">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { css } from 'styled-components';
+// import { css } from 'styled-components';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
 import VideoProgressBar from './VideoProgressBar/VideoProgressBar';

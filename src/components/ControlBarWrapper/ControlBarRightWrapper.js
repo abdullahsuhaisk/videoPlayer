@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ControlBarRightWrapper = () => {
-  return <div></div>;
+const ControlBarRightWrapper = ({ children }) => {
+  return <div className="rightContainer">{children}</div>;
 };
 
 export default ControlBarRightWrapper;

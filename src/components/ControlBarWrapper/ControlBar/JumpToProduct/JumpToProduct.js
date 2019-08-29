@@ -1,6 +1,8 @@
 import React from 'react';
+import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
 const JumpToProduct = () => {
+  const videoPlayer = getVideoJs();
   const jumpToProductHandler = () => {
     // TODO: Add jumpToProduct handler
     return;
