@@ -3,7 +3,6 @@ import { Mutation } from 'react-apollo';
 import { UPDATE_CONSUMER_ADDRESS } from './ProfileQueries';
 
 const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
-  // DELETE TO UPDATEADRESS CLASS NAME ADRESS AND ADRES UPDATE MUST BE IN SAME CONTAINER
   const [input, setInput] = useState({
     name: '',
     text: '',
@@ -27,7 +26,7 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
       [e.target.id]: e.target.value
     });
   };
-  console.log(addressId);
+  // console.log(addressId);
   return ShowingAddress === false ? (
     <Mutation
       mutation={UPDATE_CONSUMER_ADDRESS}
