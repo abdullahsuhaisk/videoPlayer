@@ -1,4 +1,8 @@
 import React from 'react';
+import { withApollo } from 'react-apollo';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
 import HotspotPoints from './HotspotPoints/HotspotPoints';
 
 const VideoProgressBar = ({ videoPlayer }) => {
@@ -36,4 +40,4 @@ const VideoProgressBar = ({ videoPlayer }) => {
   );
 };
 
-export default VideoProgressBar;
+export default withApollo(VideoProgressBar);

@@ -7,7 +7,6 @@ import WatchListScreen from '../../../features/Watchlist/WatchListScreen';
 import ShowConsumersWishList from '../../../features/Wishlist/PreComponent/showConsumersWishList';
 import ShoppingCartScreen from '../../../features/ShoppingCart/ShoppingCartScreen';
 import ProductListInScene from '../../../features/Product/ProductList/ProductListInScene';
-import ProductList from '../../../features/Product/ProductList/ProductList';
 import ProductsAll from '../../../features/Product/ProductList/ProductsAll';
 import SuggestedProducts from '../../../features/Product/ProductList/SuggestedProducts';
 
