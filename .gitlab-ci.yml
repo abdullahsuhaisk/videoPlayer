@@ -26,8 +26,6 @@ deploy-staging:
   dependencies:
     - build
   script:
-    - echo $STAGING_PROJECT_ID
-    - echo $STAGING_SERVICE_ACCOUNT
     - echo $STAGING_SERVICE_ACCOUNT > service-account.json
     - gcloud auth activate-service-account --key-file service-account.json
     # TODO: For now master brand deploy to production, its will be change when we create staging environment
