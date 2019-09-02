@@ -19,17 +19,22 @@ import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
   });
 };
 */
-const addNewWishList = ({ client }) => {
+const addNewWishList = ({
+  client,
+  classNames,
+  setWishListName,
+  wishListName,
+  title
+}) => {
   // console.log(client);
-  const [wishListName, setWishListName] = useState(
-    'Please write a wishlist name'
-  );
+  //
+  // console.log(classNames);
   return (
     <Mutation
       mutation={CREATE_NEW_WISHLIST}
       variables={{ name: wishListName }}
       refetchQueries={() => {
-        console.log('refetchQueries');
+        // console.log('refetchQueries');
         return [
           {
             query: GET_CONSUMER_WISHLIST
@@ -38,20 +43,19 @@ const addNewWishList = ({ client }) => {
       }}>
       {(createConsumerWishList, error, loading) => (
         <>
-          {error ? console.log(error) : null}
           {/* {loading ? console.log(loading) : null} */}
-          <label>Please Enter Wist list name</label>
-          <input
+          {/* <input
             onChange={(e) => setWishListName(e.target.value)}
             value={wishListName}
-          />
+          /> */}
           <button
             onClick={async (e) => {
               e.preventDefault();
               await createConsumerWishList();
               setWishListName('');
-            }}>
-            Add wishList
+            }}
+            className={classNames}>
+            {title}
           </button>
         </>
       )}

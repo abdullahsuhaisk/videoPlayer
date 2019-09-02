@@ -1,13 +1,20 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Stepper = ({ value, minValue, onValueChanged, styles }) => {
+const Stepper = ({
+  value,
+  minValue,
+  onValueChanged,
+  setCheckValue,
+  checkValue
+}) => {
   const [_value, setValue] = useState(value);
 
   const increment = useCallback(() => {
     const newValue = _value + 1;
     setValue(newValue);
     onValueChanged(newValue);
+    setCheckValue(checkValue + 1);
   }, [_value]);
 
   const decrement = useCallback(() => {
@@ -15,13 +22,14 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
       const newValue = _value - 1;
       setValue(newValue);
       onValueChanged(newValue);
+      setCheckValue(checkValue + 1);
     }
   }, [_value]);
 
   return (
     <div className="ShoppingCart--quantite">
-      <div className="ShoppingCart--quantite-iconContainer">
-        <i className="ShoppingCart--quantite-minusIcon" onClick={decrement}></i>
+      <div className="ShoppingCart--quantite-iconContainer" onClick={decrement}>
+        <i className="ShoppingCart--quantite-minusIcon"></i>
       </div>
       <div className="ShoppingCart--quantite-inputContrainer">
         <input
@@ -31,8 +39,8 @@ const Stepper = ({ value, minValue, onValueChanged, styles }) => {
           onChange={setValue}
         />
       </div>
-      <div className="ShoppingCart--quantite-iconContainer">
-        <i className="ShoppingCart--quantite-plusIcon" onClick={increment}></i>
+      <div className="ShoppingCart--quantite-iconContainer" onClick={increment}>
+        <i className="ShoppingCart--quantite-plusIcon"></i>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
-import './carousel.scss';
+// import './carousel.scss';
 import { Wrapper } from './Carousel.style';
 
 const NextArrow = ({ className, style, onClick }) => {

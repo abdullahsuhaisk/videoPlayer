@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 import Empty from '../Empty/Empty';
-import Tabs from '../Tabs/Tabs';
+// import Tabs from '../Tabs/Tabs';
 import Title from '../TitleDescription/TitleDescription';
-import Like from '../Like/Like';
+// import Like from '../Like/Like';
 import Favorite from '../Favorite/Favorite';
 import Share from '../Share/Share';
 import ProfileButton from '../../features/Auth/ProfileButton';
@@ -14,11 +14,24 @@ import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 // Wrapper Section //
 import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
-import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
 
 // Wrapper Section //
+
+// Control Bar
+import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
+import ControlBarScreen from '../ControlBarWrapper/ControlBar/ControlBarScreenReady';
+import VideoProgressBar from '../ControlBarWrapper/ControlBar/VideoProgressBar/VideoProgressBar';
+import PlayPause from '../ControlBarWrapper/ControlBar/PlayPause/PlayPause';
+import VolumControl from '../ControlBarWrapper/ControlBar/VolumControl/VolumControl';
+import TimeDisplay from '../ControlBarWrapper/ControlBar/TimeDisplay/TimeDisplay';
+import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/ControlBarShoppingIcon';
+import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
+import ControlBarRightWrapper from '../ControlBarWrapper/ControlBarRightWrapper';
+import ControlBarLeftWrapper from '../ControlBarWrapper/ControlBarLeftWrapper';
+import JumpToProduct from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProduct';
+// Control Bar
 
 // Screen Section Screen has all of logic and own State //
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
@@ -26,12 +39,11 @@ import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
-import ControlBarScreen from '../../features/ControlBar/ControlBarScreen';
 
 // Screen Section //
 
 // Tab Component //
-import { Tab } from '../Template/Tab/Tab';
+import Tab from '../Template/Tab/Tab';
 import TabWrapper from '../Template/Tab/TabWrapper';
 import Header from '../Template/Header';
 // Tab Component //
@@ -43,12 +55,12 @@ import ProductListCard from '../ProductListWrapper/ProductListCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
+import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
+import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/ControlBarFullScreen';
 
 const widgetList = {
   Empty,
-  Tabs,
   Title,
-  Like,
   Favorite,
   Share,
   ProfileButton,
@@ -65,6 +77,16 @@ const widgetList = {
   HotspotScreen,
   ProductDetailScreen,
   ControlBarScreen,
+  PlayPause,
+  VideoProgressBar,
+  VolumControl,
+  TimeDisplay,
+  ControlBarShoppingIcon,
+  ControlBarSettings,
+  ControlBarRightWrapper,
+  ControlBarLeftWrapper,
+  ControlBarFullScreen,
+  JumpToProduct,
   // ProductCardWishlisted,
   NavigationWrapper,
   TabWrapper,
@@ -74,7 +96,8 @@ const widgetList = {
   ShoppingCartScreen,
   ScreenPauseOverlayComponent,
   ScreenReadyComponent,
-  ProfileScreen
+  ProfileScreen,
+  AddToWishListScreen
 };
 
 const WidgetsRenderer = (props) => {
@@ -84,6 +107,7 @@ const WidgetsRenderer = (props) => {
 
   useEffect(() => {
     const widgetsWithComponentAndProps = widgets.map((widget) => {
+      // console.log(widget);
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;
       // Above the section I can write new props thing

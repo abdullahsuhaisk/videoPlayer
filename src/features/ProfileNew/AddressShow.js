@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import AddressEdit from './AddressEdit';
+import React from 'react';
 
-const updateAdress = async (AdressId, setShowingAddress) => {
-  console.log(AdressId);
-  setShowingAddress(false);
-};
-
-const AddressShow = ({ address }) => {
-  const [ShowingAddress, setShowingAddress] = useState(true);
-
+const AddressShow = ({
+  address,
+  updateAdress,
+  setShowingAddress,
+  setSelectedAdress
+}) => {
   // console.log(address);
   const id = address && address.id;
   const name = address && address.name;
@@ -17,8 +14,8 @@ const AddressShow = ({ address }) => {
   const phoneGsm = address && address.phoneGsm;
   const city = address && address.city;
   const alpha2Code = address && address.country && address.country.alpha2Code;
-  return ShowingAddress === true ? (
-    <>
+  return (
+    <div>
       <div className="adresses--info">
         <label className="adresses--info--label">{name}</label>
         <p className="adresses--info--p">
@@ -30,19 +27,14 @@ const AddressShow = ({ address }) => {
       <div className="adresses--editButtonWrapper">
         <button
           className="adresses--editButton"
-          onClick={() => updateAdress(id, setShowingAddress)}>
+          onClick={() =>
+            updateAdress(address, setShowingAddress, setSelectedAdress)
+          }>
           Edit
         </button>
       </div>
-      <hr className="adresses--hr" />
-    </>
-  ) : (
-    <AddressEdit
-      address={address}
-      ShowingAddress={ShowingAddress}
-      setShowingAddress={setShowingAddress}
-      addressId={id}
-    />
+      {/* <hr className="adresses--hr" /> */}
+    </div>
   );
 };
 

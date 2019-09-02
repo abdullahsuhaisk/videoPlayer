@@ -35,7 +35,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const cache = new InMemoryCache();
-const client = new ApolloClient({
+const clientInit = new ApolloClient({
   connectToDevTools: true,
   cache,
   link: authLink.concat(httpLink),
@@ -47,7 +47,11 @@ const setInitialCache = () => {
   const data = {
     template: {
       __typename: 'Template',
-      whichProductListrender: 1
+      whichProductListrender: 1,
+      whichTabItemIsRendering: 'productInThisScene',
+      tabItems: {
+        __typename: 'TABITEM'
+      }
     },
     player: {
       videoPlayer: null,
@@ -57,7 +61,8 @@ const setInitialCache = () => {
       playingState: 'READY',
       currentTime: 0,
       seekTo: -1,
-      overlayContainerClassName: ''
+      overlayContainerClassName: '',
+      prodLinkId: null
     },
     layout: {
       __typename: 'Layout',
@@ -71,12 +76,16 @@ const setInitialCache = () => {
         left: 0
       }
     },
+    whichTabItemIsRendering: 'productInThisScene',
     isLoginFormShowing: false,
     isRegisterFormShowing: false,
+    isShareModelShowing: false,
     isForgotPasswordFormShowing: false,
     productIdInDetails: null,
     navigationDialogShowing: false,
     isProfileOpen: false,
+    isAddWishListOpen: false,
+    productId: null,
     consumer: {
       __typename: 'ConsumerType',
       id: 0,
@@ -93,6 +102,6 @@ const setInitialCache = () => {
 
 setInitialCache();
 
-client.onResetStore(() => setInitialCache());
+clientInit.onResetStore(() => setInitialCache());
 
-export { client };
+export { clientInit };

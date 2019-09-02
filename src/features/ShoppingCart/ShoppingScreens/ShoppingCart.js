@@ -3,8 +3,13 @@ import { Query, Mutation } from 'react-apollo';
 import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
-import { GET_CONSUMER_CART, REMOVE_ITEM } from '../shoppingCartQueries';
+import {
+  GET_CONSUMER_CART,
+  REMOVE_ITEM,
+  GET_CONSUMER_TOTAL_PRICE
+} from '../shoppingCartQueries';
 import EmptyShoppingCart from '../EmptyShoppingCart';
+import ShoppingCardContentLoader from '../../../components/ContentLoader/ShoppingCartContentLoader';
 
 const updateConsumerCart = (cache, { deleteProductInCart }) => {
   const { consumer } = cache.readQuery({
@@ -21,12 +26,15 @@ const updateConsumerCart = (cache, { deleteProductInCart }) => {
   });
 };
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ setCheckValue, checkValue }) => {
   return (
     <>
       <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
         {({ loading, error, data }) => {
-          if (loading || error) {
+          if (loading) {
+            return <ShoppingCardContentLoader />;
+          }
+          if (error) {
             return !!error ? (
               <div>You need to log-in to see your shopping cart.</div>
             ) : null;
@@ -50,11 +58,26 @@ const ShoppingCart = () => {
               key={item.product.id}
               mutation={REMOVE_ITEM}
               variables={{ productId: item.product.id }}
+              refetchQueries={() => {
+                return [
+                  {
+                    query: GET_CONSUMER_CART
+                  },
+                  {
+                    query: GET_CONSUMER_TOTAL_PRICE
+                  }
+                ];
+              }}
               update={(cache, { data: deleteProductInCart }) =>
                 updateConsumerCart(cache, deleteProductInCart)
               }>
               {(removeItem) => (
-                <ShoppingCartItem cartItem={item} onRemoveItem={removeItem} />
+                <ShoppingCartItem
+                  cartItem={item}
+                  onRemoveItem={removeItem}
+                  setCheckValue={setCheckValue}
+                  checkValue={checkValue}
+                />
               )}
             </Mutation>
           ));

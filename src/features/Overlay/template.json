@@ -13,18 +13,13 @@
             "props": {}
           },
           {
-            "type": "NavigationScreen",
-            "props": {}
-          },
-          {
             "type": "TabWrapper",
             "props": {
               "children": [
                 {
                   "type": "Header",
                   "props": {
-                    "companyName": "Addidas",
-                    "campaingName": "Kış kampanyası"
+                    "color": "#0b2443"
                   }
                 },
                 {
@@ -32,7 +27,7 @@
                   "props": {
                     "tabs": [
                       {
-                        "title": " Product in this Scene",
+                        "title": " Product In This Scene",
                         "key": "productInThisScene"
                       },
                       {
@@ -48,7 +43,7 @@
                         "key": "wishList"
                       },
                       {
-                        "title": "WatchListScreen",
+                        "title": "Watchlist",
                         "key": "WatchListScreen"
                       },
                       {
@@ -68,6 +63,10 @@
           {
             "type": "ProductDetailScreen",
             "props": {}
+          },
+          {
+            "type": "AddToWishListScreen",
+            "props": {}
           }
         ]
       }
@@ -76,6 +75,10 @@
       "type": "ScreenReadyWrapper",
       "props": {
         "children": [
+          {
+            "type": "Header",
+            "props": {}
+          },
           {
             "type": "ScreenReadyComponent",
             "props": {}
@@ -99,8 +102,46 @@
       "props": {
         "children": [
           {
-            "type": "ControlBarScreen",
-            "props": {}
+            "type": "ControlBarLeftWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "PlayPause",
+                  "props": ""
+                },
+                {
+                  "type": "JumpToProduct",
+                  "props": ""
+                },
+                {
+                  "type": "VolumControl",
+                  "props": ""
+                },
+                {
+                  "type": "TimeDisplay",
+                  "props": ""
+                }
+              ]
+            }
+          },
+          {
+            "type": "ControlBarRightWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ControlBarShoppingIcon",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarSettings",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarFullScreen",
+                  "props": ""
+                }
+              ]
+            }
           }
         ]
       }

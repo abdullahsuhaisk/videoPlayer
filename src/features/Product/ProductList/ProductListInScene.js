@@ -1,8 +1,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import ProductCarousel from './ProductCarousel';
-import ProductCard from './ProductCard';
+import 'flickity-imagesloaded';
+import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
+import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 
 const GET_PLAYER = gql`
   query getPlayerForProductListInScene {
@@ -11,7 +13,6 @@ const GET_PLAYER = gql`
     }
   }
 `;
-
 const GET_PRODUCTS = gql`
   query getProductsForProductListInScene($prodLinkId: Int!) {
     prodLink(prodLinkId: $prodLinkId) {
@@ -46,18 +47,19 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-
 // TODO: change prodLinkId
 const ProductListInScene = () => {
+  const PRODUCT_ID = getProdLinkId();
   return (
-    <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
+    <Query query={GET_PRODUCTS} variables={{ prodLinkId: PRODUCT_ID }}>
       {({ loading, error, data }) => {
-        if (loading || error) {
+        if (loading) {
+          return <ProductCardContentLoader single />;
+        }
+        if (error) {
           return null;
         }
-
         const { hotSpots } = data.prodLink;
-
         return (
           <Query query={GET_PLAYER}>
             {({
@@ -68,34 +70,27 @@ const ProductListInScene = () => {
               const products = hotSpots
                 .filter(
                   (hotSpot) =>
-                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                    currentTime >= hotSpot.in - 3 &&
+                    currentTime <= hotSpot.out + 3
                 )
-                .map((hotSpot) => hotSpot.product)
+                .map((hotSpot) => {
+                  return hotSpot.product;
+                })
                 .reduce((acc, product) => {
                   if (acc.length > 0) {
                     for (let i = 0; i < acc.length; i += 1) {
                       if (acc[i].id === product.id) {
                         break;
                       }
-
                       acc.push(product);
                     }
                   } else {
                     acc.push(product);
                   }
-
                   return acc;
                 }, []);
-
-              {
-                /* return <ProductCarousel products={products} />; */
-              }
               return (
-                <div className="VideoPlayerContainer flex-row">
-                  {products.map((product) => (
-                    <ProductCard product={product} key={product.id} />
-                  ))}
-                </div>
+                <FlickityProductCard products={products} key={products.id} />
               );
             }}
           </Query>

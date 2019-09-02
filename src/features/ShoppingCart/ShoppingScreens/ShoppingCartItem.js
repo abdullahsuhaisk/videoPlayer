@@ -6,7 +6,8 @@ import { Mutation } from 'react-apollo';
 import Stepper from '../../../components/Stepper/Stepper';
 import {
   UPDATE_PRODUCT_IN_CART,
-  GET_CONSUMER_CART
+  GET_CONSUMER_CART,
+  GET_CONSUMER_TOTAL_PRICE
 } from '../shoppingCartQueries';
 
 const updateCache = (cache, { updateProductInCart }) => {
@@ -24,7 +25,12 @@ const updateCache = (cache, { updateProductInCart }) => {
   });
 };
 
-const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
+const ShoppingCartItem = ({
+  cartItem,
+  onRemoveItem,
+  setCheckValue,
+  checkValue
+}) => {
   return (
     <div className="ShoppingCart">
       <div className="ShoppingCart--product">
@@ -50,14 +56,27 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
       </div>
       <Mutation
         mutation={UPDATE_PRODUCT_IN_CART}
-        update={(cache, { data }) => updateCache(cache, data)}>
+        update={(cache, { data }) => updateCache(cache, data)}
+        refetchQueries={() => {
+          return [
+            {
+              query: GET_CONSUMER_CART
+            },
+            {
+              query: GET_CONSUMER_TOTAL_PRICE
+            }
+          ];
+        }}>
         {(updateProductInCart) => {
           return (
             <Stepper
+              checkValue={checkValue}
+              setCheckValue={setCheckValue}
               value={cartItem.quantity}
               onValueChanged={(value) => {
                 if (value === 0) {
                   onRemoveItem();
+                  setCheckValue(checkValue + 1);
                 }
                 if (value > 0) {
                   updateProductInCart({
@@ -75,8 +94,14 @@ const ShoppingCartItem = ({ cartItem, onRemoveItem }) => {
       <div className="ShoppingCart--priceContainer">
         <span className="ShoppingCart--price">{cartItem.product.price}</span>
       </div>
-      <div className="ShoppingCart--closeContainer">
-        <i className="ShoppingCart--close" onClick={onRemoveItem}></i>
+      <div
+        className="ShoppingCart--closeContainer"
+        onClick={() => {
+          console.log('deleted item');
+          setCheckValue(checkValue + 1);
+          return onRemoveItem();
+        }}>
+        <i className="ShoppingCart--close"></i>
       </div>
     </div>
   );

@@ -67,3 +67,41 @@ export const UPDATE_PRODUCT_IN_CART = gql`
   }
   ${CART_FRAGMENT}
 `;
+
+export const GET_CONSUMER_TOTAL_PRICE = gql`
+  query getTotalPrice {
+    consumer {
+      id
+      cart {
+        totalProductCount
+        items {
+          quantity
+          product {
+            id
+          }
+        }
+        totalPrices {
+          productCount
+          totalPrice
+          currency {
+            id
+            name
+            code
+            symbol
+          }
+        }
+      }
+    }
+  }
+`;
+export const DELETE_PRODUCT_FROM_CART = gql`
+  mutation deleteProductFromCart($productId: Int!) {
+    deleteProductInCart(productId: $productId) {
+      totalProductCount
+      totalPrices {
+        productCount
+        totalPrice
+      }
+    }
+  }
+`;

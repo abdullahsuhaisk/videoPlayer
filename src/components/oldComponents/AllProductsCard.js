@@ -1,7 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Carousel from '../Carousel/Carousel';
 import ProductCard from '../../features/Product/ProductList/ProductCard';
 import { PRODLINK_ID } from '../../common/GrapqlConstant';
 

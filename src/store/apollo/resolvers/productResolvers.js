@@ -5,7 +5,9 @@ const productResolvers = {
         return product.price;
       }
 
-      return parseFloat((product.price * (product.discount / 100)).toFixed(2));
+      return parseFloat(
+        (product.price - product.price * (product.discount / 100)).toFixed(2)
+      );
     }
   },
   Query: {},

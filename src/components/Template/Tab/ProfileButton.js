@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -20,23 +20,33 @@ const LOGOUT = gql`
   }
 `;
 
-const handleClick = (client, userInfo) => {
+const handleClick = (client, userInfo, isProfileOpen, setIsProfileOpen) => {
   if (userInfo) {
     client.writeData({ data: { isProfileOpen: true } });
     // client.mutate({ mutation: LOGOUT });
+    setIsProfileOpen(true);
+    if (isProfileOpen === true) {
+      client.writeData({ data: { isProfileOpen: false } });
+      setIsProfileOpen(false);
+    }
   } else {
+    // client.query({query:@isProfileOpen})
     client.writeData({ data: { isLoginFormShowing: true } });
   }
 };
 
 const ProfileButton = () => {
+  const [isProfileOpen, setIsProfileOpen] = React.useState(false);
   return (
     <Query query={GET_USER_INFO}>
       {({ data: { userInfo }, client }) => {
+        // console.log(client);
         return (
           <div
             className="subMenu--profileInfo"
-            onClick={() => handleClick(client, userInfo)}>
+            onClick={() =>
+              handleClick(client, userInfo, isProfileOpen, setIsProfileOpen)
+            }>
             {userInfo ? (
               <img
                 src="/images/dp.png"

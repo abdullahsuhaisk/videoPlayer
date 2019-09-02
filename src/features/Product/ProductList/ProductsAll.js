@@ -1,8 +1,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import ProductCarousel from './ProductCarousel';
-import ProductCard from './ProductCard';
+import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
+import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
+
+import 'flickity-imagesloaded';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {
@@ -36,46 +38,61 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-
+const GET_PRODLINK_ID = gql`
+  query getPlayerProdLink {
+    player @client {
+      prodLinkId
+    }
+  }
+`;
 // TODO: change prodLinkId
 const ProductsAll = () => {
   return (
-    <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
-      {({ loading, error, data }) => {
-        console.log(data);
-        if (loading || error) {
-          return null;
+    <Query query={GET_PRODLINK_ID}>
+      {({ data: { player }, error, loading }) => {
+        if (loading) {
+          return <ProductCardContentLoader />;
         }
-
-        const { hotSpots } = data.prodLink;
-
-        const products = hotSpots
-          .map((hotSpot) => hotSpot.product)
-          .reduce((acc, product) => {
-            if (acc.length > 0) {
-              for (let i = 0; i < acc.length; i += 1) {
-                if (acc[i].id === product.id) {
-                  break;
-                }
-
-                acc.push(product);
-              }
-            } else {
-              acc.push(product);
-            }
-
-            return acc;
-          }, []);
-
-        {
-          /* return <ProductCarousel products={products} />; */
-        }
+        if (error) return null;
+        const prodLinkIdString = player.prodLinkId;
+        const prodLinkId = parseInt(prodLinkIdString, 10);
+        // console.log(prodLinkId);
         return (
-          <div className="VideoPlayerContainer flex-row">
-            {products.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))}
-          </div>
+          <Query query={GET_PRODUCTS} variables={{ prodLinkId }}>
+            {({ loading, error, data }) => {
+              if (loading || error) {
+                return null;
+              }
+              const { hotSpots } = data.prodLink;
+              // console.log(hotSpots);
+              const products = hotSpots
+                .map((hotSpot) => {
+                  // console.log(hotSpot.product);
+                  return hotSpot.product;
+                })
+                .reduce((acc, product) => {
+                  // console.log(acc);
+                  if (acc.length > 0) {
+                    // console.log(acc);
+                    for (let i = 0; i < acc.length; i += 1) {
+                      if (acc[i].id === product.id) {
+                        break;
+                      }
+                      acc.push(product);
+                    }
+                  } else {
+                    acc.push(product);
+                  }
+                  // console.log(product);
+                  return acc;
+                }, []);
+              // console.log(products);
+
+              return (
+                <FlickityProductCard products={products} key={products.id} />
+              );
+            }}
+          </Query>
         );
       }}
     </Query>

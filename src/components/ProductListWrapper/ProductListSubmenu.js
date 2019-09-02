@@ -28,7 +28,7 @@ const ProductListSubmenu = () => {
                   className={
                     'subMenu--link' +
                     (whichProductListrender === 1
-                      ? 'subMenu--link--active'
+                      ? ' subMenu--link--active'
                       : '')
                   }
                   onClick={() => {

@@ -22,7 +22,7 @@ const GET_HEADER_COMPANY_CAMPAING = gql`
   }
 `;
 
-const ProductListHeader = ({ profileImage, profileName, children }) => {
+const Header = ({ children, color }) => {
   return (
     <React.Fragment>
       <Query
@@ -34,18 +34,10 @@ const ProductListHeader = ({ profileImage, profileName, children }) => {
           const { campaign, company } = data.prodLink;
           // console.log(data);
           return (
-            <div className="Header">
-              <div className="mainMenu--brandInfo">
+            <div className="Header" style={{ color }}>
+              <div className="mainMenu--brandInfo--inline">
                 <h1 className="company--name">{company.name}</h1>
                 <h5 className="campaign--name">{campaign.name}</h5>
-              </div>
-              <div className="mainMenu--profileInfo">
-                <h6 className="profile--name">{profileName}</h6>
-                <img
-                  className="profile--image"
-                  src={profileImage}
-                  alt="profileImage"
-                />
               </div>
             </div>
           );
@@ -57,11 +49,11 @@ const ProductListHeader = ({ profileImage, profileName, children }) => {
   );
 };
 
-ProductListHeader.defaultProps = {
+Header.defaultProps = {
   companyName: 'Zara',
   campaingName: 'Spring- Summer 2019 Best Creation',
   profileImage: '',
   profileName: 'Brandon Lee'
 };
 
-export default ProductListHeader;
+export default Header;

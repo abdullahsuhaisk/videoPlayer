@@ -4,6 +4,7 @@ import HotspotCard from './HotspotCard';
 import { Wrapper } from './HotspotCardList.style';
 
 const HotspotCardList = ({ styles, hotspots }) => {
+  // console.log(hotspots);
   return (
     <Wrapper className="vb--hotspot-card-list" styles={styles}>
       <div className="vb--hotspot-card-list-header">

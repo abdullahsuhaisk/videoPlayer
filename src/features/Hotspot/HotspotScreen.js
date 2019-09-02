@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import HotspotCardList from './HotspotCardList';
 import { PLAYER } from '../../common/constants';
+import { getProdLinkId } from '../../hooks/ProdLinkHook';
 
 const GET_PLAYER = gql`
   query getPlayerForHotspotScreen {
@@ -35,14 +36,16 @@ const GET_HOTSPOTS = gql`
 `;
 
 const HotspotScreen = () => {
+  const PRODLINK_ID = getProdLinkId();
   return (
-    <Query query={GET_HOTSPOTS} variables={{ prodLinkId: 1 }}>
+    <Query query={GET_HOTSPOTS} variables={{ prodLinkId: PRODLINK_ID }}>
       {({ loading, error, data }) => {
         if (loading || error) {
           return null;
         }
         // console.log(data);
         const { hotSpots } = data.prodLink;
+        // console.log(hotSpots);
 
         return (
           <Query query={GET_PLAYER}>
@@ -57,9 +60,10 @@ const HotspotScreen = () => {
               ) {
                 const activeHotSpots = hotSpots.filter(
                   (hotSpot) =>
-                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                    currentTime >= hotSpot.in - 3 &&
+                    currentTime <= hotSpot.out + 3
                 );
-
+                // console.log(activeHotSpots);
                 return <HotspotCardList hotspots={activeHotSpots} />;
               }
 

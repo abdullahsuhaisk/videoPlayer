@@ -33,7 +33,9 @@ const showConsumersWishList = () => {
           }
           const { consumer } = data;
           const { whisLists } = consumer;
-          const whisListsCount = whisLists.length;
+          const whisListsCount = whisLists && whisLists.length;
+          console.log('render show consumer wishlist', whisLists);
+
           return (
             // TODO: DELETE MUTATION ERROR TURN BACK
             <div>
