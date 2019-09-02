@@ -44,6 +44,7 @@
     "simple-react-validator": "^1.0.5",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.2.0",
+    "videjsmarker": "^1.0.1",
     "video.js": "^7.4.1",
     "videojs-dock": "^2.1.4",
     "videojs-markers": "https://github.com/spchuang/videojs-markers",
