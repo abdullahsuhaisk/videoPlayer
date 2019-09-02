@@ -47,7 +47,11 @@ const setInitialCache = () => {
   const data = {
     template: {
       __typename: 'Template',
-      whichProductListrender: 1
+      whichProductListrender: 1,
+      whichTabItemIsRendering: 'productInThisScene',
+      tabItems: {
+        __typename: 'TABITEM'
+      }
     },
     player: {
       videoPlayer: null,
@@ -72,6 +76,7 @@ const setInitialCache = () => {
         left: 0
       }
     },
+    whichTabItemIsRendering: 'productInThisScene',
     isLoginFormShowing: false,
     isRegisterFormShowing: false,
     isShareModelShowing: false,

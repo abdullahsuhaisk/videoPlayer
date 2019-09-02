@@ -43,7 +43,7 @@ import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDe
 // Screen Section //
 
 // Tab Component //
-import { Tab } from '../Template/Tab/Tab';
+import Tab from '../Template/Tab/Tab';
 import TabWrapper from '../Template/Tab/TabWrapper';
 import Header from '../Template/Header';
 // Tab Component //
