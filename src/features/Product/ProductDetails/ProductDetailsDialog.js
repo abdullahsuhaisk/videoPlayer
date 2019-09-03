@@ -179,7 +179,9 @@ const ProductDetail = ({ productId }) => {
                       ) : (
                         <div className="ProductDetail--information--price">
                           <p className="ProductDetail--information--price--value">
-                            {`${product.currency.symbol}${product.currentPrice}`}
+                            {`${product.currency &&
+                              product.currency.symbol}${product.currency &&
+                              product.currentPrice}`}
                           </p>
                         </div>
                       )}

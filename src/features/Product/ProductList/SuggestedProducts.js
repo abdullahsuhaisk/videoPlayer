@@ -21,7 +21,7 @@ const SuggestedProducts = () => {
         const { prodLink } = data;
         const suggestedProducts =
           prodLink && prodLink.suggestedProducts && prodLink.suggestedProducts;
-        console.log(suggestedProducts);
+        // console.log(suggestedProducts);
         return (
           <>
             <FlickityProductCard products={suggestedProducts} />

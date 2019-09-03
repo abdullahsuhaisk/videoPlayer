@@ -27,6 +27,8 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
   const handleLogout = () => {
     client.mutate({ mutation: LOGOUT });
     client.writeData({ data: { isProfileOpen: false } });
+    client.resetStore();
+    window.location.reload();
   };
   return (
     <React.Fragment>
