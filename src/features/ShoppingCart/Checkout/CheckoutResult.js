@@ -7,7 +7,7 @@ const CheckoutResult = ({ totalPrice }) => {
     <React.Fragment>
       <div className="PaymentSuccess">
         <div className="PaymentSuccess--illustration">
-          <img src="/images/payment-success.svg" />
+          <img src="/images/payment-success.svg" alt="Payment Success" />
         </div>
         <div className="PaymentSuccess--details">
           <p className="PaymentSuccess--details--title">Payment Successful</p>

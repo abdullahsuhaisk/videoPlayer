@@ -1,9 +1,7 @@
 import React from 'react';
 import { withApollo } from 'react-apollo';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
-import HotspotPoints from './HotspotPoints/HotspotPoints';
+import HotspotPointsScreen from './HotspotPoints/HotspotPointsScreen';
 
 const VideoProgressBar = ({ videoPlayer }) => {
   const progressBarHandler = () => {
@@ -35,7 +33,7 @@ const VideoProgressBar = ({ videoPlayer }) => {
         onChange={(e) => progressBarClickHandler(e)}
       />
       <progress value={progressBarHandler()} max="100"></progress>
-      <HotspotPoints videoPlayer={videoPlayer} />
+      <HotspotPointsScreen />
     </div>
   );
 };
