@@ -7,13 +7,16 @@ import firebase from '../../common/firebase';
 import { resolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
 import { WIDTH, HEIGHT } from '../../common/constants';
+// import { customFetch } from './customfetch';
 
 const authKey = 'vb--auth-token';
 
 firebase.auth().onIdTokenChanged(async (user) => {
   if (user) {
     const token = await user.getIdToken();
+    // console.log(user.refreshToken);
     localStorage.setItem(authKey, token);
+    localStorage.setItem('refToken', user.refreshToken);
   } else {
     localStorage.removeItem(authKey);
   }
@@ -21,6 +24,7 @@ firebase.auth().onIdTokenChanged(async (user) => {
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL_CONSUMER_URI
+  // fetch: customFetch
 });
 
 const authLink = setContext((_, { headers }) => {
