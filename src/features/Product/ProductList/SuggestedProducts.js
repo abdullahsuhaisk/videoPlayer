@@ -1,10 +1,8 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import Flickity from 'react-flickity-component';
 import 'flickity-imagesloaded';
 import { GET_SUGGESTED_PRODUCTS } from './ProductQueries';
 import { getProdLinkId } from '../../../hooks/ProdLinkHook';
-import ProductCard from './ProductCard';
 import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
