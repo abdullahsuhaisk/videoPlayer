@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
 import HotspotPoint from './HotspotPoint/HotspotPoint';
 import { getVideoJs } from '../../../../../hooks/VideoJsHook';
 import { getProdLinkId } from '../../../../../hooks/ProdLinkHook';
