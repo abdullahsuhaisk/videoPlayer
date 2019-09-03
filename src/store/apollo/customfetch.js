@@ -38,13 +38,7 @@ export const customFetch = (uri, options) => {
 
           // Create the address to grab a new token from
           // This endpoint may vary based on your Oauth server
-          var address =
-            process.env.REACT_APP_GRAPHQL_CONSUMER_URI +
-            '/o/token/?grant_type=refresh_token&refresh_token=' +
-            refresh_token;
-          //  +
-          // '&client_id=' +
-          // client_id;
+          var address = `https://securetoken.googleapis.com/v1/token?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
 
           // Execute the re-authorization request and set the promise returned to this.refreshingPromise
           this.refreshingPromise = fetch(address, { method: 'POST' }).then(

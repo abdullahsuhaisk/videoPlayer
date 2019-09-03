@@ -13,7 +13,7 @@ const authKey = 'vb--auth-token';
 
 firebase.auth().onIdTokenChanged(async (user) => {
   if (user) {
-    const token = await user.getIdToken();
+    const token = await user.getIdToken(true);
     // console.log(user.refreshToken);
     localStorage.setItem(authKey, token);
     localStorage.setItem('refToken', user.refreshToken);
