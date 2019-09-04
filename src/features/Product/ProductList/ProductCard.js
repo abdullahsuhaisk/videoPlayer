@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 import { ApolloConsumer } from 'react-apollo';
 import Bouncy from '../../../components/HOCS/AnimationsHocs/Bouncy';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addedWishList }) => {
   const productId = product.id;
+  // console.log(addedWishList);
   return (
     <ApolloConsumer>
       {(client) => (
@@ -20,18 +21,26 @@ const ProductCard = ({ product }) => {
                 alt={product.brand && product.brand.name}
               />
             </figure>
-            <div className="productCard--wishlist-statusWrapper">
-              <a
-                className="productCard--wishlist-status"
-                onClick={() =>
-                  // addProductToConsumerWishList()
-                  client.writeData({
-                    data: { isAddWishListOpen: true, productId: productId }
-                  })
-                }>
-                Add to Wish List
-              </a>
-            </div>
+            {addedWishList ? (
+              <div className="productCard--Onwishlist-statusWrapper">
+                <i className="productCard--Onwishlist-checkedIcon"></i>
+                <a className="productCard--Onwishlist-status">On WishList</a>
+              </div>
+            ) : (
+              <div className="productCard--wishlist-statusWrapper">
+                <a
+                  className="productCard--wishlist-status"
+                  onClick={() =>
+                    // addProductToConsumerWishList()
+                    client.writeData({
+                      data: { isAddWishListOpen: true, productId: productId }
+                    })
+                  }>
+                  Add to Wish List
+                </a>
+              </div>
+            )}
+
             <p className="productCard--name">
               {product.brand && product.brand.name}
             </p>
