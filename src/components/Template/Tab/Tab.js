@@ -10,6 +10,7 @@ import LikeButtonScreen from './LikeButtonScreen';
 
 import WatchListButton from './WatchListButton';
 import Share from './Share';
+import ShareModal from './ShareModal';
 
 const GET_RENDERING_TAB_ITEM = gql`
   query getRenderingItem {
@@ -43,6 +44,7 @@ function buildMenu(tabs, callback, tab, client, whichTabItemIsRendering) {
 // TODO: SCALABLE FOR TAB CONTENT
 const Tab = ({ tabs, children, client }) => {
   const [tab, setTab] = useState('productInThisScene');
+  const [showShareModal, setShowShareModal] = useState(false);
   // React.useEffect(() => {
   //   client
   //     .query({
@@ -62,7 +64,7 @@ const Tab = ({ tabs, children, client }) => {
     <Query query={GET_RENDERING_TAB_ITEM}>
       {({ data: { whichTabItemIsRendering } }, loading, error) => {
         if (loading || error) return null;
-        console.log(whichTabItemIsRendering);
+        // console.log(whichTabItemIsRendering);
         const Component = ComponentsService[whichTabItemIsRendering];
         return (
           <>
@@ -81,13 +83,16 @@ const Tab = ({ tabs, children, client }) => {
                   <div className="subMenu--statsWrapper">
                     <LikeButtonScreen />
                     <WatchListButton client={client} />
-                    <Share />
+                    <Share setShowShareModal={setShowShareModal} />
                   </div>
                   <ProfileButton />
                 </div>
                 <hr className="subMenu--underline" />
               </div>
             </div>
+            {showShareModal ? (
+              <ShareModal setShowShareModal={setShowShareModal} />
+            ) : null}
             <Component content="my products" client={client} />
           </>
         );

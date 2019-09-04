@@ -3,13 +3,13 @@
 import React from 'react';
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-
 import {
   GET_CONSUMER_WATCH_LISTID,
   ADD_WATCH_LIST,
   DELETE_WATCHED_LIST
 } from '../../../features/Watchlist/WatchListQueries';
 import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
+import FavoriteLottie from '../../Lottie/Favorites/FavoriteLottie';
 
 const GET_NUMBER_OF_VIDEOTHINGS = gql`
   query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
@@ -26,7 +26,6 @@ const GET_NUMBER_OF_VIDEOTHINGS = gql`
 function desider(List, item) {
   const listArray = [];
   List && List.map((i) => listArray.push(i.id));
-  // console.log(listArray && listArray.includes(item));
   return listArray && listArray.includes(item);
 }
 
@@ -39,6 +38,7 @@ const WatchListButton = ({ client }) => {
   const [watchListCounter, setWatchListCounter] = React.useState(null);
   React.useEffect(() => {
     setWatchListButtonManager(desider(watchlist, PRODLINK_ID));
+    // setAnimate(!desider(watchlist, PRODLINK_ID));
   }, [watchlist]);
 
   React.useEffect(() => {
@@ -53,20 +53,25 @@ const WatchListButton = ({ client }) => {
   }, []);
   return (
     <Query query={GET_CONSUMER_WATCH_LISTID}>
-      {({ data, loading, error }) => {
-        if (loading || error) return null;
+      {({ data, loading, error, refetch }) => {
+        if (loading || error) return <FavoriteLottie animate={true} />;
         const consumer = data.consumer ? data.consumer : null;
         setWatchlist(consumer ? consumer.watchList : null);
-        //  watchlist && watchlist.filter((item) => item === PRODLINK_ID);
-        return watchListButtonManager === true ? (
-          <DeleteWatchList
+        return watchListButtonManager !== true ? (
+          <AddToWatchlist
             PRODLINK_ID={PRODLINK_ID}
             watchListCounter={watchListCounter}
+            refetch={refetch}
+            setWatchListButtonManager={setWatchListButtonManager}
+            watchListButtonManager={watchListButtonManager}
           />
         ) : (
-          <AddWatchList
+          <DeleteFromWatchlist
             PRODLINK_ID={PRODLINK_ID}
             watchListCounter={watchListCounter}
+            refetch={refetch}
+            setWatchListButtonManager={setWatchListButtonManager}
+            watchListButtonManager={watchListButtonManager}
           />
         );
       }}
@@ -76,32 +81,31 @@ const WatchListButton = ({ client }) => {
 
 export default WatchListButton;
 
-const AddWatchList = ({ PRODLINK_ID, watchListCounter }) => {
-  // console.log('add');
+const AddToWatchlist = ({
+  PRODLINK_ID,
+  watchListCounter,
+  refetch,
+  setWatchListButtonManager,
+  watchListButtonManager
+}) => {
+  const [animate, setAnimate] = React.useState(true);
   return (
     <Mutation
       mutation={ADD_WATCH_LIST}
       variables={{ prodLinkId: PRODLINK_ID }}
-      refetchQueries={() => {
-        return [
-          {
-            query: GET_CONSUMER_WATCH_LISTID
-          }
-        ];
-      }}>
-      {(addProdLinkToWatchList, { data, error, loading }) => {
+      update={() => refetch()}>
+      {(updateProdLinkFromWatchList, { data, error, loading }) => {
         if (loading || error) return null;
-        {
-          /* console.log(data); */
-        }
+        const updateHandler = () => {
+          updateProdLinkFromWatchList();
+          setWatchListButtonManager(!watchListButtonManager);
+        };
         return (
           <div
-            className="stats--content"
-            onClick={() => {
-              addProdLinkToWatchList();
-            }}>
-            {/* add 'loved' class name beside 'watchlist--heartIcon' class to display red heart */}
-            <i className="stats--content--starIcon  "></i> {watchListCounter}
+            className="stats--content favorite"
+            onClick={() => setAnimate(false)}>
+            <FavoriteLottie animate={animate} switcher={updateHandler} />{' '}
+            {watchListCounter}
           </div>
         );
       }}
@@ -109,32 +113,29 @@ const AddWatchList = ({ PRODLINK_ID, watchListCounter }) => {
   );
 };
 
-const DeleteWatchList = ({ PRODLINK_ID, watchListCounter }) => {
-  // console.log('delete');
+const DeleteFromWatchlist = ({
+  PRODLINK_ID,
+  watchListCounter,
+  refetch,
+  setWatchListButtonManager,
+  watchListButtonManager
+}) => {
   return (
     <Mutation
       mutation={DELETE_WATCHED_LIST}
       variables={{ prodLinkId: PRODLINK_ID }}
-      refetchQueries={() => {
-        return [
-          {
-            query: GET_CONSUMER_WATCH_LISTID
-          }
-        ];
-      }}>
-      {(deleteProdLinkFromWatchList, { data, error, loading }) => {
+      update={() => refetch()}>
+      {(updateProdLinkFromWatchList, { data, error, loading }) => {
         if (loading || error) return null;
-        {
-          /* console.log(data); */
-        }
+        const updateHandler = () => {
+          updateProdLinkFromWatchList();
+          setWatchListButtonManager(!watchListButtonManager);
+        };
         return (
           <div
-            className="stats--content"
-            onClick={() => {
-              deleteProdLinkFromWatchList();
-            }}>
-            <i className="stats--content--starIcon favorites"></i>{' '}
-            {watchListCounter}
+            className="stats--content favorite"
+            onClick={() => updateHandler()}>
+            <i className="stats--content--starIcon"></i> {watchListCounter}
           </div>
         );
       }}

@@ -26,12 +26,14 @@ import PaymentSuccess from './VideoPause/Template1/Components/PaymentSuccess/Pay
 import EmptyAdress from './VideoPause/Template1/Components/EmptyAdress/EmptyAdress'
 import EmptyCart from './VideoPause/Template1/Components/EmptyCart/EmptyCart'
 import EmptyWatchlist from './VideoPause/Template1/Components/EmptyWatchlist/EmptyWatchlist'
+import Animation from './VideoPause/Template1/Components/Lottie/Animation'
 import FirstTemplateWrapper from './VideoPause/Template1/Wrapper'
 
 const FirstTemplateDecorator = (storyFn) => <FirstTemplateWrapper>{storyFn()}</FirstTemplateWrapper>;
 
 storiesOf('Template 1', module)
   .addDecorator(FirstTemplateDecorator)
+  .add('Animation', () => <Animation />)
   .add('Overlay', () => <Overlay />)
   .add('Header', () => <Header />)
   .add('Submenu', () => <StaticSubMenu />)

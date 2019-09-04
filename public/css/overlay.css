@@ -705,6 +705,8 @@
 .sub-Menu .subMenu--statsWrapper {
   display: flex;
   justify-content: space-evenly;
+  overflow: hidden;
+  height: 50px;
 }
 
 .sub-Menu .subMenu--statsWrapper .stats--content {
@@ -714,36 +716,37 @@
   font-weight: 600;
   color: #0b2443;
   line-height: 1.3em;
-  padding: 0 13px;
-  opacity: 0.4;
+  /* padding: 0 13px; */
+  width: 76px;
+  /* opacity: 0.4; */
   cursor: pointer;
+}
+.sub-Menu .subMenu--statsWrapper .stats--content > div{
+  margin: 0 !important;
+  margin-left: -6px !important;
 }
 .sub-Menu .subMenu--statsWrapper .stats--content:hover {
   opacity: 1;
 }
 .sub-Menu .subMenu--statsWrapper .stats--content .stats--content--starIcon {
-  background: url(/images/star-empty-big.svg) center / contain no-repeat;
-  width: 21px;
-  height: 20px;
+  background: url(/images/Star.svg) center / contain no-repeat;
+  width: 36px;
+  height: 39px;
   cursor: pointer;
   display: block;
-  margin-right: 11px;
-}
-.sub-Menu .subMenu--statsWrapper .stats--content--star:hover .stats--content--starIcon,
-.sub-Menu .subMenu--statsWrapper .favorite .stats--content--starIcon{
-  background: url(/images/star-full.svg) center / contain no-repeat;
+  margin-right: 2px;
 }
 .sub-Menu .subMenu--statsWrapper .favorite{
   opacity: 1;
 }
 .sub-Menu .subMenu--statsWrapper .stats--content .stats--content--heartIcon {
-  background: url(/images/heart-black.svg) center / contain no-repeat;
-  width: 32px;
-  height: 32px;
+  background: url(/images/like-heart.svg) center / contain no-repeat;
+  width: 36px;
+  height: 39px;
   cursor: pointer;
   display: block;
 }
-.sub-Menu
+/* .sub-Menu
   .subMenu--statsWrapper
   .stats--content--heart:hover
   .stats--content--heartIcon,
@@ -752,7 +755,7 @@
   .loved
   .stats--content--heartIcon {
   background: url(/images/heart.svg) center / contain no-repeat;
-}
+} */
 .sub-Menu
   .subMenu--statsWrapper
   .loved{
@@ -2446,11 +2449,23 @@
   width: 1588px;
   height: 850px;
   background-color: rgb(11,36,67,.95);
+  z-index: 1;
+  position: absolute;
+  top: 0;
 }
 .ShareOnSocialMedia--icons{
   display: flex;
   justify-content: space-between;
   width: 630px;
+}
+.ShareOnSocialMedia--close{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background: url(/images/close-white.svg) center / contain no-repeat;
+  cursor: pointer;
 }
 .ShareOnSocialMedia--icons--facebook{
   width: 48px;
@@ -3230,4 +3245,7 @@
 }
 .cartBtn:focus {
   outline: none;
+}
+p, span, label, h1, h2, h3, h4, img, a, li, i {
+  -webkit-backface-visibility: hidden; 
 }

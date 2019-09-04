@@ -33,6 +33,7 @@
     "react-flickity-component": "^3.3.0",
     "react-i18next": "^10.6.1",
     "react-image-gallery": "^0.8.14",
+    "react-lottie": "^1.2.3",
     "react-redux": "^6.0.1",
     "react-redux-firebase": "^2.2.6",
     "react-scripts": "^2.1.8",
