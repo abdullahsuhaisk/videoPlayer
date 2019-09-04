@@ -39,7 +39,8 @@ const Scaler = ({ children }) => {
               width: `${baseWidth}px`,
               height: `${baseHeight}px`,
               transformOrigin: 'left top',
-              transform: `scaleX(${scaleX}) scaleY(${scaleY})`
+              transform: `perspective(1px) scaleX(${scaleX}) scaleY(${scaleY})`,
+              'backface-visibility': `hidden`
             }}>
             {children}
           </div>

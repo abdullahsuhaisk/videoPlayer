@@ -35,7 +35,7 @@ const Submenu = (props) => {
               <i className="stats--content--shareIcon"></i> 325
             </div>
           </div>
-          <hr className="subMenu--underline" />
+          <hr className="subMenu--underline" style="bottom: -6.5px;"/>
         </div>
         <div
           className="subMenu--profileInfo"

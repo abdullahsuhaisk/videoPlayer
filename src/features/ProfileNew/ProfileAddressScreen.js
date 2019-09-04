@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import AddressShow from './AddressShow';
 import AddressEdit from './AddressEdit';
+import AddAddress from './AddAddress';
+import { Query, withApollo } from 'react-apollo';
+import { GET_COUNTRIES } from './ProfileQueries';
 
 const updateAdress = async (Adress, setShowingAddress, setSelectedAdress) => {
   setShowingAddress(false);
@@ -10,17 +13,17 @@ const updateAdress = async (Adress, setShowingAddress, setSelectedAdress) => {
 const ProfileAddressScreen = ({ addresses }) => {
   const [ShowingAddress, setShowingAddress] = useState(true);
   const [SelectedAdress, setSelectedAdress] = useState({});
-
   return ShowingAddress === true ? (
-    <div className="Adresses">
-      <div className="adresses--head">
-        <label className="profile--head--label">Adresses</label>
-      </div>
-      <div className="Adresses--container">
-        {addresses.length !== 0
-          ? addresses &&
-            addresses.map((address) => {
-              return (
+    <>
+      {addresses.length !== 0 ? (
+        addresses &&
+        addresses.map((address) => {
+          return (
+            <div className="Adresses">
+              <div className="adresses--head">
+                <label className="profile--head--label">Addresses</label>
+              </div>
+              <div className="Adresses--container">
                 <AddressShow
                   address={address}
                   key={address.id}
@@ -28,11 +31,24 @@ const ProfileAddressScreen = ({ addresses }) => {
                   setShowingAddress={setShowingAddress}
                   setSelectedAdress={setSelectedAdress}
                 />
-              );
-            })
-          : 'Empty Address'}
-      </div>
-    </div>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <Query query={GET_COUNTRIES}>
+          {({ data, loading, error }) => (
+            <>
+              {loading ? (
+                'loading ...'
+              ) : (
+                <AddAddress countries={data.countries} />
+              )}
+            </>
+          )}
+        </Query>
+      )}
+    </>
   ) : (
     <AddressEdit
       address={SelectedAdress}
