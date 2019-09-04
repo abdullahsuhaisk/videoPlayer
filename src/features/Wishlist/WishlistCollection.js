@@ -5,7 +5,7 @@ import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from './wishListQueries';
 
 const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   // TODO: Needs Refactor
-  console.log(whisList);
+  // console.log(whisList);
   const { products } = whisList;
   const totalProduct = products ? products.length : null;
   let productRender = [];
