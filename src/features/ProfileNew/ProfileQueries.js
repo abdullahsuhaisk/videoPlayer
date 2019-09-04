@@ -34,6 +34,16 @@ export const GET_PERSON = gql`
   }
 `;
 
+export const ADD_CONSUMER_ADDRESS = gql`
+  mutation addConsumerAddress($input: ConsumerAddressInput!) {
+    addConsumerAddress(input: $input) {
+      name
+      text
+      countryId
+      city
+    }
+  }
+`;
 export const UPDATE_CONSUMER_ADDRESS = gql`
   mutation updateConsumerAddress(
     $addressId: Int!
@@ -94,5 +104,14 @@ export const UPDATE_CONSUMER_PROFILE = gql`
 export const GET_PROFILE_SCREEN_IS_OPEN = gql`
   {
     isProfileOpen @client
+  }
+`;
+
+export const GET_COUNTRIES = gql`
+  query getCountries {
+    countries {
+      id
+      name
+    }
   }
 `;

@@ -12,6 +12,7 @@ import {
   GET_CONSUMER_WATCHLIST,
   DELETE_WATCHED_LIST
 } from '../../../features/Watchlist/WatchListQueries';
+import LikeLottie from '../../Lottie/Like/LikeLottie';
 
 const updateCache = () => {};
 
@@ -43,23 +44,119 @@ const GET_LIKED = gql`
 
 const LikeButtonScreen = ({ client }) => {
   const PRODLINK_ID = parseInt(getProdLinkIdApollo(client), 10);
+  const [isLiked, setIsLiked] = useState(false);
   return (
     <Query query={GET_LIKED} variables={{ prodLinkId: PRODLINK_ID }}>
       {({ data, error, loading }) => {
         if (loading || error) return <Like />;
-        const isLiked = data.isLiked ? data.isLiked : null;
-        return isLiked ? (
-          isLiked === true ? (
-            <UnLike PRODLINK_ID={PRODLINK_ID} />
-          ) : (
-            <Like PRODLINK_ID={PRODLINK_ID} />
-          )
+        // setIsLiked(data.isLiked ? data.isLiked : false);
+        return isLiked === true ? (
+          <UnLike PRODLINK_ID={PRODLINK_ID} setIsLiked={setIsLiked} />
         ) : (
-          <LikeDummy data={data} />
+          <Like PRODLINK_ID={PRODLINK_ID} setIsLiked={setIsLiked} />
         );
+
+        // <LikeDummy data={data} />
       }}
     </Query>
   );
+};
+
+const Like = ({ PRODLINK_ID, setIsLiked }) => {
+  const [animate, setAnimate] = React.useState(true);
+  return (
+    <Mutation
+      mutation={ADD_WATCH_LIST}
+      variables={{ prodLinkId: PRODLINK_ID }}
+      refetchQueries={() => {
+        return [
+          {
+            query: GET_CONSUMER_WATCHLIST
+          }
+        ];
+      }}>
+      {(addProdLinkToWatchList, { client, loading, error }) => {
+        if (loading || error) {
+          return 'loading';
+        }
+        const updateHandler = () => {
+          addProdLinkToWatchList();
+          // addToWatchList(client, addProdLinkToWatchList, PRODLINK_ID);
+          setIsLiked(true);
+        };
+        return (
+          <div
+            className="stats--content stats--content--heart"
+            onClick={() => {
+              setAnimate(false);
+            }}>
+            {/* <i
+              className={`stats--content--heartIcon`}
+              onClick={() => {
+                addToWatchList(client, addProdLinkToWatchList, PRODLINK_ID);
+                // setIsLiked(true);
+              }}></i> */}
+            <LikeLottie animate={animate} switcher={updateHandler} />
+            24
+          </div>
+        );
+      }}
+    </Mutation>
+  );
+};
+
+const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
+  return (
+    <Mutation
+      mutation={DELETE_WATCHED_LIST}
+      variables={{ prodLinkId: PRODLINK_ID }}
+      refetchQueries={() => {
+        return [
+          {
+            query: GET_CONSUMER_WATCHLIST
+          }
+        ];
+      }}>
+      {(deleteProdLinkFromWatchList, { client, loading, error }) => {
+        if (loading || error) {
+          return 'loading';
+        }
+        return (
+          <div className="stats--content stats--content--heart loved">
+            <i
+              className={`stats--content--heartIcon`}
+              onClick={() => {
+                deleteToWatchList(
+                  client,
+                  deleteProdLinkFromWatchList,
+                  PRODLINK_ID
+                );
+                setIsLiked(false);
+              }}></i>
+            24
+          </div>
+        );
+      }}
+    </Mutation>
+  );
+};
+
+const deleteToWatchList = async (
+  client,
+  addProdLinkToWatchList,
+  PRODLINK_ID
+) => {
+  // const { isLoggedIn } = client.readQuery({
+  //   query: IS_LOGGED_IN
+  // });
+  // if (isLoggedIn) {
+  //   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
+
+  // } else {
+  //   // client.writeData({ data: { isLoginFormShowing: true } });
+  //   return null;
+  // }
+  await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
 };
 
 const LikeDummy = ({ data }) => {
@@ -89,96 +186,6 @@ const LikeDummy = ({ data }) => {
         likeCount
       }
     </div>
-  );
-};
-
-const Like = ({ setIsLiked, PRODLINK_ID }) => {
-  // console.log('liked Component');
-  return (
-    <Mutation
-      mutation={ADD_WATCH_LIST}
-      variables={{ prodLinkId: PRODLINK_ID }}
-      refetchQueries={() => {
-        return [
-          {
-            query: GET_CONSUMER_WATCHLIST
-          }
-        ];
-      }}>
-      {(addProdLinkToWatchList, { client, loading, error }) => {
-        if (loading || error) {
-          console.log(error);
-          return 'loading';
-        }
-        return (
-          <div className="stats--content stats--content--heart">
-            <i
-              className={`stats--content--heartIcon`}
-              onClick={() => {
-                addToWatchList(client, addProdLinkToWatchList, PRODLINK_ID);
-                // setIsLiked(true);
-              }}></i>
-            24
-          </div>
-        );
-      }}
-    </Mutation>
-  );
-};
-
-const deleteToWatchList = async (
-  client,
-  addProdLinkToWatchList,
-  PRODLINK_ID
-) => {
-  // const { isLoggedIn } = client.readQuery({
-  //   query: IS_LOGGED_IN
-  // });
-  // if (isLoggedIn) {
-  //   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
-
-  // } else {
-  //   // client.writeData({ data: { isLoginFormShowing: true } });
-  //   return null;
-  // }
-  await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
-};
-
-const UnLike = ({ setIsLiked, PRODLINK_ID }) => {
-  // console.log('unliked Component');
-  return (
-    <Mutation
-      mutation={DELETE_WATCHED_LIST}
-      variables={{ prodLinkId: PRODLINK_ID }}
-      refetchQueries={() => {
-        return [
-          {
-            query: GET_CONSUMER_WATCHLIST
-          }
-        ];
-      }}>
-      {(deleteProdLinkFromWatchList, { client, loading, error }) => {
-        if (loading || error) {
-          console.log(error);
-          return 'loading';
-        }
-        return (
-          <div className="stats--content stats--content--heart loved">
-            <i
-              className={`stats--content--heartIcon`}
-              onClick={() => {
-                deleteToWatchList(
-                  client,
-                  deleteProdLinkFromWatchList,
-                  PRODLINK_ID
-                );
-                setIsLiked(false);
-              }}></i>
-            24
-          </div>
-        );
-      }}
-    </Mutation>
   );
 };
 

@@ -3,7 +3,7 @@ import { withApollo } from 'react-apollo';
 import { GET_NUMBER_OF_VIDEOTHINGS } from '../../../features/Watchlist/WatchListQueries';
 import { getProdLinkId } from '../../../hooks/ProdLinkHook';
 
-const Share = ({ client }) => {
+const Share = ({ client, setShowShareModal }) => {
   const [shareCount, setShareCount] = React.useState(null);
   const prodLinkId = getProdLinkId();
   React.useEffect(() => {
@@ -21,7 +21,7 @@ const Share = ({ client }) => {
     <div
       className="stats--content"
       onClick={() => {
-        console.log('Clicked');
+        setShowShareModal(true);
       }}>
       <i className="stats--content--shareIcon loved"></i> {shareCount}
     </div>
