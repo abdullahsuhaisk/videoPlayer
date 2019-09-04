@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 const getUrlProdLinkId = () => {
   const urlString = window.location.href;
   const url = new URL(urlString);
-  return (
+  return parseInt(
     (url.searchParams.get('prodLinkId') &&
       url.searchParams.get('prodLinkId')) ||
-    1
+      1,
+    10
   );
 };
 
@@ -24,7 +25,7 @@ const setProdLinkIdToApollo = async (client) => {
 };
 
 export function getProdLinkIdApollo(client) {
-  const [id, setId] = useState(1);
+  const [id, setId] = useState(getUrlProdLinkId());
   useEffect(() => {
     setProdLinkIdToApollo(client).then((res) => {
       setId(res);
