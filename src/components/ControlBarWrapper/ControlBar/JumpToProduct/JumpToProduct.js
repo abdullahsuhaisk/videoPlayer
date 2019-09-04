@@ -42,16 +42,16 @@ const JumpToProduct = ({ client }) => {
       );
   }, []);
 
-  useEffect(() => {
-    client
-      .query({
-        query: GET_PLAYER,
-        variables: {}
-      })
-      .then(({ data: { player } }) => console.log(player));
-  }, []);
-  console.log(currentTime);
-  console.log(hotSpots);
+  // useEffect(() => {
+  //   client
+  //     .query({
+  //       query: GET_PLAYER,
+  //       variables: {}
+  //     })
+  //     .then(({ data: { player } }) => setCurrentTime(player.currentTime));
+  // }, []);
+  // console.log(currentTime);
+  // console.log(hotSpots);
 
   const hotSpotCounts = hotSpots.length;
 

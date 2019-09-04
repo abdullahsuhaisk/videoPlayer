@@ -9,20 +9,9 @@ import WishlistCollection from './WishlistCollection';
 const WishListGroup = ({ whisLists, setWhichWishList }) => {
   // console.log(wishList);
   const items = whisLists && whisLists;
-  const flickityOptions = {
-    cellAlign: 'left',
-    contain: true,
-    resize: false,
-    pageDots: false,
-    prevNextButtons: false
-  };
   // TODO: İf whishlist hasnt any product plase dont render
   return (
-    // <div className="whisListGroupeContainer">
-    <Flickity
-      className="VideoPlayerContainer"
-      reloadOnUpdate={true}
-      options={flickityOptions}>
+    <div className="VideoPlayerContainer flex-row">
       {items
         ? items.map((whisList, key) => (
             <WishlistCollection
@@ -34,7 +23,23 @@ const WishListGroup = ({ whisLists, setWhichWishList }) => {
             />
           ))
         : null}
-    </Flickity>
+    </div>
+    // <Flickity
+    //   className="VideoPlayerContainer"
+    //   reloadOnUpdate={true}
+    //   options={flickityOptions}>
+    //   {items
+    //     ? items.map((whisList, key) => (
+    //         <WishlistCollection
+    //           whisList={whisList}
+    //           name={whisList.name}
+    //           key={whisList.id}
+    //           id={key}
+    //           setWhichWishList={setWhichWishList}
+    //         />
+    //       ))
+    //     : null}
+    // </Flickity>
     // </div>
   );
 };

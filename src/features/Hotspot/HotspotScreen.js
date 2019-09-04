@@ -40,8 +40,11 @@ const HotspotScreen = () => {
   return (
     <Query query={GET_HOTSPOTS} variables={{ prodLinkId: PRODLINK_ID }}>
       {({ loading, error, data }) => {
-        if (loading || error) {
+        if (loading) {
           return null;
+        }
+        if (error) {
+          return window.location.reload();
         }
         // console.log(data);
         const { hotSpots } = data.prodLink;

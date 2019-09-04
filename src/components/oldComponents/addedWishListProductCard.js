@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloConsumer, Mutation } from 'react-apollo';
-import { DELETE_WISHLIST_ITEM } from '../../Wishlist/wishListQueries';
+import { DELETE_WISHLIST_ITEM } from '../../features/Wishlist/wishListQueries';
 
 const AddedWishListProductCard = ({ product, wishListId }) => {
   const productId = product.id;
