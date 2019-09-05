@@ -27,7 +27,7 @@ const Header = ({ children, color }) => {
     <React.Fragment>
       <Query
         query={GET_HEADER_COMPANY_CAMPAING}
-        variables={{ prodLinkId: 1 }}
+        variables={{ prodLinkId: 9 }}
         fetchPolicy="cache-first">
         {({ data, loading, error }) => {
           if (loading || error) return null;

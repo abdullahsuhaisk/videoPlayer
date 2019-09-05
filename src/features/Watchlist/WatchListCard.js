@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation, withApollo } from 'react-apollo';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 import {
   LIKE_PRODLINK,
@@ -9,6 +9,7 @@ import {
   ADD_PRODLINK_TO_FAVORITE,
   DELETE_PRODLINK_TO_FAVORITE
 } from '../../components/Base/BaseQueries';
+import { getProdLinkIdApollo } from '../../hooks/ProdLinkHook';
 
 const Like = ({ numberOfLikes, prodLinkId }) => {
   console.log('Like');
@@ -67,10 +68,11 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
   );
 };
 
-const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
+const WatchListCard = ({ item, favorites, LikedProdLinksIds, client }) => {
   // console.log(favorites);
   // console.log(item);
-
+  const a = getProdLinkIdApollo(client);
+  console.log(a);
   const prodLinkId = item && item.id;
   const { campaign, company, video, image, brands } = item;
   // console.log(item);
@@ -84,7 +86,11 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
   return (
     <React.Fragment>
       <div className="watchlist">
-        <div className="watchlist--videoContainer">
+        <div
+          className="watchlist--videoContainer"
+          onClick={() => {
+            window.history.pushState('', '', prodLinkId);
+          }}>
           <figure className="watchlist--thumbnail">
             <img
               src={thumbnailUrl ? thumbnailUrl : '/images/watchlist1.png'}
@@ -157,7 +163,7 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
   );
 };
 
-export default WatchListCard;
+export default withApollo(WatchListCard);
 
 const LikeUnLikeScreen = ({ numberOfLikes, prodLinkId, LikedProdLinksIds }) => {
   // console.log(LikedProdLinksIds);

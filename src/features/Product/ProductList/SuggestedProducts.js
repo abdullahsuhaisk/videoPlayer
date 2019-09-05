@@ -1,16 +1,16 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
-import { GET_SUGGESTED_PRODUCTS } from './ProductQueries';
-import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+import { GET_PRODUCTS } from './ProductQueries';
+import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
 const SuggestedProducts = () => {
-  const prodLinkId = parseInt(getProdLinkId(), 10);
-  // console.log(prodLinkId);
+  const prodLinkUniqueId = getProdLinkUniqueId();
+  console.log(prodLinkUniqueId);
   return (
-    <Query query={GET_SUGGESTED_PRODUCTS} variables={{ prodLinkId }}>
+    <Query query={GET_PRODUCTS} variables={{ prodLinkUniqueId }}>
       {({ data, loading, error }) => {
         if (loading) {
           return <ProductCardContentLoader />;

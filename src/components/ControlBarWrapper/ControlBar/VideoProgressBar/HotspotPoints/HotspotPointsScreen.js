@@ -3,12 +3,16 @@ import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import HotspotPoint from './HotspotPoint/HotspotPoint';
 import { getVideoJs } from '../../../../../hooks/VideoJsHook';
-import { getProdLinkId } from '../../../../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../../../../hooks/ProdLinkHook';
 
 const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query getHotspotsForHotspotScreen(
+    $prodLinkId: Int
+    $prodLinkUniqueId: String
+  ) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       hotSpots {
         id
         in
@@ -29,12 +33,12 @@ const GET_HOTSPOTS = gql`
 const HotspotPoints = ({ client }) => {
   const [hotSpots, setHotSpots] = useState(null);
   const videoPlayer = getVideoJs();
-  const prodLinkId = getProdLinkId();
+  const prodLinkUniqueId = getProdLinkUniqueId();
   useEffect(() => {
     client
       .query({
         query: GET_HOTSPOTS,
-        variables: { prodLinkId }
+        variables: { prodLinkUniqueId }
       })
       .then(
         ({ data: { prodLink } }) => prodLink && setHotSpots(prodLink.hotSpots)

@@ -10,6 +10,7 @@ import WachtListContentLoader from '../../components/ContentLoader/WachtListCont
 
 const WatchListScreen = () => {
   // TODO: ADD THE UPDATE CACHE METHOD
+
   return (
     <>
       <Query query={GET_CONSUMER_WATCHLIST}>

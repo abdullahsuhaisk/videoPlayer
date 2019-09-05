@@ -11,7 +11,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
 import { PLAYER } from '../../common/constants';
-import { getProdLinkId } from '../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 // import { PRODLINK_ID } from '../../common/GrapqlConstant';
 
 // TODO: remove this when browser console debug is not necessary
@@ -27,9 +27,10 @@ const GET_PLAYER = gql`
 `;
 
 const GET_HOTSPOTS = gql`
-  query getHotspotsForPlayer($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query getHotspotsForPlayer($prodLinkId: Int, $prodLinkUniqueId: String) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       hotSpots {
         id
         in
@@ -43,7 +44,7 @@ const Player = ({ width, height, poster, sources }) => {
   const playerRef = useRef(null);
   const apolloClientRef = useRef(null);
   const { i18n } = useTranslation();
-  const PRODLINK_ID = getProdLinkId();
+  const prodLinkUniqueId = getProdLinkUniqueId();
 
   useEffect(() => {
     videojs.addLanguage(
@@ -98,7 +99,7 @@ const Player = ({ width, height, poster, sources }) => {
       // TODO: set prodLinkId
       const { data } = await apolloClientRef.current.query({
         query: GET_HOTSPOTS,
-        variables: { prodLinkId: PRODLINK_ID }
+        variables: { prodLinkUniqueId }
       });
       const { hotSpots } = data.prodLink;
       const markers = hotSpots.reduce((acc, hotspot) => {

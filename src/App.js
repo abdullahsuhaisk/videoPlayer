@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Query } from 'react-apollo';
 import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
 // import { PRODLINK_ID } from './common/GrapqlConstant';
-import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
+import { getProdLinkIdApollo, getProdLinkId } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
@@ -14,12 +14,11 @@ const App = ({ client }) => {
   // console.log(prodLinkId);
   return (
     <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
-      <Query query={GET_VIDEO} variables={{ prodLinkId: prodLinkId }}>
+      <Query query={GET_VIDEO} variables={{ prodLinkUniqueId: prodLinkId }}>
         {({ loading, error, data }) => {
           if (loading) return null;
-          // console.log(data)
-          if (error) return null;
-          // console.log(data)
+          if (error) return <div>No video</div>;
+          if (data.prodLink === null) return <div>No video</div>;
           const { video } = data.prodLink;
           const { image } = data.prodLink;
           const poster =
