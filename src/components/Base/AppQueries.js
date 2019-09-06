@@ -1,9 +1,10 @@
 import gql from 'graphql-tag';
 
 export const GET_VIDEO = gql`
-  query getVideoForApp($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query getVideoForApp($prodLinkId: Int, $prodLinkUniqueId: String) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       name
       header
       description

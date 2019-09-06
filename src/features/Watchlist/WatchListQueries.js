@@ -32,11 +32,13 @@ export const GET_CONSUMER_WATCHLIST = gql`
         }
         prodLinks {
           id
+          uniqueId
           name
         }
       }
       watchList {
         id
+        uniqueId
         name
         header
         description

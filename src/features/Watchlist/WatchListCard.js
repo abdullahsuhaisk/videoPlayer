@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation, withApollo } from 'react-apollo';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 import {
   LIKE_PRODLINK,
@@ -9,6 +9,7 @@ import {
   ADD_PRODLINK_TO_FAVORITE,
   DELETE_PRODLINK_TO_FAVORITE
 } from '../../components/Base/BaseQueries';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 const Like = ({ numberOfLikes, prodLinkId }) => {
   console.log('Like');
@@ -67,13 +68,10 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
   );
 };
 
-const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
-  // console.log(favorites);
-  // console.log(item);
-
-  const prodLinkId = item && item.id;
+const WatchListCard = ({ item, LikedProdLinksIds }) => {
+  const uniqueIdFromUrl = getProdLinkUniqueId();
+  const prodLinkId = item && item.uniqueId;
   const { campaign, company, video, image, brands } = item;
-  // console.log(item);
   // console.log(campaign, company, video);
   const thumbnailUrl = image && image.thumbnailUrl;
   const itemDescription = item ? item.description : 'loading';
@@ -81,10 +79,22 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
   //   (brand) => brand.logo && brand.logo.thumbnailUrl
   // );
   const companyLogo = company && company.logo && company.logo.thumbnailUrl;
+
+  const goNewVideo = (id) => {
+    if (uniqueIdFromUrl !== id) {
+      window.location.reload();
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="watchlist">
-        <div className="watchlist--videoContainer">
+        <div
+          className="watchlist--videoContainer"
+          onClick={async () => {
+            await window.history.pushState('', '', item.uniqueId);
+            goNewVideo(item.uniqueId);
+          }}>
           <figure className="watchlist--thumbnail">
             <img
               src={thumbnailUrl ? thumbnailUrl : '/images/watchlist1.png'}
@@ -157,7 +167,7 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
   );
 };
 
-export default WatchListCard;
+export default withApollo(WatchListCard);
 
 const LikeUnLikeScreen = ({ numberOfLikes, prodLinkId, LikedProdLinksIds }) => {
   // console.log(LikedProdLinksIds);

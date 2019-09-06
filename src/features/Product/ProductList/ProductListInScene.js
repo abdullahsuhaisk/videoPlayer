@@ -2,9 +2,10 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
-import { getProdLinkId } from '../../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
+import { GET_PRODUCTS_WITH_HOTSPOT } from './ProductQueries';
 
 const GET_PLAYER = gql`
   query getPlayerForProductListInScene {
@@ -13,45 +14,15 @@ const GET_PLAYER = gql`
     }
   }
 `;
-const GET_PRODUCTS = gql`
-  query getProductsForProductListInScene($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
-      id
-      hotSpots {
-        id
-        in
-        out
-        product {
-          id
-          name
-          brand {
-            id
-            name
-          }
-          image {
-            id
-            thumbnailUrl
-          }
-          price
-          discount
-          currentPrice @client
-          stockCount
-          currency {
-            id
-            name
-            code
-            symbol
-          }
-        }
-      }
-    }
-  }
-`;
+
 // TODO: change prodLinkId
 const ProductListInScene = () => {
-  const PRODUCT_ID = getProdLinkId();
+  console.log('ASDASD');
+  const PRODUCT_ID = getProdLinkUniqueId();
   return (
-    <Query query={GET_PRODUCTS} variables={{ prodLinkId: PRODUCT_ID }}>
+    <Query
+      query={GET_PRODUCTS_WITH_HOTSPOT}
+      variables={{ prodLinkUniqueId: PRODUCT_ID }}>
       {({ loading, error, data }) => {
         if (loading) {
           return <ProductCardContentLoader single />;
@@ -60,6 +31,7 @@ const ProductListInScene = () => {
           return null;
         }
         const { hotSpots } = data.prodLink;
+        console.log(hotSpots);
         return (
           <Query query={GET_PLAYER}>
             {({
