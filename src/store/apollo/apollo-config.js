@@ -66,7 +66,8 @@ const setInitialCache = () => {
       currentTime: 0,
       seekTo: -1,
       overlayContainerClassName: '',
-      prodLinkId: null
+      prodLinkId: null,
+      prodLinkUniqueId: null
     },
     layout: {
       __typename: 'Layout',

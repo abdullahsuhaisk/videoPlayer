@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import HotspotCardList from './HotspotCardList';
 import { PLAYER } from '../../common/constants';
-import { getProdLinkId } from '../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 const GET_PLAYER = gql`
   query getPlayerForHotspotScreen {
@@ -15,9 +15,13 @@ const GET_PLAYER = gql`
 `;
 
 const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query getHotspotsForHotspotScreen(
+    $prodLinkId: Int
+    $prodLinkUniqueId: String
+  ) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       hotSpots {
         id
         in
@@ -36,9 +40,9 @@ const GET_HOTSPOTS = gql`
 `;
 
 const HotspotScreen = () => {
-  const PRODLINK_ID = getProdLinkId();
+  const PRODLINK_ID = getProdLinkUniqueId();
   return (
-    <Query query={GET_HOTSPOTS} variables={{ prodLinkId: PRODLINK_ID }}>
+    <Query query={GET_HOTSPOTS} variables={{ prodLinkUniqueId: PRODLINK_ID }}>
       {({ loading, error, data }) => {
         if (loading) {
           return null;

@@ -3,44 +3,13 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
-
 import 'flickity-imagesloaded';
+import { GET_PRODUCTS } from './ProductQueries';
 
-const GET_PRODUCTS = gql`
-  query getProductsForProductList($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
-      id
-      hotSpots {
-        id
-        product {
-          id
-          name
-          brand {
-            id
-            name
-          }
-          image {
-            id
-            thumbnailUrl
-          }
-          price
-          discount
-          currentPrice @client
-          stockCount
-          currency {
-            id
-            name
-            code
-            symbol
-          }
-        }
-      }
-    }
-  }
-`;
 const GET_PRODLINK_ID = gql`
   query getPlayerProdLink {
     player @client {
+      prodLinkUniqueId
       prodLinkId
     }
   }
@@ -54,11 +23,14 @@ const ProductsAll = () => {
           return <ProductCardContentLoader />;
         }
         if (error) return null;
-        const prodLinkIdString = player.prodLinkId;
-        const prodLinkId = parseInt(prodLinkIdString, 10);
+        const prodLinkIdString = player.prodLinkUniqueId;
+        console.log(player);
+        const prodLinkIdw = prodLinkIdString;
         // console.log(prodLinkId);
         return (
-          <Query query={GET_PRODUCTS} variables={{ prodLinkId }}>
+          <Query
+            query={GET_PRODUCTS}
+            variables={{ prodLinkUniqueId: prodLinkIdw }}>
             {({ loading, error, data }) => {
               if (loading || error) {
                 return null;

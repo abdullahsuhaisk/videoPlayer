@@ -24,8 +24,8 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
     ? consumer.coverImageUrl
     : '/images/dp.png';
 
-  const handleLogout = () => {
-    client.mutate({ mutation: LOGOUT });
+  const handleLogout = async () => {
+    await client.mutate({ mutation: LOGOUT });
     client.writeData({ data: { isProfileOpen: false } });
     client.resetStore();
     window.location.reload();
