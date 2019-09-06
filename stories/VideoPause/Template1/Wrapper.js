@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import './overlay.css';
+// import './overlay.css';
+import '../../../public/css/overlay.css';
 
 const Wrapper = styled.div`
   padding: 5em;

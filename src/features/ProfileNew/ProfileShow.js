@@ -37,32 +37,6 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
           <img src={image} className="profile--head--img" alt="Profile" />
           <label className="profile--head--label">Profile</label>
         </div>
-        <div
-          className="profile-logout-container"
-          style={{ position: 'absolute', right: 31, top: 20 }}>
-          <button
-            style={{
-              color: '#ffffff',
-              height: '35px',
-              width: '100px',
-              borderRadius: '8px',
-              backgroundColor: '#83329c',
-              outline: 0,
-              border: 0,
-              overflow: 'visible',
-              cursor: 'pointer',
-              fontSize: '15px',
-              fontWeight: 'bold',
-              letterSpacing: '0.43px',
-              padding: 0,
-              marginTop: '13px',
-              display: 'inline'
-            }}
-            className="profile-logout-button"
-            onClick={() => handleLogout()}>
-            Logout
-          </button>
-        </div>
         <div className="profile--info">
           <label className="profile--info--label">Name</label>
           <p className="profile--info--p">{name}</p>
@@ -117,6 +91,9 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
             Edit
           </button>
         </div>
+        <p className="logout" onClick={() => handleLogout()}>
+          Logout
+        </p>
       </div>
     </React.Fragment>
   );

@@ -37,33 +37,36 @@ const Profile = () => {
           <div className="profile--editButtonWrapper">
             <button className="profile--editButton">Edit</button>
           </div>
+          <p className="logout">Logout</p>
         </div>
         <div className="Adresses">
           <div className="adresses--head">
             <label className="profile--head--label">Adresses</label>
           </div>
-          <div className="adresses--info">
-            <label className="adresses--info--label">Home Adress</label>
-            <p className="adresses--info--p">
-              Istiklal mahallesi akdeniz caddesi tekevler sitesi <br />
-              Bursa - 91270 Turkey <br />
-              Phone: 01701077215
-            </p>
-          </div>
-          <div className="adresses--editButtonWrapper">
-            <button className="adresses--editButton">Edit</button>
-          </div>
-          <hr className="adresses--hr" />
-          <div className="adresses--info adresses--info-m">
-            <label className="adresses--info--label">Depot Adress</label>
-            <p className="adresses--info--p">
-              Doruk mahallesi akdeniz caddesi tevler sitesi <br />
-              Bursa - 91270 Turkey <br />
-              Phone: 01701077215
-            </p>
-          </div>
-          <div className="adresses--editButtonWrapper">
-            <button className="adresses--editButton">Edit</button>
+          <div className="Adresses--container">
+            <div className="adresses--info">
+              <label className="adresses--info--label">Home Adress</label>
+              <p className="adresses--info--p">
+                Istiklal mahallesi akdeniz caddesi tekevler sitesi <br />
+                Bursa - 91270 Turkey <br />
+                Phone: 01701077215
+              </p>
+            </div>
+            <div className="adresses--editButtonWrapper">
+              <button className="adresses--editButton">Edit</button>
+            </div>
+            {/* <hr className="adresses--hr" /> */}
+            <div className="adresses--info adresses--info-m">
+              <label className="adresses--info--label">Depot Adress</label>
+              <p className="adresses--info--p">
+                Doruk mahallesi akdeniz caddesi tevler sitesi <br />
+                Bursa - 91270 Turkey <br />
+                Phone: 01701077215
+              </p>
+            </div>
+            <div className="adresses--editButtonWrapper">
+              <button className="adresses--editButton">Edit</button>
+            </div>
           </div>
         </div>
       </div>

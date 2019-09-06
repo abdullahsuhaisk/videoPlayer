@@ -95,22 +95,22 @@ const Player = ({ width, height, poster, sources }) => {
       markers: []
     });
 
-    const addMarkers = async () => {
-      // TODO: set prodLinkId
-      const { data } = await apolloClientRef.current.query({
-        query: GET_HOTSPOTS,
-        variables: { prodLinkUniqueId }
-      });
-      const { hotSpots } = data.prodLink;
-      const markers = hotSpots.reduce((acc, hotspot) => {
-        acc.push({ time: hotspot.in, text: `Hotspot: ${hotspot.id}` });
-        return acc;
-      }, []);
+    // const addMarkers = async () => {
+    //   // TODO: set prodLinkId
+    //   const { data } = await apolloClientRef.current.query({
+    //     query: GET_HOTSPOTS,
+    //     variables: { prodLinkUniqueId }
+    //   });
+    //   const { hotSpots } = data.prodLink;
+    //   const markers = hotSpots.reduce((acc, hotspot) => {
+    //     acc.push({ time: hotspot.in, text: `Hotspot: ${hotspot.id}` });
+    //     return acc;
+    //   }, []);
 
-      playerRef.current.markers.add(markers);
-    };
+    //   playerRef.current.markers.add(markers);
+    // };
 
-    playerRef.current.one('loadedmetadata', () => addMarkers());
+    // playerRef.current.one('loadedmetadata', () => addMarkers());
   }, []);
 
   useEffect(() => {

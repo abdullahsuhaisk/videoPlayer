@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { Mutation, withApollo } from 'react-apollo';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 import {
@@ -69,6 +69,7 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
 };
 
 const WatchListCard = ({ item, LikedProdLinksIds }) => {
+  const [settings, setSettings] = useState(false);
   const uniqueIdFromUrl = getProdLinkUniqueId();
   const prodLinkId = item && item.uniqueId;
   const { campaign, company, video, image, brands } = item;
@@ -115,6 +116,15 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
           </div>
         </div>
         <div className="watchlist--infoContainer">
+          <i
+            className="watchlist--settingsSwitch"
+            onClick={() => setSettings(!settings)}></i>
+          {settings ? (
+            <div className="watchlist--settings">
+              <p className="watchlist--settings--delete">Delete</p>
+              <p className="watchlist--settings--share">Share</p>
+            </div>
+          ) : null}
           <div className="watchlist--brands">
             {/* {brandsLogos &&
               brands.map(

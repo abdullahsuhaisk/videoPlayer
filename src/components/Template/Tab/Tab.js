@@ -42,24 +42,10 @@ function buildMenu(tabs, callback, tab, client, whichTabItemIsRendering) {
   ));
 }
 // TODO: SCALABLE FOR TAB CONTENT
-const Tab = ({ tabs, children, client }) => {
-  const [tab, setTab] = useState('productInThisScene');
+export const Tab = ({ tabs, children, client }) => {
+  const [tab, setTab] = useState(tabs[0].key);
   const [showShareModal, setShowShareModal] = useState(false);
-  // React.useEffect(() => {
-  //   client
-  //     .query({
-  //       query: GET_RENDERING_TAB_ITEM,
-  //       variables: {}
-  //     })
-  //     .then((data) => console.log(data));
-  //   setTab();
-  // }, []);
-  // console.log(tab);
-  // console.log(Item);
-
-  if (!tab) {
-    return null;
-  }
+  const Component = ComponentsService[tab];
   return (
     <Query query={GET_RENDERING_TAB_ITEM}>
       {({ data: { whichTabItemIsRendering } }, loading, error) => {
@@ -100,6 +86,7 @@ const Tab = ({ tabs, children, client }) => {
     </Query>
   );
 };
+
 export default withApollo(Tab);
 /*
 grapql must know which elements should be render
