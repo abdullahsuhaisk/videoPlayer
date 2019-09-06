@@ -60,29 +60,23 @@ const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
             style={{ position: 'relative' }}>
             <div className="WishlistCollection--gallery">{productRender}</div>
             <div className="WishlistCollection--collection">
-              <h2 className="WishlistCollection--collection-h2">{name}</h2>
+              <div className="WishlistCollection--collection--title">
+                <h2 className="WishlistCollection--collection-h2">{name}</h2>
+                <i
+                  className="WishlistCollection--collection-delete"
+                  onClick={() =>
+                    deleteConsumerWishList({
+                      variables: {
+                        whisListId: parseInt(whisList.id, 10)
+                      }
+                    })
+                  }></i>
+              </div>
+
               <span className="WishlistCollection--collection-span">
                 {totalProduct} pieces
               </span>
             </div>
-            <span
-              style={{
-                position: 'absolute',
-                top: '5px',
-                right: 5,
-                fontSize: 'larger',
-                color: 'brown',
-                cursor: 'pointer'
-              }}
-              onClick={() =>
-                deleteConsumerWishList({
-                  variables: {
-                    whisListId: parseInt(whisList.id, 10)
-                  }
-                })
-              }>
-              X
-            </span>
           </div>
         );
       }}

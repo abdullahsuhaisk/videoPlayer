@@ -35,22 +35,28 @@ const AuthScreen = () => {
           }
         }) => {
           return (
-            <div style={{ pointerEvents: 'auto' }}>
+            <>
               {player &&
                 player.isStarted &&
                 player.playingState === PLAYER.PAUSED &&
                 //<ProfileButton />
                 null}
               {isLoggedIn === false && isLoginFormShowing === true && (
-                <LoginForm />
+                <div style={{ pointerEvents: 'auto' }} className="Auth">
+                  <LoginForm />
+                </div>
               )}
               {isLoggedIn === false && isRegisterFormShowing === true && (
-                <RegisterForm />
+                <div style={{ pointerEvents: 'auto' }} className="Auth">
+                  <RegisterForm />
+                </div>
               )}
               {isLoggedIn === false && isForgotPasswordFormShowing === true && (
-                <ForgotPasswordForm />
+                <div style={{ pointerEvents: 'auto' }} className="Auth">
+                  <ForgotPasswordForm />
+                </div>
               )}
-            </div>
+            </>
           );
         }}
       </Query>

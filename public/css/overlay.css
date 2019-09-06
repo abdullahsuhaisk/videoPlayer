@@ -18,7 +18,7 @@
 }
 /* VideoPlayerContainer */
 .VideoPlayerContainer {
-  width: 1361px;
+  width: 1800px;
   margin-top: 40px;
   margin-left: 62px;
   overflow: hidden;
@@ -59,22 +59,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 894px;
-  width: 450px;
+  height: 1080px;
+  width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
+  padding: 60px 89px 107px 89px; margin-left: auto; z-index: 2;
 }
 .login {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 894px;
-  width: 450px;
+  height: 1080px;
+  width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
+  padding: 60px 89px 107px 89px; margin-left: auto; z-index: 2;
 }
 .login .login--imgWrapper {
   max-width: 350px;
@@ -97,8 +97,8 @@
   margin-bottom: 10.6px;
 }
 .login .login--label {
-  margin-bottom: 15.6px;
-  font-size: 18px;
+  margin-bottom: 16px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -106,12 +106,30 @@
 }
 .login .login--input {
   height: 1.2em;
-  border: 0;
-  border-bottom: 1px solid #0b244359;
-  font-size: 18px;
-  color: #0b2443;
-  padding-left: 10px;
+  border: 0 !important;
+  border-bottom: 1px solid #0b244359 !important;
+  font-size: 20px;
+  color: #0b2443 !important;
+  padding-left: 11px;
+  background-color: transparent !important;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0 !important;
+  border-bottom: 1px solid #0b244359 !important;
+  -webkit-text-fill-color: #0b2443;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  background-color: #ffffff !important;
+  font-size: 20px;
+}
+
 .login .login--input:focus {
   outline: none;
   border-bottom: 1px solid #0b2443;
@@ -120,6 +138,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 5px;
 }
 .login .login--resetWrapper .login--staySigned {
   display: flex;
@@ -129,13 +148,13 @@
   margin-left: 0;
 }
 .login .login--resetWrapper .login--staySigned .login--staySigned--label {
-  font-size: 15px;
+  font-size: 17px;
   color: #0b2443;
   letter-spacing: 0.025em;
   margin-left: 0.3em;
 }
 .login .login--resetWrapper .login--forgotPassword .login--forgotPassword--a {
-  font-size: 15px;
+  font-size: 17px;
   color: #00acd8;
   letter-spacing: 0.025em;
   text-decoration: none;
@@ -144,7 +163,7 @@
 
 .login .login--buttonWrapper {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .login .login--buttonWrapper .login--button {
   color: #ffffff;
@@ -158,53 +177,55 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
 }
 .login .loginWithWrapper {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .login .login--loginWith {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0b2443;
   letter-spacing: 0.025em;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 .login .login--withSocialMedia {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 118px;
-  margin-right: -4px;
+  margin: auto;
 }
 .login .login--withSocialMedia .login--withFacebook {
   background: url(/images/fb_round_logo.png) center / contain no-repeat;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
 }
 .login .login--withSocialMedia .login--withGoogle {
   background: url(/images/google_logo.png) center / contain no-repeat;
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   cursor: pointer;
+  margin-right: -10px;
 }
 .login .login--hr {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.16);
-  margin-top: 49px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .login .login-haveAccount {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0b2443;
   letter-spacing: 0.025em;
-  margin-bottom: 21px;
+  margin-bottom: 26px;
   margin-top: 0;
+  text-align: center;
 }
 .login .login--signupButtonWrapper {
   width: 100%;
@@ -220,7 +241,7 @@
   outline: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
 }
@@ -231,11 +252,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 894px;
-  width: 450px;
+  height: 1080px;
+  width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
+  padding: 60px 89px 107px 89px; margin-left: auto; z-index: 2;
 }
 .signup .signup--imgWrapper {
   max-width: 350px;
@@ -260,7 +281,7 @@
 }
 .signup .signup--label {
   margin-bottom: 15.6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -270,7 +291,7 @@
   height: 1.2em;
   border: 0;
   border-bottom: 1px solid #0b244359;
-  font-size: 18px;
+  font-size: 20px;
   color: #0b2443;
   padding-left: 10px;
 }
@@ -278,10 +299,18 @@
   outline: none;
   border-bottom: 1px solid #0b2443;
 }
+.signup .signup--minChar {
+  font-size: 17px;
+  color: #0b2443;
+  letter-spacing: 0.025em;
+  width: 100%;
+  margin-top: 5px;
+}
 .signup .signup--resetWrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 5px;
 }
 .signup .signup--resetWrapper .signup--staySigned {
   display: flex;
@@ -291,7 +320,7 @@
   margin-left: 0;
 }
 .signup .signup--resetWrapper .signup--staySigned .signup--staySigned--label {
-  font-size: 15px;
+  font-size: 17px;
   color: #0b2443;
   letter-spacing: 0.025em;
   margin-left: 0.3em;
@@ -300,7 +329,7 @@
   .signup--resetWrapper
   .signup--forgotPassword
   .signup--forgotPassword--a {
-  font-size: 15px;
+  font-size: 17px;
   color: #00acd8;
   letter-spacing: 0.025em;
   text-decoration: none;
@@ -309,7 +338,7 @@
 
 .signup .signup--buttonWrapper {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .signup .signup--buttonWrapper .signup--button {
   color: #ffffff;
@@ -323,16 +352,16 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
   padding: 0;
 }
 .signup .signupWithWrapper {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .signup .signup--signupWith {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0b2443;
   letter-spacing: 0.025em;
@@ -345,33 +374,35 @@
   align-items: center;
   justify-content: space-between;
   width: 118px;
-  margin-right: -4px;
+  margin: auto;
 }
 .signup .signup--withSocialMedia .signup--withFacebook {
   background: url(/images/fb_round_logo.png) center / contain no-repeat;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
 }
 .signup .signup--withSocialMedia .signup--withGoogle {
   background: url(/images/google_logo.png) center / contain no-repeat;
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   cursor: pointer;
+  margin-right: -10px;
 }
 .signup .signup--hr {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.16);
-  margin-top: 49px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .signup .signup-haveAccount {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0b2443;
   letter-spacing: 0.025em;
-  margin-bottom: 21px;
+  margin-bottom: 26px;
   margin-top: 0;
+  text-align: center;
 }
 .signup .signup--signupButtonWrapper {
   width: 100%;
@@ -387,7 +418,7 @@
   outline: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
   padding: 0;
@@ -403,11 +434,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 894px;
-  width: 450px;
+  height: 1080px;
+  width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
+  padding: 60px 89px 107px 89px; margin-left: auto; z-index: 2;
 }
 .forgotPassword .forgotPassword--imgWrapper {
   max-width: 350px;
@@ -426,7 +457,7 @@
 }
 .forgotPassword .forgotPassword--label {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -436,7 +467,7 @@
   height: 1.2em;
   border: 0;
   border-bottom: 1px solid #0b244359;
-  font-size: 18px;
+  font-size: 20px;
   color: #0b2443;
 }
 .forgotPassword .forgotPassword--input:focus {
@@ -446,23 +477,23 @@
 
 .forgotPassword .forgotPassword--buttonWrapper {
   width: 100%;
-  margin-top: 40.6px;
+  margin-top: 20px;
   display: flex;
   justify-content: flex-end;
 }
 .forgotPassword .forgotPassword--buttonWrapper .forgotPassword--button {
   color: #ffffff;
-  height: 40px;
-  min-width: 150px;
+  height: 60px;
+  min-width: 160px;
   font-size: 14px;
   border-radius: 39px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-color: #83329c;
+  background-color: #00ACD8;
   outline: 0;
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
 }
@@ -482,10 +513,10 @@
   outline: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
-  margin-top: 345px;
+  margin-top: 409px;
 }
 
 /* New Password */
@@ -494,11 +525,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 894px;
-  width: 450px;
+  height: 1080px;
+  width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  padding: 53px 65px 62px 56px;
+  padding: 60px 89px 107px 89px; margin-left: auto; z-index: 2;
 }
 .newPassword .newPassword--imgWrapper {
   max-width: 350px;
@@ -522,7 +553,7 @@
   margin-bottom: 10.6px;
 }
 .newPassword .newPassword--label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -533,7 +564,7 @@
   height: 1.2em;
   border: 0;
   border-bottom: 1px solid #0b244359;
-  font-size: 18px;
+  font-size: 20px;
   color: #0b2443;
   padding: 0;
 }
@@ -547,12 +578,12 @@
   width: 100%;
 }
 .newPassword .newPassword--minCharErrorWrapper .newPassword--minChar {
-  font-size: 15px;
+  font-size: 17px;
   color: #0b2443;
   letter-spacing: 0.025em;
 }
 .newPassword .newPassword--minCharErrorWrapper .newPassword--error {
-  font-size: 15px;
+  font-size: 17px;
   color: #d80011;
   letter-spacing: 0.025em;
 }
@@ -564,17 +595,17 @@
 }
 .newPassword .newPassword--buttonWrapper .newPassword--button {
   color: #ffffff;
-  height: 40px;
-  min-width: 150px;
+  height: 60px;
+  min-width: 160px;
   font-size: 14px;
   border-radius: 39px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-color: #83329c;
+  background-color: #00ACD8;
   outline: 0;
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
 }
@@ -589,10 +620,10 @@
   outline: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.025em;
-  margin-top: 217px;
+  margin-top: 320px;
   padding: 0;
 }
 
@@ -601,9 +632,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1588px;
-  height: 894px;
-  background-image: url('../images/bg.png');
+  width: 1920px;
+  height: 1080px;
+  background-image: url('/images/bg.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -613,14 +644,26 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 1588px;
-  height: 894px;
+  width: 1920px;
+  height: 1080px;
   opacity: 0.8;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  /* -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); */
   background-color: #f5f9fc;
 }
-
+.Auth::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1080px;
+  opacity: 0.75;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #0b2443;
+  z-index: 1;
+  pointer-events: auto;
+}
 /* Header */
 .Header {
   display: flex;
@@ -646,7 +689,7 @@
 .Header .mainMenu--brandInfo--inline .campaign--name {
   display: flex;
   align-self: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   margin-top: 1.6em;
 }
@@ -659,7 +702,7 @@
 .Header .mainMenu--brandInfo .campaign--name {
   display: flex;
   align-self: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   margin-top: 5px;
 }
@@ -678,7 +721,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 1650px;
+  width: 1880px;
   margin-left: 40px;
   justify-content: space-between;
 }
@@ -689,7 +732,7 @@
 
 .sub-Menu .subMenu--linksWrapper .subMenu--link {
   color: rgb(11, 36, 67, 0.4);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -712,7 +755,7 @@
 .sub-Menu .subMenu--statsWrapper .stats--content {
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0b2443;
   line-height: 1.3em;
@@ -769,24 +812,23 @@
   display: block;
 }
 .sub-Menu .subMenu--profileInfo {
-  margin-right: 48px;
-  margin-left: 25px;
+  margin-right: 60px;
   cursor: pointer;
 }
 .sub-Menu .subMenu--profileInfo .subMenu--profileInfo--img {
-  width: 50px;
-  height: 50px;
-  border: solid 4px rgba(11, 36, 67, 0.28);
+  width: 60px;
+  height: 60px;
+  border: solid 4px rgba(11, 36, 67, .28);
   border-radius: 50%;
+  box-sizing: content-box;
 }
 .subMenu--underline {
   position: absolute;
-  left: -18.78%;
-  bottom: 2.5px;
+  left: -18.5%;
+  bottom: 10px;
   width: 110%;
   opacity: 0.75;
   border: 2px solid rgba(11, 36, 67, 0.28);
-  margin-top: 0.3em;
 }
 .sub-Menu .subMenu--link-bullet {
   position: relative;
@@ -802,14 +844,14 @@
 
 /* Product Card */
 .singleCarContainer{
-  display: flex;
+  /* display: flex;
   align-items: center;
   width: 263px;
-  height: 500px;
+  height: 500px; */
 }
 .Product-Card {
-  width: 228px;
-  height: 500px;
+  width: 275px;
+  height: 604px;
   border-radius: 8px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
@@ -820,8 +862,8 @@
   position: relative;
 }
 .Product-Card .productCard--imageWrapper {
-  width: 228px;
-  height: 266px;
+  width: 275px;
+  height: 325px;
   margin: 0 auto;
   z-index: 2;
   border-radius: 8px;
@@ -830,45 +872,43 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: solid 2px #ffffff;
+  /* border: solid 2px #ffffff; */
   border-radius: 8px;
 }
 .Product-Card .productCard--wishlist-statusWrapper {
-  height: 34px;
+  height: 41px;
   background-color: #00acd8;
-  padding-top: 11px;
-  padding-bottom: 5px;
   margin-top: -5px;
   border-radius: 0 0 8px 8px;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Product-Card
   .productCard--wishlist-statusWrapper
   .productCard--wishlist-status {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #ebeae9;
   display: block;
 }
 .Product-Card .productCard--Onwishlist-statusWrapper {
-  height: 34px;
+  height: 41px;
   background-color: #e5e5e5;
-  padding-top: 11px;
-  padding-bottom: 5px;
   margin-top: -5px;
   border-radius: 0 0 8px 8px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Product-Card
   .productCard--Onwishlist-statusWrapper
   .productCard--Onwishlist-status {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #00acd8;
   display: block;
@@ -883,7 +923,7 @@
   margin-right: 10px;
 }
 .Product-Card .productCard--name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #515252;
   letter-spacing: 0.025em;
@@ -892,7 +932,6 @@
   margin-top: 11px;
   padding: 0 10px;
   z-index: 1;
-  max-width: 192px;
   min-height: 60px;
 }
 .Product-Card .productCard--priceWrapper {
@@ -966,13 +1005,13 @@
   margin-bottom: 10px;
 }
 .Product-Card .productCard--stock-status {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   text-align: center;
   color: #00acd8;
   margin: 0;
   margin-bottom: 5.5px;
-  margin-top: 7px;
+  margin-top: 30px;
   letter-spacing: 0.025em;
   z-index: 1;
 }
@@ -985,7 +1024,7 @@
   z-index: 1;
 }
 .Product-Card .productCard--detail {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   color: #00acd8;
   text-align: center;
@@ -999,14 +1038,15 @@
 .WishlistCollection {
   display: block;
   width: 100%;
-  max-width: 406px;
-  height: 335px;
+  max-width: 491px;
+  height: 416px;
   overflow: hidden;
   border-radius: 10px;
   background-color: #ffffff;
   z-index: 2;
   padding: 2.7px;
-  margin: 0 12.5px;
+  margin-right: 21px;
+  /* border: 1px solid black; */
 }
 .flickity-viewport {
   position: relative;
@@ -1014,9 +1054,28 @@
 .WishlistCollection .WishlistCollection--gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 66px);
+  grid-template-rows: repeat(4, 79px);
   grid-gap: 2.7px;
-  width: 400px;
+  width: 484px;
+}
+.WishlistCollection--collection--title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.WishlistCollection--collection-delete{
+  background: url(/images/bucket.svg) center / contain no-repeat;
+  width: 16px;
+  height: 20px;
+  cursor: pointer;
+  display: block;
+  margin: 0 20px;
+  opacity: .4;
+}
+.WishlistCollection--collection-delete:hover{
+  opacity: .8;
 }
 .WishlistCollection .WishlistCollection--gallery .gallery--item-1,
 .WishlistCollection .WishlistCollection--gallery .gallery--item-2,
@@ -1043,35 +1102,31 @@
 .WishlistCollection
   .WishlistCollection--collection
   .WishlistCollection--collection-h2 {
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #0b2443;
-  margin-top: 13px;
-  margin-bottom: 4px;
-  margin-left: 23.5px;
   cursor: pointer;
 }
 .WishlistCollection
   .WishlistCollection--collection
   .WishlistCollection--collection-span {
   display: block;
-  font-size: 12px;
+  font-size: 19px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #0b2443;
   opacity: 0.4;
-  margin-left: 23.5px;
-  margin-top: 0;
-  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-top: 5px;
 }
 
 /* Watch list */
 .watchlist {
   width: 100%;
-  max-width: 375px;
+  max-width: 453px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   border-radius: 8px;
@@ -1081,8 +1136,8 @@
 }
 .watchlist .watchlist--thumbnail {
   margin: 0;
-  width: 375px;
-  height: 210px;
+  width: 453px;
+  height: 254px;
 }
 .watchlist .watchlist--thumbnail .watchlist--thumbnail--img {
   width: 100%;
@@ -1090,15 +1145,86 @@
   opacity: 0.8;
 }
 .watchlist .watchlist--infoContainer {
-  height: 217px;
-  padding: 12.2px 20px 0 20px;
+  position: relative;
+  height: 290px;
+  padding: 14px 18px 5px 24px;
+}
+.watchlist--settingsSwitch{
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  background: url(/images/settings.svg) center / contain no-repeat;
+  width: 39px;
+  height: 38px;
+  cursor: pointer;
+  opacity: .4;
+}
+.watchlist--settings:hover{
+  opacity: 1;
+}
+.watchlist--settings{
+  position: absolute;
+  top: 55px;
+  right: 12px;
+  background-color: #fbfbfb;
+  padding: 20px;
+  width: 194px;
+  height: 107px;
+  box-shadow: 0px 0px 26px rgba(11, 36, 67, 0.2);
+  border-radius: 10px;
+}
+.watchlist--settings:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  right: -6px;
+  box-sizing: border-box;
+  border: 9px solid black;
+  border-color: transparent transparent #fbfbfb #fbfbfb;
+  transform-origin: 0 0;
+  transform: rotate(135deg);
+}
+.watchlist--settings--delete, .watchlist--settings--share{
+  font-size: 17px;
+  color: #0e273b;
+  padding: 6px 0 6px 30px;
+  cursor: pointer
+}
+.watchlist--settings--share{
+  margin-top: 7px;
+}
+.watchlist--settings--delete:before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  background: url(/images/bucket.svg) center / contain no-repeat;
+  width: 15px;
+  height: 19px;
+  cursor: pointer;
+  opacity: .8;
+}
+.watchlist--settings--share:before {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 13px;
+  background: url(/images/shareIcon.svg) center / contain no-repeat;
+  width: 31px;
+  height: 30px;
+  cursor: pointer;
+  opacity: .8;
+}
+.watchlist--settings--delete:hover:before, .watchlist--settings--share:hover:before{
+  opacity: 1;
 }
 .watchlist .watchlist--brands {
   display: flex;
 }
 .watchlist .watchlist--brands .watchlist--brands-icon {
-  width: 28px;
-  height: 28px;
+  width: 33px;
+  height: 33px;
   border: solid 0.3px #f9f9f9;
   margin-right: 0;
   margin-left: -8px;
@@ -1108,7 +1234,7 @@
 }
 
 .watchlist .watchlist--infoContainer--h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -1116,7 +1242,7 @@
   margin: 15px 0;
 }
 .watchlist .watchlist--infoContainer--p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #515252;
@@ -1187,8 +1313,8 @@
 }
 .watchlist .watchlist--videoContainer::after {
   content: '';
-  width: 80px;
-  height: 80px;
+  width: 97px;
+  height: 97px;
   opacity: 0.7;
   background-color: #ffffff;
   border-radius: 50%;
@@ -1231,6 +1357,7 @@
   display: flex;
   align-items: center;
   padding: 0px 5px;
+  height: 24px;
 }
 .watchlist
   .watchlist--videoContainer
@@ -1250,9 +1377,8 @@
 .ShoppingCartContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-top: 40px;
-  height: 510px;
+  height: 800px;
   overflow-y: auto;
   position: relative;
 }
@@ -1265,19 +1391,20 @@
   border-radius: 8px;
   overflow: hidden;
   z-index: 2;
-  width: 1260px;
-  min-height: 100px;
+  width: 1530px;
+  min-height: 120px;
   margin-bottom: 20px;
+  margin-left: 70px;
 }
 .ShoppingCart .ShoppingCart--product {
   display: flex;
   align-items: center;
-  width: 750px;
+  width: 940px;
   height: 100%;
 }
 .ShoppingCart .ShoppingCart--product-figure {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 120px;
+  max-height: 120px;
   margin: 0;
   height: 100%;
   width: 100%;
@@ -1288,11 +1415,11 @@
   border-radius: 8px;
 }
 .ShoppingCart .ShoppingCart--product-info {
-  margin-left: 30px;
+  margin-left: 36px;
   width: 100%;
 }
 .ShoppingCart .ShoppingCart--product-info .ShoppingCart--product-name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -1309,7 +1436,7 @@
   .ShoppingCart--product-info
   .ShoppingCart--product-seller
   .ShoppingCart--product-seller-label {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #0e273b;
@@ -1318,7 +1445,7 @@
   .ShoppingCart--product-info
   .ShoppingCart--product-seller
   .ShoppingCart--product-seller-name {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.3em;
   letter-spacing: 0.025em;
   color: #00acd8;
@@ -1327,7 +1454,7 @@
 .ShoppingCart .ShoppingCart--quantite {
   display: flex;
   align-items: center;
-  margin-right: 140px;
+  margin-right: 150px;
 }
 .ShoppingCart .ShoppingCart--quantite-iconContainer {
   display: flex;
@@ -1389,7 +1516,7 @@
   width: 200px;
 }
 .ShoppingCart .ShoppingCart--priceContainer .ShoppingCart--price {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -1460,7 +1587,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 2.5em;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
   letter-spacing: 0.025em;
@@ -1484,27 +1611,29 @@
   border: solid 1px #ebeae9;
   background-color: #ffffff;
   z-index: 1;
+  overflow: hidden;
 }
 .Profile {
-  width: 628px;
-  height: 500px;
-  margin-right: 35px;
-  padding: 44px 30px 30px 110px;
+  position: relative;
+  width: 760px;
+  height: 578px;
+  margin-right: 38px;
+  padding: 53px 37px 37px 133px;
 }
 .Adresses {
   position: relative;
-  width: 646px;
-  height: 500px;
-  padding: 45px 59px 40px 40px;
+  width: 760px;
+  height: 578px;
+  padding: 54px 36px 37px 48px;
 }
 .Profile .profile--head {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 37px;
   position: relative;
 }
 .Profile .profile--head .profile--head--label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #83329c;
   letter-spacing: 0.12px;
@@ -1518,11 +1647,11 @@
 }
 .Profile .profile--info {
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 36px;
 }
 .Profile .profile--info .profile--info--label {
   width: 210px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -1530,21 +1659,39 @@
 }
 .Profile .profile--info .profile--info--p {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
 }
+.logout{
+  position: absolute;
+  bottom: 53px;
+  left: 75px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #0E273B;
+  cursor: pointer;
+}
+.logout:before{
+  content: "";
+  position: absolute;
+  left: -30px;
+  bottom: 1px;
+  background: url(/images/logout.svg) center / contain no-repeat;
+  width: 18px;
+  height: 20px;
+}
 .Profile .profile--editButtonWrapper {
   width: 100%;
-  margin-top: 2px;
+  margin-top: 53px;
   display: flex;
   justify-content: flex-end;
 }
 .Profile .profile--editButtonWrapper .profile--editButton {
   color: #ffffff;
-  height: 40px;
-  width: 150px;
+  height: 48px;
+  width: 181px;
   font-size: 14px;
   border-radius: 8px;
   background-color: #83329c;
@@ -1552,17 +1699,16 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
-  margin-top: 13px;
 }
 .Adresses .adresses--head {
-  margin-bottom: 30px;
+  margin-bottom: 36px;
 }
 .Adresses .adresses--head .profile--head--label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #83329c;
   letter-spacing: 0.12px;
@@ -1571,8 +1717,8 @@
   display: flex;
 }
 .Adresses .adresses--info .adresses--info--label {
-  width: 166px;
-  font-size: 18px;
+  width: 190px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -1580,7 +1726,7 @@
 }
 .Adresses .adresses--info .adresses--info--p {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
@@ -1601,37 +1747,37 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 370px;
+  max-height: 425px;
   position: relative;
 }
 .Adresses--container:after{
   content: "";
   position: absolute;
-  width: 646px;
+  width: 760px;
   height: 1px;
   background-color: #ebeae9;
   border-radius: 8px;
-  left: -42px;
+  left: -48px;
   top: 50%;
 }
 .Adresses .adresses--editButtonWrapper {
   width: 100%;
-  margin-top: 6px;
+  margin-top: 30px;
   display: flex;
   justify-content: flex-end;
 }
 .Adresses .adresses--editButtonWrapper .adresses--editButton {
   color: #ffffff;
-  height: 40px;
-  width: 150px;
-  font-size: 18px;
+  height: 48px;
+  width: 181px;
+  font-size: 20px;
   border-radius: 8px;
   background-color: #83329c;
   outline: 0;
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
@@ -1642,19 +1788,19 @@
 
 /* Update Adress */
 .UpdateAdress {
-  width: 628px;
-  height: 500px;
+  width: 760px;
+  height: 578px;
+  padding: 54px 36px 37px 48px;
   border-radius: 8px;
   border: solid 1px #ebeae9;
   background-color: #ffffff;
-  padding: 44px 30px 30px 40px;
   z-index: 1;
 }
 .UpdateAdress .UpdateAdress--head {
-  margin-bottom: 30px;
+  margin-bottom: 37px;
 }
 .UpdateAdress .UpdateAdress--head .UpdateAdress--head-p {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #83329c;
   letter-spacing: 0.12px;
@@ -1667,9 +1813,9 @@
   .UpdateAdress--info
   .UpdateAdress--info-item
   .UpdateAdress--info-label {
-  width: 200px;
+  width: 250px;
   margin-right: 6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -1683,16 +1829,16 @@
   .UpdateAdress--info
   .UpdateAdress--info-item
   .UpdateAdress--info-select {
-  width: 272px;
-  height: 33px;
-  font-size: 18px;
+  width: 330px;
+  height: 37px;
+  font-size: 20px;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
-  margin-bottom: 20.5px;
+  margin-bottom: 25px;
   border: 0;
   border-bottom: 1px solid rgb(0, 1, 16, 0.4);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 .UpdateAdress
   .UpdateAdress--info
@@ -1718,8 +1864,8 @@
   margin-top: 56px;
 }
 .UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-save {
-  width: 150px;
-  height: 40px;
+  width: 181px;
+  height: 48px;
   border-radius: 8px;
   background-color: #83329c;
   color: #ffffff;
@@ -1727,15 +1873,15 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
-  margin-left: 30px;
+  margin-left: 39px;
 }
 .UpdateAdress .UpdateAdress--info--btn .UpdateAdress--info--btn-discard {
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
@@ -1746,23 +1892,23 @@
 
 /* Update Profile */
 .UpdateProfile {
-  width: 628px;
-  height: 500px;
+  width: 760px;
+  height: 578px;
+  margin-right: 38px;
+  padding: 53px 37px 37px 133px;
   border-radius: 8px;
   border: solid 1px #ebeae9;
   background-color: #ffffff;
-  padding: 44px 30px 30px 110px;
   z-index: 1;
-  margin-right: 35px;
 }
 .UpdateProfile .UpdateProfile--head {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 37px;
 }
 .UpdateProfile .UpdateProfile--head .UpdateProfile--head-p {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #83329c;
   letter-spacing: 0.12px;
@@ -1777,14 +1923,15 @@
 }
 .UpdateProfile .UpdateProfile--info .UpdateProfile--info-item {
   display: flex;
+  /* justify-content: space-between; */
 }
 .UpdateProfile
   .UpdateProfile--info
   .UpdateProfile--info-item
   .UpdateProfile--info-label {
-  width: 200px;
+  width: 250px;
   margin-right: 6px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -1798,16 +1945,16 @@
   .UpdateProfile--info
   .UpdateProfile--info-item
   .UpdateProfile--info-select {
-  width: 272px;
-  height: 33px;
-  font-size: 18px;
+  width: 330px;
+  height: 37px;
+  font-size: 20px;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border: 0;
   border-bottom: 1px solid rgb(0, 1, 16, 0.4);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 .UpdateProfile
   .UpdateProfile--info
@@ -1826,8 +1973,8 @@
   margin-top: 13px;
 }
 .UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-save {
-  width: 150px;
-  height: 40px;
+  width: 181px;
+  height: 48px;
   border-radius: 8px;
   background-color: #83329c;
   color: #ffffff;
@@ -1835,15 +1982,15 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
-  margin-left: 30px;
+  margin-left: 39px;
 }
 .UpdateProfile .UpdateProfile--info--btn .UpdateProfile--info--btn-discard {
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
@@ -1856,20 +2003,38 @@
 }
 /* Product Detail */
 .ProductDetail {
+  position: absolute;
+  top: 70px;
+  left: 188px;
   display: flex;
   width: fit-content;
-  height: 672px;
-  border: 1px solid #ccc;
+  height: 875px;
   margin: auto;
   margin-top: 2px;
   pointer-events: auto;
   background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+.ProductDetail .scroll{
+  height: 750px;
+  padding-right: 35px;
+}
+.darkOverlay {
+  content: "";
   position: absolute;
-  top: 171px;
-  left: 61px;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1035px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
+  background-color: rgba(11, 36, 67, .95);
+  z-index: 1;
+  pointer-events: auto;
 }
 .ProductDetail--imagesSlider {
-  width: 616px;
+  width: 600px;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -1879,7 +2044,7 @@
 }
 .ProductDetail--imagesSlider--figure {
   width: 100%;
-  height: 672px;
+  height: 875px;
   display: flex;
 }
 .ProductDetail--imagesSlider--figure:focus {
@@ -1891,7 +2056,7 @@
 }
 .ProductDetail .ProductDetail--imagesSlider .flickity-prev-next-button {
   position: absolute;
-  top: 300px;
+  top: 410px;
   width: 10px;
   height: 24px;
   background: transparent;
@@ -1913,18 +2078,18 @@
 
 .ProductDetail .ProductDetail--information {
   position: relative;
-  width: 770.1px;
+  width: 930px;
   height: 100%;
   background-color: #ffffff;
-  padding: 38.5px 60.5px 60px 70.7px;
+  padding: 38px 0 60px 35px;
 }
 .ProductDetail--information--close {
   position: absolute;
-  top: 17.4px;
-  right: 20.5px;
-  width: 21px;
-  height: 21px;
-  background: url(/images/close.svg) center / contain no-repeat;
+  top: 30px;
+  right: 50px;
+  width: 25px;
+  height: 25px;
+  background: url(/images/close-white.svg) center / contain no-repeat;
   opacity: 0.7;
   cursor: pointer;
 }
@@ -1936,9 +2101,9 @@
   align-items: center;
 }
 .ProductDetail--information--title--h2 {
-  font-size: 30px;
-  color: #505050;
-  font-weight: 400;
+  font-size: 20px;
+  color: #0E273B;
+  font-weight: 600;
   margin: 0;
   line-height: 1.17;
 }
@@ -1949,14 +2114,26 @@
   margin-left: 23.6px;
 }
 .ProductDetail--information--rating {
-  margin-top: 16px;
+  margin-top: 6px;
   display: flex;
   align-items: center;
 }
-.ProductDetail--information--rating--stars {
+.ProductDetail--information--rating--stars,
+.ProductDetail--comment--rating--stars {
   display: flex;
 }
-.ProductDetail--information--rating--stars span{
+.ProductDetail--comment--rating--stars--icon{
+  width: 18px;
+  height: 16px;
+  background: url(/images/star-full.svg) center / contain no-repeat;
+}
+.ProductDetail--comment--rating--stars--icon-empty{
+  width: 18px;
+  height: 16px;
+  background: url(/images/star-empty.svg) center / contain no-repeat;
+}
+.ProductDetail--information--rating--stars span
+{
   width: 17px;
   height: 15px;
   background: url(/images/star-empty.svg) center / contain no-repeat;
@@ -1972,14 +2149,14 @@
   background: url(/images/star-full.svg) center / contain no-repeat !important;
 }
 .ProductDetail--information--rating--total {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: #ffa200;
   margin: 0;
   margin-left: 5px;
 }
 .ProductDetail--information--rating--votes {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   margin: 0;
   margin-left: 4px;
@@ -1987,27 +2164,26 @@
   color: #0e273b;
 }
 .ProductDetail--information--details {
-  margin-top: 21px;
-  margin-bottom: 6px;
-  height: 170px;
-  font-size: 18px;
-  letter-spacing: 0.43px;
-  color: #0e273b;
+  font-size: 19px;
+  letter-spacing: 0.24px;
+  color: #0E273B;
   font-weight: 400;
+  margin-top: 21px;
+  margin-bottom: 40px;
+  line-height: 1.3em;
 }
 .ProductDetail--information--settingsContainer {
-  height: 250px;
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 .ProductDetail--information--settings {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .ProductDetail--information--settings-name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #0e273b;
   letter-spacing: 0.12px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .ProductDetail--information--settings-opt {
   display: flex;
@@ -2034,7 +2210,7 @@
   margin-right: 12px;
 }
 .ProductDetail--information--settings-opt-div-span {
-  font-size: 15px;
+  font-size: 17px;
   color: #0e273b;
   font-weight: 400;
   letter-spacing: 0.36px;
@@ -2046,14 +2222,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #ffffff;
+  height: 72px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 0 60px 0 35px;
 }
 .ProductDetail--information--price {
   display: flex;
+  align-items: center;
   position: relative;
   width: max-content;
 }
 .ProductDetail--information--price--discount {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.025em;
   color: #ffffff;
@@ -2062,6 +2246,7 @@
   border-radius: 6px;
   margin: 0;
   margin-right: 11px;
+  height: 40px;
 }
 .ProductDetail--information--price--value {
   font-size: 31px;
@@ -2070,19 +2255,22 @@
   color: #1a1a1a;
 }
 .ProductDetail--information--price--beforeDiscountvalue {
-  position: absolute;
-  top: -22px;
-  right: 18px;
-  font-size: 18px;
+  position: relative;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.12px;
   color: #1a1a1a;
+  width: fit-content;
 }
-.ProductDetail--information--price--beforeDiscountvalue svg {
-  width: 100%;
-  height: 100%;
+.ProductDetail--information--price--beforeDiscountvalue:after{
+  content: "";
   position: absolute;
   left: 0;
+  bottom: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #FF1010;
+  transform: rotate(-10deg);
 }
 .ProductDetail--addToCartBtn {
   display: flex !important;
@@ -2095,7 +2283,7 @@
   border: 0 !important;
   overflow: visible !important;
   cursor: pointer !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-weight: 600 !important;
   letter-spacing: 0.43px !important;
   padding: 9px 20px 9px 20px !important;
@@ -2106,7 +2294,108 @@
   background: url(/images/productcart.svg) center / contain no-repeat;
   margin-right: 10px;
 }
-
+.ProductDetail--comment-head{
+  display: flex;
+  justify-content: space-between;
+}
+.ProductDetail--comment-head--top{
+  font-size: 20px;
+  font-weight: 600;
+  color: #0E273B;
+  letter-spacing: 0.02em;
+}
+.ProductDetail--comment-head--seeAll{
+  font-size: 17px;
+  color: #00ACD8;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.ProductDetail--comment-head--seeAll:hover{
+  text-decoration: underline;
+}
+.ProductDetail--comment--profile{
+  display: flex;
+  align-items: center;
+  margin-top: 21px;
+}
+.ProductDetail--comment--profile--figure{
+  width: 50px;
+  height: 50px;
+  margin-right: 11px;
+}
+.ProductDetail--comment--profile--figure--img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.ProductDetail--comment--profile--name{
+  font-size: 20px;
+  font-weight: 600;
+  color: #203A52;
+  margin-right: 11px;
+}
+.ProductDetail--comment--p{
+  margin: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.24px;
+  color: #203A52;
+}
+.ProductDetail--comment--likeDate{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ProductDetail--comment--like{
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #203A52;
+  letter-spacing: .31px;
+}
+.ProductDetail--comment--like-icon{
+  width: 24px;
+  height: 24px;
+  background: url(/images/like-comment.svg) center / contain no-repeat;
+  display: block;
+  margin-right: 4px;
+}
+.ProductDetail--comment--liked-icon{
+  width: 24px;
+  height: 24px;
+  background: url(/images/liked-comment.svg) center / contain no-repeat;
+  display: block;
+  margin-right: 4px;
+}
+.ProductDetail--comment--date{
+  font-size: 15px;
+  color: #203A52;
+  letter-spacing: .31px;
+}
+.ProductDetail--comment--campaings{
+  margin-top: 45px;
+}
+.ProductDetail--comment--campaings--head{
+  font-size: 20px;
+  font-weight: 600;
+  color: #0E273B;
+  margin-bottom: 11px;
+}
+.ProductDetail--comment--campaings--slides{
+  overflow: hidden;
+}
+.ProductDetail--comment--campaings--slides:focus{
+  outline: none;
+}
+.ProductDetail--comment--campaings--item{
+  width: 386px;
+  height: 217px;
+  margin-right: 19px;
+  cursor: pointer;
+}
+.ProductDetail--comment--campaings--item--img{
+  width: 100%;
+  height: 100%;
+}
 /* Add To Wishlist */
 .AddToWishlist {
   display: flex;
@@ -2186,7 +2475,7 @@
   opacity: 1;
 }
 .AddToWishlist--information--h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.43px;
   color: #515252;
@@ -2211,7 +2500,7 @@
   border-bottom: 1px solid rgb(26, 26, 26, 0.5);
   padding-left: 28px;
   padding-bottom: 5.3px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #0e273b;
@@ -2273,14 +2562,14 @@
   justify-content: space-between;
 }
 .AddToWishlist--information--wishlistItem--titleItems--h3{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.43px;
   color: #515252;
 }
 .AddToWishlist--information--wishlistItem--titleItems--p{
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.27;
   letter-spacing: 0.36px;
@@ -2311,14 +2600,14 @@
   outline: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 9px 18px;
   line-height: 1.28;
 }
 .AddToWishlist--information--btnContainer--doneBtn {
-  width: 150px;
+  width: 181px;
   height: 40px;
   border-radius: 8px;
   background-color: #83329c;
@@ -2327,7 +2616,7 @@
   border: 0;
   overflow: visible;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.43px;
   padding: 0;
@@ -2336,8 +2625,8 @@
 
 /* Video Player Screen */
 .VideoPlay {
-  /* width: 1588px;
-  height: 894px; */
+  /* width: 1920px;
+  height: 1080px; */
 }
 .WishlistCollection .WishlistCollection--gallery .gallery--img-placeholder {
   background: #ccc;
@@ -2401,8 +2690,8 @@
 
 .VideoPlayStory {
   position: relative;
-  width: 1588px;
-  height: 894px;
+  width: 1920px;
+  height: 1080px;
 }
 .VideoPlayStory--thumbnail {
   position: absolute;
@@ -2446,7 +2735,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1588px;
+  width: 1920px;
   height: 850px;
   background-color: rgb(11,36,67,.95);
   z-index: 1;
@@ -2510,7 +2799,7 @@
   padding-left: 20px;
 }
 .ShareOnSocialMedia--link--p{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -2521,7 +2810,7 @@
   width: 150px;
   padding: 8px 0;
   background-color: #83329c;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.28;
   text-align: center;
@@ -2547,7 +2836,7 @@
   margin-bottom: 28px;
 }
 .EmptyWishlist--p-bold{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.12px;
@@ -2555,7 +2844,7 @@
   text-transform: uppercase;
 }
 .EmptyWishlist--p-light{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.28;
   letter-spacing: 0.3px;
@@ -2578,7 +2867,7 @@
 }
 .ShoppingCartCard--adress--type{
   width: fit-content;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.12px;
@@ -2644,7 +2933,7 @@
 }
 .ShoppingCartCard--adress--details--title{
   position: relative;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.12px;
@@ -2662,7 +2951,7 @@
 
 }
 .ShoppingCartCard--adress--details--value{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.28;
   letter-spacing: 0.43px;
@@ -2705,7 +2994,7 @@
   z-index: 2;
 }
 .ShoppingCartCard--paymentInfo--card--title{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: 0.43px;
@@ -2816,7 +3105,7 @@
 .PaymentSuccess--details--info{
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.11;
   letter-spacing: 0.43px;
@@ -2838,7 +3127,7 @@
   background-color: #ffffff;
 }
 .PaymentSuccess--details--transaction--title{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.43px;
   color: #4d4f5c;
@@ -2857,14 +3146,14 @@
   width: 100%;
 }
 .PaymentSuccess--details--transaction--info--label{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.11;
   letter-spacing: 0.43px;
   color: #4d4f5c;
 }
 .PaymentSuccess--details--transaction--info--value{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.11;
   letter-spacing: 0.43px;
@@ -2887,7 +3176,7 @@
   border: solid 1px #ebeae9;
 }
 .EmptyAdress--label{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #83329c;
   letter-spacing: 0.12px;
@@ -2928,7 +3217,7 @@
   margin-bottom: 28px;
 }
 .EmptyCart--p-bold{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.12px;
@@ -2936,7 +3225,7 @@
   text-transform: uppercase;
 }
 .EmptyCart--p-light{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.28;
   letter-spacing: 0.3px;
@@ -2958,7 +3247,7 @@
   background: url(/images/empty-watchlist.svg) center / contain no-repeat;
 }
 .EmptyWatchlist--p-bold{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: 0.12px;
@@ -3181,7 +3470,7 @@
   margin-left: 23px;
 }
 .timeDisplay p {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   padding: 0;
 }
@@ -3246,6 +3535,74 @@
 .cartBtn:focus {
   outline: none;
 }
+.backToWishlist{
+  width: fit-content;
+  position: relative;
+  margin-left: 85px;
+  cursor: pointer;
+}
+.backToWishlist--collection--title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.backToWishlist--collection-h2{
+  position: relative;
+  color: #0E273B;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0E273B;
+}
+.backToWishlist--collection-h2:before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 3px;
+  bottom: 0;
+  margin: auto;
+  background: url(/images/back-arrow.svg) center / contain no-repeat;
+  width: 6px;
+  height: 12px;
+}
+.backToWishlist--collection-span {
+  display: block;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: 0.025em;
+  color: #0b2443;
+  opacity: 0.4;
+  margin-top: 5px;
+}
 p, span, label, h1, h2, h3, h4, img, a, li, i {
   -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; 
 }
+form {
+  width: 100%;
+}
+.scroll {
+  overflow-y: scroll;
+}
+/* total width */
+.scroll::-webkit-scrollbar {
+  background-color:transparent;
+  width:5px;
+}
+
+/* background of the scrollbar except button or resizer */
+.scroll::-webkit-scrollbar-track {
+  background-color:transparent
+}
+
+/* scrollbar itself */
+.scroll::-webkit-scrollbar-thumb {
+  border-radius:16px;
+  border-radius: 100px;
+  background-color: rgba(11, 36, 67, .27);
+}
+
+/* set button(top and bottom of the scrollbar) */
+.scroll::-webkit-scrollbar-button {display:none}

@@ -21,6 +21,11 @@ const Watchlist = () => {
           </div>
         </div>
         <div className="watchlist--infoContainer">
+          <i className="watchlist--settingsSwitch"></i>
+          <div className="watchlist--settings">
+            <p className="watchlist--settings--delete">Delete</p>
+            <p className="watchlist--settings--share">Share</p>
+          </div>
           <div className="watchlist--brands">
             <img
               src="/images/addidas-brand.png"

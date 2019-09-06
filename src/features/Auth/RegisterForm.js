@@ -82,7 +82,6 @@ const RegisterForm = ({ styles }) => {
                   <div className="signup--withSocialMedia">
                     <div
                       className="signup--withFacebook"
-                      className="vb--register-with-facebook"
                       role="button"
                       tabIndex="-1"
                       onClick={() =>
@@ -90,7 +89,6 @@ const RegisterForm = ({ styles }) => {
                       }></div>
                     <div
                       className="signup--withGoogle"
-                      className="vb--register-with-google"
                       role="button"
                       tabIndex="-1"
                       onClick={() =>

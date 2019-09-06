@@ -10,7 +10,7 @@ const Login = () => {
         </figure>
         <div className="login--emailWrapper">
           <span className="login--label">Mobile Number or Email</span>
-          <input type="text" className="login--input" placeholder="Email" />
+          <input type="text" className="login--input" placeholder="Email" value="email@gmail.com"/>
         </div>
         <div className="login--passwordWrapper">
           <span className="login--label">Password</span>
