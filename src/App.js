@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { Query } from 'react-apollo';
 import Player from './features/Player/Player';
 import './i18n/i18n';
@@ -7,6 +7,7 @@ import OverlayScreen from './features/Overlay/OverlayScreen';
 // import { PRODLINK_ID } from './common/GrapqlConstant';
 import { getProdLinkIdApollo, getProdLinkId } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
+import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
@@ -44,6 +45,7 @@ const App = ({ client }) => {
             return <OverlayScreen playingState={playingState} />;
           }}
         </Query>
+        <VideoPlayerIndicator />
       </OverlayContainer>
     </div>
   );
