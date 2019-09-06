@@ -27,7 +27,10 @@ const WatchListScreen = () => {
           }
           const { watchList } = consumer;
           const favorites = consumer.favorites ? consumer.favorites : null;
-          const { prodLinks } = favorites;
+          const { prodLinks } = favorites && favorites;
+          {
+            /* console.log(prodLinks); */
+          }
           const LikedProdLinksId = [];
           prodLinks &&
             prodLinks[0] &&
@@ -55,6 +58,7 @@ const WatchListScreen = () => {
                       item={item}
                       key={item.id}
                       LikedProdLinksIds={LikedProdLinksId}
+                      uniqueId={LikedProdLinksId[key]}
                     />
                   )
                 )

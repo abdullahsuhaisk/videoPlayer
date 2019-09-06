@@ -61,7 +61,6 @@ const HotspotPoints = ({ client }) => {
             key={item.id}
           />
         ))}
-      <HotspotPoint position={hotspotPointHandler(50)} />
     </>
   );
 };

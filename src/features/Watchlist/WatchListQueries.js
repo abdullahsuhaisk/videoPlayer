@@ -38,6 +38,7 @@ export const GET_CONSUMER_WATCHLIST = gql`
       }
       watchList {
         id
+        uniqueId
         name
         header
         description

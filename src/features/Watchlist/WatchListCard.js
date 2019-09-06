@@ -68,14 +68,9 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
   );
 };
 
-const WatchListCard = ({ item, favorites, LikedProdLinksIds, client }) => {
-  // console.log(favorites);
-  // console.log(item);
-  const a = getProdLinkIdApollo(client);
-  console.log(a);
-  const prodLinkId = item && item.id;
+const WatchListCard = ({ item, LikedProdLinksIds }) => {
+  const prodLinkId = item && item.uniqueId;
   const { campaign, company, video, image, brands } = item;
-  // console.log(item);
   // console.log(campaign, company, video);
   const thumbnailUrl = image && image.thumbnailUrl;
   const itemDescription = item ? item.description : 'loading';
@@ -88,8 +83,9 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds, client }) => {
       <div className="watchlist">
         <div
           className="watchlist--videoContainer"
-          onClick={() => {
-            window.history.pushState('', '', prodLinkId);
+          onClick={async () => {
+            await window.history.pushState('', '', item.uniqueId);
+            window.location.reload();
           }}>
           <figure className="watchlist--thumbnail">
             <img

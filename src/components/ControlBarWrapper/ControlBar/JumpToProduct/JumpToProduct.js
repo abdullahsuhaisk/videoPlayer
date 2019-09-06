@@ -2,17 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
-import { getProdLinkId } from '../../../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
 import { GET_PLAYER } from '../../../Base/AppQueries';
 
 const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query getHotspotsForHotspotScreen(
+    $prodLinkId: Int
+    $prodLinkUniqueId: String
+  ) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       hotSpots {
         id
         in
         out
+        product {
+          id
+          name
+          image {
+            id
+            imageUrl
+          }
+        }
       }
     }
   }
@@ -20,7 +32,7 @@ const GET_HOTSPOTS = gql`
 
 const JumpToProduct = ({ client }) => {
   const videoPlayer = getVideoJs();
-  const prodLinkId = getProdLinkId();
+  const prodLinkUniqueId = getProdLinkUniqueId();
   const [hotSpots, setHotSpots] = useState([]);
   const [currentHotSpot, setCurrenHotSpot] = useState(0);
   const [currentTime, setCurrentTime] = useState(null);
@@ -29,7 +41,7 @@ const JumpToProduct = ({ client }) => {
     client
       .query({
         query: GET_HOTSPOTS,
-        variables: { prodLinkId }
+        variables: { prodLinkUniqueId }
       })
       .then(
         ({ data: { prodLink } }) =>
