@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 import {
@@ -81,6 +81,9 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
   //   (brand) => brand.logo && brand.logo.thumbnailUrl
   // );
   const companyLogo = company && company.logo && company.logo.thumbnailUrl;
+
+  const [settings, setSettings] = useState(false);
+
   return (
     <React.Fragment>
       <div className="watchlist">
@@ -105,6 +108,15 @@ const WatchListCard = ({ item, favorites, LikedProdLinksIds }) => {
           </div>
         </div>
         <div className="watchlist--infoContainer">
+          <i
+            className="watchlist--settingsSwitch"
+            onClick={() => setSettings(!settings)}></i>
+          {settings ? (
+            <div className="watchlist--settings">
+              <p className="watchlist--settings--delete">Delete</p>
+              <p className="watchlist--settings--share">Share</p>
+            </div>
+          ) : null}
           <div className="watchlist--brands">
             {/* {brandsLogos &&
               brands.map(

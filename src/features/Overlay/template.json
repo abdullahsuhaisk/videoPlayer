@@ -102,8 +102,46 @@
       "props": {
         "children": [
           {
-            "type": "ControlBarScreen",
-            "props": {}
+            "type": "ControlBarLeftWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "PlayPause",
+                  "props": ""
+                },
+                {
+                  "type": "JumpToProduct",
+                  "props": ""
+                },
+                {
+                  "type": "VolumControl",
+                  "props": ""
+                },
+                {
+                  "type": "TimeDisplay",
+                  "props": ""
+                }
+              ]
+            }
+          },
+          {
+            "type": "ControlBarRightWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ControlBarShoppingIcon",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarSettings",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarFullScreen",
+                  "props": ""
+                }
+              ]
+            }
           }
         ]
       }

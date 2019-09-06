@@ -5,7 +5,6 @@ import { UPDATE_CONSUMER_PROFILE } from './ProfileQueries';
 import { GET_COUNTRIES } from '../../components/Base/BaseQueries';
 
 const ProfileEdit = ({ consumer, setShowingProfile }) => {
-  // TODO: ZAC will make it
   const [input, setInput] = useState({
     name: '',
     birthDate: '',

@@ -44,9 +44,12 @@ const WishlistCollection = () => {
           </figure>
         </div>
         <div className="WishlistCollection--collection">
-          <h2 className="WishlistCollection--collection-h2">
-            ZARA | Men Campaign Spring Summer 2019
-          </h2>
+          <div className="WishlistCollection--collection--title">
+            <h2 className="WishlistCollection--collection-h2">
+              ZARA | Men Campaign Spring Summer 2019
+            </h2>
+            <i className="WishlistCollection--collection-delete"></i>
+          </div>
           <span className="WishlistCollection--collection-span">18 pieces</span>
         </div>
       </div>

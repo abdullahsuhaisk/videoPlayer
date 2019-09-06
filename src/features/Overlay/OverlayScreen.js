@@ -11,7 +11,10 @@ import { PLAYER } from '../../common/constants';
 // import ControlBarScreen from '../ControlBar/ControlBarScreen';
 import { useTemplate, useCss } from './TemplateHook';
 import temp from './template.json';
-import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
+// import ControlBarWrapper from '../../components/ControlBarWrapper/ControlBarWrapper';
+import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
+
+//import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
 // import StoriyRender from '../../components/StoriyRender';
 
 const Screen = ({ playingState, videoPlayer }) => {
@@ -38,9 +41,10 @@ const Screen = ({ playingState, videoPlayer }) => {
         />
       )}
       {playingState !== PLAYER.READY && template && (
-        <ControlBarScreen
+        <VideoControlBarScreen
           videoPlayer={videoPlayer}
           playingState={playingState}
+          temp={template}
         />
       )}
     </>

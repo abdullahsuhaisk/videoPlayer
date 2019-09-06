@@ -1,6 +1,8 @@
+/* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { ApolloConsumer, Query } from 'react-apollo';
+import { ApolloConsumer, Query, withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import { ComponentsService } from './ComponentService';
 import ProfileButton from './ProfileButton';
@@ -10,17 +12,30 @@ import WatchListButton from './WatchListButton';
 import Share from './Share';
 import ShareModal from './ShareModal';
 
-function buildMenu(tabs, callback, tab, client) {
+const GET_RENDERING_TAB_ITEM = gql`
+  query getRenderingItem {
+    whichTabItemIsRendering @client
+  }
+`;
+
+function buildMenu(tabs, callback, tab, client, whichTabItemIsRendering) {
+  if (!tab) return null;
+  if (!tabs) return null;
+
   return tabs.map((item) => (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       key={item.title}
       onClick={() => {
         client.writeData({ data: { isProfileOpen: false } });
+        client.writeData({
+          data: { whichTabItemIsRendering: item.key }
+        });
         callback(item.key);
       }}
       className={
-        'subMenu--link' + (item.key === tab ? ' subMenu--link--active' : '')
+        'subMenu--link' +
+        (item.key === whichTabItemIsRendering ? ' subMenu--link--active' : '')
       }>
       <a>{item.title}</a>
     </li>
@@ -50,8 +65,8 @@ export const Tab = ({ tabs, children }) => {
                     </div>
                     <ProfileButton />
                   </div>
-                  <hr className="subMenu--underline" />
                 </div>
+                <hr className="subMenu--underline" />
               </div>
               {showShareModal ? (
                 <ShareModal setShowShareModal={setShowShareModal} />
@@ -64,3 +79,8 @@ export const Tab = ({ tabs, children }) => {
     </>
   );
 };
+export default withApollo(Tab);
+/*
+grapql must know which elements should be render
+and Component must came from grapql
+*/

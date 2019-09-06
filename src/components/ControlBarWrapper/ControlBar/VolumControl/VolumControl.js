@@ -1,6 +1,9 @@
 import React from 'react';
+import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
-const VolumControl = ({ videoPlayer }) => {
+const VolumControl = () => {
+  const videoPlayer = getVideoJs();
+
   const volumeHandler = (e) => {
     if (videoPlayer) {
       if (e) {

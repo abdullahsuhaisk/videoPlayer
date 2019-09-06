@@ -1,6 +1,8 @@
 import React from 'react';
+import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
-const ControlBarFullScreen = ({ videoPlayer }) => {
+const ControlBarFullScreen = () => {
+  const videoPlayer = getVideoJs();
   const fullScreenHnadler = () => {
     if (videoPlayer.isFullscreen()) {
       videoPlayer.exitFullscreen();

@@ -50,7 +50,7 @@ const ShoppingCartScreen = ({ client }) => {
   //   return <ShoppingCardContentLoader width={700} height={70} />;
   // }
   return (
-    <div className="ShoppingCartContainer" style={{ height: 630 }}>
+    <div className="ShoppingCartContainer">
       {checkoutShowing === false ? (
         <>
           <ShoppingCart

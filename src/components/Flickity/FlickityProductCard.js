@@ -12,7 +12,7 @@ const flickityOptions = {
   percentPosition: false
 };
 
-const FlickityProductCard = ({ products }) => {
+const FlickityProductCard = ({ products, addedWishList }) => {
   // console.log(products);
   const [containerClasses, setContainerClasses] = React.useState(
     'VideoPlayerContainer'
@@ -28,9 +28,13 @@ const FlickityProductCard = ({ products }) => {
         className={containerClasses}
         reloadOnUpdate={true}
         options={flickityOptions}>
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {products.map((product) =>
+          addedWishList ? (
+            <ProductCard product={product} key={product.id} addedWishList />
+          ) : (
+            <ProductCard product={product} key={product.id} />
+          )
+        )}
       </Flickity>
     );
   }

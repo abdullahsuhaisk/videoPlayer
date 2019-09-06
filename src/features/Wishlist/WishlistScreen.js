@@ -13,6 +13,7 @@ import WishLisContentloader from '../../components/ContentLoader/WishLisContentl
 const WishlistScreen = () => {
   const [whichWishList, setWhichWishList] = React.useState(null);
   // const [wishList, setWishList] = React.useState(null);
+  // console.log(whichWishList);
   return (
     <>
       <Query query={GET_CONSUMER_WISHLIST}>
@@ -25,14 +26,16 @@ const WishlistScreen = () => {
           }
           const { consumer } = data;
           const { whisLists } = consumer;
-          // console.log(whisLists);
+          {
+            /* console.log(whisLists); */
+          }
           if (whisLists.length === 0) {
             // TODO: TRY EMPTYWİSHLİST Case
             return <EmptyWishList />;
           }
           return (
             <>
-              {whichWishList ? (
+              {whichWishList !== null ? (
                 <WishListInside
                   whichWishList={whichWishList}
                   setWhichWishList={setWhichWishList}

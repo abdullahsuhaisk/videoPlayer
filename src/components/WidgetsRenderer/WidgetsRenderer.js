@@ -21,14 +21,16 @@ import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverla
 
 // Control Bar
 import ControlBarWrapper from '../ControlBarWrapper/ControlBarWrapper';
-import ControlBarScreen from '../ControlBarWrapper/ControlBar/ControlBarScreen';
+import ControlBarScreen from '../ControlBarWrapper/ControlBar/ControlBarScreenReady';
 import VideoProgressBar from '../ControlBarWrapper/ControlBar/VideoProgressBar/VideoProgressBar';
 import PlayPause from '../ControlBarWrapper/ControlBar/PlayPause/PlayPause';
 import VolumControl from '../ControlBarWrapper/ControlBar/VolumControl/VolumControl';
 import TimeDisplay from '../ControlBarWrapper/ControlBar/TimeDisplay/TimeDisplay';
 import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/ControlBarShoppingIcon';
 import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
-
+import ControlBarRightWrapper from '../ControlBarWrapper/ControlBarRightWrapper';
+import ControlBarLeftWrapper from '../ControlBarWrapper/ControlBarLeftWrapper';
+import JumpToProduct from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProduct';
 // Control Bar
 
 // Screen Section Screen has all of logic and own State //
@@ -41,7 +43,7 @@ import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDe
 // Screen Section //
 
 // Tab Component //
-import { Tab } from '../Template/Tab/Tab';
+import Tab from '../Template/Tab/Tab';
 import TabWrapper from '../Template/Tab/TabWrapper';
 import Header from '../Template/Header';
 // Tab Component //
@@ -54,6 +56,7 @@ import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
+import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/ControlBarFullScreen';
 
 const widgetList = {
   Empty,
@@ -80,6 +83,10 @@ const widgetList = {
   TimeDisplay,
   ControlBarShoppingIcon,
   ControlBarSettings,
+  ControlBarRightWrapper,
+  ControlBarLeftWrapper,
+  ControlBarFullScreen,
+  JumpToProduct,
   // ProductCardWishlisted,
   NavigationWrapper,
   TabWrapper,
@@ -100,6 +107,7 @@ const WidgetsRenderer = (props) => {
 
   useEffect(() => {
     const widgetsWithComponentAndProps = widgets.map((widget) => {
+      // console.log(widget);
       const { type: widgetType, props: widgetProps } = widget;
       const { styles: widgetStyles, children: widgetChildren } = widgetProps;
       // Above the section I can write new props thing
