@@ -9,7 +9,7 @@ import {
   ADD_PRODLINK_TO_FAVORITE,
   DELETE_PRODLINK_TO_FAVORITE
 } from '../../components/Base/BaseQueries';
-import { getProdLinkIdApollo } from '../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 const Like = ({ numberOfLikes, prodLinkId }) => {
   console.log('Like');
@@ -69,6 +69,7 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
 };
 
 const WatchListCard = ({ item, LikedProdLinksIds }) => {
+  const uniqueIdFromUrl = getProdLinkUniqueId();
   const prodLinkId = item && item.uniqueId;
   const { campaign, company, video, image, brands } = item;
   // console.log(campaign, company, video);
@@ -78,6 +79,13 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
   //   (brand) => brand.logo && brand.logo.thumbnailUrl
   // );
   const companyLogo = company && company.logo && company.logo.thumbnailUrl;
+
+  const goNewVideo = (id) => {
+    if (uniqueIdFromUrl !== id) {
+      window.location.reload();
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="watchlist">
@@ -85,7 +93,7 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
           className="watchlist--videoContainer"
           onClick={async () => {
             await window.history.pushState('', '', item.uniqueId);
-            window.location.reload();
+            goNewVideo(item.uniqueId);
           }}>
           <figure className="watchlist--thumbnail">
             <img

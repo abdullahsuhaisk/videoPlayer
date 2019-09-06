@@ -1,12 +1,13 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 // import dp from './assets/dp.png';
 
 const GET_HEADER_COMPANY_CAMPAING = gql`
-  query get_header($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query get_header($prodLinkId: Int, $prodLinkUniqueId: String) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
       id
       header
       company {
@@ -21,13 +22,13 @@ const GET_HEADER_COMPANY_CAMPAING = gql`
     }
   }
 `;
-
 const Header = ({ children, color }) => {
+  const uniqueId = getProdLinkUniqueId();
   return (
     <React.Fragment>
       <Query
         query={GET_HEADER_COMPANY_CAMPAING}
-        variables={{ prodLinkId: 9 }}
+        variables={{ prodLinkUniqueId: uniqueId }}
         fetchPolicy="cache-first">
         {({ data, loading, error }) => {
           if (loading || error) return null;
@@ -43,17 +44,9 @@ const Header = ({ children, color }) => {
           );
         }}
       </Query>
-
       {children}
     </React.Fragment>
   );
-};
-
-Header.defaultProps = {
-  companyName: 'Zara',
-  campaingName: 'Spring- Summer 2019 Best Creation',
-  profileImage: '',
-  profileName: 'Brandon Lee'
 };
 
 export default Header;
