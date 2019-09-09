@@ -19,7 +19,10 @@ const App = ({ client }) => {
       <Query query={GET_VIDEO} variables={{ prodLinkUniqueId: prodLinkId }}>
         {({ loading, error, data }) => {
           if (loading) return null;
-          if (error) return <div>No video</div>;
+          if (error) {
+            console.log(error.graphQLErrors);
+            return <div>No video</div>;
+          }
           if (data.prodLink === null) return <div>No video</div>;
           const { video } = data.prodLink;
           const { image } = data.prodLink;

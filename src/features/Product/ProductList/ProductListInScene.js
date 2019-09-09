@@ -17,7 +17,6 @@ const GET_PLAYER = gql`
 
 // TODO: change prodLinkId
 const ProductListInScene = () => {
-  console.log('ASDASD');
   const PRODUCT_ID = getProdLinkUniqueId();
   return (
     <Query
@@ -31,7 +30,6 @@ const ProductListInScene = () => {
           return null;
         }
         const { hotSpots } = data.prodLink;
-        console.log(hotSpots);
         return (
           <Query query={GET_PLAYER}>
             {({
