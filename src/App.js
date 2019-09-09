@@ -8,6 +8,7 @@ import OverlayScreen from './features/Overlay/OverlayScreen';
 import { getProdLinkIdApollo, getProdLinkId } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
+import { httpToHttps } from './utils/httpTohttps';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
@@ -23,9 +24,9 @@ const App = ({ client }) => {
           const { video } = data.prodLink;
           const { image } = data.prodLink;
           const poster =
-            (image && image.imageUrl) ||
+            (image && httpToHttps(image.imageUrl)) ||
             'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
-          const src = video.qualities && video.qualities[2].url;
+          const src = video.qualities && httpToHttps(video.qualities[2].url);
           const { type } = video.qualities && video.qualities[2];
 
           return (
