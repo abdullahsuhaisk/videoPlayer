@@ -88,112 +88,113 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                 // const whisListsCount = whisLists && whisLists.length;
                 // console.log('Add To WishListFrom Product', whisLists);
                 return (
-                  <div className="AddToWishlist">
-                    <WishListImageGallery
-                      whisListId={selectedItem}
-                      whisListProduct={selectedWhisListProduct}
-                    />
-                    <div className="AddToWishlist--information">
-                      <i
-                        className="AddToWishlist--information--close"
-                        onClick={() =>
-                          client.writeData({
-                            data: { isAddWishListOpen: false }
-                          })
-                        }></i>
-                      <h3 className="AddToWishlist--information--h3">
-                        Add this item to wishlist
-                      </h3>
-                      <div className="AddToWishlist--information--search">
-                        <i className="AddToWishlist--information--search--icon"></i>
-                        <input
-                          type="text"
-                          className="AddToWishlist--information--search--input"
-                          onChange={(e) => setSearchWishList(e.target.value)}
-                          value={searchWishList}
-                        />
-                      </div>
-                      <div className="AddToWishlist--information--wishlistItemContainer">
-                        {whisLists.map((whisList, key) => {
-                          const itemCount =
-                            whisList.products !== null
-                              ? whisList.products.length
-                              : 0;
-                          whisList.products &&
-                            whisList.products.map((product) =>
-                              product.id === PRODUCTiD
-                                ? hasProductWishList.push(whisList.id)
-                                : null
-                            );
-                          return (
-                            <Mutation
-                              mutation={DELETE_WISHLIST_ITEM}
-                              key={whisList.name + whisList.id}>
-                              {(deleteWishListItem) => {
-                                return (
-                                  <div
-                                    className={
-                                      hasProductWishList.some(
-                                        (item) => item === whisList.id
-                                      )
-                                        ? AddedItemClassName
-                                        : selectedWhishListId &&
-                                          selectedWhishListId === whisList.id
-                                        ? selectedItemClassName
-                                        : wishListItemClassName
-                                    }
-                                    key={whisList.name + key}
-                                    onClick={(e) => {
-                                      const { className } = e.target;
-                                      setselectedItem(key);
-                                      setselectedWhishListIdId(whisList.id);
-                                      if (className === AddedItemClassName)
-                                        deleteWishListItem({
-                                          variables: {
-                                            wishListId: whisList.id,
-                                            productId: PRODUCTiD
+                  <div className="darkOverlay">
+                    <i
+                      className="modal--close"
+                      onClick={() =>
+                        client.writeData({
+                          data: { isAddWishListOpen: false }
+                        })
+                      }></i>
+                    <div className="AddToWishlist">
+                      <WishListImageGallery
+                        whisListId={selectedItem}
+                        whisListProduct={selectedWhisListProduct}
+                      />
+                      <div className="AddToWishlist--information">
+                        <h3 className="AddToWishlist--information--h3">
+                          Add this item to wishlist
+                        </h3>
+                        <div className="AddToWishlist--information--search">
+                          <i className="AddToWishlist--information--search--icon"></i>
+                          <input
+                            type="text"
+                            className="AddToWishlist--information--search--input"
+                            onChange={(e) => setSearchWishList(e.target.value)}
+                            value={searchWishList}
+                          />
+                        </div>
+                        <div className="AddToWishlist--information--wishlistItemContainer">
+                          {whisLists.map((whisList, key) => {
+                            const itemCount =
+                              whisList.products !== null
+                                ? whisList.products.length
+                                : 0;
+                            whisList.products &&
+                              whisList.products.map((product) =>
+                                product.id === PRODUCTiD
+                                  ? hasProductWishList.push(whisList.id)
+                                  : null
+                              );
+                            return (
+                              <Mutation
+                                mutation={DELETE_WISHLIST_ITEM}
+                                key={whisList.name + whisList.id}>
+                                {(deleteWishListItem) => {
+                                  return (
+                                    <div
+                                      className={
+                                        hasProductWishList.some(
+                                          (item) => item === whisList.id
+                                        )
+                                          ? AddedItemClassName
+                                          : selectedWhishListId &&
+                                            selectedWhishListId === whisList.id
+                                          ? selectedItemClassName
+                                          : wishListItemClassName
+                                      }
+                                      key={whisList.name + key}
+                                      onClick={(e) => {
+                                        const { className } = e.target;
+                                        setselectedItem(key);
+                                        setselectedWhishListIdId(whisList.id);
+                                        if (className === AddedItemClassName)
+                                          deleteWishListItem({
+                                            variables: {
+                                              wishListId: whisList.id,
+                                              productId: PRODUCTiD
+                                            }
+                                          });
+                                      }}>
+                                      <figure className="AddToWishlist--information--wishlistItem--figure">
+                                        <img
+                                          className="AddToWishlist--information--wishlistItem--figure--img"
+                                          src={
+                                            whisList &&
+                                            whisList.products &&
+                                            whisList.products[0].image &&
+                                            whisList.products[0].image
+                                              .thumbnailUrl
+                                              ? whisList.products[0].image
+                                                  .thumbnailUrl
+                                              : '/images/wishlist/whishlist1.jpg'
                                           }
-                                        });
-                                    }}>
-                                    <figure className="AddToWishlist--information--wishlistItem--figure">
-                                      <img
-                                        className="AddToWishlist--information--wishlistItem--figure--img"
-                                        src={
-                                          whisList &&
-                                          whisList.products &&
-                                          whisList.products[0].image &&
-                                          whisList.products[0].image
-                                            .thumbnailUrl
-                                            ? whisList.products[0].image
-                                                .thumbnailUrl
-                                            : '/images/wishlist/whishlist1.jpg'
-                                        }
-                                        // "/images/wishlist/whishlist1.jpg"
-                                      />
-                                    </figure>
-                                    <div className="AddToWishlist--information--wishlistItem--titleItems">
-                                      <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
-                                        {whisList.name}
-                                      </h3>
-                                      <p className="AddToWishlist--information--wishlistItem--titleItems--p">
-                                        {itemCount} items
-                                      </p>
+                                          // "/images/wishlist/whishlist1.jpg"
+                                        />
+                                      </figure>
+                                      <div className="AddToWishlist--information--wishlistItem--titleItems">
+                                        <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
+                                          {whisList.name}
+                                        </h3>
+                                        <p className="AddToWishlist--information--wishlistItem--titleItems--p">
+                                          {itemCount} items
+                                        </p>
+                                      </div>
                                     </div>
-                                  </div>
-                                );
-                              }}
-                            </Mutation>
-                          );
-                        })}
-                      </div>
-                      <div className="AddToWishlist--information--btnContainer">
-                        <AddNewWishList
-                          classNames="AddToWishlist--information--btnContainer--createBtn"
-                          title="Create new list"
-                          setWishListName={setWishListName}
-                          wishListName={searchWishList}
-                        />
-                        <Query query={GET_PRODUCT_ID}>
+                                  );
+                                }}
+                              </Mutation>
+                            );
+                          })}
+                        </div>
+                        <div className="AddToWishlist--information--btnContainer">
+                          <AddNewWishList
+                            classNames="AddToWishlist--information--btnContainer--createBtn"
+                            title="Create new list"
+                            setWishListName={setWishListName}
+                            wishListName={searchWishList}
+                          />
+                          {/* <Query query={GET_PRODUCT_ID}>
                           {({ data: productId }) => {
                             if (productId) {
                               return (
@@ -229,7 +230,8 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                             }
                             return 'loading';
                           }}
-                        </Query>
+                        </Query> */}
+                        </div>
                       </div>
                     </div>
                   </div>

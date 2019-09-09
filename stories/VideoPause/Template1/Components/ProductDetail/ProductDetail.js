@@ -46,6 +46,7 @@ const ProductDetail = () => {
           </figure>
         </Flickity>
         <div className="ProductDetail--information">
+        <i className="ProductDetail--information--badge--in-wishlist"></i>
         <div className="scroll">
           <i className="ProductDetail--information--close"></i>
           <div className="ProductDetail--information--title">
