@@ -20,7 +20,7 @@ const App = ({ client }) => {
         {({ loading, error, data }) => {
           if (loading) return null;
           if (error) {
-            console.log(error);
+            console.log(error.graphQLErrors);
             return <div>No video</div>;
           }
           if (data.prodLink === null) return <div>No video</div>;
