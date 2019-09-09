@@ -27,6 +27,7 @@ import EmptyAdress from './VideoPause/Template1/Components/EmptyAdress/EmptyAdre
 import EmptyCart from './VideoPause/Template1/Components/EmptyCart/EmptyCart'
 import EmptyWatchlist from './VideoPause/Template1/Components/EmptyWatchlist/EmptyWatchlist'
 import Animation from './VideoPause/Template1/Components/Lottie/Animation'
+import Error from './VideoPause/Template1/Components/Error/Error'
 import FirstTemplateWrapper from './VideoPause/Template1/Wrapper'
 
 const FirstTemplateDecorator = (storyFn) => <FirstTemplateWrapper>{storyFn()}</FirstTemplateWrapper>;
@@ -59,4 +60,6 @@ storiesOf('Template 1', module)
   .add('Payment Success', () => <PaymentSuccess />)
   .add('Empty Adress', () => <EmptyAdress />)
   .add('Empty Cart', () => <EmptyCart />)
-  .add('Empty Watchlist', () => <EmptyWatchlist />);
+  .add('Empty Watchlist', () => <EmptyWatchlist />)
+  .add('Error', () => <Error />)
+  ;
