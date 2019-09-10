@@ -1,3 +1,5 @@
+/* eslint-disable default-case */
+/* eslint-disable no-restricted-syntax */
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
@@ -49,6 +51,7 @@ const errorLink = onError(
         console.log(err.code);
         switch (err.code) {
           case 'ERR001':
+          case 'ERR005':
             // error code is set to UNAUTHENTICATED
             // when AuthenticationError thrown in resolver
             // modify the operation context with a new token
