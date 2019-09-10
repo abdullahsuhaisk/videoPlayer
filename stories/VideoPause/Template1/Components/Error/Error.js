@@ -3,6 +3,10 @@ import React from 'react';
 const Error = () => {
   return (
     <div className="Error">
+      {/* <div class="stars"></div>
+      <div class="twinkling"></div>
+      <div class="clouds"></div> */}
+      <div class="error_bg"></div>
       <div className="Error--container">
         <figure className="Error--logo">
           <img src="/images/logo-white.svg" className="Error--logo--img" alt="Vibuy"/>
@@ -11,9 +15,11 @@ const Error = () => {
         <p className="Error--description">Opss, something went wrong!</p>
         <button className="Error--returnBtn">Return to home</button>
       </div>
-      <div id='stars'></div>
-      <div id='stars2'></div>
-      <div id='stars3'></div>
+      <div className="Error--stars">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+      </div>
     </div>
   );
 };
