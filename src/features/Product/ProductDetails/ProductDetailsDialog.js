@@ -42,7 +42,7 @@ const ProductDetail = ({ productId }) => {
               return (
                 <div className="darkOverlay">
                   <i
-                    className="ProductDetail--information--close"
+                    className="modal--close"
                     onClick={() =>
                       client.writeData({
                         data: { productIdInDetails: null }
@@ -56,6 +56,17 @@ const ProductDetail = ({ productId }) => {
                       key={product.name + product.id}
                     />
                     <div className="ProductDetail--information">
+                      <i
+                        className="ProductDetail--information--badge--in-wishlist"
+                        onClick={() =>
+                          // addProductToConsumerWishList()
+                          client.writeData({
+                            data: {
+                              isAddWishListOpen: true,
+                              productId: productId
+                            }
+                          })
+                        }></i>
                       <div className="scroll">
                         <div className="ProductDetail--information--title">
                           <h2 className="ProductDetail--information--title--h2">

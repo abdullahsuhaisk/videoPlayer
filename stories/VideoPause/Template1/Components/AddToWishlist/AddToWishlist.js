@@ -119,9 +119,9 @@ const AddToWishlist = () => {
             <button className="AddToWishlist--information--btnContainer--createBtn">
               Create new list
             </button>
-            <button className="AddToWishlist--information--btnContainer--doneBtn">
+            {/* <button className="AddToWishlist--information--btnContainer--doneBtn">
               Done
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
