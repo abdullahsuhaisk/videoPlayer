@@ -9,6 +9,7 @@ import { getProdLinkIdApollo, getProdLinkId } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
 import { httpToHttps } from './utils/httpTohttps';
+import Error from './components/Error/Error';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
@@ -20,8 +21,11 @@ const App = ({ client }) => {
         {({ loading, error, data }) => {
           if (loading) return null;
           if (error) {
-            console.log(error.graphQLErrors);
-            return <div>No video</div>;
+            const errorContentsArray = [];
+            error.graphQLErrors.map((
+              item // Check the Model
+            ) => errorContentsArray.push(item));
+            return <Error content={errorContentsArray} />;
           }
           if (data.prodLink === null) return <div>No video</div>;
           const { video } = data.prodLink;
