@@ -18,7 +18,7 @@ const WishListInside = ({ whichWishList, whisLists, setWhichWishList }) => {
     <>
       <FlickityProductCard
         products={products}
-        key={products.id}
+        // key={products.id}
         addedWishList
       />
       {/* <Flickity
