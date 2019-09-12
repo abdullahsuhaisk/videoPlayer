@@ -5,7 +5,7 @@ export const Bar = ({ progress, animationDuration }) => (
   <div
     style={{
       background: '#29d',
-      height: 2,
+      height: 7,
       left: 0,
       marginLeft: `${(-1 + progress) * 100}%`,
       position: 'fixed',
