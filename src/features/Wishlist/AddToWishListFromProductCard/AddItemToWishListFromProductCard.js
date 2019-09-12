@@ -23,12 +23,12 @@ const AddItemToWishListFromProductCard = ({ client }) => {
   const selectedRemoveClassName =
     'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected-remove';
   const wishListItemClassName = 'AddToWishlist--information--wishlistItem ';
-  const selectedItemClassName =
-    'AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItemSelected';
+  const selectedItemClassName = 'AddToWishlist--information--wishlistItem ';
   const [searchWishList, setSearchWishList] = useState(
     'Create New Wish List Name'
   );
   const [PRODUCTiD, setPRODUCTiD] = useState(null);
+  const [whisLists, setWhisLists] = useState([]);
   const wishListInsideProductsId = [];
   const hasProductWishList = [];
   // console.log(selectedWhishListId);
@@ -71,8 +71,8 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                   return null;
                 }
                 const { consumer } = data;
-                const whisLists = consumer && consumer.whisLists;
-
+                // const whisLists = consumer && consumer.whisLists;
+                setWhisLists(consumer && consumer.whisLists);
                 const selectedWhisListProduct =
                   consumer &&
                   consumer.whisLists &&
@@ -126,9 +126,15 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                   ? hasProductWishList.push(whisList.id)
                                   : null
                               );
+                            const QUERY = hasProductWishList.some(
+                              (item) => item === whisList.id
+                            )
+                              ? DELETE_WISHLIST_ITEM
+                              : ADD_WISHLIST_MUTATION;
+                            // console.log(whisLists);
                             return (
                               <Mutation
-                                mutation={DELETE_WISHLIST_ITEM}
+                                mutation={QUERY}
                                 key={whisList.name + whisList.id}>
                                 {(deleteWishListItem) => {
                                   return (
@@ -148,13 +154,36 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                         const { className } = e.target;
                                         setselectedItem(key);
                                         setselectedWhishListIdId(whisList.id);
-                                        if (className === AddedItemClassName)
-                                          deleteWishListItem({
-                                            variables: {
-                                              wishListId: whisList.id,
-                                              productId: PRODUCTiD
+                                        const tmpWishlists = whisLists.map(
+                                          (tmpwishlist) => {
+                                            if (
+                                              tmpwishlist.id === whisList.id
+                                            ) {
+                                              if (
+                                                className === AddedItemClassName
+                                              ) {
+                                                tmpwishlist.products = tmpwishlist.products.filter(
+                                                  (product) =>
+                                                    product.id != PRODUCTiD
+                                                );
+                                                return tmpwishlist;
+                                              }
+                                              if (tmpwishlist.products === null)
+                                                tmpwishlist.products = [];
+                                              tmpwishlist.products.push({
+                                                id: PRODUCTiD
+                                              });
                                             }
-                                          });
+                                            return tmpwishlist;
+                                          }
+                                        );
+                                        setWhisLists(tmpWishlists);
+                                        deleteWishListItem({
+                                          variables: {
+                                            wishListId: whisList.id,
+                                            productId: PRODUCTiD
+                                          }
+                                        });
                                       }}>
                                       <figure className="AddToWishlist--information--wishlistItem--figure">
                                         <img
@@ -162,6 +191,7 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                           src={
                                             whisList &&
                                             whisList.products &&
+                                            whisList.products[0] &&
                                             whisList.products[0].image &&
                                             whisList.products[0].image
                                               .thumbnailUrl
@@ -194,43 +224,43 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                             setWishListName={setWishListName}
                             wishListName={searchWishList}
                           />
-                          {/* <Query query={GET_PRODUCT_ID}>
-                          {({ data: productId }) => {
-                            if (productId) {
-                              return (
-                                <Mutation
-                                  mutation={ADD_WISHLIST_MUTATION}
-                                  variables={{
-                                    wishListId: selectedWhishListId,
-                                    ...productId
-                                  }}
-                                  refetchQueries={() => {
-                                    // console.log('refetchQueries');
-                                    return [
-                                      {
-                                        query: GET_CONSUMER_WISHLIST
-                                      }
-                                    ];
-                                  }}>
-                                  {(addProductToConsumerWishList) => (
-                                    <button
-                                      disabled={!selectedWhishListId}
-                                      className="AddToWishlist--information--btnContainer--doneBtn"
-                                      onClick={async () => {
-                                        await addProductToConsumerWishList();
-                                        client.writeData({
-                                          data: { isAddWishListOpen: false }
-                                        });
-                                      }}>
-                                      Done
-                                    </button>
-                                  )}
-                                </Mutation>
-                              );
-                            }
-                            return 'loading';
-                          }}
-                        </Query> */}
+                          <Query query={GET_PRODUCT_ID}>
+                            {({ data: productId }) => {
+                              if (productId) {
+                                return (
+                                  <Mutation
+                                    mutation={ADD_WISHLIST_MUTATION}
+                                    variables={{
+                                      wishListId: selectedWhishListId,
+                                      ...productId
+                                    }}
+                                    refetchQueries={() => {
+                                      // console.log('refetchQueries');
+                                      return [
+                                        {
+                                          query: GET_CONSUMER_WISHLIST
+                                        }
+                                      ];
+                                    }}>
+                                    {(addProductToConsumerWishList) => (
+                                      <button
+                                        disabled={!selectedWhishListId}
+                                        className="AddToWishlist--information--btnContainer--doneBtn"
+                                        onClick={async () => {
+                                          await addProductToConsumerWishList();
+                                          client.writeData({
+                                            data: { isAddWishListOpen: false }
+                                          });
+                                        }}>
+                                        Done
+                                      </button>
+                                    )}
+                                  </Mutation>
+                                );
+                              }
+                              return 'loading';
+                            }}
+                          </Query>
                         </div>
                       </div>
                     </div>

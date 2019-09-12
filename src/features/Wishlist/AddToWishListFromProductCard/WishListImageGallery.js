@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { GET_WISHLISTS_IMAGE } from '../wishListQueries';
 import FlickityGallery from '../../../components/Flickity/FlickityGallery';
 
-const WishListImageGallery = ({ whisListId, whisListProduct }) => {
+const WishListImageGallery = ({ whisListProduct }) => {
   const [images, setImages] = useState([]);
   // TODO: WishListFlicktiy images
   // console.log(whisListId);
@@ -12,7 +12,7 @@ const WishListImageGallery = ({ whisListId, whisListProduct }) => {
 
   useEffect(() => {
     imageParser();
-  }, [whisListId, whisListProduct]);
+  }, [whisListProduct]);
 
   const imageParser = () => {
     const a = [];
@@ -22,6 +22,7 @@ const WishListImageGallery = ({ whisListId, whisListProduct }) => {
           if (images.length <= 10) {
             return (
               item &&
+              item.images &&
               item.images.map((image) => {
                 // images.push(image.imageUrl);
                 a.push(image.imageUrl);
