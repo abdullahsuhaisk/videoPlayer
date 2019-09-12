@@ -26,9 +26,9 @@ const WishlistScreen = () => {
           }
           const { consumer } = data;
           const { whisLists } = consumer;
-          {
-            /* console.log(whisLists); */
-          }
+          // {
+          /* console.log(whisLists); */
+          // }
           if (whisLists.length === 0) {
             // TODO: TRY EMPTYWİSHLİST Case
             return <EmptyWishList />;

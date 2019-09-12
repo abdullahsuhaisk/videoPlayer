@@ -5,14 +5,14 @@ import FlickityProductCard from '../../components/Flickity/FlickityProductCard';
 const WishListInside = ({ whichWishList, whisLists, setWhichWishList }) => {
   const whish = whisLists[whichWishList];
   console.log(whish);
-  const wishListId = whish.id;
-  const { name, totalProduct } = whish;
-  const { products } = whisLists[whichWishList];
+  // const wishListId = whish.id;
+  const { name } = whish;
+  const { products } =
+    whisLists[whichWishList] !== null ? whisLists[whichWishList] : [];
+  console.log('products', products);
 
-  // console.log(whisLists[whichWishList]);
-
-  const containerClasses =
-    products && products.length > 1 ? ' swipeGradient' : 'VideoPlayerContainer';
+  // const containerClasses =
+  //   products && products.length > 1 ? ' swipeGradient' : 'VideoPlayerContainer';
 
   return (
     <>

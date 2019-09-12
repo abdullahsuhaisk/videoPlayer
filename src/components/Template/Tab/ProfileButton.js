@@ -12,13 +12,13 @@ const GET_USER_INFO = gql`
   }
 `;
 
-const LOGOUT = gql`
-  mutation logout {
-    logout @client {
-      displayName
-    }
-  }
-`;
+// const LOGOUT = gql`
+//   mutation logout {
+//     logout @client {
+//       displayName
+//     }
+//   }
+// `;
 
 const handleClick = (client, userInfo, isProfileOpen, setIsProfileOpen) => {
   if (userInfo) {

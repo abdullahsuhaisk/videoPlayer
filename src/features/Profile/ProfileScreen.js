@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProfileWrapper } from './Profile.style';
+// import { ProfileWrapper } from './Profile.style';
 import ProfileAddress from './ProfileComponents/ProfileAddress';
 import ProfileInfoShow from './ProfileComponents/ProfileInfoShow';
 import ProfileImage from './ProfileComponents/ProfileImage';

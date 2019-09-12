@@ -19,17 +19,17 @@ const WishListImageGallery = ({ whisListProduct }) => {
     a.length = 0;
     whisListProduct != null
       ? whisListProduct.map((item) => {
-          if (images.length <= 10) {
-            return (
-              item &&
-              item.images &&
-              item.images.map((image) => {
-                // images.push(image.imageUrl);
-                a.push(image.imageUrl);
-                return setImages(a);
-              })
-            );
-          }
+          // if (images.length <= 10) {
+          return (
+            item &&
+            item.images &&
+            item.images.map((image) => {
+              // images.push(image.imageUrl);
+              a.push(image.imageUrl);
+              return setImages(a);
+            })
+          );
+          // }
         })
       : setImages(a);
   };

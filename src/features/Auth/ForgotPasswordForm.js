@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { Wrapper, forgotPasswordFormStyles } from './ForgotPasswordForm.style';
+import { forgotPasswordFormStyles } from './ForgotPasswordForm.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const SEND_FORGOT_PASSWORD_EMAIL = gql`
@@ -32,6 +32,7 @@ const ForgotPasswordForm = ({ styles }) => {
                 <img
                   className="forgotPassword--img"
                   src="/images/login_image.svg"
+                  alt="forgot password"
                 />
               </figure>
               <form

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Flickity from 'react-flickity-component';
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import Flickity from 'react-flickity-component';
 
 import WishlistCollection from './WishlistCollection';
 

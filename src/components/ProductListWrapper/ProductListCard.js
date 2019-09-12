@@ -7,8 +7,12 @@ const ProductListCard = () => {
     <React.Fragment>
       <div className="Product-Card">
         <div className="productCard--imageWrapper">
-          <img src={cardimg} className="productCard--image" />
-          <a className="productCard--wishlist-status">Add to Wish List</a>
+          <img
+            src={cardimg}
+            alt="Add to Wish List"
+            className="productCard--image"
+          />
+          <p className="productCard--wishlist-status">Add to Wish List</p>
         </div>
         <p className="productCard--name">Pierre Cardin Women Red Glasses</p>
         <div className="productCard--priceWrapper">
@@ -16,7 +20,7 @@ const ProductListCard = () => {
         </div>
         <p className="productCard--stock-status">in stock</p>
         <div className="productCard--underline"></div>
-        <a className="productCard--detail">Details</a>
+        <p className="productCard--detail">Details</p>
       </div>
     </React.Fragment>
   );

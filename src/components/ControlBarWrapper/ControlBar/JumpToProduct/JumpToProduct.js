@@ -3,7 +3,7 @@ import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
-import { GET_PLAYER } from '../../../Base/AppQueries';
+// import { GET_PLAYER } from '../../../Base/AppQueries';
 
 const GET_HOTSPOTS = gql`
   query getHotspotsForHotspotScreen(
@@ -35,7 +35,7 @@ const JumpToProduct = ({ client }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();
   const [hotSpots, setHotSpots] = useState([]);
   const [currentHotSpot, setCurrenHotSpot] = useState(0);
-  const [currentTime, setCurrentTime] = useState(null);
+  // const [currentTime, setCurrentTime] = useState(null);
 
   useEffect(() => {
     client

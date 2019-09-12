@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
@@ -39,7 +39,11 @@ const LoginForm = () => {
           <React.Fragment>
             <div className="login">
               <figure className="login--imgWrapper">
-                <img className="login--img" src="/images/login_image.svg" />
+                <img
+                  className="login--img"
+                  alt="login"
+                  src="/images/login_image.svg"
+                />
               </figure>
               <form
                 onSubmit={(e) => {

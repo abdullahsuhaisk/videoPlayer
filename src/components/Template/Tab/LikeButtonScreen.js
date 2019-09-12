@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Mutation, Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
+// import { IS_LOGGED_IN } from '../../../features/ShoppingCart/shoppingCartQueries';
 import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 import {
   ADD_WATCH_LIST,
@@ -14,21 +14,21 @@ import {
 } from '../../../features/Watchlist/WatchListQueries';
 import LikeLottie from '../../Lottie/Like/LikeLottie';
 
-const updateCache = () => {};
+// const updateCache = () => {};
 
-const addToWatchList = async (client, addProdLinkToWatchList, PRODLINK_ID) => {
-  // const { isLoggedIn } = client.readQuery({
-  //   query: IS_LOGGED_IN
-  // });
-  // if (isLoggedIn) {
-  //   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
+// const addToWatchList = async (client, addProdLinkToWatchList, PRODLINK_ID) => {
+// const { isLoggedIn } = client.readQuery({
+//   query: IS_LOGGED_IN
+// });
+// if (isLoggedIn) {
+//   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
 
-  // } else {
-  //   // client.writeData({ data: { isLoginFormShowing: true } });
-  //   return null;
-  // }
-  await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
-};
+// } else {
+//   // client.writeData({ data: { isLoginFormShowing: true } });
+//   return null;
+// }
+//   await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
+// };
 
 const GET_LIKED = gql`
   query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
@@ -159,34 +159,34 @@ const deleteToWatchList = async (
   await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
 };
 
-const LikeDummy = ({ data }) => {
-  const [likeCss, setLikeCss] = useState(null);
-  const [likeCount, setLikeCount] = useState(null);
-  React.useEffect(() => {
-    setLikeCount(data.prodLink.numberOfLikes);
-  }, [data]);
-  const countChanger = (bool) => {
-    if (bool) {
-      setLikeCss('loved');
-      setLikeCount(likeCount + 1);
-    } else {
-      setLikeCss('');
-      setLikeCount(likeCount - 1);
-    }
-  };
-  return (
-    <div className={`stats--content stats--content--heart ${likeCss}`}>
-      <i
-        className={`stats--content--heartIcon`}
-        onClick={() => {
-          !likeCss ? countChanger(true) : countChanger(false);
-        }}></i>
-      {
-        // data.prodLink && data.prodLink.numberOfLikes
-        likeCount
-      }
-    </div>
-  );
-};
+// const LikeDummy = ({ data }) => {
+//   const [likeCss, setLikeCss] = useState(null);
+//   const [likeCount, setLikeCount] = useState(null);
+//   React.useEffect(() => {
+//     setLikeCount(data.prodLink.numberOfLikes);
+//   }, [data]);
+//   const countChanger = (bool) => {
+//     if (bool) {
+//       setLikeCss('loved');
+//       setLikeCount(likeCount + 1);
+//     } else {
+//       setLikeCss('');
+//       setLikeCount(likeCount - 1);
+//     }
+//   };
+//   return (
+//     <div className={`stats--content stats--content--heart ${likeCss}`}>
+//       <i
+//         className={`stats--content--heartIcon`}
+//         onClick={() => {
+//           !likeCss ? countChanger(true) : countChanger(false);
+//         }}></i>
+//       {
+//         // data.prodLink && data.prodLink.numberOfLikes
+//         likeCount
+//       }
+//     </div>
+//   );
+// };
 
 export default withApollo(LikeButtonScreen);

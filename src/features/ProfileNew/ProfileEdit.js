@@ -42,7 +42,11 @@ const ProfileEdit = ({ consumer, setShowingProfile }) => {
         <React.Fragment>
           <div className="UpdateProfile">
             <div className="UpdateProfile--head">
-              <img src="/images/dp.png" className="UpdateProfile--head--img" />
+              <img
+                src="/images/dp.png"
+                className="UpdateProfile--head--img"
+                alt="profile"
+              />
               <p className="UpdateProfile--head-p">Profile</p>
             </div>
             <div className="UpdateProfile--info">

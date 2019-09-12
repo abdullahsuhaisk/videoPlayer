@@ -74,9 +74,9 @@ const ProductList = () => {
             return acc;
           }, []);
 
-        {
-          /* return <ProductCarousel products={products} />; */
-        }
+        // {
+        /* return <ProductCarousel products={products} />; */
+        // }
         const flickityOptions = {
           cellAlign: 'left',
           contain: true,

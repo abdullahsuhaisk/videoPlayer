@@ -19,20 +19,23 @@ import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
   });
 };
 */
-const addNewWishList = ({
-  client,
-  classNames,
-  setWishListName,
-  wishListName,
-  title
-}) => {
+const addNewWishList = ({ setAddNewWishlist }) => {
   // console.log(client);
   //
   // console.log(classNames);
+  const [newWishListName, setNewWishListName] = useState('');
+  const createWishList = async (e, createConsumerWishList) => {
+    if (e.keyCode === 13) {
+      await createConsumerWishList();
+      setAddNewWishlist(false);
+      setNewWishListName('');
+    }
+  };
+
   return (
     <Mutation
       mutation={CREATE_NEW_WISHLIST}
-      variables={{ name: wishListName }}
+      variables={{ name: newWishListName }}
       refetchQueries={() => {
         // console.log('refetchQueries');
         return [
@@ -48,7 +51,7 @@ const addNewWishList = ({
             onChange={(e) => setWishListName(e.target.value)}
             value={wishListName}
           /> */}
-          <button
+          {/* <button
             onClick={async (e) => {
               e.preventDefault();
               await createConsumerWishList();
@@ -56,7 +59,22 @@ const addNewWishList = ({
             }}
             className={classNames}>
             {title}
-          </button>
+          </button> */}
+          <div className="AddToWishlist--information--wishlistItem">
+            <figure className="AddToWishlist--information--wishlistItem--figure"></figure>
+            <div className="AddToWishlist--information--wishlistItem--titleItems">
+              <input
+                type="text"
+                className="AddToWishlist--information--wishlistItem--titleInput"
+                onChange={(e) => setNewWishListName(e.target.value)}
+                value={newWishListName}
+                onKeyUp={(e) => {
+                  createWishList(e, createConsumerWishList);
+                }}
+                placeholder="New Wish List Name"
+              />
+            </div>
+          </div>
         </>
       )}
     </Mutation>

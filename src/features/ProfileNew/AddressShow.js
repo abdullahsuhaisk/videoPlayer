@@ -7,7 +7,7 @@ const AddressShow = ({
   setSelectedAdress
 }) => {
   // console.log(address);
-  const id = address && address.id;
+  // const id = address && address.id;
   const name = address && address.name;
   const text = address && address.text;
   const CountryName = address && address.country && address.country.name;

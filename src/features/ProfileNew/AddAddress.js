@@ -16,7 +16,7 @@ const AddAddress = ({ countries }) => {
 
   const updateField = (e) => {
     const value =
-      e.target.id == 'countryId' ? parseInt(e.target.value) : e.target.value;
+      e.target.id === 'countryId' ? parseInt(e.target.value) : e.target.value;
     setInput({
       ...input,
       [e.target.id]: value

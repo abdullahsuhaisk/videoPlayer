@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import { ApolloConsumer, Query, withApollo } from 'react-apollo';
+import { Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { ComponentsService } from './ComponentService';
@@ -37,7 +37,7 @@ function buildMenu(tabs, callback, tab, client, whichTabItemIsRendering) {
         'subMenu--link' +
         (item.key === whichTabItemIsRendering ? ' subMenu--link--active' : '')
       }>
-      <a>{item.title}</a>
+      <p>{item.title}</p>
     </li>
   ));
 }
@@ -45,7 +45,7 @@ function buildMenu(tabs, callback, tab, client, whichTabItemIsRendering) {
 export const Tab = ({ tabs, children, client }) => {
   const [tab, setTab] = useState(tabs[0].key);
   const [showShareModal, setShowShareModal] = useState(false);
-  const Component = ComponentsService[tab];
+  // const Component = ComponentsService[tab];
   return (
     <Query query={GET_RENDERING_TAB_ITEM}>
       {({ data: { whichTabItemIsRendering } }, loading, error) => {

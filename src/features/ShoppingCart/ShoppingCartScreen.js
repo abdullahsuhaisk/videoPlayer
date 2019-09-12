@@ -5,8 +5,8 @@ import ShoppingCart from './ShoppingScreens/ShoppingCart';
 import ShoppingCartTotal from './ShoppingScreens/ShoppingCartTotal';
 import CheckoutScreen from './Checkout/CheckoutScreen';
 import { GET_CONSUMER_TOTAL_PRICE } from './shoppingCartQueries';
-import { GET_PERSON } from '../ProfileNew/ProfileQueries';
-import ShoppingCardContentLoader from '../../components/ContentLoader/ShoppingCartContentLoader';
+// import { GET_PERSON } from '../ProfileNew/ProfileQueries';
+// import ShoppingCardContentLoader from '../../components/ContentLoader/ShoppingCartContentLoader';
 
 // Other components needs
 // It will manage the cart and wizard status with like a toogle state and render shoppingCart or Checkout
@@ -49,6 +49,8 @@ const ShoppingCartScreen = ({ client }) => {
   // if (isLoading) {
   //   return <ShoppingCardContentLoader width={700} height={70} />;
   // }
+  if (isLoading) return 'loading ....';
+
   return (
     <div className="ShoppingCartContainer">
       {checkoutShowing === false ? (

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Mutation } from 'react-apollo';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from './wishListQueries';
 
 const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
