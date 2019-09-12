@@ -20,9 +20,10 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
   const Gender = consumer && consumer.gender;
   const Phone = consumer && consumer.phone;
   const Mail = consumer && consumer.email;
-  const image = consumer.coverImageUrl
-    ? consumer.coverImageUrl
-    : '/images/dp.png';
+  const image =
+    consumer && consumer.coverImageUrl && consumer.coverImageUrl
+      ? consumer.coverImageUrl
+      : '/images/dp.png';
 
   const handleLogout = async () => {
     await client.mutate({ mutation: LOGOUT });
