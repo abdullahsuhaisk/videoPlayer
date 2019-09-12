@@ -16,7 +16,9 @@ const ProfileScreen = () => {
           style={{ position: 'absolute', top: 200 }}>
           <Query query={GET_PERSON}>
             {({ loading, error, data }) => {
-              if (loading) return <ProfileLoader />;
+              {
+                /* if (loading) return <ProfileLoader />; */
+              }
               if (error) return 'Something Wrong';
               const { consumer } = data;
               const addresses =
@@ -49,7 +51,9 @@ const ProfileScreen = () => {
     <Query query={GET_PROFILE_SCREEN_IS_OPEN}>
       {({ data: { isProfileOpen }, loading }) => {
         if (loading) {
-          return <ProfileLoader />;
+          {
+            /* return <ProfileLoader />; */
+          }
         }
         return isProfileOpen === true ? renderContent() : null;
       }}

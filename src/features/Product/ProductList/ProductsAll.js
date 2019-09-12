@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
-import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
+// import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import 'flickity-imagesloaded';
 import { GET_PRODUCTS } from './ProductQueries';
 
