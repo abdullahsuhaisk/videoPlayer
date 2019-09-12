@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
 import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
-import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
+// import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import { GET_PRODUCTS_WITH_HOTSPOT } from './ProductQueries';
 
 const GET_PLAYER = gql`
@@ -24,7 +24,7 @@ const ProductListInScene = () => {
       variables={{ prodLinkUniqueId: PRODUCT_ID }}>
       {({ loading, error, data }) => {
         if (loading) {
-          return <ProductCardContentLoader single />;
+          return null;
         }
         if (error) {
           return null;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query, Mutation } from 'react-apollo';
-import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
+// import { ShoppingCartItemWrapper } from '../ShoppingCart.style';
 // import Button from '../../../components/Button/Button';
 import ShoppingCartItem from './ShoppingCartItem';
 import {
@@ -9,7 +9,7 @@ import {
   GET_CONSUMER_TOTAL_PRICE
 } from '../shoppingCartQueries';
 import EmptyShoppingCart from '../EmptyShoppingCart';
-import ShoppingCardContentLoader from '../../../components/ContentLoader/ShoppingCartContentLoader';
+//  import ShoppingCardContentLoader from '../../../components/ContentLoader/ShoppingCartContentLoader';
 
 const updateConsumerCart = (cache, { deleteProductInCart }) => {
   const { consumer } = cache.readQuery({
@@ -31,8 +31,10 @@ const ShoppingCart = ({ setCheckValue, checkValue }) => {
     <>
       <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
         {({ loading, error, data }) => {
-          if (loading) {
+          {
+            /* if (loading) {
             return <ShoppingCardContentLoader />;
+          } */
           }
           if (error) {
             return !!error ? (
