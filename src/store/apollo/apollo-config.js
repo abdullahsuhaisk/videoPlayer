@@ -73,8 +73,10 @@ const errorLink = onError(
         }
       }
     }
-
-    if (networkError) console.log(`[Network error]: ${networkError}`);
+    if (networkError && networkError.statusCode === 401) {
+      // eslint-disable-next-line
+      window.location.reload();
+    } else if (networkError) console.log(`[Network error]: ${networkError}`);
   }
 );
 

@@ -5,8 +5,6 @@ import Empty from '../Empty/Empty';
 // import Tabs from '../Tabs/Tabs';
 import Title from '../TitleDescription/TitleDescription';
 // import Like from '../Like/Like';
-import Favorite from '../Favorite/Favorite';
-import Share from '../Share/Share';
 import ProfileButton from '../../features/Auth/ProfileButton';
 import Login from '../../features/Auth/LoginForm';
 import Register from '../../features/Auth/RegisterForm';
@@ -33,6 +31,8 @@ import ControlBarLeftWrapper from '../ControlBarWrapper/ControlBarLeftWrapper';
 import JumpToProductWrapper from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductWrapper';
 import JumpToProductLeft from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductLeft';
 import JumpToProductRight from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductRight';
+import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/ControlBarFullScreen';
+
 // Control Bar
 
 // Screen Section Screen has all of logic and own State //
@@ -58,13 +58,10 @@ import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
-import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/ControlBarFullScreen';
 
 const widgetList = {
   Empty,
   Title,
-  Favorite,
-  Share,
   ProfileButton,
   Login,
   Register,
