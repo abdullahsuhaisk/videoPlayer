@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
 import { GET_PLAYER } from '../../../Base/AppQueries';
+import ControlBarHoc from '../ControlBarHoc';
 
 const GET_HOTSPOTS = gql`
   query getHotspotsForHotspotScreen(
@@ -30,13 +29,10 @@ const GET_HOTSPOTS = gql`
   }
 `;
 
-const JumpToProduct = ({ client }) => {
-  const videoPlayer = getVideoJs();
+const JumpToProductRight = ({ client, videoPlayer }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();
   const [hotSpots, setHotSpots] = useState([]);
-  const [currentHotSpot, setCurrenHotSpot] = useState(0);
-  const [currentTime, setCurrentTime] = useState(null);
-
+  const [videoPlayerPosition, setVideoPlayerPosition] = useState(0);
   useEffect(() => {
     client
       .query({
@@ -53,37 +49,38 @@ const JumpToProduct = ({ client }) => {
           )
       );
   }, []);
+  useEffect(() => {
+    client
+      .query({
+        query: GET_PLAYER,
+        variables: {}
+      })
+      .then(({ data: { player } }) =>
+        setVideoPlayerPosition(player.currentTime)
+      );
+  }, [videoPlayer.currentTime()]);
 
-  // useEffect(() => {
-  //   client
-  //     .query({
-  //       query: GET_PLAYER,
-  //       variables: {}
-  //     })
-  //     .then(({ data: { player } }) => setCurrentTime(player.currentTime));
-  // }, []);
-  // console.log(currentTime);
-  // console.log(hotSpots);
-
-  const hotSpotCounts = hotSpots.length;
-
-  const jumpToProductHandler = (value, callback) => {
-    if (value < hotSpotCounts) {
-      const time = hotSpots && hotSpots[value].in;
-      videoPlayer.currentTime(parseInt(time, 10));
-      callback(value + 1);
+  const jumpToProductHandlerRight = () => {
+    if (!hotSpots) return null;
+    let i = 0;
+    while (i <= hotSpots.length) {
+      if (!hotSpots[i]) {
+        break;
+      }
+      if (hotSpots[i].in > videoPlayerPosition) {
+        videoPlayer.currentTime(parseInt(hotSpots[i].in, 10) + 1);
+        break;
+      }
+      if (hotSpots[i].in < videoPlayerPosition) {
+        i += 1;
+      }
     }
-    // videoPlayer.currentTime(120);
   };
   return (
-    <div>
-      <button
-        className="jumpToProductBtn"
-        onClick={() => {
-          jumpToProductHandler(currentHotSpot, setCurrenHotSpot);
-        }}></button>
-    </div>
+    <button
+      className="jumpToProductBtn"
+      onClick={() => jumpToProductHandlerRight()}></button>
   );
 };
 
-export default withApollo(JumpToProduct);
+export default ControlBarHoc(JumpToProductRight);

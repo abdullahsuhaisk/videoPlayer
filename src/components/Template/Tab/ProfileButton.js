@@ -57,7 +57,7 @@ const ProfileButton = () => {
                 alt="Profile"
               />
             ) : (
-              'Login'
+              <p className="subMenu--profileInfo--login">Login</p>
             )}
           </div>
         );

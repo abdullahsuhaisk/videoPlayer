@@ -110,8 +110,19 @@
                   "props": ""
                 },
                 {
-                  "type": "JumpToProduct",
-                  "props": ""
+                  "type": "JumpToProductWrapper",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "JumpToProductLeft",
+                        "props": ""
+                      },
+                      {
+                        "type": "JumpToProductRight",
+                        "props": ""
+                      }
+                    ]
+                  }
                 },
                 {
                   "type": "VolumControl",

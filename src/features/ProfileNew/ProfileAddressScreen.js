@@ -16,25 +16,25 @@ const ProfileAddressScreen = ({ addresses }) => {
   return ShowingAddress === true ? (
     <>
       {addresses.length !== 0 ? (
-        addresses &&
-        addresses.map((address) => {
-          return (
-            <div className="Adresses">
-              <div className="adresses--head">
-                <label className="profile--head--label">Addresses</label>
-              </div>
-              <div className="Adresses--container">
-                <AddressShow
-                  address={address}
-                  key={address.id}
-                  updateAdress={updateAdress}
-                  setShowingAddress={setShowingAddress}
-                  setSelectedAdress={setSelectedAdress}
-                />
-              </div>
-            </div>
-          );
-        })
+        <div className="Adresses">
+          <div className="adresses--head">
+            <label className="profile--head--label">Addresses</label>
+          </div>
+          <div className="Adresses--container">
+            {addresses &&
+              addresses.map((address) => {
+                return (
+                  <AddressShow
+                    address={address}
+                    key={address.id}
+                    updateAdress={updateAdress}
+                    setShowingAddress={setShowingAddress}
+                    setSelectedAdress={setSelectedAdress}
+                  />
+                );
+              })}
+          </div>
+        </div>
       ) : (
         <Query query={GET_COUNTRIES}>
           {({ data, loading, error }) => (
