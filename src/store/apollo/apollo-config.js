@@ -48,7 +48,6 @@ const errorLink = onError(
       );
     if (graphQLErrors) {
       for (let err of graphQLErrors) {
-        console.log(err.code);
         switch (err.code) {
           case 'ERR001':
           case 'ERR005':
@@ -67,8 +66,10 @@ const errorLink = onError(
             });
             // retry the request, returning the new observable
             console.log(operation);
-            // window.location.reload();
+            window.location.reload();
             return forward(operation);
+          default:
+            console.log(err.code);
         }
       }
     }
