@@ -67,6 +67,7 @@ const errorLink = onError(
             });
             // retry the request, returning the new observable
             console.log(operation);
+            window.location.reload();
             return forward(operation);
         }
       }
@@ -89,9 +90,7 @@ const errorLink = onError(
 
 const authLink = new ApolloLink((operation, forward) => {
   // getNewToken();
-
   const token = localStorage.getItem(authKey);
-
   operation.setContext(({ headers }) => ({
     headers: {
       ...headers,
