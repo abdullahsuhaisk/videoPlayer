@@ -30,7 +30,9 @@ import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/Control
 import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
 import ControlBarRightWrapper from '../ControlBarWrapper/ControlBarRightWrapper';
 import ControlBarLeftWrapper from '../ControlBarWrapper/ControlBarLeftWrapper';
-import JumpToProduct from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProduct';
+import JumpToProductWrapper from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductWrapper';
+import JumpToProductLeft from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductLeft';
+import JumpToProductRight from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductRight';
 // Control Bar
 
 // Screen Section Screen has all of logic and own State //
@@ -86,7 +88,9 @@ const widgetList = {
   ControlBarRightWrapper,
   ControlBarLeftWrapper,
   ControlBarFullScreen,
-  JumpToProduct,
+  JumpToProductWrapper,
+  JumpToProductLeft,
+  JumpToProductRight,
   // ProductCardWishlisted,
   NavigationWrapper,
   TabWrapper,

@@ -1,12 +1,13 @@
 import React from 'react';
 import ControlBarHoc from '../ControlBarHoc';
 
-const VolumControl = ({ videoPlayer }) => {
+const VolumControl = (props) => {
+  const { videoPlayer } = props;
   const volumeHandler = (e) => {
     if (videoPlayer) {
       if (e) {
         videoPlayer.volume(e.target.value / 100);
-      } else if (videoPlayer.currentTime() == 0) {
+      } else if (videoPlayer.currentTime() === 0) {
         videoPlayer.volume(0.5);
       }
       return videoPlayer.volume() * 100;

@@ -88,7 +88,7 @@ const errorLink = onError(
 // });
 
 const authLink = new ApolloLink((operation, forward) => {
-  getNewToken();
+  // getNewToken();
 
   const token = localStorage.getItem(authKey);
 

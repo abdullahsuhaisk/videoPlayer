@@ -3,14 +3,23 @@ import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
 
 const ControlBarHoc = (WrappedComponent) => (props) => {
-  console.log('Control Bar Hoc is worked');
-  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
-  useEffect(() => {
-    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
-    setVideoPlayer(videoPlayerJs);
-  }, [videoPlayer]);
+  const [videoPlayer, setVideoPlayer] = useState(
+    videoJs.getPlayer('vjs_video_3')
+  ); // Which videoPlayer should be renderer
 
-  return <WrappedComponent {...props} videoPlayer={videoPlayer} />;
+  return (
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <WrappedComponent
+            {...props}
+            videoPlayer={videoPlayer}
+            client={client}
+          />
+        );
+      }}
+    </ApolloConsumer>
+  );
 };
 
 export default ControlBarHoc;

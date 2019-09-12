@@ -6,7 +6,7 @@ import VideoProgressBar from './VideoProgressBar/VideoProgressBar';
 import VolumControl from './VolumControl/VolumControl';
 import TimeDisplay from './TimeDisplay/TimeDisplay';
 import PlayPause from './PlayPause/PlayPause';
-import JumpToProduct from './JumpToProduct/JumpToProduct';
+import JumpToProduct from './JumpToProduct/JumpToProductWrapper';
 import ControlBarShoppingIcon from './Cart/ControlBarShoppingIcon';
 import ControlBarSettings from './Settings/ControlBarSettings';
 import ControlBarFullScreen from './FullScreen/ControlBarFullScreen';
