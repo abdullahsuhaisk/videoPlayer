@@ -66,6 +66,7 @@ const ProductCard = ({ product, addedWishList }) => {
             ) : (
               <div className="productCard--priceWrapper">
                 <p className="productCard--wishlist--price">{`${product.price &&
+                  product.currency &&
                   product.currency.symbol}${product.price &&
                   product.price.toFixed(2)}`}</p>
               </div>
