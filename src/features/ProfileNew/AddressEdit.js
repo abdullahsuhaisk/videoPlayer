@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Mutation } from 'react-apollo';
 import { UPDATE_CONSUMER_ADDRESS } from './ProfileQueries';
 
-const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
+const AddressEdit = ({
+  setShowingAddress,
+  ShowingAddress,
+  address,
+  countries
+}) => {
   const [input, setInput] = useState({
     name: '',
     text: '',
@@ -21,9 +26,13 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
   }, []);
 
   const updateField = (e) => {
+    const value =
+      e.target.id === 'countryId'
+        ? parseInt(e.target.value, 10)
+        : e.target.value;
     setInput({
       ...input,
-      [e.target.id]: e.target.value
+      [e.target.id]: value
     });
   };
   // console.log(addressId);
@@ -71,10 +80,11 @@ const AddressEdit = ({ setShowingAddress, ShowingAddress, address }) => {
                   className="UpdateAdress--info-select"
                   id="countryId"
                   onChange={updateField}>
-                  <option value={4}>Turkey</option>
-                  <option value="Algeria">Algeria</option>
-                  <option value="Moroco">Moroco</option>
-                  <option value="Brazil">Brazil</option>
+                  {countries.map((country) => (
+                    <option value={parseInt(country.id, 10)}>
+                      {country.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="UpdateAdress--info-item">

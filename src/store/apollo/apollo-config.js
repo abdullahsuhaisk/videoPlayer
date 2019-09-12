@@ -48,7 +48,6 @@ const errorLink = onError(
       );
     if (graphQLErrors) {
       for (let err of graphQLErrors) {
-        console.log(err.code);
         switch (err.code) {
           case 'ERR001':
           case 'ERR005':
@@ -69,6 +68,8 @@ const errorLink = onError(
             console.log(operation);
             window.location.reload();
             return forward(operation);
+          default:
+            console.log(err.code);
         }
       }
     }
@@ -103,17 +104,17 @@ const cache = new InMemoryCache();
 const link = ApolloLink.from([
   authLink,
   errorLink,
-  new RetryLink({
-    delay: {
-      initial: 300,
-      max: Infinity,
-      jitter: true
-    },
-    attempts: {
-      max: 5,
-      retryIf: (error, _operation) => !!error
-    }
-  }),
+  // new RetryLink({
+  //   delay: {
+  //     initial: 300,
+  //     max: Infinity,
+  //     jitter: true
+  //   },
+  //   attempts: {
+  //     max: 5,
+  //     retryIf: (error, _operation) => !!error
+  //   }
+  // }),
   httpLink
 ]);
 const clientInit = new ApolloClient({

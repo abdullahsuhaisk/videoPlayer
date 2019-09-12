@@ -51,9 +51,7 @@ const ProfileScreen = () => {
     <Query query={GET_PROFILE_SCREEN_IS_OPEN}>
       {({ data: { isProfileOpen }, loading }) => {
         if (loading) {
-          {
-            /* return <ProfileLoader />; */
-          }
+          return null;
         }
         return isProfileOpen === true ? renderContent() : null;
       }}
