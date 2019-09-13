@@ -30,6 +30,8 @@ const getNewToken = async () => {
   });
 };
 
+const TokenService = () => {};
+
 getNewToken();
 
 const httpLink = createHttpLink({
@@ -66,7 +68,6 @@ const errorLink = onError(
             });
             // retry the request, returning the new observable
             console.log(operation);
-            window.location.reload();
             return forward(operation);
           default:
             console.log(err.code);
@@ -75,7 +76,10 @@ const errorLink = onError(
     }
     if (networkError && networkError.statusCode === 401) {
       // eslint-disable-next-line
-      window.location.reload();
+      console.log(networkError);
+      getNewToken().then(() => {
+        window.location.reload();
+      });
     } else if (networkError) console.log(`[Network error]: ${networkError}`);
   }
 );
