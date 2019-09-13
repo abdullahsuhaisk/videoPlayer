@@ -21,11 +21,13 @@ const getNewToken = async () => {
   firebase.auth().onIdTokenChanged(async (user) => {
     if (user) {
       const token = await user.getIdToken(true);
-      // console.log(user.refreshToken);
+      console.log(token);
+      console.log(user.refreshToken);
       localStorage.setItem(authKey, token);
       localStorage.setItem('refToken', user.refreshToken);
     } else {
       localStorage.removeItem(authKey);
+      localStorage.removeItem('refToken');
     }
   });
 
@@ -40,12 +42,12 @@ const setTime = () => {
   return hour * 60 + minute;
 };
 
-const TokenService = () => {
+const TokenService = async () => {
   if (
     localStorage.getItem('TokenTime') &&
-    setTime() - localStorage.getItem('TokenTime') > 50
+    setTime() - localStorage.getItem('TokenTime') > 60
   ) {
-    getNewToken();
+    await getNewToken();
   }
   return null;
 };
@@ -70,22 +72,28 @@ const errorLink = onError(
       for (let err of graphQLErrors) {
         switch (err.code) {
           case 'ERR001':
+            return null;
           case 'ERR005':
             // error code is set to UNAUTHENTICATED
             // when AuthenticationError thrown in resolver
             // modify the operation context with a new token
-            getNewToken().then(() => {
-              const token = localStorage.getItem(authKey);
-              const oldHeaders = operation.getContext().headers;
-              operation.setContext({
-                headers: {
-                  ...oldHeaders,
-                  authorization: token ? `Bearer ${token}` : ''
-                }
-              });
-            });
-            // retry the request, returning the new observable
-            console.log(operation);
+            // firebase.auth().onIdTokenChanged(async (user) => {
+            //   if (user) {
+            //     const token = await user.getIdToken(true);
+            //     const oldHeaders = operation.getContext().headers;
+            //     operation.setContext({
+            //       headers: {
+            //         ...oldHeaders,
+            //         authorization: token ? `Bearer ${token}` : ''
+            //       }
+            //     });
+            //   } else {
+            //     localStorage.removeItem(authKey);
+            //     localStorage.removeItem('refToken');
+            //   }
+            // });
+            // // retry the request, returning the new observable
+            // console.log(operation);
             return forward(operation);
           default:
             console.log(err.code);
@@ -95,8 +103,20 @@ const errorLink = onError(
     if (networkError && networkError.statusCode === 401) {
       // eslint-disable-next-line
       console.log(networkError);
-      getNewToken().then(() => {
-        // window.location.reload();
+      firebase.auth().onIdTokenChanged(async (user) => {
+        if (user) {
+          const token = await user.getIdToken(true);
+          const oldHeaders = operation.getContext().headers;
+          operation.setContext({
+            headers: {
+              ...oldHeaders,
+              authorization: token ? `Bearer ${token}` : ''
+            }
+          });
+        } else {
+          localStorage.removeItem(authKey);
+          localStorage.removeItem('refToken');
+        }
       });
     } else if (networkError) console.log(`[Network error]: ${networkError}`);
   }
