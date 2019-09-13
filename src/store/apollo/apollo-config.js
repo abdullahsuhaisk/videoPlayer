@@ -28,9 +28,27 @@ const getNewToken = async () => {
       localStorage.removeItem(authKey);
     }
   });
+
+  localStorage.setItem('TokenTime', setTime());
 };
 
-const TokenService = () => {};
+const setTime = () => {
+  const date = new Date();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  console.log(hour * 60 + minute);
+  return hour * 60 + minute;
+};
+
+const TokenService = () => {
+  if (
+    localStorage.getItem('TokenTime') &&
+    setTime() - localStorage.getItem('TokenTime') > 50
+  ) {
+    getNewToken();
+  }
+  return null;
+};
 
 getNewToken();
 
@@ -78,7 +96,7 @@ const errorLink = onError(
       // eslint-disable-next-line
       console.log(networkError);
       getNewToken().then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     } else if (networkError) console.log(`[Network error]: ${networkError}`);
   }
@@ -97,6 +115,7 @@ const errorLink = onError(
 
 const authLink = new ApolloLink((operation, forward) => {
   // getNewToken();
+  TokenService();
   const token = localStorage.getItem(authKey);
   operation.setContext(({ headers }) => ({
     headers: {
