@@ -96,7 +96,7 @@ const errorLink = onError(
       // eslint-disable-next-line
       console.log(networkError);
       getNewToken().then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     } else if (networkError) console.log(`[Network error]: ${networkError}`);
   }
