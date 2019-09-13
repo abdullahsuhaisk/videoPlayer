@@ -5,7 +5,7 @@ import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
 // import { PRODLINK_ID } from './common/GrapqlConstant';
-import { getProdLinkIdApollo, getProdLinkId } from './hooks/ProdLinkHook';
+import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
 import { httpToHttps } from './utils/httpTohttps';

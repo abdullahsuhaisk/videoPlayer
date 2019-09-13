@@ -11,6 +11,14 @@ import {
 import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
 import FavoriteLottie from '../../Lottie/Favorites/FavoriteLottie';
 
+export const GET_CONSUMER = gql`
+  query getConsumerWhatchList {
+    consumer @client {
+      id
+    }
+  }
+`;
+
 const GET_NUMBER_OF_VIDEOTHINGS = gql`
   query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
     prodLink(prodLinkId: $prodLinkId) {
@@ -51,12 +59,15 @@ const WatchListButton = ({ client }) => {
         setWatchListCounter(data.prodLink.numberOfViews);
       });
   }, []);
+
   return (
     <Query query={GET_CONSUMER_WATCH_LISTID}>
       {({ data, loading, error, refetch }) => {
-        if (loading || error) return <FavoriteLottie animate={true} />;
+        if (loading) return <FavoriteLottie animate={false} />;
+        if (error) return null;
         const consumer = data.consumer ? data.consumer : null;
         setWatchlist(consumer ? consumer.watchList : null);
+        if (!consumer) return null;
         return watchListButtonManager !== true ? (
           <AddToWatchlist
             PRODLINK_ID={PRODLINK_ID}
@@ -78,7 +89,6 @@ const WatchListButton = ({ client }) => {
     </Query>
   );
 };
-
 export default WatchListButton;
 
 const AddToWatchlist = ({
