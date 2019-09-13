@@ -30,6 +30,8 @@ const getNewToken = async () => {
   });
 };
 
+const TokenService = () => {};
+
 getNewToken();
 
 const httpLink = createHttpLink({
@@ -66,7 +68,6 @@ const errorLink = onError(
             });
             // retry the request, returning the new observable
             console.log(operation);
-
             return forward(operation);
           default:
             console.log(err.code);
