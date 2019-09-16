@@ -21,8 +21,8 @@ const getNewToken = async () => {
   firebase.auth().onIdTokenChanged(async (user) => {
     if (user) {
       const token = await user.getIdToken(true);
-      console.log(token);
-      console.log(user.refreshToken);
+      // console.log(token);
+      // console.log(user.refreshToken);
       localStorage.setItem(authKey, token);
       localStorage.setItem('refToken', user.refreshToken);
     } else {

@@ -26,7 +26,7 @@ const GET_NUMBER_OF_VIDEOTHINGS = gql`
 
 function desider(List, item) {
   const listArray = [];
-  List && List.map((i) => listArray.push(i.prodLinkUniqueId));
+  List && List.map((i) => listArray.push(i.uniqueId));
   return listArray && listArray.includes(item);
 }
 
@@ -40,17 +40,10 @@ const WatchListButton = (props) => {
     false
   );
   const [watchListCounter, setWatchListCounter] = React.useState(null);
-
-  console.log(watchlist);
-  console.log(PRODLINK_ID);
-  console.log(watchListButtonManager);
-  console.log(watchListCounter);
-
   React.useEffect(() => {
     setWatchListButtonManager(desider(watchlist, prodLinkUniqueId));
     // setAnimate(!desider(watchlist, PRODLINK_ID));
   }, [watchlist]);
-  console.log(watchListButtonManager);
   React.useEffect(() => {
     client
       .query({
@@ -66,7 +59,12 @@ const WatchListButton = (props) => {
   return (
     <Query query={GET_CONSUMER_WATCH_LISTID} fetchPolicy="network-only">
       {({ data, loading, error, refetch }) => {
-        if (loading) return <FavoriteLottie animate={false} />;
+        if (loading)
+          return (
+            <div className="stats--content favorite">
+              <i className="stats--content--starIcon"></i>
+            </div>
+          );
         if (error) return null;
         const consumer = data.consumer ? data.consumer : null;
         setWatchlist(consumer ? consumer.watchList : null);
@@ -117,7 +115,10 @@ const AddToWatchlist = ({
           <div
             className="stats--content favorite"
             onClick={() => setAnimate(false)}>
-            <FavoriteLottie animate={animate} switcher={updateHandler} />{' '}
+            <FavoriteLottie
+              animate={animate}
+              switcher={() => updateHandler()}
+            />
             {watchListCounter}
           </div>
         );

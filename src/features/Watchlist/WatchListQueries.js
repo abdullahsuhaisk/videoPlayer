@@ -98,6 +98,7 @@ export const GET_CONSUMER_WATCH_LISTID = gql`
       id
       watchList {
         id
+        uniqueId
       }
     }
   }
