@@ -38,7 +38,7 @@ const setTime = () => {
   const date = new Date();
   const hour = date.getHours();
   const minute = date.getMinutes();
-  console.log(hour * 60 + minute);
+  // console.log(hour * 60 + minute);
   return hour * 60 + minute;
 };
 
