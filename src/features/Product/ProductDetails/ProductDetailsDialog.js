@@ -27,6 +27,7 @@ const flickityOptions = {
 const FlickityClassName = 'ProductDetail--imagesSlider';
 
 const ProductDetail = ({ productId }) => {
+  console.log(productId);
   return (
     <ApolloConsumer>
       {(client) => (

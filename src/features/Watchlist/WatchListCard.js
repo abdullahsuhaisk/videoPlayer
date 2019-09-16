@@ -12,7 +12,6 @@ import {
 import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 const Like = ({ numberOfLikes, prodLinkId }) => {
-  console.log('Like');
   return (
     <Mutation
       mutation={LIKE_PRODLINK}
@@ -180,8 +179,6 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
 export default withApollo(WatchListCard);
 
 const LikeUnLikeScreen = ({ numberOfLikes, prodLinkId, LikedProdLinksIds }) => {
-  // console.log(LikedProdLinksIds);
-  // console.log(prodLinkId);
   const res =
     LikedProdLinksIds &&
     LikedProdLinksIds.filter((item) => item === prodLinkId);

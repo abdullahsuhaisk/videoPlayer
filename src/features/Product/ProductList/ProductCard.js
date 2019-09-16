@@ -60,16 +60,19 @@ const ProductCard = ({ product, addedWishList }) => {
                   </p>
                 </div>
               ) : null}
-              <p className="productCard--Onwishlist--price">{`${product.currency &&
-                product.currency.symbol}${product.currentPrice &&
-                product.currentPrice.toFixed(2)}`}</p>
+              <p className="productCard--Onwishlist--price">{`${
+                product.currency && product.currency.symbol !== null
+                  ? product.currency.symbol
+                  : ''
+              }${product.currentPrice && product.currentPrice.toFixed(2)}`}</p>
             </div>
           ) : (
             <div className="productCard--priceWrapper">
-              <p className="productCard--wishlist--price">{`${product.price &&
-                product.currency &&
-                product.currency.symbol}${product.price &&
-                product.price.toFixed(2)}`}</p>
+              <p className="productCard--wishlist--price">{`${
+                product.currency && product.currency.symbol !== null
+                  ? product.currency.symbol
+                  : ''
+              }${product.currentPrice && product.currentPrice.toFixed(2)}`}</p>
             </div>
           )}
           <p className="productCard--stock-status">

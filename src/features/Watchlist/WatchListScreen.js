@@ -49,16 +49,14 @@ const WatchListScreen = () => {
               reloadOnUpdate={true}
               options={flickityOptions}>
               {watchList.length !== 0 ? (
-                watchList.map((item, key) =>
-                  key > 3 ? null : (
-                    <WatchListCard
-                      item={item}
-                      key={item.id}
-                      LikedProdLinksIds={LikedProdLinksId}
-                      uniqueId={LikedProdLinksId[key]}
-                    />
-                  )
-                )
+                watchList.map((item, key) => (
+                  <WatchListCard
+                    item={item}
+                    key={item.id}
+                    LikedProdLinksIds={LikedProdLinksId}
+                    uniqueId={LikedProdLinksId[key]}
+                  />
+                ))
               ) : (
                 <EmptyWatchList />
               )}
