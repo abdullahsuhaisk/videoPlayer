@@ -8,7 +8,7 @@ import WishListGroup from './WishListGroup';
 // import AddNewWishList from './PreComponent/addNewWishList';
 import { GET_CONSUMER_WISHLIST } from './wishListQueries';
 import WishListInside from './WishListInside';
-import WishLisContentloader from '../../components/ContentLoader/WishLisContentloader';
+// import WishLisContentloader from '../../components/ContentLoader/WishLisContentloader';
 
 const WishlistScreen = () => {
   const [whichWishList, setWhichWishList] = React.useState(null);
@@ -19,7 +19,7 @@ const WishlistScreen = () => {
       <Query query={GET_CONSUMER_WISHLIST}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <WishLisContentloader />;
+            return null;
           }
           if (error) {
             return null;

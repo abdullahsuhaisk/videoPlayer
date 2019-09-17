@@ -15,7 +15,7 @@ const ProfileAddressScreen = ({ addresses }) => {
   const [SelectedAdress, setSelectedAdress] = useState({});
   return ShowingAddress === true ? (
     <>
-      {addresses.length !== 0 ? (
+      {addresses && addresses.length !== 0 ? (
         <div className="Adresses">
           <div className="adresses--head">
             <label className="profile--head--label">Addresses</label>
@@ -50,12 +50,23 @@ const ProfileAddressScreen = ({ addresses }) => {
       )}
     </>
   ) : (
-    <AddressEdit
-      address={SelectedAdress}
-      ShowingAddress={ShowingAddress}
-      setShowingAddress={setShowingAddress}
-      addressId={SelectedAdress.id}
-    />
+    <Query query={GET_COUNTRIES}>
+      {({ data, loading, error }) => (
+        <>
+          {loading ? (
+            'loading ...'
+          ) : (
+            <AddressEdit
+              address={SelectedAdress}
+              ShowingAddress={ShowingAddress}
+              setShowingAddress={setShowingAddress}
+              addressId={SelectedAdress.id}
+              countries={data && data.countries}
+            />
+          )}
+        </>
+      )}
+    </Query>
   );
 };
 

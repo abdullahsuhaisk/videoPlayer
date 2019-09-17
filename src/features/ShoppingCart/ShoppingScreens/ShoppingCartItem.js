@@ -31,6 +31,7 @@ const ShoppingCartItem = ({
   setCheckValue,
   checkValue
 }) => {
+  console.log(checkValue);
   return (
     <div className="ShoppingCart">
       <div className="ShoppingCart--product">
@@ -38,7 +39,7 @@ const ShoppingCartItem = ({
           <img
             src={cartItem.product.image.thumbnailUrl}
             className="ShoppingCart--product-figure-img"
-            alt={cartItem.product.name}
+            alt="abc"
           />
         </figure>
         <div className="ShoppingCart--product-info">
@@ -93,7 +94,11 @@ const ShoppingCartItem = ({
         }}
       </Mutation>
       <div className="ShoppingCart--priceContainer">
-        <span className="ShoppingCart--price">{cartItem.product.price}</span>
+        <span className="ShoppingCart--price">
+          {cartItem &&
+            cartItem.product &&
+            cartItem.quantity * cartItem.product.price}
+        </span>
       </div>
       <div
         className="ShoppingCart--closeContainer"

@@ -4,7 +4,6 @@ import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
-// import { PRODLINK_ID } from './common/GrapqlConstant';
 import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
@@ -33,10 +32,18 @@ const App = ({ client }) => {
           const poster =
             (image && httpToHttps(image.imageUrl)) ||
             'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
-          console.log(video.qualities);
-          const src = video.qualities && httpToHttps(video.qualities[0].url);
-          // const { type } = video.qualities && video.qualities[2];
-          const type = 'video/mp4';
+          const src =
+            (video.qualities &&
+              httpToHttps(video.qualities[1] && video.qualities[1].url)) ||
+            (video.qualities &&
+              httpToHttps(video.qualities[2] && video.qualities[2].url)) ||
+            (video.qualities &&
+              httpToHttps(video.qualities[3] && video.qualities[3].url));
+          const { type } =
+            (video.qualities && video.qualities[1] && video.qualities[1].url) ||
+            (video.qualities && video.qualities[2] && video.qualities[2].url) ||
+            (video.qualities && video.qualities[3] && video.qualities[3].url);
+
           return (
             <Suspense fallback={<></>}>
               <Player poster={poster} sources={[{ src: src, type: type }]} />

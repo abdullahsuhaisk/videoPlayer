@@ -74,7 +74,7 @@ const ShoppingCartTotal = ({
                 <label className="ShoppingCartTotal--total-label">TOTAL</label>
                 <span className="ShoppingCartTotal--total-price">
                   {currencySymbol}
-                  {totalPrice}
+                  {Math.floor(totalPrice)}
                 </span>
                 {checkoutShowing === true ? (
                   <a

@@ -6,7 +6,7 @@ import 'flickity-imagesloaded';
 import EmptyWatchList from './EmptyWatchList';
 import WatchListCard from './WatchListCard';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
-import WachtListContentLoader from '../../components/ContentLoader/WachtListContentLoader';
+// import WachtListContentLoader from '../../components/ContentLoader/WachtListContentLoader';
 
 const WatchListScreen = () => {
   // TODO: ADD THE UPDATE CACHE METHOD
@@ -14,10 +14,7 @@ const WatchListScreen = () => {
   return (
     <>
       <Query query={GET_CONSUMER_WATCHLIST}>
-        {({ loading, error, data }) => {
-          if (loading) {
-            return <WachtListContentLoader />;
-          }
+        {({ error, data }) => {
           if (error) {
             return null;
           }
@@ -64,19 +61,14 @@ const WatchListScreen = () => {
               reloadOnUpdate={true}
               options={flickityOptions}>
               {watchList.length !== 0 ? (
-                watchList.map(
-                  (item, key) => (
-                    // key > 3 ? null : (
-                    <WatchListCard
-                      item={item}
-                      key={item.id}
-                      LikedProdLinksIds={LikedProdLinksId}
-                      uniqueId={LikedProdLinksId[key]}
-                      index={key}
-                    />
-                  )
-                  // )
-                )
+                watchList.map((item, key) => (
+                  <WatchListCard
+                    item={item}
+                    key={item.id}
+                    LikedProdLinksIds={LikedProdLinksId}
+                    uniqueId={LikedProdLinksId[key]}
+                  />
+                ))
               ) : (
                 <EmptyWatchList />
               )}

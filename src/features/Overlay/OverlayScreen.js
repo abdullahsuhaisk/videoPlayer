@@ -14,7 +14,7 @@ import temp from './template.json';
 // import ControlBarWrapper from '../../components/ControlBarWrapper/ControlBarWrapper';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
 
-//import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
+// import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
 // import StoriyRender from '../../components/StoriyRender';
 
 const Screen = ({ playingState, videoPlayer }) => {

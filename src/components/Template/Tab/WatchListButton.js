@@ -8,13 +8,14 @@ import {
   ADD_WATCH_LIST,
   DELETE_WATCHED_LIST
 } from '../../../features/Watchlist/WatchListQueries';
-import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
+import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 import FavoriteLottie from '../../Lottie/Favorites/FavoriteLottie';
 
 const GET_NUMBER_OF_VIDEOTHINGS = gql`
-  query prodLinkIsLikedByCustomer($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
+  query prodLinkIsLikedByCustomer($prodLinkUniqueId: String) {
+    prodLink(prodLinkUniqueId: $prodLinkUniqueId) {
       id
+      uniqueId
       # isLiked
       numberOfLikes
       numberOfViews
@@ -25,38 +26,49 @@ const GET_NUMBER_OF_VIDEOTHINGS = gql`
 
 function desider(List, item) {
   const listArray = [];
-  List && List.map((i) => listArray.push(i.id));
+  List && List.map((i) => listArray.push(i.uniqueId));
   return listArray && listArray.includes(item);
 }
 
-const WatchListButton = ({ client }) => {
-  const PRODLINK_ID = parseInt(getProdLinkIdApollo(client), 10);
+const WatchListButton = (props) => {
+  const { client } = props;
+  const prodLinkUniqueId = getProdLinkUniqueId();
+
   const [watchlist, setWatchlist] = React.useState(null);
+  const [PRODLINK_ID, SETPRODLINK_ID] = React.useState(null);
   const [watchListButtonManager, setWatchListButtonManager] = React.useState(
     false
   );
   const [watchListCounter, setWatchListCounter] = React.useState(null);
   React.useEffect(() => {
-    setWatchListButtonManager(desider(watchlist, PRODLINK_ID));
+    setWatchListButtonManager(desider(watchlist, prodLinkUniqueId));
     // setAnimate(!desider(watchlist, PRODLINK_ID));
   }, [watchlist]);
-
   React.useEffect(() => {
     client
       .query({
         query: GET_NUMBER_OF_VIDEOTHINGS,
-        variables: { prodLinkId: PRODLINK_ID }
+        variables: { prodLinkUniqueId }
       })
       .then(({ data }) => {
         setWatchListCounter(data.prodLink.numberOfViews);
+        SETPRODLINK_ID(data.prodLink.id);
       });
   }, []);
+
   return (
-    <Query query={GET_CONSUMER_WATCH_LISTID}>
+    <Query query={GET_CONSUMER_WATCH_LISTID} fetchPolicy="network-only">
       {({ data, loading, error, refetch }) => {
-        if (loading || error) return <FavoriteLottie animate={true} />;
+        if (loading)
+          return (
+            <div className="stats--content favorite">
+              <i className="stats--content--starIcon"></i>
+            </div>
+          );
+        if (error) return null;
         const consumer = data.consumer ? data.consumer : null;
         setWatchlist(consumer ? consumer.watchList : null);
+        if (!consumer) return null;
         return watchListButtonManager !== true ? (
           <AddToWatchlist
             PRODLINK_ID={PRODLINK_ID}
@@ -78,7 +90,6 @@ const WatchListButton = ({ client }) => {
     </Query>
   );
 };
-
 export default WatchListButton;
 
 const AddToWatchlist = ({
@@ -92,7 +103,7 @@ const AddToWatchlist = ({
   return (
     <Mutation
       mutation={ADD_WATCH_LIST}
-      variables={{ prodLinkId: PRODLINK_ID }}
+      variables={{ prodLinkId: parseInt(PRODLINK_ID, 10) }}
       update={() => refetch()}>
       {(updateProdLinkFromWatchList, { data, error, loading }) => {
         if (loading || error) return null;
@@ -104,7 +115,10 @@ const AddToWatchlist = ({
           <div
             className="stats--content favorite"
             onClick={() => setAnimate(false)}>
-            <FavoriteLottie animate={animate} switcher={updateHandler} />{' '}
+            <FavoriteLottie
+              animate={animate}
+              switcher={() => updateHandler()}
+            />
             {watchListCounter}
           </div>
         );
@@ -123,7 +137,7 @@ const DeleteFromWatchlist = ({
   return (
     <Mutation
       mutation={DELETE_WATCHED_LIST}
-      variables={{ prodLinkId: PRODLINK_ID }}
+      variables={{ prodLinkId: parseInt(PRODLINK_ID, 10) }}
       update={() => refetch()}>
       {(updateProdLinkFromWatchList, { data, error, loading }) => {
         if (loading || error) return null;

@@ -29,7 +29,10 @@ const HotspotCard = ({ styles, hotspot }) => {
               }>
               <div
                 className="vb--hotspot-card-product-image"
-                style={{ backgroundImage: `url(${product.image.imageUrl}` }}
+                style={{
+                  backgroundImage: `url(${product.image &&
+                    product.image.imageUrl}`
+                }}
               />
             </Wrapper>
           </BouncyDiv>
