@@ -81,7 +81,7 @@ const AddressEdit = ({
                   id="countryId"
                   onChange={updateField}>
                   {countries.map((country) => (
-                    <option value={parseInt(country.id, 10)}>
+                    <option value={parseInt(country.id, 10)} key={country.name}>
                       {country.name}
                     </option>
                   ))}

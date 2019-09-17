@@ -80,7 +80,9 @@ const AddAddress = ({ countries }) => {
                   id="countryId"
                   onChange={updateField}>
                   {countries.map((country) => (
-                    <option value={country.id}>{country.name}</option>
+                    <option value={country.id} key={country.name}>
+                      {country.name}
+                    </option>
                   ))}
                 </select>
               </div>

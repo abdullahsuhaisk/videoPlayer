@@ -31,11 +31,6 @@ const ShoppingCart = ({ setCheckValue, checkValue }) => {
     <>
       <Query query={GET_CONSUMER_CART} fetchPolicy="network-only">
         {({ loading, error, data }) => {
-          {
-            /* if (loading) {
-            return <ShoppingCardContentLoader />;
-          } */
-          }
           if (error) {
             return !!error ? (
               <div>You need to log-in to see your shopping cart.</div>

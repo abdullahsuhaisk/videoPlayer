@@ -24,7 +24,9 @@ const FlickityGallery = ({ images }) => {
             return (
               <div
                 className="AddToWishlist--imagesSlider--figure"
-                style={{ backgroundImage: `url(${image})` }}>
+                style={{ backgroundImage: `url(${image})` }}
+                // eslint-disable-next-line react/no-array-index-key
+                key={image + key}>
                 {/* <img
                 className="AddToWishlist--imagesSlider--figure--img"
                 src={image}
@@ -37,7 +39,9 @@ const FlickityGallery = ({ images }) => {
             return (
               <div
                 className="AddToWishlist--imagesSlider--figure"
-                style={{ backgroundImage: `url(${image})` }}>
+                style={{ backgroundImage: `url(${image})` }}
+                // eslint-disable-next-line react/no-array-index-key
+                key={image + key}>
                 {/* <img
               className="AddToWishlist--imagesSlider--figure--img"
               src={image}
