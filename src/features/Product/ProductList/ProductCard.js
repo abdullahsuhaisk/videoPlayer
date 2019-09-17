@@ -8,19 +8,23 @@ import Bouncy from '../../../components/HOCS/AnimationsHocs/Bouncy';
 
 const ProductCard = ({ product, addedWishList }) => {
   const productId = product.id;
-  // console.log(addedWishList);
   return (
     <ApolloConsumer>
       {(client) => (
         <Bouncy direction="left">
           <div className="Product-Card">
-            <figure className="productCard--imageWrapper">
-              <img
+            <div
+              className="productCard--imageWrapper"
+              style={{
+                backgroundImage: `url(${product.image &&
+                  product.image.thumbnailUrl})`
+              }}>
+              {/* <img
                 src={product.image && product.image.thumbnailUrl}
                 className="productCard--image"
                 alt={product.brand && product.brand.name}
-              />
-            </figure>
+              /> */}
+            </div>
             {addedWishList ? (
               <div className="productCard--Onwishlist-statusWrapper">
                 <i className="productCard--Onwishlist-checkedIcon"></i>
@@ -65,7 +69,7 @@ const ProductCard = ({ product, addedWishList }) => {
               </div>
             ) : (
               <div className="productCard--priceWrapper">
-                <p className="productCard--wishlist--price">{`${product.price &&
+                <p className="productCard--wishlist--price">{`${product.currency &&
                   product.currency.symbol}${product.price &&
                   product.price.toFixed(2)}`}</p>
               </div>

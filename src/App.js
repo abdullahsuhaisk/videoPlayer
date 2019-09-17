@@ -33,12 +33,13 @@ const App = ({ client }) => {
           const poster =
             (image && httpToHttps(image.imageUrl)) ||
             'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
-          const src = video.qualities && httpToHttps(video.qualities[2].url);
-          const { type } = video.qualities && video.qualities[2];
-
+          console.log(video.qualities);
+          const src = video.qualities && httpToHttps(video.qualities[0].url);
+          // const { type } = video.qualities && video.qualities[2];
+          const type = 'video/mp4';
           return (
             <Suspense fallback={<></>}>
-              <Player poster={poster} sources={[{ src, type }]} />
+              <Player poster={poster} sources={[{ src: src, type: type }]} />
             </Suspense>
           );
         }}

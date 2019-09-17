@@ -12,10 +12,13 @@ const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   productRender =
     products &&
     products.map((item, key) => (
-      <figure
+      <div
         className={`gallery--item gallery--item-${key + 1}`}
+        style={{
+          backgroundImage: `url(${item.image && item.image.thumbnailUrl})`
+        }}
         key={item.id}>
-        <img
+        {/* <img
           src={
             item.image
               ? item.image.thumbnailUrl
@@ -23,21 +26,21 @@ const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
           }
           alt={item.name}
           className="gallery--img"
-        />
-      </figure>
+        /> */}
+      </div>
     ));
   if (products) {
     for (let i = products.length + 1; i <= 6; i++) {
       productRender.push(
-        <figure
+        <div
           className={`gallery--item gallery--item-${i} gallery--img-placeholder`}
           key={'placeHolder' + i}>
-          <img
+          {/* <img
             src="/images/wishlist/whishlist3.jpg"
             alt="placeHolder"
             className="gallery--img"
-          />
-        </figure>
+          /> */}
+        </div>
       );
     }
   }

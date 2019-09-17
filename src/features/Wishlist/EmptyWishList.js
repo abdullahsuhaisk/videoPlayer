@@ -11,16 +11,11 @@ const EmptyWishList = ({ styles }) => {
   }, []);
 
   return (
-    <Wrapper styles={styles}>
-      <div className="vb--empty-wish-list-content">
-        <div className="vb--empty-wish-list-content-image" />
-        <div className="vb--empty-wish-list-content-item">
-          <span className="bold"> NO ITEMS IN WISH LIST</span>
-          <br />
-          <span>Save your favorite items here</span>
-        </div>
-      </div>
-    </Wrapper>
+    <div className="EmptyWishlist">
+      <i className="EmptyWishlist--icon"></i>
+      <p className="EmptyWishlist--p-bold">NO ITEMS IN WISH LIST</p>
+      <p className="EmptyWishlist--p-light">Save your favorite items here</p>
+    </div>
   );
 };
 

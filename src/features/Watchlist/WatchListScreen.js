@@ -44,23 +44,38 @@ const WatchListScreen = () => {
             resize: false,
             imagesLoaded: true,
             lazyLoad: true,
-            percentPosition: false
+            percentPosition: false,
+            pageDots: false,
+            wrapAround: false,
+            freeScroll: false,
+            groupCells: true,
+            arrowShape: {
+              x0: 10,
+              x1: 35,
+              y1: 80,
+              x2: 40,
+              y2: 90,
+              x3: 15
+            }
           };
           return (
             <Flickity
-              className="VideoPlayerContainer"
+              className="VideoPlayerContainer watchlistContainer"
               reloadOnUpdate={true}
               options={flickityOptions}>
               {watchList.length !== 0 ? (
-                watchList.map((item, key) =>
-                  key > 3 ? null : (
+                watchList.map(
+                  (item, key) => (
+                    // key > 3 ? null : (
                     <WatchListCard
                       item={item}
                       key={item.id}
                       LikedProdLinksIds={LikedProdLinksId}
                       uniqueId={LikedProdLinksId[key]}
+                      index={key}
                     />
                   )
+                  // )
                 )
               ) : (
                 <EmptyWatchList />

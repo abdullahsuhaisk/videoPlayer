@@ -195,8 +195,22 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                           });
                                         }
                                       }}>
-                                      <figure className="AddToWishlist--information--wishlistItem--figure">
-                                        <img
+                                      <div
+                                        className="AddToWishlist--information--wishlistItem--figure"
+                                        style={{
+                                          backgroundImage: `url(${
+                                            whisList &&
+                                            whisList.products &&
+                                            whisList.products[0] &&
+                                            whisList.products[0].image &&
+                                            whisList.products[0].image
+                                              .thumbnailUrl
+                                              ? whisList.products[0].image
+                                                  .thumbnailUrl
+                                              : '/images/wishlist/whishlist1.jpg'
+                                          })`
+                                        }}>
+                                        {/* <img
                                           className="AddToWishlist--information--wishlistItem--figure--img"
                                           src={
                                             whisList &&
@@ -210,8 +224,8 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                               : '/images/wishlist/whishlist1.jpg'
                                           }
                                           // "/images/wishlist/whishlist1.jpg"
-                                        />
-                                      </figure>
+                                        /> */}
+                                      </div>
                                       <div className="AddToWishlist--information--wishlistItem--titleItems">
                                         <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
                                           {whisList.name}

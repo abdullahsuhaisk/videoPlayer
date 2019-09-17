@@ -1,9 +1,8 @@
 import React from 'react';
-import { getVideoJs } from '../../../../hooks/VideoJsHook';
+import ControlBarHoc from '../ControlBarHoc';
 
-const VolumControl = () => {
-  const videoPlayer = getVideoJs();
-
+const VolumControl = (props) => {
+  const { videoPlayer } = props;
   const volumeHandler = (e) => {
     if (videoPlayer) {
       if (e) {
@@ -45,4 +44,4 @@ const VolumControl = () => {
   );
 };
 
-export default VolumControl;
+export default ControlBarHoc(VolumControl);

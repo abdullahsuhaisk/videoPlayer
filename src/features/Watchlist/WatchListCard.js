@@ -66,7 +66,7 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
   );
 };
 
-const WatchListCard = ({ item, LikedProdLinksIds }) => {
+const WatchListCard = ({ item, LikedProdLinksIds, index }) => {
   const [settings, setSettings] = useState(false);
   const uniqueIdFromUrl = getProdLinkUniqueId();
   const prodLinkId = item && item.uniqueId;
@@ -84,7 +84,6 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
       window.location.reload();
     }
   };
-
   return (
     <React.Fragment>
       <div className="watchlist">

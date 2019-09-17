@@ -57,7 +57,7 @@ const Player = ({ width, height, poster, sources }) => {
     playerRef.current = videojs(videoRef.current, {
       poster,
       controls: false,
-      sources,
+      sources: sources,
       responsive: true,
       liveui: true,
       textTrackSettings: false,

@@ -11,46 +11,41 @@ const FlickityGallery = ({ images }) => {
     prevNextButtons: true,
     wrapAround: true
   };
+  const dummy = [
+    '/images/ProductDetail3.jpg',
+    '/images/ProductDetail2.jpg',
+    '/images/ProductDetail1.jpg'
+  ];
 
   return (
     <Flickity className="AddToWishlist--imagesSlider" options={flickityOptions}>
-      {images && images.length > 1 ? (
-        images.map((image, key) => {
-          return (
-            <figure className="AddToWishlist--imagesSlider--figure">
-              <img
+      {images && images.length > 1
+        ? images.map((image, key) => {
+            return (
+              <div
+                className="AddToWishlist--imagesSlider--figure"
+                style={{ backgroundImage: `url(${image})` }}>
+                {/* <img
                 className="AddToWishlist--imagesSlider--figure--img"
                 src={image}
                 alt={`${image} + ${key}`}
-              />
-            </figure>
-          );
-        })
-      ) : (
-        <>
-          <figure className="AddToWishlist--imagesSlider--figure">
-            <img
+              /> */}
+              </div>
+            );
+          })
+        : dummy.map((image, key) => {
+            return (
+              <div
+                className="AddToWishlist--imagesSlider--figure"
+                style={{ backgroundImage: `url(${image})` }}>
+                {/* <img
               className="AddToWishlist--imagesSlider--figure--img"
-              src="/images/ProductDetail3.jpg"
-              alt="whishlist-1"
-            />
-          </figure>
-          <figure className="AddToWishlist--imagesSlider--figure">
-            <img
-              className="AddToWishlist--imagesSlider--figure--img"
-              src="/images/ProductDetail2.jpg"
-              alt="whishlist-1-1"
-            />
-          </figure>
-          <figure className="AddToWishlist--imagesSlider--figure">
-            <img
-              className="AddToWishlist--imagesSlider--figure--img"
-              src="/images/ProductDetail1.jpg"
-              alt="whishlist-2-1"
-            />
-          </figure>
-        </>
-      )}
+              src={image}
+              alt={`${image} + ${key}`}
+            /> */}
+              </div>
+            );
+          })}
     </Flickity>
   );
 };
