@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
 
@@ -14,6 +14,7 @@ const ControlBarHoc = (WrappedComponent) => (props) => {
           <WrappedComponent
             {...props}
             videoPlayer={videoPlayer}
+            setVideoPlayer={setVideoPlayer}
             client={client}
           />
         );

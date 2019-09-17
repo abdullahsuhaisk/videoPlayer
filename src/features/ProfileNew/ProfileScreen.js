@@ -4,7 +4,6 @@ import ProfileAddressScreen from './ProfileAddressScreen';
 import ProfileShow from './ProfileShow';
 import { GET_PERSON, GET_PROFILE_SCREEN_IS_OPEN } from './ProfileQueries';
 import ProfileEdit from './ProfileEdit';
-import ProfileLoader from '../../components/ContentLoader/ProfileLoader';
 
 const ProfileScreen = () => {
   const renderContent = () => {
@@ -16,9 +15,6 @@ const ProfileScreen = () => {
           style={{ position: 'absolute', top: 200 }}>
           <Query query={GET_PERSON}>
             {({ loading, error, data }) => {
-              {
-                /* if (loading) return <ProfileLoader />; */
-              }
               if (error) return 'Something Wrong';
               const { consumer } = data;
               const addresses =

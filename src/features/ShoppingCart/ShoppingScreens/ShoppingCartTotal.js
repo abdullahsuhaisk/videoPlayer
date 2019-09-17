@@ -103,8 +103,8 @@ const ShoppingCartTotal = ({
 
 export default withApollo(ShoppingCartTotal);
 
-{
-  /* <Mutation
+// {
+/* <Mutation
                     mutation={DELETE_PRODUCT_FROM_CART}
                     refetchQueries={() => {
                       console.log('refetchQueries');
@@ -133,4 +133,4 @@ export default withApollo(ShoppingCartTotal);
                       );
                     }}
                   </Mutation> */
-}
+// }

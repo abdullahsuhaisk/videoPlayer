@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useEffect, useState } from 'react';
-import { ApolloConsumer, Mutation } from 'react-apollo';
+import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-import { PRODLINK_ID } from '../../common/GrapqlConstant';
-import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
-import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
+// import { PRODLINK_ID } from '../../common/GrapqlConstant';
+// import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
+// import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
 import { Wrapper } from './ScreenReady.style';
 
 const ScreenReadyComponent = ({ children }) => {
@@ -17,31 +17,31 @@ const ScreenReadyComponent = ({ children }) => {
     // Set video Player
   }, [videoPlayer]);
 
-  const updateCache = () => {};
+  // const updateCache = () => {};
 
-  const addToWatchList = async (client, addProdLinkToWatchList) => {
-    // const { isLoggedIn } = client.readQuery({
-    //   query: IS_LOGGED_IN
-    // });
-    // if (isLoggedIn) {
-    //   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
-    //   // client.writeData({
-    //   //   data: { productIdInDetails: null, navigationDialogShowing: true }
-    //   // });
-    // } else {
-    //   // client.writeData({ data: { isLoginFormShowing: true } });
-    //   return null;
-    // }
-    await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
-    client.writeData({
-      data: {
-        player: {
-          __typename: 'Player',
-          playingState: 'PLAY'
-        }
-      }
-    });
-  };
+  // const addToWatchList = async (client, addProdLinkToWatchList) => {
+  // const { isLoggedIn } = client.readQuery({
+  //   query: IS_LOGGED_IN
+  // });
+  // if (isLoggedIn) {
+  //   await addProdLinkToWatchList({ variables:  {PRODLINK_ID}  });
+  //   // client.writeData({
+  //   //   data: { productIdInDetails: null, navigationDialogShowing: true }
+  //   // });
+  // } else {
+  //   // client.writeData({ data: { isLoginFormShowing: true } });
+  //   return null;
+  // }
+  //   await addProdLinkToWatchList({ variables: { prodLinkId: PRODLINK_ID } });
+  //   client.writeData({
+  //     data: {
+  //       player: {
+  //         __typename: 'Player',
+  //         playingState: 'PLAY'
+  //       }
+  //     }
+  //   });
+  // };
 
   return (
     <ApolloConsumer>
@@ -74,8 +74,8 @@ const ScreenReadyComponent = ({ children }) => {
 
 export default ScreenReadyComponent;
 
-{
-  /* <Mutation
+// {
+/* <Mutation
       mutation={ADD_WATCHED_LIST}
       // variables={{ prodLinkId: PRODLINK_ID }}
       // update={(cache, { data }) => updateCache(cache, data)}
@@ -97,7 +97,7 @@ export default ScreenReadyComponent;
         );
       }}
     </Mutation> */
-}
+// }
 
 /* <ApolloConsumer>
       {(client) => {

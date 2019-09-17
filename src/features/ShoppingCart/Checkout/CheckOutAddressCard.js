@@ -30,8 +30,8 @@ const CheckOutAddressCard = ({ selectedAddress, address, onClicked }) => {
 
 export default CheckOutAddressCard;
 
-{
-  /* <div className="ShoppingCartCard--adress--details">
+// {
+/* <div className="ShoppingCartCard--adress--details">
 <i className="ShoppingCartCard--adress--details--edit"></i>
 <i className="ShoppingCartCard--adress--details--delete"></i>
 <span className="ShoppingCartCard--adress--details--title">
@@ -47,4 +47,4 @@ export default CheckOutAddressCard;
   Phone: 01701077215
 </p>
 </div> */
-}
+// }

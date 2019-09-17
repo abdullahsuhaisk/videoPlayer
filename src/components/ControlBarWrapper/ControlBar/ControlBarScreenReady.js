@@ -10,12 +10,12 @@ import JumpToProduct from './JumpToProduct/JumpToProductWrapper';
 import ControlBarShoppingIcon from './Cart/ControlBarShoppingIcon';
 import ControlBarSettings from './Settings/ControlBarSettings';
 import ControlBarFullScreen from './FullScreen/ControlBarFullScreen';
-import { composeInitialProps } from 'react-i18next';
+// import { composeInitialProps } from 'react-i18next';
 
 const ControlBarScreen = ({ styles }) => {
   // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
-  const [position, setPosition] = useState(0); // Which videoPlayer should be renderer
+  // const [position, setPosition] = useState(0); // Which videoPlayer should be renderer
   useEffect(() => {
     const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
     setVideoPlayer(videoPlayerJs);

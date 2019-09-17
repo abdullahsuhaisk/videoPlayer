@@ -51,19 +51,9 @@ const AddToWishlist = () => {
           </div>
           <div className="AddToWishlist--information--wishlistItemContainer">
             <div className="AddToWishlist--information--wishlistItem">
-              <figure className="AddToWishlist--information--wishlistItem--figure">
-                <img
-                  className="AddToWishlist--information--wishlistItem--figure--img"
-                  src="/images/wishlist/whishlist1.jpg"
-                />
-              </figure>
+              <figure className="AddToWishlist--information--wishlistItem--figure"></figure>
               <div className="AddToWishlist--information--wishlistItem--titleItems">
-                <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
-                  Glasses that I like
-                </h3>
-                <p className="AddToWishlist--information--wishlistItem--titleItems--p">
-                  12 items
-                </p>
+                <input type="text" className="AddToWishlist--information--wishlistItem--titleInput" />
               </div>
             </div>
             <div className="AddToWishlist--information--wishlistItem AddToWishlist--information--wishlistItem-selected">

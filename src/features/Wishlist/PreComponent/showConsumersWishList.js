@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Query, Mutation } from 'react-apollo';
 import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
-import DeleteWishlistComponent from './deleteWishlistComponent';
+// import DeleteWishlistComponent from './deleteWishlistComponent';
 
 const showConsumersWishList = () => {
   // TODO: UPDATE CASHE IT MUST BE
@@ -33,7 +33,7 @@ const showConsumersWishList = () => {
           }
           const { consumer } = data;
           const { whisLists } = consumer;
-          const whisListsCount = whisLists && whisLists.length;
+          // const whisListsCount = whisLists && whisLists.length;
           console.log('render show consumer wishlist', whisLists);
 
           return (

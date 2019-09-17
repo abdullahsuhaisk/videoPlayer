@@ -49,6 +49,8 @@ const ShoppingCartScreen = ({ client }) => {
   // if (isLoading) {
   //   return <ShoppingCardContentLoader width={700} height={70} />;
   // }
+  if (isLoading) return 'loading ....';
+
   return (
     <div className="ShoppingCartContainer">
       {checkoutShowing === false ? (

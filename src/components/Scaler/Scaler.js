@@ -34,13 +34,13 @@ const Scaler = ({ children }) => {
 
         return (
           <div
-            className="vb--scaler"
+            className="vb--scaler Template1"
             style={{
               width: `${baseWidth}px`,
               height: `${baseHeight}px`,
               transformOrigin: 'left top',
               transform: `perspective(1px) scaleX(${scaleX}) scaleY(${scaleY})`,
-              'backface-visibility': `hidden`
+              backfaceVisibility: `hidden`
             }}>
             {children}
           </div>

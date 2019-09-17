@@ -1,35 +1,30 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
-import { loadWebFontsFromStyles } from '../../utils/parseStyles';
-import { emptyWishListstyle, Wrapper } from './EmptyWishList.style';
+// import { loadWebFontsFromStyles } from '../../utils/parseStyles';
+// import { emptyWishListstyle, Wrapper } from './EmptyWishList.style';
 
-const EmptyWishList = ({ styles }) => {
-  useEffect(() => {
-    loadWebFontsFromStyles(emptyWishListstyle);
-    loadWebFontsFromStyles(styles);
-  }, []);
+const EmptyWishList = () => {
+  // useEffect(() => {
+  //   loadWebFontsFromStyles(emptyWishListstyle);
+  //   loadWebFontsFromStyles(styles);
+  // }, []);
 
   return (
-    <Wrapper styles={styles}>
-      <div className="vb--empty-wish-list-content">
-        <div className="vb--empty-wish-list-content-image" />
-        <div className="vb--empty-wish-list-content-item">
-          <span className="bold"> NO ITEMS IN WISH LIST</span>
-          <br />
-          <span>Save your favorite items here</span>
-        </div>
-      </div>
-    </Wrapper>
+    <div className="EmptyWishlist">
+      <i className="EmptyWishlist--icon"></i>
+      <p className="EmptyWishlist--p-bold">NO ITEMS IN WISH LIST</p>
+      <p className="EmptyWishlist--p-light">Save your favorite items here</p>
+    </div>
   );
 };
 
-EmptyWishList.propTypes = {
-  styles: PropTypes.object
-};
+// EmptyWishList.propTypes = {
+//   styles: PropTypes.object
+// };
 
-EmptyWishList.defaultProps = {
-  styles: {}
-};
+// EmptyWishList.defaultProps = {
+//   styles: {}
+// };
 
 export default EmptyWishList;

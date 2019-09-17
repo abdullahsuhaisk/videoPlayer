@@ -129,6 +129,7 @@ const ProductDetail = ({ productId }) => {
                                 <img
                                   className="ProductDetail--information--settings-opt-div-img"
                                   src="/images/Black.jpg"
+                                  alt="option1"
                                 />
                                 <span className="ProductDetail--information--settings-opt-div-span">
                                   Black
@@ -248,6 +249,7 @@ const ProductDetail = ({ productId }) => {
                                 <img
                                   src="/images/pp.png"
                                   className="ProductDetail--comment--profile--figure--img"
+                                  alt="option1"
                                 />
                               </figure>
                               <p className="ProductDetail--comment--profile--name">
@@ -288,18 +290,21 @@ const ProductDetail = ({ productId }) => {
                                   <img
                                     src="/images/campaing.png"
                                     className="ProductDetail--comment--campaings--item--img"
+                                    alt="option1"
                                   />
                                 </figure>
                                 <figure className="ProductDetail--comment--campaings--item">
                                   <img
                                     src="/images/campaing.png"
                                     className="ProductDetail--comment--campaings--item--img"
+                                    alt="option1"
                                   />
                                 </figure>
                                 <figure className="ProductDetail--comment--campaings--item">
                                   <img
                                     src="/images/campaing.png"
                                     className="ProductDetail--comment--campaings--item--img"
+                                    alt="option1"
                                   />
                                 </figure>
                               </Flickity>

@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { Wrapper, registerFormStyles } from './RegisterForm.style';
+import { registerFormStyles } from './RegisterForm.style';
 import { loadWebFontsFromStyles } from '../../utils/parseStyles';
 
 const REGISTER = gql`
@@ -46,7 +46,11 @@ const RegisterForm = ({ styles }) => {
           <React.Fragment>
             <div className="signup">
               <figure className="signup--imgWrapper">
-                <img className="signup--img" src="/images/login_image.svg" />
+                <img
+                  className="signup--img"
+                  src="/images/login_image.svg"
+                  alt="signup"
+                />
               </figure>
               <form
                 onSubmit={(e) => {

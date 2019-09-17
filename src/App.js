@@ -4,7 +4,6 @@ import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
-
 import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
@@ -47,7 +46,7 @@ const App = ({ client }) => {
 
           return (
             <Suspense fallback={<></>}>
-              <Player poster={poster} sources={[{ src, type }]} />
+              <Player poster={poster} sources={[{ src: src, type: type }]} />
             </Suspense>
           );
         }}

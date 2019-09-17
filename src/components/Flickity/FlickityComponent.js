@@ -22,28 +22,30 @@ const FlickityComponent = ({ flickityOptions, FlickityClassName, images }) => {
       {images
         ? images.map((image, key) => {
             return (
-              <figure
+              <div
                 className="ProductDetail--imagesSlider--figure"
+                style={{ backgroundImage: `url(${image.imageUrl})` }}
                 key={image.id}>
-                <img
+                {/* <img
                   className="ProductDetail--imagesSlider--figure--img"
                   src={image.imageUrl}
                   alt={'image' + image.id}
-                />
-              </figure>
+                /> */}
+              </div>
             );
           })
         : imagesLocal.map((image) => {
             return (
-              <figure
+              <div
                 className="ProductDetail--imagesSlider--figure"
-                key={image.key}>
-                <img
+                style={{ backgroundImage: `url(${image.imageUrl})` }}
+                key={image.id}>
+                {/* <img
                   className="ProductDetail--imagesSlider--figure--img"
                   src={image.imageUrl}
                   alt={'image' + image.id}
-                />
-              </figure>
+                /> */}
+              </div>
             );
           })}
     </Flickity>

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropType from 'prop-types';
+// import PropType from 'prop-types';
 import Button from '../../../components/Button/Button';
 
 const EditableAdressComponents = ({ setAddressEdit }) => {

@@ -12,13 +12,18 @@ const AddedWishListProductCard = ({ product, wishListId }) => {
     <ApolloConsumer>
       {(client) => (
         <div className="Product-Card">
-          <figure className="productCard--imageWrapper">
-            <img
-              src={product.image.thumbnailUrl}
-              className="productCard--image"
-              alt={product.brand.name}
-            />
-          </figure>
+          <div
+            className="productCard--imageWrapper"
+            style={{
+              backgroundImage: `url(${product.image &&
+                product.image.thumbnailUrl})`
+            }}>
+            {/* <img
+                src={product.image && product.image.thumbnailUrl}
+                className="productCard--image"
+                alt={product.brand && product.brand.name}
+              /> */}
+          </div>
           <Mutation
             mutation={DELETE_WISHLIST_ITEM}
             variables={{ productId, wishListId }}>

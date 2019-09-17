@@ -25,9 +25,9 @@ const WatchListScreen = () => {
           const { watchList } = consumer;
           const favorites = consumer.favorites ? consumer.favorites : null;
           const { prodLinks } = favorites && favorites;
-          {
-            /* console.log(prodLinks); */
-          }
+          // {
+          /* console.log(prodLinks); */
+          // }
           const LikedProdLinksId = [];
           prodLinks &&
             prodLinks[0] &&
@@ -41,11 +41,24 @@ const WatchListScreen = () => {
             resize: false,
             imagesLoaded: true,
             lazyLoad: true,
-            percentPosition: false
+            percentPosition: false,
+            pageDots: false,
+            wrapAround: false,
+            freeScroll: false,
+            groupCells: true,
+            arrowShape: {
+              x0: 10,
+              x1: 35,
+              y1: 80,
+              x2: 40,
+              y2: 90,
+              x3: 15
+            }
           };
+          if (watchList === null) return <EmptyWatchList />;
           return (
             <Flickity
-              className="VideoPlayerContainer"
+              className="VideoPlayerContainer watchlistContainer"
               reloadOnUpdate={true}
               options={flickityOptions}>
               {watchList.length !== 0 ? (

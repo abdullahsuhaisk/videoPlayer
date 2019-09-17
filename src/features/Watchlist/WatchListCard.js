@@ -5,9 +5,7 @@ import { Mutation, withApollo } from 'react-apollo';
 import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
 import {
   LIKE_PRODLINK,
-  UNLIKE_PRODLINK,
-  ADD_PRODLINK_TO_FAVORITE,
-  DELETE_PRODLINK_TO_FAVORITE
+  UNLIKE_PRODLINK
 } from '../../components/Base/BaseQueries';
 import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
@@ -67,11 +65,11 @@ const UnLike = ({ numberOfLikes, prodLinkId }) => {
   );
 };
 
-const WatchListCard = ({ item, LikedProdLinksIds }) => {
+const WatchListCard = ({ item, LikedProdLinksIds, index }) => {
   const [settings, setSettings] = useState(false);
   const uniqueIdFromUrl = getProdLinkUniqueId();
   const prodLinkId = item && item.uniqueId;
-  const { campaign, company, video, image, brands } = item;
+  const { company, video, image } = item;
   // console.log(campaign, company, video);
   const thumbnailUrl = image && image.thumbnailUrl;
   const itemDescription = item ? item.description : 'loading';
@@ -85,7 +83,6 @@ const WatchListCard = ({ item, LikedProdLinksIds }) => {
       window.location.reload();
     }
   };
-
   return (
     <React.Fragment>
       <div className="watchlist">

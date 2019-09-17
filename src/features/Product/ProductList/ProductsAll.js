@@ -19,16 +19,16 @@ const ProductsAll = () => {
   return (
     <Query query={GET_PRODLINK_ID}>
       {({ data: { player }, error, loading }) => {
-        {
-          /* if (loading) {
+        // {
+        /* if (loading) {
           return <ProductCardContentLoader />;
         } */
-        }
+        // }
         if (error) return null;
         const prodLinkIdString = player.prodLinkUniqueId;
-        {
-          /* console.log(player); */
-        }
+        // {
+        /* console.log(player); */
+        // }
 
         // console.log(prodLinkId);
         return (

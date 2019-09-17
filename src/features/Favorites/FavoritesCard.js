@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import CardImage from '../../components/Card/ProductCard/CardImage';
 import CardInfo from '../../components/Card/ProductCard/CardInfo';
