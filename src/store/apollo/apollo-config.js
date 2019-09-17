@@ -17,10 +17,10 @@ import { WIDTH, HEIGHT } from '../../common/constants';
 const authKey = 'vb--auth-token';
 
 const getNewToken = async () => {
-  console.log('Token Service worked');
-  firebase.auth().onIdTokenChanged(async (user) => {
+  await firebase.auth().onIdTokenChanged(async (user) => {
     if (user) {
       const token = await user.getIdToken(true);
+      console.log('Token Service worked and got new accessRefresh');
       // console.log(token);
       // console.log(user.refreshToken);
       localStorage.setItem(authKey, token);
@@ -149,17 +149,17 @@ const cache = new InMemoryCache();
 const link = ApolloLink.from([
   authLink,
   errorLink,
-  // new RetryLink({
-  //   delay: {
-  //     initial: 300,
-  //     max: Infinity,
-  //     jitter: true
-  //   },
-  //   attempts: {
-  //     max: 5,
-  //     retryIf: (error, _operation) => !!error
-  //   }
-  // }),
+  new RetryLink({
+    delay: {
+      initial: 300,
+      max: Infinity,
+      jitter: true
+    },
+    attempts: {
+      max: 5,
+      retryIf: (error, _operation) => !!error
+    }
+  }),
   httpLink
 ]);
 const clientInit = new ApolloClient({

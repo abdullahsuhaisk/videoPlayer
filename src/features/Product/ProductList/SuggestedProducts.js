@@ -8,7 +8,6 @@ import FlickityProductCard from '../../../components/Flickity/FlickityProductCar
 
 const SuggestedProducts = () => {
   const prodLinkUniqueId = getProdLinkUniqueId();
-  console.log(prodLinkUniqueId);
   return (
     <Query query={GET_PRODUCTS} variables={{ prodLinkUniqueId }}>
       {({ data, loading, error }) => {

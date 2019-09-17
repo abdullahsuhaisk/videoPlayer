@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Query } from 'react-apollo';
+
 import AddressShow from './AddressShow';
 import AddressEdit from './AddressEdit';
 import AddAddress from './AddAddress';
-import { Query } from 'react-apollo';
 import { GET_COUNTRIES } from './ProfileQueries';
 
 const updateAdress = async (Adress, setShowingAddress, setSelectedAdress) => {
