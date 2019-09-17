@@ -27,6 +27,7 @@ import EmptyAdress from './VideoPause/Template1/Components/EmptyAdress/EmptyAdre
 import EmptyCart from './VideoPause/Template1/Components/EmptyCart/EmptyCart'
 import EmptyWatchlist from './VideoPause/Template1/Components/EmptyWatchlist/EmptyWatchlist'
 import Animation from './VideoPause/Template1/Components/Lottie/Animation'
+import Settings from './VideoPause/Template1/Components/Settings/Settings'
 import Error from './VideoPause/Template1/Components/Error/Error'
 import FirstTemplateWrapper from './VideoPause/Template1/Wrapper'
 
@@ -34,6 +35,7 @@ const FirstTemplateDecorator = (storyFn) => <FirstTemplateWrapper>{storyFn()}</F
 
 storiesOf('Template 1', module)
   .addDecorator(FirstTemplateDecorator)
+  .add('Settings', () => <Settings />)
   .add('Animation', () => <Animation />)
   .add('Overlay', () => <Overlay />)
   .add('Header', () => <Header />)
