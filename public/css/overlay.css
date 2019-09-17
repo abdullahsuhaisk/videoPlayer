@@ -2797,7 +2797,7 @@
 }
 .Template1 .EmptyWishlist {
   width: 1920px;
-  height: 850px;
+  height: 834px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3175,12 +3175,14 @@
 }
 .Template1 .EmptyCart {
   width: 1920px;
-  height: 840px;
+  height: 834px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #d2dee1;
+  background-color: rgba(210, 222, 225, .77);
+  position: absolute;
+  bottom: 46px;
 }
 .Template1 .EmptyCart--icon {
   width: 230px;

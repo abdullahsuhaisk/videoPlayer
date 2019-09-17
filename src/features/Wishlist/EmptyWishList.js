@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
-import { loadWebFontsFromStyles } from '../../utils/parseStyles';
-import { emptyWishListstyle, Wrapper } from './EmptyWishList.style';
+// import { loadWebFontsFromStyles } from '../../utils/parseStyles';
+// import { emptyWishListstyle, Wrapper } from './EmptyWishList.style';
 
-const EmptyWishList = ({ styles }) => {
-  useEffect(() => {
-    loadWebFontsFromStyles(emptyWishListstyle);
-    loadWebFontsFromStyles(styles);
-  }, []);
+const EmptyWishList = () => {
+  // useEffect(() => {
+  //   loadWebFontsFromStyles(emptyWishListstyle);
+  //   loadWebFontsFromStyles(styles);
+  // }, []);
 
   return (
     <div className="EmptyWishlist">
@@ -19,12 +19,12 @@ const EmptyWishList = ({ styles }) => {
   );
 };
 
-EmptyWishList.propTypes = {
-  styles: PropTypes.object
-};
+// EmptyWishList.propTypes = {
+//   styles: PropTypes.object
+// };
 
-EmptyWishList.defaultProps = {
-  styles: {}
-};
+// EmptyWishList.defaultProps = {
+//   styles: {}
+// };
 
 export default EmptyWishList;
