@@ -55,6 +55,7 @@ const WatchListScreen = () => {
               x3: 15
             }
           };
+          return <EmptyWatchList />;
           return (
             <Flickity
               className="VideoPlayerContainer watchlistContainer"
