@@ -1,5 +1,5 @@
 import React from 'react';
-import EmptyList from '../../components/EmptyList/EmptyList';
+// import EmptyList from '../../components/EmptyList/EmptyList';
 
 // const ImageUrl = '/images/emptyWhatchList.png';
 // const content = 'No vıdeo ın watchlıst';
@@ -20,7 +20,14 @@ import EmptyList from '../../components/EmptyList/EmptyList';
 // WatchList wishlist and favoritesList can derived EmptyList component
 
 const EmptyWatchList = () => {
-  return <EmptyList />;
+  return (
+    <div className="EmptyWatchlist">
+      <i className="EmptyWatchlist--icon"></i>
+      <p className="EmptyWatchlist--p-bold">NO VIDEO IN WATCHLIST</p>
+    </div>
+  );
+
+  // return <EmptyList />;
 };
 
 export default EmptyWatchList;

@@ -3207,12 +3207,14 @@
 }
 .Template1 .EmptyWatchlist {
   width: 1920px;
-  height: 840px;
+  height: 834px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #d2dee1;
+  background-color: rgba(210, 222, 225, .77);
+  position: absolute;
+  bottom: 46px;
 }
 .Template1 .EmptyWatchlist--icon {
   width: 230px;
