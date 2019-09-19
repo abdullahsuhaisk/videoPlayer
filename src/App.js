@@ -8,6 +8,7 @@ import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
 import { httpToHttps } from './utils/httpTohttps';
+import { sourceParser } from './utils/sourceParser';
 import Error from './components/Error/Error';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
@@ -32,22 +33,20 @@ const App = ({ client }) => {
           const poster =
             (image && httpToHttps(image.imageUrl)) ||
             'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
-          const src =
-            (video.qualities &&
-              httpToHttps(video.qualities[1] && video.qualities[1].url)) ||
-            (video.qualities &&
-              httpToHttps(video.qualities[2] && video.qualities[2].url)) ||
-            (video.qualities &&
-              httpToHttps(video.qualities[3] && video.qualities[3].url));
-          const { type } =
-            (video.qualities && video.qualities[1] && video.qualities[1].url) ||
-            (video.qualities && video.qualities[2] && video.qualities[2].url) ||
-            (video.qualities && video.qualities[3] && video.qualities[3].url);
-
+          const source = sourceParser(video.qualities);
+          // Above the variable has src and type props in source array
           return (
-            <Suspense fallback={<></>}>
-              <Player poster={poster} sources={[{ src: src, type: type }]} />
-            </Suspense>
+            <Query query={GET_PLAYER}>
+              {({ data: { player } }) => {
+                const { currentQuality } = player;
+                // You can use like that source[currentQuality] but it's not working we need to change video quality
+                return (
+                  <Suspense fallback={<></>}>
+                    <Player poster={poster} sources={source} />;
+                  </Suspense>
+                );
+              }}
+            </Query>
           );
         }}
       </Query>

@@ -45,7 +45,7 @@ const setTime = () => {
 const TokenService = async () => {
   if (
     localStorage.getItem('TokenTime') &&
-    setTime() - localStorage.getItem('TokenTime') > 60
+    setTime() - localStorage.getItem('TokenTime') > 59
   ) {
     await getNewToken();
   }
@@ -189,8 +189,10 @@ const setInitialCache = () => {
       currentTime: 0,
       seekTo: -1,
       overlayContainerClassName: '',
-      prodLinkId: null,
-      prodLinkUniqueId: null
+      currentQuality: 1,
+      // TODO: Move to shopping cart here
+      isSettingMenuOpen: false,
+      selectedQuality: 'Auto'
     },
     layout: {
       __typename: 'Layout',
