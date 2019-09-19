@@ -3,10 +3,10 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
-import 'videjsmarker';
+// import 'videjsmarker';
 import './player.scss';
-import './SettingsButton/vjs-settings-button';
-import './SettingsMenu/vjs-settings-menu';
+// import './SettingsButton/vjs-settings-button';
+// import './SettingsMenu/vjs-settings-menu';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
@@ -57,7 +57,7 @@ const Player = ({ width, height, poster, sources }) => {
     playerRef.current = videojs(videoRef.current, {
       poster,
       controls: false,
-      sources: sources,
+      sources,
       responsive: true,
       liveui: true,
       textTrackSettings: false,
@@ -80,38 +80,51 @@ const Player = ({ width, height, poster, sources }) => {
     };
   }, []);
 
-  useEffect(() => {
-    playerRef.current.markers({
-      markerStyle: {
-        width: '.3em',
-        height: '.3em',
-        'background-color': '#fff',
-        'border-radius': '50%'
-      },
-      markerTip: {
-        display: true,
-        text: (marker) => marker.text || ''
-      },
-      markers: []
-    });
+  // useEffect(() => {
+  //   videojs(
+  //     videoRef.current.use('*', (player) => {
+  //       return {
+  //         setSource(srcObj, next) {
+  //           // pass null as the first argument to indicate that the source is not rejected
+  //           next(null, srcObj);
+  //         }
+  //       };
+  //     })
+  //   );
+  // }, []);
 
-    // const addMarkers = async () => {
-    //   // TODO: set prodLinkId
-    //   const { data } = await apolloClientRef.current.query({
-    //     query: GET_HOTSPOTS,
-    //     variables: { prodLinkUniqueId }
-    //   });
-    //   const { hotSpots } = data.prodLink;
-    //   const markers = hotSpots.reduce((acc, hotspot) => {
-    //     acc.push({ time: hotspot.in, text: `Hotspot: ${hotspot.id}` });
-    //     return acc;
-    //   }, []);
+  // useEffect(() => {
+  //   playerRef.current.markers({
+  //     markerStyle: {
+  //       width: '.3em',
+  //       height: '.3em',
+  //       'background-color': '#fff',
+  //       'border-radius': '50%'
+  //     },
+  //     markerTip: {
+  //       display: true,
+  //       text: (marker) => marker.text || ''
+  //     },
+  //     markers: []
+  //   });
 
-    //   playerRef.current.markers.add(markers);
-    // };
+  // const addMarkers = async () => {
+  //   // TODO: set prodLinkId
+  //   const { data } = await apolloClientRef.current.query({
+  //     query: GET_HOTSPOTS,
+  //     variables: { prodLinkUniqueId }
+  //   });
+  //   const { hotSpots } = data.prodLink;
+  //   const markers = hotSpots.reduce((acc, hotspot) => {
+  //     acc.push({ time: hotspot.in, text: `Hotspot: ${hotspot.id}` });
+  //     return acc;
+  //   }, []);
 
-    // playerRef.current.one('loadedmetadata', () => addMarkers());
-  }, []);
+  //   playerRef.current.markers.add(markers);
+  // };
+
+  // playerRef.current.one('loadedmetadata', () => addMarkers());
+  // }, []);
 
   useEffect(() => {
     const onReady = () => {
@@ -208,20 +221,20 @@ const Player = ({ width, height, poster, sources }) => {
     });
   }, []);
 
-  useEffect(() => {
-    const { controlBar } = playerRef.current;
+  // useEffect(() => {
+  //   const { controlBar } = playerRef.current;
 
-    if (controlBar) {
-      controlBar.settingsButton = controlBar.addChild(
-        'vjsSettingsButton',
-        {},
-        controlBar.children().length - 1
-      );
-      playerRef.current.settingsMenu = playerRef.current.addChild(
-        'vjsSettingsMenu'
-      );
-    }
-  }, []);
+  //   if (controlBar) {
+  //     controlBar.settingsButton = controlBar.addChild(
+  //       'vjsSettingsButton',
+  //       {},
+  //       controlBar.children().length - 1
+  //     );
+  //     playerRef.current.settingsMenu = playerRef.current.addChild(
+  //       'vjsSettingsMenu'
+  //     );
+  //   }
+  // }, []);
 
   const handlePlayingState = useCallback(
     (newPlayingState) => {

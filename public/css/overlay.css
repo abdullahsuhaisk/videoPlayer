@@ -864,7 +864,7 @@
 }
 .Template1 .sub-Menu .subMenu--linksWrapper .subMenu--link:hover,
 .Template1 .sub-Menu .subMenu--linksWrapper .subMenu--link--active {
-  color: #fff;
+  color: #2b4668;
 }
 .Template1 .sub-Menu .subMenu--statsWrapper {
   display: flex;
@@ -4521,6 +4521,211 @@
     transform: translateY(-2000px);
   }
 }
-.ml-62 {
-  /* margin-left: 62px !important; */
+.Template1 .Settings{
+  display: inline-block;
+  position: relative;
+  width: 360px;
+  padding: 10px;
+  background-color: rgba(0, 1, 16, 0.8);
+  border-radius: 4px;
+}
+.Template1 .Settings:after{
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  right: 40px;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-left-width: 15px;
+  border-right-width: 15px;
+  border-top: 18px solid rgba(0, 1, 16, 0.8);
+}
+.Template1 .Settings--panel{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.Template1 .Settings--panel--label{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+}
+.Template1 .Settings--panel--p{
+  position: relative;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+  opacity: 0.8;
+  padding-right: 26px;
+  cursor: pointer;
+}
+.Template1 .Settings--panel--p:hover{
+  opacity: 1;
+}
+.Template1 .Settings--panel--p::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  background: url(/images/arrow-settings.svg) center / contain no-repeat;
+}
+.Template1 .Settings--panel--p--i{
+  color: #00acd8;
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 3px;
+}
+.Template1 .Settings--panel--switchBtn--knobs, .Settings--panel--switchBtn--layer{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.Template1 .Settings--panel--switchBtn{
+  position: relative;
+  width: 32px;
+  height: 18px;
+  overflow: hidden;
+}
+.Template1 .Settings--panel--switchBtn, .Settings--panel--switchBtn .Settings--panel--switchBtn--layer{
+  border-radius: 100px;
+}
+.Template1 .Settings--panel--switchBtn--checkbox{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.Template1 .Settings--panel--switchBtn--knobs{
+  z-index: 2;
+}
+
+.Template1 .Settings--panel--switchBtn--layer{
+  width: 100%;
+  background-color: #ccc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.Template1 .Settings--panel--switchBtn--knobs:before{
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  background-color: #000000;
+  border-radius: 50%;
+}
+.Template1 .Settings--panel--switchBtn .Settings--panel--switchBtn--checkbox:checked + .Settings--panel--switchBtn--knobs:before{
+  content: '';
+  left: auto;
+  right: 4px;
+  background-color: #ffffff;
+}
+.Template1 .Settings--panel--switchBtn .Settings--panel--switchBtn--checkbox:checked ~ .Settings--panel--switchBtn--layer{
+  background-color: #00acd8;
+}
+.spacing{
+  margin: 50px;
+}
+/* .storybook--settings--container{ */
+  /* display: flex; */
+/* } */
+.Template1 .Settings--info--head{
+  position: relative;
+  /* border-bottom: 1px solid rgba(255, 255, 255, .2); */
+  padding: 10px 10px 20px 10px;
+}
+.Template1 .Settings--info--head::after{
+  content: '';
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  width: 360px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, .2);
+}
+.Template1 .Settings--info--head--p{
+  position: relative;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+  opacity: 0.8;
+  padding-left: 26px;
+  cursor: pointer;
+}
+.Template1 .Settings--info--head--p:hover{
+  opacity: 1;
+}
+.Template1 .Settings--info--head--p::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  background: url(/images/arrow-settings.svg) center / contain no-repeat;
+  transform: rotate(180deg);
+}
+.Template1 .Settings--info--options{
+  margin-bottom: 10px;
+}
+.Template1 .Settings--info--options--p{
+  position: relative;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.43px;
+  color: #ffffff;
+  opacity: 0.8;
+  padding-top: 20px;
+  padding-left: 36px;
+  
+  cursor: pointer;
+}
+.Template1 .Settings--info--options--p:hover{
+  opacity: 1;
+}
+.Template1 .Settings--info--options--p--i{
+  color: #00acd8;
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 3px;
+}
+.Settings--info--options--selected::before{
+  content: '';
+  position: absolute;
+  left: 10px;
+  bottom: 3px;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  background: url(/images/check.svg) center / contain no-repeat;
 }

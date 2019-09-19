@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-1,.cls-3{stroke:#fff}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:none;stroke-linecap:square;stroke-miterlimit:10;stroke-width:2.158px}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2922" d="M0 0h16v16H0z" class="cls-1" data-name="Rectangle 2922" transform="translate(1710 931)"/>
+        </clipPath>
+    </defs>
+    <g id="Check" class="cls-2" transform="translate(-1710 -931)">
+        <g id="d-check" transform="translate(1705.052 926.052)">
+            <path id="Path_7211" d="M6.474 12.948l4.316 4.316 8.632-8.632" class="cls-3" data-name="Path 7211"/>
+        </g>
+    </g>
+</svg>

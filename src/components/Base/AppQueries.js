@@ -1,5 +1,24 @@
 import gql from 'graphql-tag';
 
+export const VIDEO_FRAGMENT = gql`
+  fragment videoFr on VideoType {
+    id
+    name
+    header
+    description
+    qualities {
+      id
+      url
+      quality
+      type
+      storageId
+      storageBucket
+      storageGeneration
+      storageName
+    }
+  }
+`;
+
 export const GET_VIDEO = gql`
   query getVideoForApp($prodLinkId: Int, $prodLinkUniqueId: String) {
     prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
@@ -49,14 +68,7 @@ export const GET_VIDEO = gql`
         creationTime
       }
       video {
-        id
-        name
-        header
-        description
-        qualities {
-          id
-          url
-        }
+        ...videoFr
       }
       image {
         id
@@ -94,13 +106,25 @@ export const GET_VIDEO = gql`
       }
     }
   }
+  ${VIDEO_FRAGMENT}
 `;
 
+export const GET_VIDEO_QUALITIES = gql`
+  query getVideoForApp($prodLinkId: Int, $prodLinkUniqueId: String) {
+    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
+      video {
+        ...videoFr
+      }
+    }
+  }
+  ${VIDEO_FRAGMENT}
+`;
 export const GET_PLAYER = gql`
   query getPlayerForOverlayScreen {
     player @client {
       playingState
       currentTime
+      currentQuality
     }
   }
 `;
