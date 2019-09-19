@@ -81,6 +81,19 @@ const Player = ({ width, height, poster, sources }) => {
   }, []);
 
   // useEffect(() => {
+  //   videojs(
+  //     videoRef.current.use('*', (player) => {
+  //       return {
+  //         setSource(srcObj, next) {
+  //           // pass null as the first argument to indicate that the source is not rejected
+  //           next(null, srcObj);
+  //         }
+  //       };
+  //     })
+  //   );
+  // }, []);
+
+  // useEffect(() => {
   //   playerRef.current.markers({
   //     markerStyle: {
   //       width: '.3em',

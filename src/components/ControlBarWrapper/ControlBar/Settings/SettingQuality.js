@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -43,7 +44,11 @@ const SettingQuality = ({
         }
       }
     });
-    videoPlayer.load();
+    // videoPlayer.setSource({
+    //   src:
+    //     'http://storage.googleapis.com/vibuy-staging-uploads/videos/55/360.mp4',
+    //   type: 'video/mp4'
+    // });
   };
 
   return (
