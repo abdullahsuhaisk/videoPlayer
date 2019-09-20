@@ -2,7 +2,7 @@ import React from 'react';
 // import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 // import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
-import withQuery from '../HOCS/Grapqhl/QueryHoc';
+import withQuery from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 // import dp from './assets/dp.png';
 
 const GET_HEADER_COMPANY_CAMPAING = gql`
