@@ -29,7 +29,7 @@ const GET_HOTSPOTS = gql`
   }
 `;
 
-const JumpToProductRight = ({ client, videoPlayer }) => {
+const JumpToProductLeft = ({ client, videoPlayer }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();
   const [hotSpots, setHotSpots] = useState([]);
   const [videoPlayerPosition, setVideoPlayerPosition] = useState(0);
@@ -83,4 +83,4 @@ const JumpToProductRight = ({ client, videoPlayer }) => {
   );
 };
 
-export default ControlBarHoc(JumpToProductRight);
+export default ControlBarHoc(JumpToProductLeft);

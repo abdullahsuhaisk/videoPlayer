@@ -21,8 +21,8 @@ const ControlBarWrapper = (props) => {
   });
   return (
     <div className="ControlBar">
-      <VideoProgressBar videoPlayer={videoPlayer} />
       <div className="videoControlsContainer">{children}</div>
+      <VideoProgressBar videoPlayer={videoPlayer} />
     </div>
   );
 };

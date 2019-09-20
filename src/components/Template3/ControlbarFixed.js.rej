@@ -1,0 +1,13 @@
+diff a/src/components/Template3/ControlbarFixed.js b/src/components/Template3/ControlbarFixed.js	(rejected hunks)
+@@ -1 +1 @@
+-import React from 'react'
++import React from 'react';
+@@ -4,6 +4,2 @@ const ControlbarFixed = () => {
+-  return (
+-    <div>
+-      
+-    </div>
+-  )
+-}
++  return <div></div>;
++};
