@@ -15,6 +15,7 @@ const SettingQuality = ({
 }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();
   const [qualities, setQualities] = useState([]);
+  const [autoTick, setAutoTick] = useState(false);
 
   useEffect(() => {
     client
@@ -58,7 +59,9 @@ const SettingQuality = ({
       <div className="Settings--info">
         <div
           className="Settings--info--head"
-          onClick={() => setqualityMenuToggle(false)}>
+          onClick={() => {
+            setqualityMenuToggle(false);
+          }}>
           <p className="Settings--info--head--p">Quality</p>
         </div>
         <div className="Settings--info--options">
@@ -68,7 +71,10 @@ const SettingQuality = ({
               return (
                 <p
                   className={SELECTEDCLASSNAME(item.quality)}
-                  onClick={() => selectQualityHandler(item.quality, key)}
+                  onClick={() => {
+                    selectQualityHandler(item.quality, key);
+                    setAutoTick(false);
+                  }}
                   key={item.id}>
                   {item.quality}
                   {item.quality === '1080' ? (
@@ -80,7 +86,16 @@ const SettingQuality = ({
               );
             })}
 
-          <p className="Settings--info--options--p Settings--info--options--selected">
+          <p
+            className={
+              autoTick
+                ? 'Settings--info--options--p Settings--info--options--selected'
+                : SELECTEDCLASSNAME('auto')
+            }
+            onClick={() => {
+              selectQualityHandler('auto', -1);
+              setAutoTick(true);
+            }}>
             Auto
           </p>
         </div>
