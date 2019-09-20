@@ -149,17 +149,17 @@ const cache = new InMemoryCache();
 const link = ApolloLink.from([
   authLink,
   errorLink,
-  new RetryLink({
-    delay: {
-      initial: 300,
-      max: Infinity,
-      jitter: true
-    },
-    attempts: {
-      max: 5,
-      retryIf: (error, _operation) => !!error
-    }
-  }),
+  // new RetryLink({
+  //   delay: {
+  //     initial: 300,
+  //     max: Infinity,
+  //     jitter: true
+  //   },
+  //   attempts: {
+  //     max: 5,
+  //     retryIf: (error, _operation) => !!error
+  //   }
+  // }),
   httpLink
 ]);
 const clientInit = new ApolloClient({

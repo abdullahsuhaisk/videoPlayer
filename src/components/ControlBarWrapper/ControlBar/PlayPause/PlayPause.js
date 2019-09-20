@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 
 import { withApollo } from 'react-apollo';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
+import { PLAY, PAUSE } from '../../../../Queries/Player/PlayerMutations';
 
 const PlayPause = ({ position, client }) => {
   // console.log(props);
@@ -16,26 +20,14 @@ const PlayPause = ({ position, client }) => {
     }
   };
   const playHandler = () => {
-    client.writeData({
-      data: {
-        player: {
-          __typename: 'Player',
-          playingState: ' PLAY'
-        },
-        isLoginFormShowing: false,
-        isProfileOpen: false
-      }
+    client.mutate({
+      mutation: PLAY
     });
     videoPlayer.play();
   };
   const pauseHandler = () => {
-    client.writeData({
-      data: {
-        player: {
-          __typename: 'Player',
-          playingState: 'PAUSE'
-        }
-      }
+    client.mutate({
+      mutation: PAUSE
     });
     videoPlayer.pause();
   };
@@ -48,10 +40,10 @@ const PlayPause = ({ position, client }) => {
   };
 
   return (
-    <div>
-      <button
-        className={playPauseBtnClass()}
-        onClick={() => playPauseHandler()}></button>
+    <div
+      onClick={() => playPauseHandler()}
+      style={{ height: '100%', width: '50px' }}>
+      <button className={playPauseBtnClass()}></button>
     </div>
   );
 };
