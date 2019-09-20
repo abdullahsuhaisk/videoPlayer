@@ -58,6 +58,11 @@ import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
+import ControlBarFixed from '../Template3/ControlBarFixed';
+
+//
+
+//
 
 const widgetList = {
   Empty,
@@ -98,7 +103,8 @@ const widgetList = {
   ScreenPauseOverlayComponent,
   ScreenReadyComponent,
   ProfileScreen,
-  AddToWishListScreen
+  AddToWishListScreen,
+  ControlBarFixed
 };
 
 const WidgetsRenderer = (props) => {

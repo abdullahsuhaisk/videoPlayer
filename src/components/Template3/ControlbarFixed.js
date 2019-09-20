@@ -1,21 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import { css } from 'styled-components';
+import { ApolloConsumer } from 'react-apollo';
+import videoJs from 'video.js';
+import VideoProgressBar from '../ControlBarWrapper/ControlBar/VideoProgressBar/VideoProgressBar';
+import VolumControl from '../ControlBarWrapper/ControlBar/VolumControl/VolumControl';
 import PlayPause from '../ControlBarWrapper/ControlBar/PlayPause/PlayPause';
 import JumpToProductRight from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductRight';
 import JumpToProductLeft from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductLeft';
 import TimeDisplay from '../ControlBarWrapper/ControlBar/TimeDisplay/TimeDisplay';
+import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/ControlBarShoppingIcon';
+import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
+import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/ControlBarFullScreen';
 
-const ControlbarFixed = () => {
+const ControlBarFixed = ({ styles }) => {
+  // TODO: WHEN HTML CAME PLASE UPDATE ONCLICK METHODS
+  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+  // const [position, setPosition] = useState(0); // Which videoPlayer should be renderer
+  useEffect(() => {
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    setVideoPlayer(videoPlayerJs);
+  }, [videoPlayer]);
+
   return (
-    <div className="videoControlsContainer">
-      <div className="rightContainer">
-        <PlayPause />
-        <JumpToProductRight />
-        <JumpToProductLeft />
-        <TimeDisplay />
-      </div>
-      <div className="leftContainer"></div>;
-    </div>
+    <ApolloConsumer>
+      {(client) => {
+        return (
+          <div className="ControlBar">
+            <div className="videoControlsContainer">
+              <div className="leftContainer">
+                <PlayPause />
+                <JumpToProductRight />
+                <JumpToProductLeft />
+                <VolumControl videoPlayer={videoPlayer} />
+                <TimeDisplay videoPlayer={videoPlayer} />
+              </div>
+              <div className="rightContainer">
+                <ControlBarShoppingIcon />
+                <ControlBarSettings />
+                <ControlBarFullScreen videoPlayer={videoPlayer} />
+              </div>
+            </div>
+            <VideoProgressBar videoPlayer={videoPlayer} />
+          </div>
+        );
+      }}
+    </ApolloConsumer>
   );
 };
 
-export default ControlbarFixed;
+export default ControlBarFixed;
