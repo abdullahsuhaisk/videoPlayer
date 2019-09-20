@@ -762,7 +762,7 @@
   left: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('/images/bg.png');
+  /* background-image: url('/images/bg.png'); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
