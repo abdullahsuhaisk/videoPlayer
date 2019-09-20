@@ -1,8 +1,8 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import ProductCard from '../../features/Product/ProductList/ProductCard';
-import { PRODLINK_ID } from '../../common/GrapqlConstant';
+import ProductCard from '../../../features/Product/ProductList/ProductCard';
+import { PRODLINK_ID } from '../../../common/GrapqlConstant';
 
 const GET_PRODUCTS = gql`
   query getProductsForProductList($prodLinkId: Int!) {

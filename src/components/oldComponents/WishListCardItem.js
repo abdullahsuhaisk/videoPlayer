@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { WishListCardWrapper } from './WishListCardItem.style';
-import CardImage from '../../../components/Card/ProductCard/CardImage';
-import CardInfo from '../../../components/Card/ProductCard/CardInfo';
-import AddToCardButton from '../../../components/Button/AddToCardButton';
-import CardPrice from '../../../components/Card/ProductCard/CardPrice';
-import CardClose from '../../../components/Card/ProductCard/CardClose';
+import { WishListCardWrapper } from '../../features/Wishlist/oldWishlistComponents/WishListCardItem.style';
+import CardImage from '../Card/ProductCard/CardImage';
+import CardInfo from '../Card/ProductCard/CardInfo';
+import AddToCardButton from '../Button/AddToCardButton';
+import CardPrice from '../Card/ProductCard/CardPrice';
+import CardClose from '../Card/ProductCard/CardClose';
 
 const WishListCardItem = ({ product, styles }) => {
   const { name, seller, currentPrice, assets } = product;

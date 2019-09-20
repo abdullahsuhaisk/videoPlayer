@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
-import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
+import {
+  CREATE_NEW_WISHLIST,
+  GET_CONSUMER_WISHLIST
+} from '../../../../features/Wishlist/wishListQueries';
 
 /* const updateCache = (cache, { data: { createConsumerWishList } }) => {
   const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });
@@ -20,9 +23,6 @@ import { CREATE_NEW_WISHLIST, GET_CONSUMER_WISHLIST } from '../wishListQueries';
 };
 */
 const addNewWishList = ({ setAddNewWishlist }) => {
-  // console.log(client);
-  //
-  // console.log(classNames);
   const [newWishListName, setNewWishListName] = useState('');
   const createWishList = async (e, createConsumerWishList) => {
     if (e.keyCode === 13) {

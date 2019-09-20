@@ -9,8 +9,9 @@ import {
   DELETE_WISHLIST_ITEM
 } from '../wishListQueries';
 import { GET_PRODUCT_ID } from '../../../components/Base/BaseQueries';
-import AddNewWishList from '../PreComponent/addNewWishList';
+
 import WishListImageGallery from './WishListImageGallery';
+import AddNewWishList from '../../../components/oldComponents/Trash/PreComponent/addNewWishList';
 
 const AddItemToWishListFromProductCard = ({ client }) => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);

@@ -37,7 +37,6 @@ import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/Con
 
 // Screen Section Screen has all of logic and own State //
 import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
-import NavigationScreen from '../../features/NavigationScreen/NavigationScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
@@ -50,8 +49,6 @@ import TabWrapper from '../Template/Tab/TabWrapper';
 import Header from '../Template/Header';
 // Tab Component //
 
-// import ProductCardWishlisted from '../Usame/VideoPause/Components/Cards/ProductCardWishlisted/ProductCardWishlisted';
-import NavigationWrapper from '../NavigationWrapper/NavigationWrapper';
 import ProductListCard from '../ProductListWrapper/ProductListCard';
 
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
@@ -71,7 +68,6 @@ const widgetList = {
   ControlBarWrapper,
   ScreenPauseWrapper,
   ProductListScreen,
-  NavigationScreen,
   AuthScreen,
   HotspotScreen,
   ProductDetailScreen,
@@ -89,7 +85,6 @@ const widgetList = {
   JumpToProductLeft,
   JumpToProductRight,
   // ProductCardWishlisted,
-  NavigationWrapper,
   TabWrapper,
   Tab,
   Header,

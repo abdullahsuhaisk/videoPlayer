@@ -1,10 +1,9 @@
 import React from 'react';
 import Tabs from '../../components/Tabs/Tabs';
-import ProfileScreen from '../Profile/ProfileScreen';
-import FavoritesScreen from '../Favorites/FavoritesScreen';
-import ShoppingCartScreen from '../ShoppingCart/ShoppingCartScreen';
-import WishlistScreen from '../Wishlist/WishlistScreen';
-import WatchListScreen from '../Watchlist/WatchListScreen';
+import ProfileScreen from '../../../features/Profile/ProfileScreen';
+import ShoppingCartScreen from '../../../features/ShoppingCart/ShoppingCartScreen';
+import WishlistScreen from '../../../features/Wishlist/WishlistScreen';
+import WatchListScreen from '../../../features/Watchlist/WatchListScreen';
 
 const NavigationTabs = () => {
   const styles = {
@@ -69,7 +68,6 @@ const NavigationTabs = () => {
       ]}
       tabPanels={[
         <ProfileScreen />,
-        <FavoritesScreen />,
         <WatchListScreen />,
         <WishlistScreen />,
         <ShoppingCartScreen />
