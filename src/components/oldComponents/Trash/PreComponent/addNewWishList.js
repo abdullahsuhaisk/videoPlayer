@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
-import {
-  CREATE_NEW_WISHLIST,
-  GET_CONSUMER_WISHLIST
-} from '../../../../features/Wishlist/wishListQueries';
+import { CREATE_NEW_WISHLIST } from '../../../../Queries/WishList/WishListMutations';
+import { GET_CONSUMER_WISHLIST } from '../../../../Queries/WishList/WishlistQueries';
 
 /* const updateCache = (cache, { data: { createConsumerWishList } }) => {
   const { consumer } = cache.readQuery({ query: GET_CONSUMER_WISHLIST });

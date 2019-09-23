@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
-import { Query } from 'react-apollo';
-import { GET_WISHLISTS_IMAGE } from '../wishListQueries';
 import FlickityGallery from '../../../components/Flickity/FlickityGallery';
 
 const WishListImageGallery = ({ whisListProduct }) => {
@@ -34,17 +32,9 @@ const WishListImageGallery = ({ whisListProduct }) => {
       : setImages(a);
   };
   // console.log(a);
-  return (
-    <Query query={GET_WISHLISTS_IMAGE}>
-      {({ data: { consumer }, error, loading }) => {
-        if (error || loading) {
-          return null;
-        }
-        // console.log(consumer);
-        return <FlickityGallery images={images} />;
-      }}
-    </Query>
-  );
+
+  // console.log(consumer);
+  return <FlickityGallery images={images} />;
 };
 
 export default WishListImageGallery;

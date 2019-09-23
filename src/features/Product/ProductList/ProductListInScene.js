@@ -4,8 +4,8 @@ import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 // import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
-import { GET_PRODUCTS_WITH_HOTSPOT } from './ProductQueries';
 import withQueryProdLink from '../../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
+import { GET_PRODUCTS_WITH_HOTSPOT } from '../../../Queries/Products/ProductQueries';
 
 const GET_PLAYER = gql`
   query getPlayerForProductListInScene {

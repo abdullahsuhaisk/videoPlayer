@@ -2,10 +2,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import Flickity from 'react-flickity-component';
-import { GET_PRODUCT } from '../ProductQueries';
+
 import FlickityComponent from '../../../components/Flickity/FlickityComponent';
 import AddToCardButton from '../../../components/Button/AddToCardButton';
 import ProductQueryHoc from '../../../components/HOCS/Grapqhl/ProductQueryHoc';
+import { GET_PRODUCT } from '../../../Queries/Products/ProductQueries';
 
 const flickityCampaingsOptions = {
   cellAlign: 'left',
