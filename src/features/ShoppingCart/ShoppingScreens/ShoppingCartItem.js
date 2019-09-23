@@ -33,7 +33,6 @@ const ShoppingCartItem = ({
   setCheckValue,
   checkValue
 }) => {
-  console.log(checkValue);
   if (!cartItem) return null;
   return (
     <div className="ShoppingCart">
@@ -42,7 +41,9 @@ const ShoppingCartItem = ({
           <img
             src={
               cartItem.product.image &&
-              httpToHttps(cartItem.product.image.thumbnailUrl)
+              httpToHttps(
+                cartItem.product.image && cartItem.product.image.thumbnailUrl
+              )
             }
             className="ShoppingCart--product-figure-img"
             alt="abc"
