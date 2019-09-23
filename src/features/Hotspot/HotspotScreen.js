@@ -17,7 +17,7 @@ const GET_PLAYER = gql`
 
 const HotspotScreen = ({ data }) => {
   // console.log(data);
-  const { hotSpots } = data.prodLink;
+  const hotSpots = data.prodLink && data.prodLink.hotSpots;
   // console.log(hotSpots);
 
   return (

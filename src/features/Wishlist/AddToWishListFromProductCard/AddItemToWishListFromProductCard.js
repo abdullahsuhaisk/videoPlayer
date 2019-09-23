@@ -29,15 +29,15 @@ const AddItemToWishListFromProductCard = ({ client }) => {
   const selectedItemClassName = 'AddToWishlist--information--wishlistItem ';
   const [searchWishList, setSearchWishList] = useState('');
   const [PRODUCTiD, setPRODUCTiD] = useState(null);
-  const [whisLists, setWhisLists] = useState([]);
+  const [wishLists, setwishLists] = useState([]);
   const wishListInsideProductsId = [];
   const hasProductWishList = [];
   // console.log(selectedWhishListId);
 
-  const isProductInsideWishList = async (whisLists) => {
-    // console.log(whisLists);
-    if (whisLists) {
-      whisLists.map(
+  const isProductInsideWishList = async (wishLists) => {
+    // console.log(wishLists);
+    if (wishLists) {
+      wishLists.map(
         (wishlist) =>
           wishlist.products &&
           wishlist.products.map((product) =>
@@ -68,22 +68,22 @@ const AddItemToWishListFromProductCard = ({ client }) => {
             return null;
           }
           const { consumer } = data;
-          // const whisLists = consumer && consumer.whisLists;
-          setWhisLists(consumer && consumer.whisLists);
+          // const wishLists = consumer && consumer.wishLists;
+          setwishLists(consumer && consumer.wishLists);
           const selectedWhisListProduct =
             consumer &&
-            consumer.whisLists &&
-            consumer.whisLists[selectedItem] &&
-            consumer.whisLists[selectedItem].products;
-          isProductInsideWishList(whisLists);
+            consumer.wishLists &&
+            consumer.wishLists[selectedItem] &&
+            consumer.wishLists[selectedItem].products;
+          isProductInsideWishList(wishLists);
           // {
           /* console.log(hasProductWishList); */
           // }
           // {
           /* console.log(wishListInsideProductsId); */
           // }
-          // const whisListsCount = whisLists && whisLists.length;
-          // console.log('Add To WishListFrom Product', whisLists);
+          // const wishListsCount = wishLists && wishLists.length;
+          // console.log('Add To WishListFrom Product', wishLists);
           return (
             <div className="darkOverlay">
               <i
@@ -116,7 +116,7 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                     {addNewWishlist ? (
                       <AddNewWishList setAddNewWishlist={setAddNewWishlist} />
                     ) : null}
-                    {whisLists.map((whisList, key) => {
+                    {wishLists.map((whisList, key) => {
                       const itemCount =
                         whisList.products !== null
                           ? whisList.products.length
@@ -132,7 +132,7 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                       )
                         ? DELETE_WISHLIST_ITEM
                         : ADD_WISHLIST_MUTATION;
-                      // console.log(whisLists);
+                      // console.log(wishLists);
                       return (
                         <Mutation
                           mutation={QUERY}
@@ -157,7 +157,7 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                     const { className } = e.target;
                                     setselectedItem(key);
                                     setselectedWhishListIdId(whisList.id);
-                                    const tmpWishlists = whisLists.map(
+                                    const tmpWishlists = wishLists.map(
                                       (tmpwishlist) => {
                                         if (tmpwishlist.id === whisList.id) {
                                           if (
@@ -178,7 +178,7 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                         return tmpwishlist;
                                       }
                                     );
-                                    setWhisLists(tmpWishlists);
+                                    setwishLists(tmpWishlists);
                                     deleteWishListItem({
                                       variables: {
                                         wishListId: whisList.id,

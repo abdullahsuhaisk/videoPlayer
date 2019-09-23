@@ -7,7 +7,7 @@ import { GET_PRODUCTS } from '../../../Queries/Products/ProductQueries';
 import withQueryProdLink from '../../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
 
 const SuggestedProducts = ({ data }) => {
-  const { prodLink } = data;
+  const prodLink = data && data.prodLink;
   const suggestedProducts =
     prodLink && prodLink.suggestedProducts && prodLink.suggestedProducts;
   // console.log(suggestedProducts);
