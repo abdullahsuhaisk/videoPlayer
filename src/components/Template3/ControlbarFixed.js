@@ -31,11 +31,11 @@ const ControlBarFixed = ({ styles }) => {
                 <PlayPause />
                 <JumpToProductRight />
                 <JumpToProductLeft />
-                <VolumControl videoPlayer={videoPlayer} />
                 <TimeDisplay videoPlayer={videoPlayer} />
               </div>
               <div className="rightContainer">
                 <ControlBarShoppingIcon />
+                <VolumControl videoPlayer={videoPlayer} />
                 <ControlBarSettings />
                 <ControlBarFullScreen videoPlayer={videoPlayer} />
               </div>

@@ -3519,7 +3519,8 @@
 .Template1 .ControlBar {
   display: block;
   width: 100%;
-  height: 44px;
+  height: 50px;
+  margin-bottom: 6px;
   /* background-color: #fff; */
   position: absolute;
   bottom: 0;
@@ -3548,8 +3549,9 @@
   cursor: pointer;
 }
 .Template1 .volumControls .soundIcon {
-  width: 19px;
-  height: 17px;
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
   background: url(/images/sound.svg) center / contain no-repeat;
 }
 .Template1 .volumControls .muted {
@@ -3561,6 +3563,7 @@
 .Template1 .volumControls .volumControl {
   -webkit-appearance: none;
   width: 80px;
+  margin-right: 20px;
   height: 44px;
   cursor: pointer;
   background: transparent;
@@ -3622,7 +3625,7 @@
   width: 100%;
   height: 15px;
   position: absolute;
-  top: -9px;
+  top: 35px;
 }
 .Template1 .videoProgressBar progress,
 .Template1 .videoProgressBar input {
@@ -3639,7 +3642,7 @@
   bottom: 5px;
   pointer-events: none;
   /* For IE10 */
-  color: #00acd8;
+  color: #f30640;
 }
 .Template1 .videoProgressBar:hover progress {
   height: 5px;
@@ -3649,10 +3652,10 @@
   transition-property: none;
 }
 .Template1 .videoProgressBar progress[value]::-webkit-progress-value {
-  background-color: #00acd8;
+  background-color: #f30640;
 }
 .Template1 .videoProgressBar progress[value]::-moz-progress-bar {
-  background-color: #00acd8;
+  background-color: #f30640;
 }
 .Template1 .videoProgressBar input[type='range'] {
   -webkit-appearance: none;
@@ -3774,7 +3777,6 @@
   cursor: pointer;
   margin-right: 30px;
   border: none;
-  transform: rotate(180deg);
 }
 .Template1 .jumpToProductBtn:focus {
   outline: none;
