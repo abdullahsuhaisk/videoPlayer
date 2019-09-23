@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { Query } from 'react-apollo';
 import ProfileAddressScreen from './ProfileAddressScreen';
 import ProfileShow from './ProfileShow';
-import { GET_PERSON, GET_PROFILE_SCREEN_IS_OPEN } from './ProfileQueries';
+import {
+  GET_PERSON,
+  GET_PROFILE_SCREEN_IS_OPEN
+} from '../../Queries/Profile/ProfileQueries';
 import ProfileEdit from './ProfileEdit';
+import BaseQueryHoc from '../../components/HOCS/Grapqhl/BaseQueryHoc';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ data }) => {
+  const { consumer } = data;
+  const addresses = consumer && consumer ? consumer.addresses : null;
   const renderContent = () => {
     return (
       <div
@@ -13,30 +19,18 @@ const ProfileScreen = () => {
         <div
           className="ProfileAdresses--Container"
           style={{ position: 'absolute', top: 200 }}>
-          <Query query={GET_PERSON}>
-            {({ loading, error, data }) => {
-              if (error) return 'Something Wrong';
-              const { consumer } = data;
-              const addresses =
-                consumer && consumer ? consumer.addresses : null;
-              return (
-                <>
-                  {ShowingProfile === true ? (
-                    <ProfileShow
-                      consumer={consumer}
-                      setShowingProfile={setShowingProfile}
-                    />
-                  ) : (
-                    <ProfileEdit
-                      consumer={consumer}
-                      setShowingProfile={setShowingProfile}
-                    />
-                  )}
-                  <ProfileAddressScreen addresses={addresses} />
-                </>
-              );
-            }}
-          </Query>
+          {ShowingProfile === true ? (
+            <ProfileShow
+              consumer={consumer}
+              setShowingProfile={setShowingProfile}
+            />
+          ) : (
+            <ProfileEdit
+              consumer={consumer}
+              setShowingProfile={setShowingProfile}
+            />
+          )}
+          <ProfileAddressScreen addresses={addresses} />
         </div>
       </div>
     );
@@ -55,4 +49,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default BaseQueryHoc(ProfileScreen, GET_PERSON);

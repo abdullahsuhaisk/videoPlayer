@@ -10,6 +10,8 @@ import {
   GET_CONSUMER_TOTAL_PRICE
 } from '../shoppingCartQueries';
 
+import { httpToHttps } from '../../../utils/httpTohttps';
+
 const updateCache = (cache, { updateProductInCart }) => {
   const { consumer } = cache.readQuery({
     query: GET_CONSUMER_CART
@@ -37,7 +39,9 @@ const ShoppingCartItem = ({
       <div className="ShoppingCart--product">
         <figure className="ShoppingCart--product-figure">
           <img
-            src={cartItem.product.image.thumbnailUrl}
+            src={httpToHttps(
+              cartItem.product.image && cartItem.product.image.thumbnailUrl
+            )}
             className="ShoppingCart--product-figure-img"
             alt="abc"
           />

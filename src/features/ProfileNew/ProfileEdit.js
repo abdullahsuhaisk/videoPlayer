@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Mutation, Query } from 'react-apollo';
 
-import { UPDATE_CONSUMER_PROFILE } from './ProfileQueries';
+import { UPDATE_CONSUMER_PROFILE } from '../../Queries/Profile/ProfileQueries';
 import { GET_COUNTRIES } from '../../components/Base/BaseQueries';
+import BaseQueryHoc from '../../components/HOCS/Grapqhl/BaseQueryHoc';
 
-const ProfileEdit = ({ consumer, setShowingProfile }) => {
+const ProfileEdit = ({ consumer, setShowingProfile, data }) => {
   const [input, setInput] = useState({
     name: '',
     birthDate: '',
@@ -36,6 +37,8 @@ const ProfileEdit = ({ consumer, setShowingProfile }) => {
         [e.target.id]: e.target.value
       });
   };
+
+  const { countries } = data;
   return (
     <Mutation mutation={UPDATE_CONSUMER_PROFILE} variables={{ input }}>
       {(updateConsumer) => (
@@ -71,42 +74,27 @@ const ProfileEdit = ({ consumer, setShowingProfile }) => {
                   id="birthDate"
                 />
               </div>
-              <Query query={GET_COUNTRIES} fetchPolicy="cache-first">
-                {({ loading, error, data }) => {
-                  if (error) {
-                    console.log(error);
-                  }
-                  if (loading) {
-                    return 'loading...';
-                  }
-                  console.log(data);
-                  const { countries } = data;
-                  return (
-                    <div className="UpdateProfile--info-item">
-                      <label className="UpdateProfile--info-label">
-                        Country
-                      </label>
-                      <select
-                        className="UpdateProfile--info-select"
-                        onChange={updateField}
-                        id="countryId">
-                        <option value={input.countryId}>
-                          {input.countryId !== null
-                            ? countries.map((item) =>
-                                item.id === input.countryId ? item.name : null
-                              )
-                            : null}
-                        </option>
-                        {countries.map((item) => (
-                          <option value={item.id} key={item.name}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  );
-                }}
-              </Query>
+
+              <div className="UpdateProfile--info-item">
+                <label className="UpdateProfile--info-label">Country</label>
+                <select
+                  className="UpdateProfile--info-select"
+                  onChange={updateField}
+                  id="countryId">
+                  <option value={input.countryId}>
+                    {input.countryId !== null
+                      ? countries.map((item) =>
+                          item.id === input.countryId ? item.name : null
+                        )
+                      : null}
+                  </option>
+                  {countries.map((item) => (
+                    <option value={item.id} key={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               <div className="UpdateProfile--info-item">
                 <label className="UpdateProfile--info-label">Gender</label>
@@ -166,4 +154,4 @@ const ProfileEdit = ({ consumer, setShowingProfile }) => {
   );
 };
 
-export default ProfileEdit;
+export default BaseQueryHoc(ProfileEdit, GET_COUNTRIES);
