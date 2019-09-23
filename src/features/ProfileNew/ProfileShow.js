@@ -3,6 +3,7 @@ import { Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { GET_COUNTRIES } from '../../components/Base/BaseQueries';
+import BaseQueryHoc from '../../components/HOCS/Grapqhl/BaseQueryHoc';
 
 const LOGOUT = gql`
   mutation logout {
@@ -12,7 +13,7 @@ const LOGOUT = gql`
   }
 `;
 
-const ProfileShow = ({ consumer, setShowingProfile, client }) => {
+const ProfileShow = ({ consumer, setShowingProfile, client, data }) => {
   // console.log(consumer);
   const name = consumer && consumer.name;
   const Birthdate = consumer && consumer.birthDate;
@@ -24,6 +25,8 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
     consumer && consumer.coverImageUrl && consumer.coverImageUrl
       ? consumer.coverImageUrl
       : '/images/dp.png';
+
+  const { countries } = data;
 
   const handleLogout = async () => {
     await client.mutate({ mutation: LOGOUT });
@@ -47,29 +50,16 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
           <p className="profile--info--p">{Birthdate}</p>
         </div>
 
-        <Query query={GET_COUNTRIES} fetchPolicy="cache-first">
-          {({ loading, error, data }) => {
-            if (error) {
-              // console.log(error);
-            }
-            if (loading) {
-              return 'loading...';
-            }
-            const { countries } = data;
-            return (
-              <div className="profile--info">
-                <label className="profile--info--label">Country</label>
-                <p className="profile--info--p">
-                  {Country !== null
-                    ? countries.map((item) =>
-                        item.id === Country ? item.name : null
-                      )
-                    : null}
-                </p>
-              </div>
-            );
-          }}
-        </Query>
+        <div className="profile--info">
+          <label className="profile--info--label">Country</label>
+          <p className="profile--info--p">
+            {Country !== null
+              ? countries.map((item) =>
+                  item.id === Country ? item.name : null
+                )
+              : null}
+          </p>
+        </div>
 
         <div className="profile--info">
           <label className="profile--info--label">Gender</label>
@@ -100,4 +90,4 @@ const ProfileShow = ({ consumer, setShowingProfile, client }) => {
   );
 };
 
-export default withApollo(ProfileShow);
+export default BaseQueryHoc(ProfileShow, GET_COUNTRIES);

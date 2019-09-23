@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mutation } from 'react-apollo';
-import { UPDATE_CONSUMER_ADDRESS } from './ProfileQueries';
+import { UPDATE_CONSUMER_ADDRESS } from '../../Queries/Profile/ProfileQueries';
 
 const AddressEdit = ({
   setShowingAddress,
