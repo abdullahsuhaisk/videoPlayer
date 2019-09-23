@@ -2,44 +2,11 @@ import React from 'react';
 import gql from 'graphql-tag';
 import Flickity from 'react-flickity-component';
 import { Query } from 'react-apollo';
-
-import ProductCard from './ProductCard';
-
 import 'flickity-imagesloaded';
-import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 
-const GET_PRODUCTS = gql`
-  query getProductsForProductList($prodLinkId: Int!) {
-    prodLink(prodLinkId: $prodLinkId) {
-      id
-      hotSpots {
-        id
-        product {
-          id
-          name
-          brand {
-            id
-            name
-          }
-          image {
-            id
-            thumbnailUrl
-          }
-          price
-          discount
-          currentPrice @client
-          stockCount
-          currency {
-            id
-            name
-            code
-            symbol
-          }
-        }
-      }
-    }
-  }
-`;
+import ProductCard from '../../features/Product/ProductList/ProductCard';
+
+import { GET_PRODUCTS } from '../../Queries/Products/ProductQueries';
 
 // TODO: change prodLinkId
 const ProductList = () => {
@@ -47,7 +14,7 @@ const ProductList = () => {
     <Query query={GET_PRODUCTS} variables={{ prodLinkId: 1 }}>
       {({ loading, error, data }) => {
         if (loading) {
-          return <ProductCardContentLoader />;
+          return null;
         }
 
         if (loading || error) {

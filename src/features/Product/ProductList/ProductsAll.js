@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 // import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import 'flickity-imagesloaded';
-import { GET_PRODUCTS } from './ProductQueries';
+import { GET_PRODUCTS } from '../../../Queries/Products/ProductQueries';
 
 const GET_PRODLINK_ID = gql`
   query getPlayerProdLink {
@@ -14,23 +14,14 @@ const GET_PRODLINK_ID = gql`
     }
   }
 `;
+
 // TODO: change prodLinkId
 const ProductsAll = () => {
   return (
     <Query query={GET_PRODLINK_ID}>
       {({ data: { player }, error, loading }) => {
-        // {
-        /* if (loading) {
-          return <ProductCardContentLoader />;
-        } */
-        // }
         if (error) return null;
         const prodLinkIdString = player.prodLinkUniqueId;
-        // {
-        /* console.log(player); */
-        // }
-
-        // console.log(prodLinkId);
         return (
           <Query
             query={GET_PRODUCTS}

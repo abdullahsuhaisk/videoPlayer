@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import { Mutation, withApollo } from 'react-apollo';
-import { GET_CONSUMER_WATCHLIST } from './WatchListQueries';
+import { GET_CONSUMER_WATCHLIST } from '../../Queries/WatchList/WatchListQueries';
 import {
   LIKE_PRODLINK,
   UNLIKE_PRODLINK

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import Tabs from '../../../components/Tabs/Tabs';
-import ProductList from './ProductList';
-import ProductListInScene from './ProductListInScene';
-import { PLAYER } from '../../../common/constants';
+
+import ProductList from '../../features/Product/ProductList/ProductList';
+import ProductListInScene from '../../features/Product/ProductList/ProductListInScene';
+import { PLAYER } from '../../common/constants';
 
 const GET_PLAYER = gql`
   query getPlayerForProductListScreen {

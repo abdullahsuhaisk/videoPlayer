@@ -1,7 +1,8 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 // import PropTypes from 'prop-types';
-import { DELETE_WISH_LIST, GET_CONSUMER_WISHLIST } from './wishListQueries';
+import { GET_CONSUMER_WISHLIST } from '../../Queries/WishList/WishlistQueries';
+import { DELETE_WISH_LIST } from '../../Queries/WishList/WishListMutations';
 
 const WishlistCollection = ({ whisList, name, id, setWhichWishList }) => {
   // TODO: Needs Refactor

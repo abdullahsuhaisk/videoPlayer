@@ -1,9 +1,9 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import ShoppingButton from '../../components/Button/ShoppingButton';
+import ShoppingButton from '../../Button/ShoppingButton';
 import NavigationDialog from './NavigationDialog';
-import { PLAYER } from '../../common/constants';
+import { PLAYER } from '../../../common/constants';
 
 const GET_NAVIGATION_SCREEN_STATE = gql`
   query getNavigationScreenState {

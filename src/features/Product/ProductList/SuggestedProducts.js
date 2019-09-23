@@ -1,32 +1,21 @@
 import React from 'react';
-import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
-import { GET_PRODUCTS } from './ProductQueries';
-import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
-import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
-import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
-const SuggestedProducts = () => {
-  const prodLinkUniqueId = getProdLinkUniqueId();
+import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
+import { GET_PRODUCTS } from '../../../Queries/Products/ProductQueries';
+
+import withQueryProdLink from '../../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
+
+const SuggestedProducts = ({ data }) => {
+  const { prodLink } = data;
+  const suggestedProducts =
+    prodLink && prodLink.suggestedProducts && prodLink.suggestedProducts;
+  // console.log(suggestedProducts);
   return (
-    <Query query={GET_PRODUCTS} variables={{ prodLinkUniqueId }}>
-      {({ data, loading, error }) => {
-        if (loading) {
-          return <ProductCardContentLoader />;
-        }
-        if (error) return null;
-        const { prodLink } = data;
-        const suggestedProducts =
-          prodLink && prodLink.suggestedProducts && prodLink.suggestedProducts;
-        // console.log(suggestedProducts);
-        return (
-          <>
-            <FlickityProductCard products={suggestedProducts} />
-          </>
-        );
-      }}
-    </Query>
+    <>
+      <FlickityProductCard products={suggestedProducts} />
+    </>
   );
 };
 
-export default SuggestedProducts;
+export default withQueryProdLink(SuggestedProducts, GET_PRODUCTS);
