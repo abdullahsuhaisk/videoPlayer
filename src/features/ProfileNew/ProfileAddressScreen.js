@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Query } from 'react-apollo';
 
 import AddressShow from './AddressShow';
 import AddressEdit from './AddressEdit';
 import AddAddress from './AddAddress';
-import { GET_COUNTRIES } from './ProfileQueries';
+import { GET_COUNTRIES } from '../../Queries/Profile/ProfileQueries';
+import BaseQueryHoc from '../../components/HOCS/Grapqhl/BaseQueryHoc';
 
 const updateAdress = async (Adress, setShowingAddress, setSelectedAdress) => {
   setShowingAddress(false);
   setSelectedAdress(Adress);
 };
 
-const ProfileAddressScreen = ({ addresses }) => {
+const ProfileAddressScreen = ({ addresses, data }) => {
   const [ShowingAddress, setShowingAddress] = useState(true);
   const [SelectedAdress, setSelectedAdress] = useState({});
   return ShowingAddress === true ? (
@@ -37,38 +37,18 @@ const ProfileAddressScreen = ({ addresses }) => {
           </div>
         </div>
       ) : (
-        <Query query={GET_COUNTRIES}>
-          {({ data, loading, error }) => (
-            <>
-              {loading ? (
-                'loading ...'
-              ) : (
-                <AddAddress countries={data.countries} />
-              )}
-            </>
-          )}
-        </Query>
+        <AddAddress countries={data.countries} />
       )}
     </>
   ) : (
-    <Query query={GET_COUNTRIES}>
-      {({ data, loading, error }) => (
-        <>
-          {loading ? (
-            'loading ...'
-          ) : (
-            <AddressEdit
-              address={SelectedAdress}
-              ShowingAddress={ShowingAddress}
-              setShowingAddress={setShowingAddress}
-              addressId={SelectedAdress.id}
-              countries={data && data.countries}
-            />
-          )}
-        </>
-      )}
-    </Query>
+    <AddressEdit
+      address={SelectedAdress}
+      ShowingAddress={ShowingAddress}
+      setShowingAddress={setShowingAddress}
+      addressId={SelectedAdress.id}
+      countries={data && data.countries}
+    />
   );
 };
 
-export default ProfileAddressScreen;
+export default BaseQueryHoc(ProfileAddressScreen, GET_COUNTRIES);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { GET_PERSON } from '../../ProfileNew/ProfileQueries';
+import { GET_PERSON } from '../../../Queries/Profile/ProfileQueries';
 
 const CheckoutResult = ({ totalPrice }) => {
   return (

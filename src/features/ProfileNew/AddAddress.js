@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Mutation } from 'react-apollo';
-import { ADD_CONSUMER_ADDRESS, GET_PERSON } from './ProfileQueries';
+import {
+  ADD_CONSUMER_ADDRESS,
+  GET_PERSON
+} from '../../Queries/Profile/ProfileQueries';
 
 const AddAddress = ({ countries }) => {
   // DELETE TO UPDATEADRESS CLASS NAME ADRESS AND ADRES UPDATE MUST BE IN SAME CONTAINER

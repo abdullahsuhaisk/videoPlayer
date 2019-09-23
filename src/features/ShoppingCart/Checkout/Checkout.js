@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import CheckOutAddressCard from './CheckOutAddressCard';
-import { GET_PERSON } from '../../ProfileNew/ProfileQueries';
+import { GET_PERSON } from '../../../Queries/Profile/ProfileQueries';
 
 const Checkout = () => {
   // TODO: State Control
