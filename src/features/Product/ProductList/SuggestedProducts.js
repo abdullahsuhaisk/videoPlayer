@@ -3,7 +3,6 @@ import { Query } from 'react-apollo';
 import 'flickity-imagesloaded';
 import { GET_PRODUCTS } from './ProductQueries';
 import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
-import ProductCardContentLoader from '../../../components/ContentLoader/ProductCardContentLoader';
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 
 const SuggestedProducts = () => {
@@ -12,7 +11,7 @@ const SuggestedProducts = () => {
     <Query query={GET_PRODUCTS} variables={{ prodLinkUniqueId }}>
       {({ data, loading, error }) => {
         if (loading) {
-          return <ProductCardContentLoader />;
+          return null;
         }
         if (error) return null;
         const { prodLink } = data;

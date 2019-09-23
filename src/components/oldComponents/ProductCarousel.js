@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Carousel from '../../../components/Carousel/Carousel';
-import ProductCard from './ProductCard';
+import ProductCard from '../../features/Product/ProductList/ProductCard';
 
 const ProductCarousel = ({ products }) => {
   return products.length === 0 ? (

@@ -36,7 +36,7 @@ import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/Con
 // Control Bar
 
 // Screen Section Screen has all of logic and own State //
-import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
+// import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
 import HotspotScreen from '../../features/Hotspot/HotspotScreen';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
@@ -67,7 +67,6 @@ const widgetList = {
   ScreenPlayingWrapper,
   ControlBarWrapper,
   ScreenPauseWrapper,
-  ProductListScreen,
   AuthScreen,
   HotspotScreen,
   ProductDetailScreen,
