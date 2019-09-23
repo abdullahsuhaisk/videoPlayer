@@ -1,30 +1,5 @@
 import gql from 'graphql-tag';
 
-export const IS_LOGGED_IN = gql`
-  query isLoggedIn {
-    isLoggedIn @client
-  }
-`;
-
-export const GET_WISHLISTS_IMAGE = gql`
-  query getConsumerWishList {
-    consumer {
-      id
-      whisLists {
-        id
-        products {
-          id
-          name
-          images {
-            id
-            thumbnailUrl
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const WISH_LIST = gql`
   fragment wish on WishListType {
     consumer {

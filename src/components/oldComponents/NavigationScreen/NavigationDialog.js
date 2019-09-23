@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloConsumer } from 'react-apollo';
-import ModalDialog from '../../components/ModalDialog/ModalDialog';
+import ModalDialog from '../../ModalDialog/ModalDialog';
 import { NavigationDialogWrapper } from './NavigationDialog.style';
 import NavigationTabs from './NavigationTabs';
 

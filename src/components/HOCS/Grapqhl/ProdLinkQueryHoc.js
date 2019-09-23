@@ -12,9 +12,9 @@ const withQueryProdLink = (WrappedComponent, QUERY, FETCPOLICY) => (props) => {
       query={QUERY}
       variables={{ prodLinkUniqueId: uniqueId }}
       fetchPolicy={FETCPOLICY || 'cache-first'}>
-      {({ data, loading, error }) => {
+      {({ data, loading, error, client }) => {
         if (loading || error) return null;
-        return <WrappedComponent data={data} {...props} />;
+        return <WrappedComponent data={data} {...props} client={client} />;
       }}
     </Query>
   );

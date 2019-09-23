@@ -1,9 +1,10 @@
 // Screen must be smart components
 import React from 'react';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+
 import ProductDetailsDialog from './ProductDetailsDialog';
 import { PLAYER } from '../../../common/constants';
+import BaseQueryHoc from '../../../components/HOCS/Grapqhl/BaseQueryHoc';
 
 const GET_PLAYER = gql`
   query getPlayerForProductDetailsScreen {
@@ -15,22 +16,15 @@ const GET_PLAYER = gql`
   }
 `;
 
-const ProductDetailsScreen = () => {
-  return (
-    <Query query={GET_PLAYER}>
-      {({ data: { player, productIdInDetails } }) => {
-        if (!player || !productIdInDetails) {
-          return null;
-        }
-
-        if (player.isStarted && player.playingState === PLAYER.PAUSED) {
-          return <ProductDetailsDialog productId={productIdInDetails} />;
-        }
-
-        return null;
-      }}
-    </Query>
-  );
+const ProductDetailsScreen = ({ data }) => {
+  const { player, productIdInDetails } = data;
+  if (!player || !productIdInDetails) {
+    return null;
+  }
+  if (player.isStarted && player.playingState === PLAYER.PAUSED) {
+    return <ProductDetailsDialog productId={productIdInDetails} />;
+  }
+  return null;
 };
 
-export default ProductDetailsScreen;
+export default BaseQueryHoc(ProductDetailsScreen, GET_PLAYER);

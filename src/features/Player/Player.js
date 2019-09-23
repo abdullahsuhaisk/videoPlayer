@@ -12,7 +12,6 @@ import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
 import { PLAYER } from '../../common/constants';
 // import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
-// import { PRODLINK_ID } from '../../common/GrapqlConstant';
 
 // TODO: remove this when browser console debug is not necessary
 window.videojs = videojs;

@@ -2,15 +2,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { ApolloConsumer, Query, Mutation, withApollo } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
+import { GET_CONSUMER_WISHLIST } from '../../../Queries/WishList/WishlistQueries';
 import {
-  GET_CONSUMER_WISHLIST,
   ADD_WISHLIST_MUTATION,
   DELETE_WISHLIST_ITEM
-} from '../wishListQueries';
+} from '../../../Queries/WishList/WishListMutations';
 import { GET_PRODUCT_ID } from '../../../components/Base/BaseQueries';
-import AddNewWishList from '../PreComponent/addNewWishList';
+
 import WishListImageGallery from './WishListImageGallery';
+import AddNewWishList from '../../../components/oldComponents/Trash/PreComponent/addNewWishList';
+import BaseQueryHoc from '../../../components/HOCS/Grapqhl/BaseQueryHoc';
 
 const AddItemToWishListFromProductCard = ({ client }) => {
   const [selectedWhishListId, setselectedWhishListIdId] = useState(null);
@@ -59,158 +61,147 @@ const AddItemToWishListFromProductCard = ({ client }) => {
   }, []);
   // console.log(PRODUCTiD);
   return (
-    <ApolloConsumer>
-      {(client) => {
-        return (
-          <React.Fragment>
-            <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
-              {({ data, error, loading }) => {
-                if (loading || error) {
-                  return null;
-                }
-                const { consumer } = data;
-                // const whisLists = consumer && consumer.whisLists;
-                setWhisLists(consumer && consumer.whisLists);
-                const selectedWhisListProduct =
-                  consumer &&
-                  consumer.whisLists &&
-                  consumer.whisLists[selectedItem] &&
-                  consumer.whisLists[selectedItem].products;
-                isProductInsideWishList(whisLists);
-                // {
-                /* console.log(hasProductWishList); */
-                // }
-                // {
-                /* console.log(wishListInsideProductsId); */
-                // }
-                // const whisListsCount = whisLists && whisLists.length;
-                // console.log('Add To WishListFrom Product', whisLists);
-                return (
-                  <div className="darkOverlay">
-                    <i
-                      className="modal--close"
-                      onClick={() =>
-                        client.writeData({
-                          data: { isAddWishListOpen: false }
-                        })
-                      }></i>
-                    <div className="AddToWishlist">
-                      <WishListImageGallery
-                        whisListId={selectedItem}
-                        whisListProduct={selectedWhisListProduct}
-                      />
-                      <div className="AddToWishlist--information">
-                        <h3 className="AddToWishlist--information--h3">
-                          Add this item to wishlist
-                        </h3>
-                        <div className="AddToWishlist--information--search">
-                          <i className="AddToWishlist--information--search--icon"></i>
-                          <input
-                            type="text"
-                            className="AddToWishlist--information--search--input"
-                            onChange={(e) => setSearchWishList(e.target.value)}
-                            value={searchWishList}
-                            placeholder="Search ..."
-                          />
-                        </div>
-                        <div className="AddToWishlist--information--wishlistItemContainer">
-                          {addNewWishlist ? (
-                            <AddNewWishList
-                              setAddNewWishlist={setAddNewWishlist}
-                            />
-                          ) : null}
-                          {whisLists.map((whisList, key) => {
-                            const itemCount =
-                              whisList.products !== null
-                                ? whisList.products.length
-                                : 0;
-                            whisList.products &&
-                              whisList.products.map((product) =>
-                                product.id === PRODUCTiD
-                                  ? hasProductWishList.push(whisList.id)
-                                  : null
-                              );
-                            const QUERY = hasProductWishList.some(
-                              (item) => item === whisList.id
-                            )
-                              ? DELETE_WISHLIST_ITEM
-                              : ADD_WISHLIST_MUTATION;
-                            // console.log(whisLists);
+    <React.Fragment>
+      <Query query={GET_CONSUMER_WISHLIST} fetchPolicy="cache-first">
+        {({ data, error, loading }) => {
+          if (loading || error) {
+            return null;
+          }
+          const { consumer } = data;
+          // const whisLists = consumer && consumer.whisLists;
+          setWhisLists(consumer && consumer.whisLists);
+          const selectedWhisListProduct =
+            consumer &&
+            consumer.whisLists &&
+            consumer.whisLists[selectedItem] &&
+            consumer.whisLists[selectedItem].products;
+          isProductInsideWishList(whisLists);
+          // {
+          /* console.log(hasProductWishList); */
+          // }
+          // {
+          /* console.log(wishListInsideProductsId); */
+          // }
+          // const whisListsCount = whisLists && whisLists.length;
+          // console.log('Add To WishListFrom Product', whisLists);
+          return (
+            <div className="darkOverlay">
+              <i
+                className="modal--close"
+                onClick={() =>
+                  client.writeData({
+                    data: { isAddWishListOpen: false }
+                  })
+                }></i>
+              <div className="AddToWishlist">
+                <WishListImageGallery
+                  whisListId={selectedItem}
+                  whisListProduct={selectedWhisListProduct}
+                />
+                <div className="AddToWishlist--information">
+                  <h3 className="AddToWishlist--information--h3">
+                    Add this item to wishlist
+                  </h3>
+                  <div className="AddToWishlist--information--search">
+                    <i className="AddToWishlist--information--search--icon"></i>
+                    <input
+                      type="text"
+                      className="AddToWishlist--information--search--input"
+                      onChange={(e) => setSearchWishList(e.target.value)}
+                      value={searchWishList}
+                      placeholder="Search ..."
+                    />
+                  </div>
+                  <div className="AddToWishlist--information--wishlistItemContainer">
+                    {addNewWishlist ? (
+                      <AddNewWishList setAddNewWishlist={setAddNewWishlist} />
+                    ) : null}
+                    {whisLists.map((whisList, key) => {
+                      const itemCount =
+                        whisList.products !== null
+                          ? whisList.products.length
+                          : 0;
+                      whisList.products &&
+                        whisList.products.map((product) =>
+                          product.id === PRODUCTiD
+                            ? hasProductWishList.push(whisList.id)
+                            : null
+                        );
+                      const QUERY = hasProductWishList.some(
+                        (item) => item === whisList.id
+                      )
+                        ? DELETE_WISHLIST_ITEM
+                        : ADD_WISHLIST_MUTATION;
+                      // console.log(whisLists);
+                      return (
+                        <Mutation
+                          mutation={QUERY}
+                          key={whisList.name + whisList.id}>
+                          {(deleteWishListItem, { loading }) => {
                             return (
-                              <Mutation
-                                mutation={QUERY}
-                                key={whisList.name + whisList.id}>
-                                {(deleteWishListItem, { loading }) => {
-                                  return (
-                                    <div
-                                      className={
-                                        hasProductWishList.some(
-                                          (item) => item === whisList.id
-                                        )
-                                          ? AddedItemClassName
-                                          : selectedWhishListId &&
-                                            selectedWhishListId === whisList.id
-                                          ? selectedItemClassName
-                                          : wishListItemClassName
-                                      }
-                                      key={whisList.name + key}
-                                      onClick={(e) => {
-                                        if (!loading) {
-                                          console.log('not loading');
-                                          const { className } = e.target;
-                                          setselectedItem(key);
-                                          setselectedWhishListIdId(whisList.id);
-                                          const tmpWishlists = whisLists.map(
-                                            (tmpwishlist) => {
-                                              if (
-                                                tmpwishlist.id === whisList.id
-                                              ) {
-                                                if (
-                                                  className ===
-                                                  AddedItemClassName
-                                                ) {
-                                                  tmpwishlist.products = tmpwishlist.products.filter(
-                                                    (product) =>
-                                                      product.id !== PRODUCTiD
-                                                  );
-                                                  return tmpwishlist;
-                                                }
-                                                if (
-                                                  tmpwishlist.products === null
-                                                )
-                                                  tmpwishlist.products = [];
-                                                tmpwishlist.products.push({
-                                                  id: PRODUCTiD
-                                                });
-                                              }
-                                              return tmpwishlist;
-                                            }
-                                          );
-                                          setWhisLists(tmpWishlists);
-                                          deleteWishListItem({
-                                            variables: {
-                                              wishListId: whisList.id,
-                                              productId: PRODUCTiD
-                                            }
+                              <div
+                                className={
+                                  hasProductWishList.some(
+                                    (item) => item === whisList.id
+                                  )
+                                    ? AddedItemClassName
+                                    : selectedWhishListId &&
+                                      selectedWhishListId === whisList.id
+                                    ? selectedItemClassName
+                                    : wishListItemClassName
+                                }
+                                key={whisList.name + key}
+                                onClick={(e) => {
+                                  if (!loading) {
+                                    console.log('not loading');
+                                    const { className } = e.target;
+                                    setselectedItem(key);
+                                    setselectedWhishListIdId(whisList.id);
+                                    const tmpWishlists = whisLists.map(
+                                      (tmpwishlist) => {
+                                        if (tmpwishlist.id === whisList.id) {
+                                          if (
+                                            className === AddedItemClassName
+                                          ) {
+                                            tmpwishlist.products = tmpwishlist.products.filter(
+                                              (product) =>
+                                                product.id !== PRODUCTiD
+                                            );
+                                            return tmpwishlist;
+                                          }
+                                          if (tmpwishlist.products === null)
+                                            tmpwishlist.products = [];
+                                          tmpwishlist.products.push({
+                                            id: PRODUCTiD
                                           });
                                         }
-                                      }}>
-                                      <div
-                                        className="AddToWishlist--information--wishlistItem--figure"
-                                        style={{
-                                          backgroundImage: `url(${
-                                            whisList &&
-                                            whisList.products &&
-                                            whisList.products[0] &&
-                                            whisList.products[0].image &&
-                                            whisList.products[0].image
-                                              .thumbnailUrl
-                                              ? whisList.products[0].image
-                                                  .thumbnailUrl
-                                              : '/images/wishlist/whishlist1.jpg'
-                                          })`
-                                        }}>
-                                        {/* <img
+                                        return tmpwishlist;
+                                      }
+                                    );
+                                    setWhisLists(tmpWishlists);
+                                    deleteWishListItem({
+                                      variables: {
+                                        wishListId: whisList.id,
+                                        productId: PRODUCTiD
+                                      }
+                                    });
+                                  }
+                                }}>
+                                <div
+                                  className="AddToWishlist--information--wishlistItem--figure"
+                                  style={{
+                                    backgroundImage: `url(${
+                                      whisList &&
+                                      whisList.products &&
+                                      whisList.products[0] &&
+                                      whisList.products[0].image &&
+                                      whisList.products[0].image.thumbnailUrl
+                                        ? whisList.products[0].image
+                                            .thumbnailUrl
+                                        : '/images/wishlist/whishlist1.jpg'
+                                    })`
+                                  }}>
+                                  {/* <img
                                           className="AddToWishlist--information--wishlistItem--figure--img"
                                           src={
                                             whisList &&
@@ -225,33 +216,33 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                                           }
                                           // "/images/wishlist/whishlist1.jpg"
                                         /> */}
-                                      </div>
-                                      <div className="AddToWishlist--information--wishlistItem--titleItems">
-                                        <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
-                                          {whisList.name}
-                                        </h3>
-                                        <p className="AddToWishlist--information--wishlistItem--titleItems--p">
-                                          {itemCount} items
-                                        </p>
-                                      </div>
-                                    </div>
-                                  );
-                                }}
-                              </Mutation>
+                                </div>
+                                <div className="AddToWishlist--information--wishlistItem--titleItems">
+                                  <h3 className="AddToWishlist--information--wishlistItem--titleItems--h3">
+                                    {whisList.name}
+                                  </h3>
+                                  <p className="AddToWishlist--information--wishlistItem--titleItems--p">
+                                    {itemCount} items
+                                  </p>
+                                </div>
+                              </div>
                             );
-                          })}
-                        </div>
-                        <div className="AddToWishlist--information--btnContainer">
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setAddNewWishlist(!addNewWishlist);
-                            }}
-                            className="AddToWishlist--information--btnContainer--createBtn">
-                            Create new list
-                          </button>
+                          }}
+                        </Mutation>
+                      );
+                    })}
+                  </div>
+                  <div className="AddToWishlist--information--btnContainer">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setAddNewWishlist(!addNewWishlist);
+                      }}
+                      className="AddToWishlist--information--btnContainer--createBtn">
+                      Create new list
+                    </button>
 
-                          {/* <Query query={GET_PRODUCT_ID}>
+                    {/* <Query query={GET_PRODUCT_ID}>
                             {({ data: productId }) => {
                               if (productId) {
                                 return (
@@ -288,21 +279,21 @@ const AddItemToWishListFromProductCard = ({ client }) => {
                               return 'loading';
                             }}
                           </Query> */}
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                );
-              }}
-            </Query>
-          </React.Fragment>
-        );
-      }}
-    </ApolloConsumer>
+                </div>
+              </div>
+            </div>
+          );
+        }}
+      </Query>
+    </React.Fragment>
   );
 };
 
-export default withApollo(AddItemToWishListFromProductCard);
+export default BaseQueryHoc(
+  AddItemToWishListFromProductCard,
+  GET_CONSUMER_WISHLIST
+);
 
 // CLOSO THE MODAL
 
