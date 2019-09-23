@@ -7,10 +7,10 @@ import BaseQueryHoc from '../../components/HOCS/Grapqhl/BaseQueryHoc';
 
 const WishlistScreen = ({ data }) => {
   const [whichWishList, setWhichWishList] = React.useState(null);
-  const { consumer } = data;
-  const { whisLists } = consumer;
+  const consumer = data && data.consumer;
+  const { wishLists } = consumer && consumer;
 
-  if (whisLists.length === 0) {
+  if (wishLists.length === 0) {
     return <EmptyWishList />;
   }
   return (
@@ -19,11 +19,11 @@ const WishlistScreen = ({ data }) => {
         <WishListInside
           whichWishList={whichWishList}
           setWhichWishList={setWhichWishList}
-          whisLists={whisLists}
+          whisLists={wishLists}
         />
       ) : (
         <WishListGroup
-          whisLists={whisLists}
+          whisLists={wishLists}
           setWhichWishList={setWhichWishList}
         />
       )}

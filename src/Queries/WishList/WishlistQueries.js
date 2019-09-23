@@ -10,7 +10,7 @@ export const GET_CONSUMER_WISHLIST = gql`
   query getConsumerWishList {
     consumer {
       id
-      whisLists {
+      wishLists {
         id
         name
         isPrivate
@@ -52,7 +52,7 @@ export const GET_WISHLISTS_IMAGE = gql`
   query getConsumerWishList {
     consumer {
       id
-      whisLists {
+      wishLists {
         id
         products {
           id
