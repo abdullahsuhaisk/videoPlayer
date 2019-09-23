@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import videoJs from 'video.js';
-// import { PRODLINK_ID } from '../../common/GrapqlConstant';
+
 // import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
 // import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
 import { Wrapper } from './ScreenReady.style';
