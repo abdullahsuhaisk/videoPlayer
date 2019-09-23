@@ -102,10 +102,12 @@ const errorLink = onError(
     }
     if (networkError && networkError.statusCode === 401) {
       // eslint-disable-next-line
+      console.log('Auth Error && Token');
       console.log(networkError);
       firebase.auth().onIdTokenChanged(async (user) => {
         if (user) {
           const token = await user.getIdToken(true);
+          console.log(`Newtoken${token}`);
           const oldHeaders = operation.getContext().headers;
           operation.setContext({
             headers: {
@@ -135,6 +137,7 @@ const errorLink = onError(
 
 const authLink = new ApolloLink((operation, forward) => {
   // getNewToken();
+
   TokenService();
   const token = localStorage.getItem(authKey);
   operation.setContext(({ headers }) => ({
