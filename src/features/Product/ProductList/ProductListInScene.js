@@ -17,7 +17,7 @@ const GET_PLAYER = gql`
 
 // TODO: change prodLinkId
 const ProductListInScene = ({ data }) => {
-  const { hotSpots } = data.prodLink;
+  const hotSpots = data.prodLinkhotSpots && data.prodLinkhotSpots.hotSpots;
   return (
     <Query query={GET_PLAYER}>
       {({
@@ -25,28 +25,35 @@ const ProductListInScene = ({ data }) => {
           player: { currentTime }
         }
       }) => {
-        const products = hotSpots
-          .filter(
-            (hotSpot) =>
-              currentTime >= hotSpot.in - 3 && currentTime <= hotSpot.out + 3
-          )
-          .map((hotSpot) => {
-            return hotSpot.product;
-          })
-          .reduce((acc, product) => {
-            if (acc.length > 0) {
-              for (let i = 0; i < acc.length; i += 1) {
-                if (acc[i].id === product.id) {
-                  break;
+        const products =
+          hotSpots &&
+          hotSpots
+            .filter(
+              (hotSpot) =>
+                currentTime >= hotSpot.in - 3 && currentTime <= hotSpot.out + 3
+            )
+            .map((hotSpot) => {
+              return hotSpot.product;
+            })
+            .reduce((acc, product) => {
+              if (acc.length > 0) {
+                for (let i = 0; i < acc.length; i += 1) {
+                  if (acc[i].id === product.id) {
+                    break;
+                  }
+                  acc.push(product);
                 }
+              } else {
                 acc.push(product);
               }
-            } else {
-              acc.push(product);
-            }
-            return acc;
-          }, []);
-        return <FlickityProductCard products={products} key={products.id} />;
+              return acc;
+            }, []);
+        return (
+          <FlickityProductCard
+            products={products && products}
+            key={products && products.id}
+          />
+        );
       }}
     </Query>
   );

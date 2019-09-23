@@ -16,7 +16,9 @@ const App = ({ client }) => {
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
   return (
-    <div className="vibuy--container" style={{ width: '100%', height: '100%' }}>
+    <div
+      className="vibuy--container"
+      style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
       <Query query={GET_VIDEO} variables={{ prodLinkUniqueId: prodLinkId }}>
         {({ loading, error, data }) => {
           if (loading) return null;
