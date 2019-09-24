@@ -55,7 +55,7 @@ import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
-import ControlBarFixed from '../Template3/ControlBarFixed';
+import ControlBarFixed from '../Template3/ControlbarFixed';
 
 //
 
