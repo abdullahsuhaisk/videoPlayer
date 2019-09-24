@@ -12,6 +12,16 @@ export const GET_HOTSPOTS = gql`
         id
         in
         out
+        fixedPosition {
+          x
+          y
+        }
+        dynamicPositions {
+          sec
+          x
+          y
+        }
+        type
         product {
           id
           name

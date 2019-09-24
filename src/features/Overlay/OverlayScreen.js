@@ -40,7 +40,8 @@ const Screen = ({ playingState, videoPlayer }) => {
           temp={template}
         />
       )}
-      {playingState !== PLAYER.READY && template && (
+      {// TODO: We must move to inside Player Component
+      playingState !== PLAYER.READY && template && (
         <VideoControlBarScreen
           videoPlayer={videoPlayer}
           playingState={playingState}

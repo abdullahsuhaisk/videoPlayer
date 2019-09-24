@@ -7,6 +7,10 @@
           {
             "type": "ScreenPauseOverlayComponent",
             "props": {}
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {}
           }
         ]
       }
@@ -31,7 +35,7 @@
       "props": {
         "children": [
           {
-            "type": "HotspotScreen",
+            "type": "HotspotContainer",
             "props": {}
           }
         ]

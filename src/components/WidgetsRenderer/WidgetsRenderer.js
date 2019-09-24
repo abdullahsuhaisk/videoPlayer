@@ -37,7 +37,7 @@ import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/Con
 
 // Screen Section Screen has all of logic and own State //
 // import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
-import HotspotScreen from '../../features/Hotspot/HotspotScreen';
+import HotspotContainer from '../../features/Hotspot/HotspotContainer';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 
@@ -50,7 +50,6 @@ import Header from '../Template/Header';
 // Tab Component //
 
 import ProductListCard from '../ProductListWrapper/ProductListCard';
-
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
@@ -73,7 +72,7 @@ const widgetList = {
   ControlBarWrapper,
   ScreenPauseWrapper,
   AuthScreen,
-  HotspotScreen,
+  HotspotContainer,
   ProductDetailScreen,
   ControlBarScreen,
   PlayPause,
