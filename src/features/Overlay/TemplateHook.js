@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import temp from './template.json';
+import template3 from '../../components/Template3/Template3.json';
 
 const LoadJsons = async () => {
   // TODO: Set json method will make
-  return temp;
+  // return temp;
+  return template3;
 };
 // function loadjson() {
 //   return new Promise((res, rej) => {
@@ -33,7 +35,7 @@ function addCustomCss(url) {
 
 export function useCss() {
   useEffect(() => {
-    addCustomCss('/css/overlay.css');
-    // addCustomCss('/css/template3.css');
+    // addCustomCss('/css/overlay.css');
+    addCustomCss('/css/template3.css');
   }, []);
 }

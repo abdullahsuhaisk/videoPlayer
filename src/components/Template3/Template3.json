@@ -1,0 +1,45 @@
+{
+  "widgets": [
+    {
+      "type": "ScreenPauseWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ScreenPauseOverlayComponent",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenReadyWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "Header",
+            "props": {}
+          },
+          {
+            "type": "ScreenReadyComponent",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenPlayingWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "HotspotScreen",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ControlBarFixed",
+      "props": {}
+    }
+  ]
+}
