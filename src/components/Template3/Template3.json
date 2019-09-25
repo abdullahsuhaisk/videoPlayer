@@ -9,7 +9,7 @@
             "props": {}
           },
           {
-            "type": "HotspotContainer",
+            "type": "HotSpotsPointerContainer",
             "props": {}
           }
         ]
