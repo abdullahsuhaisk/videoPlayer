@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:#fff}.cls-1{stroke:#707070}.cls-2{clip-path:url(#clip-path)}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2934" d="M0 0h48v48H0z" class="cls-1" data-name="Rectangle 2934" transform="translate(936 516)"/>
+        </clipPath>
+    </defs>
+    <g id="Icon" class="cls-2" transform="translate(-936 -516)">
+        <g id="button-play" transform="translate(932.727 513.818)">
+            <path id="Path_7225" d="M44.847 24.367L12.12 2.548a2.182 2.182 0 0 0-3.393 1.816V48a2.182 2.182 0 0 0 3.393 1.815L44.847 28a2.182 2.182 0 0 0 0-3.631z" class="cls-3" data-name="Path 7225"/>
+        </g>
+    </g>
+</svg>

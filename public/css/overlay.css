@@ -2910,7 +2910,7 @@
   opacity: 0.5;
   background-color: #434343;
 }
-.Template1 .VideoPlay--playBtn::before {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::before {
   content: '';
   width: 133.3px;
   height: 133.3px;
@@ -2924,10 +2924,10 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.Template1 .VideoPlay--playBtn:hover::before {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn:hover::before {
   background-color: rgba(0, 0, 0, 0.6);
 }
-.Template1 .VideoPlay--playBtn::after {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::after {
   content: '';
   width: 65px;
   height: 75px;
