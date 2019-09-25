@@ -18,11 +18,13 @@ const Header = (props) => {
     <React.Fragment>
       <div className="Header" style={{ color }}>
         <div className="mainMenu--brandInfo--inline">
-          <img
-            className="company--image"
-            src={prodLink && prodLink.image && prodLink.image.thumbnailUrl}
-            alt={prodLink && prodLink.company && prodLink.company.name}
-          />
+          {isCampaingName === true ? (
+            <img
+              className="company--image"
+              src={prodLink && prodLink.image && prodLink.image.thumbnailUrl}
+              alt={prodLink && prodLink.company && prodLink.company.name}
+            />
+          ) : null}
           <h1 className="company--name">
             {prodLink && prodLink.company && prodLink.company.name}
           </h1>

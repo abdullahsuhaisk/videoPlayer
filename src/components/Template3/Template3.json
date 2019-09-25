@@ -9,11 +9,7 @@
             "props": {}
           },
           {
-            "type": "HotSpotsPointerContainer",
-            "props": {}
-          },
-          {
-            "type": "ProductDetailScreen",
+            "type": "HotspotContainer",
             "props": {}
           }
         ]
