@@ -12,7 +12,7 @@ const HotspotButtonScreen = ({ hotspots, setProductIdForDetail }) => {
           top={top}
           left={left}
           key={hotspot.id}
-          ProductId={hotspot.productId}
+          ProductId={hotspot.product.id}
           setProductIdForDetail={setProductIdForDetail}
         />
       );

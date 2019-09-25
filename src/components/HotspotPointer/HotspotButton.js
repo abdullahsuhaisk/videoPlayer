@@ -9,6 +9,7 @@ const StyledComponent = styled.div`
 `;
 
 const HotspotButton = ({ top, left, ProductId, setProductIdForDetail }) => {
+  console.log(ProductId);
   return (
     <StyledComponent
       top={top}
