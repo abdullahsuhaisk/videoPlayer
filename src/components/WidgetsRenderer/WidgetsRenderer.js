@@ -44,9 +44,9 @@ import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDe
 // Screen Section //
 
 // Tab Component //
-import Tab from '../Template/Tab/Tab';
-import TabWrapper from '../Template/Tab/TabWrapper';
-import Header from '../Template/Header';
+import Tab from '../Tab/Tab';
+import TabWrapper from '../Tab/TabWrapper';
+import Header from '../Header/Header';
 // Tab Component //
 
 import ProductListCard from '../ProductListWrapper/ProductListCard';

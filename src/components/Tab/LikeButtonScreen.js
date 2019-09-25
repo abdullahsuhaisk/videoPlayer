@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import { getProdLinkIdApollo } from '../../../hooks/ProdLinkHook';
-import LikeLottie from '../../Lottie/Like/LikeLottie';
+import { getProdLinkIdApollo } from '../../hooks/ProdLinkHook';
+import LikeLottie from '../Lottie/Like/LikeLottie';
 
 const GET_LIKED = gql`
   query prodLinkIsLikedByCustomer($prodLinkId: Int!) {

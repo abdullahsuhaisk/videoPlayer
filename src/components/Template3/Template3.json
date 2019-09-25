@@ -21,7 +21,9 @@
         "children": [
           {
             "type": "Header",
-            "props": {}
+            "props": {
+              "isCampaingName": "false"
+            }
           },
           {
             "type": "ScreenReadyComponent",
