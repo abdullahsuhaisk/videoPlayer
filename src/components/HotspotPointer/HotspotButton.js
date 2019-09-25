@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import HotspotProductIcon from '../../../../assets/icons/HotspotProductIcon.svg';
+import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
 
 const StyledComponent = styled.div`
   position: absolute;
