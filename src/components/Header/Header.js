@@ -7,7 +7,6 @@ import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuer
 
 const FETCHPOLICIY = 'cache-first';
 const Header = (props) => {
-  console.log(props);
   const {
     children,
     color,
@@ -23,12 +22,6 @@ const Header = (props) => {
             className="company--image"
             src={prodLink && prodLink.image && prodLink.image.thumbnailUrl}
             alt={prodLink && prodLink.company && prodLink.company.name}
-            style={{
-              width: 70,
-              height: 70,
-              borderRadius: '50%',
-              marginRight: 20
-            }}
           />
           <h1 className="company--name">
             {prodLink && prodLink.company && prodLink.company.name}
@@ -40,7 +33,6 @@ const Header = (props) => {
           ) : null}
         </div>
       </div>
-      );
       {children}
     </React.Fragment>
   );
