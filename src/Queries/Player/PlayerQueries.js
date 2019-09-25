@@ -5,6 +5,7 @@ export const GET_PLAYER = gql`
     player @client {
       playingState
       currentTime
+      isStarted
     }
     productIdInDetails @client
   }

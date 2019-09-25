@@ -29,6 +29,7 @@ const FlickityClassName = 'ProductDetail--imagesSlider';
 
 const ProductDetail = ({ productId, data, client }) => {
   const { product } = data;
+  console.log(productId, product);
   const images = [];
   if (product && product.images) {
     product.images.map((i) => images.push(i));
