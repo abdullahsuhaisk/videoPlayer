@@ -4,8 +4,10 @@ import { GET_PRODUCT } from '../../../../Queries/Products/ProductQueries';
 
 const ProductDetaiHeader = ({ data }) => {
   const { product } = data;
+
   return (
     <div className="ProductDetail--information--title">
+      <h2 className="ProductDetail--company--title--h2">tommy hilfiger</h2>
       <h2 className="ProductDetail--information--title--h2">{product.name}</h2>
     </div>
   );

@@ -50,7 +50,7 @@ const AddToCardButton = ({ productId, quantity }) => {
               onClick={() => addToCartCb(client, addToCart)}
               className="ProductDetail--addToCartBtn">
               <i className="ProductDetail--addToCartBtn-icon"></i>
-              Add To Card
+              Add To Cart
             </button>
           </>
         );

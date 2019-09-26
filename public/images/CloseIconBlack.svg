@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}.cls-1,.cls-3{stroke:#b9b9b9}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:none;stroke-linecap:square;stroke-miterlimit:10;stroke-width:2.852px}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2919" d="M0 0h24v24H0z" class="cls-1" data-name="Rectangle 2919" transform="translate(1876 20)"/>
+        </clipPath>
+    </defs>
+    <g id="Close" class="cls-2" transform="translate(-1876 -20)">
+        <g id="e-remove" transform="translate(1870.886 14.886)">
+            <path id="Line_364" d="M19.966 0L0 19.966" class="cls-3" data-name="Line 364" transform="translate(7.131 7.131)"/>
+            <path id="Line_365" d="M19.966 19.966L0 0" class="cls-3" data-name="Line 365" transform="translate(7.131 7.131)"/>
+        </g>
+    </g>
+</svg>

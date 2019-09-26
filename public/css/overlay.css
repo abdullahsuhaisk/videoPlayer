@@ -2346,6 +2346,9 @@
   align-items: center;
   margin-top: 38px;
 }
+.Template1 .ProductDetail--company--title--h2 {
+  display: none;
+}
 .Template1 .ProductDetail--information--title--h2 {
   font-size: 20px;
   color: #0e273b;
