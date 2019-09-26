@@ -3548,8 +3548,9 @@
   cursor: pointer;
 }
 .Template1 .volumControls .soundIcon {
-  width: 19px;
-  height: 17px;
+  width: 24px;
+  height: 24px;
+  margin-right: 20px;
   background: url(/images/sound.svg) center / contain no-repeat;
 }
 .Template1 .volumControls .muted {
@@ -3767,7 +3768,17 @@
 .Template1 .playPauseBtn:focus {
   outline: none;
 }
-.Template1 .jumpToProductBtn {
+.Template1 .jumpToProductBtnLeft {
+  width: 24px;
+  height: 24px;
+  background: url(/images/jump-to-product.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-right: 30px;
+  border: none;
+  transform: rotate(180deg);
+}
+
+.Template1 .jumpToProductBtnRight, .Template1 .jumpToProductBtnleft {
   width: 24px;
   height: 24px;
   background: url(/images/jump-to-product.svg) center / contain no-repeat;
@@ -3775,7 +3786,7 @@
   margin-right: 30px;
   border: none;
 }
-.Template1 .jumpToProductBtn:focus {
+.Template1 .jumpToProductBtnRight:focus, .Template1 .jumpToProductBtnLeft:focus {
   outline: none;
 }
 .Template1 .fullScreenBtn {
@@ -3787,6 +3798,14 @@
 }
 .Template1 .fullScreenBtn:focus {
   outline: none;
+}
+.Template1 .fullScreenBtn:focus {
+  outline: none;
+}
+.Template1 .addtocart-counter {
+
+  display: none;
+  
 }
 .Template1 .cartBtn {
   width: 24px;

@@ -25,6 +25,7 @@ const ControlBarShoppingIcon = ({ client }) => {
   };
   return (
     <div>
+      <div className="addtocart-counter">2</div>
       <button
         className="cartBtn"
         onClick={() => {
