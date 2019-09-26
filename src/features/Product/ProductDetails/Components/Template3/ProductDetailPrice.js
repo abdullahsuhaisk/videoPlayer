@@ -1,10 +1,23 @@
 import React from 'react';
+import ProductQueryHoc from '../../../../../components/HOCS/Grapqhl/ProductQueryHoc';
+import {
+  GET_PRODUCT,
+  GET_PRODUCTS
+} from '../../../../../Queries/Products/ProductQueries';
 
-const ProductDetailPriceNew = ({ previousPrice, currentPrice }) => {
+const ProductDetailPriceNew = ({ previousPrice, currentPrice, data }) => {
+  const { product } = data;
+
   return (
     <div className="productdetail--price-wrapper">
-      <div className="previous-price">{previousPrice}</div>
-      <div className="current-price">{currentPrice}</div>
+      {product.discount === 0 ? (
+        <div className="current-price">$ {product.currentPrice}</div>
+      ) : (
+        <React.Fragment>
+          <div className="previous-price">$ {product.previousPrice}</div>
+          <div className="current-price">$ {product.currentPrice}</div>
+        </React.Fragment>
+      )}
     </div>
   );
 };
@@ -14,4 +27,4 @@ ProductDetailPriceNew.defaultProps = {
   currentPrice: '$70'
 };
 
-export default ProductDetailPriceNew;
+export default ProductQueryHoc(ProductDetailPriceNew, GET_PRODUCT);
