@@ -1,20 +1,9 @@
 // Screen must be smart components
 import React from 'react';
-import gql from 'graphql-tag';
-
 import ProductDetailsDialog from './ProductDetailsDialog';
 import { PLAYER } from '../../../common/constants';
 import BaseQueryHoc from '../../../components/HOCS/Grapqhl/BaseQueryHoc';
-
-const GET_PLAYER = gql`
-  query getPlayerForProductDetailsScreen {
-    player @client {
-      isStarted
-      playingState
-    }
-    productIdInDetails @client
-  }
-`;
+import { GET_PLAYER } from '../../../Queries/Player/PlayerQueries';
 
 const ProductDetailsScreen = ({ data }) => {
   const { player, productIdInDetails } = data;
