@@ -19,6 +19,11 @@ import template2 from './template.json';
 function addCustomCss(url) {
   // it must to move index.js
   const link = document.createElement('link');
+  link.removeAttribute('rel', 'stylesheet');
+  link.removeAttribute('type', 'text/css');
+  link.removeAttribute('href', url);
+  document.getElementsByTagName('head')[0].removeAttribute('link');
+
   link.setAttribute('rel', 'stylesheet');
   link.setAttribute('type', 'text/css');
   link.setAttribute('href', url);
@@ -62,8 +67,8 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width < 700) seTtemplateType('Mobile');
-        if (layout.width > 701) seTtemplateType('Normal');
+        if (layout.width < 1100) seTtemplateType('Mobile');
+        if (layout.width > 1100) seTtemplateType('Normal');
 
         return (
           <>

@@ -92,8 +92,64 @@
       }
     },
     {
-      "type": "ControlBarFixed",
-      "props": {}
+      "type": "ControlBarWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ControlBarLeftWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "PlayPause",
+                  "props": ""
+                },
+                {
+                  "type": "JumpToProductWrapper",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "JumpToProductLeft",
+                        "props": ""
+                      },
+                      {
+                        "type": "JumpToProductRight",
+                        "props": ""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "TimeDisplay",
+                  "props": ""
+                }
+              ]
+            }
+          },
+          {
+            "type": "ControlBarRightWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ControlBarShoppingIcon",
+                  "props": ""
+                },
+                {
+                  "type": "VolumControl",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarSettings",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarFullScreen",
+                  "props": ""
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   ]
 }
