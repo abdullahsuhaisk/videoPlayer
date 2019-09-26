@@ -14,7 +14,7 @@ const ProductDetailPriceNew = ({ previousPrice, currentPrice, data }) => {
         <div className="current-price">$ {product.currentPrice}</div>
       ) : (
         <React.Fragment>
-          <div className="previous-price">$ {product.previousPrice}</div>
+          <div className="previous-price">$ {product.price}</div>
           <div className="current-price">$ {product.currentPrice}</div>
         </React.Fragment>
       )}
