@@ -29,24 +29,30 @@
                         "props": {}
                       },
                       {
-                        "type": "ProductDetailRaiting",
+                        "type": "ProductDetailPriceNew",
                         "props": {}
                       },
                       {
-                        "type": "ProductDetailQualities",
+                        "type": "ProductDetailVariant",
                         "props": {}
                       },
                       {
-                        "type": "ProductDetailContent",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailPrice",
+                        "type": "ProductDetailQuantity",
                         "props": {}
                       },
                       {
                         "type": "ProductDetailAddToCard",
                         "props": {}
+                      },
+                      {
+                        "type": "ProductDetailAccordion",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailAccordion",
+                        "props": {
+                          "title": "Care"
+                        }
                       }
                     ]
                   }

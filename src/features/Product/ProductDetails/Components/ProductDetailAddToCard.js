@@ -8,6 +8,7 @@ const ProductDetailAddToCard = ({ data }) => {
   return (
     <div>
       <AddToCardButton productId={productId} />
+      <div className="productdetail--seperator" />
     </div>
   );
 };

@@ -66,6 +66,12 @@ import ProductDetailContent from '../../features/Product/ProductDetails/Componen
 import ProductDetailPrice from '../../features/Product/ProductDetails/Components/ProductDetailPrice';
 import ProductDetailAddToCard from '../../features/Product/ProductDetails/Components/ProductDetailAddToCard';
 
+//template3
+import ProductDetailVariant from '../../features/Product/ProductDetails/Components/Template3/ProductDetailVariants';
+import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPrice';
+import ProductDetailQuantity from '../../features/Product/ProductDetails/Components/Template3/ProductDetailQuantity';
+import ProductDetailAccordion from '../../features/Product/ProductDetails/Components/Template3/ProductDetailAccordion';
+
 //
 
 //
@@ -117,7 +123,11 @@ const widgetList = {
   ProductDetailRaiting,
   ProductDetailContent,
   ProductDetailPrice,
-  ProductDetailAddToCard
+  ProductDetailAddToCard,
+  ProductDetailVariant,
+  ProductDetailPriceNew,
+  ProductDetailQuantity,
+  ProductDetailAccordion
 };
 
 const WidgetsRenderer = (props) => {

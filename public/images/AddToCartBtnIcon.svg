@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:#fff}.cls-1{stroke:#707070}.cls-2{clip-path:url(#clip-path)}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2914" d="M0 0h16v16H0z" class="cls-1" data-name="Rectangle 2914"/>
+        </clipPath>
+    </defs>
+    <g id="Bag-Icon" class="cls-2">
+        <g id="bag-add-18" transform="translate(.333)">
+            <path id="Path_7205" d="M10 13.333a3.334 3.334 0 0 1 4.014-3.263l-.686-5.487A.667.667 0 0 0 12.667 4h-2v-.667a3.333 3.333 0 0 0-6.667 0V4H2a.667.667 0 0 0-.661.584L.005 15.251A.667.667 0 0 0 .667 16h10.685A3.319 3.319 0 0 1 10 13.333zM9.333 4h-4v-.667a2 2 0 0 1 4 0z" class="cls-3" data-name="Path 7205"/>
+            <path id="Path_7206" d="M21 18.333h-1.333V17h-1.334v1.333H17v1.333h1.333V21h1.333v-1.333H21z" class="cls-3" data-name="Path 7206" transform="translate(-5.667 -5.667)"/>
+        </g>
+    </g>
+</svg>
