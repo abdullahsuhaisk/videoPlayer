@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import temp from './template.json';
 import template3 from '../../components/Template3/Template3.json';
 
-const LoadJsons = async () => {
+const LoadJsons = async (TMP) => {
   // TODO: Set json method will make
   // return temp;
-  return template3;
+  return TMP;
 };
 // function loadjson() {
 //   return new Promise((res, rej) => {
@@ -13,14 +13,14 @@ const LoadJsons = async () => {
 //   });
 // }
 
-export function useTemplate() {
-  const [template, setTemplate] = useState(null);
+export function useTemplate(TMP) {
+  const [template, setTemplate] = useState(TMP);
 
   useEffect(() => {
-    LoadJsons().then((res) => {
+    LoadJsons(TMP).then((res) => {
       setTemplate(res);
     });
-  }, [template]);
+  }, [TMP]);
   return template;
 }
 

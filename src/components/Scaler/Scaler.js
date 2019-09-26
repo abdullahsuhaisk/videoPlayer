@@ -26,7 +26,6 @@ const Scaler = ({ children }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        console.log(layout.width);
         const { safeArea } = layout;
         const scaleX =
           (layout.width - (safeArea.left + safeArea.right)) / baseWidth;

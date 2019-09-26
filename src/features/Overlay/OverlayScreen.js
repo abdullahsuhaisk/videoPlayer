@@ -9,22 +9,62 @@ import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
-// import ControlBarScreen from '../ControlBar/ControlBarScreen';
 import { useTemplate, useCss } from './TemplateHook';
-// import ControlBarWrapper from '../../components/ControlBarWrapper/ControlBarWrapper';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
 import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
 
-// import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
-// import StoriyRender from '../../components/StoriyRender';
+import template3 from '../../components/Template3/Template3.json';
+import template2 from './template.json';
+
+function addCustomCss(url) {
+  // it must to move index.js
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('type', 'text/css');
+  link.setAttribute('href', url);
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+const LoadJsons = async (TMP) => {
+  // TODO: Set json method will make
+  // return temp;
+  return TMP;
+};
 
 const Screen = ({ playingState, videoPlayer }) => {
-  const template = useTemplate();
-  useCss();
-  // TODO: Need a template system
+  const [template, setTemplate] = useState(template3);
+  const [templateType, seTtemplateType] = useState('Normal');
+  useEffect(() => {
+    LoadJsons(template).then((res) => {
+      setTemplate(res);
+    });
+  }, []);
+  useEffect(() => {
+    // addCustomCss('/css/overlay.css');
+    addCustomCss('/css/template3.css');
+  }, []);
+
+  useEffect(() => {
+    console.log('a');
+    if (templateType === 'Mobile') {
+      LoadJsons(template3).then((res) => {
+        setTemplate(res);
+      });
+      addCustomCss('/css/template3.css');
+    } else if (templateType === 'Normal') {
+      LoadJsons(template2).then((res) => {
+        setTemplate(res);
+      });
+      addCustomCss('/css/overlay.css');
+    }
+  }, [templateType]);
+
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
+        if (layout.width < 700) seTtemplateType('Mobile');
+        if (layout.width > 701) seTtemplateType('Normal');
+
         return (
           <>
             {playingState === PLAYER.PLAYING && template && (
