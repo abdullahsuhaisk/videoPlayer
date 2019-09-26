@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import videoJs from 'video.js';
+import { Query } from 'react-apollo';
 
 // import './overlay.css';
 import SafeArea from '../../components/SafeArea/SafeArea';
@@ -10,9 +11,9 @@ import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
 // import ControlBarScreen from '../ControlBar/ControlBarScreen';
 import { useTemplate, useCss } from './TemplateHook';
-import temp from './template.json';
 // import ControlBarWrapper from '../../components/ControlBarWrapper/ControlBarWrapper';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
+import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
 
 // import ControlBarScreen from '../../components/ControlBarWrapper/ControlBar/ControlBarScreen';
 // import StoriyRender from '../../components/StoriyRender';
@@ -20,35 +21,41 @@ import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoContr
 const Screen = ({ playingState, videoPlayer }) => {
   const template = useTemplate();
   useCss();
-
+  // TODO: Need a template system
   return (
-    <>
-      {playingState === PLAYER.PLAYING && template && (
-        <PlayingScreen temp={template} />
-      )}
-      {playingState === PLAYER.PAUSED && template && (
-        <PausedScreen
-          playingState={playingState}
-          videoPlayer={videoPlayer}
-          temp={template}
-        />
-      )}
-      {playingState === PLAYER.READY && template && (
-        <ReadyScreen
-          playingState={playingState}
-          videoPlayer={videoPlayer}
-          temp={template}
-        />
-      )}
-      {// TODO: We must move to inside Player Component
-      playingState !== PLAYER.READY && template && (
-        <VideoControlBarScreen
-          videoPlayer={videoPlayer}
-          playingState={playingState}
-          temp={template}
-        />
-      )}
-    </>
+    <Query query={GET_LAYOUT}>
+      {({ data: { layout } }) => {
+        return (
+          <>
+            {playingState === PLAYER.PLAYING && template && (
+              <PlayingScreen temp={template} />
+            )}
+            {playingState === PLAYER.PAUSED && template && (
+              <PausedScreen
+                playingState={playingState}
+                videoPlayer={videoPlayer}
+                temp={template}
+              />
+            )}
+            {playingState === PLAYER.READY && template && (
+              <ReadyScreen
+                playingState={playingState}
+                videoPlayer={videoPlayer}
+                temp={template}
+              />
+            )}
+            {// TODO: We must move to inside Player Component
+            playingState !== PLAYER.READY && template && (
+              <VideoControlBarScreen
+                videoPlayer={videoPlayer}
+                playingState={playingState}
+                temp={template}
+              />
+            )}
+          </>
+        );
+      }}
+    </Query>
   );
 };
 
@@ -73,17 +80,7 @@ const OverlayScreen = ({ playingState }) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <SafeArea>
         <Scaler>
-          {/* <StoriyRender /> */}
-          <Screen
-            playingState={playingState}
-            videoPlayer={videoPlayer}
-            temp={temp}
-          />
-          {/* <HotspotScreen />
-          <ProductListScreen />
-          <ProductDetailsScreen />
-          <NavigationScreen />
-          <AuthScreen /> */}
+          <Screen playingState={playingState} videoPlayer={videoPlayer} />
         </Scaler>
       </SafeArea>
     </div>

@@ -10,3 +10,18 @@ export const GET_PLAYER = gql`
     productIdInDetails @client
   }
 `;
+
+export const GET_LAYOUT = gql`
+  query getLayoutForScaler {
+    layout @client {
+      width
+      height
+      safeArea {
+        top
+        right
+        bottom
+        left
+      }
+    }
+  }
+`;
