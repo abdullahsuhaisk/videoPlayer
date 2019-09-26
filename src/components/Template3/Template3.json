@@ -13,8 +13,46 @@
             "props": {}
           },
           {
-            "type": "ProductDetailScreen",
-            "props": {}
+            "type": "ProductDetailWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ProductDetailImage",
+                  "props": {}
+                },
+                {
+                  "type": "VerticalScroll",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "ProductDetaiHeader",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailRaiting",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailQualities",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailContent",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailPrice",
+                        "props": {}
+                      },
+                      {
+                        "type": "ProductDetailAddToCard",
+                        "props": {}
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
           }
         ]
       }

@@ -56,6 +56,15 @@ import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
 import ControlBarFixed from '../Template3/ControlbarFixed';
 import HotSpotsPointerContainer from '../HotspotPointer/HotSpotsPointerContainer';
+import ProductDetailWrapper from '../../features/Product/ProductDetails/ProductDetailWrapper';
+import ProductDetailImage from '../../features/Product/ProductDetails/Components/ProductDetailImage';
+import VerticalScroll from '../VerticalScroll';
+import ProductDetaiHeader from '../../features/Product/ProductDetails/Components/ProductDetaiHeader';
+import ProductDetailQualities from '../../features/Product/ProductDetails/Components/ProductDetailQualities';
+import ProductDetailRaiting from '../../features/Product/ProductDetails/Components/ProductDetailRaiting';
+import ProductDetailContent from '../../features/Product/ProductDetails/Components/ProductDetailContent';
+import ProductDetailPrice from '../../features/Product/ProductDetails/Components/ProductDetailPrice';
+import ProductDetailAddToCard from '../../features/Product/ProductDetails/Components/ProductDetailAddToCard';
 
 //
 
@@ -64,6 +73,7 @@ import HotSpotsPointerContainer from '../HotspotPointer/HotSpotsPointerContainer
 const widgetList = {
   Empty,
   Title,
+  VerticalScroll,
   ProfileButton,
   Login,
   Register,
@@ -99,7 +109,15 @@ const widgetList = {
   ProfileScreen,
   AddToWishListScreen,
   ControlBarFixed,
-  HotSpotsPointerContainer
+  HotSpotsPointerContainer,
+  ProductDetailWrapper,
+  ProductDetailImage,
+  ProductDetaiHeader,
+  ProductDetailQualities,
+  ProductDetailRaiting,
+  ProductDetailContent,
+  ProductDetailPrice,
+  ProductDetailAddToCard
 };
 
 const WidgetsRenderer = (props) => {
