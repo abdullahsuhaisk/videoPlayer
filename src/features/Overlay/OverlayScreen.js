@@ -9,21 +9,23 @@ import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
-import { useTemplate, useCss } from './TemplateHook';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
 import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
 
 import template3 from '../../components/Template3/Template3.json';
 import template2 from './template.json';
 
+function deleteCustomCss() {
+  const elements = document.querySelectorAll('link[rel=stylesheet]');
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].parentNode.removeChild(elements[i]);
+  }
+}
+
 function addCustomCss(url) {
   // it must to move index.js
+  deleteCustomCss();
   const link = document.createElement('link');
-  link.removeAttribute('rel', 'stylesheet');
-  link.removeAttribute('type', 'text/css');
-  link.removeAttribute('href', url);
-  document.getElementsByTagName('head')[0].removeAttribute('link');
-
   link.setAttribute('rel', 'stylesheet');
   link.setAttribute('type', 'text/css');
   link.setAttribute('href', url);
