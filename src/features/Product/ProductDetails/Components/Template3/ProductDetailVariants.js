@@ -5,7 +5,7 @@ const colors = [
   'http://suriwong.com.my/wp-content/uploads/2017/04/0001-M-Florida.jpg'
 ];
 
-const sizes = ['xs', 's', 'm', 'l'];
+const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
 const ProductDetailVariant = () => {
   const [data, setData] = useState({ color: 0, size: 0 });

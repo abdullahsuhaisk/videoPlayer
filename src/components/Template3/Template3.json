@@ -5,6 +5,10 @@
       "props": {
         "children": [
           {
+            "type": "ShoppingCartWithoutLoginContainer",
+            "props": {}
+          },
+          {
             "type": "ScreenPauseOverlayComponent",
             "props": {}
           },

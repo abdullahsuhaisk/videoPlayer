@@ -6,7 +6,7 @@ const ProductDetailPriceNew = () => {
   const [data, setData] = useState({ quantity: 1 });
   return (
     <div className="productdetail--quantity-wrapper">
-      <div className="productdetail--label">Quantiy</div>
+      <div className="productdetail--label">Quantity</div>
       <div className="productdetail--quantity-options">
         {data.quantity > 1 ? (
           <div
