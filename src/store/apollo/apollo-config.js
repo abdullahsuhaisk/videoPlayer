@@ -209,6 +209,7 @@ const setInitialCache = () => {
         left: 0
       }
     },
+    isShoppingCartShowing: false,
     whichTabItemIsRendering: 'productInThisScene',
     isLoginFormShowing: false,
     isRegisterFormShowing: false,

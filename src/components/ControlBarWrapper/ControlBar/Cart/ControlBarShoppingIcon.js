@@ -18,7 +18,8 @@ const ControlBarShoppingIcon = ({ client }) => {
         },
         isLoginFormShowing: false,
         isProfileOpen: false,
-        whichTabItemIsRendering: 'ShoppingCartScreen'
+        whichTabItemIsRendering: 'ShoppingCartScreen',
+        isShoppingCartShowing: true
       }
     });
     videoPlayer.pause();
