@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { Query } from 'react-apollo';
 import HotspotCardList from './HotspotCardList';
@@ -9,6 +10,11 @@ import { hotSpotsType } from '../../common/hotSpotTypes';
 
 const HotspotScreen = ({ data }) => {
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
+  // const [hotSpots, setHotspots] = React.useState({
+  //   staticHotSpots: [],
+  //   dynamicHotSpots: [],
+  //   fixedHotSpots: []
+  // });
   console.log(hotSpots);
 
   const staticHotSpots = [];
@@ -30,7 +36,7 @@ const HotspotScreen = ({ data }) => {
     console.log(fixedHotSpots);
   }, []);
 
-  const destructureHotspots = (type) => {
+  const selectionHotSpotsType = (type) => {
     return null;
   };
   return (
