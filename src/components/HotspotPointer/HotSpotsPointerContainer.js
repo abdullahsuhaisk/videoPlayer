@@ -13,7 +13,7 @@ const HotSpotsPointerContainer = ({ data, client }) => {
       data: { productIdInDetails: productId }
     });
   }, []);
-  console.log(data);
+  // console.log(data);
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
   return (
     <Query query={GET_PLAYER}>

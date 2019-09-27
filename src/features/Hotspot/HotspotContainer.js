@@ -1,25 +1,38 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import HotspotCardList from './HotspotCardList';
 import { PLAYER } from '../../common/constants';
 import { GET_HOTSPOTS } from '../../Queries/HotSpots/HotspotQuery';
 import withQueryProdLink from '../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
-
-const GET_PLAYER = gql`
-  query getPlayerForHotspotScreen {
-    player @client {
-      playingState
-      currentTime
-    }
-  }
-`;
+import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
+import { hotSpotsType } from '../../common/hotSpotTypes';
 
 const HotspotScreen = ({ data }) => {
-  // console.log(data);
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
-  // console.log(hotSpots);
+  console.log(hotSpots);
 
+  const staticHotSpots = [];
+  const dynamicHotSpots = [];
+  const fixedHotSpots = [];
+
+  React.useEffect(() => {
+    hotSpots.filter((hotspot) =>
+      hotspot.type === hotSpotsType.STATIC
+        ? staticHotSpots.push(hotspot)
+        : hotspot.type === hotSpotsType.DYNAMIC
+        ? dynamicHotSpots.push(hotspot)
+        : hotspot.type === hotSpotsType.FIXED
+        ? fixedHotSpots.push(hotspot)
+        : null
+    );
+    console.log(staticHotSpots);
+    console.log(dynamicHotSpots);
+    console.log(fixedHotSpots);
+  }, []);
+
+  const destructureHotspots = (type) => {
+    return null;
+  };
   return (
     <Query query={GET_PLAYER}>
       {({
@@ -38,7 +51,6 @@ const HotspotScreen = ({ data }) => {
           // console.log(activeHotSpots);
           return <HotspotCardList hotspots={activeHotSpots} />;
         }
-
         return null;
       }}
     </Query>

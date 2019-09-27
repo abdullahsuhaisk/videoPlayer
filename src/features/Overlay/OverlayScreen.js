@@ -52,7 +52,6 @@ const Screen = ({ playingState, videoPlayer }) => {
   }, []);
 
   useEffect(() => {
-    console.log('a');
     if (templateType === 'Mobile') {
       LoadJsons(template3).then((res) => {
         setTemplate(res);
