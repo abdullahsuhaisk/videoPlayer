@@ -1,9 +1,6 @@
 import React from 'react';
 import ProductQueryHoc from '../../../../../components/HOCS/Grapqhl/ProductQueryHoc';
-import {
-  GET_PRODUCT,
-  GET_PRODUCTS
-} from '../../../../../Queries/Products/ProductQueries';
+import { GET_PRODUCT } from '../../../../../Queries/Products/ProductQueries';
 
 const ProductDetailPriceNew = ({ previousPrice, currentPrice, data }) => {
   const { product } = data;

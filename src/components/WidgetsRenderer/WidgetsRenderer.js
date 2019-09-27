@@ -71,6 +71,7 @@ import ProductDetailVariant from '../../features/Product/ProductDetails/Componen
 import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPrice';
 import ProductDetailQuantity from '../../features/Product/ProductDetails/Components/Template3/ProductDetailQuantity';
 import ProductDetailAccordion from '../../features/Product/ProductDetails/Components/Template3/ProductDetailAccordion';
+import ShoppingCartWithoutLoginContainer from '../../features/ShoppingCart/ShoppingCartWithoutLoginContainer';
 
 //
 
@@ -127,7 +128,8 @@ const widgetList = {
   ProductDetailVariant,
   ProductDetailPriceNew,
   ProductDetailQuantity,
-  ProductDetailAccordion
+  ProductDetailAccordion,
+  ShoppingCartWithoutLoginContainer
 };
 
 const WidgetsRenderer = (props) => {
