@@ -47,9 +47,14 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const ProductDetailAccordion = ({ title, desc1, desc2, desc3, data }) => {
-  const { product } = data;
-  console.log(product);
+const ProductDetailAccordion = ({
+  description,
+  title,
+  desc1,
+  desc2,
+  desc3,
+  data
+}) => {
   const [showAccordion, setShowAccordion] = useState(false);
   return (
     <StyledWrapper showAccordion={showAccordion}>
@@ -63,7 +68,7 @@ const ProductDetailAccordion = ({ title, desc1, desc2, desc3, data }) => {
           </div>
         </div>
         <div className="accordion--content">
-          <p>{product.description}</p>
+          <p>{description}</p>
 
           <p>{desc2}</p>
 

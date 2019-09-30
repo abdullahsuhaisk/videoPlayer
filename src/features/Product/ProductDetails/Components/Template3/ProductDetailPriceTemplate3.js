@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ProductDetailPriceTemplate3 = ({ currentPrice, price, discount }) => {
+  // TODO: Destruct the currency={currency}
   return (
     <div className="productdetail--price-wrapper">
       {discount === 0 ? (

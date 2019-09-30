@@ -32,18 +32,17 @@ const StyledComponent = styled.div`
   }
 `;
 
-const ProductDetailPriceNew = () => {
-  const [quantity, setQuality] = useState(1);
+const ProductDetailPriceNew = ({ data, setData }) => {
   return (
     <StyledComponent>
       <div className="productdetail--quantity-wrapper">
         <div className="productdetail--label">Quantity</div>
         <div className="productdetail--quantity-options">
-          {quantity > 1 ? (
+          {data.quality > 1 ? (
             <div
               className="decrement"
               onClick={() => {
-                setQuality(quantity - 1);
+                setData({ ...data, quality: data.quality - 1 });
               }}>
               <MinusIcon />
             </div>
@@ -53,12 +52,12 @@ const ProductDetailPriceNew = () => {
             </div>
           )}
 
-          <div className="value">{quantity}</div>
+          <div className="value">{data.quality}</div>
 
           <div
             className="increment"
             onClick={() => {
-              setQuality(quantity + 1);
+              setData({ ...data, quality: data.quality + 1 });
             }}>
             <PlusIcon />
           </div>

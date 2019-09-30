@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const colors = [
   'https://us.123rf.com/450wm/cgdeaw/cgdeaw1905/cgdeaw190500057/122252927-blue-flat-for-background-pastel-blue-color-light-blue-plain-colors-top-view.jpg?ver=6',
@@ -7,9 +7,7 @@ const colors = [
 
 const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
-const ProductDetailVariant = () => {
-  const [data, setData] = useState({ color: 0, size: 0 });
-
+const ProductDetailVariant = ({ data, setData }) => {
   return (
     <React.Fragment>
       <div className="productdetail--colors-wrapper">
