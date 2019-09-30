@@ -2,7 +2,7 @@ import React from 'react';
 import SampleImage from '../../../../../assets/images/SampleImage.jpg';
 import ProductDetailQuantity from './ProductDetailQuantity';
 
-const ShoppingCartItem = () => {
+const ShoppingCartItem = ({ data, setData }) => {
   return (
     <div className="shoppcart--item-container">
       <div className="item-image">
@@ -16,7 +16,7 @@ const ShoppingCartItem = () => {
         </div>
         <div className="item-quanity-price">
           <div className="item--quantity">
-            <ProductDetailQuantity />
+            <ProductDetailQuantity data={data} setData={setData} />
           </div>
           <div className="item--price">$79.99</div>
         </div>
