@@ -66,13 +66,14 @@ import ProductDetailContent from '../../features/Product/ProductDetails/Componen
 import ProductDetailPrice from '../../features/Product/ProductDetails/Components/ProductDetailPrice';
 import ProductDetailAddToCard from '../../features/Product/ProductDetails/Components/ProductDetailAddToCard';
 
-//template3
+// template3
 import ProductDetailVariant from '../../features/Product/ProductDetails/Components/Template3/ProductDetailVariants';
 import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPrice';
 import ProductDetailQuantity from '../../features/Product/ProductDetails/Components/Template3/ProductDetailQuantity';
 import ProductDetailAccordion from '../../features/Product/ProductDetails/Components/Template3/ProductDetailAccordion';
 // import ShoppingCartWithoutLoginContainer from '../../features/ShoppingCart/ShoppingCartWithoutLoginContainer';
 import ShoppingCartCotainer from '../../features/ShoppingCart/ShoppingCartCotainer';
+import ProductDetailWithoutAuthScreen from '../../features/Product/ProductDetails/ProductDetailWithoutAuthScreen';
 
 //
 
@@ -130,7 +131,8 @@ const widgetList = {
   ProductDetailPriceNew,
   ProductDetailQuantity,
   ProductDetailAccordion,
-  ShoppingCartCotainer
+  ShoppingCartCotainer,
+  ProductDetailWithoutAuthScreen
 };
 
 const WidgetsRenderer = (props) => {

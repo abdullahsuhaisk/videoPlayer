@@ -229,7 +229,8 @@ const setInitialCache = () => {
         totalProductCount: 0,
         totalPrices: []
       }
-    }
+    },
+    noAuthCart: []
   };
   cache.writeData({ data });
 };

@@ -2,9 +2,8 @@ import React from 'react';
 import ProductQueryHoc from '../../../../../components/HOCS/Grapqhl/ProductQueryHoc';
 import { GET_PRODUCT } from '../../../../../Queries/Products/ProductQueries';
 
-const ProductDetailPriceNew = ({ previousPrice, currentPrice, data }) => {
+const ProductDetailPriceNew = ({ data }) => {
   const { product } = data;
-
   return (
     <div className="productdetail--price-wrapper">
       {product.discount === 0 ? (
@@ -20,8 +19,13 @@ const ProductDetailPriceNew = ({ previousPrice, currentPrice, data }) => {
 };
 
 ProductDetailPriceNew.defaultProps = {
-  previousPrice: '$130',
-  currentPrice: '$70'
+  data: {
+    product: {
+      price: 100,
+      currentPrice: 80,
+      discount: 20
+    }
+  }
 };
 
 export default ProductQueryHoc(ProductDetailPriceNew, GET_PRODUCT);

@@ -17,13 +17,14 @@ const ProductDetailVariant = () => {
         <div className="productdetail--colors-options">
           {colors.map((item, index) => {
             return data.color === index ? (
-              <div className="selected">
+              <div className="selected" key={index}>
                 <img src={item} alt="color" />
                 <p className="name">color name</p>
               </div>
             ) : (
               <div
                 className="unselected"
+                key={index}
                 onClick={() => {
                   setData({ ...data, color: index });
                 }}>
@@ -39,10 +40,13 @@ const ProductDetailVariant = () => {
         <div className="productdetail--sizes-options">
           {sizes.map((item, index) => {
             return data.size === index ? (
-              <div className="selected">{item}</div>
+              <div className="selected" key={index}>
+                {item}
+              </div>
             ) : (
               <div
                 className="unselected"
+                key={index}
                 onClick={() => {
                   setData({ ...data, size: index });
                 }}>

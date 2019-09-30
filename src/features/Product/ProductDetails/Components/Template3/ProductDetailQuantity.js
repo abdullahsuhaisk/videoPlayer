@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as MinusIcon } from '../../../../../assets/icons/MinusIcon.svg';
@@ -31,19 +33,18 @@ const StyledComponent = styled.div`
 `;
 
 const ProductDetailPriceNew = () => {
-  const [data, setData] = useState({ quantity: 1 });
+  const [quantity, setQuality] = useState(1);
   return (
     <StyledComponent>
       <div className="productdetail--quantity-wrapper">
         <div className="productdetail--label">Quantity</div>
         <div className="productdetail--quantity-options">
-          {data.quantity > 1 ? (
+          {quantity > 1 ? (
             <div
               className="decrement"
               onClick={() => {
-                setData({ ...data, quantity: data.quantity - 1 });
+                setQuality(quantity - 1);
               }}>
-              {' '}
               <MinusIcon />
             </div>
           ) : (
@@ -52,12 +53,12 @@ const ProductDetailPriceNew = () => {
             </div>
           )}
 
-          <div className="value">{data.quantity}</div>
+          <div className="value">{quantity}</div>
 
           <div
             className="increment"
             onClick={() => {
-              setData({ ...data, quantity: data.quantity + 1 });
+              setQuality(quantity + 1);
             }}>
             <PlusIcon />
           </div>

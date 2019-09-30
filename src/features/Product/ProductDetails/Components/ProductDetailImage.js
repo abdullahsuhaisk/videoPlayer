@@ -3,7 +3,7 @@ import FlickityComponent from '../../../../components/Flickity/FlickityComponent
 import ProductQueryHoc from '../../../../components/HOCS/Grapqhl/ProductQueryHoc';
 import { GET_PRODUCT } from '../../../../Queries/Products/ProductQueries';
 
-const ProductDetailImage = ({ data }) => {
+const ProductDetailImage = ({ images }) => {
   const flickityOptions = {
     cellAlign: 'center',
     contain: true,
@@ -14,22 +14,16 @@ const ProductDetailImage = ({ data }) => {
     friction: 0.8
   };
   const FlickityClassName = 'ProductDetail--imagesSlider';
-  const { product } = data;
-  const images = [];
-  if (product && product.images) {
-    product.images.map((i) => images.push(i));
-  }
-
   return (
     <div>
       <FlickityComponent
         FlickityClassName={FlickityClassName}
         flickityOptions={flickityOptions}
         images={images}
-        key={product.name + product.id}
+        key={images[0].id}
       />
     </div>
   );
 };
 
-export default ProductQueryHoc(ProductDetailImage, GET_PRODUCT);
+export default ProductDetailImage;
