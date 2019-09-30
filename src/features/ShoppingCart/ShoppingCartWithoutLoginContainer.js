@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
 import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/ShoppingCartItem';
@@ -8,6 +8,8 @@ import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/Sho
 // For now ıt just render Empty card for develop to css
 
 const ShoppingCartWithoutLoginContainer = () => {
+  const [data, setData] = useState({ color: 0, size: 0, quality: 1 });
+
   return (
     <div className="shoppingcart--container">
       <div className="shoppingcart--title">Shopping Cart</div>
@@ -19,11 +21,11 @@ const ShoppingCartWithoutLoginContainer = () => {
 
       {/* If Shopping Cart Is NOT empty , render both ShoppingCartItems and ShoppingCartCheckout	 */}
       <div className="shoppingcart-items-container">
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
-        <ShoppingCartItem />
+        <ShoppingCartItem data={data} setData={setData} />
+        <ShoppingCartItem data={data} setData={setData} />
+        <ShoppingCartItem data={data} setData={setData} />
+        <ShoppingCartItem data={data} setData={setData} />
+        <ShoppingCartItem data={data} setData={setData} />
       </div>
 
       <ShoppingCartCheckout />
