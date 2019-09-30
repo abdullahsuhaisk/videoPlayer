@@ -68,7 +68,7 @@ import ProductDetailAddToCard from '../../features/Product/ProductDetails/Compon
 
 // template3
 import ProductDetailVariant from '../../features/Product/ProductDetails/Components/Template3/ProductDetailVariants';
-import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPrice';
+import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPriceTemplate3';
 import ProductDetailQuantity from '../../features/Product/ProductDetails/Components/Template3/ProductDetailQuantity';
 import ProductDetailAccordion from '../../features/Product/ProductDetails/Components/Template3/ProductDetailAccordion';
 // import ShoppingCartWithoutLoginContainer from '../../features/ShoppingCart/ShoppingCartWithoutLoginContainer';

@@ -2,7 +2,7 @@ import React from 'react';
 import ProductDetailImage from './Components/ProductDetailImage';
 import VerticalScroll from '../../../components/VerticalScroll';
 import ProductDetaiHeader from './Components/ProductDetaiHeader';
-import ProductDetailPriceNew from './Components/Template3/ProductDetailPrice';
+import ProductDetailPriceTemplate3 from './Components/Template3/ProductDetailPriceTemplate3';
 import ProductDetailVariant from './Components/Template3/ProductDetailVariants';
 import ProductDetailQuantity from './Components/Template3/ProductDetailQuantity';
 import ProductDetailAddToCard from './Components/ProductDetailAddToCard';
@@ -14,16 +14,23 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   if (product) {
     const images = product.images && product.images;
     const company = product.company && product.company;
+    const { currentPrice, price, discount } = product;
+    const productId = product.id;
+    const description = product.description && product.description;
     return (
       <>
         <ProductDetailImage images={images} />
         <VerticalScroll>
           <ProductDetaiHeader productTitle={product.name} company={company} />
-          <ProductDetailPriceNew />
+          <ProductDetailPriceTemplate3
+            currentPrice={currentPrice}
+            price={price}
+            discount={discount}
+          />
           <ProductDetailVariant />
           <ProductDetailQuantity />
-          <ProductDetailAddToCard />
-          <ProductDetailAccordion />
+          <ProductDetailAddToCard productId={productId} client={client} />
+          <ProductDetailAccordion description={description} />
           <ProductDetailAccordion title="Shipping And Returns" />
           <ProductDetailAccordion title="Care" />
         </VerticalScroll>
