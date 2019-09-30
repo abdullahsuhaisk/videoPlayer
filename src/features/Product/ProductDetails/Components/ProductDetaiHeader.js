@@ -1,16 +1,14 @@
 import React from 'react';
-import ProductQueryHoc from '../../../../components/HOCS/Grapqhl/ProductQueryHoc';
-import { GET_PRODUCT } from '../../../../Queries/Products/ProductQueries';
 
-const ProductDetaiHeader = ({ data }) => {
-  const { product } = data;
-
+const ProductDetaiHeader = ({ productTitle, company }) => {
   return (
     <div className="ProductDetail--information--title">
-      <h2 className="ProductDetail--company--title--h2">tommy hilfiger</h2>
-      <h2 className="ProductDetail--information--title--h2">{product.name}</h2>
+      <h2 className="ProductDetail--company--title--h2">
+        {company && company.name}
+      </h2>
+      <h2 className="ProductDetail--information--title--h2">{productTitle}</h2>
     </div>
   );
 };
 
-export default ProductQueryHoc(ProductDetaiHeader, GET_PRODUCT);
+export default ProductDetaiHeader;

@@ -52,21 +52,20 @@ const Screen = ({ playingState, videoPlayer }) => {
     // addCustomCss('/css/template3mobile.css');
   }, []);
 
-  useEffect(() => {
-    console.log('Template has been changed');
-    if (templateType === 'Mobile') {
-      LoadJsons(template3).then((res) => {
-        setTemplate(res);
-      });
-      addCustomCss('/css/template3.css');
-      // addCustomCss('/css/template3mobile.css');
-    } else if (templateType === 'Normal') {
-      LoadJsons(template2).then((res) => {
-        setTemplate(res);
-      });
-      addCustomCss('/css/overlay.css');
-    }
-  }, [templateType]);
+  // useEffect(() => {
+  //   console.log('Template has been changed');
+  //   if (templateType === 'Mobile') {
+  //     LoadJsons(template3).then((res) => {
+  //       setTemplate(res);
+  //     });
+  //     addCustomCss('/css/template3.css');
+  //   } else if (templateType === 'Normal') {
+  //     LoadJsons(template2).then((res) => {
+  //       setTemplate(res);
+  //     });
+  //     addCustomCss('/css/overlay.css');
+  //   }
+  // }, [templateType]);
 
   return (
     <Query query={GET_LAYOUT}>

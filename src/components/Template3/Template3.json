@@ -23,45 +23,8 @@
             "props": {
               "children": [
                 {
-                  "type": "ProductDetailImage",
+                  "type": "ProductDetailWithoutAuthScreen",
                   "props": {}
-                },
-                {
-                  "type": "VerticalScroll",
-                  "props": {
-                    "children": [
-                      {
-                        "type": "ProductDetaiHeader",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailPriceNew",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailVariant",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailQuantity",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailAddToCard",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailAccordion",
-                        "props": {}
-                      },
-                      {
-                        "type": "ProductDetailAccordion",
-                        "props": {
-                          "title": "Care"
-                        }
-                      }
-                    ]
-                  }
                 }
               ]
             }
