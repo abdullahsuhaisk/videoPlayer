@@ -9,9 +9,11 @@ const ShoppingCartItem = () => {
         <img src={SampleImage} alt="" />
       </div>
       <div className="item-info">
-        <div className="item-name">Gigi Hadid Flag Print One-Piece</div>
-        <div className="item-variant">Color: Navy Blazer</div>
-        <div className="item-variant">Size: S</div>
+        <div>
+          <div className="item-name">Gigi Hadid Flag Print One-Piece</div>
+          <div className="item-variant">Color: Navy Blazer</div>
+          <div className="item-variant">Size: S</div>
+        </div>
         <div className="item-quanity-price">
           <div className="item--quantity">
             <ProductDetailQuantity />

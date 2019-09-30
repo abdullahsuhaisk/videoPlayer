@@ -59,6 +59,7 @@ const Screen = ({ playingState, videoPlayer }) => {
         setTemplate(res);
       });
       addCustomCss('/css/template3.css');
+      // addCustomCss('/css/template3mobile.css');
     } else if (templateType === 'Normal') {
       LoadJsons(template2).then((res) => {
         setTemplate(res);
@@ -70,8 +71,8 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width < 1100) seTtemplateType('Mobile');
-        if (layout.width > 1100) seTtemplateType('Normal');
+        if (layout.width > 1100) seTtemplateType('Mobile');
+        if (layout.width < 1100) seTtemplateType('Normal');
 
         return (
           <>

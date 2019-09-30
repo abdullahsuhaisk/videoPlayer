@@ -77,7 +77,7 @@
    left: 0;
    right: 0;
    content:"";
-   height: 456px;
+   height: 450px;
    width: 300%;
    background-size: contain !important;
    background-position: center !important;
@@ -120,7 +120,7 @@
   position: absolute;
   top: 64px;
   width: 300px;
-  height: 456px;
+  height: 450px;
   z-index: 3;
   border: 0;
   background-color: transparent;
@@ -162,7 +162,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 456px;
+  height: 450px;
   width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -175,7 +175,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 456px;
+  height: 450px;
   width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -367,7 +367,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 456px;
+  height: 450px;
   width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -557,7 +557,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 456px;
+  height: 450px;
   width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -651,7 +651,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 456px;
+  height: 450px;
   width: 720px;
   box-shadow: -10px 0 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
@@ -762,7 +762,7 @@
   top: 0;
   left: 0;
   width: 812px;
-  height: 456px;
+  height: 450px;
   /* background-image: url('/images/bg.png'); */
   background-position: center center;
   background-repeat: no-repeat;
@@ -773,7 +773,7 @@
   top: 0px;
   left: 0px;
   width: 812px;
-  height: 456px;
+  height: 450px;
   opacity: 0.5;
   /* -webkit-backdrop-filter: blur(10px);
    backdrop-filter: blur(10px); */
@@ -785,7 +785,7 @@
   top: 0px;
   left: 0px;
   width: 812px;
-  height: 456px;
+  height: 450px;
   opacity: 0.75;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #0b2443;
@@ -2243,7 +2243,7 @@
   left: 0px;
   display: flex;
   width: fit-content;
-  height: 456px;
+  height: 450px;
   width: 100%;
   margin : auto;
   margin-top: 2px;
@@ -2253,7 +2253,7 @@
   overflow: hidden;
 }
 .Template1 .ProductDetail .scroll {
-  height: 456px;
+  height: 450px;
   width: 406px;
   padding: 30px;
 }
@@ -2289,7 +2289,7 @@
 }
 .Template1 .ProductDetail--imagesSlider {
   width: 406px;
-  height: 375px;
+  height: 450px;
   position: relative;
   overflow: hidden;
 }
@@ -2298,7 +2298,7 @@
 }
 .Template1 .ProductDetail--imagesSlider--figure {
   width: 100%;
-  height: 375px;
+  height: 450px;
   display: flex;
   background-position: center;
   background-repeat: no-repeat;
@@ -2364,16 +2364,15 @@
   margin-bottom: 20px;
 }
 .Template1 .ProductDetail--company--title--h2 {
-  font-family: futura-pt, sans-serif;
+  font-family: futura-pt-bold, sans-serif;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.33;
   letter-spacing: 1.8px;
   color: #f30640;
   display: block;
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
@@ -2395,6 +2394,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   display: block;
+  text-transform: capitalize;
 }
 .Template1 .ProductDetail--information--title--heartIcon {
   width: 30px;
@@ -2931,7 +2931,7 @@
 }
 .Template1 .VideoPlay {
   /* width: 812px;
-   height: 456px; */
+   height: 450px; */
    position: absolute;
    top:50%;
    left: 50%;
@@ -3017,7 +3017,7 @@
 .Template1 .VideoPlayStory {
   position: relative;
   width: 812px;
-  height: 456px;
+  height: 450px;
 }
 .Template1 .VideoPlayStory--thumbnail {
   position: absolute;
@@ -3991,14 +3991,17 @@
 .Template1 .scroll::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
+  display: none;
 }
 .Template1 .scroll::-webkit-scrollbar-track {
   background-color: transparent;
+  display: none;
 }
 .Template1 .scroll::-webkit-scrollbar-thumb {
   border-radius: 16px;
   border-radius: 100px;
   background-color: rgba(11, 36, 67, 0.27);
+  display: none;
 }
 .Template1 .scroll::-webkit-scrollbar-button {
   display: none;
@@ -4018,7 +4021,7 @@
 .Template1 .Error {
   position: relative;
   width: 812px;
-  height: 456px;
+  height: 450px;
   background: url(/images/404_bg.svg) center / contain no-repeat;
   overflow: hidden;
 }
@@ -4266,7 +4269,7 @@
     1271px 376px #fff, 43px 1654px #fff, 77px 803px #fff, 1399px 197px #fff,
     591px 1743px #fff, 652px 1925px #fff, 107px 1939px #fff, 1110px 1708px #fff,
     797px 1480px #fff, 1516px 684px #fff, 559px 1733px #fff, 1265px 718px #fff,
-    1263px 54px #fff, 693px 113px #fff, 1456px 1459px #fff, 1527px 1324px #fff;
+    1263px 54px #fff, 693px 113px #fff, 1450px 1459px #fff, 1527px 1324px #fff;
   animation: animStar 50s linear infinite;
 }
 .Template1 #stars:after {
@@ -4450,7 +4453,7 @@
     1271px 376px #fff, 43px 1654px #fff, 77px 803px #fff, 1399px 197px #fff,
     591px 1743px #fff, 652px 1925px #fff, 107px 1939px #fff, 1110px 1708px #fff,
     797px 1480px #fff, 1516px 684px #fff, 559px 1733px #fff, 1265px 718px #fff,
-    1263px 54px #fff, 693px 113px #fff, 1456px 1459px #fff, 1527px 1324px #fff;
+    1263px 54px #fff, 693px 113px #fff, 1450px 1459px #fff, 1527px 1324px #fff;
 }
 .Template1 #stars2 {
   width: 2px;
@@ -4595,7 +4598,7 @@
     458px 911px #fff, 1387px 806px #fff, 523px 81px #fff, 1243px 341px #fff,
     906px 1730px #fff, 1629px 474px #fff, 1690px 419px #fff, 847px 808px #fff,
     528px 1627px #fff, 480px 718px #fff, 537px 593px #fff, 1432px 1333px #fff,
-    200px 1228px #fff, 1800px 1456px #fff, 725px 1231px #fff, 1749px 1432px #fff,
+    200px 1228px #fff, 1800px 1450px #fff, 725px 1231px #fff, 1749px 1432px #fff,
     1948px 303px #fff, 1889px 252px #fff, 1114px 1400px #fff, 759px 646px #fff,
     222px 571px #fff, 1908px 1401px #fff, 1856px 1204px #fff, 338px 1645px #fff,
     1528px 1050px #fff;
@@ -4627,7 +4630,7 @@
     458px 911px #fff, 1387px 806px #fff, 523px 81px #fff, 1243px 341px #fff,
     906px 1730px #fff, 1629px 474px #fff, 1690px 419px #fff, 847px 808px #fff,
     528px 1627px #fff, 480px 718px #fff, 537px 593px #fff, 1432px 1333px #fff,
-    200px 1228px #fff, 1800px 1456px #fff, 725px 1231px #fff, 1749px 1432px #fff,
+    200px 1228px #fff, 1800px 1450px #fff, 725px 1231px #fff, 1749px 1432px #fff,
     1948px 303px #fff, 1889px 252px #fff, 1114px 1400px #fff, 759px 646px #fff,
     222px 571px #fff, 1908px 1401px #fff, 1856px 1204px #fff, 338px 1645px #fff,
     1528px 1050px #fff;
@@ -4954,6 +4957,7 @@
 }
 
 .productdetail--price-wrapper .previous-price {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
@@ -4967,6 +4971,7 @@
 }
 
 .productdetail--price-wrapper .current-price {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 24px;
   font-weight: bold;
   font-style: normal;
@@ -4984,6 +4989,7 @@
 }
 
  .productdetail--colors-wrapper .productdetail--label {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
@@ -5052,8 +5058,9 @@
 }
 
  .productdetail--sizes-wrapper .productdetail--label {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.31;
@@ -5086,6 +5093,7 @@
   text-align: center;
   color: #0b2443;
   cursor: pointer;
+  font-family: futura-pt-bold, sans-serif;
 }
 
  .productdetail--sizes-wrapper .productdetail--sizes-options .unselected  {
@@ -5107,6 +5115,7 @@
   text-align: center;
   color: #929292;
   cursor: pointer;
+  font-family: futura-pt-bold, sans-serif;
 }
 
 .productdetail--quantity-wrapper {
@@ -5116,8 +5125,9 @@
 }
 
 .productdetail--quantity-wrapper .productdetail--label {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.31;
@@ -5148,9 +5158,10 @@
 }
 
 .productdetail--quantity-wrapper .productdetail--quantity-options .value  {
+  font-family: futura-pt, sans-serif;
   margin-right: 35px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.3;
@@ -5228,7 +5239,7 @@
 }
 
 .accordion--container .accordion--header .title {
-  font-family: futura-pt, sans-serif;
+  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
@@ -5263,7 +5274,7 @@
 .shoppingcart--container {
   padding: 30px;
   width: 812px;
-  height: 456px;
+  height: 450px;
   background: white;
   position: absolute;
   top: 0;
@@ -5271,10 +5282,11 @@
   z-index: 1;
   font-family: futura-pt, sans-serif;
   pointer-events: auto;
+  overflow: scroll;
 }
 
 .shoppingcart--container .shoppingcart--title {
-  font-family: futura-pt-demi, sans-serif;
+  font-family: futura-pt-bold, sans-serif;
   font-size: 24px;
   font-weight: bold;
   font-style: normal;
@@ -5290,25 +5302,24 @@
   font-family: futura-pt-demi, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 630px;
-  overflow-y: scroll;
+  height: auto;
 }
-.shoppingcart--container .shoppingcart-items-container::-webkit-scrollbar {
+.shoppingcart--container::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
   display: none;
 }
-.shoppingcart--container .shoppingcart-items-container::-webkit-scrollbar-track {
+.shoppingcart--container::-webkit-scrollbar-track {
   background-color: transparent;
   display: none;
 }
-.shoppingcart--container .shoppingcart-items-container::-webkit-scrollbar-thumb {
+.shoppingcart--container::-webkit-scrollbar-thumb {
   border-radius: 16px;
   border-radius: 100px;
   background-color: rgba(11, 36, 67, 0.27);
   display: none;
 }
-.shoppingcart--container .shoppingcart-items-container::-webkit-scrollbar-button {
+.shoppingcart--container::-webkit-scrollbar-button {
   display: none;
 }
 
@@ -5372,10 +5383,8 @@
 
 .shoppingcart--container .shoppingcart--checkout-container {
   font-family: futura-pt, sans-serif;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 500px;
+  position: relative;
+  width: 752px;
   height: 318px;
   padding: 20px 30px 30px 30px;
   background-color: #fafafa;
@@ -5399,6 +5408,8 @@
   letter-spacing: 0.38px;
   text-align: left;
   color: #0b2443;
+  font-family: futura-pt-demi, sans-serif;
+
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price {
@@ -5410,6 +5421,7 @@
   letter-spacing: 0.38px;
   text-align: left;
   color: #0b2443;
+  font-family: futura-pt-bold, sans-serif;
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red {
@@ -5421,6 +5433,7 @@
   letter-spacing: 0.38px;
   text-align: left;
   color: #f30640;
+  font-family: futura-pt-bold, sans-serif;
 }
 
 .checkout--seperator {
@@ -5438,9 +5451,9 @@
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title {
-  font-family: futura-pt-demi, sans-serif;
+  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.3;
@@ -5450,6 +5463,7 @@
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price {
+  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: bold;
   font-style: normal;
@@ -5499,6 +5513,7 @@
   width: 100%;
   height: 160px;
   padding-bottom: 35px;
+  margin-bottom: 0px;
   border-bottom: 1px solid transparent;
 }
 
@@ -5509,13 +5524,16 @@
 }
 
 .shoppcart--item-container .item-image img{
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
 }
 
 .shoppcart--item-container .item-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 10px;
   font-family: futura-pt, sans-serif;
 }
 
@@ -5530,7 +5548,7 @@
 }
 
 .shoppcart--item-container .item-info .item-name {
-  font-family: futura-pt-demi, sans-serif;
+  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: 600;
   font-style: normal;
@@ -5541,11 +5559,11 @@
   color: #0b2443;
   margin-bottom: 10px;
   min-height: 26px;
-  max-height: 26px;
+  max-height: 52px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -5559,10 +5577,13 @@
   text-align: left;
   color: #666666;
   margin-bottom: 10px;
+  font-family: futura-pt, sans-serif;
 }
 
 .shoppcart--item-container .item-info .item-quanity-price {
   display: flex;
+  justify-content: space-between;
+  width: 40%;
   height: 30px;
 }
 
@@ -5571,6 +5592,7 @@
 }
 
 .shoppcart--item-container .item-info .item--price {
+  font-family: futura-pt-bold, sans-serif;
   margin-left: auto;
   margin-bottom: auto; 
   font-size: 20px;
@@ -5579,4 +5601,8 @@
   font-stretch: normal;
   letter-spacing: 0.48px;
   color: #14be82
+}
+
+.flickity-button {
+  display: none;
 }
