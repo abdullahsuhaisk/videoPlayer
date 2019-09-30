@@ -19,6 +19,7 @@ const ProductDetailVariant = () => {
             return data.color === index ? (
               <div className="selected">
                 <img src={item} alt="color" />
+                <p className="name">color name</p>
               </div>
             ) : (
               <div

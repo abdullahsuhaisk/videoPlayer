@@ -49,6 +49,7 @@ const Screen = ({ playingState, videoPlayer }) => {
   useEffect(() => {
     // addCustomCss('/css/overlay.css');
     addCustomCss('/css/template3.css');
+    // addCustomCss('/css/template3mobile.css');
   }, []);
 
   useEffect(() => {
