@@ -15,7 +15,7 @@
     "apollo-link-http": "^1.5.15",
     "apollo-link-retry": "^2.2.15",
     "axios": "^0.18.0",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "8.0.5",
     "css-element-queries": "^1.1.1",
     "firebase": "^5.9.3",
     "flickity-imagesloaded": "^2.0.0",
