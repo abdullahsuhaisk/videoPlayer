@@ -13,11 +13,12 @@ import { GET_PRODUCT } from '../../../Queries/Products/ProductQueries';
 const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   if (product) {
     const images = product.images && product.images;
+    const company = product.company && product.company;
     return (
       <>
         <ProductDetailImage images={images} />
         <VerticalScroll>
-          <ProductDetaiHeader />
+          <ProductDetaiHeader productTitle={product.name} company={company} />
           <ProductDetailPriceNew />
           <ProductDetailVariant />
           <ProductDetailQuantity />

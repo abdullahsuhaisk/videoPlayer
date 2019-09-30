@@ -1,7 +1,5 @@
 import React from 'react';
 import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
-import ProductQueryHoc from '../../../../components/HOCS/Grapqhl/ProductQueryHoc';
-import { GET_PRODUCT } from '../../../../Queries/Products/ProductQueries';
 
 const ProductDetailImage = ({ images }) => {
   const flickityOptions = {
