@@ -15,7 +15,7 @@ const HotspotScreen = ({ data }) => {
   //   dynamicHotSpots: [],
   //   fixedHotSpots: []
   // });
-  console.log(hotSpots);
+  // console.log(hotSpots);
 
   const staticHotSpots = [];
   const dynamicHotSpots = [];
@@ -31,9 +31,9 @@ const HotspotScreen = ({ data }) => {
         ? fixedHotSpots.push(hotspot)
         : null
     );
-    console.log(staticHotSpots);
-    console.log(dynamicHotSpots);
-    console.log(fixedHotSpots);
+    // console.log(staticHotSpots);
+    // console.log(dynamicHotSpots);
+    // console.log(fixedHotSpots);
   }, []);
 
   const selectionHotSpotsType = (type) => {

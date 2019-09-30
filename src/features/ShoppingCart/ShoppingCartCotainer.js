@@ -13,7 +13,7 @@ const ShoppingCartCotainer = ({ withLogin, data, client }) => {
   if (boolean === true) {
     return <ShoppingCartScreen />;
   }
-  console.log('Something in worong on ShoppingCartCotainer');
+  // console.log('Something in worong on ShoppingCartCotainer');
   return null;
   // return <ShoppingCartWithoutLoginContainer />;
 };
