@@ -18,13 +18,15 @@ const ControlBarShoppingIcon = ({ client }) => {
         },
         isLoginFormShowing: false,
         isProfileOpen: false,
-        whichTabItemIsRendering: 'ShoppingCartScreen'
+        whichTabItemIsRendering: 'ShoppingCartScreen',
+        isShoppingCartShowing: true
       }
     });
     videoPlayer.pause();
   };
   return (
     <div>
+      <div className="addtocart-counter">2</div>
       <button
         className="cartBtn"
         onClick={() => {

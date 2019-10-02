@@ -20,19 +20,21 @@ const ScreenReadyWrapper = ({ children }) => {
         return (
           <Wrapper>
             <div className="VideoPlay">
-              <div
-                className="VideoPlay--playBtn"
-                onClick={() => {
-                  client.writeData({
-                    data: {
-                      player: {
-                        __typename: 'Player',
-                        playingState: 'PLAY'
+              <div className="VideoPlay--playBtn-shadow">
+                <div
+                  className="VideoPlay--playBtn"
+                  onClick={() => {
+                    client.writeData({
+                      data: {
+                        player: {
+                          __typename: 'Player',
+                          playingState: 'PLAY'
+                        }
                       }
-                    }
-                  });
-                  videoPlayer.play();
-                }}></div>
+                    });
+                    videoPlayer.play();
+                  }}></div>
+              </div>
             </div>
             {children}
           </Wrapper>

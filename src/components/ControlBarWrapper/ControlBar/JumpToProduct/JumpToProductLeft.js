@@ -78,7 +78,7 @@ const JumpToProductLeft = ({ client, videoPlayer }) => {
   };
   return (
     <button
-      className="jumpToProductBtn"
+      className="jumpToProductBtnLeft"
       onClick={() => jumpToProductHandlerLeft()}></button>
   );
 };

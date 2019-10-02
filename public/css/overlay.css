@@ -2346,6 +2346,9 @@
   align-items: center;
   margin-top: 38px;
 }
+.Template1 .ProductDetail--company--title--h2 {
+  display: none;
+}
 .Template1 .ProductDetail--information--title--h2 {
   font-size: 20px;
   color: #0e273b;
@@ -2910,7 +2913,7 @@
   opacity: 0.5;
   background-color: #434343;
 }
-.Template1 .VideoPlay--playBtn::before {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::before {
   content: '';
   width: 133.3px;
   height: 133.3px;
@@ -2924,10 +2927,10 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.Template1 .VideoPlay--playBtn:hover::before {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn:hover::before {
   background-color: rgba(0, 0, 0, 0.6);
 }
-.Template1 .VideoPlay--playBtn::after {
+.Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::after {
   content: '';
   width: 65px;
   height: 75px;
@@ -3548,8 +3551,9 @@
   cursor: pointer;
 }
 .Template1 .volumControls .soundIcon {
-  width: 19px;
-  height: 17px;
+  width: 24px;
+  height: 24px;
+  margin-right: 20px;
   background: url(/images/sound.svg) center / contain no-repeat;
 }
 .Template1 .volumControls .muted {
@@ -3767,7 +3771,17 @@
 .Template1 .playPauseBtn:focus {
   outline: none;
 }
-.Template1 .jumpToProductBtn {
+.Template1 .jumpToProductBtnLeft {
+  width: 24px;
+  height: 24px;
+  background: url(/images/jump-to-product.svg) center / contain no-repeat;
+  cursor: pointer;
+  margin-right: 30px;
+  border: none;
+  transform: rotate(180deg);
+}
+
+.Template1 .jumpToProductBtnRight, .Template1 .jumpToProductBtnleft {
   width: 24px;
   height: 24px;
   background: url(/images/jump-to-product.svg) center / contain no-repeat;
@@ -3775,7 +3789,7 @@
   margin-right: 30px;
   border: none;
 }
-.Template1 .jumpToProductBtn:focus {
+.Template1 .jumpToProductBtnRight:focus, .Template1 .jumpToProductBtnLeft:focus {
   outline: none;
 }
 .Template1 .fullScreenBtn {
@@ -3787,6 +3801,14 @@
 }
 .Template1 .fullScreenBtn:focus {
   outline: none;
+}
+.Template1 .fullScreenBtn:focus {
+  outline: none;
+}
+.Template1 .addtocart-counter {
+
+  display: none;
+  
 }
 .Template1 .cartBtn {
   width: 24px;

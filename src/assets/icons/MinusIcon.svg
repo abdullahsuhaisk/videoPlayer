@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+    <defs>
+        <style>
+            .cls-1874654{fill:{props.fill}}.cls-1874654,.cls-3324164{stroke:{props.fill}}.cls-26546+4{clip-path:url(#clip-path)}.cls-3324164{fill:none;stroke-linecap:square;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2917" d="M0 0h10v10H0z" class="cls-1874654" data-name="Rectangle 2917" transform="translate(.094)"/>
+        </clipPath>
+    </defs>
+    <g id="Minus" class="cls-26546+4" transform="translate(-.094)">
+        <g id="e-delete" transform="translate(.717 5)">
+            <path id="Line_361" d="M9.091 0H0" class="cls-3324164" data-name="Line 361"/>
+        </g>
+    </g>
+</svg>

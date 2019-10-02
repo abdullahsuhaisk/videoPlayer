@@ -1,0 +1,124 @@
+{
+  "widgets": [
+    {
+      "type": "ScreenPauseWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ShoppingCartCotainer",
+            "props": {
+              "withLogin": "false"
+            }
+          },
+          {
+            "type": "ScreenPauseOverlayComponent",
+            "props": {}
+          },
+          {
+            "type": "HotSpotsPointerContainer",
+            "props": {}
+          },
+          {
+            "type": "ProductDetailWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ProductDetailWithoutAuthScreen",
+                  "props": {}
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenReadyWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "Header",
+            "props": {
+              "isCampaingName": "false"
+            }
+          },
+          {
+            "type": "ScreenReadyComponent",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ScreenPlayingWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "HotspotContainer",
+            "props": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "ControlBarWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ControlBarLeftWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "PlayPause",
+                  "props": ""
+                },
+                {
+                  "type": "JumpToProductWrapper",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "JumpToProductLeft",
+                        "props": ""
+                      },
+                      {
+                        "type": "JumpToProductRight",
+                        "props": ""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "TimeDisplay",
+                  "props": ""
+                }
+              ]
+            }
+          },
+          {
+            "type": "ControlBarRightWrapper",
+            "props": {
+              "children": [
+                {
+                  "type": "ControlBarShoppingIcon",
+                  "props": ""
+                },
+                {
+                  "type": "VolumControl",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarSettings",
+                  "props": ""
+                },
+                {
+                  "type": "ControlBarFullScreen",
+                  "props": ""
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

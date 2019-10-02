@@ -1,6 +1,5 @@
 import React from 'react';
 import 'flickity-imagesloaded';
-
 import FlickityProductCard from '../../../components/Flickity/FlickityProductCard';
 import { GET_PRODUCTS } from '../../../Queries/Products/ProductQueries';
 

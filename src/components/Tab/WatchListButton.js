@@ -7,9 +7,9 @@ import {
   GET_CONSUMER_WATCH_LISTID,
   ADD_WATCH_LIST,
   DELETE_WATCHED_LIST
-} from '../../../features/Watchlist/WatchListQueries';
-import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
-import FavoriteLottie from '../../Lottie/Favorites/FavoriteLottie';
+} from '../../features/Watchlist/WatchListQueries';
+import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
+import FavoriteLottie from '../Lottie/Favorites/FavoriteLottie';
 
 const GET_NUMBER_OF_VIDEOTHINGS = gql`
   query prodLinkIsLikedByCustomer($prodLinkUniqueId: String) {

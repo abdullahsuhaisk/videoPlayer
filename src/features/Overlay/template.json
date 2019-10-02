@@ -91,7 +91,7 @@
       "props": {
         "children": [
           {
-            "type": "HotspotScreen",
+            "type": "HotspotContainer",
             "props": {}
           }
         ]

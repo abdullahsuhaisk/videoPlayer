@@ -37,28 +37,52 @@ import ControlBarFullScreen from '../ControlBarWrapper/ControlBar/FullScreen/Con
 
 // Screen Section Screen has all of logic and own State //
 // import ProductListScreen from '../../features/Product/ProductList/ProductListScreen';
-import HotspotScreen from '../../features/Hotspot/HotspotScreen';
+import HotspotContainer from '../../features/Hotspot/HotspotContainer';
 import AuthScreen from '../../features/Auth/AuthScreen';
 import ProductDetailScreen from '../../features/Product/ProductDetails/ProductDetailsScreen';
 
 // Screen Section //
 
 // Tab Component //
-import Tab from '../Template/Tab/Tab';
-import TabWrapper from '../Template/Tab/TabWrapper';
-import Header from '../Template/Header';
+import Tab from '../Tab/Tab';
+import TabWrapper from '../Tab/TabWrapper';
+import Header from '../Header/Header';
 // Tab Component //
 
 import ProductListCard from '../ProductListWrapper/ProductListCard';
-
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
+import ControlBarFixed from '../Template3/ControlbarFixed';
+import HotSpotsPointerContainer from '../HotspotPointer/HotSpotsPointerContainer';
+import ProductDetailWrapper from '../../features/Product/ProductDetails/ProductDetailWrapper';
+import ProductDetailImage from '../../features/Product/ProductDetails/Components/ProductDetailImage';
+import VerticalScroll from '../VerticalScroll';
+import ProductDetaiHeader from '../../features/Product/ProductDetails/Components/ProductDetaiHeader';
+import ProductDetailQualities from '../../features/Product/ProductDetails/Components/ProductDetailQualities';
+import ProductDetailRaiting from '../../features/Product/ProductDetails/Components/ProductDetailRaiting';
+import ProductDetailContent from '../../features/Product/ProductDetails/Components/ProductDetailContent';
+import ProductDetailPrice from '../../features/Product/ProductDetails/Components/ProductDetailPrice';
+import ProductDetailAddToCard from '../../features/Product/ProductDetails/Components/ProductDetailAddToCard';
+
+// template3
+import ProductDetailVariant from '../../features/Product/ProductDetails/Components/Template3/ProductDetailVariants';
+import ProductDetailPriceNew from '../../features/Product/ProductDetails/Components/Template3/ProductDetailPriceTemplate3';
+import ProductDetailQuantity from '../../features/Product/ProductDetails/Components/Template3/ProductDetailQuantity';
+import ProductDetailAccordion from '../../features/Product/ProductDetails/Components/Template3/ProductDetailAccordion';
+// import ShoppingCartWithoutLoginContainer from '../../features/ShoppingCart/ShoppingCartWithoutLoginContainer';
+import ShoppingCartCotainer from '../../features/ShoppingCart/ShoppingCartCotainer';
+import ProductDetailWithoutAuthScreen from '../../features/Product/ProductDetails/ProductDetailWithoutAuthScreen';
+
+//
+
+//
 
 const widgetList = {
   Empty,
   Title,
+  VerticalScroll,
   ProfileButton,
   Login,
   Register,
@@ -68,7 +92,7 @@ const widgetList = {
   ControlBarWrapper,
   ScreenPauseWrapper,
   AuthScreen,
-  HotspotScreen,
+  HotspotContainer,
   ProductDetailScreen,
   ControlBarScreen,
   PlayPause,
@@ -92,7 +116,23 @@ const widgetList = {
   ScreenPauseOverlayComponent,
   ScreenReadyComponent,
   ProfileScreen,
-  AddToWishListScreen
+  AddToWishListScreen,
+  ControlBarFixed,
+  HotSpotsPointerContainer,
+  ProductDetailWrapper,
+  ProductDetailImage,
+  ProductDetaiHeader,
+  ProductDetailQualities,
+  ProductDetailRaiting,
+  ProductDetailContent,
+  ProductDetailPrice,
+  ProductDetailAddToCard,
+  ProductDetailVariant,
+  ProductDetailPriceNew,
+  ProductDetailQuantity,
+  ProductDetailAccordion,
+  ShoppingCartCotainer,
+  ProductDetailWithoutAuthScreen
 };
 
 const WidgetsRenderer = (props) => {

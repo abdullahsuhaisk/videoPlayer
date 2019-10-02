@@ -209,6 +209,7 @@ const setInitialCache = () => {
         left: 0
       }
     },
+    isShoppingCartShowing: false,
     whichTabItemIsRendering: 'productInThisScene',
     isLoginFormShowing: false,
     isRegisterFormShowing: false,
@@ -228,7 +229,8 @@ const setInitialCache = () => {
         totalProductCount: 0,
         totalPrices: []
       }
-    }
+    },
+    noAuthCart: []
   };
   cache.writeData({ data });
 };

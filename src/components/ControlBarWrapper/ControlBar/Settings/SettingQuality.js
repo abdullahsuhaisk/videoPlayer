@@ -55,7 +55,12 @@ const SettingQuality = ({
   return (
     <div
       className="Settings spacing"
-      style={{ position: 'absolute', top: -385, right: -73 }}>
+      style={{
+        position: 'absolute',
+        top: -335,
+        right: -73,
+        backgroundColor: 'rgba(0, 1, 16, 0.8)'
+      }}>
       <div className="Settings--info">
         <div
           className="Settings--info--head"
