@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { BASE_WIDTH, BASE_HEIGHT } from '../../common/constants';
 
 const GET_LAYOUT = gql`
   query getLayoutForScaler {
@@ -18,9 +17,6 @@ const GET_LAYOUT = gql`
     }
   }
 `;
-
-// const baseWidth = BASE_WIDTH;
-// const baseHeight = BASE_HEIGHT;
 
 let baseWidth;
 let baseHeight;
