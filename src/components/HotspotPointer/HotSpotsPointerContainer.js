@@ -10,7 +10,7 @@ import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 const HotSpotsPointerContainer = ({ data, client }) => {
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
-      data: { productIdInDetails: productId }
+      data: { productIdInDetails: productId, isShoppingCartShowing: false }
     });
   }, []);
   // console.log(data);
