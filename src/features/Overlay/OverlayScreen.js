@@ -47,31 +47,31 @@ const Screen = ({ playingState, videoPlayer }) => {
     });
   }, []);
   useEffect(() => {
-    // addCustomCss('/css/overlay.css');
-    addCustomCss('/css/template3.css');
+    addCustomCss('/css/overlay.css');
+    // addCustomCss('/css/template3.css');
     // addCustomCss('/css/template3mobile.css');
   }, []);
 
-  // useEffect(() => {
-  //   console.log('Template has been changed');
-  //   if (templateType === 'Mobile') {
-  //     LoadJsons(template3).then((res) => {
-  //       setTemplate(res);
-  //     });
-  //     addCustomCss('/css/template3.css');
-  //   } else if (templateType === 'Normal') {
-  //     LoadJsons(template2).then((res) => {
-  //       setTemplate(res);
-  //     });
-  //     addCustomCss('/css/overlay.css');
-  //   }
-  // }, [templateType]);
+  useEffect(() => {
+    console.log('Template has been changed');
+    if (templateType === 'Mobile') {
+      LoadJsons(template3).then((res) => {
+        setTemplate(res);
+      });
+      addCustomCss('/css/template3.css');
+    } else if (templateType === 'Normal') {
+      LoadJsons(template2).then((res) => {
+        setTemplate(res);
+      });
+      addCustomCss('/css/overlay.css');
+    }
+  }, [templateType]);
 
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width > 1100) seTtemplateType('Mobile');
-        if (layout.width < 1100) seTtemplateType('Normal');
+        if (layout.width < 1100) seTtemplateType('Mobile');
+        if (layout.width > 1100) seTtemplateType('Normal');
 
         return (
           <>

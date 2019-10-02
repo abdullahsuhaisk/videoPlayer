@@ -299,18 +299,17 @@ const ProductDetail = ({ productId, data, client }) => {
                 </p>
                 <div className="ProductDetail--information--price--content">
                   <p className="ProductDetail--information--price--beforeDiscountvalue">
-                    {`${product.currency.symbol}${product.price.toFixed(2)}`}
+                    {`${product.currency}${product.price.toFixed(2)}`}
                   </p>
                   <p className="ProductDetail--information--price--value">
-                    {`${product.currency.symbol}${product.currentPrice}`}
+                    {`${product.currency}${product.currentPrice}`}
                   </p>
                 </div>
               </div>
             ) : (
               <div className="ProductDetail--information--price">
                 <p className="ProductDetail--information--price--value">
-                  {`${product.currency &&
-                    product.currency.symbol}${product.currency &&
+                  {`${product.currency && product.currency}${product.currency &&
                     product.currentPrice}`}
                 </p>
               </div>

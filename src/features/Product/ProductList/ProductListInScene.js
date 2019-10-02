@@ -17,7 +17,8 @@ const GET_PLAYER = gql`
 
 // TODO: change prodLinkId
 const ProductListInScene = ({ data }) => {
-  const hotSpots = data.prodLinkhotSpots && data.prodLinkhotSpots.hotSpots;
+  const prodLink = data && data.prodLink;
+  const hotSpots = prodLink && prodLink.hotSpots;
   return (
     <Query query={GET_PLAYER}>
       {({
