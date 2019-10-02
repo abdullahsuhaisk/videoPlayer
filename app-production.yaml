@@ -1,12 +1,21 @@
 service: default
-env: flex
-runtime: custom
-default_expiration: "1s"
+runtime: python27
+api_version: 1
+threadsafe: true
 
-manual_scaling:
-  instances: 1
+handlers:
+- url: /
+  static_files: build/index.html
+  upload: build/index.html
 
-resources:
-  cpu: 1
-  memory_gb: 1
-  disk_size_gb: 10
+- url: /prodLinkId/(.*)
+  static_files: build/index.html
+  upload: build/index.html
+
+- url: /(.*)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /(.*)/(.*)
+  static_files: build/\1
+  upload: build/(.*)/(.*)
