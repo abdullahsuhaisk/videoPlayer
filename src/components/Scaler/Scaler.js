@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { BASE_WIDTH, BASE_HEIGHT } from '../../common/constants';
 
 const GET_LAYOUT = gql`
   query getLayoutForScaler {
@@ -19,13 +18,21 @@ const GET_LAYOUT = gql`
   }
 `;
 
-const baseWidth = BASE_WIDTH;
-const baseHeight = BASE_HEIGHT;
+let baseWidth;
+let baseHeight;
 
 const Scaler = ({ children }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
+        if (layout.width > 812) {
+          baseWidth = 1920;
+          baseHeight = 1080;
+        }
+        if (layout.width < 812) {
+          baseWidth = 812;
+          baseHeight = 450;
+        }
         const { safeArea } = layout;
         const scaleX =
           (layout.width - (safeArea.left + safeArea.right)) / baseWidth;

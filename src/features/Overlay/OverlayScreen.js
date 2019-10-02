@@ -70,8 +70,8 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width > 1100) seTtemplateType('Mobile');
-        if (layout.width < 1100) seTtemplateType('Normal');
+        if (layout.width < 1100) seTtemplateType('Mobile');
+        if (layout.width > 1100) seTtemplateType('Normal');
 
         return (
           <>
