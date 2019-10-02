@@ -31,7 +31,7 @@ const Scaler = ({ children }) => {
         }
         if (layout.width < 812) {
           baseWidth = 812;
-          baseHeight = 454;
+          baseHeight = 450;
         }
         const { safeArea } = layout;
         const scaleX =
