@@ -12,8 +12,11 @@ import { GET_PRODUCT } from '../../../Queries/Products/ProductQueries';
 
 const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   // TODO: Templatable system must be templatable with props it's like showProductDetailHeader=true or false
-  const cartItems = JSON.parse(localStorage.getItem('guestCart')) || [];
+  const cartItems = JSON.parse(localStorage.getItem('guestCart'))
+    ? JSON.parse(localStorage.getItem('guestCart'))
+    : [];
   localStorage.setItem('guestCart', JSON.stringify(cartItems));
+  // console.log(cartItems);
 
   const [data, setData] = useState({ color: 0, size: 0, quality: 1 });
   if (product) {
@@ -27,11 +30,12 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const handleAddToCart = () => {
       const cartItem = {
         productId,
-        quantitiy: data
+        quantitiy: data,
+        currentPrice,
+        price
       };
-      const cartItemS = JSON.parse(localStorage.getItem('guestCart'));
-      cartItemS.push(cartItem);
-      localStorage.setItem('guestCart', JSON.stringify(cartItemS));
+      cartItems.push(cartItem);
+      localStorage.setItem('guestCart', JSON.stringify(cartItems));
     };
 
     return (
@@ -47,7 +51,11 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           />
           <ProductDetailVariant data={data} setData={setData} />
           <ProductDetailQuantity data={data} setData={setData} />
-          <ProductDetailAddToCard handleAddToCart={handleAddToCart} />
+          <ProductDetailAddToCard
+            handleAddToCart={handleAddToCart}
+            cartItems={cartItems}
+            productId={productId}
+          />
           <ProductDetailAccordion description={description} />
           <ProductDetailAccordion title="Shipping And Returns" />
           <ProductDetailAccordion title="Care" />
