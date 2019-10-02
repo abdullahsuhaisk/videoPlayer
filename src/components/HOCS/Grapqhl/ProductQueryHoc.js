@@ -39,7 +39,7 @@ const ProductQueryHoc = (WrappedComponent, QUERY, FETCPOLICY) => (props) => {
       </Query>
     );
   if (props.productId) {
-    return { renderQuery };
+    return renderQuery();
   }
   return console.log('Something bad in ProductQueryHoc');
 };

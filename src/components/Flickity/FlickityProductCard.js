@@ -13,7 +13,6 @@ const flickityOptions = {
 };
 
 const FlickityProductCard = ({ products, addedWishList }) => {
-  // console.log(products);
   const [containerClasses, setContainerClasses] = React.useState(
     'VideoPlayerContainer'
   );
