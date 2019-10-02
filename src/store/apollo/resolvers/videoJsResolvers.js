@@ -26,7 +26,8 @@ const videoJsResolvers = {
             isSettingMenuOpen: false
           },
           isLoginFormShowing: false,
-          isProfileOpen: false
+          isProfileOpen: false,
+          isShoppingCartShowing: false
         }
       });
       // const a = videoPlayerJs.play;

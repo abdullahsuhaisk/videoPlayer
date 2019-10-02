@@ -36,6 +36,15 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
       };
       cartItems.push(cartItem);
       localStorage.setItem('guestCart', JSON.stringify(cartItems));
+      client.writeData({
+        data: {
+          isLoginFormShowing: false,
+          isProfileOpen: false,
+          whichTabItemIsRendering: 'ShoppingCartScreen',
+          isShoppingCartShowing: true,
+          productIdInDetails: null
+        }
+      });
     };
 
     return (
@@ -50,7 +59,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
             currency={currency}
           />
           <ProductDetailVariant data={data} setData={setData} />
-          <ProductDetailQuantity data={data} setData={setData} />
+          <ProductDetailQuantity speciality={data} setSpeciality={setData} />
           <ProductDetailAddToCard
             handleAddToCart={handleAddToCart}
             cartItems={cartItems}
