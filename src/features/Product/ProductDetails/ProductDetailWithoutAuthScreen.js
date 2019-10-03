@@ -18,7 +18,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   localStorage.setItem('guestCart', JSON.stringify(cartItems));
   // console.log(cartItems);
 
-  const [data, setData] = useState({ color: 0, size: 0, quality: 1 });
+  const [data, setData] = useState({ color: 0, size: 0, quantity: 1 });
   if (product) {
     const images = product.images && product.images;
     const company = product.company && product.company;
@@ -30,7 +30,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const handleAddToCart = () => {
       const cartItem = {
         productId,
-        quantitiy: data,
+        variantInfo: data,
         currentPrice,
         price
       };
@@ -59,7 +59,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
             currency={currency}
           />
           <ProductDetailVariant data={data} setData={setData} />
-          <ProductDetailQuantity speciality={data} setSpeciality={setData} />
+          <ProductDetailQuantity variant={data} setVariant={setData} />
           <ProductDetailAddToCard
             handleAddToCart={handleAddToCart}
             cartItems={cartItems}

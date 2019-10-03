@@ -10,7 +10,6 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
     JSON.parse(localStorage.getItem('guestCart'))
   );
-  // console.log(localCart);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPriceWithOutDiscount, settotalPriceWithOutDiscount] = useState(0);
   const [changeCount, setChangeCount] = useState(0);
@@ -24,9 +23,9 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
       let totalpricewithoutdiscount = 0;
       for (let i = 0; i < localCart.length; i++) {
         totalprice +=
-          localCart[i].currentPrice * localCart[i].quantitiy.quality;
+          localCart[i].currentPrice * localCart[i].variantInfo.quantity;
         totalpricewithoutdiscount +=
-          localCart[i].price * localCart[i].quantitiy.quality;
+          localCart[i].price * localCart[i].variantInfo.quantity;
         setTotalPrice(totalprice);
         settotalPriceWithOutDiscount(totalpricewithoutdiscount);
       }
@@ -37,7 +36,6 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, []);
 
-  // const newCartItems = [];
   return (
     <div className="shoppingcart--container">
       <div className="shoppingcart--title">Shopping Cart</div>
@@ -49,8 +47,8 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           })
         }></i>
       <div className="productdetail--seperator" />
-      {/* If shopping cart is empty, render ShoppingCArtEmpty */}
-      {!localCart ? (
+
+      {!localCart || localCart.length === 0 ? (
         <ShoppingCartEmpty />
       ) : (
         <>
