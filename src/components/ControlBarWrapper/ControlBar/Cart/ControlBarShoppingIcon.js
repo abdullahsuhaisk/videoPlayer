@@ -5,12 +5,12 @@ import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
 const ControlBarShoppingIcon = ({ client }) => {
   const videoPlayer = getVideoJs();
-
   const cartHandler = () => {
     // TODO: Add Cart handler
     // client.writeData({
     //   data: { whichTabItemIsRendering: 'ShoppingCartScreen' }
     // });
+    // eslint-disable-next-line no-unused-expressions
     videoPlayer.paused()
       ? client.writeData({
           data: {
@@ -33,11 +33,15 @@ const ControlBarShoppingIcon = ({ client }) => {
           }
         });
     videoPlayer.pause();
-    console.log(videoPlayer.paused());
   };
+  const shoppingCartItemsCount =
+    JSON.parse(localStorage.getItem('guestCart')) &&
+    JSON.parse(localStorage.getItem('guestCart')).length;
   return (
     <div>
-      <div className="addtocart-counter">2</div>
+      {shoppingCartItemsCount !== null ? (
+        <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+      ) : null}
       <button
         className="cartBtn"
         onClick={() => {
