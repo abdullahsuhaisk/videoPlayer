@@ -29,20 +29,12 @@ const ShoppingCartItem = ({
   product,
   productId,
   setChangeCount,
-  changeCount
+  changeCount,
+  deleteItem
 }) => {
   const carts = JSON.parse(localStorage.getItem('guestCart'));
 
   const [variant, setVariant] = useState(item.variantInfo);
-
-  const deleteItem = () => {
-    const indexToRemove = carts.findIndex(
-      (cart) => cart.productId === productId
-    );
-
-    carts.splice(indexToRemove, 1);
-    localStorage.setItem('guestCart', JSON.stringify(carts));
-  };
 
   useEffect(() => {
     const selectedCartItem = JSON.parse(localStorage.getItem('guestCart')).find(
@@ -69,7 +61,7 @@ const ShoppingCartItem = ({
   return (
     <StyledComponent>
       <div className="shoppcart--item-container">
-        <div className="item-delete" onClick={() => deleteItem()}>
+        <div className="item-delete" onClick={() => deleteItem(productId)}>
           <TrashIcon />
         </div>
         <div className="item-image">

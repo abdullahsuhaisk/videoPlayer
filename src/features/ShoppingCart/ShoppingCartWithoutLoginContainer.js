@@ -36,6 +36,15 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, []);
 
+  const deleteItem = (productId) => {
+    const indexToRemove = localCart.findIndex(
+      (cart) => cart.productId === productId
+    );
+
+    localCart.splice(indexToRemove, 1);
+    localStorage.setItem('guestCart', JSON.stringify(localCart));
+    setChangeCount(changeCount + 1);
+  };
   return (
     <div className="shoppingcart--container">
       <div className="shoppingcart--title">Shopping Cart</div>
@@ -62,6 +71,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                     key={key}
                     setChangeCount={setChangeCount}
                     changeCount={changeCount}
+                    deleteItem={deleteItem}
                   />
                 );
               })}
