@@ -32,19 +32,19 @@ const StyledComponent = styled.div`
   }
 `;
 
-const ProductDetailPriceNew = ({ speciality, setSpeciality }) => {
+const ProductDetailPriceNew = ({ variant, setVariant }) => {
   return (
     <StyledComponent>
       <div className="productdetail--quantity-wrapper">
         <div className="productdetail--label">Quantity</div>
         <div className="productdetail--quantity-options">
-          {speciality.quality > 1 ? (
+          {variant.quantity > 1 ? (
             <div
               className="decrement"
               onClick={() => {
-                setSpeciality({
-                  ...speciality,
-                  quality: speciality.quality - 1
+                setVariant({
+                  ...variant,
+                  quantity: variant.quantity - 1
                 });
               }}>
               <MinusIcon />
@@ -55,12 +55,12 @@ const ProductDetailPriceNew = ({ speciality, setSpeciality }) => {
             </div>
           )}
 
-          <div className="value">{speciality.quality}</div>
+          <div className="value">{variant.quantity}</div>
 
           <div
             className="increment"
             onClick={() => {
-              setSpeciality({ ...speciality, quality: speciality.quality + 1 });
+              setVariant({ ...variant, quantity: variant.quantity + 1 });
             }}>
             <PlusIcon />
           </div>

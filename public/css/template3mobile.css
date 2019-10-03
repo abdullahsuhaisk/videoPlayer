@@ -5517,6 +5517,21 @@
   border-bottom: 1px solid transparent;
 }
 
+.shoppcart--item-container .item-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.shoppcart--item-container .item-delete img {
+  width: 20px;
+  height: 20px;
+}
+
 .shoppcart--item-container .item-image {
   width: 120px;
   height: 120px;
@@ -5583,7 +5598,7 @@
 .shoppcart--item-container .item-info .item-quanity-price {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 50%;
   height: 30px;
 }
 
