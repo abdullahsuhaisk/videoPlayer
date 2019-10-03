@@ -5,24 +5,35 @@ import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
 const ControlBarShoppingIcon = ({ client }) => {
   const videoPlayer = getVideoJs();
+
   const cartHandler = () => {
     // TODO: Add Cart handler
     // client.writeData({
     //   data: { whichTabItemIsRendering: 'ShoppingCartScreen' }
     // });
-    client.writeData({
-      data: {
-        player: {
-          __typename: 'Player',
-          playingState: 'PAUSE'
-        },
-        isLoginFormShowing: false,
-        isProfileOpen: false,
-        whichTabItemIsRendering: 'ShoppingCartScreen',
-        isShoppingCartShowing: true
-      }
-    });
+    videoPlayer.paused()
+      ? client.writeData({
+          data: {
+            isLoginFormShowing: false,
+            isProfileOpen: false,
+            whichTabItemIsRendering: 'ShoppingCartScreen',
+            isShoppingCartShowing: true
+          }
+        })
+      : client.writeData({
+          data: {
+            player: {
+              __typename: 'Player',
+              playingState: 'PAUSE'
+            },
+            isLoginFormShowing: false,
+            isProfileOpen: false,
+            whichTabItemIsRendering: 'ShoppingCartScreen',
+            isShoppingCartShowing: true
+          }
+        });
     videoPlayer.pause();
+    console.log(videoPlayer.paused());
   };
   return (
     <div>
