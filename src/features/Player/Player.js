@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import videojs from 'video.js';
 // import 'videjsmarker';
 import './player.scss';
-// import './SettingsButton/vjs-settings-button';
+import './SettingsButton/vjs-settings-button';
 // import './SettingsMenu/vjs-settings-menu';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
