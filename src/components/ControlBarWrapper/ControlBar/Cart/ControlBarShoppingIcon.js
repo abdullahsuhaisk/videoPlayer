@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
 
 const ControlBarShoppingIcon = ({ client }) => {
+  const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(
+    JSON.parse(localStorage.getItem('guestCart')) &&
+      JSON.parse(localStorage.getItem('guestCart')).length
+  );
+  useEffect(() => {
+    console.log('a');
+  }, [JSON.parse(localStorage.getItem('guestCart'))]);
   const videoPlayer = getVideoJs();
   const cartHandler = () => {
     // TODO: Add Cart handler
@@ -34,9 +41,6 @@ const ControlBarShoppingIcon = ({ client }) => {
         });
     videoPlayer.pause();
   };
-  const shoppingCartItemsCount =
-    JSON.parse(localStorage.getItem('guestCart')) &&
-    JSON.parse(localStorage.getItem('guestCart')).length;
   return (
     <div>
       {shoppingCartItemsCount !== null ? (

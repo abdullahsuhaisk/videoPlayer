@@ -15,7 +15,6 @@ const ShoppingCartItem = ({
   // console.log(item);
   const [speciality, setSpeciality] = useState(item.quantitiy);
   useEffect(() => {
-    console.log('Cart Mining');
     const carts = JSON.parse(localStorage.getItem('guestCart'));
     const selectedCartItem = JSON.parse(localStorage.getItem('guestCart')).find(
       (cart) => cart.productId === productId
