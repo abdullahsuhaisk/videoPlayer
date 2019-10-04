@@ -54,7 +54,7 @@ import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
 import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
-import ControlBarFixed from '../Template3/ControlbarFixed';
+// import ControlBarFixed from '../Template3/ControlbarFixed';
 import HotSpotsPointerContainer from '../HotspotPointer/HotSpotsPointerContainer';
 import ProductDetailWrapper from '../../features/Product/ProductDetails/ProductDetailWrapper';
 import ProductDetailImage from '../../features/Product/ProductDetails/Components/ProductDetailImage';
@@ -117,7 +117,6 @@ const widgetList = {
   ScreenReadyComponent,
   ProfileScreen,
   AddToWishListScreen,
-  ControlBarFixed,
   HotSpotsPointerContainer,
   ProductDetailWrapper,
   ProductDetailImage,

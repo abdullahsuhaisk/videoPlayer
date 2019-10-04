@@ -10,7 +10,7 @@ export const Wrapper = styled.div((props) => ({
   width: '100px',
   height: '120px',
   borderRadius: '5px',
-  margin: '10px auto',
+  margin: '20px auto',
   border: '#fff 1px solid',
   boxShadow: '#000 3px 3px 6px 0',
   cursor: 'pointer',
@@ -21,6 +21,9 @@ export const Wrapper = styled.div((props) => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover'
+  },
+  'vb--hotspot-card-list': {
+    margin: '30px'
   },
   ...props.styles
 }));
