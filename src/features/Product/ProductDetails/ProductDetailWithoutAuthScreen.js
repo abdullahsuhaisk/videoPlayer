@@ -34,7 +34,6 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           item.variantInfo.color === data.color &&
           item.variantInfo.size === data.size
       );
-      console.log(isAdded);
       if (isAdded) {
         const selectedCartItem = JSON.parse(
           localStorage.getItem('guestCart')
@@ -51,7 +50,6 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
             cart.variantInfo.color === data.color &&
             cart.variantInfo.size === data.size
         );
-        console.log('main if ran');
 
         if (
           selectedCartItem.variantInfo.size === data.size &&
@@ -70,7 +68,6 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           };
 
           localStorage.setItem('guestCart', JSON.stringify(cartItems));
-          console.log('secondary if ran');
         } else {
           const cartItem = {
             productId,
@@ -80,7 +77,6 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           };
           cartItems.push(cartItem);
           localStorage.setItem('guestCart', JSON.stringify(cartItems));
-          console.log('secondary else ran');
         }
       } else {
         const cartItem = {
@@ -89,11 +85,8 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           currentPrice,
           price
         };
-        console.log(cartItems);
         cartItems.push(cartItem);
-        console.log(cartItems);
         localStorage.setItem('guestCart', JSON.stringify(cartItems));
-        console.log('main else ran');
       }
 
       client.writeData({

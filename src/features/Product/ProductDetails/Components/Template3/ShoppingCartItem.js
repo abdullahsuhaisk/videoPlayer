@@ -37,24 +37,42 @@ const ShoppingCartItem = ({
   const [variant, setVariant] = useState(item.variantInfo);
 
   useEffect(() => {
-    const selectedCartItem = JSON.parse(localStorage.getItem('guestCart')).find(
-      (cart) => cart.productId === productId
-    );
-    const selectedCartItemIndex = carts.findIndex(
-      (cart) => cart.productId === productId
+    const isAdded = carts.find(
+      (cart) =>
+        cart.productId === productId &&
+        cart.variantInfo.color === variant.color &&
+        cart.variantInfo.size === variant.size
     );
 
-    selectedCartItem.variantInfo = variant;
+    if (isAdded) {
+      const selectedCartItem = carts.find(
+        (cart) =>
+          cart.productId === productId &&
+          cart.variantInfo.color === variant.color &&
+          cart.variantInfo.size === variant.size
+      );
+      const selectedCartItemIndex = carts.findIndex(
+        (cart) =>
+          cart.productId === productId &&
+          cart.variantInfo.color === variant.color &&
+          cart.variantInfo.size === variant.size
+      );
 
-    if (carts.length > 0) {
+      const newData = {
+        ...variant,
+        quantity: variant.quantity
+      };
+
+      selectedCartItem.variantInfo = newData;
+
       carts[selectedCartItemIndex] = {
         ...selectedCartItem,
-        variantInfo: variant
+        variantInfo: newData
       };
-    }
 
-    localStorage.setItem('guestCart', JSON.stringify(carts));
-    setChangeCount(changeCount + 1);
+      localStorage.setItem('guestCart', JSON.stringify(carts));
+      setChangeCount(changeCount + 1);
+    }
   }, [variant]);
 
   const { image, name, currentPrice } = product;
