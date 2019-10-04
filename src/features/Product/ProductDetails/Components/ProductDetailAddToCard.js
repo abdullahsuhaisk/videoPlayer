@@ -4,16 +4,16 @@ const ProductDetailAddToCard = ({ handleAddToCart, productId, cartItems }) => {
   // console.log(cartItems);
   const selectButton = () => {
     const isAdded = cartItems.find((item) => item.productId === productId);
-    if (isAdded) {
-      return (
-        <button
-          style={{ backgroundColor: 'red', color: 'white' }}
-          className="ProductDetail--addToCartBtn">
-          <i className="ProductDetail--addToCartBtn-icon"></i>
-          You already added it
-        </button>
-      );
-    }
+    // if (isAdded) {
+    //   return (
+    //     <button
+    //       style={{ backgroundColor: 'red', color: 'white' }}
+    //       className="ProductDetail--addToCartBtn">
+    //       <i className="ProductDetail--addToCartBtn-icon"></i>
+    //       You already added it
+    //     </button>
+    //   );
+    // }
     return (
       <button
         onClick={() => {
