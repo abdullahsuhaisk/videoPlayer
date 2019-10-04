@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
+import { withApollo } from 'react-apollo';
+
 import HotspotButtonScreen from './HotspotButtonScreen';
-import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
-import { GET_HOTSPOTS } from '../../Queries/HotSpots/HotspotQuery';
 
 // import withQueryProdLink from '../../../HOCS/Grapqhl/ProdLinkQueryHoc';
 
 const HotSpotsPointerContainer = ({ hotspots, client }) => {
-  console.log(hotspots);
+  // console.log(hotspots);
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
       data: { productIdInDetails: productId, isShoppingCartShowing: false }
@@ -21,4 +21,4 @@ const HotSpotsPointerContainer = ({ hotspots, client }) => {
   );
 };
 
-export default withQueryProdLink(HotSpotsPointerContainer, GET_HOTSPOTS);
+export default withApollo(HotSpotsPointerContainer);
