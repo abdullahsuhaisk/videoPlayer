@@ -7,55 +7,83 @@ import { GET_HOTSPOTS } from '../../Queries/HotSpots/HotspotQuery';
 import withQueryProdLink from '../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
+import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
 
-const HotspotScreen = ({ data }) => {
+const HotspotContainer = ({ data, type }) => {
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
-  // const [hotSpots, setHotspots] = React.useState({
-  //   staticHotSpots: [],
-  //   dynamicHotSpots: [],
-  //   fixedHotSpots: []
-  // });
-  // console.log(hotSpots);
-
-  const staticHotSpots = [];
-  const dynamicHotSpots = [];
-  const fixedHotSpots = [];
+  const [staticHotSpots, setStaticHotSpots] = React.useState();
+  const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
+  const [fixedHotSpots, setFixedHotSpots] = React.useState();
 
   React.useEffect(() => {
+    const staticHotSpotss = [];
+    const dynamicHotSpotss = [];
+    const fixedHotSpotss = [];
+
     hotSpots.filter((hotspot) =>
       hotspot.type === hotSpotsType.STATIC
-        ? staticHotSpots.push(hotspot)
+        ? staticHotSpotss.push(hotspot)
         : hotspot.type === hotSpotsType.DYNAMIC
-        ? dynamicHotSpots.push(hotspot)
+        ? dynamicHotSpotss.push(hotspot)
         : hotspot.type === hotSpotsType.FIXED
-        ? fixedHotSpots.push(hotspot)
+        ? fixedHotSpotss.push(hotspot)
         : null
     );
-    // console.log(staticHotSpots);
-    // console.log(dynamicHotSpots);
-    // console.log(fixedHotSpots);
+    setStaticHotSpots(staticHotSpotss);
+    setDynamicHotSpots(dynamicHotSpotss);
+    setFixedHotSpots(fixedHotSpotss);
   }, []);
 
-  const selectionHotSpotsType = (type) => {
-    return null;
+  const selectionHotSpotsType = (activeHotSpots) => {
+    switch (type) {
+      case hotSpotsType.STATIC:
+        return <HotspotCardList hotspots={activeHotSpots} />;
+      case hotSpotsType.FIXED:
+        return <HotSpotsPointerContainer hotspots={activeHotSpots} />;
+      case hotSpotsType.DYNAMIC:
+        return <HotspotCardList hotspots={activeHotSpots} />;
+      default:
+        return null;
+    }
+  };
+
+  const selectActiveHotSpot = () => {
+    switch (type) {
+      case hotSpotsType.STATIC:
+        return staticHotSpots;
+      case hotSpotsType.FIXED:
+        return fixedHotSpots;
+      case hotSpotsType.DYNAMIC:
+        return dynamicHotSpots;
+      default:
+        return null;
+    }
   };
   return (
     <Query query={GET_PLAYER}>
       {({
         data: {
-          player: { playingState, currentTime }
+          player: { playingState, currentTime, hotSpotShowing }
         }
       }) => {
         if (
           playingState === PLAYER.PLAYING ||
+          playingState === PLAYER.PAUSED ||
           playingState === PLAYER.SCRUBBING
         ) {
-          const activeHotSpots = hotSpots.filter(
-            (hotSpot) =>
-              currentTime >= hotSpot.in - 3 && currentTime <= hotSpot.out + 3
-          );
+          const activeHotSpots =
+            selectActiveHotSpot() &&
+            selectActiveHotSpot().filter(
+              (hotSpot) =>
+                currentTime >= hotSpot.in - 1 && currentTime <= hotSpot.out + 1
+            );
           // console.log(activeHotSpots);
-          return <HotspotCardList hotspots={activeHotSpots} />;
+          if (
+            hotSpotShowing === false &&
+            selectionHotSpotsType() === hotSpotsType.STATIC
+          )
+            return null;
+          return selectionHotSpotsType(activeHotSpots);
         }
         return null;
       }}
@@ -63,4 +91,4 @@ const HotspotScreen = ({ data }) => {
   );
 };
 
-export default withQueryProdLink(HotspotScreen, GET_HOTSPOTS);
+export default withQueryProdLink(HotspotContainer, GET_HOTSPOTS);

@@ -8,7 +8,6 @@ import { PLAYER } from '../../common/constants';
 
 const HotspotCard = ({ styles, hotspot }) => {
   const { product } = hotspot;
-
   return (
     <ApolloConsumer>
       {(client) => {
@@ -23,7 +22,8 @@ const HotspotCard = ({ styles, hotspot }) => {
                     player: {
                       __typename: 'Player',
                       playingState: PLAYER.PAUSED
-                    }
+                    },
+                    productIdInDetails: product.id
                   }
                 })
               }>

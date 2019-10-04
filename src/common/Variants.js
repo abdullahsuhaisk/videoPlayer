@@ -3,4 +3,4 @@ export const colors = [
   'http://suriwong.com.my/wp-content/uploads/2017/04/0001-M-Florida.jpg'
 ];
 
-export const sizes = ['xs', 's', 'm', 'l', 'xl'];
+export const sizes = ['XS', 'S', 'M', 'L', 'XL'];

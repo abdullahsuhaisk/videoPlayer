@@ -11,17 +11,17 @@ const HotspotCardList = ({ styles, hotspots }) => {
         <span>Click & Buy</span>
       </div>
       <div className="vb--hotspot-card-list-cards">
-        {hotspots.map((hotspot) => {
-          return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
-        })}
+        {hotspots &&
+          hotspots.map((hotspot) => {
+            return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
+          })}
       </div>
     </Wrapper>
   );
 };
 
 HotspotCardList.propTypes = {
-  styles: PropTypes.object,
-  hotspots: PropTypes.array.isRequired
+  styles: PropTypes.object
 };
 
 HotspotCardList.defaultProps = {

@@ -16,9 +16,9 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     ? JSON.parse(localStorage.getItem('guestCart'))
     : [];
   localStorage.setItem('guestCart', JSON.stringify(cartItems));
-  // console.log(cartItems);
 
-  const [data, setData] = useState({ color: 0, size: 0, quality: 1 });
+  const [data, setData] = useState({ color: 0, size: 0, quantity: 1 });
+
   if (product) {
     const images = product.images && product.images;
     const company = product.company && product.company;
@@ -28,14 +28,67 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const currency = product.currency && product.currency;
 
     const handleAddToCart = () => {
-      const cartItem = {
-        productId,
-        quantitiy: data,
-        currentPrice,
-        price
-      };
-      cartItems.push(cartItem);
-      localStorage.setItem('guestCart', JSON.stringify(cartItems));
+      const isAdded = cartItems.find(
+        (item) =>
+          item.productId === productId &&
+          item.variantInfo.color === data.color &&
+          item.variantInfo.size === data.size
+      );
+      if (isAdded) {
+        const selectedCartItem = JSON.parse(
+          localStorage.getItem('guestCart')
+        ).find(
+          (cart) =>
+            cart.productId === productId &&
+            cart.variantInfo.color === data.color &&
+            cart.variantInfo.size === data.size
+        );
+
+        const selectedCartItemIndex = cartItems.findIndex(
+          (cart) =>
+            cart.productId === productId &&
+            cart.variantInfo.color === data.color &&
+            cart.variantInfo.size === data.size
+        );
+
+        if (
+          selectedCartItem.variantInfo.size === data.size &&
+          selectedCartItem.variantInfo.color === data.color
+        ) {
+          const newData = {
+            ...data,
+            quantity: data.quantity + selectedCartItem.variantInfo.quantity
+          };
+
+          selectedCartItem.variantInfo = newData;
+
+          cartItems[selectedCartItemIndex] = {
+            ...selectedCartItem,
+            variantInfo: newData
+          };
+
+          localStorage.setItem('guestCart', JSON.stringify(cartItems));
+        } else {
+          const cartItem = {
+            productId,
+            variantInfo: data,
+            currentPrice,
+            price
+          };
+          cartItems.push(cartItem);
+          localStorage.setItem('guestCart', JSON.stringify(cartItems));
+        }
+      } else {
+        const cartItem = {
+          productId,
+          variantInfo: data,
+          currentPrice,
+          price
+        };
+        cartItems.push(cartItem);
+        localStorage.setItem('guestCart', JSON.stringify(cartItems));
+      }
+
       client.writeData({
         data: {
           isLoginFormShowing: false,
@@ -59,7 +112,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
             currency={currency}
           />
           <ProductDetailVariant data={data} setData={setData} />
-          <ProductDetailQuantity speciality={data} setSpeciality={setData} />
+          <ProductDetailQuantity variant={data} setVariant={setData} />
           <ProductDetailAddToCard
             handleAddToCart={handleAddToCart}
             cartItems={cartItems}

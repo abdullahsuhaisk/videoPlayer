@@ -15,8 +15,10 @@
             "props": {}
           },
           {
-            "type": "HotSpotsPointerContainer",
-            "props": {}
+            "type": "HotspotContainer",
+            "props": {
+              "type": "FIXED"
+            }
           },
           {
             "type": "ProductDetailWrapper",
@@ -55,7 +57,9 @@
         "children": [
           {
             "type": "HotspotContainer",
-            "props": {}
+            "props": {
+              "type": "STATIC"
+            }
           }
         ]
       }

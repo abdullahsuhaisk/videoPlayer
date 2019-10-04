@@ -12,7 +12,8 @@ export const Wrapper = styled.div((props) => ({
   },
   '.vb--hotspot-card-list-cards': {
     height: '95%',
-    overflow: 'hidden auto'
+    overflow: 'hidden auto',
+    marginTop: '10px'
   },
   ...props.styles
 }));
