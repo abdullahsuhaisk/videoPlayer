@@ -6,6 +6,7 @@ export const GET_PLAYER = gql`
       playingState
       currentTime
       isStarted
+      hotSpotShowing
     }
     productIdInDetails @client
   }

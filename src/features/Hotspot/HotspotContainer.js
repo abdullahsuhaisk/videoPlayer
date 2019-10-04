@@ -14,7 +14,6 @@ const HotspotContainer = ({ data, type }) => {
   const [staticHotSpots, setStaticHotSpots] = React.useState();
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
-  console.log(fixedHotSpots);
 
   React.useEffect(() => {
     const staticHotSpotss = [];
@@ -36,7 +35,6 @@ const HotspotContainer = ({ data, type }) => {
   }, []);
 
   const selectionHotSpotsType = (activeHotSpots) => {
-    console.log(activeHotSpots);
     switch (type) {
       case hotSpotsType.STATIC:
         return <HotspotCardList hotspots={activeHotSpots} />;
@@ -65,7 +63,7 @@ const HotspotContainer = ({ data, type }) => {
     <Query query={GET_PLAYER}>
       {({
         data: {
-          player: { playingState, currentTime }
+          player: { playingState, currentTime, hotSpotShowing }
         }
       }) => {
         if (
@@ -80,6 +78,11 @@ const HotspotContainer = ({ data, type }) => {
                 currentTime >= hotSpot.in - 1 && currentTime <= hotSpot.out + 1
             );
           // console.log(activeHotSpots);
+          if (
+            hotSpotShowing === false &&
+            selectionHotSpotsType() === hotSpotsType.STATIC
+          )
+            return null;
           return selectionHotSpotsType(activeHotSpots);
         }
         return null;
