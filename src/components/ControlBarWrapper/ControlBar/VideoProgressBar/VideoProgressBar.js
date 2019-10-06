@@ -3,7 +3,7 @@ import { withApollo } from 'react-apollo';
 
 import HotspotPointsScreen from './HotspotPoints/HotspotPointsScreen';
 
-const VideoProgressBar = ({ videoPlayer }) => {
+const VideoProgressBar = ({ videoPlayer, client }) => {
   const progressBarHandler = () => {
     if (videoPlayer && videoPlayer.currentTime() > 0) {
       return (
@@ -33,7 +33,7 @@ const VideoProgressBar = ({ videoPlayer }) => {
         onChange={(e) => progressBarClickHandler(e)}
       />
       <progress value={progressBarHandler()} max="100"></progress>
-      <HotspotPointsScreen />
+      <HotspotPointsScreen client={client} />
     </div>
   );
 };
