@@ -5575,14 +5575,14 @@
   position: relative;
 }
 
-.shopcart--item-container:last-child {
+/* .shopcart--item-container:last-child {
   display: flex;
   width: 100%;
   height: 160px;
   padding-bottom: 35px;
   border-bottom: 1px solid transparent;
   margin-bottom: 0px;
-}
+} */
 
 .shopcart--item-container .item-delete {
   position: absolute;
