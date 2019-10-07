@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react';
 import { PLAYER } from '../../../../../../common/constants';
 import { HotspotPointWrapper } from './HotspotPoints.style';
+import { httpToHttps } from '../../../../../../utils/httpTohttps';
 
 const HotspotPoint = ({ position, product, client }) => {
+  const { image, name, id } = product;
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
       data: {
@@ -21,13 +23,13 @@ const HotspotPoint = ({ position, product, client }) => {
         <div className="hotspot--image-container">
           <div className="hotspot--image">
             <img
-              src={product.image.imageUrl}
-              alt={product.name}
-              onClick={() => setProductIdForDetail(product.id)}
+              src={image && httpToHttps(image && image.imageUrl)}
+              alt={name}
+              onClick={() => setProductIdForDetail(id)}
             />
             <div
               className="hotspot--image-overlay"
-              onClick={() => setProductIdForDetail(product.id)}
+              onClick={() => setProductIdForDetail(id)}
             />
             <div className="hotspot--hover-delay" />
           </div>
