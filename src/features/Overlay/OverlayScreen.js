@@ -24,7 +24,7 @@ function deleteCustomCss() {
 
 function addCustomCss(url) {
   // it must to move index.js
-  // deleteCustomCss();
+  deleteCustomCss();
   const link = document.createElement('link');
   link.setAttribute('rel', 'stylesheet');
   link.setAttribute('type', 'text/css');
