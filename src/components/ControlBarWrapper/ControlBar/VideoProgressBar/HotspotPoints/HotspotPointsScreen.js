@@ -51,7 +51,7 @@ const HotspotPoints = ({ client }) => {
     }
     return 0;
   };
-  // console.log(hotSpots);
+
   return (
     <>
       {hotSpots &&
@@ -59,6 +59,8 @@ const HotspotPoints = ({ client }) => {
           <HotspotPoint
             position={hotspotPointHandler(parseInt(item.in, 10))}
             key={item.id}
+            product={item.product}
+            client={client}
           />
         ))}
     </>

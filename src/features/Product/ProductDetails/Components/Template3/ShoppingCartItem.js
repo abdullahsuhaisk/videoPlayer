@@ -8,7 +8,7 @@ import { sizes } from '../../../../../common/Variants';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/TrashIcon.svg';
 
 const StyledComponent = styled.div`
-  .shoppcart--item-container {
+  .shopcart--item-container {
     .item-delete {
       svg {
         stroke: #666;
@@ -78,7 +78,7 @@ const ShoppingCartItem = ({
   const { image, name, currentPrice } = product;
   return (
     <StyledComponent>
-      <div className="shoppcart--item-container">
+      <div className="shopcart--item-container">
         <div className="item-delete" onClick={() => deleteItem(productId)}>
           <TrashIcon />
         </div>
