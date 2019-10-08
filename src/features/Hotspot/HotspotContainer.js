@@ -8,12 +8,15 @@ import withQueryProdLink from '../../components/HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
 import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
+import HotSpotDynamicContainer from '../../components/HotspotPointer/HotSpotDynamicContainer';
 
 const HotspotContainer = ({ data, type }) => {
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
   const [staticHotSpots, setStaticHotSpots] = React.useState();
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
+
+  // console.log(dynamicHotSpots);
 
   React.useEffect(() => {
     const staticHotSpotss = [];
@@ -34,14 +37,19 @@ const HotspotContainer = ({ data, type }) => {
     setFixedHotSpots(fixedHotSpotss);
   }, []);
 
-  const selectionHotSpotsType = (activeHotSpots) => {
+  const selectionHotSpotsType = (activeHotSpots, currentTime) => {
     switch (type) {
       case hotSpotsType.STATIC:
         return <HotspotCardList hotspots={activeHotSpots} />;
       case hotSpotsType.FIXED:
         return <HotSpotsPointerContainer hotspots={activeHotSpots} />;
       case hotSpotsType.DYNAMIC:
-        return <HotspotCardList hotspots={activeHotSpots} />;
+        return (
+          <HotSpotDynamicContainer
+            hotspots={activeHotSpots}
+            currentTime={currentTime}
+          />
+        );
       default:
         return null;
     }
@@ -75,15 +83,16 @@ const HotspotContainer = ({ data, type }) => {
             selectActiveHotSpot() &&
             selectActiveHotSpot().filter(
               (hotSpot) =>
-                currentTime >= hotSpot.in - 1 && currentTime <= hotSpot.out + 1
+                currentTime >= hotSpot.in && currentTime <= hotSpot.out
             );
           // console.log(activeHotSpots);
           if (
             hotSpotShowing === false &&
-            selectionHotSpotsType() === hotSpotsType.STATIC
+            (selectionHotSpotsType() === hotSpotsType.STATIC ||
+              selectionHotSpotsType() === hotSpotsType.DYNAMIC)
           )
             return null;
-          return selectionHotSpotsType(activeHotSpots);
+          return selectionHotSpotsType(activeHotSpots, currentTime);
         }
         return null;
       }}

@@ -60,6 +60,12 @@
             "props": {
               "type": "STATIC"
             }
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {
+              "type": "DYNAMIC"
+            }
           }
         ]
       }
