@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
 
 const StyledComponent = styled.div`
@@ -16,33 +17,40 @@ const HotspotImageButton = ({
   setProductIdForDetail,
   currentTime
 }) => {
+  // console.log(hotSpot);
   const { dynamicPositions } = hotSpot;
   const { id } = hotSpot.product;
+  const {
+    product: {
+      image: { imageUrl }
+    }
+  } = hotSpot;
+
   const positionCalculator = () => {
     const currentItem = dynamicPositions.find((item) => {
       return item.sec > currentTime;
     });
     return currentItem;
   };
-  // transform: `translate(${positionCalculator().y *
-  //   100}%, ${positionCalculator().x * 100}%)`
-  // console.log(`${positionCalculator().y * 100}%`);
   if (positionCalculator())
     return (
-      <div style={{ width: 1920, height: 1080, position: 'relative' }}>
-        <StyledComponent
-          xPos={`${positionCalculator().x * 100}%`}
-          yPos={`${positionCalculator().y * 100}%`}
-          style={{}}
-          onClick={() => setProductIdForDetail(id)}>
-          <div className="hotspotbutton--shadow">
-            <div className="hotspotbutton--wrapper">
-              <img src={HotspotProductIcon} alt="HotspotButton" />
-            </div>
+      <StyledComponent
+        xPos={`${positionCalculator().x * 100}%`}
+        yPos={`${positionCalculator().y * 100}%`}
+        style={{}}
+        onClick={() => setProductIdForDetail(id)}>
+        <div className="hotspotbutton--shadow">
+          <div className="hotspotbutton--wrapper">
+            <img
+              src={imageUrl}
+              alt="HotspotButton"
+              style={{ width: 100, height: 100, borderRadius: '50%' }}
+            />
           </div>
-        </StyledComponent>
-      </div>
+        </div>
+      </StyledComponent>
     );
+
   return null;
 };
 
