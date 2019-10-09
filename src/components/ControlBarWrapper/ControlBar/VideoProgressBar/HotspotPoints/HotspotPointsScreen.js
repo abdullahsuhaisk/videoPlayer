@@ -51,7 +51,9 @@ const HotspotPoints = ({ client }) => {
     }
     return 0;
   };
-
+  const timeChanger = (time) => {
+    videoPlayer.currentTime(parseInt(time, 10));
+  };
   return (
     <>
       {hotSpots &&
@@ -61,6 +63,8 @@ const HotspotPoints = ({ client }) => {
             key={item.id}
             product={item.product}
             client={client}
+            timeChanger={timeChanger}
+            item={item}
           />
         ))}
     </>
