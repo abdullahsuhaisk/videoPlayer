@@ -54,7 +54,7 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
       }
     });
     videoPlayer.playbackRate(item);
-    // setVideoSpeedIsOpen(false);
+    setVideoSpeedIsOpen(false);
   };
 
   // useEffect(() => {
