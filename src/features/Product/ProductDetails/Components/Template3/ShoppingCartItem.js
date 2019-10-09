@@ -86,7 +86,7 @@ const ShoppingCartItem = ({
           <img src={image ? image.thumbnailUrl : SampleImage} alt="" />
         </div>
         <div className="item-info">
-          <div>
+          <div className="item-info-mobile">
             <div className="item-name">{name}</div>
             <div className="item-variant">Color: Navy Blazer</div>
             <div className="item-variant">Size: {sizes[variant.size]}</div>
