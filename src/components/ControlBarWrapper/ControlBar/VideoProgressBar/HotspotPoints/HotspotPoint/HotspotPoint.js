@@ -5,7 +5,7 @@ import { httpToHttps } from '../../../../../../utils/httpTohttps';
 
 const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
   const { image, name, id } = product;
-  console.log(item);
+  // console.log(item);
 
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
