@@ -9,7 +9,10 @@ const ControlBarShoppingIcon = ({ client }) => {
       JSON.parse(localStorage.getItem('guestCart')).length
   );
   useEffect(() => {
-    // console.log('a');
+    setShoppingCartItemsCount(
+      JSON.parse(localStorage.getItem('guestCart')) &&
+        JSON.parse(localStorage.getItem('guestCart')).length
+    );
   }, [JSON.parse(localStorage.getItem('guestCart'))]);
   const videoPlayer = getVideoJs();
   const cartHandler = () => {

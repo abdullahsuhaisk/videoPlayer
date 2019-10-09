@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import SampleImage from '../../../../../assets/images/SampleImage.jpg';
 import ProductDetailQuantity from './ProductDetailQuantity';
@@ -6,6 +6,7 @@ import ProductQueryHoc from '../../../../../components/HOCS/Grapqhl/ProductQuery
 import { GET_PRODUCT } from '../../../../../Queries/Products/ProductQueries';
 import { sizes } from '../../../../../common/Variants';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/TrashIcon.svg';
+import { PLAYER } from '../../../../../common/constants';
 
 const StyledComponent = styled.div`
   .shopcart--item-container {
@@ -30,7 +31,8 @@ const ShoppingCartItem = ({
   productId,
   setChangeCount,
   changeCount,
-  deleteItem
+  deleteItem,
+  client
 }) => {
   const carts = JSON.parse(localStorage.getItem('guestCart'));
 
@@ -76,18 +78,36 @@ const ShoppingCartItem = ({
   }, [variant]);
 
   const { image, name, currentPrice } = product;
+
+  const setProductIdForDetail = useCallback((productId) => {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          playingState: PLAYER.PAUSED
+        },
+        productIdInDetails: productId
+      }
+    });
+  }, []);
   return (
     <StyledComponent>
       <div className="shopcart--item-container">
         <div className="item-delete" onClick={() => deleteItem(productId)}>
           <TrashIcon />
         </div>
-        <div className="item-image">
+        <div
+          className="item-image"
+          onClick={() => setProductIdForDetail(productId)}>
           <img src={image ? image.thumbnailUrl : SampleImage} alt="" />
         </div>
         <div className="item-info">
           <div className="item-info-mobile">
-            <div className="item-name">{name}</div>
+            <div
+              className="item-name"
+              onClick={() => setProductIdForDetail(productId)}>
+              {name}
+            </div>
             <div className="item-variant">Color: Navy Blazer</div>
             <div className="item-variant">Size: {sizes[variant.size]}</div>
           </div>

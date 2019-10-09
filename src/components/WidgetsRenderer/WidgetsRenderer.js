@@ -14,6 +14,7 @@ import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
+import ScreenPlayingOverlayComponent from '../ScreenPlayingWrapper/ScreenPlayingOverlayComponent';
 
 // Wrapper Section //
 
@@ -114,6 +115,7 @@ const widgetList = {
   ProductListCard,
   ShoppingCartScreen,
   ScreenPauseOverlayComponent,
+  ScreenPlayingOverlayComponent,
   ScreenReadyComponent,
   ProfileScreen,
   AddToWishListScreen,
