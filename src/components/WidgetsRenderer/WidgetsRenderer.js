@@ -14,6 +14,7 @@ import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
+import ScreenPlayingOverlayComponent from '../ScreenPlayingWrapper/ScreenPlayingOverlayComponent';
 
 // Wrapper Section //
 
@@ -25,7 +26,7 @@ import PlayPause from '../ControlBarWrapper/ControlBar/PlayPause/PlayPause';
 import VolumControl from '../ControlBarWrapper/ControlBar/VolumControl/VolumControl';
 import TimeDisplay from '../ControlBarWrapper/ControlBar/TimeDisplay/TimeDisplay';
 import ControlBarShoppingIcon from '../ControlBarWrapper/ControlBar/Cart/ControlBarShoppingIcon';
-import ControlBarSettings from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettings';
+import ControlBarSettingsContainer from '../ControlBarWrapper/ControlBar/Settings/ControlBarSettingsContainer';
 import ControlBarRightWrapper from '../ControlBarWrapper/ControlBarRightWrapper';
 import ControlBarLeftWrapper from '../ControlBarWrapper/ControlBarLeftWrapper';
 import JumpToProductWrapper from '../ControlBarWrapper/ControlBar/JumpToProduct/JumpToProductWrapper';
@@ -100,7 +101,7 @@ const widgetList = {
   VolumControl,
   TimeDisplay,
   ControlBarShoppingIcon,
-  ControlBarSettings,
+  ControlBarSettingsContainer,
   ControlBarRightWrapper,
   ControlBarLeftWrapper,
   ControlBarFullScreen,
@@ -114,6 +115,7 @@ const widgetList = {
   ProductListCard,
   ShoppingCartScreen,
   ScreenPauseOverlayComponent,
+  ScreenPlayingOverlayComponent,
   ScreenReadyComponent,
   ProfileScreen,
   AddToWishListScreen,

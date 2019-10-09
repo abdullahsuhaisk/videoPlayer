@@ -67,6 +67,7 @@ const HotspotContainer = ({ data, type }) => {
         return null;
     }
   };
+  // console.log(type);
   return (
     <Query query={GET_PLAYER}>
       {({
@@ -88,8 +89,7 @@ const HotspotContainer = ({ data, type }) => {
           // console.log(activeHotSpots);
           if (
             hotSpotShowing === false &&
-            (selectionHotSpotsType() === hotSpotsType.STATIC ||
-              selectionHotSpotsType() === hotSpotsType.DYNAMIC)
+            (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
           )
             return null;
           return selectionHotSpotsType(activeHotSpots, currentTime);

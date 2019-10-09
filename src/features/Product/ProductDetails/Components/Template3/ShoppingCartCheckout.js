@@ -9,15 +9,16 @@ const ShoppingCartCheckout = ({ totalPrice, totalPriceWithOutDiscount }) => {
         <div className="price">${totalPriceWithOutDiscount.toFixed(2)}</div>
       </div>
       <div className="shoppingcart--checkout-detail">
-        <div className="title">Todal Discount</div>
-        <div className="price">
+        <div className="title">Shipping</div>
+        <div className="price">$0.00</div>
+      </div>
+      <div className="shoppingcart--checkout-detail">
+        <div className="title">Total Discount</div>
+        <div className="price-red">
           ${(totalPrice - totalPriceWithOutDiscount).toFixed(2)}
         </div>
       </div>
-      <div className="shoppingcart--checkout-detail">
-        <div className="title">Order Subtotal</div>
-        <div className="price-red">-$7.95</div>
-      </div>
+
       <div className="checkout--seperator" />
 
       <div className="shoppingcart--checkout-total">

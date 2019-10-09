@@ -8,7 +8,7 @@ import TimeDisplay from './TimeDisplay/TimeDisplay';
 import PlayPause from './PlayPause/PlayPause';
 import JumpToProduct from './JumpToProduct/JumpToProductWrapper';
 import ControlBarShoppingIcon from './Cart/ControlBarShoppingIcon';
-import ControlBarSettings from './Settings/ControlBarSettings';
+import ControlBarSettingsContainer from './Settings/ControlBarSettingsContainer';
 import ControlBarFullScreen from './FullScreen/ControlBarFullScreen';
 // import { composeInitialProps } from 'react-i18next';
 
@@ -36,7 +36,7 @@ const ControlBarScreen = ({ styles }) => {
               </div>
               <div className="rightContainer">
                 <ControlBarShoppingIcon />
-                <ControlBarSettings />
+                <ControlBarSettingsContainer />
                 <ControlBarFullScreen videoPlayer={videoPlayer} />
               </div>
             </div>

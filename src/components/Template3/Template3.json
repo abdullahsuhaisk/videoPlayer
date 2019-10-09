@@ -17,7 +17,25 @@
           {
             "type": "HotspotContainer",
             "props": {
+              "type": "STATIC"
+            }
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {
               "type": "FIXED"
+            }
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {
+              "type": "STATIC"
+            }
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {
+              "type": "DYNAMIC"
             }
           },
           {
@@ -66,6 +84,10 @@
             "props": {
               "type": "DYNAMIC"
             }
+          },
+          {
+            "type": "ScreenPlayingOverlayComponent",
+            "props": {}
           }
         ]
       }
@@ -117,7 +139,7 @@
                   "props": ""
                 },
                 {
-                  "type": "ControlBarSettings",
+                  "type": "ControlBarSettingsContainer",
                   "props": ""
                 },
                 {
