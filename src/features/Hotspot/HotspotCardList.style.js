@@ -13,7 +13,11 @@ export const Wrapper = styled.div((props) => ({
   '.vb--hotspot-card-list-cards': {
     height: '95%',
     overflow: 'hidden auto',
-    marginTop: '10px'
+    marginTop: '10px',
+    display: 'grid',
+    gridTemplateRows:
+      '120px 120px 120px 120px 120px 120px 120px 120px 120px 120px',
+    gridGap: '15px'
   },
   ...props.styles
 }));
