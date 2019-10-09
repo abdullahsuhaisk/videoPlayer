@@ -39,7 +39,9 @@ const SettingsPlayerSpeed = ({
         backgroundColor: 'rgba(0, 1, 16, 0.8)'
       }}>
       <div className="Settings--info">
-        <div className="Settings--info--head">
+        <div
+          className="Settings--info--head"
+          onClick={() => setVideoSpeedIsOpen(false)}>
           <p className="Settings--info--head--p">Play Back Speed</p>
         </div>
         <div className="Settings--info--options">
