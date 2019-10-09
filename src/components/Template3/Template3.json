@@ -117,7 +117,7 @@
                   "props": ""
                 },
                 {
-                  "type": "ControlBarSettings",
+                  "type": "ControlBarSettingsContainer",
                   "props": ""
                 },
                 {

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import SettingQuality from './SettingQuality';
+import SettingsPlayerSpeed from './SettingsPlayerSpeed';
 
 const SettingsPoper = ({
   qualityMenuToggle,
@@ -12,19 +13,25 @@ const SettingsPoper = ({
   setSelectQuality,
   selectQuality,
   client,
-  videoPlayer
+  videoPlayer,
+  videoSpeedIsOpen,
+  setVideoSpeedIsOpen,
+  setVideoPlayerSpeed,
+  playBackSpeedHandler
 }) => {
+  // console.log(videoSpeedIsOpen);
   const renderManager = () => {
     const HOTSPOT_SHOWING = gql`
       query hotSpotShowing {
         player @client {
           hotSpotShowing
+          playbackSpeed
         }
       }
     `;
 
     const {
-      player: { hotSpotShowing }
+      player: { hotSpotShowing, playbackSpeed }
     } = client.readQuery({ query: HOTSPOT_SHOWING });
 
     const [showProdlink, setShowProdlink] = useState(hotSpotShowing);
@@ -67,7 +74,15 @@ const SettingsPoper = ({
         }
       }
     `;
-
+    if (videoSpeedIsOpen) {
+      return (
+        <SettingsPlayerSpeed
+          setVideoSpeedIsOpen={setVideoSpeedIsOpen}
+          playBackSpeedHandler={playBackSpeedHandler}
+          client={client}
+        />
+      );
+    }
     if (qualityMenuToggle)
       return (
         <SettingQuality
@@ -99,9 +114,13 @@ const SettingsPoper = ({
               <div className="Settings--panel--switchBtn--layer"></div>
             </div>
           </div>
-          <div className="Settings--panel">
+          <div
+            className="Settings--panel"
+            onClick={() => setVideoSpeedIsOpen(!videoSpeedIsOpen)}>
             <label className="Settings--panel--label">Playback Speed</label>
-            <p className="Settings--panel--p">Normal</p>
+            <p className="Settings--panel--p">
+              {playbackSpeed === 1 ? 'Normal' : playbackSpeed}
+            </p>
           </div>
           <div
             className="Settings--panel"
@@ -122,6 +141,7 @@ const SettingsPoper = ({
           </div>
         </div>
       );
+    return null;
   };
   return <>{renderManager()}</>;
 };

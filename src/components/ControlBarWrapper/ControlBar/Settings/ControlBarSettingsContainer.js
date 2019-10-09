@@ -9,14 +9,25 @@ const CONTROLBAR = gql`
   query isControlbarOpen {
     player @client {
       isSettingMenuOpen
+      playbackSpeed
     }
   }
 `;
 
-const ControlBarSettings = ({ client, videoPlayer }) => {
+const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
   const [qualityMenuToggle, setqualityMenuToggle] = useState(false);
   // Abow the code probably will entegrate with apollo
   const [selectQuality, setSelectQuality] = useState(null);
+
+  const [videoSpeedIsOpen, setVideoSpeedIsOpen] = useState(false);
+  // const [videoPlayerSpeed, setVideoPlayerSpeed] = useState(null);
+
+  // React.useEffect(() => {
+  //   const {
+  //     player: { playbackSpeed }
+  //   } = client.readQuery({ query: CONTROLBAR });
+  // }, []);
+
   const settingsHandler = () => {
     const {
       player: { isSettingMenuOpen }
@@ -30,6 +41,20 @@ const ControlBarSettings = ({ client, videoPlayer }) => {
       }
     });
     setqualityMenuToggle(false);
+    setVideoSpeedIsOpen(false);
+  };
+
+  const playBackSpeedHandler = (item) => {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          playbackSpeed: item
+        }
+      }
+    });
+    videoPlayer.playbackRate(item);
+    // setVideoSpeedIsOpen(false);
   };
 
   // useEffect(() => {
@@ -48,7 +73,6 @@ const ControlBarSettings = ({ client, videoPlayer }) => {
   //     });
   //   }
   // };
-
   return (
     <div style={{ position: 'relative' }}>
       <Query query={CONTROLBAR}>
@@ -62,6 +86,9 @@ const ControlBarSettings = ({ client, videoPlayer }) => {
                 client={client}
                 videoPlayer={videoPlayer}
                 selectQuality={selectQuality}
+                videoSpeedIsOpen={videoSpeedIsOpen}
+                setVideoSpeedIsOpen={setVideoSpeedIsOpen}
+                playBackSpeedHandler={playBackSpeedHandler}
               />
             );
           return null;
@@ -76,4 +103,4 @@ const ControlBarSettings = ({ client, videoPlayer }) => {
   );
 };
 
-export default ControlBarHoc(ControlBarSettings);
+export default ControlBarHoc(ControlBarSettingsContainer);

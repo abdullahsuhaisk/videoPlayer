@@ -11,7 +11,8 @@ const SettingQuality = ({
   setSelectQuality,
   selectQuality,
   client,
-  videoPlayer
+  videoPlayer,
+  setVideoPlayerSpeed
 }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();
   const [qualities, setQualities] = useState([]);
@@ -57,7 +58,7 @@ const SettingQuality = ({
       className="Settings spacing"
       style={{
         position: 'absolute',
-        top: -335,
+        top: -255,
         right: -73,
         backgroundColor: 'rgba(0, 1, 16, 0.8)'
       }}>
