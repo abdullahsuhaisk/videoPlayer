@@ -17,6 +17,12 @@
           {
             "type": "HotspotContainer",
             "props": {
+              "type": "STATIC"
+            }
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {
               "type": "FIXED"
             }
           },
@@ -66,6 +72,10 @@
             "props": {
               "type": "DYNAMIC"
             }
+          },
+          {
+            "type": "ScreenPlayingOverlayComponent",
+            "props": {}
           }
         ]
       }

@@ -52,7 +52,13 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
         className="modal--close"
         onClick={() =>
           client.writeData({
-            data: { isShoppingCartShowing: false }
+            data: {
+              player: {
+                __typename: 'Player',
+                playingState: 'PLAYING'
+              },
+              isShoppingCartShowing: false
+            }
           })
         }></i>
       <div className="productdetail--seperator" />
