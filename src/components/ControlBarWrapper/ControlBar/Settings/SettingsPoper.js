@@ -1,18 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import SettingQuality from './SettingQuality';
-
-const CONTROLBAR = gql`
-  query isControlbarOpen {
-    player @client {
-      selectedQuality
-    }
-  }
-`;
 
 const SettingsPoper = ({
   qualityMenuToggle,
@@ -23,6 +15,59 @@ const SettingsPoper = ({
   videoPlayer
 }) => {
   const renderManager = () => {
+    const HOTSPOT_SHOWING = gql`
+      query hotSpotShowing {
+        player @client {
+          hotSpotShowing
+        }
+      }
+    `;
+
+    const {
+      player: { hotSpotShowing }
+    } = client.readQuery({ query: HOTSPOT_SHOWING });
+
+    const [showProdlink, setShowProdlink] = useState(hotSpotShowing);
+
+    const changeHotspot = () => {
+      if (showProdlink === false) {
+        changeHotpotTrue();
+      }
+      if (showProdlink === true) {
+        changeHotpotFalse();
+      }
+    };
+
+    const changeHotpotFalse = () => {
+      client.writeData({
+        data: {
+          player: {
+            __typename: 'Player',
+            hotSpotShowing: false
+          }
+        }
+      });
+    };
+
+    const changeHotpotTrue = () => {
+      client.writeData({
+        data: {
+          player: {
+            __typename: 'Player',
+            hotSpotShowing: true
+          }
+        }
+      });
+    };
+
+    const CONTROLBAR = gql`
+      query isControlbarOpen {
+        player @client {
+          selectedQuality
+        }
+      }
+    `;
+
     if (qualityMenuToggle)
       return (
         <SettingQuality
@@ -42,8 +87,13 @@ const SettingsPoper = ({
             <label className="Settings--panel--label">Prodlink</label>
             <div className="Settings--panel--switchBtn">
               <input
+                defaultChecked={hotSpotShowing}
                 type="checkbox"
                 className="Settings--panel--switchBtn--checkbox"
+                onClick={() => {
+                  setShowProdlink(!showProdlink);
+                  changeHotspot();
+                }}
               />
               <div className="Settings--panel--switchBtn--knobs"></div>
               <div className="Settings--panel--switchBtn--layer"></div>

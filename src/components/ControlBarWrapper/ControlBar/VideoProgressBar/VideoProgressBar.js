@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withApollo } from 'react-apollo';
 
 import HotspotPointsScreen from './HotspotPoints/HotspotPointsScreen';
 
 const VideoProgressBar = ({ videoPlayer, client }) => {
+  if (
+    videoPlayer &&
+    videoPlayer.currentTime().toFixed(1) >
+      videoPlayer.duration().toFixed(1) - 0.25
+  ) {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          playingState: 'READY'
+        },
+        isLoginFormShowing: false,
+        isProfileOpen: false
+      }
+    });
+  }
+
   const progressBarHandler = () => {
     if (videoPlayer && videoPlayer.currentTime() > 0) {
       return (
@@ -11,6 +28,7 @@ const VideoProgressBar = ({ videoPlayer, client }) => {
         100
       ).toFixed(2);
     }
+
     return 0;
   };
   const progressBarClickHandler = (e) => {
