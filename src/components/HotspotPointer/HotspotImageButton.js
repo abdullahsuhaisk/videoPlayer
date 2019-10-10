@@ -21,10 +21,9 @@ const HotspotImageButton = ({
   const { dynamicPositions } = hotSpot;
   const { id } = hotSpot.product;
   const {
-    product: {
-      image: { imageUrl }
-    }
+    product: { image }
   } = hotSpot;
+  const imageUrl = image && image.imageUrl;
 
   const positionCalculator = () => {
     const currentItem = dynamicPositions.find((item) => {
@@ -42,7 +41,7 @@ const HotspotImageButton = ({
         <div className="hotspotbutton--shadow">
           <div className="hotspotbutton--wrapper">
             <img
-              src={imageUrl}
+              src={imageUrl && imageUrl}
               alt="HotspotButton"
               style={{ width: 100, height: 100, borderRadius: '50%' }}
             />
