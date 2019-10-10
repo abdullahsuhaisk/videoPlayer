@@ -1,10 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import { fadeInRight } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
 import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/ShoppingCartItem';
 import ScreenChoserQuery from '../../components/HOCS/Grapqhl/ScreenChoserQuery';
+
+const AnimationName = keyframes`${fadeInRight}`;
+const AnimatedDiv = styled.div`
+  animation: 0.25s ${AnimationName};
+`;
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
@@ -46,50 +53,52 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setChangeCount(changeCount + 1);
   };
   return (
-    <div className="shoppingcart--container">
-      <div className="shoppingcart--title">Shopping Cart</div>
-      <i
-        className="modal--close"
-        onClick={() =>
-          client.writeData({
-            data: {
-              player: {
-                __typename: 'Player',
-                playingState: 'PLAYING'
-              },
-              isShoppingCartShowing: false
-            }
-          })
-        }></i>
-      <div className="productdetail--seperator" />
+    <AnimatedDiv>
+      <div className="shoppingcart--container">
+        <div className="shoppingcart--title">Shopping Cart</div>
+        <i
+          className="modal--close"
+          onClick={() =>
+            client.writeData({
+              data: {
+                player: {
+                  __typename: 'Player',
+                  playingState: 'PLAYING'
+                },
+                isShoppingCartShowing: false
+              }
+            })
+          }></i>
+        <div className="productdetail--seperator" />
 
-      {!localCart || localCart.length === 0 ? (
-        <ShoppingCartEmpty />
-      ) : (
-        <>
-          <div className="shoppingcart-items-container">
-            {localCart &&
-              localCart.map((item, key) => {
-                return (
-                  <ShoppingCartItem
-                    productId={item.productId}
-                    item={item}
-                    key={key}
-                    setChangeCount={setChangeCount}
-                    changeCount={changeCount}
-                    deleteItem={deleteItem}
-                  />
-                );
-              })}
-          </div>
-          <ShoppingCartCheckout
-            totalPrice={totalPrice}
-            totalPriceWithOutDiscount={totalPriceWithOutDiscount}
-            setChangeCount={setChangeCount}
-          />
-        </>
-      )}
-    </div>
+        {!localCart || localCart.length === 0 ? (
+          <ShoppingCartEmpty />
+        ) : (
+          <>
+            <div className="shoppingcart-items-container">
+              {localCart &&
+                localCart.map((item, key) => {
+                  return (
+                    <ShoppingCartItem
+                      productId={item.productId}
+                      item={item}
+                      key={key}
+                      setChangeCount={setChangeCount}
+                      changeCount={changeCount}
+                      deleteItem={deleteItem}
+                    />
+                  );
+                })}
+            </div>
+            <ShoppingCartCheckout
+              totalPrice={totalPrice}
+              totalPriceWithOutDiscount={totalPriceWithOutDiscount}
+              setChangeCount={setChangeCount}
+            />
+          </>
+        )}
+      </div>
+    </AnimatedDiv>
   );
 };
 

@@ -13,6 +13,11 @@ import Error from './components/Error/Error';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
+  // React.useEffect(() => {
+  //   client
+  //     .query({ query: GET_VIDEO, variables: { prodLinkUniqueId: prodLinkId } })
+  //     .then((res) => console.log(res));
+  // }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
   return (
@@ -34,7 +39,7 @@ const App = ({ client }) => {
           const { image } = data.prodLink;
           const poster =
             (image && httpToHttps(image.imageUrl)) ||
-            'https://ngatapuwae.govt.nz/sites/default/files/infographic/somme-1918.jpg';
+            'https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg';
           const source = sourceParser(video.qualities);
           // Above the variable has src and type props in source array
           return (

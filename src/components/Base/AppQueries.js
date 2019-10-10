@@ -82,6 +82,19 @@ export const GET_VIDEO = gql`
       }
       hotSpots {
         id
+        id
+        in
+        out
+        fixedPosition {
+          x
+          y
+        }
+        dynamicPositions {
+          sec
+          x
+          y
+        }
+        type
         product {
           id
           name
