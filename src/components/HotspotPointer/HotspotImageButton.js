@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
-
 const StyledComponent = styled.div`
   position: absolute;
-  top: ${(props) => props.xPos};
-  left: ${(props) => props.yPos};
+  left: ${(props) => props.xPos};
+  top: ${(props) => props.yPos};
+  transition: all 0.1s linear;
   pointer-events: auto;
+  margin-left: -55px !important;
+  margin-top: -55px !important;
 `;
 // const top = `${hotspot.fixedPosition.y * 100}%`;
 // const left = `${hotspot.fixedPosition.x * 100}%`;
@@ -17,7 +18,7 @@ const HotspotImageButton = ({
   setProductIdForDetail,
   currentTime
 }) => {
-  // console.log(hotSpot);
+  console.log(hotSpot);
   const { dynamicPositions } = hotSpot;
   const { id } = hotSpot.product;
   const {
