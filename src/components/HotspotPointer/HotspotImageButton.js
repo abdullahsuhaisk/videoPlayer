@@ -18,7 +18,6 @@ const HotspotImageButton = ({
   setProductIdForDetail,
   currentTime
 }) => {
-  console.log(hotSpot);
   const { dynamicPositions } = hotSpot;
   const { id } = hotSpot.product;
   const {
@@ -26,7 +25,6 @@ const HotspotImageButton = ({
       image: { imageUrl }
     }
   } = hotSpot;
-
   const positionCalculator = () => {
     const currentItem = dynamicPositions.find((item) => {
       return item.sec > currentTime;
@@ -34,6 +32,7 @@ const HotspotImageButton = ({
     return currentItem;
   };
   if (positionCalculator())
+    // console.log(positionCalculator());
     return (
       <StyledComponent
         xPos={`${positionCalculator().x * 100}%`}
