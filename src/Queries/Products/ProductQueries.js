@@ -17,7 +17,7 @@ export const GET_PRODUCT = gql`
           thumbnailUrl
         }
       }
-      images {
+      images(type: GALLERY) {
         id
         thumbnailUrl
         imageUrl
