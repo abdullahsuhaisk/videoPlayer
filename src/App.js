@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { Query } from 'react-apollo';
 import Player from './features/Player/Player';
 import './i18n/i18n';
@@ -13,11 +13,11 @@ import Error from './components/Error/Error';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const App = ({ client }) => {
-  useEffect(() => {
-    client
-      .query({ query: GET_VIDEO, variables: { prodLinkUniqueId: prodLinkId } })
-      .then((res) => console.log(res));
-  }, []);
+  // React.useEffect(() => {
+  //   client
+  //     .query({ query: GET_VIDEO, variables: { prodLinkUniqueId: prodLinkId } })
+  //     .then((res) => console.log(res));
+  // }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
   return (
