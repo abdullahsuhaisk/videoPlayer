@@ -21,35 +21,35 @@ const HotspotImageButton = ({
   const { dynamicPositions } = hotSpot;
   const { id } = hotSpot.product;
   const {
-    product: {
-      image: { imageUrl }
-    }
+    product: { image }
   } = hotSpot;
+  const imageUrl = image && image.imageUrl;
 
   const positionCalculator = () => {
+    // console.log(dynamicPositions);
     const currentItem = dynamicPositions.find((item) => {
       return item.sec > currentTime;
     });
     return currentItem;
   };
-  if (positionCalculator())
-    return (
-      <StyledComponent
-        xPos={`${positionCalculator().x * 100}%`}
-        yPos={`${positionCalculator().y * 100}%`}
-        style={{}}
-        onClick={() => setProductIdForDetail(id)}>
-        <div className="hotspotbutton--shadow">
-          <div className="hotspotbutton--wrapper">
-            <img
-              src={imageUrl}
-              alt="HotspotButton"
-              style={{ width: 100, height: 100, borderRadius: '50%' }}
-            />
-          </div>
+  if (positionCalculator());
+  return (
+    <StyledComponent
+      xPos={`${positionCalculator() && positionCalculator().x * 100}%`}
+      yPos={`${positionCalculator() && positionCalculator().y * 100}%`}
+      style={{}}
+      onClick={() => setProductIdForDetail(id)}>
+      <div className="hotspotbutton--shadow">
+        <div className="hotspotbutton--wrapper">
+          <img
+            src={imageUrl && imageUrl}
+            alt="HotspotButton"
+            style={{ width: 100, height: 100, borderRadius: '50%' }}
+          />
         </div>
-      </StyledComponent>
-    );
+      </div>
+    </StyledComponent>
+  );
 
   return null;
 };
