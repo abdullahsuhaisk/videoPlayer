@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Fade from 'react-reveal/Fade';
 import ProductDetailImage from './Components/ProductDetailImage';
 import VerticalScroll from '../../../components/VerticalScroll';
 import ProductDetaiHeader from './Components/ProductDetaiHeader';
@@ -102,26 +103,28 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
 
     return (
       <>
-        <ProductDetailImage images={images} />
-        <VerticalScroll>
-          <ProductDetaiHeader productTitle={product.name} company={company} />
-          <ProductDetailPriceTemplate3
-            currentPrice={currentPrice}
-            price={price}
-            discount={discount}
-            currency={currency}
-          />
-          <ProductDetailVariant data={data} setData={setData} />
-          <ProductDetailQuantity variant={data} setVariant={setData} />
-          <ProductDetailAddToCard
-            handleAddToCart={handleAddToCart}
-            cartItems={cartItems}
-            productId={productId}
-          />
-          <ProductDetailAccordion description={description} />
-          <ProductDetailAccordion title="Shipping And Returns" />
-          <ProductDetailAccordion title="Care" />
-        </VerticalScroll>
+        <Fade bottom delay="300" duration="300">
+          <ProductDetailImage images={images} />
+          <VerticalScroll>
+            <ProductDetaiHeader productTitle={product.name} company={company} />
+            <ProductDetailPriceTemplate3
+              currentPrice={currentPrice}
+              price={price}
+              discount={discount}
+              currency={currency}
+            />
+            <ProductDetailVariant data={data} setData={setData} />
+            <ProductDetailQuantity variant={data} setVariant={setData} />
+            <ProductDetailAddToCard
+              handleAddToCart={handleAddToCart}
+              cartItems={cartItems}
+              productId={productId}
+            />
+            <ProductDetailAccordion description={description} />
+            <ProductDetailAccordion title="Shipping And Returns" />
+            <ProductDetailAccordion title="Care" />
+          </VerticalScroll>
+        </Fade>
       </>
     );
   }
