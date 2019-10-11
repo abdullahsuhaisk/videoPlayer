@@ -29,7 +29,7 @@ const Scaler = ({ children }) => {
           baseWidth = 1920;
           baseHeight = 1080;
         }
-        if (layout.width < 812) {
+        if (layout.width < 850) {
           baseWidth = 812;
           baseHeight = 450;
         }
