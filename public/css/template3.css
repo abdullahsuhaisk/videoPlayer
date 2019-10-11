@@ -4082,6 +4082,7 @@
   height: 20px;
   background: url(/images/CloseIconBlack.svg) center / contain no-repeat;
   cursor: pointer;
+  z-index: 999;
 }
 .Template1 .modal--close:hover {
   opacity: 1;

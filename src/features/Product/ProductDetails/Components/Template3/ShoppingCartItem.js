@@ -86,7 +86,8 @@ const ShoppingCartItem = ({
           __typename: 'Player',
           playingState: PLAYER.PAUSED
         },
-        productIdInDetails: productId
+        productIdInDetails: productId,
+        isShoppingCartShowing: false
       }
     });
   }, []);
