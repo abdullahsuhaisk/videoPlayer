@@ -49,7 +49,7 @@ const App = ({ client }) => {
                 // You can use like that source[currentQuality] but it's not working we need to change video quality
                 return (
                   <Suspense fallback={<></>}>
-                    <Player poster={poster} sources={source} />;
+                    <Player sources={source} />;
                   </Suspense>
                 );
               }}

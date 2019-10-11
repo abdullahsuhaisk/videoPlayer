@@ -57,8 +57,10 @@
             }
           },
           {
-            "type": "ScreenReadyComponent",
-            "props": {}
+            "type": "FullScreenImage",
+            "props": {
+              "imageUrl": "https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg"
+            }
           }
         ]
       }

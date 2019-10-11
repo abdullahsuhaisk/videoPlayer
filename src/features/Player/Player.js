@@ -54,7 +54,7 @@ const Player = ({ width, height, poster, sources }) => {
 
   useEffect(() => {
     playerRef.current = videojs(videoRef.current, {
-      poster,
+      // poster,
       controls: false,
       sources,
       responsive: true,
@@ -298,7 +298,7 @@ const Player = ({ width, height, poster, sources }) => {
 Player.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  poster: PropTypes.string.isRequired,
+  // poster: PropTypes.string.isRequired,
   sources: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,

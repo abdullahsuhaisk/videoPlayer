@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
@@ -24,6 +25,7 @@ const ScreenReadyWrapper = ({ children }) => {
                 <div
                   className="VideoPlay--playBtn"
                   onClick={() => {
+                    videoPlayer.pause();
                     client.writeData({
                       data: {
                         player: {
