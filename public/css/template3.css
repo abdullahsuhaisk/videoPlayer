@@ -4025,6 +4025,7 @@
   position: absolute;
   top: 5px;
   right: 145px;
+  z-index: 0;
 }
 .Template1 .cartBtn {
   width: 24px;
@@ -5390,7 +5391,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   font-family: futura-pt, sans-serif;
   pointer-events: auto;
 }
