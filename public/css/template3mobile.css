@@ -3024,6 +3024,44 @@
   background: url(/images/PlayIcon.svg) center / contain no-repeat;
   cursor: pointer;
 }
+.Template1 .VideoPlay--pauseBtn-shadow{
+  width: 120px;
+  height: 120px;
+  background-color: rgba(243, 6, 64, 0.1);
+  border-radius: 50%;
+  position: absolute;
+}
+.Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::before {
+  content: '';
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  margin: auto;
+  background-color: rgba(243, 6, 64, 0.8);
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::after {
+  content: '';
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  margin: auto;
+  background: url(/images/PauseIcon.svg) center / contain no-repeat;
+  cursor: pointer;
+}
 .Template1 .VideoPlayStory {
   position: relative;
   width: 812px;
