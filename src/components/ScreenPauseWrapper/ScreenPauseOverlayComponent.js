@@ -13,9 +13,9 @@ const StyledComponent = styled.div`
     margin-top: -55px;
     margin-left: -55px;
     -webkit-animation-name: playscale; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 0.25s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.3s; /* Safari 4.0 - 8.0 */
     animation-name: playscale;
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
 
