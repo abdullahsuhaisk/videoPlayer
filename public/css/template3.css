@@ -2275,7 +2275,7 @@
   height: 1035px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
   background-color: rgba(11, 36, 67, 0.95);
-  z-index: 1;
+  z-index: 3;
   pointer-events: auto;
 }
 .Template1 .ProductDetail--information--badge {
@@ -3784,6 +3784,7 @@
   height: 15px;
   position: absolute;
   top: 35px;
+  z-index: 2;
 }
 .Template1 .videoProgressBar progress,
 .Template1 .videoProgressBar input {
@@ -3948,6 +3949,7 @@
   transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
+  z-index: 2;
 }
 .Template1 .HotspotPoint:hover {
   transform: scale(1.33);
@@ -4049,6 +4051,7 @@
   cursor: pointer;
   margin-right: 20px;
   border: none;
+  z-index: 0;
 }
 .Template1 .cartBtn:focus {
   outline: none;
@@ -5406,7 +5409,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   font-family: futura-pt, sans-serif;
   pointer-events: auto;
 }
