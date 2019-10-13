@@ -3682,6 +3682,20 @@
 .Template1 .volumControls:hover .volumControl {
   display: block;
 }
+.Template1 .volumControls:hover .volume--hover-delay {
+  display: block;
+}
+
+.volume--hover-delay {
+  position: absolute;
+  z-index: 1;
+  bottom: 45px;
+  right: 110px;
+  width: 30px;
+  height: 18px;
+  border-radius: 2px;
+  display: none;
+}
 .Template1 .volumControls .volumControl {
   -webkit-appearance: none;
   position: absolute;
