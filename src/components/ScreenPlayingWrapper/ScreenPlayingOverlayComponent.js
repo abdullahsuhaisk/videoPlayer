@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import ControlBarHoc from '../ControlBarWrapper/ControlBar/ControlBarHoc';
-import { PAUSE } from '../../Queries/Player/PlayerMutations';
+import { PAUSE, PLAY } from '../../Queries/Player/PlayerMutations';
 
 const StyledComponent = styled.div`
   .VideoPlay--playBtn-shadow {
@@ -62,10 +62,17 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
 
   const PauseKeyHandler = (e) => {
     if (e.code === 'Space') {
-      client.mutate({
-        mutation: PAUSE
-      });
-      return videoPlayer.paused() ? null : videoPlayer.pause();
+      if (!videoPlayer.paused()) {
+        client.mutate({
+          mutation: PAUSE
+        });
+        videoPlayer.pause();
+      }
+      if (videoPlayer.pause())
+        client.mutate({
+          mutation: PLAY
+        });
+      videoPlayer.play();
     }
   };
 

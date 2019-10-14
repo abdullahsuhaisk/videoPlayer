@@ -46,7 +46,9 @@ const Scaler = ({ children }) => {
               width: `${baseWidth}px`,
               height: `${baseHeight}px`,
               transformOrigin: 'left top',
-              transform: `perspective(1px) scaleX(${scaleX}) scaleY(${scaleY})`,
+              transform: `perspective(1px) scaleX(${scaleX.toFixed(
+                2
+              )}) scaleY(${scaleY.toFixed(2)})`,
               backfaceVisibility: `hidden`
             }}>
             {children}

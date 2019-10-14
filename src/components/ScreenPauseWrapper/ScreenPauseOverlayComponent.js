@@ -68,11 +68,11 @@ const ScreenPauseOverlayComponent = ({ videoPlayer, client }) => {
 
   const KeyHandler = (e) => {
     if (e.code === 'Space') {
-      client.mutate({
-        mutation: PLAY
-      });
-
-      return videoPlayer.paused() ? videoPlayer.play() : null;
+      if (videoPlayer.pause())
+        client.mutate({
+          mutation: PLAY
+        });
+      videoPlayer.play();
     }
   };
 
