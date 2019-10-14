@@ -1,16 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { zoomIn } from 'react-animations';
-import styled, { keyframes } from 'styled-components';
+import Fade from 'react-reveal/Fade';
 import BaseQueryHoc from '../../../components/HOCS/Grapqhl/BaseQueryHoc';
 import { GET_PLAYER } from '../../../Queries/Player/PlayerQueries';
 import { PLAYER } from '../../../common/constants';
-
-const AnimationName = keyframes`${zoomIn}`;
-const AnimatedDiv = styled.div`
-  animation: 0.5s ${AnimationName};
-`;
 
 const ProductDetailWrapper = ({ children, client, data }) => {
   const { player, productIdInDetails } = data;
@@ -19,15 +13,16 @@ const ProductDetailWrapper = ({ children, client, data }) => {
   }
   if (player.isStarted && player.playingState === PLAYER.PAUSED) {
     return (
-      <AnimatedDiv>
+      <Fade bottom delay="0" duration="300">
         <div className="darkOverlay">
-          <i
+          {/* props must be given for this, it is only needed in template 2 */}
+          {/* <i
             className="modal--close"
             onClick={() =>
               client.writeData({
                 data: { productIdInDetails: null }
               })
-            }></i>
+            }></i> */}
           <div className="ProductDetail">
             <i
               className="modal--close"
@@ -40,7 +35,7 @@ const ProductDetailWrapper = ({ children, client, data }) => {
             {children}
           </div>
         </div>
-      </AnimatedDiv>
+      </Fade>
     );
   }
   return console.log('Someting wrong in Product Detail');

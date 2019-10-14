@@ -29,7 +29,7 @@ const Scaler = ({ children }) => {
           baseWidth = 1920;
           baseHeight = 1080;
         }
-        if (layout.width < 812) {
+        if (layout.width < 850) {
           baseWidth = 812;
           baseHeight = 450;
         }
@@ -46,7 +46,9 @@ const Scaler = ({ children }) => {
               width: `${baseWidth}px`,
               height: `${baseHeight}px`,
               transformOrigin: 'left top',
-              transform: `perspective(1px) scaleX(${scaleX}) scaleY(${scaleY})`,
+              transform: `perspective(1px) scaleX(${scaleX.toFixed(
+                2
+              )}) scaleY(${scaleY.toFixed(2)})`,
               backfaceVisibility: `hidden`
             }}>
             {children}

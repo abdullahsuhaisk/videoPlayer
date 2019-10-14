@@ -40,6 +40,7 @@ const VolumControl = (props) => {
         onChange={(e) => volumeHandler(e)}
         max="100"
       />
+      <div className="volume--hover-delay" />
     </div>
   );
 };

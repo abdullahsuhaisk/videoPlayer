@@ -10,7 +10,7 @@ import Login from '../../features/Auth/LoginForm';
 import Register from '../../features/Auth/RegisterForm';
 import ForgotPassword from '../../features/Auth/ForgotPasswordForm';
 // Wrapper Section //
-import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReady';
+import ScreenReadyWrapper from '../ScreenReadyWrapper/ScreenReadyWrapper';
 import ScreenPlayingWrapper from '../ScreenPlayingWrapper/ScreenPlayingWrapper';
 import ScreenPauseWrapper from '../ScreenPauseWrapper/ScreenPauseWrapper';
 import ScreenPauseOverlayComponent from '../ScreenPauseWrapper/ScreenPauseOverlayComponent';
@@ -52,7 +52,7 @@ import Header from '../Header/Header';
 
 import ProductListCard from '../ProductListWrapper/ProductListCard';
 import ShoppingCartScreen from '../../features/ShoppingCart/ShoppingCartScreen';
-import ScreenReadyComponent from '../ScreenReadyWrapper/ScreenReadyComponent';
+import FullScreenImage from '../ScreenReadyWrapper/FullScreenImage';
 import ProfileScreen from '../../features/ProfileNew/ProfileScreen';
 import AddToWishListScreen from '../../features/Wishlist/AddToWishListFromProductCard/AddToWishListScreen';
 // import ControlBarFixed from '../Template3/ControlbarFixed';
@@ -116,7 +116,7 @@ const widgetList = {
   ShoppingCartScreen,
   ScreenPauseOverlayComponent,
   ScreenPlayingOverlayComponent,
-  ScreenReadyComponent,
+  FullScreenImage,
   ProfileScreen,
   AddToWishListScreen,
   HotSpotsPointerContainer,

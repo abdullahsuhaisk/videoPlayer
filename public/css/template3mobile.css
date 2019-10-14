@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
-@import url("https://use.typekit.net/zdh2tbs.css");
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700&display=swap&subset=latin-ext');
 .Template1 {
   /**********************************************************************************
    //  - VideoPlayerContainer
@@ -96,7 +95,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Source Sans Pro';
+  font-family: 'Nunito Sans', sans-serif;
 }
 .Template1 .VideoPlayerContainer {
   width: 1796px;
@@ -2276,7 +2275,7 @@
   height: 1035px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
   background-color: rgba(11, 36, 67, 0.95);
-  z-index: 1;
+  z-index: 3;
   pointer-events: auto;
 }
 .Template1 .ProductDetail--information--badge {
@@ -2374,7 +2373,6 @@
   margin-bottom: 20px;
 }
 .Template1 .ProductDetail--company--title--h2 {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 12px;
   font-weight: 700;
   font-style: normal;
@@ -2384,16 +2382,15 @@
   color: #f30640;
   display: block;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .Template1 .ProductDetail--information--title--h2 {
-  font-family: futura-pt-demi, sans-serif;
-  font-size: 27px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.3;
-  letter-spacing: 0.65px;
+  line-height: 1.2;
   text-align: left;
   color: #0b2443;
   min-height: 35px;
@@ -2581,15 +2578,13 @@
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: center;
   color: #ffffff;
   margin-bottom: 30px;
   cursor: pointer;
   outline: 0;
   border: 0;
-  font-family: futura-pt, sans-serif;
 }
 .Template1 .ProductDetail--addToCartBtn:hover  {
   opacity: 0.85;
@@ -2598,7 +2593,8 @@
   width: 16px;
   height: 16px;
   background: url(/images/AddToCartBtnIcon.svg) center / contain no-repeat;
-  margin-right: 20px;
+  margin-right: 15px;
+  margin-bottom: 3px;
 }
 .Template1 .ProductDetail--comment-head {
   display: flex;
@@ -3022,6 +3018,44 @@
   z-index: 2;
   margin: auto;
   background: url(/images/PlayIcon.svg) center / contain no-repeat;
+  cursor: pointer;
+}
+.Template1 .VideoPlay--pauseBtn-shadow{
+  width: 120px;
+  height: 120px;
+  background-color: rgba(243, 6, 64, 0.1);
+  border-radius: 50%;
+  position: absolute;
+}
+.Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::before {
+  content: '';
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  margin: auto;
+  background-color: rgba(243, 6, 64, 0.8);
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::after {
+  content: '';
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  margin: auto;
+  background: url(/images/PauseIcon.svg) center / contain no-repeat;
   cursor: pointer;
 }
 .Template1 .VideoPlayStory {
@@ -3644,6 +3678,20 @@
 .Template1 .volumControls:hover .volumControl {
   display: block;
 }
+.Template1 .volumControls:hover .volume--hover-delay {
+  display: block;
+}
+
+.volume--hover-delay {
+  position: absolute;
+  z-index: 1;
+  bottom: 45px;
+  right: 110px;
+  width: 30px;
+  height: 18px;
+  border-radius: 2px;
+  display: none;
+}
 .Template1 .volumControls .volumControl {
   -webkit-appearance: none;
   position: absolute;
@@ -3731,6 +3779,7 @@
   height: 15px;
   position: absolute;
   top: 35px;
+  z-index: 2;
 }
 .Template1 .videoProgressBar progress,
 .Template1 .videoProgressBar input {
@@ -3891,7 +3940,7 @@
   padding: 0;
   cursor: pointer;
   border: 0px solid transparent;
-  z-index: 0;
+  z-index: 2;
   transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -3902,6 +3951,8 @@
 .Template1 .timeDisplay {
   display: flex;
   margin-left: 23px;
+  line-height: 1;
+  margin-top: 0;
 }
 .Template1 .timeDisplay p {
   font-size: 20px;
@@ -4086,6 +4137,7 @@
   height: 20px;
   background: url(/images/CloseIconBlack.svg) center / contain no-repeat;
   cursor: pointer;
+  z-index: 999;
 }
 .Template1 .modal--close:hover {
   opacity: 1;
@@ -4746,7 +4798,9 @@
 .Template1 .Settings--panel{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
+  height: 44px;
 }
 .Template1 .Settings--panel--label{
   font-size: 18px;
@@ -4965,7 +5019,6 @@
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-family: futura-pt, sans-serif;
 }
 
 .productdetail--container .productdetail--gallery {
@@ -5003,7 +5056,6 @@
 }
 
 .productdetail--container .productdetail--info .productdetail--product-name {
-  font-family: futura-pt-demi, sans-serif;
   font-size: 27px;
   font-weight: bold;
   font-style: normal;
@@ -5029,7 +5081,6 @@
 }
 
 .productdetail--price-wrapper .previous-price {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
@@ -5043,13 +5094,11 @@
 }
 
 .productdetail--price-wrapper .current-price {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 24px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.29;
-  letter-spacing: 0.58px;
+  line-height: 1;
   text-align: center;
   color: #14be82;
 }
@@ -5061,16 +5110,14 @@
 }
 
  .productdetail--colors-wrapper .productdetail--label {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
  .productdetail--colors-wrapper .productdetail--colors-options {
@@ -5101,14 +5148,13 @@
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.33;
-  letter-spacing: 0.29px;
+  line-height: 1;
   text-align: center;
   color: #666666;
   position: absolute;
   bottom: -35px;
   left: 50%;
-  margin-left: -15px;
+  margin-left: -13px;
 }
 
  .productdetail--colors-wrapper .productdetail--colors-options .unselected  {
@@ -5130,16 +5176,14 @@
 }
 
  .productdetail--sizes-wrapper .productdetail--label {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
  .productdetail--sizes-wrapper .productdetail--sizes-options {
@@ -5160,12 +5204,10 @@
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.29;
-  letter-spacing: 0.34px;
+  line-height: 1;
   text-align: center;
   color: #0b2443;
   cursor: pointer;
-  font-family: futura-pt-bold, sans-serif;
 }
 
  .productdetail--sizes-wrapper .productdetail--sizes-options .unselected  {
@@ -5179,15 +5221,13 @@
   margin-right: 10px;
   text-transform: uppercase;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.29;
-  letter-spacing: 0.34px;
+  line-height: 1;
   text-align: center;
   color: #929292;
   cursor: pointer;
-  font-family: futura-pt-bold, sans-serif;
 }
 
 .productdetail--quantity-wrapper {
@@ -5197,13 +5237,11 @@
 }
 
 .productdetail--quantity-wrapper .productdetail--label {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
   margin-bottom: 20px;
@@ -5230,7 +5268,6 @@
 }
 
 .productdetail--quantity-wrapper .productdetail--quantity-options .value  {
-  font-family: futura-pt, sans-serif;
   margin-right: 35px;
   font-size: 20px;
   font-weight: 600;
@@ -5265,11 +5302,10 @@
   align-items: center;
   width: 100%;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: center;
   color: #ffffff;
   margin-bottom: 30px;
@@ -5311,25 +5347,21 @@
 }
 
 .accordion--container .accordion--header .title {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.3;
-  letter-spacing: 0.48px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
 }
 
 .accordion--container .accordion--content {
-  font-family: futura-pt, sans-serif;
   font-size: 16px;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: 0.38px;
+  line-height: 1.2;
   text-align: left;
   color: #0b2443;
   overflow: hidden;
@@ -5351,14 +5383,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
-  font-family: futura-pt, sans-serif;
+  z-index: 3;
   pointer-events: auto;
   overflow: scroll;
 }
 
 .shoppingcart--container .shoppingcart--title {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 24px;
   font-weight: bold;
   font-style: normal;
@@ -5371,7 +5401,6 @@
 }
 
 .shoppingcart--container .shoppingcart-items-container {
-  font-family: futura-pt-demi, sans-serif;
   display: flex;
   flex-direction: column;
   height: auto;
@@ -5425,7 +5454,6 @@
 }
 
 .shoppingcart--container .shoppingcart--content-empty .shopping-cart--empty-info {
-  font-family: futura-pt, sans-serif;
 
 }
 
@@ -5454,7 +5482,6 @@
 }
 
 .shoppingcart--container .shoppingcart--checkout-container {
-  font-family: futura-pt, sans-serif;
   position: relative;
   width: 752px;
   height: 318px;
@@ -5480,7 +5507,6 @@
   letter-spacing: 0.38px;
   text-align: left;
   color: #0b2443;
-  font-family: futura-pt-demi, sans-serif;
 
 }
 
@@ -5489,11 +5515,9 @@
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
-  font-family: futura-pt-bold, sans-serif;
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red {
@@ -5505,7 +5529,6 @@
   letter-spacing: 0.38px;
   text-align: left;
   color: #f30640;
-  font-family: futura-pt-bold, sans-serif;
 }
 
 .checkout--seperator {
@@ -5523,19 +5546,17 @@
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title {
-  font-family: futura-pt-bold, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.3;
-  letter-spacing: 0.48px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: bold;
   font-style: normal;
@@ -5623,7 +5644,6 @@
   justify-content: space-between;
   width: 100%;
   padding-top: 10px;
-  font-family: futura-pt, sans-serif;
 }
 
 .shopcart--item-container .item-info .productdetail--label {
@@ -5640,12 +5660,11 @@
   width: 60%
 }
 .shopcart--item-container .item-info .item-name {
-  font-family: futura-pt-bold, sans-serif;
   font-size: 20px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.3;
+  line-height: 1.2;
   letter-spacing: 0.48px;
   text-align: left;
   color: #0b2443;
@@ -5672,7 +5691,6 @@
   text-align: left;
   color: #666666;
   margin-bottom: 10px;
-  font-family: futura-pt, sans-serif;
 }
 
 .shopcart--item-container .item-info .item-quanity-price {
@@ -5687,7 +5705,6 @@
 }
 
 .shopcart--item-container .item-info .item--price {
-  font-family: futura-pt-bold, sans-serif;
   margin-left: auto;
   margin-bottom: auto; 
   font-size: 20px;

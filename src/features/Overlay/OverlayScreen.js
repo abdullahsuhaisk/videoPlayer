@@ -17,6 +17,7 @@ import template2 from './template.json';
 
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');
+  console.log(elements);
   for (let i = 2; i < elements.length; i++) {
     console.log(elements[i].href);
     if (
@@ -55,12 +56,12 @@ const Screen = ({ playingState, videoPlayer }) => {
   }, []);
   useEffect(() => {
     // addCustomCss('/css/overlay.css');
-    addCustomCss('/css/template3.css');
+    // addCustomCss('/css/template3.css');
     // addCustomCss('/css/template3mobile.css');
   }, []);
 
   useEffect(() => {
-    console.log('Template has been changed');
+    // console.log('Template has been changed');
     if (templateType === 'Normal') {
       LoadJsons(template3).then((res) => {
         setTemplate(res);
@@ -77,8 +78,8 @@ const Screen = ({ playingState, videoPlayer }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width < 1100) seTtemplateType('Mobile');
-        if (layout.width > 1100) seTtemplateType('Normal');
+        if (layout.width < 851) seTtemplateType('Mobile');
+        else seTtemplateType('Normal');
 
         return (
           <>

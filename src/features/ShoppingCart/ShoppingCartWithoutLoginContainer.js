@@ -1,17 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
-import { fadeInRight } from 'react-animations';
-import styled, { keyframes } from 'styled-components';
+import Fade from 'react-reveal/Fade';
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
 import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/ShoppingCartItem';
 import ScreenChoserQuery from '../../components/HOCS/Grapqhl/ScreenChoserQuery';
-
-const AnimationName = keyframes`${fadeInRight}`;
-const AnimatedDiv = styled.div`
-  animation: 0.25s ${AnimationName};
-`;
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
@@ -53,7 +47,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setChangeCount(changeCount + 1);
   };
   return (
-    <AnimatedDiv>
+    <Fade right duration="300">
       <div className="shoppingcart--container">
         <div className="shoppingcart--title">Shopping Cart</div>
         <i
@@ -79,14 +73,16 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
               {localCart &&
                 localCart.map((item, key) => {
                   return (
-                    <ShoppingCartItem
-                      productId={item.productId}
-                      item={item}
-                      key={key}
-                      setChangeCount={setChangeCount}
-                      changeCount={changeCount}
-                      deleteItem={deleteItem}
-                    />
+                    <Fade right delay={key * 50} duration="400">
+                      <ShoppingCartItem
+                        productId={item.productId}
+                        item={item}
+                        key={key}
+                        setChangeCount={setChangeCount}
+                        changeCount={changeCount}
+                        deleteItem={deleteItem}
+                      />
+                    </Fade>
                   );
                 })}
             </div>
@@ -98,7 +94,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           </>
         )}
       </div>
-    </AnimatedDiv>
+    </Fade>
   );
 };
 

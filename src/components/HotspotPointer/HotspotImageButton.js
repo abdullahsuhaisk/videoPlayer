@@ -40,7 +40,9 @@ const HotspotImageButton = ({
       style={{}}
       onClick={() => setProductIdForDetail(id)}>
       <div className="hotspotbutton--shadow">
-        <div className="hotspotbutton--wrapper">
+        <div
+          className="hotspotbutton--wrapper"
+          style={{ width: 120, height: 110 }}>
           <img
             src={imageUrl && imageUrl}
             alt="HotspotButton"
