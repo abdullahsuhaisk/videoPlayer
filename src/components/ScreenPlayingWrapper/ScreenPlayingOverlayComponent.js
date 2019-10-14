@@ -49,32 +49,32 @@ const StyledComponent = styled.div`
 `;
 
 const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
-  useEffect(() => {
-    document.addEventListener('keypress', (e) => {
-      PauseKeyHandler(e);
-      console.log('play overlay');
-    });
-    return () => {
-      document.removeEventListener('keypress', PauseKeyHandler);
-      console.log('removed');
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener('keypress', (e) => {
+  //     PauseKeyHandler(e);
+  //     console.log('play overlay');
+  //   });
+  //   return () => {
+  //     document.removeEventListener('keypress', PauseKeyHandler);
+  //     console.log('removed');
+  //   };
+  // }, []);
 
-  const PauseKeyHandler = (e) => {
-    if (e.code === 'Space') {
-      if (!videoPlayer.paused()) {
-        client.mutate({
-          mutation: PAUSE
-        });
-        videoPlayer.pause();
-      }
-      if (videoPlayer.pause())
-        client.mutate({
-          mutation: PLAY
-        });
-      videoPlayer.play();
-    }
-  };
+  // const PauseKeyHandler = (e) => {
+  //   if (e.code === 'Space') {
+  //     if (!videoPlayer.paused()) {
+  //       client.mutate({
+  //         mutation: PAUSE
+  //       });
+  //       videoPlayer.pause();
+  //     }
+  //     if (videoPlayer.pause())
+  //       client.mutate({
+  //         mutation: PLAY
+  //       });
+  //     videoPlayer.play();
+  //   }
+  // };
 
   const OverlayClickHandler = () => {
     client.mutate({
