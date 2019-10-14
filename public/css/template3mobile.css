@@ -5238,11 +5238,10 @@
 
 .productdetail--quantity-wrapper .productdetail--label {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31;
-  letter-spacing: 0.38px;
+  line-height: 1;
   text-align: left;
   color: #0b2443;
   margin-bottom: 20px;
