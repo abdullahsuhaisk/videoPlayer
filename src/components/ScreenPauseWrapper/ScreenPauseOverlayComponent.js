@@ -9,6 +9,7 @@ import { PLAY } from '../../Queries/Player/PlayerMutations';
 const StyledComponent = styled.div`
   .VideoPlay--pauseBtn-shadow {
     position: absolute;
+    z-index: 3;
     top: 50%;
     left: 50%;
     margin-top: -55px;
@@ -88,13 +89,12 @@ const ScreenPauseOverlayComponent = ({ videoPlayer, client }) => {
       <div
         className="Overlay"
         onClick={() => OverlayClickHandler()}
-        style={{ pointerEvents: 'auto' }}>
-        <StyledComponent>
-          <div className="VideoPlay--pauseBtn-shadow">
-            <div className="VideoPlay--pauseBtn"></div>
-          </div>
-        </StyledComponent>
-      </div>
+        style={{ pointerEvents: 'auto' }}></div>
+      <StyledComponent>
+        <div className="VideoPlay--pauseBtn-shadow">
+          <div className="VideoPlay--pauseBtn"></div>
+        </div>
+      </StyledComponent>
     </React.Fragment>
   );
 };
