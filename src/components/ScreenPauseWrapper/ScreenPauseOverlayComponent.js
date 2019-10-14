@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useEffect } from 'react';
+import gql from 'graphql-tag';
 import styled from 'styled-components';
 import ControlBarHoc from '../ControlBarWrapper/ControlBar/ControlBarHoc';
 import { PLAY } from '../../Queries/Player/PlayerMutations';
@@ -54,12 +55,34 @@ const StyledComponent = styled.div`
 `;
 
 const ScreenPauseOverlayComponent = ({ videoPlayer, client }) => {
+  useEffect(() => {
+    document.addEventListener('keypress', (e) => {
+      KeyHandler(e);
+      console.log('pause overlay');
+      return () => {
+        document.removeEventListener('keypress', KeyHandler);
+        console.log('removed');
+      };
+    });
+  }, []);
+
+  const KeyHandler = (e) => {
+    if (e.code === 'Space') {
+      client.mutate({
+        mutation: PLAY
+      });
+
+      return videoPlayer.paused() ? videoPlayer.play() : null;
+    }
+  };
+
   const OverlayClickHandler = () => {
     client.mutate({
       mutation: PLAY
     });
     videoPlayer.play();
   };
+
   return (
     <React.Fragment>
       <div
