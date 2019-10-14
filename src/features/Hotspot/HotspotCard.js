@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Fade from 'react-reveal/Fade';
 import { ApolloConsumer } from 'react-apollo';
-import { Wrapper, BouncyDiv } from './HotspotCard.style';
+import { Wrapper } from './HotspotCard.style';
 
 import { PLAYER } from '../../common/constants';
 
@@ -12,7 +12,7 @@ const HotspotCard = ({ styles, hotspot }) => {
     <ApolloConsumer>
       {(client) => {
         return (
-          <BouncyDiv>
+          <Fade right duration="500">
             <Wrapper
               className="vb--hotspot-card"
               styles={styles}
@@ -35,7 +35,7 @@ const HotspotCard = ({ styles, hotspot }) => {
                 }}
               />
             </Wrapper>
-          </BouncyDiv>
+          </Fade>
         );
       }}
     </ApolloConsumer>
