@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import NoImage from '../../../../assets/images/NoImage.svg';
+import NoImage from '../../../../assets/images/NoImage.png';
 // import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
 
 const ProductDetailImage = ({ images }) => {

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { PLAYER } from '../../../../../../common/constants';
 import { HotspotPointWrapper } from './HotspotPoints.style';
 import { httpToHttps } from '../../../../../../utils/httpTohttps';
+import NoImageSmall from '../../../../../../assets/images/NoImageSmall.png';
 
 const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
   const { image, name, id } = product;
@@ -25,7 +26,9 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
         <div className="hotspot--image-container">
           <div className="hotspot--image">
             <img
-              src={image && httpToHttps(image && image.imageUrl)}
+              src={
+                (image && httpToHttps(image && image.imageUrl)) || NoImageSmall
+              }
               alt={name}
               onClick={() => setProductIdForDetail(id)}
             />

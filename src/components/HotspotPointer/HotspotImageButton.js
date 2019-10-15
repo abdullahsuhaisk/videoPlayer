@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import NoImageSmall from '../../assets/images/NoImageSmall.png';
 
 const StyledComponent = styled.div`
   position: absolute;
@@ -44,7 +45,7 @@ const HotspotImageButton = ({
           className="hotspotbutton--wrapper"
           style={{ width: 120, height: 110 }}>
           <img
-            src={imageUrl && imageUrl}
+            src={(imageUrl && imageUrl) || NoImageSmall}
             alt="HotspotButton"
             style={{ width: 100, height: 100, borderRadius: '50%' }}
           />
