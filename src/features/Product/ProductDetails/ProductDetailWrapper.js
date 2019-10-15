@@ -13,7 +13,7 @@ const ProductDetailWrapper = ({ children, client, data }) => {
   }
   if (player.isStarted && player.playingState === PLAYER.PAUSED) {
     return (
-      <Fade bottom delay="0" duration="300">
+      <Fade right delay={0} duration={300}>
         <div className="darkOverlay">
           {/* props must be given for this, it is only needed in template 2 */}
           {/* <i
