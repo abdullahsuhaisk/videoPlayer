@@ -17,9 +17,9 @@ import template2 from './template.json';
 
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');
-  console.log(elements);
+  // console.log(elements);
   for (let i = 2; i < elements.length; i++) {
-    console.log(elements[i].href);
+    // console.log(elements[i].href);
     if (
       elements[i].href ===
         'https://vibuy-player.appspot.com/css/template3mobile.css' ||

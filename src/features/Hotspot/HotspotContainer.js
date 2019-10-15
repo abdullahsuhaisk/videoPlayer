@@ -88,6 +88,7 @@ const HotspotContainer = ({ data, type }) => {
             );
           // console.log(activeHotSpots);
           if (
+            playingState === PLAYER.PLAYING &&
             hotSpotShowing === false &&
             (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
           )

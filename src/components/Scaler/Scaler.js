@@ -25,11 +25,11 @@ const Scaler = ({ children }) => {
   return (
     <Query query={GET_LAYOUT}>
       {({ data: { layout } }) => {
-        if (layout.width > 812) {
+        if (layout.width > 850) {
           baseWidth = 1920;
           baseHeight = 1080;
         }
-        if (layout.width < 850) {
+        if (layout.width <= 850) {
           baseWidth = 812;
           baseHeight = 450;
         }
@@ -49,7 +49,8 @@ const Scaler = ({ children }) => {
               transform: `perspective(1px) scaleX(${scaleX.toFixed(
                 2
               )}) scaleY(${scaleY.toFixed(2)})`,
-              backfaceVisibility: `hidden`
+              backfaceVisibility: 'hidden',
+              perspective: '1000px'
             }}>
             {children}
           </div>
