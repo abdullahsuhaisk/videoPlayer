@@ -47,7 +47,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setChangeCount(changeCount + 1);
   };
   return (
-    <Fade right duration="300">
+    <Fade right duration={300}>
       <div className="shoppingcart--container">
         <div className="shoppingcart--title">Shopping Cart</div>
         <i
@@ -73,7 +73,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
               {localCart &&
                 localCart.map((item, key) => {
                   return (
-                    <Fade right delay={key * 50} duration="400">
+                    <Fade right delay={key * 50} duration={400}>
                       <ShoppingCartItem
                         productId={item.productId}
                         item={item}

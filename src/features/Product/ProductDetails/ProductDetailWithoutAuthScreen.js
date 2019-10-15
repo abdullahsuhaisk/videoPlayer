@@ -103,7 +103,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
 
     return (
       <>
-        <Fade bottom delay="300" duration="300">
+        <Fade right delay={300} duration={300}>
           <ProductDetailImage images={images} />
           <VerticalScroll>
             <ProductDetaiHeader productTitle={product.name} company={company} />

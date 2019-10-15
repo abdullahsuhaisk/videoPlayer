@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import NoImage from '../../../../assets/images/NoImage.svg';
 // import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
 
 const ProductDetailImage = ({ images }) => {
@@ -21,7 +22,6 @@ const ProductDetailImage = ({ images }) => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
-
   return (
     // <div>
     //   <FlickityComponent
@@ -33,7 +33,7 @@ const ProductDetailImage = ({ images }) => {
     // </div>
 
     <div className="ProductDetail--imagesSlider">
-      {images ? (
+      {images && images.length > 0 ? (
         <Slider {...settings}>
           {images.map((item, index) => (
             <div key={index} className="slick--image-container">
@@ -42,16 +42,11 @@ const ProductDetailImage = ({ images }) => {
           ))}
         </Slider>
       ) : (
-        <span>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </span>
+        <Slider {...settings}>
+          <div className="slick--image-container">
+            <img alt="No" src={NoImage} />
+          </div>
+        </Slider>
       )}
     </div>
   );
