@@ -1560,6 +1560,13 @@
 .Template1 .watchlist .watchlist--videoContainer:hover::before {
   display: flex;
 }
+
+.Template1 .controlbar--vibuyicon {
+  width: 18px;
+  height: 24px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 .Template1 .ShoppingCartContainer {
   display: flex;
   flex-direction: column;
@@ -5085,7 +5092,7 @@
 
 .productdetail--price-wrapper .previous-price {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.3;

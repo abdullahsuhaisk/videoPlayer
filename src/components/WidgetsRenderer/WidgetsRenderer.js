@@ -75,6 +75,7 @@ import ProductDetailAccordion from '../../features/Product/ProductDetails/Compon
 // import ShoppingCartWithoutLoginContainer from '../../features/ShoppingCart/ShoppingCartWithoutLoginContainer';
 import ShoppingCartCotainer from '../../features/ShoppingCart/ShoppingCartCotainer';
 import ProductDetailWithoutAuthScreen from '../../features/Product/ProductDetails/ProductDetailWithoutAuthScreen';
+import VibuyIcon from '../ControlBarWrapper/ControlBar/VibuyIcon/VibuyIcon';
 
 //
 
@@ -133,7 +134,8 @@ const widgetList = {
   ProductDetailQuantity,
   ProductDetailAccordion,
   ShoppingCartCotainer,
-  ProductDetailWithoutAuthScreen
+  ProductDetailWithoutAuthScreen,
+  VibuyIcon
 };
 
 const WidgetsRenderer = (props) => {

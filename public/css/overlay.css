@@ -1538,6 +1538,11 @@
 .Template1 .watchlist .watchlist--videoContainer:hover::before {
   display: flex;
 }
+.Template1 .controlbar--vibuyicon {
+  width: 18px;
+  height: 24px;
+  margin-right: 20px;
+}
 .Template1 .ShoppingCartContainer {
   display: flex;
   flex-direction: column;

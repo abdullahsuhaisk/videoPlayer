@@ -60,6 +60,18 @@ const JumpToProductLeft = ({ client, videoPlayer }) => {
       );
   }, [videoPlayer.currentTime()]);
 
+  const HOTSPOT_SHOWING = gql`
+    query hotSpotShowing {
+      player @client {
+        hotSpotShowing
+      }
+    }
+  `;
+
+  const {
+    player: { hotSpotShowing }
+  } = client.readQuery({ query: HOTSPOT_SHOWING });
+
   const jumpToProductHandlerLeft = () => {
     if (!hotSpots) return null;
     let i = hotSpots.length - 1;
@@ -76,11 +88,14 @@ const JumpToProductLeft = ({ client, videoPlayer }) => {
       }
     }
   };
-  return (
-    <button
-      className="jumpToProductBtnLeft"
-      onClick={() => jumpToProductHandlerLeft()}></button>
-  );
+  if (hotSpotShowing === true) {
+    return (
+      <button
+        className="jumpToProductBtnLeft"
+        onClick={() => jumpToProductHandlerLeft()}></button>
+    );
+  }
+  return null;
 };
 
 export default ControlBarHoc(JumpToProductLeft);
