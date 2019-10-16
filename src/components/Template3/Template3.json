@@ -127,6 +127,10 @@
             "props": {
               "children": [
                 {
+                  "type": "VibuyIcon",
+                  "props": ""
+                },
+                {
                   "type": "ControlBarShoppingIcon",
                   "props": ""
                 },

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div((props) => ({
   position: 'absolute',
-  width: '120px',
+  width: '100px',
   height: '100%',
   right: '10px',
   '.vb--hotspot-card-list-header': {
@@ -16,7 +16,7 @@ export const Wrapper = styled.div((props) => ({
     marginTop: '10px',
     display: 'grid',
     gridTemplateRows:
-      '130px 130px 130px 130px 120px 120px 120px 120px 120px 120px',
+      '100px 100px 100px 100px 100px 100px 100px 100px 100px 100px',
     gridGap: '15px'
   },
   ...props.styles

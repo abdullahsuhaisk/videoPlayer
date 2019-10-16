@@ -37,14 +37,18 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, []);
 
-  const deleteItem = (productId) => {
+  const deleteItem = (productId, variant) => {
     const indexToRemove = localCart.findIndex(
-      (cart) => cart.productId === productId
+      (cart) =>
+        cart.productId === productId &&
+        cart.variantInfo.color === variant.color &&
+        cart.variantInfo.size === variant.size &&
+        cart.variantInfo.quantity === variant.quantity
     );
 
     localCart.splice(indexToRemove, 1);
     localStorage.setItem('guestCart', JSON.stringify(localCart));
-    setChangeCount(changeCount + 1);
+    setChangeCount(changeCount + 2);
   };
   return (
     <Fade right duration={300}>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
@@ -44,18 +45,34 @@ const ControlBarShoppingIcon = ({ client }) => {
         });
     videoPlayer.pause();
   };
-  return (
-    <div>
-      {shoppingCartItemsCount !== null ? (
-        <div className="addtocart-counter">{shoppingCartItemsCount}</div>
-      ) : null}
-      <button
-        className="cartBtn"
-        onClick={() => {
-          cartHandler();
-        }}></button>
-    </div>
-  );
+
+  const HOTSPOT_SHOWING = gql`
+    query hotSpotShowing {
+      player @client {
+        hotSpotShowing
+      }
+    }
+  `;
+
+  const {
+    player: { hotSpotShowing }
+  } = client.readQuery({ query: HOTSPOT_SHOWING });
+
+  if (hotSpotShowing === true) {
+    return (
+      <div>
+        {shoppingCartItemsCount !== null ? (
+          <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+        ) : null}
+        <button
+          className="cartBtn"
+          onClick={() => {
+            cartHandler();
+          }}></button>
+      </div>
+    );
+  }
+  return null;
 };
 
 export default withApollo(ControlBarShoppingIcon);

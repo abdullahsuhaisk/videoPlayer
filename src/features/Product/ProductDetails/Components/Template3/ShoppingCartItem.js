@@ -94,7 +94,9 @@ const ShoppingCartItem = ({
   return (
     <StyledComponent>
       <div className="shopcart--item-container">
-        <div className="item-delete" onClick={() => deleteItem(productId)}>
+        <div
+          className="item-delete"
+          onClick={() => deleteItem(productId, variant)}>
           <TrashIcon />
         </div>
         <div
