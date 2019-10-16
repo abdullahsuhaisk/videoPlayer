@@ -1568,6 +1568,7 @@
   width: 18px;
   height: 24px;
   margin-right: 20px;
+  cursor: pointer;
 }
 .Template1 .ShoppingCartContainer {
   display: flex;

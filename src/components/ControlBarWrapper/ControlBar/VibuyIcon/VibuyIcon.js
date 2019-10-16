@@ -34,7 +34,7 @@ const VibuyIcon = ({ client }) => {
     });
   };
   return (
-    <div>
+    <div style={{ pointerEvents: 'cursor' }}>
       <img
         src={VibuyIcon2}
         alt="VibuyIcon"
