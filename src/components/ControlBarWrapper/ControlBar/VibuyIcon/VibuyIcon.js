@@ -6,10 +6,6 @@ import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import VibuyIcon2 from '../../../../assets/icons/VibuyIcon.svg';
 
 const VibuyIcon = ({ client }) => {
-  const [toggle, setToggle] = useState(false);
-
-  const videoPlayer = getVideoJs();
-
   const HOTSPOT_SHOWING = gql`
     query hotSpotShowing {
       player @client {
