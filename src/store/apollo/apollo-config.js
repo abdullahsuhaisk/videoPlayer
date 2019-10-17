@@ -197,7 +197,8 @@ const setInitialCache = () => {
       isSettingMenuOpen: false,
       selectedQuality: 'Auto',
       hotSpotShowing: true,
-      playbackSpeed: 1
+      playbackSpeed: 1,
+      controlbarShowing: true
     },
     layout: {
       __typename: 'Layout',

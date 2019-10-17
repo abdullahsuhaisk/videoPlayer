@@ -97,6 +97,9 @@
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
 }
+.vjs-tech {
+  outline: none;
+}
 .Template1 .VideoPlayerContainer {
   width: 1796px;
   margin-top: 40px;
@@ -2407,7 +2410,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  display: block;
   text-transform: capitalize;
 }
 .Template1 .ProductDetail--information--title--heartIcon {
