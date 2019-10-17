@@ -3952,7 +3952,7 @@
   -webkit-transition: all 0.3s ease;
 }
 .Template1 .HotspotPoint:hover {
-  transform: scale(1.33);
+  transform: scale(1);
 }
 .Template1 .timeDisplay {
   display: flex;
@@ -4115,7 +4115,8 @@
   width: 100%;
 }
 .Template1 .scroll {
-  overflow-y: scroll;
+  overflow-y: scroll;  
+  scrollbar-width: none
 }
 .Template1 .scroll::-webkit-scrollbar {
   background-color: transparent;
@@ -5274,8 +5275,9 @@
 }
 
 .productdetail--quantity-wrapper .productdetail--quantity-options .value  {
+  width: 20px;
   margin-right: 35px;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -5392,6 +5394,7 @@
   z-index: 3;
   pointer-events: auto;
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 .shoppingcart--container .shoppingcart--title {
