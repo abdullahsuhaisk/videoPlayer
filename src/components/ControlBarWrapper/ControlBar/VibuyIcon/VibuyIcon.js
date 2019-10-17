@@ -24,7 +24,8 @@ const VibuyIcon = ({ client }) => {
         player: {
           __typename: 'Player',
           playingState: 'PLAYING',
-          hotSpotShowing: !hotSpotShowing
+          hotSpotShowing: !hotSpotShowing,
+          isSettingMenuOpen: false
         }
       }
     });
@@ -33,7 +34,7 @@ const VibuyIcon = ({ client }) => {
     <div style={{ pointerEvents: 'cursor' }}>
       <img
         src={VibuyIcon2}
-        alt="VibuyIcon"
+        alt="Vibuy Icon"
         onClick={onChange}
         className="controlbar--vibuyicon"
       />
