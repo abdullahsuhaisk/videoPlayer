@@ -10,7 +10,7 @@ export const Wrapper = styled.div((props) => ({
   width: '100px',
   height: '100px',
   borderRadius: '5px',
-  margin: '20px auto',
+  margin: '0px auto',
   border: '#fff 1px solid',
   boxShadow: '#000 3px 3px 6px 0',
   cursor: 'pointer',

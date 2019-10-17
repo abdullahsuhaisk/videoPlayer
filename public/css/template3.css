@@ -3953,7 +3953,7 @@
   z-index: 2;
 }
 .Template1 .HotspotPoint:hover {
-  transform: scale(1.33);
+  transform: scale(1);
 }
 .Template1 .timeDisplay {
   display: flex;
@@ -5281,6 +5281,7 @@
 
 .productdetail--quantity-wrapper .productdetail--quantity-options .value  {
   margin-right: 35px;
+  width: 23px;
   font-size: 20px;
   font-weight: 600;
   font-style: normal;

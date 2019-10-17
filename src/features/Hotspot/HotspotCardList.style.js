@@ -4,11 +4,12 @@ export const Wrapper = styled.div((props) => ({
   position: 'absolute',
   width: '100px',
   height: '100%',
-  right: '10px',
+  right: '20px',
   '.vb--hotspot-card-list-header': {
     pointerEvents: 'auto',
     textAlign: 'center',
-    padding: '5px'
+    padding: '5px',
+    marginTop: '10px'
   },
   '.vb--hotspot-card-list-cards': {
     height: '95%',

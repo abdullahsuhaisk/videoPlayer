@@ -42,13 +42,13 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
       (cart) =>
         cart.productId === productId &&
         cart.variantInfo.color === variant.color &&
-        cart.variantInfo.size === variant.size &&
-        cart.variantInfo.quantity === variant.quantity
+        cart.variantInfo.size === variant.size
     );
 
-    localCart.splice(indexToRemove, 1);
+    setlocalCart(localCart.splice(indexToRemove, 1));
     localStorage.setItem('guestCart', JSON.stringify(localCart));
-    setChangeCount(changeCount + 2);
+    // setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
+    setChangeCount(changeCount + 1);
   };
   return (
     <Fade right duration={300}>
