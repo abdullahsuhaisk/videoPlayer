@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
-import Player from './features/Player/Player';
+// import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
@@ -10,7 +10,10 @@ import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerI
 import { httpToHttps } from './utils/httpTohttps';
 import { sourceParser } from './utils/sourceParser';
 import Error from './components/Error/Error';
+import Spinner from './components/Spinner/Spinner';
 // import MainLoader from './components/ContentLoader/MainLoader';
+
+const Player = React.lazy(() => import('./features/Player/Player'));
 
 const App = ({ client }) => {
   // React.useEffect(() => {
@@ -26,7 +29,7 @@ const App = ({ client }) => {
       style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
       <Query query={GET_VIDEO} variables={{ prodLinkUniqueId: prodLinkId }}>
         {({ loading, error, data }) => {
-          if (loading) return null;
+          if (loading) return <Spinner />;
           if (error) {
             const errorContentsArray = [];
             error.graphQLErrors.map((
@@ -47,11 +50,7 @@ const App = ({ client }) => {
               {({ data: { player } }) => {
                 const { currentQuality } = player;
                 // You can use like that source[currentQuality] but it's not working we need to change video quality
-                return (
-                  <Suspense fallback={<></>}>
-                    <Player sources={source} />;
-                  </Suspense>
-                );
+                return <Player sources={source} />;
               }}
             </Query>
           );
