@@ -88,7 +88,12 @@ const ScreenPauseOverlayComponent = ({ videoPlayer, client }) => {
     <React.Fragment>
       <div
         className="Overlay"
-        onClick={() => OverlayClickHandler()}
+        onClick={() => {
+          OverlayClickHandler();
+          client.writeData({
+            data: { productIdInDetails: null }
+          });
+        }}
         style={{ pointerEvents: 'auto' }}></div>
       <StyledComponent>
         <div className="VideoPlay--pauseBtn-shadow">

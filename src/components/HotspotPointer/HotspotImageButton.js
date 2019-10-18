@@ -6,7 +6,7 @@ const StyledComponent = styled.div`
   position: absolute;
   left: ${(props) => props.xPos};
   top: ${(props) => props.yPos};
-  transition: all 0.25s linear;
+  transition: all 0.1s linear;
   pointer-events: auto;
   margin-left: -55px !important;
   margin-top: -55px !important;

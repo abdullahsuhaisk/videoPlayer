@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import ProductDetailImage from './Components/ProductDetailImage';
 import VerticalScroll from '../../../components/VerticalScroll';
 import ProductDetaiHeader from './Components/ProductDetaiHeader';
@@ -101,31 +103,94 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
       });
     };
 
+    const GET_LAYOUT = gql`
+      query getLayoutForScaler {
+        layout @client {
+          width
+          height
+          safeArea {
+            top
+            right
+            bottom
+            left
+          }
+        }
+      }
+    `;
+
     return (
-      <>
-        <Fade right delay={300} duration={300}>
-          <ProductDetailImage images={images} />
-          <VerticalScroll>
-            <ProductDetaiHeader productTitle={product.name} company={company} />
-            <ProductDetailPriceTemplate3
-              currentPrice={currentPrice}
-              price={price}
-              discount={discount}
-              currency={currency}
-            />
-            <ProductDetailVariant data={data} setData={setData} />
-            <ProductDetailQuantity variant={data} setVariant={setData} />
-            <ProductDetailAddToCard
-              handleAddToCart={handleAddToCart}
-              cartItems={cartItems}
-              productId={productId}
-            />
-            <ProductDetailAccordion description={description} />
-            <ProductDetailAccordion title="Shipping And Returns" />
-            <ProductDetailAccordion title="Care" />
-          </VerticalScroll>
-        </Fade>
-      </>
+      <Query query={GET_LAYOUT}>
+        {({ data: { layout } }) => {
+          if (layout.width > 850) {
+            return (
+              <>
+                <Fade right delay={300} duration={300}>
+                  <VerticalScroll>
+                    <ProductDetailImage images={images} />
+                    <ProductDetaiHeader
+                      productTitle={product.name}
+                      company={company}
+                    />
+                    <ProductDetailPriceTemplate3
+                      currentPrice={currentPrice}
+                      price={price}
+                      discount={discount}
+                      currency={currency}
+                    />
+                    <ProductDetailVariant data={data} setData={setData} />
+                    <ProductDetailQuantity
+                      variant={data}
+                      setVariant={setData}
+                    />
+                    <ProductDetailAddToCard
+                      handleAddToCart={handleAddToCart}
+                      cartItems={cartItems}
+                      productId={productId}
+                    />
+                    <ProductDetailAccordion description={description} />
+                    <ProductDetailAccordion title="Shipping And Returns" />
+                    <ProductDetailAccordion title="Care" />
+                  </VerticalScroll>
+                </Fade>
+              </>
+            );
+          }
+          if (layout.width <= 850) {
+            return (
+              <>
+                <Fade right delay={300} duration={300}>
+                  <ProductDetailImage images={images} />
+                  <VerticalScroll>
+                    <ProductDetaiHeader
+                      productTitle={product.name}
+                      company={company}
+                    />
+                    <ProductDetailPriceTemplate3
+                      currentPrice={currentPrice}
+                      price={price}
+                      discount={discount}
+                      currency={currency}
+                    />
+                    <ProductDetailVariant data={data} setData={setData} />
+                    <ProductDetailQuantity
+                      variant={data}
+                      setVariant={setData}
+                    />
+                    <ProductDetailAddToCard
+                      handleAddToCart={handleAddToCart}
+                      cartItems={cartItems}
+                      productId={productId}
+                    />
+                    <ProductDetailAccordion description={description} />
+                    <ProductDetailAccordion title="Shipping And Returns" />
+                    <ProductDetailAccordion title="Care" />
+                  </VerticalScroll>
+                </Fade>
+              </>
+            );
+          }
+        }}
+      </Query>
     );
   }
   return null;

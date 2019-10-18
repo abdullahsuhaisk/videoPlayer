@@ -35,8 +35,8 @@ const styles = {
     bottom: 0,
     zIndex: 99999,
     margin: 'auto',
-    minWidth: '50%',
-    minHeight: '50%'
+    width: '100%',
+    height: '100%'
   }
 };
 
