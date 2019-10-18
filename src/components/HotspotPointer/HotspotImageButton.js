@@ -6,10 +6,10 @@ const StyledComponent = styled.div`
   position: absolute;
   left: ${(props) => props.xPos};
   top: ${(props) => props.yPos};
-  transition: all 0.1s linear;
+  transition: all 0.1s ease-in;
   pointer-events: auto;
-  margin-left: -55px !important;
-  margin-top: -55px !important;
+  margin-left: 0px !important;
+  margin-top: 0px !important;
 `;
 // const top = `${hotspot.fixedPosition.y * 100}%`;
 // const left = `${hotspot.fixedPosition.x * 100}%`;
@@ -41,13 +41,11 @@ const HotspotImageButton = ({
       style={{}}
       onClick={() => setProductIdForDetail(id)}>
       <div className="hotspotbutton--shadow">
-        <div
-          className="hotspotbutton--wrapper"
-          style={{ width: 120, height: 110 }}>
+        <div className="hotspotbutton--wrapper">
           <img
             src={(imageUrl && imageUrl) || NoImageSmall}
             alt="HotspotButton"
-            style={{ width: 100, height: 100, borderRadius: '50%' }}
+            style={{ width: 90, height: 90, borderRadius: '50%' }}
           />
         </div>
       </div>
