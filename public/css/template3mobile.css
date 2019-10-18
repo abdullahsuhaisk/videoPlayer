@@ -3660,7 +3660,7 @@
   justify-content: space-between;
   height: 55px;
   align-items: flex-start;
-  padding: 8px 20px 0 20px;
+  padding: 8px 55px 0 55px;
  
 }
 .Template1 .ControlBar .videoControlsContainer .leftContainer {
@@ -3785,10 +3785,11 @@
   background: #fff;
 }
 .Template1 .videoProgressBar {
-  width: 100%;
+  width: calc(100% - 100px);
   height: 15px;
   position: absolute;
   top: 35px;
+  left: 50px;
   z-index: 2;
 }
 .Template1 .videoProgressBar progress,
