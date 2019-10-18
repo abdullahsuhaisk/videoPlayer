@@ -7,6 +7,7 @@ import { ReactComponent as PlusIcon } from '../../../../../assets/icons/PlusIcon
 
 const StyledComponent = styled.div`
   .productdetail--quantity-wrapper {
+    user-select: none;
     .productdetail--quantity-options {
       .decrement {
         svg {

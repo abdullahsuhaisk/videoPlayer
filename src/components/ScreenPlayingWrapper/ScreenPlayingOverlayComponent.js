@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import ControlBarHoc from '../ControlBarWrapper/ControlBar/ControlBarHoc';
@@ -49,6 +49,70 @@ const StyledComponent = styled.div`
 `;
 
 const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
+  // CODE FOR MOUSE MOVE STARTS HERE
+
+  // const mouseMoveHandler = () => {
+  //   const CONTROLBAR_SHOWING = gql`
+  //     query controlbarShowing {
+  //       player @client {
+  //         controlbarShowing
+  //       }
+  //     }
+  //   `;
+
+  //   const {
+  //     player: { controlbarShowing }
+  //   } = client.readQuery({ query: CONTROLBAR_SHOWING });
+
+  //   if (controlbarShowing === false) {
+  //     client.writeData({
+  //       data: {
+  //         player: {
+  //           __typename: 'Player',
+  //           controlbarShowing: true
+  //         }
+  //       }
+  //     });
+  //   }
+
+  //   let timeout;
+
+  //   clearTimeout(timeout);
+
+  //   timeout = setTimeout(() => {
+  //     client.writeData({
+  //       data: {
+  //         player: {
+  //           __typename: 'Player',
+  //           controlbarShowing: false
+  //         }
+  //       }
+  //     });
+  //   }, 4000);
+  // };
+
+  // const [mouseMove, setMouseMove] = useState(true);
+
+  // let timeout;
+  // const mouseMoveHandler = () => {
+  //   setMouseMove(true);
+  //   clearTimeout(timeout);
+  //   timeout = setTimeout(() => setMouseMove(false), 3000);
+  // };
+
+  // useEffect(() => {
+  //   client.writeData({
+  //     data: {
+  //       player: {
+  //         __typename: 'Player',
+  //         controlbarShowing: mouseMove
+  //       }
+  //     }
+  //   });
+  // }, [mouseMove]);
+
+  // CODE FOR MOUSE MOVE ENDS HERE
+
   // useEffect(() => {
   //   document.addEventListener('keypress', (e) => {
   //     PauseKeyHandler(e);
@@ -88,6 +152,7 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
       <div
         className="Overlay--playing"
         onClick={() => OverlayClickHandler()}
+        // onMouseMove={() => mouseMoveHandler()}
         style={{ pointerEvents: 'auto' }}>
         <StyledComponent>
           <div className="VideoPlay--playBtn-shadow">
