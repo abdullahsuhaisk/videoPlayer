@@ -3706,7 +3706,7 @@
   -webkit-appearance: none;
   position: absolute;
   top: -100px;
-  right: 60px;
+  right: 88px;
   width: 130px;
   height: 40px;
   cursor: pointer;
@@ -4047,7 +4047,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 145px;
+  right: 180px;
 }
 .Template1 .cartBtn {
   width: 24px;
@@ -5924,17 +5924,19 @@
 
   .slick-dots {
     position: absolute;
+    left: 15px;
     top: 50%;
-    left: -10px;
-    display: block;
     width: auto;
-    height: 40px;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     list-style: none;
     text-align: center;
     background: transparent;
-    transform: rotate(90deg);
+    transform: translateY(-50%)
+  }
+   ul.slick-dots {
+    display: flex !important;
+    flex-direction: column;
   }
   .slick-dots li {
     position: relative;

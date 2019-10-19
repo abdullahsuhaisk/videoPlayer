@@ -6,10 +6,8 @@ const StyledComponent = styled.div`
   position: absolute;
   left: ${(props) => props.xPos};
   top: ${(props) => props.yPos};
-  transition: all 0.1s ease-in;
+  transition: all 0.1s linear;
   pointer-events: auto;
-  margin-left: 0px !important;
-  margin-top: 0px !important;
 `;
 // const top = `${hotspot.fixedPosition.y * 100}%`;
 // const left = `${hotspot.fixedPosition.x * 100}%`;
