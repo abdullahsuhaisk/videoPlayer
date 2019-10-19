@@ -5626,7 +5626,7 @@
 
 .shopcart--item-container .item-delete {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   right: 0;
   display: flex;
   justify-content: center;
