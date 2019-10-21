@@ -9,7 +9,8 @@ export const Wrapper = styled.div((props) => ({
     pointerEvents: 'auto',
     textAlign: 'center',
     padding: '5px',
-    marginTop: '10px'
+    marginTop: '10px',
+    fontSize: '26px'
   },
   '.vb--hotspot-card-list-cards': {
     height: '95%',
