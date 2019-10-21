@@ -72,6 +72,10 @@
           {
             "type": "ScreenPlayingOverlayComponent",
             "props": {}
+          },
+          {
+            "type": "HotspotContainer",
+            "props": {}
           }
         ]
       }
