@@ -3,6 +3,7 @@ import React from 'react';
 // import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 import withQuery from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
+import { httpToHttps } from '../../utils/httpTohttps';
 // import dp from './assets/dp.png';
 
 const FETCHPOLICIY = 'cache-first';
@@ -13,22 +14,26 @@ const Header = (props) => {
     data: { prodLink },
     isCampaingName
   } = props;
+
   // const uniqueId = getProdLinkUniqueId();
+  const image =
+    prodLink &&
+    prodLink.company &&
+    prodLink.company.logo &&
+    prodLink.company.logo.thumbnailUrl;
   return (
     <React.Fragment>
       <div className="Header" style={{ color }}>
         <div className="mainMenu--brandInfo--inline">
-          {isCampaingName === true ? (
-            <img
-              className="company--image"
-              src={prodLink && prodLink.image && prodLink.image.thumbnailUrl}
-              alt={prodLink && prodLink.company && prodLink.company.name}
-            />
-          ) : null}
+          <img
+            className="company--image"
+            src={httpToHttps(image)}
+            alt={prodLink && prodLink.company && prodLink.company.name}
+          />
           <h1 className="company--name">
             {prodLink && prodLink.company && prodLink.company.name}
           </h1>
-          {isCampaingName === true ? (
+          {isCampaingName !== false ? (
             <h5 className="campaign--name">
               {prodLink && prodLink.campaign && prodLink.campaign.name}
             </h5>
