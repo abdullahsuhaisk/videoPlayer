@@ -2257,11 +2257,11 @@
 .Template1 .ProductDetail {
   position: absolute;
   top: 0px;
-  left: 0px;
+  right: 0px;
   display: flex;
   width: fit-content;
   height: 1080px;
-  width: 100%;
+  width: 500px;
   margin : auto;
   margin-top: 2px;
   pointer-events: auto;
@@ -2271,7 +2271,7 @@
 }
 .Template1 .ProductDetail .scroll {
   height: 1080px;
-  width: 480px;
+  width: 500px;
   padding: 30px;
 }
 .Template1 .darkOverlay {
@@ -2280,9 +2280,8 @@
   top: 0px;
   left: 0px;
   width: 1920px;
-  height: 1035px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
-  background-color: rgba(11, 36, 67, 0.95);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0);
   z-index: 3;
   pointer-events: auto;
 }
@@ -2305,10 +2304,10 @@
   right: 98px;
 }
 .Template1 .ProductDetail--imagesSlider {
-  width: 1440px;
-  height: 1080px;
+  width: 100%;
+  height: 400px;
   position: relative;
-  overflow: hidden;
+  margin: 0 auto;
 }
 .Template1 .ProductDetail--imagesSlider:focus {
   outline: none;
@@ -3658,7 +3657,7 @@
   justify-content: space-between;
   height: 55px;
   align-items: flex-start;
-  padding: 8px 20px 0 20px;
+  padding: 8px 55px 0 55px;
  
 }
 .Template1 .ControlBar .videoControlsContainer .leftContainer {
@@ -3705,7 +3704,7 @@
   -webkit-appearance: none;
   position: absolute;
   top: -100px;
-  right: 60px;
+  right: 88px;
   width: 130px;
   height: 40px;
   cursor: pointer;
@@ -3784,10 +3783,11 @@
   background: #fff;
 }
 .Template1 .videoProgressBar {
-  width: 100%;
+  width: calc(100% - 100px);
   height: 15px;
   position: absolute;
   top: 35px;
+  left: 50px;
   z-index: 2;
 }
 .Template1 .videoProgressBar progress,
@@ -4047,7 +4047,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 145px;
+  right: 180px;
   z-index: 0;
 }
 .Template1 .cartBtn {
@@ -5798,8 +5798,8 @@
 .slick-slide {
   display: none;
   float: left;
-  min-height: 1080px;
-  max-height: 1080px;
+  min-height: 370px;
+  max-height: 370px;
 }
 
 [dir='rtl'] .slick-slide {
@@ -5809,8 +5809,8 @@
   display: block;
   object-fit: cover;
   margin: 0 auto;
-  width: 100%;
-  height: 1080px;
+  width: 350px;
+  height: 350px;
   outline: 0;
 }
 .slick-slide.slick-loading img {
@@ -5837,10 +5837,10 @@
   display: none;
 }
 
-.slick-arrow .slick-next, .slick-arrow .slick-prev  {
+/* .slick-arrow .slick-next, .slick-arrow .slick-prev  {
   display: none;
   outline: 0;
-}
+} */
 
 .slick-prev,
   .slick-next {
@@ -5848,14 +5848,13 @@
     line-height: 0;
     width: 30px;
     height: 30px;
-    background-color: #ffffff;
-    opacity: 0.5;
+    background-color: transparent;
+    opacity: 0.3;
     border-radius: 50%;
-    display: none !important;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 50%;
+    top: 180px;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -5865,16 +5864,13 @@
     border: none;
     outline: none;
     z-index: 999;
+    display: none;
   }
 
-  /* .profile__module-group-nopadding {
-    :hover {
-      .slick-prev,
-      .slick-next {
-        display: flex;
-      }
-    }
-  } */
+  .ProductDetail--imagesSlider:hover .slick-prev, .ProductDetail--imagesSlider:hover .slick-next {
+    display: flex;
+  }
+
   .slick-prev:hover,
   .slick-prev:focus,
   .slick-next:hover,
@@ -5904,7 +5900,7 @@
   }
 
   .slick-prev {
-    left: 10px;
+    left: -7px;
   }
   [dir='rtl'] .slick-prev {
     right: 10px;
@@ -5912,7 +5908,7 @@
   }
 
   .slick-next {
-    right: 10px;
+    right: -7px;
   }
   [dir='rtl'] .slick-next {
     right: auto;
@@ -5926,17 +5922,15 @@
 
   .slick-dots {
     position: absolute;
-    top: 50%;
-    left: -20px;
+    top: 370px;
+    left: 0px;
     display: block;
-    width: 10%;
+    width: 100%;
     padding: 0;
-    margin: 0;
-    margin-right: auto;
+    margin: 0 auto;
     list-style: none;
     text-align: center;
     background: transparent;
-    transform: rotate(90deg);
   }
   .slick-dots li {
     position: relative;

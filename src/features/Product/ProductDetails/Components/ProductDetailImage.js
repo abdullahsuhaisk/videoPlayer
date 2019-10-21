@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
 import NoImage from '../../../../assets/images/NoImage.png';
+import NextIcon from '../../../../assets/icons/NextIcon.svg';
+import PreviousIcon from '../../../../assets/icons/PreviousIcon.svg';
 // import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
 
 const ProductDetailImage = ({ images }) => {
@@ -15,12 +17,34 @@ const ProductDetailImage = ({ images }) => {
   // };
   // const FlickityClassName = 'ProductDetail--imagesSlider';
 
+  const NextArrow = (a) => {
+    const { className, onClick } = a;
+
+    return (
+      <div className={className} onClick={onClick}>
+        <img alt="" src={NextIcon} />
+      </div>
+    );
+  };
+
+  const PrevArrow = (a) => {
+    const { className, onClick } = a;
+
+    return (
+      <div className={className} onClick={onClick}>
+        <img alt="" src={PreviousIcon} />
+      </div>
+    );
+  };
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
   return (
     // <div>

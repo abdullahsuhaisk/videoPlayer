@@ -19,16 +19,22 @@ const StyledComponent = styled.div`
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
-    /* 
+
     @-webkit-keyframes playscale {
-      from {
+      0% {
         transform: scale(1);
-        display: ;
+        opacity: 1;
       }
-      to {
-        transform: scale(1.3);
+
+      99% {
+        transform: scale(1.5);
+        opacity: 0.1;
       }
-    } */
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
 
     @keyframes playscale {
       0% {

@@ -3660,7 +3660,7 @@
   justify-content: space-between;
   height: 55px;
   align-items: flex-start;
-  padding: 8px 20px 0 20px;
+  padding: 8px 55px 0 55px;
  
 }
 .Template1 .ControlBar .videoControlsContainer .leftContainer {
@@ -3706,7 +3706,7 @@
   -webkit-appearance: none;
   position: absolute;
   top: -100px;
-  right: 60px;
+  right: 88px;
   width: 130px;
   height: 40px;
   cursor: pointer;
@@ -3785,10 +3785,11 @@
   background: #fff;
 }
 .Template1 .videoProgressBar {
-  width: 100%;
+  width: calc(100% - 100px);
   height: 15px;
   position: absolute;
   top: 35px;
+  left: 50px;
   z-index: 2;
 }
 .Template1 .videoProgressBar progress,
@@ -4046,7 +4047,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 145px;
+  right: 180px;
 }
 .Template1 .cartBtn {
   width: 24px;
@@ -5625,7 +5626,7 @@
 
 .shopcart--item-container .item-delete {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   right: 0;
   display: flex;
   justify-content: center;
@@ -5806,7 +5807,7 @@
   display: block;
   object-fit: cover;
   margin: 0 auto;
-  width: auto;
+  width: 100%;
   height: 450px;
   outline: 0;
 }
@@ -5923,17 +5924,19 @@
 
   .slick-dots {
     position: absolute;
+    left: 15px;
     top: 50%;
-    left: -10px;
-    display: block;
     width: auto;
-    height: 40px;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     list-style: none;
     text-align: center;
     background: transparent;
-    transform: rotate(90deg);
+    transform: translateY(-50%)
+  }
+   ul.slick-dots {
+    display: flex !important;
+    flex-direction: column;
   }
   .slick-dots li {
     position: relative;
