@@ -1566,9 +1566,9 @@
 }
 
 .Template1 .controlbar--vibuyicon {
-  width: 18px;
+  width: 38px;
   height: 24px;
-  margin-right: 20px;
+  padding-right: 20px;
   cursor: pointer;
 }
 .Template1 .ShoppingCartContainer {
@@ -4048,7 +4048,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 180px;
+  right: 220px;
   z-index: 0;
 }
 .Template1 .cartBtn {

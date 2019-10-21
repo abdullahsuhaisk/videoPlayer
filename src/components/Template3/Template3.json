@@ -70,18 +70,6 @@
       "props": {
         "children": [
           {
-            "type": "HotspotContainer",
-            "props": {
-              "type": "STATIC"
-            }
-          },
-          {
-            "type": "HotspotContainer",
-            "props": {
-              "type": "DYNAMIC"
-            }
-          },
-          {
             "type": "ScreenPlayingOverlayComponent",
             "props": {}
           }
@@ -127,11 +115,11 @@
             "props": {
               "children": [
                 {
-                  "type": "VibuyIcon",
+                  "type": "ControlBarShoppingIcon",
                   "props": ""
                 },
                 {
-                  "type": "ControlBarShoppingIcon",
+                  "type": "VibuyIcon",
                   "props": ""
                 },
                 {

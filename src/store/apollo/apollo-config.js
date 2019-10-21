@@ -196,7 +196,7 @@ const setInitialCache = () => {
       // TODO: Move to shopping cart here
       isSettingMenuOpen: false,
       selectedQuality: 'Auto',
-      hotSpotShowing: true,
+      hotSpotShowing: false,
       playbackSpeed: 1,
       controlbarShowing: true
     },
