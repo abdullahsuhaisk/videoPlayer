@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NoImageSmall from '../../assets/images/NoImageSmall.png';
+import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
 
 const StyledComponent = styled.div`
   position: absolute;
@@ -31,6 +32,7 @@ const HotspotImageButton = ({
     });
     return currentItem;
   };
+  const a = false;
   if (positionCalculator());
   return (
     <StyledComponent
@@ -40,11 +42,15 @@ const HotspotImageButton = ({
       onClick={() => setProductIdForDetail(id)}>
       <div className="hotspotbutton--shadow">
         <div className="hotspotbutton--wrapper">
-          <img
-            src={(imageUrl && imageUrl) || NoImageSmall}
-            alt="HotspotButton"
-            style={{ width: 90, height: 90, borderRadius: '50%' }}
-          />
+          {a === true ? (
+            <img
+              src={(imageUrl && imageUrl) || NoImageSmall}
+              alt="HotspotButton"
+              style={{ width: 90, height: 90, borderRadius: '50%' }}
+            />
+          ) : (
+            <img src={HotspotProductIcon} alt="HotspotButton" />
+          )}
         </div>
       </div>
     </StyledComponent>

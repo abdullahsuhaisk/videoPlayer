@@ -70,18 +70,6 @@
       "props": {
         "children": [
           {
-            "type": "HotspotContainer",
-            "props": {
-              "type": "STATIC"
-            }
-          },
-          {
-            "type": "HotspotContainer",
-            "props": {
-              "type": "DYNAMIC"
-            }
-          },
-          {
             "type": "ScreenPlayingOverlayComponent",
             "props": {}
           }
