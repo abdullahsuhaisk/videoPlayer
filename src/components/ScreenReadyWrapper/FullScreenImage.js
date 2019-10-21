@@ -5,8 +5,11 @@ import React from 'react';
 // import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
 // import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
 import { Wrapper } from './ScreenReady.style';
+import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
+import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
 
-const FullScreenImage = ({ imageUrl }) => {
+const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
+  const image = prodLink && prodLink.image && prodLink.image.thumbnailUrl;
   return (
     <Wrapper>
       <div className="container-ready-screen" style={{ opacity: '1' }}>
@@ -14,7 +17,7 @@ const FullScreenImage = ({ imageUrl }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={imageUrl && imageUrl}></img>
+            src={imageUrl ? imageUrl : image}></img>
         </div>
       </div>
     </Wrapper>
@@ -40,7 +43,7 @@ const styles = {
   }
 };
 
-export default FullScreenImage;
+export default withQueryProdLink(FullScreenImage, GET_HEADER_COMPANY_CAMPAING);
 
 // {
 /* <Mutation

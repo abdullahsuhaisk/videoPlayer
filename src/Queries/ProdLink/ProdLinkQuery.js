@@ -13,6 +13,10 @@ export const GET_HEADER_COMPANY_CAMPAING = gql`
       company {
         name
         header
+        logo {
+          id
+          thumbnailUrl
+        }
       }
       campaign {
         id
