@@ -9,6 +9,7 @@ export const GET_HEADER_COMPANY_CAMPAING = gql`
       image {
         id
         thumbnailUrl
+        imageUrl
       }
       company {
         name
