@@ -7,19 +7,18 @@ import VerticalScroll from '../../components/VerticalScroll';
 const HotspotCardList = ({ styles, hotspots }) => {
   // console.log(hotspots);
   return (
-    <Wrapper className="vb--hotspot-card-list" styles={styles}>
-      <div className="vb--hotspot-card-list-header" style={{ marginRight: 5 }}>
-        <span>Click & Buy</span>
-      </div>
-      <VerticalScroll style={{ width: '100%' }}>
-        <div className="vb--hotspot-card-list-cards">
-          {hotspots &&
-            hotspots.map((hotspot) => {
-              return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
-            })}
-        </div>
-      </VerticalScroll>
-    </Wrapper>
+    <React.Fragment>
+      <Wrapper className="vb--hotspot-card-list" styles={styles}>
+        <VerticalScroll style={{ width: '100%' }}>
+          <div className="vb--hotspot-card-list-cards">
+            {hotspots &&
+              hotspots.map((hotspot) => {
+                return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
+              })}
+          </div>
+        </VerticalScroll>
+      </Wrapper>
+    </React.Fragment>
   );
 };
 
@@ -32,3 +31,9 @@ HotspotCardList.defaultProps = {
 };
 
 export default HotspotCardList;
+
+{
+  /* <div className="vb--hotspot-card-list-header">
+<span>Click & Buy</span>
+</div> */
+}

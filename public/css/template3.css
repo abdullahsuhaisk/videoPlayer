@@ -105,6 +105,15 @@
   margin-left: 62px;
   position: relative;
 }
+.vb--hotspot-card-list-header {
+  pointer-events: auto;
+  text-align: center;
+  font-size: 26px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+}
 .Template1 .VideoPlayerContainer .flickity-viewport {
   overflow: hidden;
 }
@@ -775,7 +784,7 @@
   left: 0px;
   width: 1920px;
   height: 1080px;
-  opacity: 0.1;
+  opacity: 0.4;
   /* -webkit-backdrop-filter: blur(10px);
    backdrop-filter: blur(10px); */
   background-color: black;
@@ -2261,7 +2270,7 @@
   display: flex;
   width: fit-content;
   height: 1080px;
-  width: 500px;
+  width: 670px;
   margin : auto;
   margin-top: 2px;
   pointer-events: auto;
@@ -2271,7 +2280,7 @@
 }
 .Template1 .ProductDetail .scroll {
   height: 1080px;
-  width: 500px;
+  width: 670px;
   padding: 30px;
 }
 .Template1 .darkOverlay {
@@ -2305,7 +2314,7 @@
 }
 .Template1 .ProductDetail--imagesSlider {
   width: 100%;
-  height: 400px;
+  height: 500px;
   position: relative;
   margin: 0 auto;
 }
@@ -2390,6 +2399,7 @@
   display: block;
   margin-bottom: 10px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .Template1 .ProductDetail--information--title--h2 {
@@ -2408,6 +2418,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-transform: capitalize;
+  text-align: center;
 }
 .Template1 .ProductDetail--information--title--heartIcon {
   width: 30px;
@@ -2579,7 +2590,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 450px;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;
@@ -2587,10 +2598,10 @@
   line-height: 1;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 30px;
   cursor: pointer;
   outline: 0;
   border: 0;
+  margin: 0 auto 30px auto;
 }
 .Template1 .ProductDetail--addToCartBtn:hover  {
   opacity: 0.85;
@@ -5089,6 +5100,7 @@
 .productdetail--price-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   max-height: 31px;
   margin-bottom: 30px;
 }
@@ -5103,7 +5115,7 @@
   text-align: center;
   color: #0b2443;
   text-decoration: line-through;
-  margin-right: 10px;
+  margin-right: 28px;
 }
 
 .productdetail--price-wrapper .current-price {
@@ -5131,10 +5143,12 @@
   text-align: left;
   color: #0b2443;
   margin-bottom: 10px;
+  text-align: center;
 }
 
  .productdetail--colors-wrapper .productdetail--colors-options {
   display: flex;
+  justify-content: center;
 }
 
  .productdetail--colors-wrapper .productdetail--colors-options img {
@@ -5185,7 +5199,7 @@
  .productdetail--sizes-wrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
  .productdetail--sizes-wrapper .productdetail--label {
@@ -5194,14 +5208,14 @@
   font-style: normal;
   font-stretch: normal;
   line-height: 1;
-  text-align: left;
+  text-align: center;
   color: #0b2443;
   margin-bottom: 20px;
 }
 
  .productdetail--sizes-wrapper .productdetail--sizes-options {
   display: flex;
-
+  justify-content: center;
 }
 
  .productdetail--sizes-wrapper .productdetail--sizes-options .selected  {
@@ -5260,10 +5274,12 @@
   text-align: left;
   color: #0b2443;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .productdetail--quantity-wrapper .productdetail--quantity-options {
   display: flex;
+  justify-content: center;
 }
 
 .productdetail--quantity-wrapper .productdetail--quantity-options .decrement  {
@@ -5393,7 +5409,7 @@
 
 .shoppingcart--container {
   padding: 30px;
-  width: 500px;
+  width: 670px;
   height: 1080px;
   float: right;
   background: white;
@@ -5504,7 +5520,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 500px;
+  width: 670px;
   height: 318px;
   padding: 20px 30px 30px 30px;
   background-color: #fafafa;
@@ -5798,8 +5814,8 @@
 .slick-slide {
   display: none;
   float: left;
-  min-height: 370px;
-  max-height: 370px;
+  min-height: 470px;
+  max-height: 470px;
 }
 
 [dir='rtl'] .slick-slide {
@@ -5809,8 +5825,8 @@
   display: block;
   object-fit: cover;
   margin: 0 auto;
-  width: 350px;
-  height: 350px;
+  width: 450px;
+  height: 450px;
   outline: 0;
 }
 .slick-slide.slick-loading img {
@@ -5854,7 +5870,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 180px;
+    top: 230px;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -5922,7 +5938,7 @@
 
   .slick-dots {
     position: absolute;
-    top: 370px;
+    top: 470px;
     left: 0px;
     display: block;
     width: 100%;

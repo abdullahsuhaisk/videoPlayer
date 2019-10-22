@@ -9,6 +9,7 @@ import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
 import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
 import HotSpotDynamicContainer from '../../components/HotspotPointer/HotSpotDynamicContainer';
+import { Wrapper } from './HotspotCardList.style';
 
 const HotspotContainer = ({ data, type }) => {
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
@@ -22,7 +23,7 @@ const HotspotContainer = ({ data, type }) => {
     const staticHotSpotss = [];
     const dynamicHotSpotss = [];
     const fixedHotSpotss = [];
-
+    // console.log(hotSpots);
     hotSpots.filter((hotspot) =>
       hotspot.type === hotSpotsType.STATIC
         ? staticHotSpotss.push(hotspot)
@@ -93,7 +94,19 @@ const HotspotContainer = ({ data, type }) => {
             (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
           )
             return null;
-          return selectionHotSpotsType(activeHotSpots, currentTime);
+          return (
+            <>
+              {hotSpots.filter(
+                (hotSpot) =>
+                  currentTime >= hotSpot.in && currentTime <= hotSpot.out
+              ).length !== 0 && (
+                <div className="vb--hotspot-card-list-header">
+                  <span>Click & Buy</span>
+                </div>
+              )}
+              {selectionHotSpotsType(activeHotSpots, currentTime)}
+            </>
+          );
         }
         return null;
       }}

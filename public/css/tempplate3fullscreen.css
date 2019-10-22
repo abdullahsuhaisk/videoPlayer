@@ -108,6 +108,15 @@
 .Template1 .VideoPlayerContainer .flickity-viewport {
   overflow: hidden;
 }
+.vb--hotspot-card-list-header {
+  pointer-events: auto;
+  text-align: center;
+  font-size: 26px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+}
 .Template1 .swipeGradient::after {
   content: '';
   width: 90px;
