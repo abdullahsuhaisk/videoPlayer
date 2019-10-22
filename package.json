@@ -54,6 +54,7 @@
     "videjsmarker": "^1.0.1",
     "video.js": "^7.4.1",
     "videojs-dock": "^2.1.4",
+    "videojs-landscape-fullscreen": "^1.0.3",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
