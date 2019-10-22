@@ -3969,7 +3969,7 @@
   display: flex;
   margin-left: 23px;
   line-height: 1;
-  margin-top: 0;
+  margin-top: 7px;
 }
 .Template1 .timeDisplay p {
   font-size: 20px;
@@ -3992,12 +3992,13 @@
   outline: none;
 }
 .Template1 .playPauseBtn {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   background: url(/images/play-button.svg) center / contain no-repeat;
   margin-right: 30px;
   cursor: pointer;
   border: none;
+  margin-top: 4px;
 }
 .Template1 .playPauseBtn.playing {
   background: url(/images/button-pause.svg) center / contain no-repeat;
@@ -4012,6 +4013,7 @@
   cursor: pointer;
   margin-right: 30px;
   border: none;
+  margin-top: 2px;
 }
 
 .Template1 .jumpToProductBtnRight {
@@ -4021,6 +4023,7 @@
   cursor: pointer;
   margin-right: 30px;
   border: none;
+  margin-top: 2px;
 }
 .Template1 .jumpToProductBtnRight:focus, .Template1 .jumpToProductBtnLeft:focus {
   outline: none;
@@ -4054,14 +4057,14 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 235px;
+  right: 260px;
 }
 .Template1 .cartBtn {
   width: 28px;
   height: 28px;
   background: url(/images/AddToCartIcon.svg) center / contain no-repeat;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 28px;
   border: none;
 }
 .Template1 .cartBtn:focus {

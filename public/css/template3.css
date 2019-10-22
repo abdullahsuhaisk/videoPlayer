@@ -3877,7 +3877,7 @@
   position: absolute;
   z-index: 1;
   bottom: -15px;
-  right: 50px;
+  right: 35px;
   width: 30px;
   height: 18px;
   border-radius: 2px;
@@ -3974,7 +3974,7 @@
   display: flex;
   margin-left: 23px;
   line-height: 0;
-  margin-top: -7px;
+  margin-top: -2px;
 }
 .Template1 .timeDisplay p {
   font-size: 20px;
@@ -3997,12 +3997,13 @@
   outline: none;
 }
 .Template1 .playPauseBtn {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   background: url(/images/play-button.svg) center / contain no-repeat;
   margin-right: 30px;
   cursor: pointer;
   border: none;
+  margin-top: 4px;
 }
 .Template1 .playPauseBtn.playing {
   background: url(/images/button-pause.svg) center / contain no-repeat;
@@ -4017,6 +4018,7 @@
   cursor: pointer;
   margin-right: 30px;
   border: none;
+  margin-top: 2px;
 }
 
 .Template1 .jumpToProductBtnRight {
@@ -4026,6 +4028,7 @@
   cursor: pointer;
   margin-right: 30px;
   border: none;
+  margin-top: 2px;
 }
 .Template1 .jumpToProductBtnRight:focus, .Template1 .jumpToProductBtnLeft:focus {
   outline: none;
@@ -4059,7 +4062,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 250px;
+  right: 260px;
   z-index: 0;
 }
 .Template1 .cartBtn {
@@ -4067,7 +4070,7 @@
   height: 28px;
   background: url(/images/AddToCartIcon.svg) center / contain no-repeat;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 28px;
   border: none;
   z-index: 0;
 }
