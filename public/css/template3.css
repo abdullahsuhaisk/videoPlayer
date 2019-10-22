@@ -822,15 +822,15 @@
 }
 .Template1 .Header .mainMenu--brandInfo--inline {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   z-index: 1;
   margin-top: 24px;
+  font-family: 'Nunito Sans', sans-serif;
 }
 .Template1 .Header .mainMenu--brandInfo--inline .company--image {
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  margin-top: auto;
   margin-right: 20px;
 }
 .Template1 .Header .mainMenu--brandInfo--inline .company--name {
@@ -5377,6 +5377,7 @@
   align-items: center;
   height: 26px;
   width: 100%;
+  cursor: pointer;
 }
 
 .accordion--container .accordion--header .title {
