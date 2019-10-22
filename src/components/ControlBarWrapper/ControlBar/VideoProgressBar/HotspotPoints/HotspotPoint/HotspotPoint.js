@@ -16,7 +16,6 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
   useEffect(() => {}, [hotSpotShowing]);
 
   const { image, name, id } = product;
-  // console.log(item);
 
   const HOTSPOT_SHOWING = gql`
     query hotSpotShowing {
@@ -51,7 +50,7 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
               <div className="hotspot--image">
                 <img
                   src={
-                    (image && httpToHttps(image && image.imageUrl)) ||
+                    (image && httpToHttps(image && image.thumbnailUrl)) ||
                     NoImageSmall
                   }
                   alt={name}

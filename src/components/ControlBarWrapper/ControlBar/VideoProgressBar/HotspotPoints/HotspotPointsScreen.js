@@ -23,6 +23,7 @@ const GET_HOTSPOTS = gql`
           image {
             id
             imageUrl
+            thumbnailUrl
           }
         }
       }
