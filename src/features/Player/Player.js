@@ -6,6 +6,7 @@ import videojs from 'video.js';
 // import 'videjsmarker';
 import './player.scss';
 import './SettingsButton/vjs-settings-button';
+import 'videojs-landscape-fullscreen';
 // import './SettingsMenu/vjs-settings-menu';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -77,6 +78,17 @@ const Player = ({ width, height, poster, sources }) => {
     return () => {
       playerRef.current.dispose();
     };
+  }, []);
+
+  useEffect(() => {
+    // console.log(playerRef.current);
+    playerRef.current.landscapeFullscreen({
+      fullscreen: {
+        enterOnRotate: true, // Enter fullscreen mode on rotating the device in landscape
+        alwaysInLandscapeMode: true, // Always enter fullscreen in landscape mode even when device is in portrait mode (works on chromium, firefox, and ie >= 11)
+        iOS: false
+      }
+    });
   }, []);
 
   // useEffect(() => {
