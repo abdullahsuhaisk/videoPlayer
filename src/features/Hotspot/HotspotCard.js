@@ -31,7 +31,7 @@ const HotspotCard = ({ styles, hotspot }) => {
                 className="vb--hotspot-card-product-image"
                 style={{
                   backgroundImage: `url(${(product.image &&
-                    product.image.imageUrl) ||
+                    product.image.thumbnailUrl) ||
                     NoImageSmall}`
                 }}
               />

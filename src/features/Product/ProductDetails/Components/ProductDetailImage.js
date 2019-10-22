@@ -1,11 +1,13 @@
 import React from 'react';
 import Slider from 'react-slick';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 import NoImage from '../../../../assets/images/NoImage.png';
 import NextIcon from '../../../../assets/icons/NextIcon.svg';
 import PreviousIcon from '../../../../assets/icons/PreviousIcon.svg';
 // import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
 
-const ProductDetailImage = ({ images }) => {
+const ProductDetailImage = ({ images, client }) => {
   // const flickityOptions = {
   //   cellAlign: 'center',
   //   contain: true,
@@ -46,6 +48,15 @@ const ProductDetailImage = ({ images }) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   };
+
+  const GET_LAYOUT = gql`
+    query getLayoutForScaler {
+      layout @client {
+        width
+      }
+    }
+  `;
+
   return (
     // <div>
     //   <FlickityComponent
@@ -55,23 +66,31 @@ const ProductDetailImage = ({ images }) => {
     //     key={images[0].id}
     //   />
     // </div>
-
-    <div className="ProductDetail--imagesSlider">
-      {images && images.length > 0 ? (
-        <Slider {...settings}>
-          {images.map((item, index) => (
-            <div key={index} className="slick--image-container">
-              <img alt="" src={item.imageUrl} />
+    <div>
+      <div className="ProductDetail--imagesSlider">
+        {images && images.length > 0 ? (
+          <Slider {...settings}>
+            {images.map((item, index) => (
+              <div key={index} className="slick--image-container">
+                <Query query={GET_LAYOUT}>
+                  {({ data: { layout } }) => {
+                    if (layout.width <= 850) {
+                      return <img alt={item.name} src={item.thumbnailUrl} />;
+                    }
+                    return <img alt={item.name} src={item.imageUrl} />;
+                  }}
+                </Query>
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <Slider {...settings}>
+            <div className="slick--image-container">
+              <img alt="No" src={NoImage} />
             </div>
-          ))}
-        </Slider>
-      ) : (
-        <Slider {...settings}>
-          <div className="slick--image-container">
-            <img alt="No" src={NoImage} />
-          </div>
-        </Slider>
-      )}
+          </Slider>
+        )}
+      </div>
     </div>
   );
 };

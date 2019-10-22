@@ -2265,7 +2265,7 @@
 }
 .Template1 .ProductDetail {
   position: absolute;
-  top: 0px;
+  top: -2px;
   right: 0px;
   display: flex;
   width: fit-content;
