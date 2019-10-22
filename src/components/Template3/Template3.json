@@ -51,12 +51,6 @@
       "props": {
         "children": [
           {
-            "type": "Header",
-            "props": {
-              "isCampaingName": "true"
-            }
-          },
-          {
             "type": "FullScreenImage",
             "props": {
               "imageUrl": ""
