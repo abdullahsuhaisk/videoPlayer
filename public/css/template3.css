@@ -3998,7 +3998,7 @@
 }
 .Template1 .playPauseBtn {
   width: 28px;
-  height: 28px;
+  height: 26px;
   background: url(/images/play-button.svg) center / contain no-repeat;
   margin-right: 30px;
   cursor: pointer;
