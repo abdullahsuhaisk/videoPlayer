@@ -8,9 +8,6 @@ const HotspotCardList = ({ styles, hotspots }) => {
   // console.log(hotspots);
   return (
     <React.Fragment>
-      <div className="vb--hotspot-card-list-header">
-        <span>Click & Buy</span>
-      </div>
       <Wrapper className="vb--hotspot-card-list" styles={styles}>
         <VerticalScroll style={{ width: '100%' }}>
           <div className="vb--hotspot-card-list-cards">
@@ -34,3 +31,9 @@ HotspotCardList.defaultProps = {
 };
 
 export default HotspotCardList;
+
+{
+  /* <div className="vb--hotspot-card-list-header">
+<span>Click & Buy</span>
+</div> */
+}

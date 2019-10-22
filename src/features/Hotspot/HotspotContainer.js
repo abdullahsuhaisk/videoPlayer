@@ -23,7 +23,7 @@ const HotspotContainer = ({ data, type }) => {
     const staticHotSpotss = [];
     const dynamicHotSpotss = [];
     const fixedHotSpotss = [];
-
+    // console.log(hotSpots);
     hotSpots.filter((hotspot) =>
       hotspot.type === hotSpotsType.STATIC
         ? staticHotSpotss.push(hotspot)
@@ -96,13 +96,14 @@ const HotspotContainer = ({ data, type }) => {
             return null;
           return (
             <>
-              <Wrapper className="vb--hotspot-card-list">
-                <div
-                  className="vb--hotspot-card-list-header"
-                  style={{ marginRight: 5 }}>
+              {hotSpots.filter(
+                (hotSpot) =>
+                  currentTime >= hotSpot.in && currentTime <= hotSpot.out
+              ).length !== 0 && (
+                <div className="vb--hotspot-card-list-header">
                   <span>Click & Buy</span>
                 </div>
-              </Wrapper>
+              )}
               {selectionHotSpotsType(activeHotSpots, currentTime)}
             </>
           );
