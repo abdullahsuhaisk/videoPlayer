@@ -3966,8 +3966,8 @@
   transform: scale(1);
 }
 .Template1 .timeDisplay {
+  font-family: 'Nunito Sans', sans-serif;
   display: flex;
-  margin-left: 23px;
   line-height: 1;
   margin-top: 7px;
 }
@@ -3993,7 +3993,7 @@
 }
 .Template1 .playPauseBtn {
   width: 28px;
-  height: 28px;
+  height: 26px;
   background: url(/images/play-button.svg) center / contain no-repeat;
   margin-right: 30px;
   cursor: pointer;
@@ -4057,7 +4057,7 @@
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 260px;
+  right: 245px;
 }
 .Template1 .cartBtn {
   width: 28px;
