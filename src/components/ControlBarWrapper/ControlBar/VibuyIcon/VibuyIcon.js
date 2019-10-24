@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
-import VibuyIcon2 from '../../../../assets/icons/VibuyIcon.svg';
+import VibuyIcon3 from '../../../../assets/icons/VibuyIcon.svg';
 
 const VibuyIcon = ({ client }) => {
   const HOTSPOT_SHOWING = gql`
@@ -33,7 +33,7 @@ const VibuyIcon = ({ client }) => {
   return (
     <div style={{ pointerEvents: 'cursor' }}>
       <img
-        src={VibuyIcon2}
+        src={VibuyIcon3}
         alt="Vibuy Icon"
         onClick={onChange}
         className="controlbar--vibuyicon"

@@ -24,14 +24,15 @@ const ProductDetailWrapper = ({ children, client, data }) => {
               })
             }></i> */}
           <div className="ProductDetail">
-            <i
-              className="modal--close"
-              onClick={() =>
-                client.writeData({
-                  data: { productIdInDetails: null }
-                })
-              }></i>
-
+            <div className="modal-close-container">
+              <i
+                className="modal--close"
+                onClick={() =>
+                  client.writeData({
+                    data: { productIdInDetails: null }
+                  })
+                }></i>
+            </div>
             {children}
           </div>
         </div>
