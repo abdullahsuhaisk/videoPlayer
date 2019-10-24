@@ -10,8 +10,7 @@ import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuer
 
 const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
   const image = prodLink && prodLink.image && prodLink.image.imageUrl;
-  console.log(prodLink.image);
-
+  // console.log(prodLink.image);
   return (
     <Wrapper>
       <div className="container-ready-screen" style={{ opacity: '1' }}>

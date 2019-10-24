@@ -18,7 +18,7 @@ const ProductQueryHoc = (WrappedComponent, QUERY, SHOPPINGCART, FETCPOLICY) => (
         {({ data, loading, error, client }) => {
           if (loading || error) return null;
           const { product } = data;
-
+          console.log(data);
           return (
             <WrappedComponent
               data={data}

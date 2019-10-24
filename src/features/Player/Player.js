@@ -69,7 +69,8 @@ const Player = ({ width, height, poster, sources }) => {
         audioTrackButton: true
       },
       playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
-      language: i18n.language
+      language: i18n.language,
+      nativeVideoTracks: false
     });
 
     // TODO: remove this when browser console debug is not necessary
@@ -86,7 +87,7 @@ const Player = ({ width, height, poster, sources }) => {
       fullscreen: {
         enterOnRotate: true, // Enter fullscreen mode on rotating the device in landscape
         alwaysInLandscapeMode: true, // Always enter fullscreen in landscape mode even when device is in portrait mode (works on chromium, firefox, and ie >= 11)
-        iOS: false
+        iOS: true
       }
     });
   }, []);
@@ -297,7 +298,7 @@ const Player = ({ width, height, poster, sources }) => {
                 className="vb--video vjs-vb video-js"
                 crossOrigin="anonymous"
                 preload="none"
-                playsInline={videojs.browser.TOUCH_ENABLED ? true : undefined}
+                playsInline
               />
             </div>
           </div>

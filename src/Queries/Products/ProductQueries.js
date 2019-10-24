@@ -9,6 +9,11 @@ export const GET_PRODUCT = gql`
       description
       parentId
       description
+      brand {
+        id
+        name
+        name
+      }
       company {
         id
         name
