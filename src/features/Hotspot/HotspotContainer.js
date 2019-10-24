@@ -9,7 +9,7 @@ import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
 import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
 import HotSpotDynamicContainer from '../../components/HotspotPointer/HotSpotDynamicContainer';
-import { Wrapper } from './HotspotCardList.style';
+// import { Wrapper } from './HotspotCardList.style';
 
 const HotspotContainer = ({ data, type }) => {
   const hotSpots = data.prodLink && data.prodLink.hotSpots;
@@ -104,7 +104,9 @@ const HotspotContainer = ({ data, type }) => {
                   <span>Click & Buy</span>
                 </div>
               )}
-              {selectionHotSpotsType(activeHotSpots, currentTime)}
+              {hotSpotShowing === true
+                ? selectionHotSpotsType(activeHotSpots, currentTime)
+                : null}
             </>
           );
         }
