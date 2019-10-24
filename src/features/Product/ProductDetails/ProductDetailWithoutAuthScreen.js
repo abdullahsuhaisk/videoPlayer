@@ -29,6 +29,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const productId = product.id;
     const description = product.description && product.description;
     const currency = product.currency && product.currency;
+    const brand = product.brand && product.brand;
 
     const handleAddToCart = () => {
       const isAdded = cartItems.find(
@@ -129,7 +130,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                     <ProductDetailImage images={images} />
                     <ProductDetaiHeader
                       productTitle={product.name}
-                      company={company}
+                      brand={brand}
                     />
                     <ProductDetailPriceTemplate3
                       currentPrice={currentPrice}
@@ -163,7 +164,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                   <VerticalScroll>
                     <ProductDetaiHeader
                       productTitle={product.name}
-                      company={company}
+                      brand={brand}
                     />
                     <ProductDetailPriceTemplate3
                       currentPrice={currentPrice}
