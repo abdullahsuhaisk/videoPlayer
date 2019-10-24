@@ -12,7 +12,7 @@ export const GET_PRODUCT = gql`
       brand {
         id
         name
-        name
+        header
       }
       company {
         id
