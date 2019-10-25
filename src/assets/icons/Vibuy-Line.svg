@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2949" data-name="Rectangle 2949" width="24" height="24" transform="translate(1685 1043.597)" fill="#fff" stroke="#f30640" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Vibuy-Line" transform="translate(-1685 -1043.597)" clip-path="url(#clip-path)">
+    <g id="VIBUY_logo_ikon_siyah" data-name="VIBUY_logo_ikon siyah" transform="translate(1653.736 1025.003)">
+      <path id="Path_7257" data-name="Path 7257" d="M52.81,29.148,38.832,18.94a1.768,1.768,0,0,0-1.047-.346,1.788,1.788,0,0,0-1.794,1.789V23.9l1.834,1.336V21.328a.433.433,0,0,1,.689-.349L51.2,30.242a.433.433,0,0,1,0,.7L38.513,40.2a.434.434,0,0,1-.689-.349V35.967L35.991,37.29V40.8a1.789,1.789,0,0,0,1.793,1.79,1.762,1.762,0,0,0,1.047-.352L52.81,32.035a1.788,1.788,0,0,0,0-2.887Z" fill="#fff"/>
+      <path id="Path_7258" data-name="Path 7258" d="M34.82,22.948h0m9.908,8.034-9.221,6.66a.433.433,0,0,1-.687-.352V23.9a.433.433,0,0,1,.689-.349l9.22,6.733a.433.433,0,0,1,0,.7Zm-9.948-9.819a1.788,1.788,0,0,0-1.794,1.789V38.234a1.789,1.789,0,0,0,1.793,1.79,1.762,1.762,0,0,0,1.047-.352l10.459-7.638a1.786,1.786,0,0,0,0-2.886L35.827,21.51A1.768,1.768,0,0,0,34.779,21.163Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

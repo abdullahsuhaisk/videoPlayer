@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
-import VibuyIcon3 from '../../../../assets/icons/VibuyIcon3.svg';
-import VibuyIcon2 from '../../../../assets/icons/VibuyIcon.svg';
+import VibuyIcon3 from '../../../../assets/icons/Vibuy-Glphy.svg';
+import VibuyIcon2 from '../../../../assets/icons/Vibuy-Line.svg';
 
 const VibuyIcon = ({ client }) => {
   const HOTSPOT_SHOWING = gql`
