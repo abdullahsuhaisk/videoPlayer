@@ -5015,7 +5015,6 @@
 }
 
 .Template1 .hotspotbutton--wrapper {
-  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -5029,6 +5028,7 @@
 }
 
 .Template1 .hotspotImageHover {
+  transition: all 200ms ease 0s;
   width: 110px;
   height: 110px;
 }
@@ -5036,7 +5036,6 @@
 .Template1 .hotspotbutton--shadow {
   width: 110px;
   height: 110px;
-  background-color: rgba(243, 6, 64, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
