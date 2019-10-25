@@ -3662,7 +3662,7 @@
   left: 0;
   pointer-events: auto;
   background-color: rgba(0, 0, 0, 0.3);
-  transform: scaleY(1.125) scaleX(1.0125);
+  /* transform: scaleY(1.125) scaleX(1.0125); */
 }
 .Template1 .ControlBar .videoControlsContainer {
   display: flex;
@@ -5029,8 +5029,9 @@
 
 .Template1 .hotspotImageHover {
   transition: all 200ms ease 0s;
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
+  transition-timing-function: linear;
 }
 
 .Template1 .hotspotbutton--shadow {

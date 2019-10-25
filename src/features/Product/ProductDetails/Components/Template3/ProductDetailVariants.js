@@ -5,13 +5,13 @@ const ProductDetailVariant = ({ data, setData }) => {
   return (
     <React.Fragment>
       <div className="productdetail--colors-wrapper">
-        <div className="productdetail--label">Colors</div>
+        <div className="productdetail--label">Renkler</div>
         <div className="productdetail--colors-options">
           {colors.map((item, index) => {
             return data.color === index ? (
               <div className="selected" key={index}>
                 <img src={item} alt="color" />
-                <p className="name">color</p>
+                <p className="name">renk</p>
               </div>
             ) : (
               <div

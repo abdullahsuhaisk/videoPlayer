@@ -299,6 +299,8 @@ const Player = ({ width, height, poster, sources }) => {
                 crossOrigin="anonymous"
                 preload="none"
                 playsInline
+                disablePictureInPicture
+                controlsList="nodownload"
               />
             </div>
           </div>
