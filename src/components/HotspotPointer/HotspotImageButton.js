@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import NoImageSmall from '../../assets/images/NoImageSmall.png';
-import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
+import HotspotProductIcon from '../../assets/icons/bag-btn-line.svg';
+import HotspotActiveProductIcon from '../../assets/icons/bag-btn-glphy.svg';
 
 const StyledComponent = styled.div`
   position: absolute;
@@ -24,6 +25,15 @@ const HotspotImageButton = ({
     product: { image }
   } = hotSpot;
   const imageUrl = image && image.imageUrl;
+  const [activetedButton, setActivedetButton] = React.useState(false);
+
+  const mouseEnterHandler = () => {
+    setActivedetButton(true);
+  };
+
+  const mouseLeaveHandler = () => {
+    setActivedetButton(false);
+  };
 
   const positionCalculator = () => {
     // console.log(dynamicPositions);
@@ -39,7 +49,9 @@ const HotspotImageButton = ({
       xPos={`${positionCalculator() && positionCalculator().x * 100}%`}
       yPos={`${positionCalculator() && positionCalculator().y * 100}%`}
       style={{}}
-      onClick={() => setProductIdForDetail(id)}>
+      onClick={() => setProductIdForDetail(id)}
+      onMouseEnter={() => mouseEnterHandler()}
+      onMouseLeave={() => mouseLeaveHandler()}>
       <div className="hotspotbutton--shadow">
         <div className="hotspotbutton--wrapper">
           {a === true ? (
@@ -49,7 +61,17 @@ const HotspotImageButton = ({
               style={{ width: 90, height: 90, borderRadius: '50%' }}
             />
           ) : (
-            <img src={HotspotProductIcon} alt="HotspotButton" />
+            <img
+              className={
+                activetedButton === true ? 'hotspotImageHover' : 'hotspotImage'
+              }
+              src={
+                activetedButton === true
+                  ? HotspotActiveProductIcon
+                  : HotspotProductIcon
+              }
+              alt="HotspotButton"
+            />
           )}
         </div>
       </div>
