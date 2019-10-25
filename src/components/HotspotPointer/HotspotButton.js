@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import HotspotProductIcon from '../../assets/icons/HotspotProductIcon.svg';
+import HotspotProductIcon from '../../assets/icons/bag-btn-line.svg';
+import HotspotActiveProductIcon from '../../assets/icons/bag-btn-glphy.svg';
 
 const StyledComponent = styled.div`
   position: absolute;
@@ -10,15 +11,36 @@ const StyledComponent = styled.div`
 
 const HotspotButton = ({ top, left, ProductId, setProductIdForDetail }) => {
   // console.log(ProductId);
+  const [activetedButton, setActivedetButton] = React.useState(false);
+
+  const mouseEnterHandler = () => {
+    setActivedetButton(true);
+  };
+
+  const mouseLeaveHandler = () => {
+    setActivedetButton(false);
+  };
   return (
     <StyledComponent
       top={top}
       left={left}
       style={{ pointerEvents: 'auto' }}
-      onClick={() => setProductIdForDetail(ProductId)}>
+      onClick={() => setProductIdForDetail(ProductId)}
+      onMouseEnter={() => mouseEnterHandler()}
+      onMouseLeave={() => mouseLeaveHandler()}>
       <div className="hotspotbutton--shadow">
         <div className="hotspotbutton--wrapper">
-          <img src={HotspotProductIcon} alt="HotspotButton" />
+          <img
+            className={
+              activetedButton === true ? 'hotspotImageHover' : 'hotspotImage'
+            }
+            src={
+              activetedButton === true
+                ? HotspotActiveProductIcon
+                : HotspotProductIcon
+            }
+            alt="HotspotButton"
+          />
         </div>
       </div>
     </StyledComponent>

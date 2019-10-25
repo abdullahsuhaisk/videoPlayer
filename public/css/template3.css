@@ -3662,7 +3662,7 @@
   left: 0;
   pointer-events: auto;
   background-color: rgba(0, 0, 0, 0.3);
-  transform: scaleY(1.125) scaleX(1.0125);
+  /* transform: scaleY(1.125) scaleX(1.0125); */
 }
 .Template1 .ControlBar .videoControlsContainer {
   display: flex;
@@ -5015,20 +5015,30 @@
 }
 
 .Template1 .hotspotbutton--wrapper {
-  width: 90px;
-  height: 90px;
-  background-color: rgba(243, 6, 64, 0.8);
-  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
+
+.Template1 .hotspotImage {
+  width: 90px;
+  height: 90px;
+  transition: all 200ms ease 0s;
+
+}
+
+.Template1 .hotspotImageHover {
+  transition: all 200ms ease 0s;
+  width: 130px;
+  height: 130px;
+  transition-timing-function: linear;
+}
+
 .Template1 .hotspotbutton--shadow {
   width: 110px;
   height: 110px;
-  background-color: rgba(243, 6, 64, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;

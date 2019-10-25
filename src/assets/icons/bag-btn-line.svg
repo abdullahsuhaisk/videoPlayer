@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2943" data-name="Rectangle 2943" width="60" height="60" transform="translate(690 707)" fill="#fff" stroke="#fff" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Bag-Btn" transform="translate(-672 -689)">
+    <g id="Bg" transform="translate(675 692)" fill="none" stroke="#fff" stroke-width="3">
+      <circle cx="45" cy="45" r="45" stroke="none"/>
+      <circle cx="45" cy="45" r="46.5" fill="none"/>
+    </g>
+    <g id="Bag-Icon" transform="translate(0 -3)" clip-path="url(#clip-path)">
+      <g id="bag-20" transform="translate(690 707)">
+        <path id="Path_7239" data-name="Path 7239" d="M51.25,57.5H8.75V15h42.5Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+        <path id="Path_7240" data-name="Path 7240" d="M20,22.5v-10a10.029,10.029,0,0,1,10-10h0a10.029,10.029,0,0,1,10,10v10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

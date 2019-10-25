@@ -37,7 +37,7 @@ const ProductDetailPriceNew = ({ variant, setVariant }) => {
   return (
     <StyledComponent>
       <div className="productdetail--quantity-wrapper">
-        <div className="productdetail--label">Quantity</div>
+        <div className="productdetail--label">Adet</div>
         <div className="productdetail--quantity-options">
           {variant.quantity > 1 ? (
             <div
