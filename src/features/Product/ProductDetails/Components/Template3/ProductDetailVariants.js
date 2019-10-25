@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, sizes } from '../../../../../common/Variants';
+import { colors, sizes, colorsWithName } from '../../../../../common/Variants';
 
 const ProductDetailVariant = ({ data, setData }) => {
   return (
@@ -7,11 +7,11 @@ const ProductDetailVariant = ({ data, setData }) => {
       <div className="productdetail--colors-wrapper">
         <div className="productdetail--label">Renkler</div>
         <div className="productdetail--colors-options">
-          {colors.map((item, index) => {
+          {colorsWithName.map((item, index) => {
             return data.color === index ? (
               <div className="selected" key={index}>
-                <img src={item} alt="color" />
-                <p className="name">renk</p>
+                <img src={item.color} alt="color" />
+                <p className="name">{item.name}</p>
               </div>
             ) : (
               <div
@@ -20,7 +20,7 @@ const ProductDetailVariant = ({ data, setData }) => {
                 onClick={() => {
                   setData({ ...data, color: index });
                 }}>
-                <img src={item} alt="color" />
+                <img src={item.color} alt="color" />
               </div>
             );
           })}
