@@ -22,7 +22,7 @@ const App = ({ client }) => {
   //     .then((res) => console.log(res));
   // }, []);
   React.useEffect(() => {
-    console.log(getParams('imagej'));
+    // console.log(getParams('haslink'));
   }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);

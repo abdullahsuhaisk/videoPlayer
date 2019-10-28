@@ -88,7 +88,7 @@ export const getProdLinkUniqueId = () => {
   }, [prodLinkUniqueId]);
   return prodLinkUniqueId;
 };
-
+// http://localhost:3000/prodLinkId/5da718213ca28/?haslink=true&image=awesome.jpg
 export function getParams(params) {
   const query = window.location.search.substring(1);
   // console.log(window.location.search);
