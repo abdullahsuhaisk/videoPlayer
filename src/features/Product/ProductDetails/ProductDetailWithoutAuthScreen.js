@@ -12,8 +12,16 @@ import ProductDetailAddToCard from './Components/ProductDetailAddToCard';
 import ProductDetailAccordion from './Components/Template3/ProductDetailAccordion';
 import ProductQueryHoc from '../../../components/HOCS/Grapqhl/ProductQueryHoc';
 import { GET_PRODUCT } from '../../../Queries/Products/ProductQueries';
+import { getParams } from '../../../hooks/ProdLinkHook';
+import ProductDetailGoToLink from './Components/ProductDetailGoToLink';
 
 const ProductDetailWithoutAuthScreen = ({ product, client }) => {
+  const [showLink, setShowLink] = useState(null);
+  React.useEffect(() => {
+    const isTrueSet = getParams('haslink') === 'true';
+    setShowLink(isTrueSet);
+  }, []);
+  // console.log(showLink);
   // TODO: Templatable system must be templatable with props it's like showProductDetailHeader=true or false
   const cartItems = JSON.parse(localStorage.getItem('guestCart'))
     ? JSON.parse(localStorage.getItem('guestCart'))
@@ -30,6 +38,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const description = product.description && product.description;
     const currency = product.currency && product.currency;
     const brand = product.brand && product.brand;
+    const link = product.link && product.link;
 
     const handleAddToCart = () => {
       const isAdded = cartItems.find(
@@ -118,7 +127,21 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
         }
       }
     `;
-
+    const renderWithOutLink = () => {
+      return showLink === false ? (
+        <>
+          <ProductDetailVariant data={data} setData={setData} />
+          <ProductDetailQuantity variant={data} setVariant={setData} />
+          <ProductDetailAddToCard
+            handleAddToCart={handleAddToCart}
+            cartItems={cartItems}
+            productId={productId}
+          />
+        </>
+      ) : (
+        <ProductDetailGoToLink link={link} />
+      );
+    };
     return (
       <Query query={GET_LAYOUT}>
         {({ data: { layout } }) => {
@@ -138,16 +161,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                       discount={discount}
                       currency={currency}
                     />
-                    <ProductDetailVariant data={data} setData={setData} />
-                    <ProductDetailQuantity
-                      variant={data}
-                      setVariant={setData}
-                    />
-                    <ProductDetailAddToCard
-                      handleAddToCart={handleAddToCart}
-                      cartItems={cartItems}
-                      productId={productId}
-                    />
+                    {renderWithOutLink()}
                     <ProductDetailAccordion description={description} />
                     <ProductDetailAccordion title="Shipping And Returns" />
                     <ProductDetailAccordion title="Care" />
@@ -172,16 +186,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                       discount={discount}
                       currency={currency}
                     />
-                    <ProductDetailVariant data={data} setData={setData} />
-                    <ProductDetailQuantity
-                      variant={data}
-                      setVariant={setData}
-                    />
-                    <ProductDetailAddToCard
-                      handleAddToCart={handleAddToCart}
-                      cartItems={cartItems}
-                      productId={productId}
-                    />
+                    {renderWithOutLink()}
                     <ProductDetailAccordion description={description} />
                     <ProductDetailAccordion title="Shipping And Returns" />
                     <ProductDetailAccordion title="Care" />
@@ -190,6 +195,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
               </>
             );
           }
+          return null;
         }}
       </Query>
     );
