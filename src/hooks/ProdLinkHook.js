@@ -17,7 +17,7 @@ const getLocationId = (location) => {
   const urlString = window.location.href;
   const locationLengt = location.length;
   const searchStartPoint = urlString.search(location) + locationLengt + 1;
-  const urlResult = urlString.substr(searchStartPoint);
+  const urlResult = urlString.substr(searchStartPoint, 13);
   return urlResult; // a34234nbsad
 };
 
@@ -88,6 +88,21 @@ export const getProdLinkUniqueId = () => {
   }, [prodLinkUniqueId]);
   return prodLinkUniqueId;
 };
+// http://localhost:3000/prodLinkId/5da718213ca28/?haslink=true&image=awesome.jpg
+export function getParams(params) {
+  const query = window.location.search.substring(1);
+  // console.log(window.location.search);
+  // console.log(query);
+  const vars = query.split('&');
+  // console.log(vars);
+  for (let i = 0; i < vars.length; i++) {
+    const pair = vars[i].split('=');
+    if (pair[0] === params) {
+      return pair[1];
+    }
+  }
+  return false;
+}
 
 // export const setProdLinkId = (Id) => {
 //   const [prodId, setProdId] = useState(Id);
