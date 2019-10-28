@@ -14,6 +14,7 @@ import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
 
 import template3 from '../../components/Template3/Template3.json';
 import template2 from './template.json';
+import { getParams } from '../../hooks/ProdLinkHook';
 
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');

@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
 import OverlayScreen from './features/Overlay/OverlayScreen';
-import { getProdLinkIdApollo } from './hooks/ProdLinkHook';
+import { getProdLinkIdApollo, getParams } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
 import { httpToHttps } from './utils/httpTohttps';
@@ -21,6 +21,9 @@ const App = ({ client }) => {
   //     .query({ query: GET_VIDEO, variables: { prodLinkUniqueId: prodLinkId } })
   //     .then((res) => console.log(res));
   // }, []);
+  React.useEffect(() => {
+    console.log(getParams('imagej'));
+  }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
   return (
