@@ -104,6 +104,7 @@ const HotspotContainer = ({ data, type }) => {
             return (
               <>
                 {showCandB === true &&
+                  hotSpotShowing === true &&
                   hotSpots.filter(
                     (hotSpot) =>
                       currentTime >= hotSpot.in && currentTime <= hotSpot.out
