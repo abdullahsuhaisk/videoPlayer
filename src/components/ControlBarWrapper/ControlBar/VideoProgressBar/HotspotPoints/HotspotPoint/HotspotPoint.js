@@ -8,26 +8,12 @@ import NoImageSmall from '../../../../../../assets/images/NoImageSmall.png';
 
 const StyledComponent = styled.div`
   .HotspotPoint {
-    display: ${(props) => (props.hotspotShowing ? 'none' : 'block')};
+    display: 'block';
   }
 `;
 
 const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
-  useEffect(() => {}, [hotSpotShowing]);
-
   const { image, name, id } = product;
-
-  const HOTSPOT_SHOWING = gql`
-    query hotSpotShowing {
-      player @client {
-        hotSpotShowing
-      }
-    }
-  `;
-
-  const {
-    player: { hotSpotShowing }
-  } = client.readQuery({ query: HOTSPOT_SHOWING });
 
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
@@ -41,34 +27,31 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
       }
     });
   }, []);
-  if (hotSpotShowing === true) {
-    return (
-      <StyledComponent hotSpotShowing={hotSpotShowing}>
-        <HotspotPointWrapper position={position}>
-          <div className="HotspotPoint" onClick={() => timeChanger(item.in)}>
-            <div className="hotspot--image-container">
-              <div className="hotspot--image">
-                <img
-                  src={
-                    (image && httpToHttps(image && image.thumbnailUrl)) ||
-                    NoImageSmall
-                  }
-                  alt={name}
-                  onClick={() => setProductIdForDetail(id)}
-                />
-                <div
-                  className="hotspot--image-overlay"
-                  onClick={() => setProductIdForDetail(id)}
-                />
-                <div className="hotspot--hover-delay" />
-              </div>
+
+  return (
+    <div style={{ display: 'block' }}>
+      <HotspotPointWrapper position={position}>
+        <div className="HotspotPoint" onClick={() => timeChanger(item.in)}>
+          <div className="hotspot--image-container">
+            <div className="hotspot--image">
+              <img
+                src={
+                  (image && httpToHttps(image && image.thumbnailUrl)) ||
+                  NoImageSmall
+                }
+                alt={name}
+                onClick={() => setProductIdForDetail(id)}
+              />
+              <div
+                className="hotspot--image-overlay"
+                onClick={() => setProductIdForDetail(id)}
+              />
+              <div className="hotspot--hover-delay" />
             </div>
           </div>
-        </HotspotPointWrapper>
-      </StyledComponent>
-    );
-  }
-  return null;
+        </div>
+      </HotspotPointWrapper>
+    </div>
+  );
 };
-
 export default HotspotPoint;

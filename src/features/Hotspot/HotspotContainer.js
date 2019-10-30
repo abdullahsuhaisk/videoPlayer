@@ -9,15 +9,21 @@ import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
 import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
 import HotSpotDynamicContainer from '../../components/HotspotPointer/HotSpotDynamicContainer';
+import { getParams } from '../../hooks/ProdLinkHook';
 // import { Wrapper } from './HotspotCardList.style';
 
 const HotspotContainer = ({ data, type }) => {
-  const hotSpots = data.prodLink && data.prodLink.hotSpots;
+  const hotSpots = data && data.prodLink && data.prodLink.hotSpots;
   const [staticHotSpots, setStaticHotSpots] = React.useState();
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
-
+  const [showCandB, setShowCandB] = React.useState(false);
   // console.log(dynamicHotSpots);
+  React.useEffect(() => {
+    const isTrueSet = getParams('cbshow') === 'true';
+    console.log(getParams('cbshow'));
+    setShowCandB(isTrueSet);
+  }, []);
 
   React.useEffect(() => {
     const staticHotSpotss = [];
@@ -69,51 +75,53 @@ const HotspotContainer = ({ data, type }) => {
     }
   };
   // console.log(type);
-  return (
-    <Query query={GET_PLAYER}>
-      {({
-        data: {
-          player: { playingState, currentTime, hotSpotShowing }
-        }
-      }) => {
-        if (
-          playingState === PLAYER.PLAYING ||
-          playingState === PLAYER.PAUSED ||
-          playingState === PLAYER.SCRUBBING
-        ) {
-          const activeHotSpots =
-            selectActiveHotSpot() &&
-            selectActiveHotSpot().filter(
-              (hotSpot) =>
-                currentTime >= hotSpot.in && currentTime <= hotSpot.out
-            );
-          // console.log(activeHotSpots);
+  if (hotSpots)
+    return (
+      <Query query={GET_PLAYER}>
+        {({
+          data: {
+            player: { playingState, currentTime, hotSpotShowing }
+          }
+        }) => {
           if (
-            playingState === PLAYER.PLAYING &&
-            hotSpotShowing === false &&
-            (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
-          )
-            return null;
-          return (
-            <>
-              {hotSpots.filter(
+            playingState === PLAYER.PLAYING ||
+            playingState === PLAYER.PAUSED ||
+            playingState === PLAYER.SCRUBBING
+          ) {
+            const activeHotSpots =
+              selectActiveHotSpot() &&
+              selectActiveHotSpot().filter(
                 (hotSpot) =>
                   currentTime >= hotSpot.in && currentTime <= hotSpot.out
-              ).length !== 0 && (
-                <div className="vb--hotspot-card-list-header">
-                  <span>Click & Buy</span>
-                </div>
-              )}
-              {hotSpotShowing === true
-                ? selectionHotSpotsType(activeHotSpots, currentTime)
-                : null}
-            </>
-          );
-        }
-        return null;
-      }}
-    </Query>
-  );
+              );
+            // console.log(activeHotSpots);
+            if (
+              playingState === PLAYER.PLAYING &&
+              hotSpotShowing === false &&
+              (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
+            )
+              return null;
+            return (
+              <>
+                {showCandB === true &&
+                  hotSpots.filter(
+                    (hotSpot) =>
+                      currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                  ).length !== 0 && (
+                    <div className="vb--hotspot-card-list-header">
+                      <span>Click & Buy</span>
+                    </div>
+                  )}
+                {hotSpotShowing === true
+                  ? selectionHotSpotsType(activeHotSpots, currentTime)
+                  : null}
+              </>
+            );
+          }
+          return null;
+        }}
+      </Query>
+    );
 };
 
 export default withQueryProdLink(HotspotContainer, GET_HOTSPOTS);
