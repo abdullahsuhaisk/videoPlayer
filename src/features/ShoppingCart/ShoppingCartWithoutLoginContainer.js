@@ -75,13 +75,13 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           <>
             <div className="shoppingcart-items-container">
               {localCart &&
-                localCart.map((item, key) => {
+                localCart.map((item, index) => {
                   return (
-                    <Fade right delay={key * 50} duration={400}>
+                    <Fade right delay={index * 50} duration={400} key={index}>
                       <ShoppingCartItem
                         productId={item.productId}
                         item={item}
-                        key={key}
+                        key={index}
                         setChangeCount={setChangeCount}
                         changeCount={changeCount}
                         deleteItem={deleteItem}
