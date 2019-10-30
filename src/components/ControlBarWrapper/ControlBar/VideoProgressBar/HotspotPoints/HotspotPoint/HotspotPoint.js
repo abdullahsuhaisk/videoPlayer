@@ -29,7 +29,7 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
   }, []);
 
   return (
-    <StyledComponent>
+    <div style={{ display: 'block' }}>
       <HotspotPointWrapper position={position}>
         <div className="HotspotPoint" onClick={() => timeChanger(item.in)}>
           <div className="hotspot--image-container">
@@ -51,7 +51,7 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
           </div>
         </div>
       </HotspotPointWrapper>
-    </StyledComponent>
+    </div>
   );
 };
 export default HotspotPoint;
