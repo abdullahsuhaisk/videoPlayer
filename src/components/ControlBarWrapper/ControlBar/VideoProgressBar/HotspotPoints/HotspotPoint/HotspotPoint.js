@@ -1,16 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
-import gql from 'graphql-tag';
-import styled from 'styled-components';
+import React, { useCallback } from 'react';
 import { PLAYER } from '../../../../../../common/constants';
 import { HotspotPointWrapper } from './HotspotPoints.style';
 import { httpToHttps } from '../../../../../../utils/httpTohttps';
 import NoImageSmall from '../../../../../../assets/images/NoImageSmall.png';
-
-const StyledComponent = styled.div`
-  .HotspotPoint {
-    display: 'block';
-  }
-`;
 
 const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
   const { image, name, id } = product;
