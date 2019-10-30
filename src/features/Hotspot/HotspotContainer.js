@@ -9,6 +9,7 @@ import { GET_PLAYER } from '../../Queries/Player/PlayerQueries';
 import { hotSpotsType } from '../../common/hotSpotTypes';
 import HotSpotsPointerContainer from '../../components/HotspotPointer/HotSpotsPointerContainer';
 import HotSpotDynamicContainer from '../../components/HotspotPointer/HotSpotDynamicContainer';
+import { getParams } from '../../hooks/ProdLinkHook';
 // import { Wrapper } from './HotspotCardList.style';
 
 const HotspotContainer = ({ data, type }) => {
@@ -16,8 +17,13 @@ const HotspotContainer = ({ data, type }) => {
   const [staticHotSpots, setStaticHotSpots] = React.useState();
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
-
+  const [showCandB, setShowCandB] = React.useState(false);
   // console.log(dynamicHotSpots);
+  React.useEffect(() => {
+    const isTrueSet = getParams('cbshow') === 'true';
+    console.log(getParams('cbshow'));
+    setShowCandB(isTrueSet);
+  }, []);
 
   React.useEffect(() => {
     const staticHotSpotss = [];
@@ -97,14 +103,15 @@ const HotspotContainer = ({ data, type }) => {
               return null;
             return (
               <>
-                {hotSpots.filter(
-                  (hotSpot) =>
-                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
-                ).length !== 0 && (
-                  <div className="vb--hotspot-card-list-header">
-                    <span>Click & Buy</span>
-                  </div>
-                )}
+                {showCandB === true &&
+                  hotSpots.filter(
+                    (hotSpot) =>
+                      currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                  ).length !== 0 && (
+                    <div className="vb--hotspot-card-list-header">
+                      <span>Click & Buy</span>
+                    </div>
+                  )}
                 {hotSpotShowing === true
                   ? selectionHotSpotsType(activeHotSpots, currentTime)
                   : null}
