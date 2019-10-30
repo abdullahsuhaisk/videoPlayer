@@ -1,5 +1,6 @@
 import React from 'react';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
+import FullScreenIcon from '../../../../assets/icons/FullScreenIcon.svg';
 
 const ControlBarFullScreen = () => {
   const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -11,17 +12,18 @@ const ControlBarFullScreen = () => {
       videoPlayer.requestFullscreen();
     }
   };
-  return (
-    <div>
-      {iOS === true ? null : (
-        <button
-          className="fullScreenBtn"
-          onClick={() => {
-            fullScreenHnadler();
-          }}></button>
-      )}
-    </div>
-  );
+  if (iOS === false) {
+    return (
+      <div
+        className="fullScreenBtn-wrapper"
+        onClick={() => {
+          fullScreenHnadler();
+        }}>
+        <img src={FullScreenIcon} alt="Full Screen" className="fullScreenBtn" />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default ControlBarFullScreen;

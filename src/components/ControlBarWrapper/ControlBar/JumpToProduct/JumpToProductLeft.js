@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
 import { GET_PLAYER } from '../../../Base/AppQueries';
 import ControlBarHoc from '../ControlBarHoc';
+import JumpLeft from '../../../../assets/icons/JumpToProductLeft.svg';
 
 const GET_HOTSPOTS = gql`
   query getHotspotsForHotspotScreen(
@@ -90,9 +91,11 @@ const JumpToProductLeft = ({ client, videoPlayer }) => {
   };
   if (hotSpotShowing === true) {
     return (
-      <button
-        className="jumpToProductBtnLeft"
-        onClick={() => jumpToProductHandlerLeft()}></button>
+      <div
+        className="jumpToProductBtnLeft-wrapper"
+        onClick={() => jumpToProductHandlerLeft()}>
+        <img src={JumpLeft} alt="Jump Left" className="jumpToProductBtnLeft" />
+      </div>
     );
   }
   return null;

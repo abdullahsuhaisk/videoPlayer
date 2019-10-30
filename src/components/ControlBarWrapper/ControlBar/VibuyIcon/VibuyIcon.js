@@ -34,11 +34,10 @@ const VibuyIcon = ({ client }) => {
     });
   };
   return (
-    <div style={{ pointerEvents: 'cursor' }}>
+    <div className="controlbar--vibuyicon-wrapper" onClick={onChange}>
       <img
         src={hotSpotShowing === true ? VibuyIcon3 : VibuyIcon2}
         alt="Vibuy Icon"
-        onClick={onChange}
         className="controlbar--vibuyicon"
       />
     </div>

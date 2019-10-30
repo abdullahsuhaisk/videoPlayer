@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
+import AddToCartIcon from '../../../../assets/icons/AddToCartIcon.svg';
 
 const ControlBarShoppingIcon = ({ client }) => {
   const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(
@@ -60,15 +61,16 @@ const ControlBarShoppingIcon = ({ client }) => {
 
   if (hotSpotShowing === true) {
     return (
-      <div>
+      <div
+        className="cartBtn-wrapper"
+        onClick={() => {
+          cartHandler();
+        }}>
         {shoppingCartItemsCount !== null ? (
           <div className="addtocart-counter">{shoppingCartItemsCount}</div>
         ) : null}
-        <button
-          className="cartBtn"
-          onClick={() => {
-            cartHandler();
-          }}></button>
+
+        <img src={AddToCartIcon} alt="Shopping Cart" className="cartBtn" />
       </div>
     );
   }
