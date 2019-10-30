@@ -1,5 +1,7 @@
 import React from 'react';
 import ControlBarHoc from '../ControlBarHoc';
+import VolumeIcon from '../../../../assets/icons/VolumeIcon.svg';
+import VolumeOffIcon from '../../../../assets/icons/VolumeOffIcon.svg';
 
 const VolumControl = (props) => {
   const { videoPlayer } = props;
@@ -27,11 +29,14 @@ const VolumControl = (props) => {
 
   return (
     <div className="volumControls">
-      <i
-        className={soundsIconClass()}
+      <img
+        src={videoPlayer && videoPlayer.muted() ? VolumeOffIcon : VolumeIcon}
+        alt="Volume Icon"
+        className="soundIcon"
         onClick={() => {
           soundsOffHandler();
-        }}></i>
+        }}
+      />
       <input
         className="volumControl"
         type="range"

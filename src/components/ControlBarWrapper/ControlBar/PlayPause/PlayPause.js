@@ -6,6 +6,8 @@ import React from 'react';
 import { withApollo } from 'react-apollo';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import { PLAY, PAUSE } from '../../../../Queries/Player/PlayerMutations';
+import PauseIcon from '../../../../assets/icons/PauseIcon.svg';
+import PlayIcon from '../../../../assets/icons/PlayIcon.svg';
 
 const PlayPause = ({ position, client }) => {
   // console.log(props);
@@ -42,8 +44,14 @@ const PlayPause = ({ position, client }) => {
   return (
     <div
       onClick={() => playPauseHandler()}
-      style={{ height: '100%', width: '50px' }}>
-      <button className={playPauseBtnClass()}></button>
+      style={{ height: '100%', width: '50px' }}
+      className="plauPauseBtn-wrapper">
+      <img
+        src={videoPlayer && !videoPlayer.paused() ? PauseIcon : PlayIcon}
+        alt="Pause Icon"
+        className="playPauseBtn"
+      />
+      {/* <button className={playPauseBtnClass()}></button> */}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-
 import SettingsPoper from './SettingsPoper';
 import ControlBarHoc from '../ControlBarHoc';
+import SettingsIcon from '../../../../assets/icons/SettingsIcon.svg';
 
 const CONTROLBAR = gql`
   query isControlbarOpen {
@@ -74,7 +74,11 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
   //   }
   // };
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      className="settingsBtn-wrapper"
+      onClick={() => {
+        settingsHandler();
+      }}>
       <Query query={CONTROLBAR}>
         {({ data: { player } }) => {
           if (player.isSettingMenuOpen)
@@ -94,11 +98,7 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
           return null;
         }}
       </Query>
-      <button
-        className="settingsBtn"
-        onClick={() => {
-          settingsHandler();
-        }}></button>
+      <img src={SettingsIcon} alt="Settings Icon" className="settingsBtn" />
     </div>
   );
 };

@@ -1573,12 +1573,14 @@
 .Template1 .watchlist .watchlist--videoContainer:hover::before {
   display: flex;
 }
+.Template1 .controlbar--vibuyicon-wrapper {
+  cursor: pointer;
+  padding: 15px 10px 5px 10px;
+}
 
 .Template1 .controlbar--vibuyicon {
-  width: 46px;
-  height: 30px;
-  padding-right: 20px;
-  cursor: pointer;
+  width: 32px;
+  height: 32px;
 }
 .Template1 .ShoppingCartContainer {
   display: flex;
@@ -3655,7 +3657,7 @@
 .Template1 .ControlBar {
   display: block;
   width: 100%;
-  height: 65px;
+  height: 75px;
   /* background-color: #fff; */
   position: absolute;
   bottom: 0;
@@ -3667,9 +3669,9 @@
 .Template1 .ControlBar .videoControlsContainer {
   display: flex;
   justify-content: space-between;
-  height: 65px;
+  height: 75px;
   align-items: flex-start;
-  padding: 8px 55px 0 55px;
+  padding: 0 55px;
  
 }
 .Template1 .ControlBar .videoControlsContainer .leftContainer {
@@ -3684,12 +3686,12 @@
   display: flex;
   align-items: flex-start;
   cursor: pointer;
+  padding: 15px 10px 5px 10px;
+  position: relative;
 }
 .Template1 .volumControls .soundIcon {
   width: 32px;
   height: 32px;
-  margin-right: 20px;
-  background: url(/images/sound.svg) center / contain no-repeat;
 }
 .Template1 .volumControls .muted {
   background: url(/images/volume-off.svg) center / contain no-repeat;
@@ -3705,10 +3707,10 @@
 .volume--hover-delay {
   position: absolute;
   z-index: 1;
-  bottom: 45px;
-  right: 110px;
+  bottom: 20px;
+  right: 5px;
   width: 30px;
-  height: 18px;
+  height: 30px;
   border-radius: 2px;
   display: none;
 }
@@ -3716,7 +3718,7 @@
   -webkit-appearance: none;
   position: absolute;
   top: -100px;
-  right: 110px;
+  right: -38px;
   width: 130px;
   height: 40px;
   cursor: pointer;
@@ -3798,7 +3800,7 @@
   width: calc(100% - 100px);
   height: 15px;
   position: absolute;
-  top: 44px;
+  top: 55px;
   left: 50px;
   z-index: 2;
 }
@@ -3974,7 +3976,8 @@
   font-family: 'Nunito Sans', sans-serif;
   display: flex;
   line-height: 0;
-  margin-top: -2px;
+  margin-top: -3px;
+  padding: 15px 10px 5px 10px;
 }
 .Template1 .timeDisplay p {
   font-size: 20px;
@@ -3985,25 +3988,27 @@
   margin-left: 3px;
   margin-right: 3px;
 }
+.Template1 .settingsBtn-wrapper {
+  position: relative;
+  padding: 15px 10px 5px 10px;
+  cursor: pointer;
+}
 .Template1 .settingsBtn {
   width: 32px;
   height: 32px;
-  background: url(/images/cogwheel.svg) center / contain no-repeat;
-  cursor: pointer;
-  margin-right: 20px;
   border: none;
 }
 .Template1 .settingsBtn:focus {
   outline: none;
 }
-.Template1 .playPauseBtn {
-  width: 28px;
-  height: 26px;
-  background: url(/images/play-button.svg) center / contain no-repeat;
-  margin-right: 30px;
+.Template1 .plauPauseBtn-wrapper {
+  padding: 15px 10px 5px 10px;
   cursor: pointer;
+}
+.Template1 .playPauseBtn {
+  width: 32px;
+  height: 32px;
   border: none;
-  margin-top: 4px;
 }
 .Template1 .playPauseBtn.playing {
   background: url(/images/button-pause.svg) center / contain no-repeat;
@@ -4011,33 +4016,38 @@
 .Template1 .playPauseBtn:focus {
   outline: none;
 }
+
+.Template1 .JumpToProduct {
+  display: flex;
+}
+.Template1 .jumpToProductBtnLeft-wrapper {
+  padding: 15px 10px 5px 10px;
+  cursor: pointer;
+}
 .Template1 .jumpToProductBtnLeft {
   width: 32px;
   height: 32px;
-  background: url(/images/JumpToProductLeft.svg) center / contain no-repeat;
-  cursor: pointer;
-  margin-right: 30px;
   border: none;
-  margin-top: 2px;
 }
-
+.Template1 .jumpToProductBtnRight-wrapper {
+  padding: 15px 10px 5px 10px;
+  cursor: pointer;
+}
 .Template1 .jumpToProductBtnRight {
   width: 32px;
   height: 32px;
-  background: url(/images/JumpToProductRight.svg) center / contain no-repeat;
-  cursor: pointer;
-  margin-right: 30px;
   border: none;
-  margin-top: 2px;
 }
 .Template1 .jumpToProductBtnRight:focus, .Template1 .jumpToProductBtnLeft:focus {
   outline: none;
 }
+.Template1 .fullScreenBtn-wrapper {
+  cursor: pointer;
+  padding: 15px 10px 5px 10px;
+}
 .Template1 .fullScreenBtn {
   width: 32px;
   height: 32px;
-  background: url(/images/full-screen.svg) center / contain no-repeat;
-  cursor: pointer;
   border: none;
 }
 .Template1 .fullScreenBtn:focus {
@@ -4061,18 +4071,19 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 5px;
-  right: 260px;
+  top: 13px;
+  right: 6px;
   z-index: 0;
 }
-.Template1 .cartBtn {
-  width: 28px;
-  height: 28px;
-  background: url(/images/AddToCartIcon.svg) center / contain no-repeat;
+.Template1 .cartBtn-wrapper {
+  padding: 15px 10px 5px 10px;
   cursor: pointer;
-  margin-right: 28px;
+  position: relative;
+}
+.Template1 .cartBtn {
+  width: 32px;
+  height: 32px;
   border: none;
-  z-index: 0;
 }
 .Template1 .cartBtn:focus {
   outline: none;
