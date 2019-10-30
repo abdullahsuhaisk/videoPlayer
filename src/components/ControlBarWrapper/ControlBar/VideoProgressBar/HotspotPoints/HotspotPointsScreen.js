@@ -19,10 +19,8 @@ const GET_HOTSPOTS = gql`
         out
         product {
           id
-          name
           image {
             id
-            imageUrl
             thumbnailUrl
           }
         }
@@ -41,9 +39,11 @@ const HotspotPoints = ({ client }) => {
         query: GET_HOTSPOTS,
         variables: { prodLinkUniqueId }
       })
-      .then(
-        ({ data: { prodLink } }) => prodLink && setHotSpots(prodLink.hotSpots)
-      );
+      .then(({ data }) => {
+        console.log(data);
+        return data && data.prodLink && setHotSpots(data.prodLink.hotSpots);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const hotspotPointHandler = (time) => {
