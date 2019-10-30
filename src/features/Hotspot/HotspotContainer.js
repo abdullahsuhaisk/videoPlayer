@@ -18,11 +18,17 @@ const HotspotContainer = ({ data, type }) => {
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
   const [showCandB, setShowCandB] = React.useState(false);
+  const [showingOnPlay, setShowinOnPlay] = React.useState();
   // console.log(dynamicHotSpots);
   React.useEffect(() => {
     const isTrueSet = getParams('cbshow') === 'true';
-    console.log(getParams('cbshow'));
+    // console.log(getParams('cbshow'));
     setShowCandB(isTrueSet);
+  }, []);
+  React.useEffect(() => {
+    const isTrueSet = getParams('sonplay') === 'true';
+    // console.log(getParams('sonplay'));
+    setShowinOnPlay(isTrueSet);
   }, []);
 
   React.useEffect(() => {
@@ -98,6 +104,7 @@ const HotspotContainer = ({ data, type }) => {
             if (
               playingState === PLAYER.PLAYING &&
               hotSpotShowing === false &&
+              showingOnPlay === false &&
               (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
             )
               return null;
@@ -123,6 +130,7 @@ const HotspotContainer = ({ data, type }) => {
         }}
       </Query>
     );
+  return null;
 };
 
 export default withQueryProdLink(HotspotContainer, GET_HOTSPOTS);
