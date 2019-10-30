@@ -5,11 +5,11 @@ const ProductDetailPriceTemplate3 = ({ currentPrice, price, discount }) => {
   return (
     <div className="productdetail--price-wrapper">
       {discount === 0 ? (
-        <div className="current-price">$ {currentPrice}</div>
+        <div className="current-price"> {currentPrice} TL</div>
       ) : (
         <React.Fragment>
-          <div className="previous-price">$ {price}</div>
-          <div className="current-price">$ {currentPrice}</div>
+          <div className="previous-price"> {price} TL</div>
+          <div className="current-price">{currentPrice} TL</div>
         </React.Fragment>
       )}
     </div>
