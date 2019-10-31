@@ -7,6 +7,7 @@ import React from 'react';
 import { Wrapper } from './ScreenReady.style';
 import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
+import { httpToHttps } from '../../utils/httpTohttps';
 
 const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
   const image = prodLink && prodLink.image && prodLink.image.imageUrl;
@@ -18,7 +19,7 @@ const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={imageUrl ? imageUrl : image}></img>
+            src={imageUrl ? httpToHttps(imageUrl) : httpToHttps(image)}></img>
         </div>
       </div>
     </Wrapper>

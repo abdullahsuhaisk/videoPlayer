@@ -10,7 +10,7 @@ const ProductDetailGoToLink = ({ link }) => {
         target="_blank"
         style={{ textDecoration: 'none' }}>
         {/* <i className="ProductDetail--addToCartBtn-icon"></i> */}
-        Go to Link
+        Buy Now
       </a>
     </div>
   );

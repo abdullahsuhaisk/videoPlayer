@@ -4,31 +4,32 @@ import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
 import { GET_PLAYER } from '../../../Base/AppQueries';
 import ControlBarHoc from '../ControlBarHoc';
 import JumpRight from '../../../../assets/icons/JumpToProductRight.svg';
+import { GET_HOTSPOTS } from '../../../../Queries/HotSpots/HotspotQuery';
 
-const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen(
-    $prodLinkId: Int
-    $prodLinkUniqueId: String
-  ) {
-    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
-      id
-      uniqueId
-      hotSpots {
-        id
-        in
-        out
-        product {
-          id
-          name
-          image {
-            id
-            imageUrl
-          }
-        }
-      }
-    }
-  }
-`;
+// const GET_HOTSPOTS = gql`
+//   query getHotspotsForHotspotScreen(
+//     $prodLinkId: Int
+//     $prodLinkUniqueId: String
+//   ) {
+//     prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
+//       id
+//       uniqueId
+//       hotSpots {
+//         id
+//         in
+//         out
+//         product {
+//           id
+//           name
+//           image {
+//             id
+//             imageUrl
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 const JumpToProductRight = ({ client, videoPlayer }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();

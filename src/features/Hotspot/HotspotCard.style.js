@@ -7,8 +7,8 @@ export const BouncyDiv = styled.div`
 `;
 export const Wrapper = styled.div((props) => ({
   pointerEvents: 'auto',
-  width: '100px',
-  height: '100px',
+  width: '120px',
+  height: '120px',
   borderRadius: '5px',
   margin: '0px auto',
   border: '#fff 1px solid',
