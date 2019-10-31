@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:#929292}.cls-1,.cls-4{stroke:#929292}.cls-2{clip-path:url(#clip-path)}.cls-4{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:.933px}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2946" d="M0 0h14v14H0z" class="cls-1" data-name="Rectangle 2946" transform="translate(1490 120)"/>
+        </clipPath>
+    </defs>
+    <g id="Info" class="cls-2" transform="translate(-1490 -120)">
+        <g id="c-info" transform="translate(1489.067 119.067)">
+            <circle id="Ellipse_724" cx=".933" cy=".933" r=".933" class="cls-3" data-name="Ellipse 724" transform="translate(7 3.733)"/>
+            <circle id="Ellipse_725" cx="6.533" cy="6.533" r="6.533" class="cls-4" data-name="Ellipse 725" transform="translate(1.4 1.4)"/>
+            <path id="Line_370" d="M0 3.733V0" class="cls-4" data-name="Line 370" transform="translate(7.933 7.933)"/>
+        </g>
+    </g>
+</svg>
