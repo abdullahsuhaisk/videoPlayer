@@ -33,13 +33,7 @@ const ShoppingCartCheckout = ({
       {checkoutProcess === 2 ? (
         <div className="shoppingcart--checkoutbtn">Pay</div>
       ) : (
-        <div
-          className="shoppingcart--checkoutbtn"
-          onClick={() => {
-            setCheckoutProcess(1);
-          }}>
-          Checkout
-        </div>
+        <div className="shoppingcart--checkoutbtn">Checkout</div>
       )}
     </div>
   );
