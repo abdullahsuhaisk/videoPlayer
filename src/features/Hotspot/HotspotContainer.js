@@ -18,7 +18,8 @@ const HotspotContainer = ({ data, type }) => {
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
   // const [showCandB, setShowCandB] = React.useState(false);
-  const [showingOnPlay, setShowinOnPlay] = React.useState();
+  const [showingOnPlay, setShowinOnPlay] = React.useState(false);
+
   // console.log(dynamicHotSpots);
   // React.useEffect(() => {
   //   const isTrueSet = getParams('cbshow') === 'true';
@@ -26,11 +27,11 @@ const HotspotContainer = ({ data, type }) => {
   //   setShowCandB(isTrueSet);
   // }, []);
   React.useEffect(() => {
-    const isTrueSet = getParams('sonplay') === 'true';
+    const isTrueSet = getParams('playingHotspots') === 'true';
     // console.log(getParams('sonplay'));
     setShowinOnPlay(isTrueSet);
   }, []);
-
+  console.log(showingOnPlay);
   React.useEffect(() => {
     const staticHotSpotss = [];
     const dynamicHotSpotss = [];
@@ -105,10 +106,26 @@ const HotspotContainer = ({ data, type }) => {
             if (
               playingState === PLAYER.PLAYING &&
               hotSpotShowing === false &&
-              showingOnPlay === false &&
               (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
             )
               return null;
+            if (
+              playingState === PLAYER.PLAYING &&
+              hotSpotShowing === true &&
+              showingOnPlay === false &&
+              (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
+            )
+              return (
+                hotSpotShowing === true &&
+                hotSpots.filter(
+                  (hotSpot) =>
+                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                ).length !== 0 && (
+                  <div className="vb--hotspot-card-list-header">
+                    <span>Click & Buy</span>
+                  </div>
+                )
+              );
             return (
               <>
                 {/* {showCandB === true && */
