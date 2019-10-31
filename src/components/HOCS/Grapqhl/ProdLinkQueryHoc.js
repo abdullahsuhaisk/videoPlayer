@@ -3,9 +3,9 @@ import { Query } from 'react-apollo';
 import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 
 const withQueryProdLink = (WrappedComponent, QUERY, FETCPOLICY) => (props) => {
-  // useEffect(() => {
-  //   console.log('Query Hoc is working');
-  // }, []);
+  React.useEffect(() => {
+    console.log('Query Hoc is working');
+  }, []);
   const uniqueId = getProdLinkUniqueId();
   return (
     <Query

@@ -9,9 +9,16 @@ import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
 import { httpToHttps } from '../../utils/httpTohttps';
 
-const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
-  const image = prodLink && prodLink.image && prodLink.image.imageUrl;
-  // console.log(prodLink.image);
+const FullScreenImage = ({ imageUrl, data }) => {
+  console.log(data);
+  const image =
+    data &&
+    data.prodLink &&
+    data.prodLink.image &&
+    data.prodLink.image.imageUrl;
+  console.log(image);
+  // console.log(imageUrl);
+  console.log('Full Screen Image Rendered');
   return (
     <Wrapper>
       <div className="container-ready-screen" style={{ opacity: '1' }}>
@@ -19,7 +26,7 @@ const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={imageUrl ? httpToHttps(imageUrl) : httpToHttps(image)}></img>
+            src={httpToHttps(image)}></img>
         </div>
       </div>
     </Wrapper>

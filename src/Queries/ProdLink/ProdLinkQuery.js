@@ -19,11 +19,6 @@ export const GET_HEADER_COMPANY_CAMPAING = gql`
           thumbnailUrl
         }
       }
-      campaign {
-        id
-        header
-        name
-      }
     }
   }
 `;
