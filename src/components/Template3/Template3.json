@@ -52,9 +52,7 @@
         "children": [
           {
             "type": "FullScreenImage",
-            "props": {
-              "imageUrl": ""
-            }
+            "props": {}
           }
         ]
       }
@@ -69,9 +67,7 @@
           },
           {
             "type": "HotspotContainer",
-            "props": {
-              "type": "DYNAMIC"
-            }
+            "props": {}
           }
         ]
       }
