@@ -5,11 +5,12 @@ import videoJs from 'video.js';
 import { Wrapper } from './ScreenReady.style';
 import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
+import { httpToHttps } from '../../utils/httpTohttps';
 
 // import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
 // import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
 
-const FullScreenImage = ({ imageUrl, data: { prodLink }, client }) => {
+const FullScreenImage = ({ imageUrl, data, client }) => {
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
 
   useEffect(() => {
@@ -18,8 +19,16 @@ const FullScreenImage = ({ imageUrl, data: { prodLink }, client }) => {
     // Set video Player
     setVideoPlayer(videoPlayerJs);
   }, [videoPlayer]);
-  const image = prodLink && prodLink.image && prodLink.image.imageUrl;
+
+  const image =
+    data &&
+    data.prodLink &&
+    data.prodLink.image &&
+    data.prodLink.image.imageUrl;
   // console.log(prodLink.image);
+  // console.log(image);
+  // console.log(imageUrl);
+  // console.log('Full Screen Image Rendered');
   return (
     <Wrapper>
       <div className="container-ready-screen" style={{ opacity: '1' }}>
@@ -27,7 +36,7 @@ const FullScreenImage = ({ imageUrl, data: { prodLink }, client }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={imageUrl ? imageUrl : image}
+            src={httpToHttps(image)}
             onClick={() => {
               videoPlayer.pause();
               client.writeData({

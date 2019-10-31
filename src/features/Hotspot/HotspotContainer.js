@@ -17,34 +17,36 @@ const HotspotContainer = ({ data, type }) => {
   const [staticHotSpots, setStaticHotSpots] = React.useState();
   const [dynamicHotSpots, setDynamicHotSpots] = React.useState();
   const [fixedHotSpots, setFixedHotSpots] = React.useState();
-  const [showCandB, setShowCandB] = React.useState(false);
-  const [showingOnPlay, setShowinOnPlay] = React.useState();
+  // const [showCandB, setShowCandB] = React.useState(false);
+  const [showingOnPlay, setShowinOnPlay] = React.useState(false);
+
   // console.log(dynamicHotSpots);
+  // React.useEffect(() => {
+  //   const isTrueSet = getParams('cbshow') === 'true';
+  //   // console.log(getParams('cbshow'));
+  //   setShowCandB(isTrueSet);
+  // }, []);
   React.useEffect(() => {
-    const isTrueSet = getParams('cbshow') === 'true';
-    // console.log(getParams('cbshow'));
-    setShowCandB(isTrueSet);
-  }, []);
-  React.useEffect(() => {
-    const isTrueSet = getParams('sonplay') === 'true';
+    const isTrueSet = getParams('playingHotspots') === 'true';
     // console.log(getParams('sonplay'));
     setShowinOnPlay(isTrueSet);
   }, []);
-
+  // console.log(showingOnPlay);
   React.useEffect(() => {
     const staticHotSpotss = [];
     const dynamicHotSpotss = [];
     const fixedHotSpotss = [];
     // console.log(hotSpots);
-    hotSpots.filter((hotspot) =>
-      hotspot.type === hotSpotsType.STATIC
-        ? staticHotSpotss.push(hotspot)
-        : hotspot.type === hotSpotsType.DYNAMIC
-        ? dynamicHotSpotss.push(hotspot)
-        : hotspot.type === hotSpotsType.FIXED
-        ? fixedHotSpotss.push(hotspot)
-        : null
-    );
+    hotSpots &&
+      hotSpots.filter((hotspot) =>
+        hotspot.type === hotSpotsType.STATIC
+          ? staticHotSpotss.push(hotspot)
+          : hotspot.type === hotSpotsType.DYNAMIC
+          ? dynamicHotSpotss.push(hotspot)
+          : hotspot.type === hotSpotsType.FIXED
+          ? fixedHotSpotss.push(hotspot)
+          : null
+      );
     setStaticHotSpots(staticHotSpotss);
     setDynamicHotSpots(dynamicHotSpotss);
     setFixedHotSpots(fixedHotSpotss);
@@ -104,14 +106,30 @@ const HotspotContainer = ({ data, type }) => {
             if (
               playingState === PLAYER.PLAYING &&
               hotSpotShowing === false &&
-              showingOnPlay === false &&
               (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
             )
               return null;
+            if (
+              playingState === PLAYER.PLAYING &&
+              hotSpotShowing === true &&
+              showingOnPlay === false &&
+              (type === hotSpotsType.STATIC || type === hotSpotsType.DYNAMIC)
+            )
+              return (
+                hotSpotShowing === true &&
+                hotSpots.filter(
+                  (hotSpot) =>
+                    currentTime >= hotSpot.in && currentTime <= hotSpot.out
+                ).length !== 0 && (
+                  <div className="vb--hotspot-card-list-header">
+                    <span>Click & Buy</span>
+                  </div>
+                )
+              );
             return (
               <>
-                {showCandB === true &&
-                  hotSpotShowing === true &&
+                {/* {showCandB === true && */
+                hotSpotShowing === true &&
                   hotSpots.filter(
                     (hotSpot) =>
                       currentTime >= hotSpot.in && currentTime <= hotSpot.out
