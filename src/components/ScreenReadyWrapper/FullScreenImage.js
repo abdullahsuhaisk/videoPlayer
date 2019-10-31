@@ -10,15 +10,15 @@ import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuer
 import { httpToHttps } from '../../utils/httpTohttps';
 
 const FullScreenImage = ({ imageUrl, data }) => {
-  console.log(data);
+  // console.log(data);
   const image =
     data &&
     data.prodLink &&
     data.prodLink.image &&
     data.prodLink.image.imageUrl;
-  console.log(image);
+  // console.log(image);
   // console.log(imageUrl);
-  console.log('Full Screen Image Rendered');
+  // console.log('Full Screen Image Rendered');
   return (
     <Wrapper>
       <div className="container-ready-screen" style={{ opacity: '1' }}>
