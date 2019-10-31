@@ -7,30 +7,31 @@ import {
   getProdLinkUniqueId,
   getParams
 } from '../../../../../hooks/ProdLinkHook';
+import { GET_HOTSPOTS } from '../../../../../Queries/HotSpots/HotspotQuery';
 
-const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen(
-    $prodLinkId: Int
-    $prodLinkUniqueId: String
-  ) {
-    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
-      id
-      uniqueId
-      hotSpots {
-        id
-        in
-        out
-        product {
-          id
-          image {
-            id
-            thumbnailUrl
-          }
-        }
-      }
-    }
-  }
-`;
+// const GET_HOTSPOTS = gql`
+//   query getHotspotsForHotspotScreen(
+//     $prodLinkId: Int
+//     $prodLinkUniqueId: String
+//   ) {
+//     prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
+//       id
+//       uniqueId
+//       hotSpots {
+//         id
+//         in
+//         out
+//         product {
+//           id
+//           image {
+//             id
+//             thumbnailUrl
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 const HotspotPoints = ({ client }) => {
   const [hotSpots, setHotSpots] = useState(null);

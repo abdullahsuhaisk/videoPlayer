@@ -4,31 +4,7 @@ import { getProdLinkUniqueId } from '../../../../hooks/ProdLinkHook';
 import { GET_PLAYER } from '../../../Base/AppQueries';
 import ControlBarHoc from '../ControlBarHoc';
 import JumpLeft from '../../../../assets/icons/JumpToProductLeft.svg';
-
-const GET_HOTSPOTS = gql`
-  query getHotspotsForHotspotScreen(
-    $prodLinkId: Int
-    $prodLinkUniqueId: String
-  ) {
-    prodLink(prodLinkId: $prodLinkId, prodLinkUniqueId: $prodLinkUniqueId) {
-      id
-      uniqueId
-      hotSpots {
-        id
-        in
-        out
-        product {
-          id
-          name
-          image {
-            id
-            imageUrl
-          }
-        }
-      }
-    }
-  }
-`;
+import { GET_HOTSPOTS } from '../../../../Queries/HotSpots/HotspotQuery';
 
 const JumpToProductLeft = ({ client, videoPlayer }) => {
   const prodLinkUniqueId = getProdLinkUniqueId();

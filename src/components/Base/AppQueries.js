@@ -60,13 +60,6 @@ export const GET_VIDEO = gql`
           thumbnailUrl
         }
       }
-      campaign {
-        id
-        name
-        header
-        description
-        creationTime
-      }
       video {
         ...videoFr
       }
@@ -79,43 +72,6 @@ export const GET_VIDEO = gql`
         description
         type
         creationTime
-      }
-      hotSpots {
-        id
-        id
-        in
-        out
-        fixedPosition {
-          x
-          y
-        }
-        dynamicPositions {
-          sec
-          x
-          y
-        }
-        type
-        product {
-          id
-          name
-          brand {
-            id
-            name
-          }
-          image {
-            id
-            thumbnailUrl
-          }
-          price
-          discount
-          stockCount
-          currency {
-            id
-            name
-            code
-            symbol
-          }
-        }
       }
     }
   }
