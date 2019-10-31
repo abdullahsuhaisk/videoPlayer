@@ -4,7 +4,7 @@ import { getProdLinkUniqueId } from '../../../hooks/ProdLinkHook';
 
 const withQueryProdLink = (WrappedComponent, QUERY, FETCPOLICY) => (props) => {
   React.useEffect(() => {
-    console.log('Query Hoc is working');
+    // console.log('Query Hoc is working');
   }, []);
   const uniqueId = getProdLinkUniqueId();
   return (

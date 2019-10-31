@@ -31,7 +31,7 @@ const HotspotContainer = ({ data, type }) => {
     // console.log(getParams('sonplay'));
     setShowinOnPlay(isTrueSet);
   }, []);
-  console.log(showingOnPlay);
+  // console.log(showingOnPlay);
   React.useEffect(() => {
     const staticHotSpotss = [];
     const dynamicHotSpotss = [];
