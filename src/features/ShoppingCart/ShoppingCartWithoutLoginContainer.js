@@ -6,6 +6,8 @@ import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/Sh
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
 import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/ShoppingCartItem';
 import ScreenChoserQuery from '../../components/HOCS/Grapqhl/ScreenChoserQuery';
+import Address from './PaymentWithoutAuth/Address';
+import Payment from './PaymentWithoutAuth/Payment';
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
@@ -50,10 +52,20 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     // setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
     setChangeCount(changeCount + 1);
   };
+
+  const [checkoutProcess, setCheckoutProcess] = useState(0);
   return (
     <Fade right duration={300}>
       <div className="shoppingcart--container">
-        <div className="shoppingcart--title">Shopping Cart</div>
+        <div className="shoppingcart--title">
+          {checkoutProcess === 0
+            ? 'Shopping Cart'
+            : checkoutProcess === 1
+            ? 'Add New Address'
+            : checkoutProcess === 2
+            ? 'Payment'
+            : null}
+        </div>
         <i
           className="modal--close"
           onClick={() =>
@@ -73,28 +85,39 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           <ShoppingCartEmpty />
         ) : (
           <>
-            <div className="shoppingcart-items-container">
-              {localCart &&
-                localCart.map((item, key) => {
-                  return (
-                    <Fade right delay={key * 50} duration={400}>
-                      <ShoppingCartItem
-                        productId={item.productId}
-                        item={item}
-                        key={key}
-                        setChangeCount={setChangeCount}
-                        changeCount={changeCount}
-                        deleteItem={deleteItem}
-                      />
-                    </Fade>
-                  );
-                })}
-            </div>
-            <ShoppingCartCheckout
-              totalPrice={totalPrice}
-              totalPriceWithOutDiscount={totalPriceWithOutDiscount}
-              setChangeCount={setChangeCount}
-            />
+            {checkoutProcess === 0 ? (
+              <div className="shoppingcart-items-container">
+                {localCart &&
+                  localCart.map((item, index) => {
+                    return (
+                      <Fade right delay={index * 50} duration={400} key={index}>
+                        <ShoppingCartItem
+                          productId={item.productId}
+                          item={item}
+                          key={index}
+                          setChangeCount={setChangeCount}
+                          changeCount={changeCount}
+                          deleteItem={deleteItem}
+                        />
+                      </Fade>
+                    );
+                  })}
+              </div>
+            ) : checkoutProcess === 1 ? (
+              <Address setCheckoutProcess={setCheckoutProcess} />
+            ) : checkoutProcess === 2 ? (
+              <Payment />
+            ) : null}
+
+            {checkoutProcess === 1 ? null : (
+              <ShoppingCartCheckout
+                totalPrice={totalPrice}
+                totalPriceWithOutDiscount={totalPriceWithOutDiscount}
+                setChangeCount={setChangeCount}
+                checkoutProcess={checkoutProcess}
+                setCheckoutProcess={setCheckoutProcess}
+              />
+            )}
           </>
         )}
       </div>

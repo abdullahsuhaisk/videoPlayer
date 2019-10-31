@@ -1,14 +1,23 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import React from 'react';
-
-// import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
-// import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
+import React, { useEffect, useState } from 'react';
+import videoJs from 'video.js';
 import { Wrapper } from './ScreenReady.style';
 import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
 
-const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
+// import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
+// import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
+
+const FullScreenImage = ({ imageUrl, data: { prodLink }, client }) => {
+  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    // Set video Player
+    setVideoPlayer(videoPlayerJs);
+  }, [videoPlayer]);
   const image = prodLink && prodLink.image && prodLink.image.imageUrl;
   // console.log(prodLink.image);
   return (
@@ -18,7 +27,19 @@ const FullScreenImage = ({ imageUrl, data: { prodLink } }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={imageUrl ? imageUrl : image}></img>
+            src={imageUrl ? imageUrl : image}
+            onClick={() => {
+              videoPlayer.pause();
+              client.writeData({
+                data: {
+                  player: {
+                    __typename: 'Player',
+                    playingState: 'PLAY'
+                  }
+                }
+              });
+              videoPlayer.play();
+            }}></img>
         </div>
       </div>
     </Wrapper>
@@ -40,7 +61,8 @@ const styles = {
     zIndex: 99999,
     margin: 'auto',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    cursor: 'pointer'
   }
 };
 

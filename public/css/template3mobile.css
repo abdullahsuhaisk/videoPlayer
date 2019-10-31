@@ -6085,3 +6085,220 @@ ul.slick-dots {
 }
 
 /* Slider CSS end here */
+
+/* Mumammed's Code Starts Here */
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0 20px;
+  width: 100%;
+}
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.form-group label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #0b2443;
+  display: block;
+  margin-bottom: 10px;
+}
+.form-group input {
+  width: 100%;
+  height: 46px;
+  border: solid 1px #eaeaea;
+  background-color: #fafafa;
+  display: flex;
+  padding-left: 14px;
+  font-size:13px;
+}
+input:focus {
+    outline:none;
+}
+.form-group .phone {
+  width: 100%;
+}
+.form-group textarea {
+  width: 100%;
+  height: 92px;
+  border: solid 1px #eaeaea;
+  background-color: #fafafa;
+  font-family: 'Nunito Sans', sans-serif;
+  resize: none;
+  padding-left:14px;
+  padding-top: 14px;
+}
+textarea:focus {
+  outline: 0;
+}
+.form-control {
+  padding: 0;
+}
+.button-area{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 116px;
+    background-color: #fafafa;
+    padding:30px;
+}
+button{
+    width: 440px;
+    height: 56px;
+    background-color: #14be82;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+}
+button:focus{
+    outline: none;
+}
+select{
+  width: 100%;
+  height: 46px;
+  border: solid 1px #eaeaea;
+  background-color: #fafafa;
+  display: flex;
+  padding-left: 14px;
+}
+option{
+  width: 100%;
+  height: 46px;
+  border: solid 1px #eaeaea;
+  background-color: #fafafa;
+  display: flex;
+  padding-left: 14px;
+}
+select:focus{
+  outline: 0;
+}
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.form-wrapper-payment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0 20px;
+  width: 100%;
+}
+.close-icon {
+    padding-left:10px;
+}
+.form-group label.with-image  {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #0b2443;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.checkbox{
+  margin-top:30px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 10px;
+  display: flex;
+  position: relative;
+}
+.checkbox input {
+    margin-right: 20px;
+    margin-top: 4px;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkbox a {
+    color: #001652;
+}
+
+.checkbox p {
+  margin: 0;
+}
+.checkbox label .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.checkbox input:checked ~ .checkmark {
+  background-color:#fafafa;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.checkbox .checkmark:after {
+  left:4px;
+  top:5px;
+  height:20px;
+  width: 20px;
+  content:" ";
+  background: url("../images/CheckIcon.svg")no-repeat;
+}
+
+/* Muhammed's Code Ends here */
+
+.address-wrapper .address--checkout-container {
+  width: 100%;
+  height: 116px;
+  padding: 30px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-wrapper .address--checkout-container .address--checkoutbtn {
+  height: 56px;
+  background-color: #14be82;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.31;
+  letter-spacing: 0.38px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-wrapper .address--checkout-container .address--checkoutbtn:hover {
+  opacity: 0.85;
+}
