@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import GreenCartIcon from '../../../../../assets/icons/GreenCartIcon.svg';
 
@@ -33,7 +35,13 @@ const ShoppingCartCheckout = ({
       {checkoutProcess === 2 ? (
         <div className="shoppingcart--checkoutbtn">Pay</div>
       ) : (
-        <div className="shoppingcart--checkoutbtn">Checkout</div>
+        <div
+          className="shoppingcart--checkoutbtn"
+          onClick={() => {
+            setCheckoutProcess(1);
+          }}>
+          Checkout
+        </div>
       )}
     </div>
   );
