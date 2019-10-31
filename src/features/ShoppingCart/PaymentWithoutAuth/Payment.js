@@ -97,7 +97,7 @@ const Payment = () => {
           </label>
           <p>
             I have read and agree to the
-            <a>Preliminary Information Conditions</a> and the
+            <a> Preliminary Information Conditions</a> and the
             <a> Distance Selling Agreement.</a>
           </p>
         </div>
