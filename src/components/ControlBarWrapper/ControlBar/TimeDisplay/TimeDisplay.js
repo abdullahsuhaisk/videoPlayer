@@ -8,10 +8,10 @@ const TimeDisplay = () => {
       return input < 10 ? '0' + input : input;
     };
     let timeString = [];
-    if (pad(Math.floor(videoPlayer.duration() / 3600)) > 0) {
+    if (pad(Math.floor(videoPlayer.duration() / 3600)) > -1) {
       timeString.push(pad(Math.floor(time / 3600)));
     }
-    if (pad(Math.floor((videoPlayer.duration() % 3600) / 60)) > 0) {
+    if (pad(Math.floor((videoPlayer.duration() % 3600) / 60)) > -1) {
       timeString.push(pad(Math.floor((time % 3600) / 60)));
     }
     if (pad(Math.floor(videoPlayer.duration() % 60)) > 0) {

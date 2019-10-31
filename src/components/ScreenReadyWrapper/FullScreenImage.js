@@ -1,21 +1,31 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import React from 'react';
-
-// import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
-// import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
+import React, { useEffect, useState } from 'react';
+import videoJs from 'video.js';
 import { Wrapper } from './ScreenReady.style';
 import withQueryProdLink from '../HOCS/Grapqhl/ProdLinkQueryHoc';
 import { GET_HEADER_COMPANY_CAMPAING } from '../../Queries/ProdLink/ProdLinkQuery';
 import { httpToHttps } from '../../utils/httpTohttps';
 
-const FullScreenImage = ({ imageUrl, data }) => {
-  // console.log(data);
+// import { ADD_WATCHED_LIST } from '../../features/Watchlist/WatchListQueries';
+// import { IS_LOGGED_IN } from '../../features/ShoppingCart/shoppingCartQueries';
+
+const FullScreenImage = ({ imageUrl, data, client }) => {
+  const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    // Set video Player
+    setVideoPlayer(videoPlayerJs);
+  }, [videoPlayer]);
+
   const image =
     data &&
     data.prodLink &&
     data.prodLink.image &&
     data.prodLink.image.imageUrl;
+  // console.log(prodLink.image);
   // console.log(image);
   // console.log(imageUrl);
   // console.log('Full Screen Image Rendered');
@@ -26,7 +36,19 @@ const FullScreenImage = ({ imageUrl, data }) => {
           <img
             style={styles.bgImg}
             alt="Ready Screen"
-            src={httpToHttps(image)}></img>
+            src={httpToHttps(image)}
+            onClick={() => {
+              videoPlayer.pause();
+              client.writeData({
+                data: {
+                  player: {
+                    __typename: 'Player',
+                    playingState: 'PLAY'
+                  }
+                }
+              });
+              videoPlayer.play();
+            }}></img>
         </div>
       </div>
     </Wrapper>
@@ -48,7 +70,8 @@ const styles = {
     zIndex: 99999,
     margin: 'auto',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    cursor: 'pointer'
   }
 };
 

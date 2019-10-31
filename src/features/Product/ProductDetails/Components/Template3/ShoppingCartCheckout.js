@@ -1,7 +1,12 @@
 import React from 'react';
 import GreenCartIcon from '../../../../../assets/icons/GreenCartIcon.svg';
 
-const ShoppingCartCheckout = ({ totalPrice, totalPriceWithOutDiscount }) => {
+const ShoppingCartCheckout = ({
+  totalPrice,
+  totalPriceWithOutDiscount,
+  setCheckoutProcess,
+  checkoutProcess
+}) => {
   return (
     <div className="shoppingcart--checkout-container">
       <div className="shoppingcart--checkout-detail">
@@ -25,8 +30,17 @@ const ShoppingCartCheckout = ({ totalPrice, totalPriceWithOutDiscount }) => {
         <div className="title">Order Total</div>
         <div className="price">${totalPrice.toFixed(2)}</div>
       </div>
-
-      <div className="shoppingcart--checkoutbtn">Checkout</div>
+      {checkoutProcess === 2 ? (
+        <div className="shoppingcart--checkoutbtn">Pay</div>
+      ) : (
+        <div
+          className="shoppingcart--checkoutbtn"
+          onClick={() => {
+            setCheckoutProcess(1);
+          }}>
+          Checkout
+        </div>
+      )}
     </div>
   );
 };
