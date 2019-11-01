@@ -12,6 +12,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import './OverlayContainer/vjsOverlayContainer';
 import { PLAYER } from '../../common/constants';
+import { getParams } from '../../hooks/ProdLinkHook';
 // import { getProdLinkUniqueId } from '../../hooks/ProdLinkHook';
 
 // TODO: remove this when browser console debug is not necessary
@@ -45,7 +46,8 @@ const Player = ({ width, height, poster, sources }) => {
   const apolloClientRef = useRef(null);
   const { i18n } = useTranslation();
   // const prodLinkUniqueId = getProdLinkUniqueId();
-
+  const autoPlay = getParams('auto') === 'true';
+  // console.log(autoPlay);
   useEffect(() => {
     videojs.addLanguage(
       i18n.language,
@@ -57,6 +59,7 @@ const Player = ({ width, height, poster, sources }) => {
     playerRef.current = videojs(videoRef.current, {
       // poster,
       controls: false,
+      autoplay: autoPlay,
       sources,
       responsive: true,
       liveui: true,
