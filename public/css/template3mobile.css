@@ -6095,7 +6095,7 @@ ul.slick-dots {
   width: 100%;
 }
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 .form-group label {
@@ -6117,13 +6117,13 @@ ul.slick-dots {
   display: flex;
   padding-left: 14px;
   font-size:14px;
+  color: #0b2443;
 }
 input:focus {
     outline:none;
+    border: 1px solid #bfbfbf;
 }
-.form-group .phone {
-  width: 100%;
-}
+
 .form-group textarea {
   width: 100%;
   height: 92px;
@@ -6137,9 +6137,24 @@ input:focus {
 textarea:focus {
   outline: 0;
 }
-.form-control {
-  padding: 0;
+input.form-control {
+background: rgba(243, 6, 64 , 0.1);
+border: 1px solid rgba(243, 6, 64 , 0.4);
 }
+textarea.form-control {
+  background: rgba(243, 6, 64 , 0.1);
+  border: 1px solid rgba(243, 6, 64 , 0.4);
+}
+
+input:focus.form-control {
+background: #fafafa;
+border: 1px solid #bfbfbf;
+}
+textarea:focus.form-control {
+background: #fafafa;
+border: 1px solid #bfbfbf;
+}
+
 .select-items {
   position: absolute;
   background-color: DodgerBlue;
@@ -6170,8 +6185,23 @@ textarea:focus {
   margin-bottom: 10px;
   cursor: pointer;
 }
+.form--error {
+  padding-left: 20px;
+  color: red;
+  min-height: 36px;
+  font-size:14px;
+  display: block;
+}
+
+.form-group .form--error {
+  padding: 10px;
+  color: red;
+  min-height: 36px;
+  font-size:14px;
+}
+
 .checkbox{
-  margin:30px 0px;
+  margin: 30px 0 10px 0;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   color: #666666;
@@ -6224,16 +6254,18 @@ textarea:focus {
 
 /* Muhammed's Code Ends here */
 
-.address-wrapper .address--checkout-container {
+.checkoutprocess--checkout-container {
   width: 100%;
   height: 116px;
   padding: 30px;
   background-color: #fafafa;
   display: flex;
   flex-direction: column;
+  position: relative;
+
 }
 
-.address-wrapper .address--checkout-container .address--checkoutbtn {
+.checkoutprocess--checkoutbtn {
   height: 56px;
   background-color: #14be82;
   display: flex;
@@ -6252,8 +6284,9 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
 }
 
-.address-wrapper .address--checkout-container .address--checkoutbtn:hover {
+.checkoutprocess--checkoutbtn:hover {
   opacity: 0.85;
 }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Children } from 'react';
+import useForm from 'react-hook-form';
 import InfoIcon from '../../../assets/icons/InfoIcon.svg';
 import CustomIcon from '../../../assets/icons/ArrowDownIcon.svg';
 import { Multiselect } from './MultiSelect';
 
-const Payment = () => {
+const Payment = ({ children }) => {
   const customArrow = () => {
     return <img src={CustomIcon} alt="" />;
   };
@@ -20,12 +21,30 @@ const Payment = () => {
       }
     })
   };
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="payment-wrapper">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <div className="form-group">
           <label>Card Number</label>
-          <input type="tel" className="form-control phone" placeholder="" />
+          <input
+            type="tel"
+            className={errors.cardNo && 'form-control'}
+            ref={register({
+              required: true,
+              minLength: 12,
+              maxLength: 12,
+              pattern: /^\d+$/
+            })}
+            name="cardNo"
+          />
+          <p className="form--error">
+            {errors.cardNo && 'This field is required'}
+          </p>
         </div>
         <div className="form-wrapper-payment">
           <div className="form-group">
@@ -87,12 +106,26 @@ const Payment = () => {
               CCV
               <img className="close-icon" src={InfoIcon} alt="Info Icon" />
             </label>
-            <input type="tel" className="form-control phone" placeholder="" />
+            <input
+              type="tel"
+              name="cvv"
+              ref={register({ required: true })}
+              className={errors.cvv && 'form-control'}
+            />
+            <p className="form--error">
+              {errors.cvv && 'This field is required'}
+            </p>
           </div>
         </div>
         <div className="checkbox">
           <label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              className={errors.terms && 'form-control'}
+              ref={register({ required: true })}
+              name="terms"
+            />
+
             <span class="checkmark"></span>
           </label>
           <p>
@@ -101,6 +134,12 @@ const Payment = () => {
             <a> Distance Selling Agreement.</a>
           </p>
         </div>
+        <p className="form--error">
+          {errors.terms &&
+            'You must agree to the terms & conditions to continue'}
+        </p>
+
+        {children}
       </form>
     </div>
   );

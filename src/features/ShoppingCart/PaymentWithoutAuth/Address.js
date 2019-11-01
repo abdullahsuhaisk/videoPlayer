@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useForm from 'react-hook-form';
 import CustomIcon from '../../../assets/icons/ArrowDownIcon.svg';
 import { Multiselect } from './MultiSelect';
 
@@ -20,30 +21,71 @@ const Address = ({ setCheckoutProcess }) => {
     })
   };
 
+  const { register, handleSubmit, errors, setValue } = useForm();
+  const [values, setReactSelectValue] = useState({ selectedOption: [] });
+
+  const onSubmit = (data) => {
+    setCheckoutProcess(2);
+    console.log(data);
+  };
+
+  const handleMultiChange = (selectedOption) => {
+    setValue('city', selectedOption);
+    setReactSelectValue({ selectedOption });
+  };
+
+  useEffect(() => {
+    register({ name: 'city' });
+  }, [register]);
+
   return (
     <div className="address-wrapper">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <div className="form-wrapper">
           <div className="form-group">
             <label>Name</label>
-            <input type="text" className="form-control" placeholder="Name" />
+            <input
+              type="text"
+              className={errors.name && 'form-control'}
+              placeholder="Name"
+              name="name"
+              ref={register({ required: true })}
+            />
+            <p className="form--error">
+              {errors.name && 'This field is required'}
+            </p>
           </div>
           <div className="form-group">
             <label>Surename</label>
             <input
               type="text"
-              className="form-control"
+              className={errors.surname && 'form-control'}
               placeholder="Your surname"
+              name="surname"
+              ref={register({ required: true })}
             />
+            <p className="form--error">
+              {errors.surname && 'This field is required'}
+            </p>
           </div>
         </div>
         <div className="form-group">
           <label>Phone</label>
           <input
             type="tel"
-            className="form-control phone"
+            className={errors.phone && 'form-control'}
             placeholder="0(---)--- -- --"
+            ref={register({
+              required: true,
+              minLength: 11,
+              maxLength: 11,
+              pattern: /^\d+$/
+            })}
+            name="phone"
           />
+          <p className="form--error">
+            {errors.phone && 'This field is required'}
+          </p>
         </div>
         <div className="form-wrapper">
           <div className="form-group">
@@ -51,11 +93,12 @@ const Address = ({ setCheckoutProcess }) => {
             <div className="custom-select">
               <Multiselect
                 classNamePrefix="select"
+                value={values.selectedOption}
                 components={{
                   DropdownIndicator: customArrow
                 }}
                 styles={customStyles}
-                id="district"
+                onChange={handleMultiChange}
                 options={[
                   { value: 1, label: 'Bursa' },
                   { value: 2, label: 'Istanbul' },
@@ -63,7 +106,12 @@ const Address = ({ setCheckoutProcess }) => {
                   { value: 4, label: 'Adana' },
                   { value: 5, label: 'Corum' }
                 ]}
+                name="city"
+                ref={register({ required: true })}
               />
+              <p className="form--error">
+                {errors.city && 'This field is required'}
+              </p>
             </div>
           </div>
           <div className="form-group">
@@ -75,40 +123,52 @@ const Address = ({ setCheckoutProcess }) => {
                   DropdownIndicator: customArrow
                 }}
                 styles={customStyles}
-                id="district"
                 options={[
                   { value: 10, label: 'Gorukule' },
                   { value: 20, label: 'Nilufer' },
                   { value: 30, label: 'Osmangazi' }
                 ]}
+                name="district"
+                ref={register({ required: true })}
               />
+              <p className="form--error">
+                {errors.district && 'This field is required'}
+              </p>
             </div>
           </div>
         </div>
         <div className="form-group">
           <label>Address</label>
           <textarea
-            className="form-control"
-            placeholder="Enter your neighborhood, street, street and other information"></textarea>
+            className={errors.address && 'form-control'}
+            placeholder="Enter your neighborhood, street, street and other information"
+            ref={register({ required: true })}
+            name="address"></textarea>
+          <p className="form--error">
+            {errors.address && 'This field is required'}
+          </p>
         </div>
         <div className="form-group">
           <label>Address Name</label>
           <input
-            type="tel"
-            className="form-control phone"
+            type="text"
+            name="addressName"
+            className={errors.addressName && 'form-control'}
             placeholder="E.g: House Address"
+            ref={register({ required: true })}
           />
+          <p className="form--error">
+            {errors.addressName && 'This field is required'}
+          </p>
+        </div>
+
+        <div className="checkoutprocess--checkout-container">
+          <input
+            type="submit"
+            value="Continue To Payment"
+            className="checkoutprocess--checkoutbtn"></input>
         </div>
       </form>
-      <div className="address--checkout-container">
-        <div
-          className="address--checkoutbtn"
-          onClick={() => {
-            setCheckoutProcess(2);
-          }}>
-          Continue To Payment
-        </div>
-      </div>
     </div>
   );
 };

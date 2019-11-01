@@ -106,10 +106,18 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
             ) : checkoutProcess === 1 ? (
               <Address setCheckoutProcess={setCheckoutProcess} />
             ) : checkoutProcess === 2 ? (
-              <Payment />
+              <Payment>
+                <ShoppingCartCheckout
+                  totalPrice={totalPrice}
+                  totalPriceWithOutDiscount={totalPriceWithOutDiscount}
+                  setChangeCount={setChangeCount}
+                  checkoutProcess={checkoutProcess}
+                  setCheckoutProcess={setCheckoutProcess}
+                />
+              </Payment>
             ) : null}
 
-            {checkoutProcess === 1 ? null : (
+            {checkoutProcess === 1 || checkoutProcess === 2 ? null : (
               <ShoppingCartCheckout
                 totalPrice={totalPrice}
                 totalPriceWithOutDiscount={totalPriceWithOutDiscount}
