@@ -1,7 +1,7 @@
 stages:
   - build
   - deploy-staging
-  - deploy-sandbox
+  - deploy-production
 
 build:
   image: node:carbon-alpine
@@ -9,11 +9,13 @@ build:
   only:
     - develop
     - master
+    - production
   artifacts:
     untracked: true
   script:
-    - if [ "$CI_COMMIT_REF_NAME" == "develop" ]; then cp .env.staging .env; fi
-    - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then cp .env.staging .env; fi
+    - if [ "$CI_COMMIT_REF_NAME" == "develop" ]; then cp env.staging .env; fi
+    - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then cp env.staging .env; fi
+    - if [ "$CI_COMMIT_REF_NAME" == "production" ]; then cp env.production .env; fi
     - npm install
     - unset CI
     - npm run build
@@ -26,9 +28,22 @@ deploy-staging:
   dependencies:
     - build
   script:
-    - echo $STAGING_SERVICE_ACCOUNT > service-account.json
+    - echo $SERVICE_ACCOUNT > service-account.json
     - gcloud auth activate-service-account --key-file service-account.json
-    # TODO: For now master brand deploy to production, its will be change when we create staging environment
-    - gcloud --quiet --project $STAGING_PROJECT_ID app deploy app-production.yaml
+    - gcloud --quiet --project $PROJECT_ID app deploy app-staging.yaml
+  after_script:
+    - rm -rf service-account.json
+
+deploy-production:
+  image: google/cloud-sdk:alpine
+  stage: deploy-production
+  only:
+    - production
+  dependencies:
+    - build
+  script:
+    - echo $SERVICE_ACCOUNT > service-account.json
+    - gcloud auth activate-service-account --key-file service-account.json
+    - gcloud --quiet --project $PROJECT_ID app deploy app-production.yaml
   after_script:
     - rm -rf service-account.json
