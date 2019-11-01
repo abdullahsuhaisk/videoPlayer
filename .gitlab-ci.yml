@@ -13,11 +13,9 @@ build:
   artifacts:
     untracked: true
   script:
-    - if [ "$CI_COMMIT_REF_NAME" == "develop" ]; then cp .env.staging .env; fi
-    - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then cp .env.staging .env; fi
-    - if [ "$CI_COMMIT_REF_NAME" == "production" ]; then cp .env.production .env; fi
-    - echo $CI_COMMIT_REF_NAME
-    - cat .env
+    - if [ "$CI_COMMIT_REF_NAME" == "develop" ]; then cp env.staging .env; fi
+    - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then cp env.staging .env; fi
+    - if [ "$CI_COMMIT_REF_NAME" == "production" ]; then cp env.production .env; fi
     - npm install
     - unset CI
     - npm run build
@@ -44,7 +42,6 @@ deploy-production:
   dependencies:
     - build
   script:
-    - cat .env
     - echo $SERVICE_ACCOUNT > service-account.json
     - gcloud auth activate-service-account --key-file service-account.json
     - gcloud --quiet --project $PROJECT_ID app deploy app-production.yaml
