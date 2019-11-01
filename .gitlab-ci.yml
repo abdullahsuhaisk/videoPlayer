@@ -9,6 +9,7 @@ build:
   only:
     - develop
     - master
+    - production
   artifacts:
     untracked: true
   script:
