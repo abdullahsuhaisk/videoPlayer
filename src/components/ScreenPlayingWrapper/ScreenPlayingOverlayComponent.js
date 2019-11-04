@@ -57,12 +57,13 @@ const StyledComponent = styled.div`
 const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
   // CODE FOR MOUSE MOVE STARTS HERE
   let timeout;
-  const mouseMoveHandler = () => {
-    // setMouseMove(false);
+  const mouseMoveHandler = React.useCallback(() => {
+    console.log(false);
     mouseEnterHandler();
     clearTimeout(timeout);
     timeout = setTimeout(() => mouseLeaveHandler(), 4000);
-  };
+  });
+
   const mouseEnterHandler = () => {
     client.writeData({
       data: {
@@ -72,6 +73,7 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
         }
       }
     });
+    // When full screen is must be close !
   };
   const mouseLeaveHandler = () => {
     client.writeData({
