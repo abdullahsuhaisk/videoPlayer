@@ -33,7 +33,10 @@ const ShoppingCartCheckout = ({
         <div className="price">${totalPrice.toFixed(2)}</div>
       </div>
       {checkoutProcess === 2 ? (
-        <div className="shoppingcart--checkoutbtn">Pay</div>
+        <input
+          type="submit"
+          value="Continue To Payment"
+          className="checkoutprocess--checkoutbtn"></input>
       ) : (
         <div
           className="shoppingcart--checkoutbtn"

@@ -16,6 +16,11 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPriceWithOutDiscount, settotalPriceWithOutDiscount] = useState(0);
   const [changeCount, setChangeCount] = useState(0);
+  const [orderInfo, setOrderInfo] = useState({});
+
+  useEffect(() => {
+    console.log(orderInfo);
+  }, [orderInfo]);
 
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
@@ -104,12 +109,24 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                   })}
               </div>
             ) : checkoutProcess === 1 ? (
-              <Address setCheckoutProcess={setCheckoutProcess} />
+              <Address
+                setCheckoutProcess={setCheckoutProcess}
+                orderInfo={orderInfo}
+                setOrderInfo={setOrderInfo}
+              />
             ) : checkoutProcess === 2 ? (
-              <Payment />
+              <Payment orderInfo={orderInfo} setOrderInfo={setOrderInfo}>
+                <ShoppingCartCheckout
+                  totalPrice={totalPrice}
+                  totalPriceWithOutDiscount={totalPriceWithOutDiscount}
+                  setChangeCount={setChangeCount}
+                  checkoutProcess={checkoutProcess}
+                  setCheckoutProcess={setCheckoutProcess}
+                />
+              </Payment>
             ) : null}
 
-            {checkoutProcess === 1 ? null : (
+            {checkoutProcess === 1 || checkoutProcess === 2 ? null : (
               <ShoppingCartCheckout
                 totalPrice={totalPrice}
                 totalPriceWithOutDiscount={totalPriceWithOutDiscount}
