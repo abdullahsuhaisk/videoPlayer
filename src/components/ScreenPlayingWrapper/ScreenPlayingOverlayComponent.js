@@ -56,37 +56,12 @@ const StyledComponent = styled.div`
 
 const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
   // CODE FOR MOUSE MOVE STARTS HERE
-
-  const CONTROLBAR_SHOWING = gql`
-    query controlbarShowing {
-      player @client {
-        controlbarShowing
-      }
-    }
-  `;
-  const [mouseMove, setMouseMove] = useState(true);
-
   let timeout;
-
   const mouseMoveHandler = () => {
-    setMouseMove(false);
+    // setMouseMove(false);
+    mouseEnterHandler();
     clearTimeout(timeout);
-    timeout = setTimeout(() => setMouseMove(false), 5000);
-    const {
-      player: { controlbarShowing }
-    } = client.readQuery({ query: CONTROLBAR_SHOWING });
-    if (controlbarShowing !== mouseMove) {
-      console.log(controlbarShowing);
-      client.writeData({
-        data: {
-          player: {
-            __typename: 'Player',
-            controlbarShowing: mouseMove
-          }
-        }
-      });
-    }
-    return null;
+    timeout = setTimeout(() => mouseLeaveHandler(), 4000);
   };
   const mouseEnterHandler = () => {
     client.writeData({
@@ -98,7 +73,6 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
       }
     });
   };
-
   const mouseLeaveHandler = () => {
     client.writeData({
       data: {
@@ -110,7 +84,7 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
     });
   };
 
-  useEffect(() => {}, [mouseMove]);
+  // useEffect(() => {}, [mouseMove]);
 
   // CODE FOR MOUSE MOVE ENDS HERE
 
