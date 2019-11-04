@@ -6024,6 +6024,7 @@
     min-height: 36px;
     font-size:14px;
     display: block;
+    margin: 0;
   }
 
   .form-group .form--error {

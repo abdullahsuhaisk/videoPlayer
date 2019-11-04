@@ -144,7 +144,7 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
             className={errors.email && 'form-control'}
             placeholder="example@example.com"
             ref={register({
-              required: 'this is required',
+              required: 'This is required',
               pattern: {
                 value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                 message: 'Invalid email address'
