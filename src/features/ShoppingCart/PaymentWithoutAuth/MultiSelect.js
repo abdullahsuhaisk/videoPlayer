@@ -32,8 +32,11 @@ export const Multiselect = styled(Select)`
 
   & .select__control {
     font-size: smaller;
-    border: solid 1px #eaeaea;
-    background-color: #fafafa;
+    border: solid 1px
+      ${(props) =>
+        props.error === 'true' ? 'rgba(243, 6, 64 , 0.4)' : '#eaeaea'};
+    background-color: ${(props) =>
+      props.error === 'true' ? 'rgba(243, 6, 64 , 0.1)' : '#fafafa'};
     max-height: 46px;
     border-radius: 0px;
     padding: 0 14px;
@@ -42,13 +45,13 @@ export const Multiselect = styled(Select)`
       display: none;
     }
     &:hover {
-      border: solid 1px #eaeaea;
+      border: solid 1px #bfbfbf;
     }
     &--is-focused {
-      border: solid 1px #eaeaea;
+      border: solid 1px #bfbfbf;
     }
     &--menu-is-open {
-      border: solid 1px #eaeaea;
+      border: solid 1px #bfbfbf;
     }
   }
   & .select__indicator {

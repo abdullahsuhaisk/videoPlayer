@@ -49,7 +49,6 @@
    cursor: pointer;
    font-size: 20px;
    font-weight: bold;
-   letter-spacing: 0.43px;
    padding: 0;
    line-height: 1.28;
    } */
@@ -220,7 +219,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
 }
 .Template1 .login .login--input {
@@ -276,7 +274,6 @@
   .login--staySigned--label {
   font-size: 17px;
   color: #0b2443;
-  letter-spacing: 0.025em;
   margin-left: 0.3em;
 }
 .Template1
@@ -286,7 +283,6 @@
   .login--forgotPassword--a {
   font-size: 17px;
   color: #00acd8;
-  letter-spacing: 0.025em;
   text-decoration: none;
   cursor: pointer;
 }
@@ -308,8 +304,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .login .loginWithWrapper {
   margin-top: 60px;
 }
@@ -317,7 +312,6 @@
   font-size: 20px;
   font-weight: 600;
   color: #0b2443;
-  letter-spacing: 0.025em;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -351,7 +345,6 @@
   font-size: 20px;
   font-weight: 600;
   color: #0b2443;
-  letter-spacing: 0.025em;
   margin-bottom: 26px;
   margin-top: 0;
   text-align: center;
@@ -372,8 +365,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .signup {
   position: relative;
   display: flex;
@@ -413,7 +405,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
 }
 .Template1 .signup .signup--input {
@@ -431,7 +422,6 @@
 .Template1 .signup .signup--minChar {
   font-size: 17px;
   color: #0b2443;
-  letter-spacing: 0.025em;
   width: 100%;
   margin-top: 5px;
 }
@@ -459,7 +449,6 @@
   .signup--staySigned--label {
   font-size: 17px;
   color: #0b2443;
-  letter-spacing: 0.025em;
   margin-left: 0.3em;
 }
 .Template1
@@ -469,7 +458,6 @@
   .signup--forgotPassword--a {
   font-size: 17px;
   color: #00acd8;
-  letter-spacing: 0.025em;
   text-decoration: none;
   cursor: pointer;
 }
@@ -491,7 +479,6 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
   padding: 0;
 }
 .Template1 .signup .signupWithWrapper {
@@ -501,7 +488,6 @@
   font-size: 20px;
   font-weight: 600;
   color: #0b2443;
-  letter-spacing: 0.025em;
   text-align: center;
   margin: 0;
   margin-bottom: 30px;
@@ -536,7 +522,6 @@
   font-size: 20px;
   font-weight: 600;
   color: #0b2443;
-  letter-spacing: 0.025em;
   margin-bottom: 26px;
   margin-top: 0;
   text-align: center;
@@ -557,7 +542,6 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
   padding: 0;
 }
 .Template1 .signup .signup--passwordWrapper {
@@ -597,7 +581,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
 }
 .Template1 .forgotPassword .forgotPassword--input {
@@ -634,8 +617,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .forgotPassword .forgotPassword--signupButtonWrapper {
   width: 100%;
 }
@@ -655,7 +637,6 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
   margin-top: 409px;
 }
 .Template1 .newPassword {
@@ -696,7 +677,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
   margin-bottom: 15.6px;
 }
@@ -723,13 +703,11 @@
   .newPassword--minChar {
   font-size: 17px;
   color: #0b2443;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .newPassword .newPassword--minCharErrorWrapper .newPassword--error {
   font-size: 17px;
   color: #d80011;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .newPassword .newPassword--buttonWrapper {
   width: 100%;
   margin-top: 40px;
@@ -750,8 +728,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
-}
+  }
 .Template1 .newPassword .newPassword--signupButton {
   color: #83329c;
   height: 45px;
@@ -765,7 +742,6 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.025em;
   margin-top: 320px;
   padding: 0;
 }
@@ -845,7 +821,6 @@
   font-style: normal;
   font-stretch: normal;
   line-height: 0.8;
-  letter-spacing: 0.72px;
   text-align: left;
   color: #ffffff;
 }
@@ -1096,7 +1071,6 @@
   font-size: 20px;
   font-weight: 600;
   color: #515252;
-  letter-spacing: 0.025em;
   text-align: center;
   margin: 0 auto;
   margin-top: 11px;
@@ -1125,7 +1099,6 @@
   .productCard--dicount-percent {
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.025em;
   color: #fff;
   background: #d33737;
   padding: 3.4px;
@@ -1139,7 +1112,6 @@
   .productCard--dicount-price {
   position: relative;
   font-size: 13px;
-  letter-spacing: 0.015em;
   color: #515252;
   margin-left: 2.6px;
   margin-top: auto;
@@ -1172,7 +1144,6 @@
   .productCard--Onwishlist--price {
   font-size: 25px;
   font-weight: 700;
-  letter-spacing: 0.015em;
   color: #515252;
   margin: 0;
 }
@@ -1182,7 +1153,6 @@
   .productCard--wishlist--price {
   font-size: 25px;
   font-weight: 700;
-  letter-spacing: 0.015em;
   color: #515252;
   margin-top: 23px;
   margin-bottom: 10px;
@@ -1195,7 +1165,6 @@
   margin: 0;
   margin-bottom: 5.5px;
   margin-top: 30px;
-  letter-spacing: 0.025em;
   z-index: 1;
 }
 .Template1 .Product-Card .productCard--underline {
@@ -1293,7 +1262,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
   cursor: pointer;
 }
@@ -1305,7 +1273,6 @@
   font-size: 19px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
   opacity: 0.4;
   margin-left: 20px;
@@ -1425,14 +1392,12 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #0b2443;
   margin: 15px 0;
 }
 .Template1 .watchlist .watchlist--infoContainer--p {
   font-size: 16px;
   line-height: 1.3em;
-  letter-spacing: 0.025em;
   color: #515252;
 }
 .Template1 .watchlist .watchlist--hr {
@@ -6277,7 +6242,6 @@ border: 1px solid #bfbfbf;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.31;
-  letter-spacing: 0.38px;
   text-align: center;
   color: #ffffff;
   cursor: pointer;
