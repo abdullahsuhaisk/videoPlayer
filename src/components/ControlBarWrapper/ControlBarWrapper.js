@@ -28,14 +28,25 @@ const ControlBarWrapper = (props) => {
       }
     }
   `;
-
+  const mouseEnterHandler = () => {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          controlbarShowing: true
+        }
+      }
+    });
+  };
   const {
     player: { controlbarShowing }
   } = client.readQuery({ query: CONTROLBAR_SHOWING });
 
+  // console.log(controlbarShowing);
+
   if (controlbarShowing === true) {
     return (
-      <div className="ControlBar">
+      <div className="ControlBar" onMouseEnter={() => mouseEnterHandler()}>
         <VideoProgressBar videoPlayer={videoPlayer} />
         <div className="videoControlsContainer">{children}</div>
       </div>

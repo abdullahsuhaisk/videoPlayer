@@ -57,65 +57,60 @@ const StyledComponent = styled.div`
 const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
   // CODE FOR MOUSE MOVE STARTS HERE
 
-  // const mouseMoveHandler = () => {
-  //   const CONTROLBAR_SHOWING = gql`
-  //     query controlbarShowing {
-  //       player @client {
-  //         controlbarShowing
-  //       }
-  //     }
-  //   `;
+  const CONTROLBAR_SHOWING = gql`
+    query controlbarShowing {
+      player @client {
+        controlbarShowing
+      }
+    }
+  `;
+  const [mouseMove, setMouseMove] = useState(true);
 
-  //   const {
-  //     player: { controlbarShowing }
-  //   } = client.readQuery({ query: CONTROLBAR_SHOWING });
+  let timeout;
 
-  //   if (controlbarShowing === false) {
-  //     client.writeData({
-  //       data: {
-  //         player: {
-  //           __typename: 'Player',
-  //           controlbarShowing: true
-  //         }
-  //       }
-  //     });
-  //   }
+  const mouseMoveHandler = () => {
+    setMouseMove(false);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => setMouseMove(false), 5000);
+    const {
+      player: { controlbarShowing }
+    } = client.readQuery({ query: CONTROLBAR_SHOWING });
+    if (controlbarShowing !== mouseMove) {
+      console.log(controlbarShowing);
+      client.writeData({
+        data: {
+          player: {
+            __typename: 'Player',
+            controlbarShowing: mouseMove
+          }
+        }
+      });
+    }
+    return null;
+  };
+  const mouseEnterHandler = () => {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          controlbarShowing: true
+        }
+      }
+    });
+  };
 
-  //   let timeout;
+  const mouseLeaveHandler = () => {
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          controlbarShowing: false
+        }
+      }
+    });
+  };
 
-  //   clearTimeout(timeout);
-
-  //   timeout = setTimeout(() => {
-  //     client.writeData({
-  //       data: {
-  //         player: {
-  //           __typename: 'Player',
-  //           controlbarShowing: false
-  //         }
-  //       }
-  //     });
-  //   }, 4000);
-  // };
-
-  // const [mouseMove, setMouseMove] = useState(true);
-
-  // let timeout;
-  // const mouseMoveHandler = () => {
-  //   setMouseMove(true);
-  //   clearTimeout(timeout);
-  //   timeout = setTimeout(() => setMouseMove(false), 3000);
-  // };
-
-  // useEffect(() => {
-  //   client.writeData({
-  //     data: {
-  //       player: {
-  //         __typename: 'Player',
-  //         controlbarShowing: mouseMove
-  //       }
-  //     }
-  //   });
-  // }, [mouseMove]);
+  useEffect(() => {}, [mouseMove]);
 
   // CODE FOR MOUSE MOVE ENDS HERE
 
@@ -152,6 +147,7 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
     });
     videoPlayer.pause();
   };
+  // console.log(mouseMove);
 
   return (
     <React.Fragment>
@@ -159,6 +155,8 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
         className="Overlay--playing"
         onClick={() => OverlayClickHandler()}
         // onMouseMove={() => mouseMoveHandler()}
+        onMouseEnter={() => mouseEnterHandler()}
+        onMouseLeave={() => mouseLeaveHandler()}
         style={{ pointerEvents: 'auto' }}>
         <StyledComponent>
           <div className="VideoPlay--playBtn-shadow">
