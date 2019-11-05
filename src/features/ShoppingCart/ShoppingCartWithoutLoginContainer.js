@@ -19,10 +19,6 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [orderInfo, setOrderInfo] = useState({});
 
   useEffect(() => {
-    console.log(orderInfo);
-  }, [orderInfo]);
-
-  useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, [changeCount]);
   useEffect(() => {
