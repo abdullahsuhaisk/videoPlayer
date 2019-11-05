@@ -9,6 +9,9 @@ const VolumControl = (props) => {
     if (videoPlayer) {
       if (e) {
         videoPlayer.volume(e.target.value / 100);
+        if (videoPlayer.muted() === true) {
+          videoPlayer.muted(!videoPlayer.muted());
+        }
       } else if (videoPlayer.currentTime() === 0) {
         videoPlayer.volume(0.5);
       }
@@ -24,13 +27,19 @@ const VolumControl = (props) => {
     return soundsIconClassName;
   };
   const soundsOffHandler = () => {
-    videoPlayer.muted(!videoPlayer.muted());
+    if (videoPlayer.volume() !== 0) {
+      videoPlayer.muted(!videoPlayer.muted());
+    }
   };
 
   return (
     <div className="volumControls">
       <img
-        src={videoPlayer && videoPlayer.muted() ? VolumeOffIcon : VolumeIcon}
+        src={
+          (videoPlayer && videoPlayer.muted()) || videoPlayer.volume() === 0
+            ? VolumeOffIcon
+            : VolumeIcon
+        }
         alt="Volume Icon"
         className="soundIcon"
         onClick={() => {
