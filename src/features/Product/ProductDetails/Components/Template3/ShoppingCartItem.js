@@ -112,7 +112,9 @@ const ShoppingCartItem = ({
               {name}
             </div>
             <div className="item-variant">Color: Navy Blazer</div>
-            <div className="item-variant">Size: {sizes[variant.size]}</div>
+            <div className="item-variant">
+              Size: {sizes[item.variantInfo.size]}
+            </div>
           </div>
           <div className="item-quanity-price">
             <div className="item--quantity">
