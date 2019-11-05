@@ -4,16 +4,19 @@ import { withApollo } from 'react-apollo';
 import HotspotPointsScreen from './HotspotPoints/HotspotPointsScreen';
 
 const VideoProgressBar = ({ videoPlayer, client }) => {
+  console.log(videoPlayer && videoPlayer.currentTime().toFixed(9));
+  console.log(videoPlayer && videoPlayer.duration().toFixed(9) - 0.35);
   if (
     videoPlayer &&
-    videoPlayer.currentTime().toFixed(1) >
-      videoPlayer.duration().toFixed(1) - 0.25
+    videoPlayer.currentTime().toFixed(9) >=
+      videoPlayer.duration().toFixed(9) - 0.35
   ) {
     client.writeData({
       data: {
         player: {
           __typename: 'Player',
-          playingState: 'READY'
+          playingState: 'READY',
+          isReady: false
         },
         isLoginFormShowing: false,
         isProfileOpen: false
