@@ -1,11 +1,21 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 // import { CartWrapper } from './Cart.style';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import AddToCartIcon from '../../../../assets/icons/AddToCartIcon.svg';
+import { getParams } from '../../../../hooks/ProdLinkHook';
 
 const ControlBarShoppingIcon = ({ client }) => {
+  const [showCart, setShowCart] = useState(true);
+
+  useEffect(() => {
+    const isTrueSet = getParams('hasLink') === 'true';
+    setShowCart(isTrueSet);
+  }, []);
+
   const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(
     JSON.parse(localStorage.getItem('guestCart')) &&
       JSON.parse(localStorage.getItem('guestCart')).length
@@ -66,11 +76,12 @@ const ControlBarShoppingIcon = ({ client }) => {
         onClick={() => {
           cartHandler();
         }}>
-        {shoppingCartItemsCount !== null ? (
-          <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+        {showCart ? (
+          <React.Fragment>
+            <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+            <img src={AddToCartIcon} alt="Shopping Cart" className="cartBtn" />
+          </React.Fragment>
         ) : null}
-
-        <img src={AddToCartIcon} alt="Shopping Cart" className="cartBtn" />
       </div>
     );
   }
