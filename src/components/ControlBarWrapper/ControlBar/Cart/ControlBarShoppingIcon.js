@@ -9,11 +9,11 @@ import AddToCartIcon from '../../../../assets/icons/AddToCartIcon.svg';
 import { getParams } from '../../../../hooks/ProdLinkHook';
 
 const ControlBarShoppingIcon = ({ client }) => {
-  const [showCart, setShowCart] = useState(true);
+  const [hasLink, setHasLink] = useState(true);
 
   useEffect(() => {
-    const isTrueSet = getParams('hasLink') === 'true';
-    setShowCart(isTrueSet);
+    const isTrueSet = getParams('haslink') === 'true';
+    setHasLink(isTrueSet);
   }, []);
 
   const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(
@@ -76,12 +76,12 @@ const ControlBarShoppingIcon = ({ client }) => {
         onClick={() => {
           cartHandler();
         }}>
-        {showCart ? (
+        {hasLink ? null : (
           <React.Fragment>
             <div className="addtocart-counter">{shoppingCartItemsCount}</div>
             <img src={AddToCartIcon} alt="Shopping Cart" className="cartBtn" />
           </React.Fragment>
-        ) : null}
+        )}
       </div>
     );
   }
