@@ -3630,6 +3630,10 @@
   border-radius: 4px;
   transform: rotate(270deg);
   z-index: 9999;
+  border: 0;
+}
+.Template1 .volumControls .volumControl:focus { 
+  outline: 0;
 }
 .Template1 .volumControls .volumControl:before {
   margin-top: 0rem;
@@ -6024,6 +6028,7 @@
     min-height: 36px;
     font-size:14px;
     display: block;
+    margin: 0;
   }
 
   .form-group .form--error {

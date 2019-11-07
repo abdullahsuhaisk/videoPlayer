@@ -25,7 +25,6 @@ const ScreenReadyWrapper = ({ children }) => {
                 <div
                   className="VideoPlay--playBtn"
                   onClick={() => {
-                    videoPlayer.pause();
                     client.writeData({
                       data: {
                         player: {

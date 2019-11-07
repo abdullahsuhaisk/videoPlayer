@@ -38,7 +38,6 @@ const FullScreenImage = ({ imageUrl, data, client }) => {
             alt="Ready Screen"
             src={httpToHttps(image)}
             onClick={() => {
-              videoPlayer.pause();
               client.writeData({
                 data: {
                   player: {

@@ -97,8 +97,8 @@ const SettingsPoper = ({
       return (
         <div
           className="Settings spacing"
-          style={{ position: 'absolute', top: -230, right: -73 }}>
-          <div className="Settings--panel">
+          style={{ position: 'absolute', top: -165, right: -77 }}>
+          {/* <div className="Settings--panel">
             <label className="Settings--panel--label">Prodlink</label>
             <div className="Settings--panel--switchBtn">
               <input
@@ -113,7 +113,7 @@ const SettingsPoper = ({
               <div className="Settings--panel--switchBtn--knobs"></div>
               <div className="Settings--panel--switchBtn--layer"></div>
             </div>
-          </div>
+          </div> */}
           <div
             className="Settings--panel"
             onClick={() => setVideoSpeedIsOpen(!videoSpeedIsOpen)}>
