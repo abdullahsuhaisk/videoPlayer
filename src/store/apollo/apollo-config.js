@@ -223,6 +223,7 @@ const setInitialCache = () => {
     isProfileOpen: false,
     isAddWishListOpen: false,
     productId: null,
+    prodlinkId: null,
     consumer: {
       __typename: 'ConsumerType',
       id: 0,

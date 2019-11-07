@@ -245,6 +245,7 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
           <input
             type="submit"
             value="Continue To Payment"
+            // onClick={() => setCheckoutProcess(2)}
             className="checkoutprocess--checkoutbtn"></input>
         </div>
       </form>

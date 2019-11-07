@@ -41,6 +41,11 @@ const App = ({ client }) => {
             return <Error content={errorContentsArray} />;
           }
           if (data.prodLink === null) return <div>No video</div>;
+          const { id } = data.prodLink;
+          {
+            /* console.log(id); */
+          }
+          client.writeData({ data: { prodlinkId: id } });
           const { video } = data.prodLink;
           const { image } = data.prodLink;
           const poster =

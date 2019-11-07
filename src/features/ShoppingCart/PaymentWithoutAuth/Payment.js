@@ -1,13 +1,66 @@
 import React, { useState } from 'react';
 import useForm from 'react-hook-form';
+import { withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
+
 import InfoIcon from '../../../assets/icons/InfoIcon.svg';
 import CustomIcon from '../../../assets/icons/ArrowDownIcon.svg';
 import { Multiselect } from './MultiSelect';
 
-const Payment = ({ children, setOrderInfo, orderInfo }) => {
+const GET_PRODLINK = gql`
+  query hotSpotShowing {
+    prodlinkId @client
+  }
+`;
+
+const Payment = ({
+  children,
+  setOrderInfo,
+  orderInfo,
+  client,
+  setRenderOrder
+}) => {
   const customArrow = () => {
     return <img src={CustomIcon} alt="" />;
   };
+
+  const CREATEORDER = (productsArray, data) => {
+    const { prodlinkId } = client.readQuery({ query: GET_PRODLINK });
+    const prodLinkId = parseInt(prodlinkId, 10);
+    const products = productsArray;
+    const paymentCard = data;
+    const { buyer } = orderInfo;
+    client
+      .mutate({
+        variables: { prodLinkId, paymentCard, buyer, products },
+        mutation: gql`
+          mutation createOrder(
+            $prodLinkId: Int!
+            $paymentCard: PaymentCardInput!
+            $buyer: BuyerInput!
+            $products: [ProductInput]!
+          ) {
+            directOrder(
+              prodLinkId: $prodLinkId
+              paymentCard: $paymentCard
+              buyer: $buyer
+              products: $products
+            ) {
+              status
+              action
+              threeDSHtmlContent
+              errorMessage
+            }
+          }
+        `
+      })
+      .then(({ data }) => {
+        console.log(data);
+        setRenderOrder(atob(data.directOrder.threeDSHtmlContent));
+      })
+      .catch((error) => console.log(error));
+  };
+  const { prodlinkId } = client.readQuery({ query: GET_PRODLINK });
 
   const brandColor = '#eaeaea';
 
@@ -27,10 +80,12 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
     errors,
     setValue,
     setError,
-    clearError
+    clearError,
+    unregister
   } = useForm();
 
   const onSubmit = (data) => {
+    unregister('terms');
     const localCart = JSON.parse(localStorage.getItem('guestCart'));
 
     const productsArray = [];
@@ -41,19 +96,19 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
         quantity: item.variantInfo.quantity
       });
     });
-
     setOrderInfo({
       ...orderInfo,
+      prodLinkId: prodlinkId,
       paymentCard: data,
       products: productsArray
     });
-
     localStorage.setItem('guestCart', JSON.stringify([]));
+    CREATEORDER(productsArray, data);
   };
+
   const [monthValue, setReactSelectMonth] = useState({
     selectedOptionMonth: []
   });
-
   const [yearValue, setReactSelectYear] = useState({
     selectedOptionYear: []
   });
@@ -204,7 +259,7 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
             </label>
             <input
               type="tel"
-              name="cvv"
+              name="cvc"
               ref={register({
                 required: 'This field is required',
                 pattern: {
@@ -214,12 +269,12 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
                 minLength: { value: 3, message: 'Enter at least 3 digits' },
                 maxLength: { value: 3, message: 'Enter at most 3 digits' }
               })}
-              className={errors.cvv && 'form-control'}
+              className={errors.cvc && 'form-control'}
             />
-            <p className="form--error">{errors.cvv && errors.cvv.message}</p>
+            <p className="form--error">{errors.cvc && errors.cvc.message}</p>
           </div>
         </div>
-        <div className="checkbox">
+        {/* <div className="checkbox">
           <label>
             <input
               type="checkbox"
@@ -235,7 +290,7 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
             <a> Preliminary Information Conditions</a> and the
             <a> Distance Selling Agreement.</a>
           </p>
-        </div>
+        </div> */}
         <p className="form--error">
           {errors.terms &&
             'You must agree to the terms & conditions to continue'}
@@ -247,4 +302,4 @@ const Payment = ({ children, setOrderInfo, orderInfo }) => {
   );
 };
 
-export default Payment;
+export default withApollo(Payment);
