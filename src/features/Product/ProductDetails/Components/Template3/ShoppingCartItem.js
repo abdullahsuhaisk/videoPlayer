@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import SampleImage from '../../../../../assets/images/SampleImage.jpg';
