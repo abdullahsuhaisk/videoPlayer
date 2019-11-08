@@ -54,85 +54,11 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
 
     setlocalCart(localCart.splice(indexToRemove, 1));
     localStorage.setItem('guestCart', JSON.stringify(localCart));
-    // setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
     setChangeCount(changeCount + 1);
   };
-  // console.log(orderInfo);
-  // console.log(renderOrder);
-  // const p = '<p>Abc</p>';
-  // if (renderOrder) {
-  //   return (
-  //     // <iframe
-  //     //   src={renderOrder}
-  //     //   style={{ width: '100%', height: '100%' }}
-  //     //   title="iffra"
-  //     // />
-  //     // <div
-  //     //   style={{ zIndex: 100, width: '100%', height: '100%' }}
-  //     //   dangerouslySetInnerHTML={{ __html: `${renderOrder}` }}
-  //     // />
-  //     <iframe
-  //       title="payment"
-  //       style={{
-  //         width: '100%',
-  //         height: '100%',
-  //         position: 'absolute',
-  //         zIndex: '9999',
-  //         pointerEvents: 'auto'
-  //       }}
-  //       id="iframeForPayment">
-  //       <IyzicoHtml renderOrder={renderOrder} />
-  //     </iframe>
-  //   );
-  // }
   return (
     <Fade right duration={300}>
       <div className="shoppingcart--container">
-        {/* <button
-          onClick={() => {
-            const { prodLinkId, paymentCard, buyer, products } = orderInfo;
-            client
-              .mutate({
-                variables: { prodLinkId, paymentCard, buyer, products },
-                mutation: gql`
-                  mutation createOrder {
-                    directOrder(
-                      prodLinkId: 41
-                      paymentCard: {
-                        cardHolderName: "John Doe"
-                        cardNumber: "5528790000000008"
-                        expireMonth: "12"
-                        expireYear: "2030"
-                        cvc: "123"
-                      }
-                      buyer: {
-                        name: "John"
-                        surname: "Doe"
-                        gsmNumber: "+905350000000"
-                        email: "email@email.com"
-                        identityNumber: "74300864791"
-                        city: "Istanbul"
-                        country: "Turkey"
-                        address: "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1"
-                      }
-                      products: [{ id: 1, quantity: 4 }, { id: 2, quantity: 2 }]
-                    ) {
-                      status
-                      action
-                      threeDSHtmlContent
-                      errorMessage
-                    }
-                  }
-                `
-              })
-              .then(({ data }) => {
-                console.log(data);
-                setRenderOrder(atob(data.directOrder.threeDSHtmlContent));
-              })
-              .catch((error) => console.log(error));
-          }}>
-          ABC
-        </button> */}
         <div className="shoppingcart--title">
           {checkoutProcess === 0
             ? 'Shopping Cart'

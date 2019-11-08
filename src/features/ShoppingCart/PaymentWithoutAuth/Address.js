@@ -62,7 +62,7 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
   };
   return (
     <div className="address-wrapper">
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-wrapper">
           <div className="form-group">
             <label>Name</label>
@@ -72,11 +72,7 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
               placeholder="Name"
               name="name"
               ref={register({
-                required: 'This field is required',
-                pattern: {
-                  value: /^[a-zA-Z ]*$/,
-                  message: 'This field can only be letters'
-                }
+                required: 'This field is required'
               })}
             />
             <p className="form--error">{errors.name && errors.name.message}</p>
@@ -89,11 +85,7 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
               placeholder="Your surname"
               name="surname"
               ref={register({
-                required: 'This field is required',
-                pattern: {
-                  value: /^[a-zA-Z ]*$/,
-                  message: 'Please enter only letters'
-                }
+                required: 'This field is required'
               })}
             />
             <p className="form--error">
@@ -109,7 +101,10 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
             placeholder="-----------"
             ref={register({
               required: 'This field is required',
-              pattern: { value: /^\d+$/, message: 'Please enter only digits' },
+              pattern: {
+                value: /^[0-9]*$/,
+                message: 'Please enter only digits'
+              },
               minLength: { value: 11, message: 'Enter at least 11 digits' },
               maxLength: { value: 11, message: 'Enter at most 11 digits' }
             })}
@@ -123,13 +118,23 @@ const Address = ({ setCheckoutProcess, setOrderInfo }) => {
           <label>Phone</label>
           <input
             type="tel"
+            defaultValue="+90"
             className={errors.gsmNumber && 'form-control'}
-            placeholder="0(---)--- -- --"
+            placeholder="+90 --- -------"
             ref={register({
               required: 'This field is required',
-              pattern: { value: /^\d+$/, message: 'Please enter only digits' },
-              minLength: { value: 11, message: 'Enter at least 11 digits' },
-              maxLength: { value: 11, message: 'Enter at most 11 digits' }
+              pattern: {
+                value: /^[\+\d]?(?:[\d-.\s()]*)$/,
+                message: 'Please enter only digits and + symbol'
+              },
+              minLength: {
+                value: 13,
+                message: 'Enter at least 13 digits with + in the start'
+              },
+              maxLength: {
+                value: 13,
+                message: 'Enter at most 13 digits with + in the start'
+              }
             })}
             name="gsmNumber"
           />
