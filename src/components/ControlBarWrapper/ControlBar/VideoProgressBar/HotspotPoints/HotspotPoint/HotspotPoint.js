@@ -19,7 +19,6 @@ const HotspotPoint = ({ position, product, client, item, timeChanger }) => {
       }
     });
   }, []);
-
   return (
     <div style={{ display: 'block' }}>
       <HotspotPointWrapper position={position}>

@@ -5,6 +5,7 @@ import { Query } from 'react-apollo';
 import NoImage from '../../../../assets/images/NoImage.png';
 import NextIcon from '../../../../assets/icons/NextIcon.svg';
 import PreviousIcon from '../../../../assets/icons/PreviousIcon.svg';
+import { httpToHttps } from '../../../../utils/httpTohttps';
 // import FlickityComponent from '../../../../components/Flickity/FlickityComponent';
 
 const ProductDetailImage = ({ images, client }) => {
@@ -75,9 +76,16 @@ const ProductDetailImage = ({ images, client }) => {
                 <Query query={GET_LAYOUT}>
                   {({ data: { layout } }) => {
                     if (layout.width <= 850) {
-                      return <img alt={item.name} src={item.thumbnailUrl} />;
+                      return (
+                        <img
+                          alt={item.name}
+                          src={httpToHttps(item.thumbnailUrl)}
+                        />
+                      );
                     }
-                    return <img alt={item.name} src={item.imageUrl} />;
+                    return (
+                      <img alt={item.name} src={httpToHttps(item.imageUrl)} />
+                    );
                   }}
                 </Query>
               </div>
