@@ -7,6 +7,7 @@ import { GET_PRODUCT } from '../../../../../Queries/Products/ProductQueries';
 import { sizes } from '../../../../../common/Variants';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/TrashIcon.svg';
 import { PLAYER } from '../../../../../common/constants';
+import { httpToHttps } from '../../../../../utils/httpTohttps';
 
 const StyledComponent = styled.div`
   .shopcart--item-container {
@@ -102,7 +103,10 @@ const ShoppingCartItem = ({
         <div
           className="item-image"
           onClick={() => setProductIdForDetail(productId)}>
-          <img src={image ? image.thumbnailUrl : SampleImage} alt="" />
+          <img
+            src={image ? httpToHttps(image.thumbnailUrl) : SampleImage}
+            alt=""
+          />
         </div>
         <div className="item-info">
           <div className="item-info-mobile">
