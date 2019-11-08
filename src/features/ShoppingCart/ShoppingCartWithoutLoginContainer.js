@@ -65,34 +65,34 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     // setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
     setChangeCount(changeCount + 1);
   };
-  console.log(orderInfo);
-  console.log(renderOrder);
-  const p = '<p>Abc</p>';
-  if (renderOrder) {
-    return (
-      // <iframe
-      //   src={renderOrder}
-      //   style={{ width: '100%', height: '100%' }}
-      //   title="iffra"
-      // />
-      // <div
-      //   style={{ zIndex: 100, width: '100%', height: '100%' }}
-      //   dangerouslySetInnerHTML={{ __html: `${renderOrder}` }}
-      // />
-      <iframe
-        title="payment"
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          zIndex: '9999',
-          pointerEvents: 'auto'
-        }}
-        id="iframeForPayment">
-        <IyzicoHtml renderOrder={renderOrder} />
-      </iframe>
-    );
-  }
+  // console.log(orderInfo);
+  // console.log(renderOrder);
+  // const p = '<p>Abc</p>';
+  // if (renderOrder) {
+  //   return (
+  //     // <iframe
+  //     //   src={renderOrder}
+  //     //   style={{ width: '100%', height: '100%' }}
+  //     //   title="iffra"
+  //     // />
+  //     // <div
+  //     //   style={{ zIndex: 100, width: '100%', height: '100%' }}
+  //     //   dangerouslySetInnerHTML={{ __html: `${renderOrder}` }}
+  //     // />
+  //     <iframe
+  //       title="payment"
+  //       style={{
+  //         width: '100%',
+  //         height: '100%',
+  //         position: 'absolute',
+  //         zIndex: '9999',
+  //         pointerEvents: 'auto'
+  //       }}
+  //       id="iframeForPayment">
+  //       <IyzicoHtml renderOrder={renderOrder} />
+  //     </iframe>
+  //   );
+  // }
   return (
     <Fade right duration={300}>
       <div className="shoppingcart--container">
@@ -169,7 +169,21 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           <ShoppingCartEmpty />
         ) : (
           <>
-            {checkoutProcess === 0 ? (
+            {renderOrder ? (
+              <iframe
+                title="payment"
+                style={{
+                  width: '600px',
+                  height: '800px',
+                  position: 'absolute',
+                  zIndex: '9999',
+                  pointerEvents: 'auto',
+                  borderWidth: 0
+                }}
+                id="iframeForPayment">
+                <IyzicoHtml renderOrder={renderOrder} />
+              </iframe>
+            ) : checkoutProcess === 0 ? (
               <div className="shoppingcart-items-container">
                 {localCart &&
                   localCart.map((item, index) => {
