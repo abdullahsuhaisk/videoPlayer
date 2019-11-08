@@ -9,8 +9,6 @@ import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/Sho
 import ScreenChoserQuery from '../../components/HOCS/Grapqhl/ScreenChoserQuery';
 import Address from './PaymentWithoutAuth/Address';
 import Payment from './PaymentWithoutAuth/Payment';
-import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo';
 import IyzicoHtml from './PaymentWithoutAuth/IyzicoHtml';
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
@@ -23,12 +21,6 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [orderInfo, setOrderInfo] = useState({});
   const [renderOrder, setRenderOrder] = useState(null);
   const [checkoutProcess, setCheckoutProcess] = useState(0);
-
-  useEffect(() => {
-    // document.open();
-    // document.write(NC);
-    // document.close();
-  }, []);
 
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
@@ -221,8 +213,6 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                   setCheckoutProcess={setCheckoutProcess}
                 />
               </Payment>
-            ) : checkoutProcess === 3 ? (
-              <IyzicoHtml />
             ) : null}
 
             {checkoutProcess === 1 || checkoutProcess === 2 ? null : (
