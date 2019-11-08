@@ -137,6 +137,7 @@ const Payment = ({
 
   const handleTermsChange = () => {
     setTermsValue(!termsValue);
+    clearError('terms');
   };
 
   return (
