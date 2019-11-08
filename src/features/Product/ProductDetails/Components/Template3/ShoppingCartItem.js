@@ -77,7 +77,7 @@ const ShoppingCartItem = ({
     }
   }, [variant]);
 
-  const { image, name, currentPrice } = product;
+  const { image, name, currentPrice, currency } = product;
 
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
@@ -124,7 +124,8 @@ const ShoppingCartItem = ({
               />
             </div>
             <div className="item--price">
-              ${(currentPrice * variant['quantity']).toFixed(2)}
+              {currency && currency.symbol}
+              {(currentPrice * variant['quantity']).toFixed(2)}
             </div>
           </div>
         </div>

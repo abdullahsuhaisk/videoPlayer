@@ -1,15 +1,26 @@
 import React from 'react';
 
-const ProductDetailPriceTemplate3 = ({ currentPrice, price, discount }) => {
+const ProductDetailPriceTemplate3 = ({
+  currentPrice,
+  price,
+  discount,
+  currency
+}) => {
   // TODO: Destruct the currency={currency}
   return (
     <div className="productdetail--price-wrapper">
       {discount === 0 ? (
-        <div className="current-price"> {currentPrice} TL</div>
+        <div className="current-price">
+          {currentPrice} {currency && currency.symbol}
+        </div>
       ) : (
         <React.Fragment>
-          <div className="previous-price"> {price} TL</div>
-          <div className="current-price">{currentPrice} TL</div>
+          <div className="previous-price">
+            {price} {currency && currency.symbol}
+          </div>
+          <div className="current-price">
+            {currentPrice} {currency && currency.symbol}
+          </div>
         </React.Fragment>
       )}
     </div>
