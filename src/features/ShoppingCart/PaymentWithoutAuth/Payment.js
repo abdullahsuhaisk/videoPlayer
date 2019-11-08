@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useForm from 'react-hook-form';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -80,30 +80,32 @@ const Payment = ({
     errors,
     setValue,
     setError,
-    clearError,
-    unregister
+    clearError
   } = useForm();
 
   const onSubmit = (data) => {
-    unregister('terms');
-    const localCart = JSON.parse(localStorage.getItem('guestCart'));
+    if (termsValue === true) {
+      const localCart = JSON.parse(localStorage.getItem('guestCart'));
 
-    const productsArray = [];
+      const productsArray = [];
 
-    localCart.map((item) => {
-      productsArray.push({
-        id: item.productId,
-        quantity: item.variantInfo.quantity
+      localCart.map((item) => {
+        productsArray.push({
+          id: item.productId,
+          quantity: item.variantInfo.quantity
+        });
       });
-    });
-    setOrderInfo({
-      ...orderInfo,
-      prodLinkId: prodlinkId,
-      paymentCard: data,
-      products: productsArray
-    });
-    localStorage.setItem('guestCart', JSON.stringify([]));
-    CREATEORDER(productsArray, data);
+      setOrderInfo({
+        ...orderInfo,
+        prodLinkId: prodlinkId,
+        paymentCard: data,
+        products: productsArray
+      });
+      localStorage.setItem('guestCart', JSON.stringify([]));
+      CREATEORDER(productsArray, data);
+    } else {
+      setError('terms');
+    }
   };
 
   const [monthValue, setReactSelectMonth] = useState({
@@ -112,6 +114,8 @@ const Payment = ({
   const [yearValue, setReactSelectYear] = useState({
     selectedOptionYear: []
   });
+
+  const [termsValue, setTermsValue] = useState(false);
 
   const handleMultiChangeMonth = (selectedOptionMonth) => {
     if (selectedOptionMonth.length) {
@@ -130,9 +134,14 @@ const Payment = ({
     setValue('expireYear', selectedOptionYear.value);
     setReactSelectYear({ selectedOptionYear });
   };
+
+  const handleTermsChange = () => {
+    setTermsValue(!termsValue);
+  };
+
   return (
     <div className="payment-wrapper">
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label>Name</label>
           <input
@@ -141,11 +150,7 @@ const Payment = ({
             placeholder="Name On Card"
             name="cardHolderName"
             ref={register({
-              required: 'This field is required',
-              pattern: {
-                value: /^[a-zA-Z ]*$/,
-                message: 'This field can only be letters'
-              }
+              required: 'This field is required'
             })}
           />
           <p className="form--error">
@@ -274,12 +279,12 @@ const Payment = ({
             <p className="form--error">{errors.cvc && errors.cvc.message}</p>
           </div>
         </div>
-        {/* <div className="checkbox">
+        <div className="checkbox">
           <label>
             <input
               type="checkbox"
               className={errors.terms && 'form-control'}
-              ref={register({ required: true })}
+              onChange={handleTermsChange}
               name="terms"
             />
 
@@ -290,7 +295,7 @@ const Payment = ({
             <a> Preliminary Information Conditions</a> and the
             <a> Distance Selling Agreement.</a>
           </p>
-        </div> */}
+        </div>
         <p className="form--error">
           {errors.terms &&
             'You must agree to the terms & conditions to continue'}
