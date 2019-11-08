@@ -11,28 +11,29 @@ const Error = ({ content }) => {
   return (
     <div className="Error">
       <div className="Error--container">
-        <figure className="Error--logo">
-          <img
-            src="/images/logo-white.svg"
-            className="Error--logo--img"
-            alt="Vibuy"
-          />
-        </figure>
-        <p className="Error--404">404</p>
-        <p className="Error--description">Opss, something went wrong!</p>
-
-        {content.map((item, key) => (
-          <p className="Error--description" key={key}>
-            {item.code === 'ERR004' ? 'There is no ProdLink' : item.message}
-          </p>
-        ))}
-        <button
-          className="Error--returnBtn"
-          onClick={async () => {
-            goVideo();
-          }}>
-          Return to home
-        </button>
+        <div className="Error--container-column">
+          <figure className="Error--logo">
+            <img
+              src="/images/logo-white.svg"
+              className="Error--logo--img"
+              alt="Vibuy"
+            />
+          </figure>
+          <p className="Error--404">404</p>
+          <p className="Error--description">Opss, something went wrong!</p>
+          {content.map((item, key) => (
+            <p className="Error--description" key={key}>
+              {item.code === 'ERR004' ? 'There is no ProdLink' : item.message}
+            </p>
+          ))}
+          <button
+            className="Error--returnBtn"
+            onClick={async () => {
+              goVideo();
+            }}>
+            Return to home
+          </button>
+        </div>
       </div>
       <div id="stars"></div>
       <div id="stars2"></div>
