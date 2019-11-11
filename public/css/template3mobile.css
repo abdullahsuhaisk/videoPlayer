@@ -304,7 +304,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  }
+}
 .Template1 .login .loginWithWrapper {
   margin-top: 60px;
 }
@@ -365,7 +365,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  }
+}
 .Template1 .signup {
   position: relative;
   display: flex;
@@ -617,7 +617,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  }
+}
 .Template1 .forgotPassword .forgotPassword--signupButtonWrapper {
   width: 100%;
 }
@@ -703,11 +703,11 @@
   .newPassword--minChar {
   font-size: 17px;
   color: #0b2443;
-  }
+}
 .Template1 .newPassword .newPassword--minCharErrorWrapper .newPassword--error {
   font-size: 17px;
   color: #d80011;
-  }
+}
 .Template1 .newPassword .newPassword--buttonWrapper {
   width: 100%;
   margin-top: 40px;
@@ -728,7 +728,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  }
+}
 .Template1 .newPassword .newPassword--signupButton {
   color: #83329c;
   height: 45px;
@@ -6081,12 +6081,12 @@ ul.slick-dots {
   background-color: #fafafa;
   display: flex;
   padding-left: 14px;
-  font-size:14px;
+  font-size: 14px;
   color: #0b2443;
 }
 input:focus {
-    outline:none;
-    border: 1px solid #bfbfbf;
+  outline: none;
+  border: 1px solid #bfbfbf;
 }
 
 .form-group textarea {
@@ -6096,28 +6096,28 @@ input:focus {
   background-color: #fafafa;
   font-family: 'Nunito Sans', sans-serif;
   resize: none;
-  padding-left:14px;
+  padding-left: 14px;
   padding-top: 14px;
 }
 textarea:focus {
   outline: 0;
 }
 input.form-control {
-background: rgba(243, 6, 64 , 0.1);
-border: 1px solid rgba(243, 6, 64 , 0.4);
+  background: rgba(243, 6, 64, 0.1);
+  border: 1px solid rgba(243, 6, 64, 0.4);
 }
 textarea.form-control {
-  background: rgba(243, 6, 64 , 0.1);
-  border: 1px solid rgba(243, 6, 64 , 0.4);
+  background: rgba(243, 6, 64, 0.1);
+  border: 1px solid rgba(243, 6, 64, 0.4);
 }
 
 input:focus.form-control {
-background: #fafafa;
-border: 1px solid #bfbfbf;
+  background: #fafafa;
+  border: 1px solid #bfbfbf;
 }
 textarea:focus.form-control {
-background: #fafafa;
-border: 1px solid #bfbfbf;
+  background: #fafafa;
+  border: 1px solid #bfbfbf;
 }
 
 .select-items {
@@ -6135,9 +6135,9 @@ border: 1px solid #bfbfbf;
   width: 100%;
 }
 .close-icon {
-    padding-left:10px;
+  padding-left: 10px;
 }
-.form-group label.with-image  {
+.form-group label.with-image {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -6154,7 +6154,7 @@ border: 1px solid #bfbfbf;
   padding-left: 20px;
   color: red;
   min-height: 36px;
-  font-size:14px;
+  font-size: 14px;
   display: block;
 }
 
@@ -6162,10 +6162,10 @@ border: 1px solid #bfbfbf;
   padding: 10px;
   color: red;
   min-height: 36px;
-  font-size:14px;
+  font-size: 14px;
 }
 
-.checkbox{
+.checkbox {
   margin: 30px 0 10px 0;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
@@ -6174,13 +6174,13 @@ border: 1px solid #bfbfbf;
   position: relative;
 }
 .checkbox input {
-    margin-right: 20px;
-    margin-top: 4px;
-    opacity: 0;
-    cursor: pointer;
+  margin-right: 20px;
+  margin-top: 4px;
+  opacity: 0;
+  cursor: pointer;
 }
 .checkbox a {
-    color: #001652;
+  color: #001652;
 }
 
 .checkbox p {
@@ -6198,10 +6198,10 @@ border: 1px solid #bfbfbf;
   background-color: #ccc;
 }
 .checkbox input:checked ~ .checkmark {
-  background-color:#fafafa;
+  background-color: #fafafa;
 }
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -6209,12 +6209,12 @@ border: 1px solid #bfbfbf;
   display: block;
 }
 .checkbox .checkmark:after {
-  left:4px;
-  top:5px;
-  height:20px;
+  left: 4px;
+  top: 5px;
+  height: 20px;
   width: 20px;
-  content:" ";
-  background: url("../images/CheckIcon.svg")no-repeat;
+  content: ' ';
+  background: url('../images/CheckIcon.svg') no-repeat;
 }
 
 /* Muhammed's Code Ends here */
@@ -6227,7 +6227,6 @@ border: 1px solid #bfbfbf;
   display: flex;
   flex-direction: column;
   position: relative;
-
 }
 
 .checkoutprocess--checkoutbtn {
@@ -6254,3 +6253,16 @@ border: 1px solid #bfbfbf;
 .checkoutprocess--checkoutbtn:hover {
   opacity: 0.85;
 }
+
+/* Suha's Code Start Here */
+#iframeForPayment {
+  width: 755px;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  pointer-events: auto;
+  border-width: 0px;
+  text-align: center;
+  margin: auto;
+}
+/* Suha's Code Ends Here */

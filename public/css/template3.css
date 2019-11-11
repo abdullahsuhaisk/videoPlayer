@@ -6130,4 +6130,15 @@
     opacity: 0.85;
   }
 
- 
+ /* Suha's Code Start Here */
+#iframeForPayment {
+    width: 610px;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    pointer-events: auto;
+    border-width: 0px;
+    text-align: center;
+    margin: auto;
+}
+ /* Suha's Code Ends Here */

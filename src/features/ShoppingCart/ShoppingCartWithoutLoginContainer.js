@@ -88,17 +88,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
         ) : (
           <>
             {renderOrder ? (
-              <iframe
-                title="payment"
-                style={{
-                  width: '600px',
-                  height: '800px',
-                  position: 'absolute',
-                  zIndex: '9999',
-                  pointerEvents: 'auto',
-                  borderWidth: 0
-                }}
-                id="iframeForPayment">
+              <iframe title="payment" id="iframeForPayment">
                 <IyzicoHtml renderOrder={renderOrder} />
               </iframe>
             ) : checkoutProcess === 0 ? (
