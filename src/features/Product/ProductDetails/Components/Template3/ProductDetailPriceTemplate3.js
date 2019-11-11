@@ -4,9 +4,15 @@ const ProductDetailPriceTemplate3 = ({
   currentPrice,
   price,
   discount,
-  currency
+  currency,
+  setData,
+  data
 }) => {
-  // TODO: Destruct the currency={currency}
+  React.useEffect(() => {
+    if (currency) {
+      setData({ ...data, currencySymbol: currency.symbol });
+    }
+  }, []);
   return (
     <div className="productdetail--price-wrapper">
       {discount === 0 ? (
