@@ -10,6 +10,7 @@ import ScreenChoserQuery from '../../components/HOCS/Grapqhl/ScreenChoserQuery';
 import Address from './PaymentWithoutAuth/Address';
 import Payment from './PaymentWithoutAuth/Payment';
 import IyzicoHtml from './PaymentWithoutAuth/IyzicoHtml';
+import Spinner from '../../components/Spinner/Spinner';
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
@@ -19,8 +20,9 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [totalPriceWithOutDiscount, settotalPriceWithOutDiscount] = useState(0);
   const [changeCount, setChangeCount] = useState(0);
   const [orderInfo, setOrderInfo] = useState({});
-  const [renderOrder, setRenderOrder] = useState(null);
+  const [renderOrder, setRenderOrder] = useState(false);
   const [checkoutProcess, setCheckoutProcess] = useState(0);
+  const [spinnerShow, setSpinnerShow] = useState(false);
 
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
@@ -56,6 +58,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     localStorage.setItem('guestCart', JSON.stringify(localCart));
     setChangeCount(changeCount + 1);
   };
+
   return (
     <Fade right duration={300}>
       <div className="shoppingcart--container">
@@ -87,7 +90,11 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           <ShoppingCartEmpty />
         ) : (
           <>
-            {renderOrder ? (
+            {spinnerShow === true ? (
+              <div style={{ height: '85%' }}>
+                <Spinner backgroundColor="#14be82" />
+              </div>
+            ) : renderOrder ? (
               <iframe title="payment" id="iframeForPayment">
                 <IyzicoHtml renderOrder={renderOrder} />
               </iframe>
@@ -120,7 +127,8 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                 orderInfo={orderInfo}
                 setOrderInfo={setOrderInfo}
                 setRenderOrder={setRenderOrder}
-                setCheckoutProcess={setCheckoutProcess}>
+                setCheckoutProcess={setCheckoutProcess}
+                setSpinnerShow={setSpinnerShow}>
                 <ShoppingCartCheckout
                   totalPrice={totalPrice}
                   totalPriceWithOutDiscount={totalPriceWithOutDiscount}

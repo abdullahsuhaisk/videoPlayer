@@ -18,7 +18,8 @@ const Payment = ({
   setOrderInfo,
   orderInfo,
   client,
-  setRenderOrder
+  setRenderOrder,
+  setSpinnerShow
 }) => {
   const customArrow = () => {
     return <img src={CustomIcon} alt="" />;
@@ -57,8 +58,12 @@ const Payment = ({
       .then(({ data }) => {
         // console.log(data);
         setRenderOrder(atob(data.directOrder.threeDSHtmlContent));
+        setSpinnerShow(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setSpinnerShow(false);
+      });
   };
   const { prodlinkId } = client.readQuery({ query: GET_PRODLINK });
 
@@ -106,6 +111,7 @@ const Payment = ({
     } else {
       setError('terms');
     }
+    setSpinnerShow(true);
   };
 
   const [monthValue, setReactSelectMonth] = useState({
