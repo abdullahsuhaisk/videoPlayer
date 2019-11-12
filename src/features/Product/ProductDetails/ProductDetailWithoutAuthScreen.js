@@ -1,3 +1,4 @@
+/* eslint-disable no-lonely-if */
 import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import gql from 'graphql-tag';
@@ -28,7 +29,12 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     : [];
   localStorage.setItem('guestCart', JSON.stringify(cartItems));
 
-  const [data, setData] = useState({ color: 0, size: 0, quantity: 1 });
+  const [data, setData] = useState({
+    color: 0,
+    size: 0,
+    quantity: 1,
+    currencySymbol: ''
+  });
 
   if (product) {
     const images = product.images && product.images;
@@ -81,6 +87,48 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           };
 
           localStorage.setItem('guestCart', JSON.stringify(cartItems));
+          client.writeData({
+            data: {
+              isCurrencyError: false
+            }
+          });
+        } else {
+          // eslint-disable-next-line no-lonely-if
+          if (
+            cartItems.length > 0 &&
+            cartItems[0].variantInfo.currencySymbol !== data.currencySymbol
+          ) {
+            client.writeData({
+              data: {
+                isCurrencyError: true
+              }
+            });
+          } else {
+            const cartItem = {
+              productId,
+              variantInfo: data,
+              currentPrice,
+              price
+            };
+            cartItems.push(cartItem);
+            localStorage.setItem('guestCart', JSON.stringify(cartItems));
+            client.writeData({
+              data: {
+                isCurrencyError: false
+              }
+            });
+          }
+        }
+      } else {
+        if (
+          cartItems.length > 0 &&
+          cartItems[0].variantInfo.currencySymbol !== data.currencySymbol
+        ) {
+          client.writeData({
+            data: {
+              isCurrencyError: true
+            }
+          });
         } else {
           const cartItem = {
             productId,
@@ -90,16 +138,12 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
           };
           cartItems.push(cartItem);
           localStorage.setItem('guestCart', JSON.stringify(cartItems));
+          client.writeData({
+            data: {
+              isCurrencyError: false
+            }
+          });
         }
-      } else {
-        const cartItem = {
-          productId,
-          variantInfo: data,
-          currentPrice,
-          price
-        };
-        cartItems.push(cartItem);
-        localStorage.setItem('guestCart', JSON.stringify(cartItems));
       }
 
       client.writeData({
@@ -160,6 +204,8 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                       price={price}
                       discount={discount}
                       currency={currency}
+                      data={data}
+                      setData={setData}
                     />
                     {renderWithOutLink()}
                     <ProductDetailAccordion description={description} />
@@ -185,6 +231,8 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
                       price={price}
                       discount={discount}
                       currency={currency}
+                      data={data}
+                      setData={setData}
                     />
                     {renderWithOutLink()}
                     <ProductDetailAccordion description={description} />

@@ -130,8 +130,8 @@ const ShoppingCartItem = ({
               />
             </div>
             <div className="item--price">
+              {(currentPrice * variant['quantity']).toFixed(2)}{' '}
               {currency && currency.symbol}
-              {(currentPrice * variant['quantity']).toFixed(2)}
             </div>
           </div>
         </div>

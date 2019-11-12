@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import gql from 'graphql-tag';
 import Fade from 'react-reveal/Fade';
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
@@ -18,6 +19,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   );
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalPriceWithOutDiscount, settotalPriceWithOutDiscount] = useState(0);
+  const [currencySymbol, setCurrencySymbol] = useState('');
   const [changeCount, setChangeCount] = useState(0);
   const [orderInfo, setOrderInfo] = useState({});
   const [renderOrder, setRenderOrder] = useState(false);
@@ -27,21 +29,28 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, [changeCount]);
+
   useEffect(() => {
     if (localCart) {
       let totalprice = 0;
       let totalpricewithoutdiscount = 0;
+      if (localCart.length > 0) {
+        setCurrencySymbol(localCart[0].variantInfo.currencySymbol);
+      }
+
       for (let i = 0; i < localCart.length; i++) {
         totalprice +=
           localCart[i].currentPrice * localCart[i].variantInfo.quantity;
         totalpricewithoutdiscount +=
           localCart[i].price * localCart[i].variantInfo.quantity;
+
         setTotalPrice(totalprice);
         settotalPriceWithOutDiscount(totalpricewithoutdiscount);
       }
     }
     // Calculate total price
   }, [localCart]);
+
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));
   }, []);
@@ -59,6 +68,33 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     setChangeCount(changeCount + 1);
   };
 
+  const CURRENCY_ERROR = gql`
+    query isCurrencyError {
+      player @client {
+        isStarted
+        playingState
+      }
+      isCurrencyError @client
+    }
+  `;
+
+  const { isCurrencyError } = client.readQuery({ query: CURRENCY_ERROR });
+
+  const renderError = () => {
+    setTimeout(() => {
+      client.writeData({
+        data: {
+          isCurrencyError: false
+        }
+      });
+    }, 3000);
+
+    return (
+      <p style={{ color: 'red' }}>
+        Product not added in cart. Only same currency products can be added.
+      </p>
+    );
+  };
   return (
     <Fade right duration={300}>
       <div className="shoppingcart--container">
@@ -85,7 +121,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
             })
           }></i>
         <div className="productdetail--seperator" />
-
+        {isCurrencyError ? renderError() : null}
         {!localCart || localCart.length === 0 ? (
           <ShoppingCartEmpty />
         ) : (
@@ -147,6 +183,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                 checkoutProcess={checkoutProcess}
                 setCheckoutProcess={setCheckoutProcess}
                 orderInfo={orderInfo}
+                currencySymbol={currencySymbol}
               />
             )}
           </>
