@@ -77,7 +77,6 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
     <div className="settingsBtn-wrapper">
       <Query query={CONTROLBAR}>
         {({ data: { player } }) => {
-          console.log(player.isSettingMenuOpen);
           if (player.isSettingMenuOpen)
             return (
               <SettingsPoper
