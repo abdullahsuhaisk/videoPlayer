@@ -7,7 +7,7 @@ import OverlayScreen from './features/Overlay/OverlayScreen';
 import { getProdLinkIdApollo, getParams } from './hooks/ProdLinkHook';
 import { GET_VIDEO, GET_PLAYER } from './components/Base/AppQueries';
 import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerIndicator';
-import { httpToHttps } from './utils/httpTohttps';
+// import { httpToHttps } from './utils/httpTohttps';
 import { sourceParser } from './utils/sourceParser';
 import Error from './components/Error/Error';
 import Spinner from './components/Spinner/Spinner';
@@ -42,15 +42,14 @@ const App = ({ client }) => {
           }
           if (data.prodLink === null) return <div>No video</div>;
           const { id } = data.prodLink;
-          {
-            /* console.log(id); */
-          }
           client.writeData({ data: { prodlinkId: id } });
           const { video } = data.prodLink;
           const { image } = data.prodLink;
-          const poster =
+          {
+            /* const poster =
             (image && httpToHttps(image.imageUrl)) ||
-            'https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg';
+            'https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg'; */
+          }
           const source = sourceParser(video.qualities);
           // Above the variable has src and type props in source array
           return (

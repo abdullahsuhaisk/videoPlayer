@@ -40,8 +40,8 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
         }
       }
     });
-    setqualityMenuToggle(false);
-    setVideoSpeedIsOpen(false);
+    // setqualityMenuToggle(false);
+    // setVideoSpeedIsOpen(false);
   };
 
   const playBackSpeedHandler = (item) => {
@@ -54,7 +54,7 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
       }
     });
     videoPlayer.playbackRate(item);
-    setVideoSpeedIsOpen(false);
+    // setVideoSpeedIsOpen(false);
   };
 
   // useEffect(() => {
@@ -74,13 +74,10 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
   //   }
   // };
   return (
-    <div
-      className="settingsBtn-wrapper"
-      onClick={() => {
-        settingsHandler();
-      }}>
+    <div className="settingsBtn-wrapper">
       <Query query={CONTROLBAR}>
         {({ data: { player } }) => {
+          console.log(player.isSettingMenuOpen);
           if (player.isSettingMenuOpen)
             return (
               <SettingsPoper
@@ -98,7 +95,14 @@ const ControlBarSettingsContainer = ({ client, videoPlayer }) => {
           return null;
         }}
       </Query>
-      <img src={SettingsIcon} alt="Settings Icon" className="settingsBtn" />
+      <img
+        src={SettingsIcon}
+        alt="Settings Icon"
+        className="settingsBtn"
+        onClick={() => {
+          settingsHandler();
+        }}
+      />
     </div>
   );
 };

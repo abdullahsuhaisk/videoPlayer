@@ -92,7 +92,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
           <>
             {spinnerShow === true ? (
               <div style={{ height: '85%' }}>
-                <Spinner backgroundColor="#14be82" />
+                <Spinner backgroundColor="#f3fcf9" spinnerColor="#14be82" />
               </div>
             ) : renderOrder ? (
               <iframe title="payment" id="iframeForPayment">
