@@ -44,7 +44,9 @@ const App = ({ client }) => {
           const { id } = data.prodLink;
           client.writeData({ data: { prodlinkId: id } });
           const { video } = data.prodLink;
-          const { image } = data.prodLink;
+          {
+            /* const { image } = data.prodLink; */
+          }
           {
             /* const poster =
             (image && httpToHttps(image.imageUrl)) ||

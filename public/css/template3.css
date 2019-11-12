@@ -6141,4 +6141,12 @@
     text-align: center;
     margin: auto;
 }
+@media screen and (max-width:1100px) {
+  .shoppingcart--container .shoppingcart--content-empty .shopping-cart--empty-info h1 {
+    font-size: 25px;
+  }
+  .shoppingcart--title {
+    font-size: 35px;
+  }
+}
  /* Suha's Code Ends Here */

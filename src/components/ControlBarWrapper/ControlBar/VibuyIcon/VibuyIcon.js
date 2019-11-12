@@ -5,6 +5,7 @@ import { withApollo } from 'react-apollo';
 import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import VibuyIcon3 from '../../../../assets/icons/Vibuy-Glphy.svg';
 import VibuyIcon2 from '../../../../assets/icons/Vibuy-Line.svg';
+import { getParams } from '../../../../hooks/ProdLinkHook';
 
 const VibuyIcon = ({ client }) => {
   const HOTSPOT_SHOWING = gql`
@@ -14,6 +15,19 @@ const VibuyIcon = ({ client }) => {
       }
     }
   `;
+  useEffect(() => {
+    const isTrueSet = getParams('vibuy') === 'true';
+    client.writeData({
+      data: {
+        player: {
+          __typename: 'Player',
+          playingState: 'PLAYING',
+          hotSpotShowing: isTrueSet,
+          isSettingMenuOpen: false
+        }
+      }
+    });
+  }, []);
 
   const {
     player: { hotSpotShowing }
