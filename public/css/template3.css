@@ -6168,6 +6168,7 @@
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
+ .shoppingcart--checkoutbtn,
  .checkoutprocess--checkoutbtn,
  .form-group label, 
  .form-group label.with-image,
@@ -6227,6 +6228,7 @@
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
+ .shoppingcart--checkoutbtn
  .checkoutprocess--checkoutbtn,
  .form-group label, 
  .form-group label.with-image,
