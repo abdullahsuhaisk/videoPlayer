@@ -28,8 +28,14 @@ export const Multiselect = styled(Select)`
     border-radius: 0px;
     padding: 0;
     font-family: 'Nunito Sans', sans-serif;
-  }
 
+    @media screen and (min-width: 851px) and (max-width: 999px) {
+      font-size: 20px !important;
+    }
+    @media screen and (min-width: 1000px) and (max-width: 1200px) {
+      font-size: 18px !important;
+    }
+  }
   & .select__control {
     font-size: smaller;
     border: solid 1px
@@ -71,6 +77,13 @@ export const Multiselect = styled(Select)`
     border-radius: 0px;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 14px;
+
+    @media screen and (min-width: 851px) and (max-width: 999px) {
+      font-size: 20px !important;
+    }
+    @media screen and (min-width: 1000px) and (max-width: 1200px) {
+      font-size: 18px !important;
+    }
   }
 
   & .select__value-container {

@@ -6152,11 +6152,11 @@
  @media screen and (min-width: 851px) and (max-width: 999px){
 
   .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
-    font-size: 16px !important;
+    font-size: 18px !important;
 }
 
-.form-group input {
-  padding-left: 18px;
+.form-group input, .form-group textarea {
+  padding-left: 20px;
 }
  
  .productdetail--sizes-wrapper .productdetail--label, 
@@ -6168,7 +6168,56 @@
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
  .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
- .shoppingcart--checkout-container .shoppingcart--checkoutbtn,
+ .checkoutprocess--checkoutbtn,
+ .form-group label, 
+ .form-group label.with-image,
+ .form--error,
+ .form-group .form--error,
+ .checkbox
+   {
+   font-size: 22px !important;
+  }
+
+  
+
+ .shopcart--item-container .item-info .item-name {
+  font-size: 24px !important;
+}
+
+ .accordion--container .accordion--header .title, 
+ .shopcart--item-container .item-info .item--price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price  {
+  font-size: 26px !important;
+}
+
+  .ProductDetail--information--title--h2,
+  .productdetail--price-wrapper .current-price,
+  .shoppingcart--container .shoppingcart--title {
+    font-size: 30px !important;
+}
+
+}
+
+ @media screen and (min-width: 1000px) and (max-width: 1200px){
+
+  .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
+    font-size: 16px !important;
+}
+
+.form-group input, .form-group textarea {
+  font-size: 18px !important;
+}
+ 
+ .productdetail--sizes-wrapper .productdetail--label, 
+ .productdetail--colors-wrapper .productdetail--label, 
+ .productdetail--quantity-wrapper .productdetail--label,
+ .ProductDetail--addToCartBtn,
+ .accordion--container .accordion--content, 
+ .shopcart--item-container .item-info .item-variant,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
  .checkoutprocess--checkoutbtn,
  .form-group label, 
  .form-group label.with-image,
@@ -6195,57 +6244,6 @@
   .ProductDetail--information--title--h2,
   .productdetail--price-wrapper .current-price,
   .shoppingcart--container .shoppingcart--title {
-    font-size: 28px !important;
-}
-
-}
-
- @media screen and (min-width: 1000px) and (max-width: 1200px){
-
-  .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
-    font-size: 14px !important;
-}
-
-.form-group input {
-  padding-left: 16px;
-}
- 
- .productdetail--sizes-wrapper .productdetail--label, 
- .productdetail--colors-wrapper .productdetail--label, 
- .productdetail--quantity-wrapper .productdetail--label,
- .ProductDetail--addToCartBtn,
- .accordion--container .accordion--content, 
- .shopcart--item-container .item-info .item-variant,
- .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
- .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
- .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
- .shoppingcart--checkout-container .shoppingcart--checkoutbtn,
- .checkoutprocess--checkoutbtn,
- .form-group label, 
- .form-group label.with-image,
- .form--error,
- .form-group .form--error,
- .checkbox
-   {
-   font-size: 18px !important;
-  }
-
-  
-
- .shopcart--item-container .item-info .item-name {
-  font-size: 20px !important;
-}
-
- .accordion--container .accordion--header .title, 
- .shopcart--item-container .item-info .item--price,
- .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title,
- .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price  {
-  font-size: 22px !important;
-}
-
-  .ProductDetail--information--title--h2,
-  .productdetail--price-wrapper .current-price,
-  .shoppingcart--container .shoppingcart--title {
-    font-size: 24px !important;
+    font-size: 26px !important;
 }
  }
