@@ -5457,10 +5457,9 @@
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31
+  line-height: 1.31;
   text-align: left;
   color: #0b2443;
-
 }
 
 .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price {
@@ -5531,7 +5530,7 @@
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31
+  line-height: 1.31;
   text-align: center;
   color: #ffffff;
   cursor: pointer;
@@ -5631,11 +5630,10 @@
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.31
+  line-height: 1.31;
   text-align: left;
   color: #666666;
   margin-bottom: 10px;
-  
 }
 
 .shopcart--item-container .item-info .item-quanity-price {
@@ -6150,3 +6148,104 @@
   }
 }
  /* Suha's Code Ends Here */
+
+ @media screen and (min-width: 851px) and (max-width: 999px){
+
+  .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
+    font-size: 16px !important;
+}
+
+.form-group input {
+  padding-left: 18px;
+}
+ 
+ .productdetail--sizes-wrapper .productdetail--label, 
+ .productdetail--colors-wrapper .productdetail--label, 
+ .productdetail--quantity-wrapper .productdetail--label,
+ .ProductDetail--addToCartBtn,
+ .accordion--container .accordion--content, 
+ .shopcart--item-container .item-info .item-variant,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
+ .shoppingcart--checkout-container .shoppingcart--checkoutbtn,
+ .checkoutprocess--checkoutbtn,
+ .form-group label, 
+ .form-group label.with-image,
+ .form--error,
+ .form-group .form--error,
+ .checkbox
+   {
+   font-size: 20px !important;
+  }
+
+  
+
+ .shopcart--item-container .item-info .item-name {
+  font-size: 22px !important;
+}
+
+ .accordion--container .accordion--header .title, 
+ .shopcart--item-container .item-info .item--price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price  {
+  font-size: 24px !important;
+}
+
+  .ProductDetail--information--title--h2,
+  .productdetail--price-wrapper .current-price,
+  .shoppingcart--container .shoppingcart--title {
+    font-size: 28px !important;
+}
+
+}
+
+ @media screen and (min-width: 1000px) and (max-width: 1200px){
+
+  .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
+    font-size: 14px !important;
+}
+
+.form-group input {
+  padding-left: 16px;
+}
+ 
+ .productdetail--sizes-wrapper .productdetail--label, 
+ .productdetail--colors-wrapper .productdetail--label, 
+ .productdetail--quantity-wrapper .productdetail--label,
+ .ProductDetail--addToCartBtn,
+ .accordion--container .accordion--content, 
+ .shopcart--item-container .item-info .item-variant,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-detail .price-red,
+ .shoppingcart--checkout-container .shoppingcart--checkoutbtn,
+ .checkoutprocess--checkoutbtn,
+ .form-group label, 
+ .form-group label.with-image,
+ .form--error,
+ .form-group .form--error,
+ .checkbox
+   {
+   font-size: 18px !important;
+  }
+
+  
+
+ .shopcart--item-container .item-info .item-name {
+  font-size: 20px !important;
+}
+
+ .accordion--container .accordion--header .title, 
+ .shopcart--item-container .item-info .item--price,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .title,
+ .shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total .price  {
+  font-size: 22px !important;
+}
+
+  .ProductDetail--information--title--h2,
+  .productdetail--price-wrapper .current-price,
+  .shoppingcart--container .shoppingcart--title {
+    font-size: 24px !important;
+}
+ }
