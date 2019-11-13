@@ -6197,6 +6197,15 @@
     font-size: 30px !important;
 }
 
+.shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total {
+  margin-bottom: 25px;
+}
+
+.shoppingcart--container .shoppingcart--checkout-container {
+
+  height: 342px;
+}
+
 }
 
  @media screen and (min-width: 1000px) and (max-width: 1200px){
@@ -6228,8 +6237,6 @@
    font-size: 20px !important;
   }
 
-  
-
  .shopcart--item-container .item-info .item-name {
   font-size: 22px !important;
 }
@@ -6245,5 +6252,14 @@
   .productdetail--price-wrapper .current-price,
   .shoppingcart--container .shoppingcart--title {
     font-size: 26px !important;
+}
+
+.shoppingcart--container .shoppingcart--checkout-container .shoppingcart--checkout-total {
+  margin-bottom: 25px;
+}
+
+.shoppingcart--container .shoppingcart--checkout-container {
+
+  height: 333px;
 }
  }
