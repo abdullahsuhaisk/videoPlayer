@@ -75,12 +75,14 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
         playingState
       }
       isCurrencyError @client
+      isQuantityError @client
     }
   `;
 
   const { isCurrencyError } = client.readQuery({ query: CURRENCY_ERROR });
+  const { isQuantityError } = client.readQuery({ query: CURRENCY_ERROR });
 
-  const renderError = () => {
+  const renderCurrencyError = () => {
     setTimeout(() => {
       client.writeData({
         data: {
@@ -92,6 +94,23 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
     return (
       <p style={{ color: 'red' }}>
         Product not added in cart. Only same currency products can be added.
+      </p>
+    );
+  };
+
+  const renderQuantityError = () => {
+    setTimeout(() => {
+      client.writeData({
+        data: {
+          isQuantityError: false
+        }
+      });
+    }, 3000);
+
+    return (
+      <p style={{ color: 'red' }}>
+        Product quantity not increased. Maximum amount of stock available is
+        already in cart.
       </p>
     );
   };
@@ -121,7 +140,8 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
             })
           }></i>
         <div className="productdetail--seperator" />
-        {isCurrencyError ? renderError() : null}
+        {isCurrencyError ? renderCurrencyError() : null}
+        {isQuantityError ? renderQuantityError() : null}
         {!localCart || localCart.length === 0 ? (
           <ShoppingCartEmpty />
         ) : (
@@ -171,6 +191,7 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
                   setChangeCount={setChangeCount}
                   checkoutProcess={checkoutProcess}
                   setCheckoutProcess={setCheckoutProcess}
+                  currencySymbol={currencySymbol}
                 />
               </Payment>
             ) : null}

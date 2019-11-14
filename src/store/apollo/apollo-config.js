@@ -212,6 +212,7 @@ const setInitialCache = () => {
         left: 0
       }
     },
+    isQuantityError: false,
     isCurrencyError: false,
     isShoppingCartShowing: false,
     whichTabItemIsRendering: 'productInThisScene',
