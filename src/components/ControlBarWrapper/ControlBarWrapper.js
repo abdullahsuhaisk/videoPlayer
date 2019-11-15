@@ -44,15 +44,15 @@ const ControlBarWrapper = (props) => {
 
   // console.log(controlbarShowing);
 
-  if (controlbarShowing === true) {
-    return (
-      <div className="ControlBar" onMouseEnter={() => mouseEnterHandler()}>
-        <VideoProgressBar videoPlayer={videoPlayer} />
-        <div className="videoControlsContainer">{children}</div>
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div
+      className="ControlBar"
+      onMouseEnter={() => mouseEnterHandler()}
+      style={controlbarShowing === true ? {} : { display: 'none' }}>
+      <VideoProgressBar videoPlayer={videoPlayer} />
+      <div className="videoControlsContainer">{children}</div>
+    </div>
+  );
 };
 
 export default withApollo(ControlBarWrapper);
