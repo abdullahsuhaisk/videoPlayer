@@ -39,12 +39,13 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   if (product) {
     const images = product.images && product.images;
     const company = product.company && product.company;
-    const { currentPrice, price, discount } = product;
+    const { currentPrice, price, discount, stockCount } = product;
     const productId = product.id;
     const description = product.description && product.description;
     const currency = product.currency && product.currency;
     const brand = product.brand && product.brand;
     const link = product.link && product.link;
+    const hasVariants = product.hasVariants && product.hasVariants;
 
     const handleAddToCart = () => {
       const isAdded = cartItems.find(
@@ -78,20 +79,27 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
             ...data,
             quantity: data.quantity + selectedCartItem.variantInfo.quantity
           };
+          if (newData.quantity > stockCount) {
+            client.writeData({
+              data: {
+                isQuantityError: true
+              }
+            });
+          } else {
+            selectedCartItem.variantInfo = newData;
 
-          selectedCartItem.variantInfo = newData;
+            cartItems[selectedCartItemIndex] = {
+              ...selectedCartItem,
+              variantInfo: newData
+            };
 
-          cartItems[selectedCartItemIndex] = {
-            ...selectedCartItem,
-            variantInfo: newData
-          };
-
-          localStorage.setItem('guestCart', JSON.stringify(cartItems));
-          client.writeData({
-            data: {
-              isCurrencyError: false
-            }
-          });
+            localStorage.setItem('guestCart', JSON.stringify(cartItems));
+            client.writeData({
+              data: {
+                isCurrencyError: false
+              }
+            });
+          }
         } else {
           // eslint-disable-next-line no-lonely-if
           if (
@@ -174,13 +182,31 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     const renderWithOutLink = () => {
       return showLink === false ? (
         <>
-          <ProductDetailVariant data={data} setData={setData} />
-          <ProductDetailQuantity variant={data} setVariant={setData} />
-          <ProductDetailAddToCard
-            handleAddToCart={handleAddToCart}
-            cartItems={cartItems}
-            productId={productId}
+          {hasVariants ? (
+            <ProductDetailVariant data={data} setData={setData} />
+          ) : null}
+
+          <ProductDetailQuantity
+            variant={data}
+            setVariant={setData}
+            stockCount={stockCount}
           />
+          {stockCount !== 0 ? (
+            <ProductDetailAddToCard
+              handleAddToCart={handleAddToCart}
+              cartItems={cartItems}
+              productId={productId}
+            />
+          ) : (
+            <p
+              style={{
+                color: 'red',
+                textAlign: 'center',
+                marginBottom: '20px'
+              }}>
+              Out Of Stock!
+            </p>
+          )}
         </>
       ) : (
         <ProductDetailGoToLink link={link} />

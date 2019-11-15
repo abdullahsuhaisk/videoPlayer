@@ -35,7 +35,8 @@ const ShoppingCartItem = ({
   setChangeCount,
   changeCount,
   deleteItem,
-  client
+  client,
+  hasVariants
 }) => {
   const carts = JSON.parse(localStorage.getItem('guestCart'));
 
@@ -80,7 +81,7 @@ const ShoppingCartItem = ({
     }
   }, [variant]);
 
-  const { image, name, currentPrice, currency } = product;
+  const { image, name, currentPrice, currency, stockCount } = product;
 
   const setProductIdForDetail = useCallback((productId) => {
     client.writeData({
@@ -117,16 +118,21 @@ const ShoppingCartItem = ({
               onClick={() => setProductIdForDetail(productId)}>
               {name}
             </div>
-            <div className="item-variant">Color: Navy Blazer</div>
-            <div className="item-variant">
-              Size: {sizes[item.variantInfo.size]}
-            </div>
+            {hasVariants ? (
+              <>
+                <div className="item-variant">Color: Navy Blazer</div>
+                <div className="item-variant">
+                  Size: {sizes[item.variantInfo.size]}
+                </div>{' '}
+              </>
+            ) : null}
           </div>
           <div className="item-quanity-price">
             <div className="item--quantity">
               <ProductDetailQuantity
                 variant={variant}
                 setVariant={setVariant}
+                stockCount={stockCount}
               />
             </div>
             <div className="item--price">

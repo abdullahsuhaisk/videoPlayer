@@ -33,7 +33,9 @@ const StyledComponent = styled.div`
   }
 `;
 
-const ProductDetailPriceNew = ({ variant, setVariant }) => {
+const ProductDetailPriceNew = ({ variant, setVariant, stockCount }) => {
+  const [error, setError] = useState(false);
+
   return (
     <StyledComponent>
       <div className="productdetail--quantity-wrapper">
@@ -47,6 +49,7 @@ const ProductDetailPriceNew = ({ variant, setVariant }) => {
                   ...variant,
                   quantity: variant.quantity - 1
                 });
+                setError(false);
               }}>
               <MinusIcon />
             </div>
@@ -61,11 +64,18 @@ const ProductDetailPriceNew = ({ variant, setVariant }) => {
           <div
             className="increment"
             onClick={() => {
-              setVariant({ ...variant, quantity: variant.quantity + 1 });
+              if (variant.quantity + 1 > stockCount === false) {
+                setVariant({ ...variant, quantity: variant.quantity + 1 });
+              } else {
+                setError(true);
+              }
             }}>
             <PlusIcon />
           </div>
         </div>
+        {error ? (
+          <p style={{ color: 'red', textAlign: 'center' }}>Max Stock Limit!</p>
+        ) : null}
       </div>
     </StyledComponent>
   );

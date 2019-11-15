@@ -10,6 +10,7 @@ export const GET_PRODUCT = gql`
       parentId
       description
       link
+      hasVariants
       brand {
         id
         name
@@ -38,6 +39,7 @@ export const GET_PRODUCT = gql`
       }
       rank
       price
+      stockCount
       discount
       currentPrice @client
       currency {
