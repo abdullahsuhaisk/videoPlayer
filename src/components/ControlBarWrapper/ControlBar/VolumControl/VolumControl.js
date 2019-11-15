@@ -6,10 +6,7 @@ import VolumeOffIcon from '../../../../assets/icons/VolumeOffIcon.svg';
 const VolumControl = (props) => {
   const { videoPlayer } = props;
   const [playerValume, setPlayerValume] = useState(100);
-  // const [muted, setMuted] = useState(false);
   const [lastVolume, setlastVolume] = useState(100);
-  // console.log(videoPlayer.volume());
-  // console.log(playerValume);
 
   useEffect(() => {
     videoPlayer.volume(playerValume / 100);
@@ -45,12 +42,10 @@ const VolumControl = (props) => {
   const soundsOffHandler = () => {
     if (videoPlayer.volume() !== 0) {
       setlastVolume(playerValume);
-      console.log(lastVolume);
       setPlayerValume(0);
       videoPlayer.volume(playerValume);
     }
     if (videoPlayer.volume() === 0) {
-      console.log(lastVolume);
       setPlayerValume(lastVolume);
       videoPlayer.volume(playerValume);
     }
