@@ -5,7 +5,7 @@ import VolumeOffIcon from '../../../../assets/icons/VolumeOffIcon.svg';
 
 const VolumControl = (props) => {
   const { videoPlayer } = props;
-  const [playerValume, setPlayerValume] = useState(100);
+  const [playerValume, setPlayerValume] = useState(50);
   const [lastVolume, setlastVolume] = useState(100);
 
   useEffect(() => {

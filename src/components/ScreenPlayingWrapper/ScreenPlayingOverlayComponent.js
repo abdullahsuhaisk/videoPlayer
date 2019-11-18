@@ -86,37 +86,6 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
     });
   };
 
-  // useEffect(() => {}, [mouseMove]);
-
-  // CODE FOR MOUSE MOVE ENDS HERE
-
-  // useEffect(() => {
-  //   document.addEventListener('keypress', (e) => {
-  //     PauseKeyHandler(e);
-  //     console.log('play overlay');
-  //   });
-  //   return () => {
-  //     document.removeEventListener('keypress', PauseKeyHandler);
-  //     console.log('removed');
-  //   };
-  // }, []);
-
-  // const PauseKeyHandler = (e) => {
-  //   if (e.code === 'Space') {
-  //     if (!videoPlayer.paused()) {
-  //       client.mutate({
-  //         mutation: PAUSE
-  //       });
-  //       videoPlayer.pause();
-  //     }
-  //     if (videoPlayer.pause())
-  //       client.mutate({
-  //         mutation: PLAY
-  //       });
-  //     videoPlayer.play();
-  //   }
-  // };
-
   const OverlayClickHandler = () => {
     client.mutate({
       mutation: PAUSE
