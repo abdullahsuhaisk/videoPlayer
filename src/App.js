@@ -52,8 +52,25 @@ const App = ({ client }) => {
             (image && httpToHttps(image.imageUrl)) ||
             'https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg'; */
           }
+
           const source = sourceParser(video.qualities);
-          // Above the variable has src and type props in source array
+
+          {
+            /* const source = {
+            src:
+              'https://storage.googleapis.com/vibuy-uploads/converted/test7/manifest.m3u8',
+            type: 'application/x-mpegURL'
+          }; */
+          }
+
+          {
+            /* const source = {
+            src:
+              'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+            type: 'application/x-mpegURL'
+          }; */
+          }
+
           return (
             <Query query={GET_PLAYER}>
               {({ data: { player } }) => {
