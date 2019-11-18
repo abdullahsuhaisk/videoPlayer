@@ -136,8 +136,11 @@ const OverlayScreen = ({ playingState, client }) => {
         });
         videoPlayer.pause();
       }
+
       if (e.code === 'ArrowRight') {
-        videoPlayer.currentTime(videoPlayer.currentTime() + 5);
+        if (videoPlayer.currentTime() + 5 < videoPlayer.duration()) {
+          videoPlayer.currentTime(videoPlayer.currentTime() + 5);
+        }
       }
       if (e.code === 'ArrowLeft') {
         videoPlayer.currentTime(videoPlayer.currentTime() - 5);
@@ -151,7 +154,9 @@ const OverlayScreen = ({ playingState, client }) => {
           videoPlayer.play();
         }
         if (e.code === 'ArrowRight') {
-          videoPlayer.currentTime(videoPlayer.currentTime() + 5);
+          if (videoPlayer.currentTime() + 5 < videoPlayer.duration()) {
+            videoPlayer.currentTime(videoPlayer.currentTime() + 5);
+          }
         }
         if (e.code === 'ArrowLeft') {
           videoPlayer.currentTime(videoPlayer.currentTime() - 5);
