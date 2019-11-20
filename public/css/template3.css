@@ -6205,6 +6205,10 @@
   border: 1px solid #fff;
 }
 
+.vb--hotspot-card-list-cards {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
  @media screen and (min-width: 851px) and (max-width: 999px){
 
   .Template1 .ProductDetail--information--title .ProductDetail--company--title--h2 {
