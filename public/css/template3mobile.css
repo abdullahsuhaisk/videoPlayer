@@ -5975,19 +5975,19 @@
 
 .slick-dots {
   position: absolute;
-  left: 15px;
-  top: 50%;
+  left: 50%;
+  bottom: 15px;
   width: auto;
   padding: 0;
   margin: 0 auto;
   list-style: none;
   text-align: center;
   background: transparent;
-  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 ul.slick-dots {
   display: flex !important;
-  flex-direction: column;
+  flex-direction: row;
 }
 .slick-dots li {
   position: relative;
