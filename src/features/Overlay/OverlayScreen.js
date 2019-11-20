@@ -9,13 +9,13 @@ import Scaler from '../../components/Scaler/Scaler';
 import ReadyScreen from './ReadyScreen/ReadyScreen';
 import PlayingScreen from './PlayingScreen/PlayingScreen';
 import PausedScreen from './PausedScreen/PausedScreen';
+import ReplayScreen from './ReplayScreen/ReplayScreen';
 import { PLAYER } from '../../common/constants';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
 import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
 
 import template3 from '../../components/Template3/Template3.json';
 import template2 from './template.json';
-import { timeout } from 'q';
 
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');
@@ -102,14 +102,23 @@ const Screen = ({ playingState, videoPlayer }) => {
                 temp={template}
               />
             )}
-            {// TODO: We must move to inside Player Component
-            playingState !== PLAYER.READY && template && (
-              <VideoControlBarScreen
-                videoPlayer={videoPlayer}
+            {playingState === PLAYER.REPLAY && template && (
+              <ReplayScreen
                 playingState={playingState}
+                videoPlayer={videoPlayer}
                 temp={template}
               />
             )}
+            {// TODO: We must move to inside Player Component
+            playingState !== PLAYER.READY &&
+              playingState !== PLAYER.REPLAY &&
+              template && (
+                <VideoControlBarScreen
+                  videoPlayer={videoPlayer}
+                  playingState={playingState}
+                  temp={template}
+                />
+              )}
           </>
         );
       }}

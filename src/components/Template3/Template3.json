@@ -137,6 +137,17 @@
           }
         ]
       }
+    },
+    {
+      "type": "ScreenReplayWrapper",
+      "props": {
+        "children": [
+          {
+            "type": "ScreenReplayOverlayComponent",
+            "props": {}
+          }
+        ]
+      }
     }
   ]
 }
