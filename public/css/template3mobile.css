@@ -3783,9 +3783,9 @@
   /* For IE10 */
   color: #f30640;
 }
-.Template1 .videoProgressBar:hover progress {
+/* .Template1 .videoProgressBar:hover progress {
   opacity: 0.5;
-}
+} */
 .Template1 .videoProgressBar:hover .HotspotPoint {
   top: 4px;
   transition-property: none;
