@@ -78,7 +78,9 @@ const ControlBarShoppingIcon = ({ client }) => {
         }}>
         {hasLink ? null : (
           <React.Fragment>
-            <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+            {shoppingCartItemsCount > 0 ? (
+              <div className="addtocart-counter">{shoppingCartItemsCount}</div>
+            ) : null}
             <img src={AddToCartIcon} alt="Shopping Cart" className="cartBtn" />
           </React.Fragment>
         )}
