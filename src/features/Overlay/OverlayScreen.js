@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import videoJs from 'video.js';
 import { Query, withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
+
 import { PAUSE, PLAY } from '../../Queries/Player/PlayerMutations';
 // import './overlay.css';
 import SafeArea from '../../components/SafeArea/SafeArea';
@@ -12,15 +14,13 @@ import PausedScreen from './PausedScreen/PausedScreen';
 import { PLAYER } from '../../common/constants';
 import VideoControlBarScreen from '../../components/ControlBarWrapper/VideoControlBarScreen';
 import { GET_LAYOUT } from '../../Queries/Player/PlayerQueries';
-
 import template3 from '../../components/Template3/Template3.json';
 import template2 from './template.json';
-import { timeout } from 'q';
 
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');
   // console.log(elements);
-  for (let i = 2; i < elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     // console.log(elements[i].href);
     if (
       elements[i].href ===
@@ -82,7 +82,6 @@ const Screen = ({ playingState, videoPlayer }) => {
       {({ data: { layout } }) => {
         if (layout.width < 851) seTtemplateType('Mobile');
         else seTtemplateType('Normal');
-
         return (
           <>
             {playingState === PLAYER.PLAYING && template && (
@@ -119,14 +118,31 @@ const Screen = ({ playingState, videoPlayer }) => {
 
 const OverlayScreen = ({ playingState, client }) => {
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+  const { isShoppingCartShowing } = client.readQuery({
+    query: gql`
+      query isisShoppingCartShow {
+        player @client {
+          isStarted
+          playingState
+        }
+        isShoppingCartShowing @client
+      }
+    `
+  });
+  // if (isShoppingCartShowing === true) {
+  //   console.log('removing');
+  //   document.removeEventListener('keyup', KeyPressHandler);
+  // }
 
-  useEffect(() => {
-    // Which video player logic
-    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
-    setVideoPlayer(videoPlayerJs);
-    // Set video Player
-    document.addEventListener('keyup', KeyPressHandler);
-  }, [videoPlayer]);
+  // useEffect(() => {
+  //   console.log(isShoppingCartShowing);
+  //   if (isShoppingCartShowing === true) {
+  //     console.log('removing 2');
+  //     document.removeEventListener('keyup', KeyPressHandler, true);
+  //   } else {
+  //     document.addEventListener('keyup', KeyPressHandler, true);
+  //   }
+  // }, [isShoppingCartShowing]);
 
   const KeyPressHandler = (e) => {
     if (videoPlayer && !videoPlayer.paused()) {
@@ -164,6 +180,17 @@ const OverlayScreen = ({ playingState, client }) => {
       }
     }
   };
+
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    setVideoPlayer(videoPlayerJs);
+    // // Set video Player
+    // document.addEventListener('keyup', KeyPressHandler, true);
+    // return () => {
+    //   document.removeEventListener('keyup', KeyPressHandler, true);
+    // };
+  }, [videoPlayer]);
 
   // useEffect(() => {
   //   // TODO:You can turn back initial state
