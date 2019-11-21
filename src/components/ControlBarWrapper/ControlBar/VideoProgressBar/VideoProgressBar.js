@@ -13,13 +13,14 @@ const VideoProgressBar = ({ videoPlayer, client }) => {
       data: {
         player: {
           __typename: 'Player',
-          playingState: 'READY',
+          playingState: 'REPLAY',
           isReady: false
         },
         isLoginFormShowing: false,
         isProfileOpen: false
       }
     });
+    videoPlayer.paused();
   }
 
   const progressBarHandler = useCallback(() => {

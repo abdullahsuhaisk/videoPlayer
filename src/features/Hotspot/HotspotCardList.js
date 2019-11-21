@@ -9,14 +9,12 @@ const HotspotCardList = ({ styles, hotspots }) => {
   return (
     <React.Fragment>
       <Wrapper className="vb--hotspot-card-list" styles={styles}>
-        <VerticalScroll style={{ width: '100%' }}>
-          <div className="vb--hotspot-card-list-cards">
-            {hotspots &&
-              hotspots.map((hotspot) => {
-                return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
-              })}
-          </div>
-        </VerticalScroll>
+        <div className="vb--hotspot-card-list-cards">
+          {hotspots &&
+            hotspots.map((hotspot) => {
+              return <HotspotCard key={hotspot.id} hotspot={hotspot} />;
+            })}
+        </div>
       </Wrapper>
     </React.Fragment>
   );

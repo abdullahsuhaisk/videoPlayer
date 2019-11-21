@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
       animation-fill-mode: forwards;
       animation-duration: 0.3s;
       animation-timing-function: ease-in-out;
-
+      height: ${(props) => (props.showAccordion ? 'auto' : '0')};
       @keyframes accordianopen {
         from {
           height: 0;

@@ -10,6 +10,16 @@ const StyledComponent = styled.div`
   top: ${(props) => props.yPos};
   transition: all 0.1s linear;
   pointer-events: auto;
+
+  img {
+    width: 90px;
+    height: 90px;
+    transition: all 0.1s ease-in;
+
+    :hover {
+      transform: scale(1.4);
+    }
+  }
 `;
 // const top = `${hotspot.fixedPosition.y * 100}%`;
 // const left = `${hotspot.fixedPosition.x * 100}%`;
@@ -55,16 +65,13 @@ const HotspotImageButton = ({
       <div className="hotspotbutton--shadow">
         <div className="hotspotbutton--wrapper">
           {a === true ? (
-            <img
+            <HotspotImageButton
               src={(imageUrl && imageUrl) || NoImageSmall}
               alt="HotspotButton"
               style={{ width: 90, height: 90, borderRadius: '50%' }}
             />
           ) : (
             <img
-              className={
-                activetedButton === true ? 'hotspotImageHover' : 'hotspotImage'
-              }
               src={
                 activetedButton === true
                   ? HotspotActiveProductIcon
