@@ -4051,7 +4051,8 @@
 }
 .Template1 .scroll {
   overflow-y: scroll;
-  scrollbar-width: none
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .Template1 .scroll::-webkit-scrollbar {
   background-color: transparent;
@@ -5287,6 +5288,7 @@
   border-bottom: 1px solid #f4f4f4;
   padding-bottom: 30px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .accordion--container .accordion--header {
@@ -5339,8 +5341,14 @@
   z-index: 3;
   pointer-events: auto;
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
+.shoppingcart--container ::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+  display: none;
+}
 .shoppingcart--container .shoppingcart--title {
   font-size: 24px;
   font-weight: bold;
@@ -5358,6 +5366,7 @@
   height: 630px;
   overflow-y: scroll;
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .shoppingcart--container .shoppingcart-items-container::-webkit-scrollbar {
   background-color: transparent;

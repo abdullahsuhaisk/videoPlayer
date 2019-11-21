@@ -4121,6 +4121,7 @@
 .Template1 .scroll {
   overflow-y: scroll;
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .Template1 .scroll::-webkit-scrollbar {
   background-color: transparent;
@@ -5371,6 +5372,7 @@
   border-bottom: 1px solid #f4f4f4;
   padding-bottom: 30px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .accordion--container .accordion--header {
@@ -5423,6 +5425,7 @@
   pointer-events: auto;
   overflow: scroll;
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .shoppingcart--container .shoppingcart--title {
@@ -5441,6 +5444,7 @@
   display: flex;
   flex-direction: column;
   height: auto;
+  -ms-overflow-style: none;
 }
 .shoppingcart--container::-webkit-scrollbar {
   background-color: transparent;
