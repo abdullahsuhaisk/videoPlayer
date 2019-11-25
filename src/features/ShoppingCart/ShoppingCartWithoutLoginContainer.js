@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import Fade from 'react-reveal/Fade';
+import ReactGA from 'react-ga';
+
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
 import ShoppingCartItem from '../Product/ProductDetails/Components/Template3/ShoppingCartItem';
@@ -25,6 +27,14 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [renderOrder, setRenderOrder] = useState(false);
   const [checkoutProcess, setCheckoutProcess] = useState(0);
   const [spinnerShow, setSpinnerShow] = useState(false);
+
+  React.useEffect(() => {
+    // console.log(getParams('haslink'));
+    ReactGA.event({
+      category: 'ShoppingCart',
+      action: 'shoppingCartOpened'
+    });
+  }, []);
 
   useEffect(() => {
     setlocalCart(JSON.parse(localStorage.getItem('guestCart')));

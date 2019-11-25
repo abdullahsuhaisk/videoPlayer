@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import ReactGA from 'react-ga';
 // import Player from './features/Player/Player';
 import './i18n/i18n';
 import OverlayContainer from './features/Overlay/OverlayContainer';
@@ -15,6 +16,12 @@ import Spinner from './components/Spinner/Spinner';
 
 const Player = React.lazy(() => import('./features/Player/Player'));
 
+function initializeReactGA() {
+  ReactGA.initialize('UA-153313809-1');
+  // ReactGA.pageview('/prodLinkId');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
 const App = ({ client }) => {
   // React.useEffect(() => {
   //   client
@@ -23,6 +30,11 @@ const App = ({ client }) => {
   // }, []);
   React.useEffect(() => {
     // console.log(getParams('haslink'));
+    initializeReactGA();
+    ReactGA.event({
+      category: 'Video',
+      action: 'loaded'
+    });
   }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
