@@ -21,7 +21,7 @@ import template2 from './template.json';
 function deleteCustomCss() {
   const elements = document.querySelectorAll('link[rel=stylesheet]');
   // console.log(elements);
-  for (let i = 2; i < elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     // console.log(elements[i].href);
     if (
       elements[i].href ===

@@ -108,10 +108,10 @@ const Payment = ({
       });
       localStorage.setItem('guestCart', JSON.stringify([]));
       CREATEORDER(productsArray, data);
+      setSpinnerShow(true);
     } else {
       setError('terms');
     }
-    setSpinnerShow(true);
   };
 
   const [monthValue, setReactSelectMonth] = useState({
