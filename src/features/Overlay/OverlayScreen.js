@@ -128,6 +128,7 @@ const Screen = ({ playingState, videoPlayer }) => {
 
 const OverlayScreen = ({ playingState, client }) => {
   const [videoPlayer, setVideoPlayer] = useState(null); // Which videoPlayer should be renderer
+
   const { isShoppingCartShowing } = client.readQuery({
     query: gql`
       query isisShoppingCartShow {
@@ -139,20 +140,19 @@ const OverlayScreen = ({ playingState, client }) => {
       }
     `
   });
-  // if (isShoppingCartShowing === true) {
-  //   console.log('removing');
-  //   document.removeEventListener('keyup', KeyPressHandler);
-  // }
 
-  // useEffect(() => {
-  //   console.log(isShoppingCartShowing);
-  //   if (isShoppingCartShowing === true) {
-  //     console.log('removing 2');
-  //     document.removeEventListener('keyup', KeyPressHandler, true);
-  //   } else {
-  //     document.addEventListener('keyup', KeyPressHandler, true);
-  //   }
-  // }, [isShoppingCartShowing]);
+  useEffect(() => {
+    // Which video player logic
+    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
+    setVideoPlayer(videoPlayerJs);
+    // // Set video Player
+
+    // if (isShoppingCartShowing === false) {
+    //   document.addEventListener('keyup', KeyPressHandler, false);
+    // } else {
+    //   document.removeEventListener('keyup', KeyPressHandler, true);
+    // }
+  }, [videoPlayer]);
 
   const KeyPressHandler = (e) => {
     if (videoPlayer && !videoPlayer.paused()) {
@@ -190,17 +190,6 @@ const OverlayScreen = ({ playingState, client }) => {
       }
     }
   };
-
-  useEffect(() => {
-    // Which video player logic
-    const videoPlayerJs = videoJs.getPlayer('vjs_video_3');
-    setVideoPlayer(videoPlayerJs);
-    // // Set video Player
-    // document.addEventListener('keyup', KeyPressHandler, true);
-    // return () => {
-    //   document.removeEventListener('keyup', KeyPressHandler, true);
-    // };
-  }, [videoPlayer]);
 
   // useEffect(() => {
   //   // TODO:You can turn back initial state
