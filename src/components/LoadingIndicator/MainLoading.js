@@ -4,7 +4,7 @@ import * as React from 'react';
 export const Bar = ({ progress, animationDuration }) => (
   <div
     style={{
-      background: '#f30640',
+      background: '#201547',
       height: 7,
       left: 0,
       marginLeft: `${(-1 + progress) * 100}%`,

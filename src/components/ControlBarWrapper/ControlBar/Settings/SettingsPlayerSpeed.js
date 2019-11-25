@@ -36,7 +36,7 @@ const SettingsPlayerSpeed = ({
         position: 'absolute',
         bottom: 15,
         right: -80,
-        backgroundColor: 'rgba(0, 1, 16, 0.8)'
+        backgroundColor: 'rgba(0, 0, 0, 0.8)'
       }}>
       <div className="Settings--info">
         <div

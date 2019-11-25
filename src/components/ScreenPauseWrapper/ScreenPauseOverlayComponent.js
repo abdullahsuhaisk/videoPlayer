@@ -12,8 +12,6 @@ const StyledComponent = styled.div`
     z-index: 3;
     top: 50%;
     left: 50%;
-    margin-top: -55px;
-    margin-left: -55px;
     -webkit-animation-name: playscale; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 0.3s; /* Safari 4.0 - 8.0 */
     animation-name: playscale;

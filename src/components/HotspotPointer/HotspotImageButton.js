@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import NoImageSmall from '../../assets/images/NoImageSmall.png';
-import HotspotProductIcon from '../../assets/icons/bag-btn-line.svg';
-import HotspotActiveProductIcon from '../../assets/icons/bag-btn-glphy.svg';
+import BagIcon from '../../assets/icons/BagIcon.svg';
+import BagIconHover from '../../assets/icons/BagIconHover.svg';
 
 const StyledComponent = styled.div`
   position: absolute;
@@ -72,11 +72,7 @@ const HotspotImageButton = ({
             />
           ) : (
             <img
-              src={
-                activetedButton === true
-                  ? HotspotActiveProductIcon
-                  : HotspotProductIcon
-              }
+              src={activetedButton === true ? BagIconHover : BagIcon}
               alt="HotspotButton"
             />
           )}

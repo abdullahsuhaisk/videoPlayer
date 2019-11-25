@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-1,.cls-5{fill:#fff}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:none;stroke-linecap:round}.cls-4,.cls-5{stroke:none}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_2934" d="M0 0h48v48H0z" class="cls-1" data-name="Rectangle 2934" transform="translate(936 516)"/>
+        </clipPath>
+    </defs>
+    <g id="Icon" class="cls-2" transform="translate(-936 -516)">
+        <g id="button-play" transform="translate(932.727 513.818)">
+            <g id="Path_7225" class="cls-3" data-name="Path 7225">
+                <path d="M44.847 24.367L12.12 2.548a2.182 2.182 0 0 0-3.393 1.816V48a2.182 2.182 0 0 0 3.393 1.815L44.847 28a2.182 2.182 0 0 0 0-3.631z" class="cls-4"/>
+                <path d="M10.907 3.682a.68.68 0 0 0-.68.682V48a.68.68 0 0 0 1.061.567L44.013 26.75a.684.684 0 0 0 .002-1.135L11.29 3.798a.69.69 0 0 0-.383-.116m0-1.5c.424 0 .847.123 1.213.366l32.727 21.819a2.185 2.185 0 0 1 0 3.63L12.12 49.815a2.19 2.19 0 0 1-2.24.11A2.183 2.183 0 0 1 8.726 48V4.364a2.18 2.18 0 0 1 2.18-2.182z" class="cls-5"/>
+            </g>
+        </g>
+    </g>
+</svg>

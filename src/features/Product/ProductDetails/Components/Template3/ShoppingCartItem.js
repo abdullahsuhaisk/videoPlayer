@@ -120,12 +120,31 @@ const ShoppingCartItem = ({
             </div>
             {hasVariants ? (
               <>
-                <div className="item-variant">Color: Navy Blazer</div>
                 <div className="item-variant">
+                  Color:
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsyg6BAbfDy81ZiXSeHMRoFvF0aaOLxit-MH7fv6PfVXNjKx0o&s"
+                    alt=""
+                  />
+                </div>
+                {/* <div className="item-variant">
                   Size: {sizes[item.variantInfo.size]}
-                </div>{' '}
+                </div> */}
               </>
-            ) : null}
+            ) : (
+              <>
+                {/* <div className="item-variant">
+                  Color:
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsyg6BAbfDy81ZiXSeHMRoFvF0aaOLxit-MH7fv6PfVXNjKx0o&s"
+                    alt=""
+                  />
+                </div> */}
+                {/* <div className="item-variant">
+                  Size: {sizes[item.variantInfo.size]}
+                </div> */}
+              </>
+            )}
           </div>
           <div className="item-quanity-price">
             <div className="item--quantity">
