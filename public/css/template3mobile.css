@@ -2923,8 +2923,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -55px;
-  margin-top: -55px;
+  margin-left: -80px;
+  margin-top: -80px;
 }
 .Template1
   .WishlistCollection
@@ -2970,8 +2970,6 @@
   background-color: rgba(32, 21, 71, 0.1);
   border-radius: 50%;
   position: absolute;
-  margin-top: -80px;
-  margin-left: -80px;
 }
 
 .Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::before {
@@ -3011,8 +3009,6 @@
   background-color: rgba(32, 21, 71, 0.1);
   border-radius: 50%;
   position: absolute;
-  margin-top: -80px;
-  margin-left: -80px;
 }
 .Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::before {
   content: '';
