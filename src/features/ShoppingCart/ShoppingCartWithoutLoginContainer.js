@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import Fade from 'react-reveal/Fade';
 import ReactGA from 'react-ga';
+import { compose } from 'react-apollo';
 
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
 import ShoppingCartCheckout from '../Product/ProductDetails/Components/Template3/ShoppingCartCheckout';
@@ -14,6 +15,7 @@ import Address from './PaymentWithoutAuth/Address';
 import Payment from './PaymentWithoutAuth/Payment';
 import IyzicoHtml from './PaymentWithoutAuth/IyzicoHtml';
 import Spinner from '../../components/Spinner/Spinner';
+import GoogleAnalyticsHoc from '../../components/HOCS/GoogleAnalyticsHoc';
 
 const ShoppingCartWithoutLoginContainer = ({ client }) => {
   const [localCart, setlocalCart] = useState(
@@ -224,4 +226,8 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
   );
 };
 
-export default ScreenChoserQuery(ShoppingCartWithoutLoginContainer);
+export default compose(
+  ScreenChoserQuery(
+    GoogleAnalyticsHoc(ShoppingCartWithoutLoginContainer, 'cart', 'video')
+  )
+);

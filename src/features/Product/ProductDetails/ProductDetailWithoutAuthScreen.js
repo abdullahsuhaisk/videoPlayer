@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { Query, compose } from 'react-apollo';
 import ProductDetailImage from './Components/ProductDetailImage';
 import VerticalScroll from '../../../components/VerticalScroll';
 import ProductDetaiHeader from './Components/ProductDetaiHeader';
@@ -15,6 +15,7 @@ import ProductQueryHoc from '../../../components/HOCS/Grapqhl/ProductQueryHoc';
 import { GET_PRODUCT } from '../../../Queries/Products/ProductQueries';
 import { getParams } from '../../../hooks/ProdLinkHook';
 import ProductDetailGoToLink from './Components/ProductDetailGoToLink';
+import GoogleAnalyticsHoc from '../../../components/HOCS/GoogleAnalyticsHoc';
 
 const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   const [showLink, setShowLink] = useState(null);
@@ -277,4 +278,14 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
   return null;
 };
 
-export default ProductQueryHoc(ProductDetailWithoutAuthScreen, GET_PRODUCT);
+export default compose(
+  ProductQueryHoc(
+    GoogleAnalyticsHoc(
+      ProductDetailWithoutAuthScreen,
+      'Product',
+      'opened',
+      414
+    ),
+    GET_PRODUCT
+  )
+);

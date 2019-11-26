@@ -12,6 +12,7 @@ import { VideoPlayerIndicator } from './components/LoadingIndicator/VideoPlayerI
 import { sourceParser } from './utils/sourceParser';
 import Error from './components/Error/Error';
 import Spinner from './components/Spinner/Spinner';
+import GoogleAnalyticsHoc from './components/HOCS/GoogleAnalyticsHoc';
 // import MainLoader from './components/ContentLoader/MainLoader';
 
 const Player = React.lazy(() => import('./features/Player/Player'));
@@ -31,10 +32,6 @@ const App = ({ client }) => {
   React.useEffect(() => {
     // console.log(getParams('haslink'));
     initializeReactGA();
-    ReactGA.event({
-      category: 'Video',
-      action: 'loaded'
-    });
   }, []);
   const prodLinkId = getProdLinkIdApollo(client);
   // console.log(prodLinkId);
@@ -110,4 +107,4 @@ const App = ({ client }) => {
   );
 };
 
-export default App;
+export default GoogleAnalyticsHoc(App, 'Video', 'Loaded');
