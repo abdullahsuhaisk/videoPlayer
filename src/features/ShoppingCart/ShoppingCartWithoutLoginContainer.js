@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import Fade from 'react-reveal/Fade';
-import ReactGA from 'react-ga';
 import { compose } from 'react-apollo';
 
 import ShoppingCartEmpty from '../Product/ProductDetails/Components/Template3/ShoppingCartEmpty';
@@ -32,10 +31,11 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
 
   React.useEffect(() => {
     // console.log(getParams('haslink'));
-    ReactGA.event({
-      category: 'ShoppingCart',
-      action: 'shoppingCartOpened'
-    });
+    // ReactGA.event({
+    //   category: 'Shopping Cart',
+    //   action: 'shoppingCartOpened Rendered',
+    //   value: '5'
+    // });
   }, []);
 
   useEffect(() => {
@@ -228,6 +228,10 @@ const ShoppingCartWithoutLoginContainer = ({ client }) => {
 
 export default compose(
   ScreenChoserQuery(
-    GoogleAnalyticsHoc(ShoppingCartWithoutLoginContainer, 'cart', 'video')
+    GoogleAnalyticsHoc(
+      ShoppingCartWithoutLoginContainer,
+      'Shopping Cart',
+      'Open'
+    )
   )
 );

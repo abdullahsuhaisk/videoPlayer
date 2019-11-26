@@ -7,16 +7,16 @@ const GoogleAnalyticsHoc = (WrappedComponent, category, action, value) => (
   const data = props.data;
   const product = data && data.product;
   const productId = product && product.id;
-  console.log(data);
-  console.log(product);
-  console.log(props);
-  console.log(productId);
-
+  // console.log(data);
+  // console.log(product);
+  // console.log(props);
+  // console.log(productId);
+  // console.log(category);
   useEffect(() => {
     ReactGA.event({
       category,
-      action,
-      value
+      action: action + (productId ? productId : null),
+      value: productId && productId
     });
   }, []);
   return <WrappedComponent {...props} />;

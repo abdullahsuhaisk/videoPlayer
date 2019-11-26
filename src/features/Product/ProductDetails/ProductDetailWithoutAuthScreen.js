@@ -280,12 +280,7 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
 
 export default compose(
   ProductQueryHoc(
-    GoogleAnalyticsHoc(
-      ProductDetailWithoutAuthScreen,
-      'Product',
-      'opened',
-      414
-    ),
+    GoogleAnalyticsHoc(ProductDetailWithoutAuthScreen, 'Product', 'Opened'),
     GET_PRODUCT
   )
 );

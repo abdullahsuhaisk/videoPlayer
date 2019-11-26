@@ -8,6 +8,7 @@ import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import { PLAY, PAUSE } from '../../../../Queries/Player/PlayerMutations';
 import PauseIcon from '../../../../assets/icons/PauseIcon.svg';
 import PlayIcon from '../../../../assets/icons/PlayIcon.svg';
+import GoogleAnalyticsHoc from '../../../HOCS/GoogleAnalyticsHoc';
 
 const PlayPause = ({ position, client }) => {
   // console.log(props);
@@ -56,4 +57,6 @@ const PlayPause = ({ position, client }) => {
   );
 };
 
-export default withApollo(PlayPause);
+export default withApollo(
+  GoogleAnalyticsHoc(PlayPause, 'Control Bar', 'Play & Pause')
+);
