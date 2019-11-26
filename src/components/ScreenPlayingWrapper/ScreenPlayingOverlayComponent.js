@@ -102,8 +102,10 @@ const ScreenPlayingOverlayComponent = ({ videoPlayer, client }) => {
         onMouseLeave={() => mouseLeaveHandler()}
         style={{ pointerEvents: 'auto' }}>
         <StyledComponent>
-          <div className="VideoPlay--playBtn-shadow">
-            <div className="VideoPlay--playBtn"></div>
+          <div className="VideoPlay">
+            <div className="VideoPlay--playBtn-shadow">
+              <div className="VideoPlay--playBtn"></div>
+            </div>
           </div>
         </StyledComponent>
       </div>

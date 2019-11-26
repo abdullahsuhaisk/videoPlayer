@@ -2923,8 +2923,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -55px;
-  margin-top: -55px;
+  margin-left: -80px;
+  margin-top: -80px;
 }
 .Template1
   .WishlistCollection
@@ -2970,8 +2970,6 @@
   background-color: rgba(32, 21, 71, 0.1);
   border-radius: 50%;
   position: absolute;
-  margin-top: -80px;
-  margin-left: -80px;
 }
 
 .Template1 .VideoPlay--playBtn-shadow .VideoPlay--playBtn::before {
@@ -3011,8 +3009,6 @@
   background-color: rgba(32, 21, 71, 0.1);
   border-radius: 50%;
   position: absolute;
-  margin-top: -80px;
-  margin-left: -80px;
 }
 .Template1 .VideoPlay--pauseBtn-shadow .VideoPlay--pauseBtn::before {
   content: '';
@@ -6077,11 +6073,11 @@ ul.slick-dots {
 .form-group label {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   text-align: left;
-  color: #8a8796;
+  color: #201547;
   display: block;
   margin-bottom: 10px;
 }
@@ -6109,6 +6105,7 @@ input:focus {
   resize: none;
   padding-left: 14px;
   padding-top: 14px;
+  color: #8a8796;
 }
 textarea:focus {
   outline: 0;
@@ -6281,8 +6278,8 @@ textarea:focus.form-control {
 .replay-text {
   font-family: 'Open Sans', sans-serif;
   position: absolute;
-  top: calc(50% + 75px);
-  left: calc(50% - 55px);
+  top: calc(50% + 80px);
+  left: calc(50% - 60px);
   width: 120px;
   text-align: center;
   font-size: 20px;

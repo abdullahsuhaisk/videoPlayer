@@ -21,9 +21,7 @@ const ScreenReadyWrapper = ({ children }) => {
         return (
           <Wrapper>
             <div className="VideoPlay">
-              <div
-                className="VideoPlay--playBtn-shadow"
-                style={{ marginTop: '0', marginLeft: '0' }}>
+              <div className="VideoPlay--playBtn-shadow">
                 <div
                   className="VideoPlay--playBtn"
                   onClick={() => {
