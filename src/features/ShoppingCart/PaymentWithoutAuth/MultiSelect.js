@@ -23,7 +23,7 @@ export const Multiselect = styled(Select)`
     box-sizing: border-box;
     font-size: 14px;
     text-align: left;
-    color: #000;
+    color: #8a8796;
     max-height: 46px;
     border-radius: 0px;
     padding: 0;
@@ -72,7 +72,7 @@ export const Multiselect = styled(Select)`
     border: solid 1px #f5f5f5;
     background-color: #ffffff;
     text-align: left;
-    color: #929292;
+    color: #8a8796;
     margin: 0;
     border-radius: 0px;
     font-family: 'Nunito Sans', sans-serif;
@@ -92,17 +92,17 @@ export const Multiselect = styled(Select)`
     padding: 0;
   }
   .select__option--is-selected {
-    color: #0b2443;
+    color: #8a8796;
     background: #f5f5f5;
   }
   .select__option--is-focused {
-    color: #0b2443;
+    color: #8a8796;
     background: #f5f5f5;
   }
   .select__option {
     :hover {
       background: #f5f5f5;
-      color: #0b2443;
+      color: #8a8796;
     }
   }
 

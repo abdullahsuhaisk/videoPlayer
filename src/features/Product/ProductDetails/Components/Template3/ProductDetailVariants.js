@@ -11,7 +11,6 @@ const ProductDetailVariant = ({ data, setData }) => {
             return data.color === index ? (
               <div className="selected" key={index}>
                 <img src={item.color} alt="color" />
-                <p className="name">{item.name}</p>
               </div>
             ) : (
               <div
@@ -27,7 +26,7 @@ const ProductDetailVariant = ({ data, setData }) => {
         </div>
       </div>
 
-      <div className="productdetail--sizes-wrapper">
+      {/* <div className="productdetail--sizes-wrapper">
         <div className="productdetail--label">Size</div>
         <div className="productdetail--sizes-options">
           {sizes.map((item, index) => {
@@ -47,7 +46,7 @@ const ProductDetailVariant = ({ data, setData }) => {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 };

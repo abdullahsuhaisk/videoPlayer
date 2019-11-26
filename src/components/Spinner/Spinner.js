@@ -34,7 +34,7 @@ export const SpinnerContainer = styled.div`
 
 const Spinner = ({ backgroundColor, spinnerColor }) => {
   const BC = backgroundColor ? backgroundColor : 'black';
-  const SC = spinnerColor ? spinnerColor : '#f30640';
+  const SC = spinnerColor ? spinnerColor : '#201547';
   return (
     <>
       <SpinnerOverlay BC={BC}>
