@@ -73,8 +73,10 @@ const ScreenPauseOverlayComponent = ({ videoPlayer, client }) => {
         }}
         style={{ pointerEvents: 'auto' }}></div>
       <StyledComponent>
-        <div className="VideoPlay--pauseBtn-shadow">
-          <div className="VideoPlay--pauseBtn"></div>
+        <div className="VideoPlay">
+          <div className="VideoPlay--pauseBtn-shadow">
+            <div className="VideoPlay--pauseBtn"></div>
+          </div>
         </div>
       </StyledComponent>
     </React.Fragment>

@@ -6281,8 +6281,8 @@ textarea:focus.form-control {
 .replay-text {
   font-family: 'Open Sans', sans-serif;
   position: absolute;
-  top: calc(50% + 75px);
-  left: calc(50% - 55px);
+  top: calc(50% + 80px);
+  left: calc(50% - 60px);
   width: 120px;
   text-align: center;
   font-size: 20px;
