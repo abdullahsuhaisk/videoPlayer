@@ -6,6 +6,7 @@ import { getVideoJs } from '../../../../hooks/VideoJsHook';
 import VibuyIcon3 from '../../../../assets/icons/Vibuy-Glphy.svg';
 import VibuyIcon2 from '../../../../assets/icons/Vibuy-Line.svg';
 import { getParams } from '../../../../hooks/ProdLinkHook';
+import GoogleAnalyticsHoc from '../../../HOCS/GoogleAnalyticsHoc';
 
 const VibuyIcon = ({ client }) => {
   const HOTSPOT_SHOWING = gql`
@@ -58,4 +59,6 @@ const VibuyIcon = ({ client }) => {
   );
 };
 
-export default withApollo(VibuyIcon);
+export default withApollo(
+  GoogleAnalyticsHoc(VibuyIcon, 'Control Bar', 'Vibuy Icon Clicked')
+);
