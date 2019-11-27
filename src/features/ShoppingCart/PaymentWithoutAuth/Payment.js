@@ -56,12 +56,15 @@ const Payment = ({
         `
       })
       .then(({ data }) => {
-        // console.log(data);
-        setRenderOrder(atob(data.directOrder.threeDSHtmlContent));
+        console.log(data);
+        if (data.directOrder.errorMessage) {
+          setRenderOrder(data.directOrder.errorMessage);
+        } else setRenderOrder(atob(data.directOrder.threeDSHtmlContent));
         setSpinnerShow(false);
       })
       .catch((error) => {
         console.log(error);
+        setRenderOrder(data.directOrder.errorMessage);
         setSpinnerShow(false);
       });
   };
