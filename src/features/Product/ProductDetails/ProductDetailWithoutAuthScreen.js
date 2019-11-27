@@ -30,6 +30,14 @@ const ProductDetailWithoutAuthScreen = ({ product, client }) => {
     : [];
   localStorage.setItem('guestCart', JSON.stringify(cartItems));
 
+  //   useEffect(() => {
+  //   ReactGA.event({
+  //     category,
+  //     action: action + (productId ? productId : null),
+  //     value: productId && productId
+  //   });
+  // }, []);
+
   const [data, setData] = useState({
     color: 0,
     size: 0,
