@@ -33,16 +33,14 @@ const Payment = ({
     const { buyer } = orderInfo;
     client
       .mutate({
-        variables: { prodLinkId, paymentCard, buyer, products },
+        variables: { paymentCard, buyer, products },
         mutation: gql`
           mutation createOrder(
-            $prodLinkId: Int!
             $paymentCard: PaymentCardInput!
             $buyer: BuyerInput!
             $products: [ProductInput]!
           ) {
             directOrder(
-              prodLinkId: $prodLinkId
               paymentCard: $paymentCard
               buyer: $buyer
               products: $products
@@ -64,7 +62,9 @@ const Payment = ({
       })
       .catch((error) => {
         console.log(error);
-        setRenderOrder(data.directOrder.errorMessage);
+        setRenderOrder(
+          data && data.directOrder && data.directOrder.errorMessage
+        );
         setSpinnerShow(false);
       });
   };

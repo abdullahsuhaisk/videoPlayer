@@ -34,7 +34,7 @@ const App = ({ client }) => {
     initializeReactGA();
   }, []);
   const prodLinkId = getProdLinkIdApollo(client);
-  // console.log(prodLinkId);
+  console.log(process.env);
   return (
     <div
       className="vibuy--container"
