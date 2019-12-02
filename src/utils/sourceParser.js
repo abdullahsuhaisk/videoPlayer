@@ -1,6 +1,9 @@
 import { httpToHttps } from './httpTohttps';
 
-export const sourceParser = (qualities) => {
+export const sourceParser = (qualities, hls) => {
+  if (hls) {
+    return hls;
+  }
   const sourceArray = [];
   qualities.map((item) => {
     const sourceObject = { src: null, type: null };

@@ -62,7 +62,7 @@ const App = ({ client }) => {
             'https://puhutv-image.akamaized.net/img/1920x1080/19-06/24/1546932082770-erkencikus_16x9_rev-1561406522.jpg'; */
           }
 
-          const source = sourceParser(video.qualities);
+          const source = sourceParser(video.qualities, video.hls);
 
           {
             /* const source = {

@@ -4,18 +4,22 @@ export const VIDEO_FRAGMENT = gql`
   fragment videoFr on VideoType {
     id
     name
-    header
-    description
     qualities {
       id
-      url
       quality
       type
       storageId
       storageBucket
       storageGeneration
       storageName
+      url
     }
+    hls
+    sprite
+    image {
+      id
+    }
+    creationTime
   }
 `;
 

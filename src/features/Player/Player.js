@@ -40,7 +40,7 @@ const GET_PLAYER = gql`
 //   }
 // `;
 
-const Player = ({ width, height, poster, sources }) => {
+const Player = ({ width, height, sources }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const apolloClientRef = useRef(null);
